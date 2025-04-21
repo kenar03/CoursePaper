@@ -1,0 +1,42 @@
+[plantuml]
+----
+@startuml
+
+interface IThread
+{
+  + Execute(): void
+}
+
+class MeasurementTask
+{
+    "override" + Execute(): void
+}
+
+class UsartTask
+{
+    "override" + Execute(): void
+}
+
+
+
+
+
+' Определение отношений
+ADC_Manager --> DMA_Manager : uses
+Measurement_Task --> ADC_Manager : uses
+Measurement_Task --> Filter : uses
+Measurement_Task --> LED_Controller : uses
+Measurement_Task --> Calibration : uses
+UART_Task --> UART_Manager : uses
+UART_Task --> Measurement_Task : uses data
+RTOS_Wrapper --> Measurement_Task : contains
+RTOS_Wrapper --> UART_Task : contains
+Calibration --> Config : depends on
+Filter --> Config : depends on
+ADC_Manager --> Config : depends on
+DMA_Manager --> Config : depends on
+UART_Manager --> Config : depends on
+LED_Controller --> Config : depends on
+
+@enduml
+----
