@@ -4,39 +4,105 @@
 
 interface IThread
 {
-  + Execute(): void
+
 }
 
 class MeasurementTask
 {
-    "override" + Execute(): void
+
 }
 
 class UsartTask
 {
-    "override" + Execute(): void
+
 }
 
+interface IDigitalFilter
+{
 
+}
 
+class DigitalFilter
+{
 
+}
 
-' Определение отношений
-ADC_Manager --> DMA_Manager : uses
-Measurement_Task --> ADC_Manager : uses
-Measurement_Task --> Filter : uses
-Measurement_Task --> LED_Controller : uses
-Measurement_Task --> Calibration : uses
-UART_Task --> UART_Manager : uses
-UART_Task --> Measurement_Task : uses data
-RTOS_Wrapper --> Measurement_Task : contains
-RTOS_Wrapper --> UART_Task : contains
-Calibration --> Config : depends on
-Filter --> Config : depends on
-ADC_Manager --> Config : depends on
-DMA_Manager --> Config : depends on
-UART_Manager --> Config : depends on
-LED_Controller --> Config : depends on
+interface ILedController
+{
+
+}
+
+class LedController
+{
+
+}
+
+interface IAdcDataProvider
+{
+
+}
+
+class AdcDmaDataProvider
+{
+
+}
+
+interface IVoltage
+{
+
+}
+
+class Voltage
+{
+
+}
+
+interface IUsart
+{
+
+}
+
+class Usart
+{
+
+}
+
+interface IDataUpdater
+{
+
+}
+
+interface IFilteredDataProvider
+{
+
+}
+
+class FilteredDataStorage
+{
+
+}
+
+AdcDmaDataProvider --|> IAdcDataProvider
+IAdcDataProvider --o Voltage
+Voltage -|> IVoltage
+IVoltage --o MeasurementTask
+
+DigitalFilter --|> IDigitalFilter
+IDigitalFilter --o MeasurementTask
+
+LedController --|> ILedController
+ILedController --o MeasurementTask
+
+Usart --|> IUsart
+IUsart --o UsartTask
+IFilteredDataProvider --o UsartTask
+
+FilteredDataStorage --|> IFilteredDataProvider
+FilteredDataStorage --|> IDataUpdater
+IDataUpdater --o MeasurementTask
+
+MeasurementTask --|> IThread
+UsartTask --|> IThread
 
 @enduml
 ----
