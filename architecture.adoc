@@ -37,7 +37,15 @@ class LedController
 
 }
 
-interface IAdcDataProvider
+interface ILedCalculator
+{
+}
+
+class LedCalculator
+{
+}
+
+interface IRawDataProvider
 {
 
 }
@@ -67,39 +75,52 @@ class Usart
 
 }
 
-interface IDataUpdater
+interface IDataRepositoryUpdater
 {
 
 }
 
-interface IFilteredDataProvider
+interface IDataRepositoryProvider
 {
 
 }
 
-class FilteredDataStorage
+class DataRepository
 {
 
 }
 
-AdcDmaDataProvider --|> IAdcDataProvider
-IAdcDataProvider --o Voltage
+interface IFormatter
+{
+}
+
+class Formatter
+{
+}
+
+AdcDmaDataProvider --|> IRawDataProvider
+IRawDataProvider --o Voltage
 Voltage -|> IVoltage
 IVoltage --o MeasurementTask
 
 DigitalFilter --|> IDigitalFilter
 IDigitalFilter --o MeasurementTask
 
+LedCalculator --|> ILedCalculator
+ILedCalculator --o MeasurementTask
 LedController --|> ILedController
 ILedController --o MeasurementTask
 
 Usart --|> IUsart
 IUsart --o UsartTask
-IFilteredDataProvider --o UsartTask
+Formatter --|> IFormatter
+IFormatter --o UsartTask
+IDataRepositoryProvider --o UsartTask
 
-FilteredDataStorage --|> IFilteredDataProvider
-FilteredDataStorage --|> IDataUpdater
-IDataUpdater --o MeasurementTask
+
+DataRepository --|> IDataRepositoryProvider
+DataRepository --|> IDataRepositoryUpdater
+IDataRepositoryUpdater --o MeasurementTask
 
 MeasurementTask --|> IThread
 UsartTask --|> IThread
