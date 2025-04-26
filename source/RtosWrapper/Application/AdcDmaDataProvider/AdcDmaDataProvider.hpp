@@ -10,11 +10,11 @@ class AdcDmaDataProvider : public IRawDataProvider
 {
 public:
   AdcDmaDataProvider();
-  std::uint32_t GetRawData() override; 
+  std::uint32_t GetRawData() override;
+  void ConfigAdc();
 private:
   std::uint32_t data;
   void ConfigDma();
-  void ConfigAdc();
 };
 
 #endif

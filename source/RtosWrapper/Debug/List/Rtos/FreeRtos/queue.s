@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        26/Apr/2025  19:24:50
+// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        27/Apr/2025  00:21:29
 // Copyright 1999-2022 IAR Systems AB.
 //
 //    Cpu mode     =  thumb
@@ -102,7 +102,11 @@
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
 //        -I
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
-//        -Ol) --dependencies=n
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+//        -On) --dependencies=n
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Rtos\FreeRtos\queue.o.d
 //    Locale       =  C
 //    List file    =
@@ -497,14 +501,16 @@ xQueueRegistry:
 //  279 BaseType_t xQueueGenericReset( QueueHandle_t xQueue, BaseType_t xNewQueue )
 //  280 {
 xQueueGenericReset:
-        PUSH     {R3-R5,LR}     
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
           CFI CFA R13+16
         MOVS     R5,R0          
         MOVS     R4,R1          
 //  281 Queue_t * const pxQueue = ( Queue_t * ) xQueue;
+        MOVS     R6,R5          
 //  282 
 //  283 	configASSERT( pxQueue );
 //  284 
@@ -513,31 +519,31 @@ xQueueGenericReset:
         BL       vPortEnterCritical
 //  286 	{
 //  287 		pxQueue->pcTail = pxQueue->pcHead + ( pxQueue->uxLength * pxQueue->uxItemSize );
-        LDR      R1,[R5, #+0]   
-        LDR      R2,[R5, #+60]  
-        LDR      R0,[R5, #+64]  
+        LDR      R1,[R6, #+0]   
+        LDR      R2,[R6, #+60]  
+        LDR      R0,[R6, #+64]  
         MULS     R2,R0,R2       
         ADD      R0,R1,R2       
-        STR      R0,[R5, #+4]   
+        STR      R0,[R6, #+4]   
 //  288 		pxQueue->uxMessagesWaiting = ( UBaseType_t ) 0U;
         MOVS     R0,#+0         
-        STR      R0,[R5, #+56]  
+        STR      R0,[R6, #+56]  
 //  289 		pxQueue->pcWriteTo = pxQueue->pcHead;
-        LDR      R0,[R5, #+0]   
-        STR      R0,[R5, #+8]   
+        LDR      R0,[R6, #+0]   
+        STR      R0,[R6, #+8]   
 //  290 		pxQueue->u.pcReadFrom = pxQueue->pcHead + ( ( pxQueue->uxLength - ( UBaseType_t ) 1U ) * pxQueue->uxItemSize );
-        LDR      R1,[R5, #+0]   
-        LDR      R2,[R5, #+60]  
+        LDR      R1,[R6, #+0]   
+        LDR      R2,[R6, #+60]  
         SUBS     R2,R2,#+1      
-        LDR      R0,[R5, #+64]  
+        LDR      R0,[R6, #+64]  
         MULS     R2,R0,R2       
         ADD      R0,R1,R2       
-        STR      R0,[R5, #+12]  
+        STR      R0,[R6, #+12]  
 //  291 		pxQueue->cRxLock = queueUNLOCKED;
         MOVS     R0,#+4294967295
-        STRB     R0,[R5, #+68]  
+        STRB     R0,[R6, #+68]  
 //  292 		pxQueue->cTxLock = queueUNLOCKED;
-        STRB     R0,[R5, #+69]  
+        STRB     R0,[R6, #+69]  
 //  293 
 //  294 		if( xNewQueue == pdFALSE )
         CMP      R4,#+0         
@@ -549,12 +555,12 @@ xQueueGenericReset:
 //  299 			the queue, then one should be unblocked as after this function exits
 //  300 			it will be possible to write to it. */
 //  301 			if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToSend ) ) == pdFALSE )
-        LDR      R0,[R5, #+16]  
+        LDR      R0,[R6, #+16]  
         CMP      R0,#+0         
         BEQ.N    ??xQueueGenericReset_1
 //  302 			{
 //  303 				if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToSend ) ) != pdFALSE )
-        ADDS     R0,R5,#+16     
+        ADDS     R0,R6,#+16     
           CFI FunCall xTaskRemoveFromEventList
         BL       xTaskRemoveFromEventList
         CMP      R0,#+0         
@@ -583,11 +589,11 @@ xQueueGenericReset:
 //  319 			/* Ensure the event queues start in the correct state. */
 //  320 			vListInitialise( &( pxQueue->xTasksWaitingToSend ) );
 ??xQueueGenericReset_0:
-        ADDS     R0,R5,#+16     
+        ADDS     R0,R6,#+16     
           CFI FunCall vListInitialise
         BL       vListInitialise
 //  321 			vListInitialise( &( pxQueue->xTasksWaitingToReceive ) );
-        ADDS     R0,R5,#+36     
+        ADDS     R0,R6,#+36     
           CFI FunCall vListInitialise
         BL       vListInitialise
 //  322 		}
@@ -601,7 +607,7 @@ xQueueGenericReset:
 //  327 	versions. */
 //  328 	return pdPASS;
         MOVS     R0,#+1         
-        POP      {R1,R4,R5,PC}  
+        POP      {R4-R6,PC}     
 //  329 }
           CFI EndBlock cfiBlock0
 //  330 /*-----------------------------------------------------------*/
@@ -616,11 +622,20 @@ xQueueGenericReset:
 //  334 	QueueHandle_t xQueueGenericCreateStatic( const UBaseType_t uxQueueLength, const UBaseType_t uxItemSize, uint8_t *pucQueueStorage, StaticQueue_t *pxStaticQueue, const uint8_t ucQueueType )
 //  335 	{
 xQueueGenericCreateStatic:
-        PUSH     {R2-R4,LR}     
+        PUSH     {R3-R9,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+16
-        MOVS     R4,R3          
+          CFI R9 Frame(CFA, -8)
+          CFI R8 Frame(CFA, -12)
+          CFI R7 Frame(CFA, -16)
+          CFI R6 Frame(CFA, -20)
+          CFI R5 Frame(CFA, -24)
+          CFI R4 Frame(CFA, -28)
+          CFI CFA R13+32
+        MOV      R8,R0          
+        MOVS     R4,R1          
+        MOVS     R5,R2          
+        MOV      R9,R3          
+        LDR      R7,[SP, #+32]  
 //  336 	Queue_t *pxNewQueue;
 //  337 
 //  338 		configASSERT( uxQueueLength > ( UBaseType_t ) 0 );
@@ -632,26 +647,26 @@ xQueueGenericCreateStatic:
 //  344 		/* A queue storage area should be provided if the item size is not 0, and
 //  345 		should not be provided if the item size is 0. */
 //  346 		configASSERT( !( ( pucQueueStorage != NULL ) && ( uxItemSize == 0 ) ) );
-        CMP      R2,#+0         
+        CMP      R5,#+0         
         BEQ.N    ??xQueueGenericCreateStatic_0
-        CMP      R1,#+0         
+        CMP      R4,#+0         
         BEQ.N    ??xQueueGenericCreateStatic_1
 ??xQueueGenericCreateStatic_0:
-        MOVS     R3,#+1         
+        MOVS     R0,#+1         
         B.N      ??xQueueGenericCreateStatic_2
 ??xQueueGenericCreateStatic_1:
-        MOVS     R3,#+0         
+        MOVS     R0,#+0         
 //  347 		configASSERT( !( ( pucQueueStorage == NULL ) && ( uxItemSize != 0 ) ) );
 ??xQueueGenericCreateStatic_2:
-        CMP      R2,#+0         
+        CMP      R5,#+0         
         BNE.N    ??xQueueGenericCreateStatic_3
-        CMP      R1,#+0         
+        CMP      R4,#+0         
         BNE.N    ??xQueueGenericCreateStatic_4
 ??xQueueGenericCreateStatic_3:
-        MOVS     R3,#+1         
+        MOVS     R0,#+1         
         B.N      ??xQueueGenericCreateStatic_5
 ??xQueueGenericCreateStatic_4:
-        MOVS     R3,#+0         
+        MOVS     R0,#+0         
 //  348 
 //  349 		#if( configASSERT_DEFINED == 1 )
 //  350 		{
@@ -660,10 +675,10 @@ xQueueGenericCreateStatic:
 //  353 			the real queue and semaphore structures. */
 //  354 			volatile size_t xSize = sizeof( StaticQueue_t );
 ??xQueueGenericCreateStatic_5:
-        MOVS     R3,#+72        
-        STR      R3,[SP, #+0]   
+        MOVS     R0,#+72        
+        STR      R0,[SP, #+0]   
 //  355 			configASSERT( xSize == sizeof( Queue_t ) );
-        LDR      R3,[SP, #+0]   
+        LDR      R0,[SP, #+0]   
 //  356 		}
 //  357 		#endif /* configASSERT_DEFINED */
 //  358 
@@ -671,11 +686,11 @@ xQueueGenericCreateStatic:
 //  360 		The address of a statically allocated storage area was also passed in
 //  361 		but is already set. */
 //  362 		pxNewQueue = ( Queue_t * ) pxStaticQueue; /*lint !e740 Unusual cast is ok as the structures are designed to have the same alignment, and the size is checked by an assert. */
+        MOV      R6,R9          
 //  363 
 //  364 		if( pxNewQueue != NULL )
-        CMP      R4,#+0         
+        CMP      R6,#+0         
         BEQ.N    ??xQueueGenericCreateStatic_6
-        LDR      R3,[SP, #+16]  
 //  365 		{
 //  366 			#if( configSUPPORT_DYNAMIC_ALLOCATION == 1 )
 //  367 			{
@@ -687,16 +702,20 @@ xQueueGenericCreateStatic:
 //  373 			#endif /* configSUPPORT_DYNAMIC_ALLOCATION */
 //  374 
 //  375 			prvInitialiseNewQueue( uxQueueLength, uxItemSize, pucQueueStorage, ucQueueType, pxNewQueue );
-        STR      R4,[SP, #+0]   
+        STR      R6,[SP, #+0]   
+        MOVS     R3,R7          
         UXTB     R3,R3          
+        MOVS     R2,R5          
+        MOVS     R1,R4          
+        MOV      R0,R8          
           CFI FunCall prvInitialiseNewQueue
         BL       prvInitialiseNewQueue
 //  376 		}
 //  377 
 //  378 		return pxNewQueue;
 ??xQueueGenericCreateStatic_6:
-        MOVS     R0,R4          
-        POP      {R1,R2,R4,PC}  
+        MOVS     R0,R6          
+        POP      {R1,R4-R9,PC}  
 //  379 	}
           CFI EndBlock cfiBlock1
 //  380 
@@ -759,16 +778,25 @@ xQueueGenericCreateStatic:
 //  432 static void prvInitialiseNewQueue( const UBaseType_t uxQueueLength, const UBaseType_t uxItemSize, uint8_t *pucQueueStorage, const uint8_t ucQueueType, Queue_t *pxNewQueue )
 //  433 {
 prvInitialiseNewQueue:
-        PUSH     {R7,LR}        
+        PUSH     {R4-R8,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
-        LDR      R3,[SP, #+8]   
+          CFI R8 Frame(CFA, -8)
+          CFI R7 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -16)
+          CFI R5 Frame(CFA, -20)
+          CFI R4 Frame(CFA, -24)
+          CFI CFA R13+24
+        MOVS     R5,R0          
+        MOVS     R4,R1          
+        MOVS     R6,R2          
+        MOVS     R7,R3          
+        LDR      R8,[SP, #+24]  
 //  434 	/* Remove compiler warnings about unused parameters should
 //  435 	configUSE_TRACE_FACILITY not be set to 1. */
 //  436 	( void ) ucQueueType;
 //  437 
 //  438 	if( uxItemSize == ( UBaseType_t ) 0 )
-        CMP      R1,#+0         
+        CMP      R4,#+0         
         BNE.N    ??prvInitialiseNewQueue_0
 //  439 	{
 //  440 		/* No RAM was allocated for the queue storage area, but PC head cannot
@@ -776,7 +804,7 @@ prvInitialiseNewQueue:
 //  442 		a mutex.  Therefore just set pcHead to point to the queue as a benign
 //  443 		value that is known to be within the memory map. */
 //  444 		pxNewQueue->pcHead = ( int8_t * ) pxNewQueue;
-        STR      R3,[R3, #+0]   
+        STR      R8,[R8, #+0]   
         B.N      ??prvInitialiseNewQueue_1
 //  445 	}
 //  446 	else
@@ -784,19 +812,19 @@ prvInitialiseNewQueue:
 //  448 		/* Set the head to the start of the queue storage area. */
 //  449 		pxNewQueue->pcHead = ( int8_t * ) pucQueueStorage;
 ??prvInitialiseNewQueue_0:
-        STR      R2,[R3, #+0]   
+        STR      R6,[R8, #+0]   
 //  450 	}
 //  451 
 //  452 	/* Initialise the queue members as described where the queue type is
 //  453 	defined. */
 //  454 	pxNewQueue->uxLength = uxQueueLength;
 ??prvInitialiseNewQueue_1:
-        STR      R0,[R3, #+60]  
+        STR      R5,[R8, #+60]  
 //  455 	pxNewQueue->uxItemSize = uxItemSize;
-        STR      R1,[R3, #+64]  
+        STR      R4,[R8, #+64]  
 //  456 	( void ) xQueueGenericReset( pxNewQueue, pdTRUE );
         MOVS     R1,#+1         
-        MOVS     R0,R3          
+        MOV      R0,R8          
           CFI FunCall xQueueGenericReset
         BL       xQueueGenericReset
 //  457 
@@ -814,7 +842,7 @@ prvInitialiseNewQueue:
 //  469 
 //  470 	traceQUEUE_CREATE( pxNewQueue );
 //  471 }
-        POP      {R0,PC}        
+        POP      {R4-R8,PC}     
           CFI EndBlock cfiBlock2
 //  472 /*-----------------------------------------------------------*/
 //  473 
@@ -828,11 +856,13 @@ prvInitialiseNewQueue:
 //  476 	static void prvInitialiseMutex( Queue_t *pxNewQueue )
 //  477 	{
 prvInitialiseMutex:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
 //  478 		if( pxNewQueue != NULL )
-        CMP      R0,#+0         
+        CMP      R4,#+0         
         BEQ.N    ??prvInitialiseMutex_0
 //  479 		{
 //  480 			/* The queue create function will set all the queue structure members
@@ -840,16 +870,16 @@ prvInitialiseMutex:
 //  482 			mutex.  Overwrite those members that need to be set differently -
 //  483 			in particular the information required for priority inheritance. */
 //  484 			pxNewQueue->pxMutexHolder = NULL;
-        MOVS     R1,#+0         
-        STR      R1,[R0, #+4]   
+        MOVS     R0,#+0         
+        STR      R0,[R4, #+4]   
 //  485 			pxNewQueue->uxQueueType = queueQUEUE_IS_MUTEX;
-        MOVS     R1,#+0         
-        STR      R1,[R0, #+0]   
+        MOVS     R0,#+0         
+        STR      R0,[R4, #+0]   
 //  486 
 //  487 			/* In case this is a recursive mutex. */
 //  488 			pxNewQueue->u.uxRecursiveCallCount = 0;
-        MOVS     R1,#+0         
-        STR      R1,[R0, #+12]  
+        MOVS     R0,#+0         
+        STR      R0,[R4, #+12]  
 //  489 
 //  490 			traceCREATE_MUTEX( pxNewQueue );
 //  491 
@@ -858,6 +888,7 @@ prvInitialiseMutex:
         MOVS     R3,#+0         
         MOVS     R2,#+0         
         MOVS     R1,#+0         
+        MOVS     R0,R4          
           CFI FunCall xQueueGenericSend
         BL       xQueueGenericSend
 //  494 		}
@@ -867,7 +898,7 @@ prvInitialiseMutex:
 //  498 		}
 //  499 	}
 ??prvInitialiseMutex_0:
-        POP      {R0,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock3
 //  500 
 //  501 #endif /* configUSE_MUTEXES */
@@ -899,36 +930,44 @@ prvInitialiseMutex:
 //  522 	QueueHandle_t xQueueCreateMutexStatic( const uint8_t ucQueueType, StaticQueue_t *pxStaticQueue )
 //  523 	{
 xQueueCreateMutexStatic:
-        PUSH     {R2-R4,LR}     
+        PUSH     {R2-R8,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+16
-        MOVS     R3,R1          
+          CFI R8 Frame(CFA, -8)
+          CFI R7 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -16)
+          CFI R5 Frame(CFA, -20)
+          CFI R4 Frame(CFA, -24)
+          CFI CFA R13+32
+        MOVS     R4,R0          
+        MOVS     R5,R1          
 //  524 	Queue_t *pxNewQueue;
 //  525 	const UBaseType_t uxMutexLength = ( UBaseType_t ) 1, uxMutexSize = ( UBaseType_t ) 0;
-        MOVS     R4,#+1         
-        MOVS     R1,#+0         
+        MOVS     R7,#+1         
+        MOVS     R8,#+0         
 //  526 
 //  527 		/* Prevent compiler warnings about unused parameters if
 //  528 		configUSE_TRACE_FACILITY does not equal 1. */
 //  529 		( void ) ucQueueType;
 //  530 
 //  531 		pxNewQueue = ( Queue_t * ) xQueueGenericCreateStatic( uxMutexLength, uxMutexSize, NULL, pxStaticQueue, ucQueueType );
+        MOVS     R0,R4          
         UXTB     R0,R0          
         STR      R0,[SP, #+0]   
+        MOVS     R3,R5          
         MOVS     R2,#+0         
-        MOVS     R0,R4          
+        MOV      R1,R8          
+        MOVS     R0,R7          
           CFI FunCall xQueueGenericCreateStatic
         BL       xQueueGenericCreateStatic
-        MOVS     R4,R0          
+        MOVS     R6,R0          
 //  532 		prvInitialiseMutex( pxNewQueue );
-        MOVS     R0,R4          
+        MOVS     R0,R6          
           CFI FunCall prvInitialiseMutex
         BL       prvInitialiseMutex
 //  533 
 //  534 		return pxNewQueue;
-        MOVS     R0,R4          
-        POP      {R1,R2,R4,PC}  
+        MOVS     R0,R6          
+        POP      {R1,R2,R4-R8,PC}
 //  535 	}
           CFI EndBlock cfiBlock4
 //  536 
@@ -1126,26 +1165,29 @@ xQueueCreateMutexStatic:
 //  723 BaseType_t xQueueGenericSend( QueueHandle_t xQueue, const void * const pvItemToQueue, TickType_t xTicksToWait, const BaseType_t xCopyPosition )
 //  724 {
 xQueueGenericSend:
-        PUSH     {R0-R2,R4-R7,LR}
+        PUSH     {R0-R2,R4-R9,LR}
           CFI R14 Frame(CFA, -4)
-          CFI R7 Frame(CFA, -8)
-          CFI R6 Frame(CFA, -12)
-          CFI R5 Frame(CFA, -16)
-          CFI R4 Frame(CFA, -20)
-          CFI CFA R13+32
-        MOVS     R6,R0          
+          CFI R9 Frame(CFA, -8)
+          CFI R8 Frame(CFA, -12)
+          CFI R7 Frame(CFA, -16)
+          CFI R6 Frame(CFA, -20)
+          CFI R5 Frame(CFA, -24)
+          CFI R4 Frame(CFA, -28)
+          CFI CFA R13+40
+        MOVS     R7,R0          
         MOVS     R5,R1          
-        MOVS     R7,R3          
+        MOV      R8,R3          
 //  725 BaseType_t xEntryTimeSet = pdFALSE, xYieldRequired;
         MOVS     R4,#+0         
 //  726 TimeOut_t xTimeOut;
 //  727 Queue_t * const pxQueue = ( Queue_t * ) xQueue;
+        MOV      R9,R7          
 //  728 
 //  729 	configASSERT( pxQueue );
 //  730 	configASSERT( !( ( pvItemToQueue == NULL ) && ( pxQueue->uxItemSize != ( UBaseType_t ) 0U ) ) );
         CMP      R5,#+0         
         BNE.N    ??xQueueGenericSend_0
-        LDR      R0,[R6, #+64]  
+        LDR      R0,[R9, #+64]  
         CMP      R0,#+0         
         BNE.N    ??xQueueGenericSend_1
 ??xQueueGenericSend_0:
@@ -1155,9 +1197,9 @@ xQueueGenericSend:
         MOVS     R0,#+0         
 //  731 	configASSERT( !( ( xCopyPosition == queueOVERWRITE ) && ( pxQueue->uxLength != 1 ) ) );
 ??xQueueGenericSend_2:
-        CMP      R7,#+2         
+        CMP      R8,#+2         
         BNE.N    ??xQueueGenericSend_3
-        LDR      R0,[R6, #+60]  
+        LDR      R0,[R9, #+60]  
         CMP      R0,#+1         
         BNE.N    ??xQueueGenericSend_4
 ??xQueueGenericSend_3:
@@ -1181,7 +1223,6 @@ xQueueGenericSend:
         B.N      ??xQueueGenericSend_8
 ??xQueueGenericSend_7:
         MOVS     R0,#+0         
-        B.N      ??xQueueGenericSend_8
 //  735 	}
 //  736 	#endif
 //  737 
@@ -1192,15 +1233,31 @@ xQueueGenericSend:
 //  742 	for( ;; )
 //  743 	{
 //  744 		taskENTER_CRITICAL();
+??xQueueGenericSend_8:
+          CFI FunCall vPortEnterCritical
+        BL       vPortEnterCritical
 //  745 		{
 //  746 			/* Is there room on the queue now?  The running task must be the
 //  747 			highest priority task wanting to access the queue.  If the head item
 //  748 			in the queue is to be overwritten then it does not matter if the
 //  749 			queue is full. */
 //  750 			if( ( pxQueue->uxMessagesWaiting < pxQueue->uxLength ) || ( xCopyPosition == queueOVERWRITE ) )
+        LDR      R0,[R9, #+56]  
+        LDR      R1,[R9, #+60]  
+        CMP      R0,R1          
+        BCC.N    ??xQueueGenericSend_9
+        CMP      R8,#+2         
+        BNE.N    ??xQueueGenericSend_10
 //  751 			{
 //  752 				traceQUEUE_SEND( pxQueue );
 //  753 				xYieldRequired = prvCopyDataToQueue( pxQueue, pvItemToQueue, xCopyPosition );
+??xQueueGenericSend_9:
+        MOV      R2,R8          
+        MOVS     R1,R5          
+        MOV      R0,R9          
+          CFI FunCall prvCopyDataToQueue
+        BL       prvCopyDataToQueue
+        MOVS     R6,R0          
 //  754 
 //  755 				#if ( configUSE_QUEUE_SETS == 1 )
 //  756 				{
@@ -1256,14 +1313,28 @@ xQueueGenericSend:
 //  806 					/* If there was a task waiting for data to arrive on the
 //  807 					queue then unblock it now. */
 //  808 					if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToReceive ) ) == pdFALSE )
+        LDR      R0,[R9, #+36]  
+        CMP      R0,#+0         
+        BEQ.N    ??xQueueGenericSend_11
 //  809 					{
 //  810 						if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToReceive ) ) != pdFALSE )
+        ADDS     R0,R9,#+36     
+          CFI FunCall xTaskRemoveFromEventList
+        BL       xTaskRemoveFromEventList
+        CMP      R0,#+0         
+        BEQ.N    ??xQueueGenericSend_12
 //  811 						{
 //  812 							/* The unblocked task has a priority higher than
 //  813 							our own so yield immediately.  Yes it is ok to do
 //  814 							this from within the critical section - the kernel
 //  815 							takes care of that. */
 //  816 							queueYIELD_IF_USING_PREEMPTION();
+        MOVS     R0,#+268435456 
+        LDR.W    R1,??DataTable5
+        STR      R0,[R1, #+0]   
+        DSB      SY             
+        ISB      SY             
+        B.N      ??xQueueGenericSend_12
 //  817 						}
 //  818 						else
 //  819 						{
@@ -1271,12 +1342,20 @@ xQueueGenericSend:
 //  821 						}
 //  822 					}
 //  823 					else if( xYieldRequired != pdFALSE )
+??xQueueGenericSend_11:
+        CMP      R6,#+0         
+        BEQ.N    ??xQueueGenericSend_12
 //  824 					{
 //  825 						/* This path is a special case that will only get
 //  826 						executed if the task was holding multiple mutexes and
 //  827 						the mutexes were given back in an order that is
 //  828 						different to that in which they were taken. */
 //  829 						queueYIELD_IF_USING_PREEMPTION();
+        MOVS     R0,#+268435456 
+        LDR.W    R1,??DataTable5
+        STR      R0,[R1, #+0]   
+        DSB      SY             
+        ISB      SY             
 //  830 					}
 //  831 					else
 //  832 					{
@@ -1286,29 +1365,38 @@ xQueueGenericSend:
 //  836 				#endif /* configUSE_QUEUE_SETS */
 //  837 
 //  838 				taskEXIT_CRITICAL();
+??xQueueGenericSend_12:
+          CFI FunCall vPortExitCritical
+        BL       vPortExitCritical
 //  839 				return pdPASS;
+        MOVS     R0,#+1         
+        B.N      ??xQueueGenericSend_13
 //  840 			}
 //  841 			else
 //  842 			{
 //  843 				if( xTicksToWait == ( TickType_t ) 0 )
-??xQueueGenericSend_9:
+??xQueueGenericSend_10:
         LDR      R0,[SP, #+8]   
         CMP      R0,#+0         
-        BEQ.N    ??xQueueGenericSend_10
+        BNE.N    ??xQueueGenericSend_14
 //  844 				{
 //  845 					/* The queue was full and no block time is specified (or
 //  846 					the block time has expired) so leave now. */
 //  847 					taskEXIT_CRITICAL();
+          CFI FunCall vPortExitCritical
+        BL       vPortExitCritical
 //  848 
 //  849 					/* Return to the original privilege level before exiting
 //  850 					the function. */
 //  851 					traceQUEUE_SEND_FAILED( pxQueue );
 //  852 					return errQUEUE_FULL;
+        MOVS     R0,#+0         
+        B.N      ??xQueueGenericSend_13
 //  853 				}
 //  854 				else if( xEntryTimeSet == pdFALSE )
-??xQueueGenericSend_11:
+??xQueueGenericSend_14:
         CMP      R4,#+0         
-        BNE.N    ??xQueueGenericSend_12
+        BNE.N    ??xQueueGenericSend_15
 //  855 				{
 //  856 					/* The queue was full and a block time was specified so
 //  857 					configure the timeout structure. */
@@ -1317,7 +1405,8 @@ xQueueGenericSend:
           CFI FunCall vTaskSetTimeOutState
         BL       vTaskSetTimeOutState
 //  859 					xEntryTimeSet = pdTRUE;
-        MOVS     R4,#+1         
+        MOVS     R0,#+1         
+        MOVS     R4,R0          
 //  860 				}
 //  861 				else
 //  862 				{
@@ -1327,7 +1416,7 @@ xQueueGenericSend:
 //  866 			}
 //  867 		}
 //  868 		taskEXIT_CRITICAL();
-??xQueueGenericSend_12:
+??xQueueGenericSend_15:
           CFI FunCall vPortExitCritical
         BL       vPortExitCritical
 //  869 
@@ -1340,18 +1429,18 @@ xQueueGenericSend:
 //  874 		prvLockQueue( pxQueue );
           CFI FunCall vPortEnterCritical
         BL       vPortEnterCritical
-        LDRSB    R0,[R6, #+68]  
+        LDRSB    R0,[R9, #+68]  
         CMN      R0,#+1         
-        BNE.N    ??xQueueGenericSend_13
+        BNE.N    ??xQueueGenericSend_16
         MOVS     R0,#+0         
-        STRB     R0,[R6, #+68]  
-??xQueueGenericSend_13:
-        LDRSB    R0,[R6, #+69]  
+        STRB     R0,[R9, #+68]  
+??xQueueGenericSend_16:
+        LDRSB    R0,[R9, #+69]  
         CMN      R0,#+1         
-        BNE.N    ??xQueueGenericSend_14
+        BNE.N    ??xQueueGenericSend_17
         MOVS     R0,#+0         
-        STRB     R0,[R6, #+69]  
-??xQueueGenericSend_14:
+        STRB     R0,[R9, #+69]  
+??xQueueGenericSend_17:
           CFI FunCall vPortExitCritical
         BL       vPortExitCritical
 //  875 
@@ -1362,17 +1451,21 @@ xQueueGenericSend:
           CFI FunCall xTaskCheckForTimeOut
         BL       xTaskCheckForTimeOut
         CMP      R0,#+0         
-        BNE.N    ??xQueueGenericSend_15
+        BNE.N    ??xQueueGenericSend_18
 //  878 		{
 //  879 			if( prvIsQueueFull( pxQueue ) != pdFALSE )
-        MOVS     R0,R6          
+        MOV      R0,R9          
           CFI FunCall prvIsQueueFull
         BL       prvIsQueueFull 
         CMP      R0,#+0         
-        BNE.N    ??xQueueGenericSend_16
+        BEQ.N    ??xQueueGenericSend_19
 //  880 			{
 //  881 				traceBLOCKING_ON_QUEUE_SEND( pxQueue );
 //  882 				vTaskPlaceOnEventList( &( pxQueue->xTasksWaitingToSend ), xTicksToWait );
+        LDR      R1,[SP, #+8]   
+        ADDS     R0,R9,#+16     
+          CFI FunCall vTaskPlaceOnEventList
+        BL       vTaskPlaceOnEventList
 //  883 
 //  884 				/* Unlocking the queue means queue events can effect the
 //  885 				event list.  It is possible	that interrupts occurring now
@@ -1380,6 +1473,9 @@ xQueueGenericSend:
 //  887 				scheduler is suspended the task will go onto the pending
 //  888 				ready last instead of the actual ready list. */
 //  889 				prvUnlockQueue( pxQueue );
+        MOV      R0,R9          
+          CFI FunCall prvUnlockQueue
+        BL       prvUnlockQueue 
 //  890 
 //  891 				/* Resuming the scheduler will move tasks from the pending
 //  892 				ready list into the ready list - so it is feasible that this
@@ -1387,94 +1483,40 @@ xQueueGenericSend:
 //  894 				case the yield will not cause a context switch unless there
 //  895 				is also a higher priority task in the pending ready list. */
 //  896 				if( xTaskResumeAll() == pdFALSE )
-//  897 				{
-//  898 					portYIELD_WITHIN_API();
-//  899 				}
-//  900 			}
-//  901 			else
-//  902 			{
-//  903 				/* Try again. */
-//  904 				prvUnlockQueue( pxQueue );
-??xQueueGenericSend_17:
-        MOVS     R0,R6          
-          CFI FunCall prvUnlockQueue
-        BL       prvUnlockQueue 
-//  905 				( void ) xTaskResumeAll();
-          CFI FunCall xTaskResumeAll
-        BL       xTaskResumeAll 
-//  906 			}
-??xQueueGenericSend_8:
-          CFI FunCall vPortEnterCritical
-        BL       vPortEnterCritical
-        LDR      R0,[R6, #+56]  
-        LDR      R1,[R6, #+60]  
-        CMP      R0,R1          
-        BCC.N    ??xQueueGenericSend_18
-        CMP      R7,#+2         
-        BNE.N    ??xQueueGenericSend_9
-??xQueueGenericSend_18:
-        MOVS     R2,R7          
-        MOVS     R1,R5          
-        MOVS     R0,R6          
-          CFI FunCall prvCopyDataToQueue
-        BL       prvCopyDataToQueue
-        LDR      R1,[R6, #+36]  
-        CMP      R1,#+0         
-        BEQ.N    ??xQueueGenericSend_19
-        ADDS     R0,R6,#+36     
-          CFI FunCall xTaskRemoveFromEventList
-        BL       xTaskRemoveFromEventList
-        CMP      R0,#+0         
-        BEQ.N    ??xQueueGenericSend_20
-        MOVS     R0,#+268435456 
-        LDR.W    R1,??DataTable5
-        STR      R0,[R1, #+0]   
-        DSB      SY             
-        ISB      SY             
-        B.N      ??xQueueGenericSend_20
-??xQueueGenericSend_19:
-        CMP      R0,#+0         
-        BEQ.N    ??xQueueGenericSend_20
-        MOVS     R0,#+268435456 
-        LDR.W    R1,??DataTable5
-        STR      R0,[R1, #+0]   
-        DSB      SY             
-        ISB      SY             
-??xQueueGenericSend_20:
-          CFI FunCall vPortExitCritical
-        BL       vPortExitCritical
-        MOVS     R0,#+1         
-        B.N      ??xQueueGenericSend_21
-??xQueueGenericSend_10:
-          CFI FunCall vPortExitCritical
-        BL       vPortExitCritical
-        MOVS     R0,#+0         
-        B.N      ??xQueueGenericSend_21
-??xQueueGenericSend_16:
-        LDR      R1,[SP, #+8]   
-        ADDS     R0,R6,#+16     
-          CFI FunCall vTaskPlaceOnEventList
-        BL       vTaskPlaceOnEventList
-        MOVS     R0,R6          
-          CFI FunCall prvUnlockQueue
-        BL       prvUnlockQueue 
           CFI FunCall xTaskResumeAll
         BL       xTaskResumeAll 
         CMP      R0,#+0         
         BNE.N    ??xQueueGenericSend_8
+//  897 				{
+//  898 					portYIELD_WITHIN_API();
         MOVS     R0,#+268435456 
         LDR.W    R1,??DataTable5
         STR      R0,[R1, #+0]   
         DSB      SY             
         ISB      SY             
         B.N      ??xQueueGenericSend_8
+//  899 				}
+//  900 			}
+//  901 			else
+//  902 			{
+//  903 				/* Try again. */
+//  904 				prvUnlockQueue( pxQueue );
+??xQueueGenericSend_19:
+        MOV      R0,R9          
+          CFI FunCall prvUnlockQueue
+        BL       prvUnlockQueue 
+//  905 				( void ) xTaskResumeAll();
+          CFI FunCall xTaskResumeAll
+        BL       xTaskResumeAll 
+        B.N      ??xQueueGenericSend_8
+//  906 			}
 //  907 		}
 //  908 		else
 //  909 		{
 //  910 			/* The timeout has expired. */
 //  911 			prvUnlockQueue( pxQueue );
-??xQueueGenericSend_15:
-        MOVS     R0,R6          
+??xQueueGenericSend_18:
+        MOV      R0,R9          
           CFI FunCall prvUnlockQueue
         BL       prvUnlockQueue 
 //  912 			( void ) xTaskResumeAll();
@@ -1484,8 +1526,8 @@ xQueueGenericSend:
 //  914 			traceQUEUE_SEND_FAILED( pxQueue );
 //  915 			return errQUEUE_FULL;
         MOVS     R0,#+0         
-??xQueueGenericSend_21:
-        POP      {R1-R7,PC}     
+??xQueueGenericSend_13:
+        POP      {R1-R9,PC}     
 //  916 		}
 //  917 	}
 //  918 }
@@ -1500,28 +1542,30 @@ xQueueGenericSend:
 //  921 BaseType_t xQueueGenericSendFromISR( QueueHandle_t xQueue, const void * const pvItemToQueue, BaseType_t * const pxHigherPriorityTaskWoken, const BaseType_t xCopyPosition )
 //  922 {
 xQueueGenericSendFromISR:
-        PUSH     {R3-R9,LR}     
+        PUSH     {R4-R10,LR}    
           CFI R14 Frame(CFA, -4)
-          CFI R9 Frame(CFA, -8)
-          CFI R8 Frame(CFA, -12)
-          CFI R7 Frame(CFA, -16)
-          CFI R6 Frame(CFA, -20)
-          CFI R5 Frame(CFA, -24)
-          CFI R4 Frame(CFA, -28)
+          CFI R10 Frame(CFA, -8)
+          CFI R9 Frame(CFA, -12)
+          CFI R8 Frame(CFA, -16)
+          CFI R7 Frame(CFA, -20)
+          CFI R6 Frame(CFA, -24)
+          CFI R5 Frame(CFA, -28)
+          CFI R4 Frame(CFA, -32)
           CFI CFA R13+32
-        MOVS     R7,R0          
-        MOVS     R5,R1          
-        MOVS     R4,R2          
-        MOV      R8,R3          
+        MOVS     R6,R0          
+        MOVS     R4,R1          
+        MOVS     R5,R2          
+        MOVS     R7,R3          
 //  923 BaseType_t xReturn;
 //  924 UBaseType_t uxSavedInterruptStatus;
 //  925 Queue_t * const pxQueue = ( Queue_t * ) xQueue;
+        MOV      R8,R6          
 //  926 
 //  927 	configASSERT( pxQueue );
 //  928 	configASSERT( !( ( pvItemToQueue == NULL ) && ( pxQueue->uxItemSize != ( UBaseType_t ) 0U ) ) );
-        CMP      R5,#+0         
+        CMP      R4,#+0         
         BNE.N    ??xQueueGenericSendFromISR_0
-        LDR      R0,[R7, #+64]  
+        LDR      R0,[R8, #+64]  
         CMP      R0,#+0         
         BNE.N    ??xQueueGenericSendFromISR_1
 ??xQueueGenericSendFromISR_0:
@@ -1531,9 +1575,9 @@ xQueueGenericSendFromISR:
         MOVS     R0,#+0         
 //  929 	configASSERT( !( ( xCopyPosition == queueOVERWRITE ) && ( pxQueue->uxLength != 1 ) ) );
 ??xQueueGenericSendFromISR_2:
-        CMP      R8,#+2         
+        CMP      R7,#+2         
         BNE.N    ??xQueueGenericSendFromISR_3
-        LDR      R0,[R7, #+60]  
+        LDR      R0,[R8, #+60]  
         CMP      R0,#+1         
         BNE.N    ??xQueueGenericSendFromISR_4
 ??xQueueGenericSendFromISR_3:
@@ -1567,23 +1611,23 @@ xQueueGenericSendFromISR:
 //  950 	not (i.e. has a task with a higher priority than us been woken by this
 //  951 	post). */
 //  952 	uxSavedInterruptStatus = portSET_INTERRUPT_MASK_FROM_ISR();
-        MRS      R6,BASEPRI     
+        MRS      R9,BASEPRI     
         MOVS     R0,#+80        
         MSR      BASEPRI,R0     
         DSB      SY             
         ISB      SY             
 //  953 	{
 //  954 		if( ( pxQueue->uxMessagesWaiting < pxQueue->uxLength ) || ( xCopyPosition == queueOVERWRITE ) )
-        LDR      R0,[R7, #+56]  
-        LDR      R1,[R7, #+60]  
+        LDR      R0,[R8, #+56]  
+        LDR      R1,[R8, #+60]  
         CMP      R0,R1          
         BCC.N    ??xQueueGenericSendFromISR_6
-        CMP      R8,#+2         
+        CMP      R7,#+2         
         BNE.N    ??xQueueGenericSendFromISR_7
 //  955 		{
 //  956 			const int8_t cTxLock = pxQueue->cTxLock;
 ??xQueueGenericSendFromISR_6:
-        LDRSB    R9,[R7, #+69]  
+        LDRSB    R10,[R8, #+69] 
 //  957 
 //  958 			traceQUEUE_SEND_FROM_ISR( pxQueue );
 //  959 
@@ -1593,16 +1637,16 @@ xQueueGenericSendFromISR:
 //  963 			called here even though the disinherit function does not check if
 //  964 			the scheduler is suspended before accessing the ready lists. */
 //  965 			( void ) prvCopyDataToQueue( pxQueue, pvItemToQueue, xCopyPosition );
-        MOV      R2,R8          
-        MOVS     R1,R5          
-        MOVS     R0,R7          
+        MOVS     R2,R7          
+        MOVS     R1,R4          
+        MOV      R0,R8          
           CFI FunCall prvCopyDataToQueue
         BL       prvCopyDataToQueue
 //  966 
 //  967 			/* The event list is not altered if the queue is locked.  This will
 //  968 			be done when the queue is unlocked later. */
 //  969 			if( cTxLock == queueUNLOCKED )
-        MOV      R0,R9          
+        MOV      R0,R10         
         MOVS     R1,#+4294967295
         SXTB     R0,R0          
         CMP      R0,R1          
@@ -1662,12 +1706,12 @@ xQueueGenericSendFromISR:
 // 1022 				#else /* configUSE_QUEUE_SETS */
 // 1023 				{
 // 1024 					if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToReceive ) ) == pdFALSE )
-        LDR      R0,[R7, #+36]  
+        LDR      R0,[R8, #+36]  
         CMP      R0,#+0         
         BEQ.N    ??xQueueGenericSendFromISR_9
 // 1025 					{
 // 1026 						if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToReceive ) ) != pdFALSE )
-        ADDS     R0,R7,#+36     
+        ADDS     R0,R8,#+36     
           CFI FunCall xTaskRemoveFromEventList
         BL       xTaskRemoveFromEventList
         CMP      R0,#+0         
@@ -1676,12 +1720,12 @@ xQueueGenericSendFromISR:
 // 1028 							/* The task waiting has a higher priority so record that a
 // 1029 							context	switch is required. */
 // 1030 							if( pxHigherPriorityTaskWoken != NULL )
-        CMP      R4,#+0         
+        CMP      R5,#+0         
         BEQ.N    ??xQueueGenericSendFromISR_9
 // 1031 							{
 // 1032 								*pxHigherPriorityTaskWoken = pdTRUE;
         MOVS     R0,#+1         
-        STR      R0,[R4, #+0]   
+        STR      R0,[R5, #+0]   
         B.N      ??xQueueGenericSendFromISR_9
 // 1033 							}
 // 1034 							else
@@ -1707,8 +1751,8 @@ xQueueGenericSendFromISR:
 // 1054 				knows that data was posted while it was locked. */
 // 1055 				pxQueue->cTxLock = ( int8_t ) ( cTxLock + 1 );
 ??xQueueGenericSendFromISR_8:
-        ADDS     R9,R9,#+1      
-        STRB     R9,[R7, #+69]  
+        ADDS     R0,R10,#+1     
+        STRB     R0,[R8, #+69]  
 // 1056 			}
 // 1057 
 // 1058 			xReturn = pdPASS;
@@ -1726,10 +1770,10 @@ xQueueGenericSendFromISR:
 // 1065 	}
 // 1066 	portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedInterruptStatus );
 ??xQueueGenericSendFromISR_10:
-        MSR      BASEPRI,R6     
+        MSR      BASEPRI,R9     
 // 1067 
 // 1068 	return xReturn;
-        POP      {R1,R4-R9,PC}  
+        POP      {R4-R10,PC}    
 // 1069 }
           CFI EndBlock cfiBlock6
 // 1070 /*-----------------------------------------------------------*/
@@ -1742,17 +1786,21 @@ xQueueGenericSendFromISR:
 // 1072 BaseType_t xQueueGiveFromISR( QueueHandle_t xQueue, BaseType_t * const pxHigherPriorityTaskWoken )
 // 1073 {
 xQueueGiveFromISR:
-        PUSH     {R4-R6,LR}     
+        PUSH     {R3-R9,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R6 Frame(CFA, -8)
-          CFI R5 Frame(CFA, -12)
-          CFI R4 Frame(CFA, -16)
-          CFI CFA R13+16
+          CFI R9 Frame(CFA, -8)
+          CFI R8 Frame(CFA, -12)
+          CFI R7 Frame(CFA, -16)
+          CFI R6 Frame(CFA, -20)
+          CFI R5 Frame(CFA, -24)
+          CFI R4 Frame(CFA, -28)
+          CFI CFA R13+32
         MOVS     R5,R0          
         MOVS     R4,R1          
 // 1074 BaseType_t xReturn;
 // 1075 UBaseType_t uxSavedInterruptStatus;
 // 1076 Queue_t * const pxQueue = ( Queue_t * ) xQueue;
+        MOVS     R6,R5          
 // 1077 
 // 1078 	/* Similar to xQueueGenericSendFromISR() but used with semaphores where the
 // 1079 	item size is 0.  Don't directly wake a task that was blocked on a queue
@@ -1770,10 +1818,10 @@ xQueueGiveFromISR:
 // 1091 	there is a mutex holder, as priority inheritance makes no sense for an
 // 1092 	interrupts, only tasks. */
 // 1093 	configASSERT( !( ( pxQueue->uxQueueType == queueQUEUE_IS_MUTEX ) && ( pxQueue->pxMutexHolder != NULL ) ) );
-        LDR      R0,[R5, #+0]   
+        LDR      R0,[R6, #+0]   
         CMP      R0,#+0         
         BNE.N    ??xQueueGiveFromISR_0
-        LDR      R0,[R5, #+4]   
+        LDR      R0,[R6, #+4]   
         CMP      R0,#+0         
         BNE.N    ??xQueueGiveFromISR_1
 ??xQueueGiveFromISR_0:
@@ -1802,25 +1850,25 @@ xQueueGiveFromISR:
         BL       vPortValidateInterruptPriority
 // 1110 
 // 1111 	uxSavedInterruptStatus = portSET_INTERRUPT_MASK_FROM_ISR();
-        MRS      R6,BASEPRI     
+        MRS      R7,BASEPRI     
         MOVS     R0,#+80        
         MSR      BASEPRI,R0     
         DSB      SY             
         ISB      SY             
 // 1112 	{
 // 1113 		const UBaseType_t uxMessagesWaiting = pxQueue->uxMessagesWaiting;
-        LDR      R0,[R5, #+56]  
+        LDR      R8,[R6, #+56]  
 // 1114 
 // 1115 		/* When the queue is used to implement a semaphore no data is ever
 // 1116 		moved through the queue but it is still valid to see if the queue 'has
 // 1117 		space'. */
 // 1118 		if( uxMessagesWaiting < pxQueue->uxLength )
-        LDR      R1,[R5, #+60]  
-        CMP      R0,R1          
+        LDR      R0,[R6, #+60]  
+        CMP      R8,R0          
         BCS.N    ??xQueueGiveFromISR_3
 // 1119 		{
 // 1120 			const int8_t cTxLock = pxQueue->cTxLock;
-        LDRSB    R1,[R5, #+69]  
+        LDRSB    R9,[R6, #+69]  
 // 1121 
 // 1122 			traceQUEUE_SEND_FROM_ISR( pxQueue );
 // 1123 
@@ -1831,16 +1879,16 @@ xQueueGiveFromISR:
 // 1128 			priority disinheritance is needed.  Simply increase the count of
 // 1129 			messages (semaphores) available. */
 // 1130 			pxQueue->uxMessagesWaiting = uxMessagesWaiting + 1;
-        ADDS     R0,R0,#+1      
-        STR      R0,[R5, #+56]  
+        ADDS     R0,R8,#+1      
+        STR      R0,[R6, #+56]  
 // 1131 
 // 1132 			/* The event list is not altered if the queue is locked.  This will
 // 1133 			be done when the queue is unlocked later. */
 // 1134 			if( cTxLock == queueUNLOCKED )
-        MOVS     R0,R1          
-        MOVS     R2,#+4294967295
+        MOV      R0,R9          
+        MOVS     R1,#+4294967295
         SXTB     R0,R0          
-        CMP      R0,R2          
+        CMP      R0,R1          
         BNE.N    ??xQueueGiveFromISR_4
 // 1135 			{
 // 1136 				#if ( configUSE_QUEUE_SETS == 1 )
@@ -1897,12 +1945,12 @@ xQueueGiveFromISR:
 // 1187 				#else /* configUSE_QUEUE_SETS */
 // 1188 				{
 // 1189 					if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToReceive ) ) == pdFALSE )
-        LDR      R0,[R5, #+36]  
+        LDR      R0,[R6, #+36]  
         CMP      R0,#+0         
         BEQ.N    ??xQueueGiveFromISR_5
 // 1190 					{
 // 1191 						if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToReceive ) ) != pdFALSE )
-        ADDS     R0,R5,#+36     
+        ADDS     R0,R6,#+36     
           CFI FunCall xTaskRemoveFromEventList
         BL       xTaskRemoveFromEventList
         CMP      R0,#+0         
@@ -1942,8 +1990,8 @@ xQueueGiveFromISR:
 // 1219 				knows that data was posted while it was locked. */
 // 1220 				pxQueue->cTxLock = ( int8_t ) ( cTxLock + 1 );
 ??xQueueGiveFromISR_4:
-        ADDS     R1,R1,#+1      
-        STRB     R1,[R5, #+69]  
+        ADDS     R0,R9,#+1      
+        STRB     R0,[R6, #+69]  
 // 1221 			}
 // 1222 
 // 1223 			xReturn = pdPASS;
@@ -1961,10 +2009,10 @@ xQueueGiveFromISR:
 // 1230 	}
 // 1231 	portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedInterruptStatus );
 ??xQueueGiveFromISR_6:
-        MSR      BASEPRI,R6     
+        MSR      BASEPRI,R7     
 // 1232 
 // 1233 	return xReturn;
-        POP      {R4-R6,PC}     
+        POP      {R1,R4-R9,PC}  
 // 1234 }
           CFI EndBlock cfiBlock7
 // 1235 /*-----------------------------------------------------------*/
@@ -1977,16 +2025,18 @@ xQueueGiveFromISR:
 // 1237 BaseType_t xQueueGenericReceive( QueueHandle_t xQueue, void * const pvBuffer, TickType_t xTicksToWait, const BaseType_t xJustPeeking )
 // 1238 {
 xQueueGenericReceive:
-        PUSH     {R1,R2,R4-R8,LR}
+        PUSH     {R1,R2,R4-R10,LR}
           CFI R14 Frame(CFA, -4)
-          CFI R8 Frame(CFA, -8)
-          CFI R7 Frame(CFA, -12)
-          CFI R6 Frame(CFA, -16)
-          CFI R5 Frame(CFA, -20)
-          CFI R4 Frame(CFA, -24)
-          CFI CFA R13+32
-        SUB      SP,SP,#+8      
+          CFI R10 Frame(CFA, -8)
+          CFI R9 Frame(CFA, -12)
+          CFI R8 Frame(CFA, -16)
+          CFI R7 Frame(CFA, -20)
+          CFI R6 Frame(CFA, -24)
+          CFI R5 Frame(CFA, -28)
+          CFI R4 Frame(CFA, -32)
           CFI CFA R13+40
+        SUB      SP,SP,#+8      
+          CFI CFA R13+48
         MOV      R8,R0          
         MOVS     R6,R1          
         MOVS     R7,R3          
@@ -1995,12 +2045,13 @@ xQueueGenericReceive:
 // 1240 TimeOut_t xTimeOut;
 // 1241 int8_t *pcOriginalReadPosition;
 // 1242 Queue_t * const pxQueue = ( Queue_t * ) xQueue;
+        MOV      R9,R8          
 // 1243 
 // 1244 	configASSERT( pxQueue );
 // 1245 	configASSERT( !( ( pvBuffer == NULL ) && ( pxQueue->uxItemSize != ( UBaseType_t ) 0U ) ) );
         CMP      R6,#+0         
         BNE.N    ??xQueueGenericReceive_0
-        LDR      R0,[R8, #+64]  
+        LDR      R0,[R9, #+64]  
         CMP      R0,#+0         
         BNE.N    ??xQueueGenericReceive_1
 ??xQueueGenericReceive_0:
@@ -2024,7 +2075,6 @@ xQueueGenericReceive:
         B.N      ??xQueueGenericReceive_5
 ??xQueueGenericReceive_4:
         MOVS     R0,#+0         
-        B.N      ??xQueueGenericReceive_5
 // 1249 	}
 // 1250 	#endif
 // 1251 
@@ -2035,33 +2085,54 @@ xQueueGenericReceive:
 // 1256 	for( ;; )
 // 1257 	{
 // 1258 		taskENTER_CRITICAL();
+??xQueueGenericReceive_5:
+          CFI FunCall vPortEnterCritical
+        BL       vPortEnterCritical
 // 1259 		{
 // 1260 			const UBaseType_t uxMessagesWaiting = pxQueue->uxMessagesWaiting;
+        LDR      R5,[R9, #+56]  
 // 1261 
 // 1262 			/* Is there data in the queue now?  To be running the calling task
 // 1263 			must be the highest priority task wanting to access the queue. */
 // 1264 			if( uxMessagesWaiting > ( UBaseType_t ) 0 )
+        CMP      R5,#+0         
+        BEQ.N    ??xQueueGenericReceive_6
 // 1265 			{
 // 1266 				/* Remember the read position in case the queue is only being
 // 1267 				peeked. */
 // 1268 				pcOriginalReadPosition = pxQueue->u.pcReadFrom;
+        LDR      R10,[R9, #+12] 
 // 1269 
 // 1270 				prvCopyDataFromQueue( pxQueue, pvBuffer );
+        MOVS     R1,R6          
+        MOV      R0,R9          
+          CFI FunCall prvCopyDataFromQueue
+        BL       prvCopyDataFromQueue
 // 1271 
 // 1272 				if( xJustPeeking == pdFALSE )
+        CMP      R7,#+0         
+        BNE.N    ??xQueueGenericReceive_7
 // 1273 				{
 // 1274 					traceQUEUE_RECEIVE( pxQueue );
 // 1275 
 // 1276 					/* Actually removing data, not just peeking. */
 // 1277 					pxQueue->uxMessagesWaiting = uxMessagesWaiting - 1;
+        SUBS     R0,R5,#+1      
+        STR      R0,[R9, #+56]  
 // 1278 
 // 1279 					#if ( configUSE_MUTEXES == 1 )
 // 1280 					{
 // 1281 						if( pxQueue->uxQueueType == queueQUEUE_IS_MUTEX )
+        LDR      R0,[R9, #+0]   
+        CMP      R0,#+0         
+        BNE.N    ??xQueueGenericReceive_8
 // 1282 						{
 // 1283 							/* Record the information required to implement
 // 1284 							priority inheritance should it become necessary. */
 // 1285 							pxQueue->pxMutexHolder = ( int8_t * ) pvTaskIncrementMutexHeldCount(); /*lint !e961 Cast is not redundant as TaskHandle_t is a typedef. */
+          CFI FunCall pvTaskIncrementMutexHeldCount
+        BL       pvTaskIncrementMutexHeldCount
+        STR      R0,[R9, #+4]   
 // 1286 						}
 // 1287 						else
 // 1288 						{
@@ -2071,10 +2142,25 @@ xQueueGenericReceive:
 // 1292 					#endif /* configUSE_MUTEXES */
 // 1293 
 // 1294 					if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToSend ) ) == pdFALSE )
+??xQueueGenericReceive_8:
+        LDR      R0,[R9, #+16]  
+        CMP      R0,#+0         
+        BEQ.N    ??xQueueGenericReceive_9
 // 1295 					{
 // 1296 						if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToSend ) ) != pdFALSE )
+        ADDS     R0,R9,#+16     
+          CFI FunCall xTaskRemoveFromEventList
+        BL       xTaskRemoveFromEventList
+        CMP      R0,#+0         
+        BEQ.N    ??xQueueGenericReceive_9
 // 1297 						{
 // 1298 							queueYIELD_IF_USING_PREEMPTION();
+        MOVS     R0,#+268435456 
+        LDR.W    R1,??DataTable5
+        STR      R0,[R1, #+0]   
+        DSB      SY             
+        ISB      SY             
+        B.N      ??xQueueGenericReceive_9
 // 1299 						}
 // 1300 						else
 // 1301 						{
@@ -2093,15 +2179,30 @@ xQueueGenericReceive:
 // 1314 					/* The data is not being removed, so reset the read
 // 1315 					pointer. */
 // 1316 					pxQueue->u.pcReadFrom = pcOriginalReadPosition;
+??xQueueGenericReceive_7:
+        STR      R10,[R9, #+12] 
 // 1317 
 // 1318 					/* The data is being left in the queue, so see if there are
 // 1319 					any other tasks waiting for the data. */
 // 1320 					if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToReceive ) ) == pdFALSE )
+        LDR      R0,[R9, #+36]  
+        CMP      R0,#+0         
+        BEQ.N    ??xQueueGenericReceive_9
 // 1321 					{
 // 1322 						if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToReceive ) ) != pdFALSE )
+        ADDS     R0,R9,#+36     
+          CFI FunCall xTaskRemoveFromEventList
+        BL       xTaskRemoveFromEventList
+        CMP      R0,#+0         
+        BEQ.N    ??xQueueGenericReceive_9
 // 1323 						{
 // 1324 							/* The task waiting has a higher priority than this task. */
 // 1325 							queueYIELD_IF_USING_PREEMPTION();
+        MOVS     R0,#+268435456 
+        LDR.W    R1,??DataTable5
+        STR      R0,[R1, #+0]   
+        DSB      SY             
+        ISB      SY             
 // 1326 						}
 // 1327 						else
 // 1328 						{
@@ -2115,24 +2216,45 @@ xQueueGenericReceive:
 // 1336 				}
 // 1337 
 // 1338 				taskEXIT_CRITICAL();
+??xQueueGenericReceive_9:
+          CFI FunCall vPortExitCritical
+        BL       vPortExitCritical
 // 1339 				return pdPASS;
+        MOVS     R0,#+1         
+        B.N      ??xQueueGenericReceive_10
 // 1340 			}
 // 1341 			else
 // 1342 			{
 // 1343 				if( xTicksToWait == ( TickType_t ) 0 )
+??xQueueGenericReceive_6:
+        LDR      R0,[SP, #+12]  
+        CMP      R0,#+0         
+        BNE.N    ??xQueueGenericReceive_11
 // 1344 				{
 // 1345 					/* The queue was empty and no block time is specified (or
 // 1346 					the block time has expired) so leave now. */
 // 1347 					taskEXIT_CRITICAL();
+          CFI FunCall vPortExitCritical
+        BL       vPortExitCritical
 // 1348 					traceQUEUE_RECEIVE_FAILED( pxQueue );
 // 1349 					return errQUEUE_EMPTY;
+        MOVS     R0,#+0         
+        B.N      ??xQueueGenericReceive_10
 // 1350 				}
 // 1351 				else if( xEntryTimeSet == pdFALSE )
+??xQueueGenericReceive_11:
+        CMP      R4,#+0         
+        BNE.N    ??xQueueGenericReceive_12
 // 1352 				{
 // 1353 					/* The queue was empty and a block time was specified so
 // 1354 					configure the timeout structure. */
 // 1355 					vTaskSetTimeOutState( &xTimeOut );
+        MOV      R0,SP          
+          CFI FunCall vTaskSetTimeOutState
+        BL       vTaskSetTimeOutState
 // 1356 					xEntryTimeSet = pdTRUE;
+        MOVS     R0,#+1         
+        MOVS     R4,R0          
 // 1357 				}
 // 1358 				else
 // 1359 				{
@@ -2142,29 +2264,71 @@ xQueueGenericReceive:
 // 1363 			}
 // 1364 		}
 // 1365 		taskEXIT_CRITICAL();
+??xQueueGenericReceive_12:
+          CFI FunCall vPortExitCritical
+        BL       vPortExitCritical
 // 1366 
 // 1367 		/* Interrupts and other tasks can send to and receive from the queue
 // 1368 		now the critical section has been exited. */
 // 1369 
 // 1370 		vTaskSuspendAll();
+          CFI FunCall vTaskSuspendAll
+        BL       vTaskSuspendAll
 // 1371 		prvLockQueue( pxQueue );
+          CFI FunCall vPortEnterCritical
+        BL       vPortEnterCritical
+        LDRSB    R0,[R9, #+68]  
+        CMN      R0,#+1         
+        BNE.N    ??xQueueGenericReceive_13
+        MOVS     R0,#+0         
+        STRB     R0,[R9, #+68]  
+??xQueueGenericReceive_13:
+        LDRSB    R0,[R9, #+69]  
+        CMN      R0,#+1         
+        BNE.N    ??xQueueGenericReceive_14
+        MOVS     R0,#+0         
+        STRB     R0,[R9, #+69]  
+??xQueueGenericReceive_14:
+          CFI FunCall vPortExitCritical
+        BL       vPortExitCritical
 // 1372 
 // 1373 		/* Update the timeout state to see if it has expired yet. */
 // 1374 		if( xTaskCheckForTimeOut( &xTimeOut, &xTicksToWait ) == pdFALSE )
+        ADD      R1,SP,#+12     
+        MOV      R0,SP          
+          CFI FunCall xTaskCheckForTimeOut
+        BL       xTaskCheckForTimeOut
+        CMP      R0,#+0         
+        BNE.N    ??xQueueGenericReceive_15
 // 1375 		{
 // 1376 			if( prvIsQueueEmpty( pxQueue ) != pdFALSE )
+        MOV      R0,R9          
+          CFI FunCall prvIsQueueEmpty
+        BL       prvIsQueueEmpty
+        CMP      R0,#+0         
+        BEQ.N    ??xQueueGenericReceive_16
 // 1377 			{
 // 1378 				traceBLOCKING_ON_QUEUE_RECEIVE( pxQueue );
 // 1379 
 // 1380 				#if ( configUSE_MUTEXES == 1 )
 // 1381 				{
 // 1382 					if( pxQueue->uxQueueType == queueQUEUE_IS_MUTEX )
+        LDR      R0,[R9, #+0]   
+        CMP      R0,#+0         
+        BNE.N    ??xQueueGenericReceive_17
 // 1383 					{
 // 1384 						taskENTER_CRITICAL();
+          CFI FunCall vPortEnterCritical
+        BL       vPortEnterCritical
 // 1385 						{
 // 1386 							vTaskPriorityInherit( ( void * ) pxQueue->pxMutexHolder );
+        LDR      R0,[R9, #+4]   
+          CFI FunCall vTaskPriorityInherit
+        BL       vTaskPriorityInherit
 // 1387 						}
 // 1388 						taskEXIT_CRITICAL();
+          CFI FunCall vPortExitCritical
+        BL       vPortExitCritical
 // 1389 					}
 // 1390 					else
 // 1391 					{
@@ -2174,10 +2338,28 @@ xQueueGenericReceive:
 // 1395 				#endif
 // 1396 
 // 1397 				vTaskPlaceOnEventList( &( pxQueue->xTasksWaitingToReceive ), xTicksToWait );
+??xQueueGenericReceive_17:
+        LDR      R1,[SP, #+12]  
+        ADDS     R0,R9,#+36     
+          CFI FunCall vTaskPlaceOnEventList
+        BL       vTaskPlaceOnEventList
 // 1398 				prvUnlockQueue( pxQueue );
+        MOV      R0,R9          
+          CFI FunCall prvUnlockQueue
+        BL       prvUnlockQueue 
 // 1399 				if( xTaskResumeAll() == pdFALSE )
+          CFI FunCall xTaskResumeAll
+        BL       xTaskResumeAll 
+        CMP      R0,#+0         
+        BNE.W    ??xQueueGenericReceive_5
 // 1400 				{
 // 1401 					portYIELD_WITHIN_API();
+        MOVS     R0,#+268435456 
+        LDR.W    R1,??DataTable5
+        STR      R0,[R1, #+0]   
+        DSB      SY             
+        ISB      SY             
+        B.N      ??xQueueGenericReceive_5
 // 1402 				}
 // 1403 				else
 // 1404 				{
@@ -2188,153 +2370,21 @@ xQueueGenericReceive:
 // 1409 			{
 // 1410 				/* Try again. */
 // 1411 				prvUnlockQueue( pxQueue );
-??xQueueGenericReceive_6:
-        MOV      R0,R8          
+??xQueueGenericReceive_16:
+        MOV      R0,R9          
           CFI FunCall prvUnlockQueue
         BL       prvUnlockQueue 
 // 1412 				( void ) xTaskResumeAll();
           CFI FunCall xTaskResumeAll
         BL       xTaskResumeAll 
-// 1413 			}
-??xQueueGenericReceive_5:
-          CFI FunCall vPortEnterCritical
-        BL       vPortEnterCritical
-        LDR      R5,[R8, #+56]  
-        CMP      R5,#+0         
-        BNE.N    ??xQueueGenericReceive_7
-??xQueueGenericReceive_8:
-        LDR      R0,[SP, #+12]  
-        CMP      R0,#+0         
-        BEQ.W    ??xQueueGenericReceive_9
-??xQueueGenericReceive_10:
-        CMP      R4,#+0         
-        BNE.N    ??xQueueGenericReceive_11
-        MOV      R0,SP          
-          CFI FunCall vTaskSetTimeOutState
-        BL       vTaskSetTimeOutState
-        MOVS     R4,#+1         
-??xQueueGenericReceive_11:
-          CFI FunCall vPortExitCritical
-        BL       vPortExitCritical
-          CFI FunCall vTaskSuspendAll
-        BL       vTaskSuspendAll
-          CFI FunCall vPortEnterCritical
-        BL       vPortEnterCritical
-        LDRSB    R0,[R8, #+68]  
-        CMN      R0,#+1         
-        BNE.N    ??xQueueGenericReceive_12
-        MOVS     R0,#+0         
-        STRB     R0,[R8, #+68]  
-??xQueueGenericReceive_12:
-        LDRSB    R0,[R8, #+69]  
-        CMN      R0,#+1         
-        BNE.N    ??xQueueGenericReceive_13
-        MOVS     R0,#+0         
-        STRB     R0,[R8, #+69]  
-??xQueueGenericReceive_13:
-          CFI FunCall vPortExitCritical
-        BL       vPortExitCritical
-        ADD      R1,SP,#+12     
-        MOV      R0,SP          
-          CFI FunCall xTaskCheckForTimeOut
-        BL       xTaskCheckForTimeOut
-        CMP      R0,#+0         
-        BNE.N    ??xQueueGenericReceive_14
-        MOV      R0,R8          
-          CFI FunCall prvIsQueueEmpty
-        BL       prvIsQueueEmpty
-        CMP      R0,#+0         
-        BEQ.N    ??xQueueGenericReceive_6
-        LDR      R0,[R8, #+0]   
-        CMP      R0,#+0         
-        BNE.N    ??xQueueGenericReceive_15
-          CFI FunCall vPortEnterCritical
-        BL       vPortEnterCritical
-        LDR      R0,[R8, #+4]   
-          CFI FunCall vTaskPriorityInherit
-        BL       vTaskPriorityInherit
-          CFI FunCall vPortExitCritical
-        BL       vPortExitCritical
-??xQueueGenericReceive_15:
-        LDR      R1,[SP, #+12]  
-        ADDS     R0,R8,#+36     
-          CFI FunCall vTaskPlaceOnEventList
-        BL       vTaskPlaceOnEventList
-        MOV      R0,R8          
-          CFI FunCall prvUnlockQueue
-        BL       prvUnlockQueue 
-          CFI FunCall xTaskResumeAll
-        BL       xTaskResumeAll 
-        CMP      R0,#+0         
-        BNE.N    ??xQueueGenericReceive_5
-        MOVS     R0,#+268435456 
-        LDR.W    R1,??DataTable5
-        STR      R0,[R1, #+0]   
-        DSB      SY             
-        ISB      SY             
         B.N      ??xQueueGenericReceive_5
-??xQueueGenericReceive_7:
-        LDR      R4,[R8, #+12]  
-        MOVS     R1,R6          
-        MOV      R0,R8          
-          CFI FunCall prvCopyDataFromQueue
-        BL       prvCopyDataFromQueue
-        CMP      R7,#+0         
-        BNE.N    ??xQueueGenericReceive_16
-        SUBS     R5,R5,#+1      
-        STR      R5,[R8, #+56]  
-        LDR      R0,[R8, #+0]   
-        CMP      R0,#+0         
-        BNE.N    ??xQueueGenericReceive_17
-          CFI FunCall pvTaskIncrementMutexHeldCount
-        BL       pvTaskIncrementMutexHeldCount
-        STR      R0,[R8, #+4]   
-??xQueueGenericReceive_17:
-        LDR      R0,[R8, #+16]  
-        CMP      R0,#+0         
-        BEQ.N    ??xQueueGenericReceive_18
-        ADDS     R0,R8,#+16     
-          CFI FunCall xTaskRemoveFromEventList
-        BL       xTaskRemoveFromEventList
-        CMP      R0,#+0         
-        BEQ.N    ??xQueueGenericReceive_18
-        MOVS     R0,#+268435456 
-        LDR.W    R1,??DataTable5
-        STR      R0,[R1, #+0]   
-        DSB      SY             
-        ISB      SY             
-        B.N      ??xQueueGenericReceive_18
-??xQueueGenericReceive_16:
-        STR      R4,[R8, #+12]  
-        LDR      R0,[R8, #+36]  
-        CMP      R0,#+0         
-        BEQ.N    ??xQueueGenericReceive_18
-        ADDS     R0,R8,#+36     
-          CFI FunCall xTaskRemoveFromEventList
-        BL       xTaskRemoveFromEventList
-        CMP      R0,#+0         
-        BEQ.N    ??xQueueGenericReceive_18
-        MOVS     R0,#+268435456 
-        LDR.W    R1,??DataTable5
-        STR      R0,[R1, #+0]   
-        DSB      SY             
-        ISB      SY             
-??xQueueGenericReceive_18:
-          CFI FunCall vPortExitCritical
-        BL       vPortExitCritical
-        MOVS     R0,#+1         
-        B.N      ??xQueueGenericReceive_19
-??xQueueGenericReceive_9:
-          CFI FunCall vPortExitCritical
-        BL       vPortExitCritical
-        MOVS     R0,#+0         
-        B.N      ??xQueueGenericReceive_19
+// 1413 			}
 // 1414 		}
 // 1415 		else
 // 1416 		{
 // 1417 			prvUnlockQueue( pxQueue );
-??xQueueGenericReceive_14:
-        MOV      R0,R8          
+??xQueueGenericReceive_15:
+        MOV      R0,R9          
           CFI FunCall prvUnlockQueue
         BL       prvUnlockQueue 
 // 1418 			( void ) xTaskResumeAll();
@@ -2342,7 +2392,7 @@ xQueueGenericReceive:
         BL       xTaskResumeAll 
 // 1419 
 // 1420 			if( prvIsQueueEmpty( pxQueue ) != pdFALSE )
-        MOV      R0,R8          
+        MOV      R0,R9          
           CFI FunCall prvIsQueueEmpty
         BL       prvIsQueueEmpty
         CMP      R0,#+0         
@@ -2351,10 +2401,10 @@ xQueueGenericReceive:
 // 1422 				traceQUEUE_RECEIVE_FAILED( pxQueue );
 // 1423 				return errQUEUE_EMPTY;
         MOVS     R0,#+0         
-??xQueueGenericReceive_19:
+??xQueueGenericReceive_10:
         ADD      SP,SP,#+16     
-          CFI CFA R13+24
-        POP      {R4-R8,PC}     
+          CFI CFA R13+32
+        POP      {R4-R10,PC}    
 // 1424 			}
 // 1425 			else
 // 1426 			{
@@ -2374,27 +2424,29 @@ xQueueGenericReceive:
 // 1434 BaseType_t xQueueReceiveFromISR( QueueHandle_t xQueue, void * const pvBuffer, BaseType_t * const pxHigherPriorityTaskWoken )
 // 1435 {
 xQueueReceiveFromISR:
-        PUSH     {R3-R9,LR}     
+        PUSH     {R4-R10,LR}    
           CFI R14 Frame(CFA, -4)
-          CFI R9 Frame(CFA, -8)
-          CFI R8 Frame(CFA, -12)
-          CFI R7 Frame(CFA, -16)
-          CFI R6 Frame(CFA, -20)
-          CFI R5 Frame(CFA, -24)
-          CFI R4 Frame(CFA, -28)
+          CFI R10 Frame(CFA, -8)
+          CFI R9 Frame(CFA, -12)
+          CFI R8 Frame(CFA, -16)
+          CFI R7 Frame(CFA, -20)
+          CFI R6 Frame(CFA, -24)
+          CFI R5 Frame(CFA, -28)
+          CFI R4 Frame(CFA, -32)
           CFI CFA R13+32
         MOVS     R7,R0          
-        MOVS     R5,R1          
-        MOVS     R4,R2          
+        MOVS     R4,R1          
+        MOVS     R5,R2          
 // 1436 BaseType_t xReturn;
 // 1437 UBaseType_t uxSavedInterruptStatus;
 // 1438 Queue_t * const pxQueue = ( Queue_t * ) xQueue;
+        MOV      R8,R7          
 // 1439 
 // 1440 	configASSERT( pxQueue );
 // 1441 	configASSERT( !( ( pvBuffer == NULL ) && ( pxQueue->uxItemSize != ( UBaseType_t ) 0U ) ) );
-        CMP      R5,#+0         
+        CMP      R4,#+0         
         BNE.N    ??xQueueReceiveFromISR_0
-        LDR      R0,[R7, #+64]  
+        LDR      R0,[R8, #+64]  
         CMP      R0,#+0         
         BNE.N    ??xQueueReceiveFromISR_1
 ??xQueueReceiveFromISR_0:
@@ -2423,14 +2475,14 @@ xQueueReceiveFromISR:
         BL       vPortValidateInterruptPriority
 // 1458 
 // 1459 	uxSavedInterruptStatus = portSET_INTERRUPT_MASK_FROM_ISR();
-        MRS      R8,BASEPRI     
+        MRS      R9,BASEPRI     
         MOVS     R0,#+80        
         MSR      BASEPRI,R0     
         DSB      SY             
         ISB      SY             
 // 1460 	{
 // 1461 		const UBaseType_t uxMessagesWaiting = pxQueue->uxMessagesWaiting;
-        LDR      R6,[R7, #+56]  
+        LDR      R6,[R8, #+56]  
 // 1462 
 // 1463 		/* Cannot block in an ISR, so check there is data available. */
 // 1464 		if( uxMessagesWaiting > ( UBaseType_t ) 0 )
@@ -2438,37 +2490,37 @@ xQueueReceiveFromISR:
         BEQ.N    ??xQueueReceiveFromISR_3
 // 1465 		{
 // 1466 			const int8_t cRxLock = pxQueue->cRxLock;
-        LDRSB    R9,[R7, #+68]  
+        LDRSB    R10,[R8, #+68] 
 // 1467 
 // 1468 			traceQUEUE_RECEIVE_FROM_ISR( pxQueue );
 // 1469 
 // 1470 			prvCopyDataFromQueue( pxQueue, pvBuffer );
-        MOVS     R1,R5          
-        MOVS     R0,R7          
+        MOVS     R1,R4          
+        MOV      R0,R8          
           CFI FunCall prvCopyDataFromQueue
         BL       prvCopyDataFromQueue
 // 1471 			pxQueue->uxMessagesWaiting = uxMessagesWaiting - 1;
-        SUBS     R6,R6,#+1      
-        STR      R6,[R7, #+56]  
+        SUBS     R0,R6,#+1      
+        STR      R0,[R8, #+56]  
 // 1472 
 // 1473 			/* If the queue is locked the event list will not be modified.
 // 1474 			Instead update the lock count so the task that unlocks the queue
 // 1475 			will know that an ISR has removed data while the queue was
 // 1476 			locked. */
 // 1477 			if( cRxLock == queueUNLOCKED )
-        MOV      R0,R9          
+        MOV      R0,R10         
         MOVS     R1,#+4294967295
         SXTB     R0,R0          
         CMP      R0,R1          
         BNE.N    ??xQueueReceiveFromISR_4
 // 1478 			{
 // 1479 				if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToSend ) ) == pdFALSE )
-        LDR      R0,[R7, #+16]  
+        LDR      R0,[R8, #+16]  
         CMP      R0,#+0         
         BEQ.N    ??xQueueReceiveFromISR_5
 // 1480 				{
 // 1481 					if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToSend ) ) != pdFALSE )
-        ADDS     R0,R7,#+16     
+        ADDS     R0,R8,#+16     
           CFI FunCall xTaskRemoveFromEventList
         BL       xTaskRemoveFromEventList
         CMP      R0,#+0         
@@ -2477,12 +2529,12 @@ xQueueReceiveFromISR:
 // 1483 						/* The task waiting has a higher priority than us so
 // 1484 						force a context switch. */
 // 1485 						if( pxHigherPriorityTaskWoken != NULL )
-        CMP      R4,#+0         
+        CMP      R5,#+0         
         BEQ.N    ??xQueueReceiveFromISR_5
 // 1486 						{
 // 1487 							*pxHigherPriorityTaskWoken = pdTRUE;
         MOVS     R0,#+1         
-        STR      R0,[R4, #+0]   
+        STR      R0,[R5, #+0]   
         B.N      ??xQueueReceiveFromISR_5
 // 1488 						}
 // 1489 						else
@@ -2506,8 +2558,8 @@ xQueueReceiveFromISR:
 // 1507 				knows that data was removed while it was locked. */
 // 1508 				pxQueue->cRxLock = ( int8_t ) ( cRxLock + 1 );
 ??xQueueReceiveFromISR_4:
-        ADDS     R9,R9,#+1      
-        STRB     R9,[R7, #+68]  
+        ADDS     R0,R10,#+1     
+        STRB     R0,[R8, #+68]  
 // 1509 			}
 // 1510 
 // 1511 			xReturn = pdPASS;
@@ -2525,10 +2577,10 @@ xQueueReceiveFromISR:
 // 1518 	}
 // 1519 	portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedInterruptStatus );
 ??xQueueReceiveFromISR_6:
-        MSR      BASEPRI,R8     
+        MSR      BASEPRI,R9     
 // 1520 
 // 1521 	return xReturn;
-        POP      {R1,R4-R9,PC}  
+        POP      {R4-R10,PC}    
 // 1522 }
           CFI EndBlock cfiBlock9
 // 1523 /*-----------------------------------------------------------*/
@@ -2541,12 +2593,13 @@ xQueueReceiveFromISR:
 // 1525 BaseType_t xQueuePeekFromISR( QueueHandle_t xQueue,  void * const pvBuffer )
 // 1526 {
 xQueuePeekFromISR:
-        PUSH     {R3-R7,LR}     
+        PUSH     {R4-R8,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R7 Frame(CFA, -8)
-          CFI R6 Frame(CFA, -12)
-          CFI R5 Frame(CFA, -16)
-          CFI R4 Frame(CFA, -20)
+          CFI R8 Frame(CFA, -8)
+          CFI R7 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -16)
+          CFI R5 Frame(CFA, -20)
+          CFI R4 Frame(CFA, -24)
           CFI CFA R13+24
         MOVS     R5,R0          
         MOVS     R4,R1          
@@ -2554,12 +2607,13 @@ xQueuePeekFromISR:
 // 1528 UBaseType_t uxSavedInterruptStatus;
 // 1529 int8_t *pcOriginalReadPosition;
 // 1530 Queue_t * const pxQueue = ( Queue_t * ) xQueue;
+        MOVS     R7,R5          
 // 1531 
 // 1532 	configASSERT( pxQueue );
 // 1533 	configASSERT( !( ( pvBuffer == NULL ) && ( pxQueue->uxItemSize != ( UBaseType_t ) 0U ) ) );
         CMP      R4,#+0         
         BNE.N    ??xQueuePeekFromISR_0
-        LDR      R0,[R5, #+64]  
+        LDR      R0,[R7, #+64]  
         CMP      R0,#+0         
         BNE.N    ??xQueuePeekFromISR_1
 ??xQueuePeekFromISR_0:
@@ -2589,7 +2643,7 @@ xQueuePeekFromISR:
         BL       vPortValidateInterruptPriority
 // 1551 
 // 1552 	uxSavedInterruptStatus = portSET_INTERRUPT_MASK_FROM_ISR();
-        MRS      R6,BASEPRI     
+        MRS      R8,BASEPRI     
         MOVS     R0,#+80        
         MSR      BASEPRI,R0     
         DSB      SY             
@@ -2597,7 +2651,7 @@ xQueuePeekFromISR:
 // 1553 	{
 // 1554 		/* Cannot block in an ISR, so check there is data available. */
 // 1555 		if( pxQueue->uxMessagesWaiting > ( UBaseType_t ) 0 )
-        LDR      R0,[R5, #+56]  
+        LDR      R0,[R7, #+56]  
         CMP      R0,#+0         
         BEQ.N    ??xQueuePeekFromISR_3
 // 1556 		{
@@ -2606,14 +2660,15 @@ xQueuePeekFromISR:
 // 1559 			/* Remember the read position so it can be reset as nothing is
 // 1560 			actually being removed from the queue. */
 // 1561 			pcOriginalReadPosition = pxQueue->u.pcReadFrom;
-        LDR      R7,[R5, #+12]  
+        LDR      R0,[R7, #+12]  
+        MOVS     R6,R0          
 // 1562 			prvCopyDataFromQueue( pxQueue, pvBuffer );
         MOVS     R1,R4          
-        MOVS     R0,R5          
+        MOVS     R0,R7          
           CFI FunCall prvCopyDataFromQueue
         BL       prvCopyDataFromQueue
 // 1563 			pxQueue->u.pcReadFrom = pcOriginalReadPosition;
-        STR      R7,[R5, #+12]  
+        STR      R6,[R7, #+12]  
 // 1564 
 // 1565 			xReturn = pdPASS;
         MOVS     R0,#+1         
@@ -2629,10 +2684,10 @@ xQueuePeekFromISR:
 // 1572 	}
 // 1573 	portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedInterruptStatus );
 ??xQueuePeekFromISR_4:
-        MSR      BASEPRI,R6     
+        MSR      BASEPRI,R8     
 // 1574 
 // 1575 	return xReturn;
-        POP      {R1,R4-R7,PC}  
+        POP      {R4-R8,PC}     
 // 1576 }
           CFI EndBlock cfiBlock10
 // 1577 /*-----------------------------------------------------------*/
@@ -2645,10 +2700,11 @@ xQueuePeekFromISR:
 // 1579 UBaseType_t uxQueueMessagesWaiting( const QueueHandle_t xQueue )
 // 1580 {
 uxQueueMessagesWaiting:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
         MOVS     R4,R0          
 // 1581 UBaseType_t uxReturn;
 // 1582 
@@ -2659,15 +2715,15 @@ uxQueueMessagesWaiting:
         BL       vPortEnterCritical
 // 1586 	{
 // 1587 		uxReturn = ( ( Queue_t * ) xQueue )->uxMessagesWaiting;
-        LDR      R4,[R4, #+56]  
+        LDR      R5,[R4, #+56]  
 // 1588 	}
 // 1589 	taskEXIT_CRITICAL();
           CFI FunCall vPortExitCritical
         BL       vPortExitCritical
 // 1590 
 // 1591 	return uxReturn;
-        MOVS     R0,R4          
-        POP      {R4,PC}        
+        MOVS     R0,R5          
+        POP      {R1,R4,R5,PC}  
 // 1592 } /*lint !e818 Pointer cannot be declared const as xQueue is a typedef not pointer. */
           CFI EndBlock cfiBlock11
 // 1593 /*-----------------------------------------------------------*/
@@ -2680,15 +2736,18 @@ uxQueueMessagesWaiting:
 // 1595 UBaseType_t uxQueueSpacesAvailable( const QueueHandle_t xQueue )
 // 1596 {
 uxQueueSpacesAvailable:
-        PUSH     {R4,LR}        
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
+          CFI CFA R13+16
         MOVS     R4,R0          
 // 1597 UBaseType_t uxReturn;
 // 1598 Queue_t *pxQueue;
 // 1599 
 // 1600 	pxQueue = ( Queue_t * ) xQueue;
+        MOVS     R6,R4          
 // 1601 	configASSERT( pxQueue );
 // 1602 
 // 1603 	taskENTER_CRITICAL();
@@ -2696,17 +2755,17 @@ uxQueueSpacesAvailable:
         BL       vPortEnterCritical
 // 1604 	{
 // 1605 		uxReturn = pxQueue->uxLength - pxQueue->uxMessagesWaiting;
-        LDR      R0,[R4, #+60]  
-        LDR      R4,[R4, #+56]  
-        SUBS     R4,R0,R4       
+        LDR      R0,[R6, #+60]  
+        LDR      R5,[R6, #+56]  
+        SUBS     R5,R0,R5       
 // 1606 	}
 // 1607 	taskEXIT_CRITICAL();
           CFI FunCall vPortExitCritical
         BL       vPortExitCritical
 // 1608 
 // 1609 	return uxReturn;
-        MOVS     R0,R4          
-        POP      {R4,PC}        
+        MOVS     R0,R5          
+        POP      {R4-R6,PC}     
 // 1610 } /*lint !e818 Pointer cannot be declared const as xQueue is a typedef not pointer. */
           CFI EndBlock cfiBlock12
 // 1611 /*-----------------------------------------------------------*/
@@ -2719,13 +2778,14 @@ uxQueueSpacesAvailable:
         THUMB
 // 1613 UBaseType_t uxQueueMessagesWaitingFromISR( const QueueHandle_t xQueue )
 // 1614 {
+uxQueueMessagesWaitingFromISR:
+        MOVS     R1,R0          
 // 1615 UBaseType_t uxReturn;
 // 1616 
 // 1617 	configASSERT( xQueue );
 // 1618 
 // 1619 	uxReturn = ( ( Queue_t * ) xQueue )->uxMessagesWaiting;
-uxQueueMessagesWaitingFromISR:
-        LDR      R0,[R0, #+56]  
+        LDR      R0,[R1, #+56]  
 // 1620 
 // 1621 	return uxReturn;
         BX       LR             
@@ -2741,10 +2801,14 @@ uxQueueMessagesWaitingFromISR:
 // 1625 void vQueueDelete( QueueHandle_t xQueue )
 // 1626 {
 vQueueDelete:
-        PUSH     {R7,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R4,R0          
 // 1627 Queue_t * const pxQueue = ( Queue_t * ) xQueue;
+        MOVS     R5,R4          
 // 1628 
 // 1629 	configASSERT( pxQueue );
 // 1630 	traceQUEUE_DELETE( pxQueue );
@@ -2752,6 +2816,7 @@ vQueueDelete:
 // 1632 	#if ( configQUEUE_REGISTRY_SIZE > 0 )
 // 1633 	{
 // 1634 		vQueueUnregisterQueue( pxQueue );
+        MOVS     R0,R5          
           CFI FunCall vQueueUnregisterQueue
         BL       vQueueUnregisterQueue
 // 1635 	}
@@ -2784,7 +2849,7 @@ vQueueDelete:
 // 1662 	}
 // 1663 	#endif /* configSUPPORT_DYNAMIC_ALLOCATION */
 // 1664 }
-        POP      {R0,PC}        
+        POP      {R0,R4,R5,PC}  
           CFI EndBlock cfiBlock14
 // 1665 /*-----------------------------------------------------------*/
 // 1666 
@@ -2826,24 +2891,28 @@ vQueueDelete:
 // 1697 static BaseType_t prvCopyDataToQueue( Queue_t * const pxQueue, const void *pvItemToQueue, const BaseType_t xPosition )
 // 1698 {
 prvCopyDataToQueue:
-        PUSH     {R4-R8,LR}     
+        PUSH     {R3-R11,LR}    
           CFI R14 Frame(CFA, -4)
-          CFI R8 Frame(CFA, -8)
-          CFI R7 Frame(CFA, -12)
-          CFI R6 Frame(CFA, -16)
-          CFI R5 Frame(CFA, -20)
-          CFI R4 Frame(CFA, -24)
-          CFI CFA R13+24
+          CFI R11 Frame(CFA, -8)
+          CFI R10 Frame(CFA, -12)
+          CFI R9 Frame(CFA, -16)
+          CFI R8 Frame(CFA, -20)
+          CFI R7 Frame(CFA, -24)
+          CFI R6 Frame(CFA, -28)
+          CFI R5 Frame(CFA, -32)
+          CFI R4 Frame(CFA, -36)
+          CFI CFA R13+40
         MOVS     R6,R0          
-        MOVS     R5,R2          
+        MOVS     R7,R1          
+        MOVS     R4,R2          
 // 1699 BaseType_t xReturn = pdFALSE;
-        MOVS     R7,#+0         
+        MOVS     R8,#+0         
 // 1700 UBaseType_t uxMessagesWaiting;
 // 1701 
 // 1702 	/* This function is called from a critical section. */
 // 1703 
 // 1704 	uxMessagesWaiting = pxQueue->uxMessagesWaiting;
-        LDR      R4,[R6, #+56]  
+        LDR      R5,[R6, #+56]  
 // 1705 
 // 1706 	if( pxQueue->uxItemSize == ( UBaseType_t ) 0 )
         LDR      R0,[R6, #+64]  
@@ -2862,7 +2931,7 @@ prvCopyDataToQueue:
         LDR      R0,[R6, #+4]   
           CFI FunCall xTaskPriorityDisinherit
         BL       xTaskPriorityDisinherit
-        MOVS     R7,R0          
+        MOV      R8,R0          
 // 1714 				pxQueue->pxMutexHolder = NULL;
         MOVS     R0,#+0         
         STR      R0,[R6, #+4]   
@@ -2877,13 +2946,16 @@ prvCopyDataToQueue:
 // 1722 	}
 // 1723 	else if( xPosition == queueSEND_TO_BACK )
 ??prvCopyDataToQueue_0:
-        CMP      R5,#+0         
+        CMP      R4,#+0         
         BNE.N    ??prvCopyDataToQueue_2
 // 1724 	{
 // 1725 		( void ) memcpy( ( void * ) pxQueue->pcWriteTo, pvItemToQueue, ( size_t ) pxQueue->uxItemSize ); /*lint !e961 !e418 MISRA exception as the casts are only redundant for some ports, plus previous logic ensures a null pointer can only be passed to memcpy() if the copy size is 0. */
-        LDR      R2,[R6, #+64]  
-        LDR      R5,[R6, #+8]   
-        MOVS     R0,R5          
+        LDR      R9,[R6, #+64]  
+        MOV      R10,R7         
+        LDR      R11,[R6, #+8]  
+        MOV      R2,R9          
+        MOV      R1,R10         
+        MOV      R0,R11         
           CFI FunCall __aeabi_memcpy
         BL       __aeabi_memcpy 
 // 1726 		pxQueue->pcWriteTo += pxQueue->uxItemSize;
@@ -2911,9 +2983,12 @@ prvCopyDataToQueue:
 // 1737 	{
 // 1738 		( void ) memcpy( ( void * ) pxQueue->u.pcReadFrom, pvItemToQueue, ( size_t ) pxQueue->uxItemSize ); /*lint !e961 MISRA exception as the casts are only redundant for some ports. */
 ??prvCopyDataToQueue_2:
-        LDR      R2,[R6, #+64]  
-        LDR      R8,[R6, #+12]  
-        MOV      R0,R8          
+        LDR      R9,[R6, #+64]  
+        MOV      R10,R7         
+        LDR      R11,[R6, #+12] 
+        MOV      R2,R9          
+        MOV      R1,R10         
+        MOV      R0,R11         
           CFI FunCall __aeabi_memcpy
         BL       __aeabi_memcpy 
 // 1739 		pxQueue->u.pcReadFrom -= pxQueue->uxItemSize;
@@ -2942,11 +3017,11 @@ prvCopyDataToQueue:
 // 1748 
 // 1749 		if( xPosition == queueOVERWRITE )
 ??prvCopyDataToQueue_3:
-        CMP      R5,#+2         
+        CMP      R4,#+2         
         BNE.N    ??prvCopyDataToQueue_1
 // 1750 		{
 // 1751 			if( uxMessagesWaiting > ( UBaseType_t ) 0 )
-        CMP      R4,#+0         
+        CMP      R5,#+0         
         BEQ.N    ??prvCopyDataToQueue_1
 // 1752 			{
 // 1753 				/* An item is not being added but overwritten, so subtract
@@ -2954,7 +3029,7 @@ prvCopyDataToQueue:
 // 1755 				one is added again below the number of recorded items remains
 // 1756 				correct. */
 // 1757 				--uxMessagesWaiting;
-        SUBS     R4,R4,#+1      
+        SUBS     R5,R5,#+1      
 // 1758 			}
 // 1759 			else
 // 1760 			{
@@ -2969,12 +3044,12 @@ prvCopyDataToQueue:
 // 1769 
 // 1770 	pxQueue->uxMessagesWaiting = uxMessagesWaiting + 1;
 ??prvCopyDataToQueue_1:
-        ADDS     R4,R4,#+1      
-        STR      R4,[R6, #+56]  
+        ADDS     R0,R5,#+1      
+        STR      R0,[R6, #+56]  
 // 1771 
 // 1772 	return xReturn;
-        MOVS     R0,R7          
-        POP      {R4-R8,PC}     
+        MOV      R0,R8          
+        POP      {R1,R4-R11,PC} 
 // 1773 }
           CFI EndBlock cfiBlock15
 // 1774 /*-----------------------------------------------------------*/
@@ -2987,30 +3062,35 @@ prvCopyDataToQueue:
 // 1776 static void prvCopyDataFromQueue( Queue_t * const pxQueue, void * const pvBuffer )
 // 1777 {
 prvCopyDataFromQueue:
-        PUSH     {R4,LR}        
+        PUSH     {R4-R8,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
-        MOVS     R4,R1          
+          CFI R8 Frame(CFA, -8)
+          CFI R7 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -16)
+          CFI R5 Frame(CFA, -20)
+          CFI R4 Frame(CFA, -24)
+          CFI CFA R13+24
+        MOVS     R4,R0          
+        MOVS     R5,R1          
 // 1778 	if( pxQueue->uxItemSize != ( UBaseType_t ) 0 )
-        LDR      R1,[R0, #+64]  
-        CMP      R1,#+0         
+        LDR      R0,[R4, #+64]  
+        CMP      R0,#+0         
         BEQ.N    ??prvCopyDataFromQueue_0
 // 1779 	{
 // 1780 		pxQueue->u.pcReadFrom += pxQueue->uxItemSize;
-        LDR      R1,[R0, #+12]  
-        LDR      R2,[R0, #+64]  
-        ADD      R1,R1,R2       
-        STR      R1,[R0, #+12]  
+        LDR      R0,[R4, #+12]  
+        LDR      R1,[R4, #+64]  
+        ADD      R0,R0,R1       
+        STR      R0,[R4, #+12]  
 // 1781 		if( pxQueue->u.pcReadFrom >= pxQueue->pcTail ) /*lint !e946 MISRA exception justified as use of the relational operator is the cleanest solutions. */
-        LDR      R1,[R0, #+12]  
-        LDR      R2,[R0, #+4]   
-        CMP      R1,R2          
+        LDR      R0,[R4, #+12]  
+        LDR      R1,[R4, #+4]   
+        CMP      R0,R1          
         BCC.N    ??prvCopyDataFromQueue_1
 // 1782 		{
 // 1783 			pxQueue->u.pcReadFrom = pxQueue->pcHead;
-        LDR      R1,[R0, #+0]   
-        STR      R1,[R0, #+12]  
+        LDR      R0,[R4, #+0]   
+        STR      R0,[R4, #+12]  
 // 1784 		}
 // 1785 		else
 // 1786 		{
@@ -3018,15 +3098,18 @@ prvCopyDataFromQueue:
 // 1788 		}
 // 1789 		( void ) memcpy( ( void * ) pvBuffer, ( void * ) pxQueue->u.pcReadFrom, ( size_t ) pxQueue->uxItemSize ); /*lint !e961 !e418 MISRA exception as the casts are only redundant for some ports.  Also previous logic ensures a null pointer can only be passed to memcpy() when the count is 0. */
 ??prvCopyDataFromQueue_1:
-        LDR      R2,[R0, #+64]  
-        LDR      R1,[R0, #+12]  
-        MOVS     R0,R4          
+        LDR      R6,[R4, #+64]  
+        LDR      R7,[R4, #+12]  
+        MOV      R8,R5          
+        MOVS     R2,R6          
+        MOVS     R1,R7          
+        MOV      R0,R8          
           CFI FunCall __aeabi_memcpy
         BL       __aeabi_memcpy 
 // 1790 	}
 // 1791 }
 ??prvCopyDataFromQueue_0:
-        POP      {R4,PC}        
+        POP      {R4-R8,PC}     
           CFI EndBlock cfiBlock16
 // 1792 /*-----------------------------------------------------------*/
 // 1793 
@@ -3038,12 +3121,13 @@ prvCopyDataFromQueue:
 // 1794 static void prvUnlockQueue( Queue_t * const pxQueue )
 // 1795 {
 prvUnlockQueue:
-        PUSH     {R4-R6,LR}     
+        PUSH     {R3-R7,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R6 Frame(CFA, -8)
-          CFI R5 Frame(CFA, -12)
-          CFI R4 Frame(CFA, -16)
-          CFI CFA R13+16
+          CFI R7 Frame(CFA, -8)
+          CFI R6 Frame(CFA, -12)
+          CFI R5 Frame(CFA, -16)
+          CFI R4 Frame(CFA, -20)
+          CFI CFA R13+24
         MOVS     R4,R0          
 // 1796 	/* THIS FUNCTION MUST BE CALLED WITH THE SCHEDULER SUSPENDED. */
 // 1797 
@@ -3057,10 +3141,14 @@ prvUnlockQueue:
 // 1803 	{
 // 1804 		int8_t cTxLock = pxQueue->cTxLock;
         LDRSB    R5,[R4, #+69]  
-        B.N      ??prvUnlockQueue_0
 // 1805 
 // 1806 		/* See if data was added to the queue while it was locked. */
 // 1807 		while( cTxLock > queueLOCKED_UNMODIFIED )
+??prvUnlockQueue_0:
+        MOVS     R0,R5          
+        SXTB     R0,R0          
+        CMP      R0,#+1         
+        BLT.N    ??prvUnlockQueue_1
 // 1808 		{
 // 1809 			/* Data was posted while the queue was locked.  Are any tasks
 // 1810 			blocked waiting for data to become available? */
@@ -3109,14 +3197,16 @@ prvUnlockQueue:
 // 1853 				/* Tasks that are removed from the event list will get added to
 // 1854 				the pending ready list as the scheduler is still suspended. */
 // 1855 				if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToReceive ) ) == pdFALSE )
+        LDR      R0,[R4, #+36]  
+        CMP      R0,#+0         
+        BEQ.N    ??prvUnlockQueue_2
 // 1856 				{
 // 1857 					if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToReceive ) ) != pdFALSE )
-??prvUnlockQueue_1:
         ADDS     R0,R4,#+36     
           CFI FunCall xTaskRemoveFromEventList
         BL       xTaskRemoveFromEventList
         CMP      R0,#+0         
-        BEQ.N    ??prvUnlockQueue_2
+        BEQ.N    ??prvUnlockQueue_3
 // 1858 					{
 // 1859 						/* The task waiting has a higher priority so record that
 // 1860 						a context switch is required. */
@@ -3137,22 +3227,16 @@ prvUnlockQueue:
 // 1873 			#endif /* configUSE_QUEUE_SETS */
 // 1874 
 // 1875 			--cTxLock;
-??prvUnlockQueue_2:
+??prvUnlockQueue_3:
         SUBS     R5,R5,#+1      
-??prvUnlockQueue_0:
-        MOVS     R0,R5          
-        SXTB     R0,R0          
-        CMP      R0,#+1         
-        BLT.N    ??prvUnlockQueue_3
-        LDR      R0,[R4, #+36]  
-        CMP      R0,#+0         
-        BNE.N    ??prvUnlockQueue_1
+        B.N      ??prvUnlockQueue_0
 // 1876 		}
 // 1877 
 // 1878 		pxQueue->cTxLock = queueUNLOCKED;
-??prvUnlockQueue_3:
-        MOVS     R5,#+4294967295
-        STRB     R5,[R4, #+69]  
+??prvUnlockQueue_2:
+??prvUnlockQueue_1:
+        MOVS     R6,#+4294967295
+        STRB     R6,[R4, #+69]  
 // 1879 	}
 // 1880 	taskEXIT_CRITICAL();
           CFI FunCall vPortExitCritical
@@ -3164,20 +3248,26 @@ prvUnlockQueue:
         BL       vPortEnterCritical
 // 1884 	{
 // 1885 		int8_t cRxLock = pxQueue->cRxLock;
-        LDRSB    R6,[R4, #+68]  
-        B.N      ??prvUnlockQueue_4
+        LDRSB    R7,[R4, #+68]  
 // 1886 
 // 1887 		while( cRxLock > queueLOCKED_UNMODIFIED )
+??prvUnlockQueue_4:
+        MOVS     R0,R7          
+        SXTB     R0,R0          
+        CMP      R0,#+1         
+        BLT.N    ??prvUnlockQueue_5
 // 1888 		{
 // 1889 			if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToSend ) ) == pdFALSE )
+        LDR      R0,[R4, #+16]  
+        CMP      R0,#+0         
+        BEQ.N    ??prvUnlockQueue_6
 // 1890 			{
 // 1891 				if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToSend ) ) != pdFALSE )
-??prvUnlockQueue_5:
         ADDS     R0,R4,#+16     
           CFI FunCall xTaskRemoveFromEventList
         BL       xTaskRemoveFromEventList
         CMP      R0,#+0         
-        BEQ.N    ??prvUnlockQueue_6
+        BEQ.N    ??prvUnlockQueue_7
 // 1892 				{
 // 1893 					vTaskMissedYield();
           CFI FunCall vTaskMissedYield
@@ -3189,17 +3279,10 @@ prvUnlockQueue:
 // 1898 				}
 // 1899 
 // 1900 				--cRxLock;
-??prvUnlockQueue_6:
-        SUBS     R6,R6,#+1      
+??prvUnlockQueue_7:
+        SUBS     R7,R7,#+1      
+        B.N      ??prvUnlockQueue_4
 // 1901 			}
-??prvUnlockQueue_4:
-        MOVS     R0,R6          
-        SXTB     R0,R0          
-        CMP      R0,#+1         
-        BLT.N    ??prvUnlockQueue_7
-        LDR      R0,[R4, #+16]  
-        CMP      R0,#+0         
-        BNE.N    ??prvUnlockQueue_5
 // 1902 			else
 // 1903 			{
 // 1904 				break;
@@ -3207,14 +3290,15 @@ prvUnlockQueue:
 // 1906 		}
 // 1907 
 // 1908 		pxQueue->cRxLock = queueUNLOCKED;
-??prvUnlockQueue_7:
-        STRB     R5,[R4, #+68]  
+??prvUnlockQueue_6:
+??prvUnlockQueue_5:
+        STRB     R6,[R4, #+68]  
 // 1909 	}
 // 1910 	taskEXIT_CRITICAL();
           CFI FunCall vPortExitCritical
         BL       vPortExitCritical
 // 1911 }
-        POP      {R4-R6,PC}     
+        POP      {R0,R4-R7,PC}  
           CFI EndBlock cfiBlock17
 // 1912 /*-----------------------------------------------------------*/
 // 1913 
@@ -3226,10 +3310,11 @@ prvUnlockQueue:
 // 1914 static BaseType_t prvIsQueueEmpty( const Queue_t *pxQueue )
 // 1915 {
 prvIsQueueEmpty:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
         MOVS     R4,R0          
 // 1916 BaseType_t xReturn;
 // 1917 
@@ -3243,14 +3328,14 @@ prvIsQueueEmpty:
         BNE.N    ??prvIsQueueEmpty_0
 // 1921 		{
 // 1922 			xReturn = pdTRUE;
-        MOVS     R4,#+1         
+        MOVS     R5,#+1         
         B.N      ??prvIsQueueEmpty_1
 // 1923 		}
 // 1924 		else
 // 1925 		{
 // 1926 			xReturn = pdFALSE;
 ??prvIsQueueEmpty_0:
-        MOVS     R4,#+0         
+        MOVS     R5,#+0         
 // 1927 		}
 // 1928 	}
 // 1929 	taskEXIT_CRITICAL();
@@ -3259,8 +3344,8 @@ prvIsQueueEmpty:
         BL       vPortExitCritical
 // 1930 
 // 1931 	return xReturn;
-        MOVS     R0,R4          
-        POP      {R4,PC}        
+        MOVS     R0,R5          
+        POP      {R1,R4,R5,PC}  
 // 1932 }
           CFI EndBlock cfiBlock18
 // 1933 /*-----------------------------------------------------------*/
@@ -3273,12 +3358,13 @@ prvIsQueueEmpty:
         THUMB
 // 1935 BaseType_t xQueueIsQueueEmptyFromISR( const QueueHandle_t xQueue )
 // 1936 {
+xQueueIsQueueEmptyFromISR:
+        MOVS     R1,R0          
 // 1937 BaseType_t xReturn;
 // 1938 
 // 1939 	configASSERT( xQueue );
 // 1940 	if( ( ( Queue_t * ) xQueue )->uxMessagesWaiting == ( UBaseType_t ) 0 )
-xQueueIsQueueEmptyFromISR:
-        LDR      R0,[R0, #+56]  
+        LDR      R0,[R1, #+56]  
         CMP      R0,#+0         
         BNE.N    ??xQueueIsQueueEmptyFromISR_0
 // 1941 	{
@@ -3308,10 +3394,11 @@ xQueueIsQueueEmptyFromISR:
 // 1953 static BaseType_t prvIsQueueFull( const Queue_t *pxQueue )
 // 1954 {
 prvIsQueueFull:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
         MOVS     R4,R0          
 // 1955 BaseType_t xReturn;
 // 1956 
@@ -3326,14 +3413,14 @@ prvIsQueueFull:
         BNE.N    ??prvIsQueueFull_0
 // 1960 		{
 // 1961 			xReturn = pdTRUE;
-        MOVS     R4,#+1         
+        MOVS     R5,#+1         
         B.N      ??prvIsQueueFull_1
 // 1962 		}
 // 1963 		else
 // 1964 		{
 // 1965 			xReturn = pdFALSE;
 ??prvIsQueueFull_0:
-        MOVS     R4,#+0         
+        MOVS     R5,#+0         
 // 1966 		}
 // 1967 	}
 // 1968 	taskEXIT_CRITICAL();
@@ -3342,8 +3429,8 @@ prvIsQueueFull:
         BL       vPortExitCritical
 // 1969 
 // 1970 	return xReturn;
-        MOVS     R0,R4          
-        POP      {R4,PC}        
+        MOVS     R0,R5          
+        POP      {R1,R4,R5,PC}  
 // 1971 }
           CFI EndBlock cfiBlock20
 // 1972 /*-----------------------------------------------------------*/
@@ -3356,14 +3443,15 @@ prvIsQueueFull:
         THUMB
 // 1974 BaseType_t xQueueIsQueueFullFromISR( const QueueHandle_t xQueue )
 // 1975 {
+xQueueIsQueueFullFromISR:
+        MOVS     R1,R0          
 // 1976 BaseType_t xReturn;
 // 1977 
 // 1978 	configASSERT( xQueue );
 // 1979 	if( ( ( Queue_t * ) xQueue )->uxMessagesWaiting == ( ( Queue_t * ) xQueue )->uxLength )
-xQueueIsQueueFullFromISR:
-        LDR      R1,[R0, #+56]  
-        LDR      R0,[R0, #+60]  
-        CMP      R1,R0          
+        LDR      R0,[R1, #+56]  
+        LDR      R2,[R1, #+60]  
+        CMP      R0,R2          
         BNE.N    ??xQueueIsQueueFullFromISR_0
 // 1980 	{
 // 1981 		xReturn = pdTRUE;
@@ -3679,36 +3767,37 @@ vQueueAddToRegistry:
 // 2274 		a free slot. */
 // 2275 		for( ux = ( UBaseType_t ) 0U; ux < ( UBaseType_t ) configQUEUE_REGISTRY_SIZE; ux++ )
         MOVS     R3,#+0         
-        B.N      ??vQueueAddToRegistry_0
-??vQueueAddToRegistry_1:
-        ADDS     R3,R3,#+1      
 ??vQueueAddToRegistry_0:
         CMP      R3,#+8         
-        BCS.N    ??vQueueAddToRegistry_2
+        BCS.N    ??vQueueAddToRegistry_1
 // 2276 		{
 // 2277 			if( xQueueRegistry[ ux ].pcQueueName == NULL )
         LDR.N    R4,??DataTable5_1
         LDR      R2,[R4, R3, LSL #+3]
         CMP      R2,#+0         
-        BNE.N    ??vQueueAddToRegistry_1
+        BNE.N    ??vQueueAddToRegistry_2
 // 2278 			{
 // 2279 				/* Store the information on this queue. */
 // 2280 				xQueueRegistry[ ux ].pcQueueName = pcQueueName;
         STR      R1,[R4, R3, LSL #+3]
 // 2281 				xQueueRegistry[ ux ].xHandle = xQueue;
-        ADD      R1,R4,R3, LSL #+3
-        STR      R0,[R1, #+4]   
+        ADD      R2,R4,R3, LSL #+3
+        STR      R0,[R2, #+4]   
 // 2282 
 // 2283 				traceQUEUE_REGISTRY_ADD( xQueue, pcQueueName );
 // 2284 				break;
+        B.N      ??vQueueAddToRegistry_1
 // 2285 			}
 // 2286 			else
 // 2287 			{
 // 2288 				mtCOVERAGE_TEST_MARKER();
 // 2289 			}
 // 2290 		}
-// 2291 	}
 ??vQueueAddToRegistry_2:
+        ADDS     R3,R3,#+1      
+        B.N      ??vQueueAddToRegistry_0
+// 2291 	}
+??vQueueAddToRegistry_1:
         POP      {R4}           
           CFI R4 SameValue
           CFI CFA R13+0
@@ -3741,32 +3830,34 @@ pcQueueGetName:
 // 2304 		removing entries from the registry while it is being searched. */
 // 2305 		for( ux = ( UBaseType_t ) 0U; ux < ( UBaseType_t ) configQUEUE_REGISTRY_SIZE; ux++ )
         MOVS     R2,#+0         
-        B.N      ??pcQueueGetName_0
-??pcQueueGetName_1:
-        ADDS     R2,R2,#+1      
 ??pcQueueGetName_0:
         CMP      R2,#+8         
-        BCS.N    ??pcQueueGetName_2
+        BCS.N    ??pcQueueGetName_1
 // 2306 		{
 // 2307 			if( xQueueRegistry[ ux ].xHandle == xQueue )
         LDR.N    R3,??DataTable5_1
         ADD      R4,R3,R2, LSL #+3
         LDR      R4,[R4, #+4]   
         CMP      R4,R1          
-        BNE.N    ??pcQueueGetName_1
+        BNE.N    ??pcQueueGetName_2
 // 2308 			{
 // 2309 				pcReturn = xQueueRegistry[ ux ].pcQueueName;
-        LDR      R0,[R3, R2, LSL #+3]
+        LDR      R3,[R3, R2, LSL #+3]
+        MOVS     R0,R3          
 // 2310 				break;
+        B.N      ??pcQueueGetName_1
 // 2311 			}
 // 2312 			else
 // 2313 			{
 // 2314 				mtCOVERAGE_TEST_MARKER();
 // 2315 			}
 // 2316 		}
+??pcQueueGetName_2:
+        ADDS     R2,R2,#+1      
+        B.N      ??pcQueueGetName_0
 // 2317 
 // 2318 		return pcReturn;
-??pcQueueGetName_2:
+??pcQueueGetName_1:
         POP      {R4}           
           CFI R4 SameValue
           CFI CFA R13+0
@@ -3794,42 +3885,43 @@ pcQueueGetName:
 // 2332 		for( ux = ( UBaseType_t ) 0U; ux < ( UBaseType_t ) configQUEUE_REGISTRY_SIZE; ux++ )
 vQueueUnregisterQueue:
         MOVS     R1,#+0         
-        B.N      ??vQueueUnregisterQueue_0
-??vQueueUnregisterQueue_1:
-        ADDS     R1,R1,#+1      
 ??vQueueUnregisterQueue_0:
         CMP      R1,#+8         
-        BCS.N    ??vQueueUnregisterQueue_2
+        BCS.N    ??vQueueUnregisterQueue_1
 // 2333 		{
 // 2334 			if( xQueueRegistry[ ux ].xHandle == xQueue )
         LDR.N    R2,??DataTable5_1
         ADD      R3,R2,R1, LSL #+3
         LDR      R3,[R3, #+4]   
         CMP      R3,R0          
-        BNE.N    ??vQueueUnregisterQueue_1
+        BNE.N    ??vQueueUnregisterQueue_2
 // 2335 			{
 // 2336 				/* Set the name to NULL to show that this slot if free again. */
 // 2337 				xQueueRegistry[ ux ].pcQueueName = NULL;
-        MOVS     R0,#+0         
-        STR      R0,[R2, R1, LSL #+3]
+        MOVS     R3,#+0         
+        STR      R3,[R2, R1, LSL #+3]
 // 2338 
 // 2339 				/* Set the handle to NULL to ensure the same queue handle cannot
 // 2340 				appear in the registry twice if it is added, removed, then
 // 2341 				added again. */
 // 2342 				xQueueRegistry[ ux ].xHandle = ( QueueHandle_t ) 0;
-        MOVS     R0,#+0         
-        ADD      R1,R2,R1, LSL #+3
-        STR      R0,[R1, #+4]   
+        MOVS     R3,#+0         
+        ADD      R2,R2,R1, LSL #+3
+        STR      R3,[R2, #+4]   
 // 2343 				break;
+        B.N      ??vQueueUnregisterQueue_1
 // 2344 			}
 // 2345 			else
 // 2346 			{
 // 2347 				mtCOVERAGE_TEST_MARKER();
 // 2348 			}
 // 2349 		}
+??vQueueUnregisterQueue_2:
+        ADDS     R1,R1,#+1      
+        B.N      ??vQueueUnregisterQueue_0
 // 2350 
 // 2351 	} /*lint !e818 xQueue could not be pointer to const because it is a typedef. */
-??vQueueUnregisterQueue_2:
+??vQueueUnregisterQueue_1:
         BX       LR             
           CFI EndBlock cfiBlock24
 
@@ -3860,16 +3952,18 @@ vQueueUnregisterQueue:
 // 2358 	void vQueueWaitForMessageRestricted( QueueHandle_t xQueue, TickType_t xTicksToWait, const BaseType_t xWaitIndefinitely )
 // 2359 	{
 vQueueWaitForMessageRestricted:
-        PUSH     {R4-R6,LR}     
+        PUSH     {R3-R7,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R6 Frame(CFA, -8)
-          CFI R5 Frame(CFA, -12)
-          CFI R4 Frame(CFA, -16)
-          CFI CFA R13+16
+          CFI R7 Frame(CFA, -8)
+          CFI R6 Frame(CFA, -12)
+          CFI R5 Frame(CFA, -16)
+          CFI R4 Frame(CFA, -20)
+          CFI CFA R13+24
         MOVS     R4,R0          
         MOVS     R5,R1          
         MOVS     R6,R2          
 // 2360 	Queue_t * const pxQueue = ( Queue_t * ) xQueue;
+        MOVS     R7,R4          
 // 2361 
 // 2362 		/* This function should not be called by application code hence the
 // 2363 		'Restricted' in its name.  It is not part of the public API.  It is
@@ -3888,22 +3982,22 @@ vQueueWaitForMessageRestricted:
 // 2376 		prvLockQueue( pxQueue );
           CFI FunCall vPortEnterCritical
         BL       vPortEnterCritical
-        LDRSB    R0,[R4, #+68]  
+        LDRSB    R0,[R7, #+68]  
         CMN      R0,#+1         
         BNE.N    ??vQueueWaitForMessageRestricted_0
         MOVS     R0,#+0         
-        STRB     R0,[R4, #+68]  
+        STRB     R0,[R7, #+68]  
 ??vQueueWaitForMessageRestricted_0:
-        LDRSB    R0,[R4, #+69]  
+        LDRSB    R0,[R7, #+69]  
         CMN      R0,#+1         
         BNE.N    ??vQueueWaitForMessageRestricted_1
         MOVS     R0,#+0         
-        STRB     R0,[R4, #+69]  
+        STRB     R0,[R7, #+69]  
 ??vQueueWaitForMessageRestricted_1:
           CFI FunCall vPortExitCritical
         BL       vPortExitCritical
 // 2377 		if( pxQueue->uxMessagesWaiting == ( UBaseType_t ) 0U )
-        LDR      R0,[R4, #+56]  
+        LDR      R0,[R7, #+56]  
         CMP      R0,#+0         
         BNE.N    ??vQueueWaitForMessageRestricted_2
 // 2378 		{
@@ -3911,7 +4005,7 @@ vQueueWaitForMessageRestricted:
 // 2380 			vTaskPlaceOnEventListRestricted( &( pxQueue->xTasksWaitingToReceive ), xTicksToWait, xWaitIndefinitely );
         MOVS     R2,R6          
         MOVS     R1,R5          
-        ADDS     R0,R4,#+36     
+        ADDS     R0,R7,#+36     
           CFI FunCall vTaskPlaceOnEventListRestricted
         BL       vTaskPlaceOnEventListRestricted
 // 2381 		}
@@ -3921,11 +4015,11 @@ vQueueWaitForMessageRestricted:
 // 2385 		}
 // 2386 		prvUnlockQueue( pxQueue );
 ??vQueueWaitForMessageRestricted_2:
-        MOVS     R0,R4          
+        MOVS     R0,R7          
           CFI FunCall prvUnlockQueue
         BL       prvUnlockQueue 
 // 2387 	}
-        POP      {R4-R6,PC}     
+        POP      {R0,R4-R7,PC}  
           CFI EndBlock cfiBlock25
 
         SECTION `.iar_vfe_header`:DATA:NOALLOC:NOROOT(2)
@@ -4115,9 +4209,9 @@ vQueueWaitForMessageRestricted:
 // 2566 
 // 
 //    64 bytes in section .bss
-// 2'096 bytes in section .text
+// 2'282 bytes in section .text
 // 
-// 2'096 bytes of CODE memory
+// 2'282 bytes of CODE memory
 //    64 bytes of DATA memory
 //
 //Errors: none

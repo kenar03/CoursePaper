@@ -1,0 +1,238 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         27/Apr/2025  00:21:28
+# Copyright 1999-2022 IAR Systems AB.
+#
+#    Cpu mode                     =  thumb
+#    Endian                       =  little
+#    Source file                  =
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\LedCalculator.cpp
+#    Command line                 =
+#        -f
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Leds\LedCalculator.o.rsp
+#        (D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\LedCalculator.cpp
+#        -lC
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\Leds
+#        -lA
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\Leds
+#        -o
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Leds
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\Games\Programs\IAR\arm\inc\c\DLib_Config_Normal.h -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\wrapper\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\wrapper\FreeRtos\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\include\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\Common\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\ARM_CM4F\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\MemMang\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\MyTasks\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Common\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\CMSIS\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Diagnostic\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\GpioPort\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\IrqController\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Pin\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Port\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Atomic\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\Singleton\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\RomObject\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DataRepository\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DataRepository\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+#        -On --c++ --no_exceptions --no_rtti) --dependencies=n
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Leds\LedCalculator.o.d
+#    Locale                       =  C
+#    List file                    =
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\Leds\LedCalculator.lst
+#    Object file                  =
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Leds\LedCalculator.o
+#    Runtime model:                  
+#      __CPP_Exceptions           =  Disabled
+#      __CPP_Language             =  C++14
+#      __CPP_Library              =  DLib
+#      __CPP_Runtime              =  1
+#      __SystemLibrary            =  DLib
+#      __dlib_full_locale_support =  0
+#      __dlib_version             =  6
+#
+###############################################################################
+
+D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\LedCalculator.cpp
+      1          #include "LedCalculator.hpp" // for LedCalculator
+
+   \                                 In section .text, align 2
+   \   __vfp ILedCalculator::subobject ILedCalculator() noexcept
+   \                     _ZN14ILedCalculatorC2Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN14ILedCalculatorC1Ev
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp ILedCalculator::ILedCalculator() noexcept
+   \                     _ZN14ILedCalculatorC1Ev: (+1)
+   \        0x0   0x4770             BX       LR
+      2          #include <cmath> // for ceil
+      3          
+
+   \                                 In section .text, align 2, keep-with-next
+   \   __vfp LedCalculator::subobject LedCalculator(uint8_t const &, float const &)
+   \                     _ZN13LedCalculatorC2ERKhRKf: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN13LedCalculatorC1ERKhRKf
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2, keep-with-next
+      4          LedCalculator::LedCalculator(const uint8_t& maxLedAmount, const float& maxVoltage) : mMaxLedAmount(maxLedAmount), mVref(maxVoltage)
+      5          {}
+   \                     _ZN13LedCalculatorC1ERKhRKf: (+1)
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0016             MOVS     R6,R2
+   \        0x8   0x0020             MOVS     R0,R4
+   \        0xA   0x.... 0x....      BL       _ZN14ILedCalculatorC2Ev
+   \        0xE   0x....             LDR.N    R0,??DataTable1
+   \       0x10   0x6020             STR      R0,[R4, #+0]
+   \       0x12   0x6065             STR      R5,[R4, #+4]
+   \       0x14   0x60A6             STR      R6,[R4, #+8]
+   \       0x16   0x0020             MOVS     R0,R4
+   \       0x18   0xBD70             POP      {R4-R6,PC}
+      6          
+
+   \                                 In section .text, align 2, keep-with-next
+      7          uint8_t LedCalculator::Calculate(float adcVoltage)
+      8          {
+   \                     _ZN13LedCalculator9CalculateEf: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0xED2D 0x8B02      VPUSH    {D8}
+   \        0x6   0x0004             MOVS     R4,R0
+   \        0x8   0xEEB0 0x8A40      VMOV.F32 S16,S0
+      9            return static_cast<uint8_t>(ceil((adcVoltage * mMaxLedAmount) / mVref));
+   \        0xC   0x6860             LDR      R0,[R4, #+4]
+   \        0xE   0x7800             LDRB     R0,[R0, #+0]
+   \       0x10   0xEE00 0x0A10      VMOV     S0,R0
+   \       0x14   0xEEB8 0x0A40      VCVT.F32.U32 S0,S0
+   \       0x18   0xEE20 0x0A08      VMUL.F32 S0,S0,S16
+   \       0x1C   0x68A0             LDR      R0,[R4, #+8]
+   \       0x1E   0xEDD0 0x0A00      VLDR     S1,[R0, #0]
+   \       0x22   0xEEC0 0x8A20      VDIV.F32 S17,S0,S1
+   \       0x26   0xEEB0 0x0A68      VMOV.F32 S0,S17
+   \       0x2A   0x.... 0x....      BL       ceilf
+   \       0x2E   0xEEBD 0x0AC0      VCVT.S32.F32 S0,S0
+   \       0x32   0xEE10 0x0A10      VMOV     R0,S0
+   \       0x36   0xB2C0             UXTB     R0,R0
+   \       0x38   0xECBD 0x8B02      VPOP     {D8}
+   \       0x3C   0xBD10             POP      {R4,PC}
+     10          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \        0x0   0x....'....        DC32     _ZTV13LedCalculator+0x8
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   ILedCalculator::ILedCalculator() noexcept
+       8   ILedCalculator::subobject ILedCalculator() noexcept
+         8   -> ILedCalculator::ILedCalculator() noexcept
+      16   LedCalculator::Calculate(float)
+        16   -> ceilf
+      16   LedCalculator::LedCalculator(uint8_t const &, float const &)
+        16   -> ILedCalculator::subobject ILedCalculator() noexcept
+       8   LedCalculator::subobject LedCalculator(uint8_t const &, float const &)
+         8   -> LedCalculator::LedCalculator(uint8_t const &, float const &)
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable1
+       2  ILedCalculator::ILedCalculator() noexcept
+      12  ILedCalculator::subobject ILedCalculator() noexcept
+      62  LedCalculator::Calculate(float)
+      26  LedCalculator::LedCalculator(uint8_t const &, float const &)
+      12  LedCalculator::subobject LedCalculator(uint8_t const &, float const &)
+      68  -- Other
+
+ 
+  68 bytes in section .rodata
+ 118 bytes in section .text
+ 
+ 104 bytes of CODE  memory (+ 14 bytes shared)
+   0 bytes of CONST memory (+ 68 bytes shared)
+
+Errors: none
+Warnings: none

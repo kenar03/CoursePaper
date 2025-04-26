@@ -2898,9 +2898,6 @@
                 </file>
             </group>
             <file>
-                <name>$PROJ_DIR$\Application\DigitalFilter\DigitalFilter.cpp</name>
-            </file>
-            <file>
                 <name>$PROJ_DIR$\Application\DigitalFilter\DigitalFilter.hpp</name>
             </file>
         </group>
@@ -2923,19 +2920,52 @@
             <name>Leds</name>
             <group>
                 <name>Contracts</name>
+                <file>
+                    <name>$PROJ_DIR$\Application\Leds\Contracts\ILedCalculator.hpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Application\Leds\Contracts\ILedController.hpp</name>
+                </file>
             </group>
+            <file>
+                <name>$PROJ_DIR$\Application\Leds\LedCalculator.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\Application\Leds\LedCalculator.hpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\Application\Leds\LedController.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\Application\Leds\LedController.hpp</name>
+            </file>
         </group>
         <group>
             <name>Usart</name>
             <group>
                 <name>Contracts</name>
+                <file>
+                    <name>$PROJ_DIR$\Application\Usart\Contracts\IUsart.hpp</name>
+                </file>
             </group>
+            <file>
+                <name>$PROJ_DIR$\Application\Usart\Usart.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\Application\Usart\Usart.hpp</name>
+            </file>
         </group>
         <group>
             <name>Voltage</name>
             <group>
                 <name>Contracts</name>
+                <file>
+                    <name>$PROJ_DIR$\Application\Voltage\Contracts\IVoltage.hpp</name>
+                </file>
             </group>
+            <file>
+                <name>$PROJ_DIR$\Application\Voltage\Voltage.hpp</name>
+            </file>
         </group>
     </group>
     <group>
@@ -3030,12 +3060,12 @@
         <group>
             <name>Contracts</name>
         </group>
-        <group>
-            <name>MeasurementTask</name>
-        </group>
-        <group>
-            <name>UsartTask</name>
-        </group>
+        <file>
+            <name>$PROJ_DIR$\Tasks\MeasurementTask.cpp</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Tasks\MeasurementTask.hpp</name>
+        </file>
     </group>
     <file>
         <name>$PROJ_DIR$\main.cpp</name>

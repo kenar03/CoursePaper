@@ -1,0 +1,418 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         27/Apr/2025  00:24:05
+# Copyright 1999-2022 IAR Systems AB.
+#
+#    Cpu mode                     =  thumb
+#    Endian                       =  little
+#    Source file                  =
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\MeasurementTask.cpp
+#    Command line                 =
+#        -f
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Tasks\MeasurementTask.o.rsp
+#        (D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\MeasurementTask.cpp
+#        -lC
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Tasks
+#        -lA
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Tasks
+#        -o
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Tasks
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\Games\Programs\IAR\arm\inc\c\DLib_Config_Normal.h -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\wrapper\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\wrapper\FreeRtos\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\include\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\Common\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\ARM_CM4F\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\MemMang\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\MyTasks\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Common\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\CMSIS\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Diagnostic\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\GpioPort\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\IrqController\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Pin\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Port\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Atomic\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\Singleton\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\RomObject\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DataRepository\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DataRepository\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+#        -On --c++ --no_exceptions --no_rtti) --dependencies=n
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Tasks\MeasurementTask.o.d
+#    Locale                       =  C
+#    List file                    =
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Tasks\MeasurementTask.lst
+#    Object file                  =
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Tasks\MeasurementTask.o
+#    Runtime model:                  
+#      __CPP_Exceptions           =  Disabled
+#      __CPP_Language             =  C++14
+#      __CPP_Library              =  DLib
+#      __CPP_Runtime              =  1
+#      __SystemLibrary            =  DLib
+#      __dlib_file_descriptor     =  0
+#      __dlib_full_locale_support =  0
+#      __dlib_version             =  6
+#
+###############################################################################
+
+D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\MeasurementTask.cpp
+      1          #include "MeasurementTask.hpp" // for MeasurementTask
+
+   \                                 In section .text, align 2
+   \   __vfp OsWrapper::TicksPerSecond std::chrono::duration_cast<OsWrapper::TicksPerSecond, __int64_t, std::milli>(std::chrono::duration<__int64_t, std::milli> const &)
+   \                     _ZNSt6chrono13duration_castINS_8durationIjSt5ratioILx10ELx1000EEEExS2_ILx1ELx1000EEEENSt9enable_ifIXsr3std6chrono12_Is_durationIT_EE5valueES7_E4typeERKNS1_IT0_T1_EE: (+1)
+   \        0x0   0xB51C             PUSH     {R2-R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNKSt6chrono8durationIxSt5ratioILx1ELx1000EEE5countEv
+   \        0xA   0x220A             MOVS     R2,#+10
+   \        0xC   0x2300             MOVS     R3,#+0
+   \        0xE   0x.... 0x....      BL       __aeabi_ldivmod
+   \       0x12   0x9000             STR      R0,[SP, #+0]
+   \       0x14   0x4669             MOV      R1,SP
+   \       0x16   0xA801             ADD      R0,SP,#+4
+   \       0x18   0x.... 0x....      BL       _ZNSt6chrono8durationIjSt5ratioILx10ELx1000EEEC1IjvEERKT_
+   \       0x1C   0x9801             LDR      R0,[SP, #+4]
+   \       0x1E   0xBD16             POP      {R1,R2,R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::duration<uint32_t, void>(uint32_t const &)
+   \                     _ZNSt6chrono8durationIjSt5ratioILx10ELx1000EEEC1IjvEERKT_: (+1)
+   \        0x0   0x680A             LDR      R2,[R1, #+0]
+   \        0x2   0x6002             STR      R2,[R0, #+0]
+   \        0x4   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp __int64_t std::chrono::duration<__int64_t, std::milli>::count() const
+   \                     _ZNKSt6chrono8durationIxSt5ratioILx1ELx1000EEE5countEv: (+1)
+   \        0x0   0xE9D0 0x0100      LDRD     R0,R1,[R0, #+0]
+   \        0x4   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp uint32_t std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::count() const
+   \                     _ZNKSt6chrono8durationIjSt5ratioILx10ELx1000EEE5countEv: (+1)
+   \        0x0   0x6800             LDR      R0,[R0, #+0]
+   \        0x2   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp void OsWrapper::RtosWrapper::wSleep(uint32_t)
+   \                     _ZN9OsWrapper11RtosWrapper6wSleepEj: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       vTaskDelay
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp OsWrapper::IThread::subobject IThread() noexcept
+   \                     _ZN9OsWrapper7IThreadC2Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN9OsWrapper7IThreadC1Ev
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp OsWrapper::IThread::IThread() noexcept
+   \                     _ZN9OsWrapper7IThreadC1Ev: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+   \        0x2   0x6541             STR      R1,[R0, #+84]
+   \        0x4   0x2100             MOVS     R1,#+0
+   \        0x6   0x6581             STR      R1,[R0, #+88]
+   \        0x8   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp void OsWrapper::IThread::Sleep(std::chrono::milliseconds)
+   \                     _ZN9OsWrapper7IThread5SleepENSt6chrono8durationIxSt5ratioILx1ELx1000EEEE: (+1)
+   \        0x0   0xB583             PUSH     {R0,R1,R7,LR}
+   \        0x2   0xB082             SUB      SP,SP,#+8
+   \        0x4   0xA802             ADD      R0,SP,#+8
+   \        0x6   0x.... 0x....      BL       _ZNSt6chrono13duration_castINS_8durationIjSt5ratioILx10ELx1000EEEExS2_ILx1ELx1000EEEENSt9enable_ifIXsr3std6chrono12_Is_durationIT_EE5valueES7_E4typeERKNS1_IT0_T1_EE
+   \        0xA   0x9000             STR      R0,[SP, #+0]
+   \        0xC   0x4668             MOV      R0,SP
+   \        0xE   0x.... 0x....      BL       _ZNKSt6chrono8durationIjSt5ratioILx10ELx1000EEE5countEv
+   \       0x12   0x.... 0x....      BL       _ZN9OsWrapper11RtosWrapper6wSleepEj
+   \       0x16   0xB005             ADD      SP,SP,#+20
+   \       0x18   0xBD00             POP      {PC}
+
+   \                                 In section .text, align 2
+   \   __vfp OsWrapper::Thread<512U>::subobject Thread() noexcept
+   \                     _ZN9OsWrapper6ThreadILj512EEC2Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN9OsWrapper6ThreadILj512EEC1Ev
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp OsWrapper::Thread<512U>::Thread() noexcept
+   \                     _ZN9OsWrapper6ThreadILj512EEC1Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN9OsWrapper7IThreadC2Ev
+   \        0xA   0x0020             MOVS     R0,R4
+   \        0xC   0xBD10             POP      {R4,PC}
+      2          
+
+   \                                 In section .text, align 2, keep-with-next
+   \   __vfp MeasurementTask::subobject MeasurementTask(IRawDataProvider &, IDigitalFilter<float> &, IVoltage &, ILedCalculator &, ILedController &, IDataRepositoryUpdater &)
+   \                     _ZN15MeasurementTaskC2ER16IRawDataProviderR14IDigitalFilterIfER8IVoltageR14ILedCalculatorR14ILedControllerR22IDataRepositoryUpdater: (+1)
+   \        0x0   0xB51F             PUSH     {R0-R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x9808             LDR      R0,[SP, #+32]
+   \        0x6   0x9002             STR      R0,[SP, #+8]
+   \        0x8   0x9807             LDR      R0,[SP, #+28]
+   \        0xA   0x9001             STR      R0,[SP, #+4]
+   \        0xC   0x9806             LDR      R0,[SP, #+24]
+   \        0xE   0x9000             STR      R0,[SP, #+0]
+   \       0x10   0x0020             MOVS     R0,R4
+   \       0x12   0x.... 0x....      BL       _ZN15MeasurementTaskC1ER16IRawDataProviderR14IDigitalFilterIfER8IVoltageR14ILedCalculatorR14ILedControllerR22IDataRepositoryUpdater
+   \       0x16   0xB004             ADD      SP,SP,#+16
+   \       0x18   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2, keep-with-next
+      3          MeasurementTask :: MeasurementTask(IRawDataProvider& rawData, IDigitalFilter<float>& filter, IVoltage& voltage,
+      4                            ILedCalculator& ledCalculator, ILedController& ledController, IDataRepositoryUpdater& dataRepositoryUpdater) :
+      5            mRawData(rawData),
+      6            mDigitalFilter(filter),
+      7            mVoltage(voltage),
+      8            mLedCalculator(ledCalculator),
+      9            mLedController(ledController),
+     10            mDataRepositoryUpdater(dataRepositoryUpdater)
+     11          {
+   \                     _ZN15MeasurementTaskC1ER16IRawDataProviderR14IDigitalFilterIfER8IVoltageR14ILedCalculatorR14ILedControllerR22IDataRepositoryUpdater: (+1)
+   \        0x0   0xE92D 0x47F0      PUSH     {R4-R10,LR}
+   \        0x4   0x0004             MOVS     R4,R0
+   \        0x6   0x000D             MOVS     R5,R1
+   \        0x8   0x0016             MOVS     R6,R2
+   \        0xA   0x001F             MOVS     R7,R3
+   \        0xC   0xF8DD 0x8020      LDR      R8,[SP, #+32]
+   \       0x10   0xF8DD 0x9024      LDR      R9,[SP, #+36]
+   \       0x14   0xF8DD 0xA028      LDR      R10,[SP, #+40]
+   \       0x18   0x0020             MOVS     R0,R4
+   \       0x1A   0x.... 0x....      BL       _ZN9OsWrapper6ThreadILj512EEC2Ev
+   \       0x1E   0x....             LDR.N    R0,??DataTable2
+   \       0x20   0x6020             STR      R0,[R4, #+0]
+   \       0x22   0xF8C4 0x585C      STR      R5,[R4, #+2140]
+   \       0x26   0xF8C4 0x6860      STR      R6,[R4, #+2144]
+   \       0x2A   0xF8C4 0x7864      STR      R7,[R4, #+2148]
+   \       0x2E   0xF8C4 0x8868      STR      R8,[R4, #+2152]
+   \       0x32   0xF8C4 0x986C      STR      R9,[R4, #+2156]
+   \       0x36   0xF8C4 0xA870      STR      R10,[R4, #+2160]
+     12          }
+   \       0x3A   0x0020             MOVS     R0,R4
+   \       0x3C   0xE8BD 0x87F0      POP      {R4-R10,PC}
+     13          
+
+   \                                 In section .text, align 2, keep-with-next
+     14          void MeasurementTask :: Execute()
+     15          {
+   \                     _ZN15MeasurementTask7ExecuteEv: (+1)
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
+   \        0x2   0xED2D 0x8B02      VPUSH    {D8}
+   \        0x6   0x0004             MOVS     R4,R0
+     16            for(;;)
+     17            {
+     18              uint32_t currAdcCounts = mRawData.GetRawData();
+   \                     ??Execute_0: (+1)
+   \        0x8   0xF8D4 0x085C      LDR      R0,[R4, #+2140]
+   \        0xC   0xF8D4 0x185C      LDR      R1,[R4, #+2140]
+   \       0x10   0x6809             LDR      R1,[R1, #+0]
+   \       0x12   0x6809             LDR      R1,[R1, #+0]
+   \       0x14   0x4788             BLX      R1
+   \       0x16   0x0005             MOVS     R5,R0
+     19              float rawVoltage = mVoltage.Measure();
+   \       0x18   0xF8D4 0x0864      LDR      R0,[R4, #+2148]
+   \       0x1C   0xF8D4 0x1864      LDR      R1,[R4, #+2148]
+   \       0x20   0x6809             LDR      R1,[R1, #+0]
+   \       0x22   0x6809             LDR      R1,[R1, #+0]
+   \       0x24   0x4788             BLX      R1
+   \       0x26   0xEEB0 0x8A40      VMOV.F32 S16,S0
+     20              float filteredVoltage = mDigitalFilter.FilterValue(rawVoltage);
+   \       0x2A   0xEEB0 0x0A48      VMOV.F32 S0,S16
+   \       0x2E   0xF8D4 0x0860      LDR      R0,[R4, #+2144]
+   \       0x32   0xF8D4 0x1860      LDR      R1,[R4, #+2144]
+   \       0x36   0x6809             LDR      R1,[R1, #+0]
+   \       0x38   0x6809             LDR      R1,[R1, #+0]
+   \       0x3A   0x4788             BLX      R1
+   \       0x3C   0xEEF0 0x8A40      VMOV.F32 S17,S0
+     21              mDataRepositoryUpdater.UpdateValue(filteredVoltage);
+   \       0x40   0xEEB0 0x0A68      VMOV.F32 S0,S17
+   \       0x44   0xF8D4 0x0870      LDR      R0,[R4, #+2160]
+   \       0x48   0xF8D4 0x1870      LDR      R1,[R4, #+2160]
+   \       0x4C   0x6809             LDR      R1,[R1, #+0]
+   \       0x4E   0x6809             LDR      R1,[R1, #+0]
+   \       0x50   0x4788             BLX      R1
+     22              uint8_t currLedAmount = mLedCalculator.Calculate(filteredVoltage);
+   \       0x52   0xEEB0 0x0A68      VMOV.F32 S0,S17
+   \       0x56   0xF8D4 0x0868      LDR      R0,[R4, #+2152]
+   \       0x5A   0xF8D4 0x1868      LDR      R1,[R4, #+2152]
+   \       0x5E   0x6809             LDR      R1,[R1, #+0]
+   \       0x60   0x6809             LDR      R1,[R1, #+0]
+   \       0x62   0x4788             BLX      R1
+   \       0x64   0x0006             MOVS     R6,R0
+     23              mLedController.Indicate(currLedAmount);
+   \       0x66   0x0031             MOVS     R1,R6
+   \       0x68   0xB2C9             UXTB     R1,R1
+   \       0x6A   0xF8D4 0x086C      LDR      R0,[R4, #+2156]
+   \       0x6E   0xF8D4 0x286C      LDR      R2,[R4, #+2156]
+   \       0x72   0x6812             LDR      R2,[R2, #+0]
+   \       0x74   0x6812             LDR      R2,[R2, #+0]
+   \       0x76   0x4790             BLX      R2
+   \       0x78   0x....             LDR.N    R2,??DataTable2_1
+   \       0x7A   0xE9D2 0x0100      LDRD     R0,R1,[R2, #+0]
+     24              Sleep(50ms);
+   \       0x7E   0x.... 0x....      BL       _ZN9OsWrapper7IThread5SleepENSt6chrono8durationIxSt5ratioILx1ELx1000EEEE
+   \       0x82   0xE7C1             B.N      ??Execute_0
+     25            }
+     26          } ;
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \        0x0   0x....'....        DC32     _ZTV15MeasurementTask+0x8
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \        0x0   0x....'....        DC32     ?_0
+
+   \                                 In section .rodata, align 8
+   \                     ?_0:
+   \        0x0   0x0000'0000'0      DC64 50
+
+   \              000'0032
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      24   MeasurementTask::Execute()
+        24   -- Indirect call
+        24   -> OsWrapper::IThread::Sleep(std::chrono::milliseconds)
+      32   MeasurementTask::MeasurementTask(IRawDataProvider &, IDigitalFilter<float> &, IVoltage &, ILedCalculator &, ILedController &, IDataRepositoryUpdater &)
+        32   -> OsWrapper::Thread<512U>::subobject Thread() noexcept
+      24   MeasurementTask::subobject MeasurementTask(IRawDataProvider &, IDigitalFilter<float> &, IVoltage &, ILedCalculator &, ILedController &, IDataRepositoryUpdater &)
+        24   -> MeasurementTask::MeasurementTask(IRawDataProvider &, IDigitalFilter<float> &, IVoltage &, ILedCalculator &, ILedController &, IDataRepositoryUpdater &)
+       0   OsWrapper::IThread::IThread() noexcept
+      24   OsWrapper::IThread::Sleep(std::chrono::milliseconds)
+        24   -> OsWrapper::RtosWrapper::wSleep(uint32_t)
+        24   -> std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::count() const
+        24   -> std::chrono::duration_cast<OsWrapper::TicksPerSecond, __int64_t, std::milli>(std::chrono::duration<__int64_t, std::milli> const &)
+       8   OsWrapper::IThread::subobject IThread() noexcept
+         8   -> OsWrapper::IThread::IThread() noexcept
+       8   OsWrapper::RtosWrapper::wSleep(uint32_t)
+         8   -> vTaskDelay
+       8   OsWrapper::Thread<512U>::Thread() noexcept
+         8   -> OsWrapper::IThread::subobject IThread() noexcept
+       8   OsWrapper::Thread<512U>::subobject Thread() noexcept
+         8   -> OsWrapper::Thread<512U>::Thread() noexcept
+       0   std::chrono::duration<__int64_t, std::milli>::count() const
+       0   std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::count() const
+       0   std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::duration<uint32_t, void>(uint32_t const &)
+      16   std::chrono::duration_cast<OsWrapper::TicksPerSecond, __int64_t, std::milli>(std::chrono::duration<__int64_t, std::milli> const &)
+        16   -> std::chrono::duration<__int64_t, std::milli>::count() const
+        16   -> std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::duration<uint32_t, void>(uint32_t const &)
+        16 __aeabi_ldivmod
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+       4  ??DataTable2_1
+       8  ?_0
+     132  MeasurementTask::Execute()
+      64  MeasurementTask::MeasurementTask(IRawDataProvider &, IDigitalFilter<float> &, IVoltage &, ILedCalculator &, ILedController &, IDataRepositoryUpdater &)
+      26  MeasurementTask::subobject MeasurementTask(IRawDataProvider &, IDigitalFilter<float> &, IVoltage &, ILedCalculator &, ILedController &, IDataRepositoryUpdater &)
+      10  OsWrapper::IThread::IThread() noexcept
+      26  OsWrapper::IThread::Sleep(std::chrono::milliseconds)
+      12  OsWrapper::IThread::subobject IThread() noexcept
+      12  OsWrapper::RtosWrapper::wSleep(uint32_t)
+      14  OsWrapper::Thread<512U>::Thread() noexcept
+      12  OsWrapper::Thread<512U>::subobject Thread() noexcept
+       6  std::chrono::duration<__int64_t, std::milli>::count() const
+       4  std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::count() const
+       6  std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::duration<uint32_t, void>(uint32_t const &)
+      32  std::chrono::duration_cast<OsWrapper::TicksPerSecond, __int64_t, std::milli>(std::chrono::duration<__int64_t, std::milli> const &)
+     308  -- Other
+
+ 
+ 316 bytes in section .rodata
+ 364 bytes in section .text
+ 
+ 230 bytes of CODE  memory (+ 134 bytes shared)
+   8 bytes of CONST memory (+ 308 bytes shared)
+
+Errors: none
+Warnings: none

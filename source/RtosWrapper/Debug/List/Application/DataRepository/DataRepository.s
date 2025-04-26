@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        26/Apr/2025  19:24:49
+// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        27/Apr/2025  00:21:26
 // Copyright 1999-2022 IAR Systems AB.
 //
 //    Cpu mode     =  thumb
@@ -102,7 +102,11 @@
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
 //        -I
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
-//        -Ol --c++ --no_exceptions --no_rtti) --dependencies=n
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+//        -On --c++ --no_exceptions --no_rtti) --dependencies=n
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\DataRepository\DataRepository.o.d
 //    Locale       =  C
 //    List file    =
@@ -200,12 +204,15 @@
         THUMB
 // __vfp IDataRepositoryProvider::subobject IDataRepositoryProvider() noexcept
 _ZN23IDataRepositoryProviderC2Ev:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZN23IDataRepositoryProviderC1Ev
         BL       _ZN23IDataRepositoryProviderC1Ev
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock0
 //    2 
 
@@ -215,12 +222,15 @@ _ZN23IDataRepositoryProviderC2Ev:
         THUMB
 // __vfp DataRepository::subobject DataRepository()
 _ZN14DataRepositoryC2Ev:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZN14DataRepositoryC1Ev
         BL       _ZN14DataRepositoryC1Ev
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock1
 
         SECTION `.text`:CODE:NOROOT(1)
@@ -362,12 +372,15 @@ _ZN23IDataRepositoryProviderC1Ev:
         THUMB
 // __vfp IDataRepositoryUpdater::subobject IDataRepositoryUpdater() noexcept
 _ZN22IDataRepositoryUpdaterC2Ev:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZN22IDataRepositoryUpdaterC1Ev
         BL       _ZN22IDataRepositoryUpdaterC1Ev
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock10
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -486,9 +499,9 @@ _ZTS14DataRepository:
         END
 // 
 // 164 bytes in section .rodata
-// 100 bytes in section .text
+// 112 bytes in section .text
 // 
-// 80 bytes of CODE  memory (+  20 bytes shared)
+// 84 bytes of CODE  memory (+  28 bytes shared)
 //  0 bytes of CONST memory (+ 164 bytes shared)
 //
 //Errors: none

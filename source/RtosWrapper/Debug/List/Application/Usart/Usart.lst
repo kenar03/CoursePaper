@@ -1,0 +1,780 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         27/Apr/2025  00:21:28
+# Copyright 1999-2022 IAR Systems AB.
+#
+#    Cpu mode                     =  thumb
+#    Endian                       =  little
+#    Source file                  =
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\Usart.cpp
+#    Command line                 =
+#        -f
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Usart\Usart.o.rsp
+#        (D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\Usart.cpp
+#        -lC
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\Usart
+#        -lA
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\Usart
+#        -o
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Usart
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\Games\Programs\IAR\arm\inc\c\DLib_Config_Normal.h -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\wrapper\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\wrapper\FreeRtos\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\include\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\Common\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\ARM_CM4F\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\MemMang\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\MyTasks\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Common\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\CMSIS\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Diagnostic\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\GpioPort\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\IrqController\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Pin\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Port\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Atomic\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\Singleton\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\RomObject\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DataRepository\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DataRepository\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+#        -On --c++ --no_exceptions --no_rtti) --dependencies=n
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Usart\Usart.o.d
+#    Locale                       =  C
+#    List file                    =
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\Usart\Usart.lst
+#    Object file                  =
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Usart\Usart.o
+#    Runtime model:                  
+#      __CPP_Exceptions           =  Disabled
+#      __CPP_Language             =  C++14
+#      __CPP_Library              =  DLib
+#      __CPP_Runtime              =  1
+#      __SystemLibrary            =  DLib
+#      __dlib_file_descriptor     =  0
+#      __dlib_full_locale_support =  0
+#      __dlib_version             =  6
+#
+###############################################################################
+
+D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\Usart.cpp
+      1          #include "Usart.hpp" // for Usart
+
+   \                                 In section .text, align 2
+   \   __vfp char *std::_Addressof<char>(char &, std::false_type) noexcept
+   \                     _ZSt10_AddressofIcEPT_RS0_St17integral_constantIbLb0EE: (+1)
+   \        0x0   0x4770             BX       LR
+
+   \                                 In section .text, align 4
+   \   __vfp char *std::addressof<char>(char &) noexcept
+   \                     _ZSt9addressofIcEPT_RS0_: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x4802             LDR.N    R0,??addressof_0
+   \        0x6   0x7801             LDRB     R1,[R0, #+0]
+   \        0x8   0x0020             MOVS     R0,R4
+   \        0xA   0x.... 0x....      BL       _ZSt10_AddressofIcEPT_RS0_St17integral_constantIbLb0EE
+   \        0xE   0xBD10             POP      {R4,PC}
+   \                     ??addressof_0:
+   \       0x10   0x....'....        DC32     ?_0
+
+   \                                 In section .text, align 2
+   \   __vfp std::_String_val<std::_Simple_types<char>> &std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_second() noexcept
+   \                     _ZNSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE11_Get_secondEv: (+1)
+   \        0x0   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp std::_String_val<std::_Simple_types<char>> const &std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_second() const noexcept
+   \                     _ZNKSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE11_Get_secondEv: (+1)
+   \        0x0   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp char *std::_String_val<std::_Simple_types<char>>::_Myptr()
+   \                     _ZNSt11_String_valISt13_Simple_typesIcEE6_MyptrEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x6960             LDR      R0,[R4, #+20]
+   \        0x6   0x2810             CMP      R0,#+16
+   \        0x8   0xD303             BCC.N    ??_Myptr_0
+   \        0xA   0x6820             LDR      R0,[R4, #+0]
+   \        0xC   0x.... 0x....      BL       _ZSt9addressofIcEPT_RS0_
+   \       0x10   0xE000             B.N      ??_Myptr_1
+   \                     ??_Myptr_0: (+1)
+   \       0x12   0x0020             MOVS     R0,R4
+   \                     ??_Myptr_1: (+1)
+   \       0x14   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp char *std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr()
+   \                     _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
+   \        0xA   0x.... 0x....      BL       _ZNSt11_String_valISt13_Simple_typesIcEE6_MyptrEv
+   \        0xE   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::_String_val<std::_Simple_types<char>> &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() noexcept
+   \                     _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE11_Get_secondEv
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::_String_val<std::_Simple_types<char>> const &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() const noexcept
+   \                     _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNKSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE11_Get_secondEv
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp size_t const &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Mysize() const noexcept
+   \                     _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
+   \        0xA   0x3010             ADDS     R0,R0,#+16
+   \        0xC   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp char & std::string::operator[](size_t)
+   \                     _ZNSsixEj: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0020             MOVS     R0,R4
+   \        0x8   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
+   \        0xC   0x4428             ADD      R0,R0,R5
+   \        0xE   0xBD32             POP      {R1,R4,R5,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp size_t std::string::length() const noexcept
+   \                     _ZNKSs6lengthEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
+   \        0xA   0x6800             LDR      R0,[R0, #+0]
+   \        0xC   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp IUsart::subobject IUsart() noexcept
+   \                     _ZN6IUsartC2Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN6IUsartC1Ev
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp IUsart::IUsart() noexcept
+   \                     _ZN6IUsartC1Ev: (+1)
+   \        0x0   0x4770             BX       LR
+      2          #include "gpioaregisters.hpp" // for GPIOA
+
+   \                                 In section .text, align 4
+   \   __vfp void RegisterField<USART2::BRR, 4U, 12U, ReadWriteMode>::Set<ReadWriteMode, void>(uint32_t)
+   \                     _ZN13RegisterFieldIN6USART23BRRELj4ELj12E13ReadWriteModevE3SetIS2_vEEvj: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0xF5B4 0x5F80      CMP      R4,#+4096
+   \        0x8   0xD306             BCC.N    ??Set_15
+   \        0xA   0x221F             MOVS     R2,#+31
+   \        0xC   0x4906             LDR.N    R1,??Set_0
+   \        0xE   0x4807             LDR.N    R0,??Set_0+0x4
+   \       0x10   0x.... 0x....      BL       __aeabi_assert
+   \       0x14   0x.... 0x....      BL       __iar_EmptyStepPoint
+   \                     ??Set_15: (+1)
+   \       0x18   0x4905             LDR.N    R1,??Set_0+0x8
+   \       0x1A   0x6808             LDR      R0,[R1, #+0]
+   \       0x1C   0xF36F 0x100F      BFC      R0,#+4,#+12
+   \       0x20   0xEA50 0x1004      ORRS     R0,R0,R4, LSL #+4
+   \       0x24   0x6008             STR      R0,[R1, #+0]
+   \       0x26   0xBD10             POP      {R4,PC}
+   \                     ??Set_0:
+   \       0x28   0x....'....        DC32     _ZZN13RegisterFieldIN6USART23BRRELj4ELj12E13ReadWriteModevE3SetIS2_vEEvjEs_0
+   \       0x2C   0x....'....        DC32     _ZZN13RegisterFieldIN6USART23BRRELj4ELj12E13ReadWriteModevE3SetIS2_vEEvjEs
+   \       0x30   0x4000'4408        DC32     0x40004408
+
+   \                                 In section .text, align 4
+   \   __vfp void RegisterField<USART2::BRR, 0U, 4U, ReadWriteMode>::Set<ReadWriteMode, void>(uint32_t)
+   \                     _ZN13RegisterFieldIN6USART23BRRELj0ELj4E13ReadWriteModevE3SetIS2_vEEvj: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x2C10             CMP      R4,#+16
+   \        0x6   0xD306             BCC.N    ??Set_16
+   \        0x8   0x221F             MOVS     R2,#+31
+   \        0xA   0x4906             LDR.N    R1,??Set_1
+   \        0xC   0x4806             LDR.N    R0,??Set_1+0x4
+   \        0xE   0x.... 0x....      BL       __aeabi_assert
+   \       0x12   0x.... 0x....      BL       __iar_EmptyStepPoint
+   \                     ??Set_16: (+1)
+   \       0x16   0x4905             LDR.N    R1,??Set_1+0x8
+   \       0x18   0x6808             LDR      R0,[R1, #+0]
+   \       0x1A   0x0900             LSRS     R0,R0,#+4
+   \       0x1C   0x0100             LSLS     R0,R0,#+4
+   \       0x1E   0x4320             ORRS     R0,R4,R0
+   \       0x20   0x6008             STR      R0,[R1, #+0]
+   \       0x22   0xBD10             POP      {R4,PC}
+   \                     ??Set_1:
+   \       0x24   0x....'....        DC32     _ZZN13RegisterFieldIN6USART23BRRELj0ELj4E13ReadWriteModevE3SetIS2_vEEvjEs_0
+   \       0x28   0x....'....        DC32     _ZZN13RegisterFieldIN6USART23BRRELj0ELj4E13ReadWriteModevE3SetIS2_vEEvjEs
+   \       0x2C   0x4000'4408        DC32     0x40004408
+
+   \                                 In section .text, align 4
+   \   __vfp uint32_t RegisterField<USART2::CR1, 15U, 1U, ReadWriteMode>::Get<ReadWriteMode, void>()
+   \                     _ZN13RegisterFieldIN6USART23CR1ELj15ELj1E13ReadWriteModevE3GetIS2_vEEjv: (+1)
+   \        0x0   0x4802             LDR.N    R0,??Get_0
+   \        0x2   0x6800             LDR      R0,[R0, #+0]
+   \        0x4   0xF3C0 0x30C0      UBFX     R0,R0,#+15,#+1
+   \        0x8   0x4770             BX       LR
+   \        0xA   0xBF00             Nop
+   \                     ??Get_0:
+   \        0xC   0x4000'440C        DC32     0x4000440c
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 6U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 2U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI26GPIOA_MODER_MODER15_ValuesIN5GPIOA5MODERELj6ELj2E13ReadWriteModeNS1_14GPIOAMODERBaseEES4_Lj2EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_2
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF030 0x00C0      BICS     R0,R0,#0xC0
+   \        0x8   0xF050 0x0080      ORRS     R0,R0,#0x80
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
+   \                     ??Set_2:
+   \       0x10   0x4002'0000        DC32     0x40020000
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 4U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 2U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI26GPIOA_MODER_MODER15_ValuesIN5GPIOA5MODERELj4ELj2E13ReadWriteModeNS1_14GPIOAMODERBaseEES4_Lj2EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_3
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF030 0x0030      BICS     R0,R0,#0x30
+   \        0x8   0xF050 0x0020      ORRS     R0,R0,#0x20
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
+   \                     ??Set_3:
+   \       0x10   0x4002'0000        DC32     0x40020000
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<GPIOA_AFRL_AFRL7_Values<GPIOA::AFRL, 12U, 4U, ReadWriteMode, GPIOA::GPIOAAFRLBase>, GPIOA::GPIOAAFRLBase, 7U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI23GPIOA_AFRL_AFRL7_ValuesIN5GPIOA4AFRLELj12ELj4E13ReadWriteModeNS1_13GPIOAAFRLBaseEES4_Lj7EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_4
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF430 0x4070      BICS     R0,R0,#0xF000
+   \        0x8   0xF450 0x40E0      ORRS     R0,R0,#0x7000
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
+   \                     ??Set_4:
+   \       0x10   0x4002'0020        DC32     0x40020020
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<GPIOA_AFRL_AFRL7_Values<GPIOA::AFRL, 8U, 4U, ReadWriteMode, GPIOA::GPIOAAFRLBase>, GPIOA::GPIOAAFRLBase, 7U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI23GPIOA_AFRL_AFRL7_ValuesIN5GPIOA4AFRLELj8ELj4E13ReadWriteModeNS1_13GPIOAAFRLBaseEES4_Lj7EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_5
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF430 0x6070      BICS     R0,R0,#0xF00
+   \        0x8   0xF450 0x60E0      ORRS     R0,R0,#0x700
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
+   \                     ??Set_5:
+   \       0x10   0x4002'0020        DC32     0x40020020
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<GPIOA_PUPDR_PUPDR15_Values<GPIOA::PUPDR, 4U, 2U, ReadWriteMode, GPIOA::GPIOAPUPDRBase>, GPIOA::GPIOAPUPDRBase, 0U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI26GPIOA_PUPDR_PUPDR15_ValuesIN5GPIOA5PUPDRELj4ELj2E13ReadWriteModeNS1_14GPIOAPUPDRBaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4902             LDR.N    R1,??Set_6
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF030 0x0030      BICS     R0,R0,#0x30
+   \        0x8   0x6008             STR      R0,[R1, #+0]
+   \        0xA   0x4770             BX       LR
+   \                     ??Set_6:
+   \        0xC   0x4002'000C        DC32     0x4002000c
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<GPIOA_PUPDR_PUPDR15_Values<GPIOA::PUPDR, 6U, 2U, ReadWriteMode, GPIOA::GPIOAPUPDRBase>, GPIOA::GPIOAPUPDRBase, 1U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI26GPIOA_PUPDR_PUPDR15_ValuesIN5GPIOA5PUPDRELj6ELj2E13ReadWriteModeNS1_14GPIOAPUPDRBaseEES4_Lj1EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_7
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF030 0x00C0      BICS     R0,R0,#0xC0
+   \        0x8   0xF050 0x0040      ORRS     R0,R0,#0x40
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
+   \                     ??Set_7:
+   \       0x10   0x4002'000C        DC32     0x4002000c
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<USART2_CR1_OVER8_Values<USART2::CR1, 15U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI23USART2_CR1_OVER8_ValuesIN6USART23CR1ELj15ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4902             LDR.N    R1,??Set_8
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF430 0x4000      BICS     R0,R0,#0x8000
+   \        0x8   0x6008             STR      R0,[R1, #+0]
+   \        0xA   0x4770             BX       LR
+   \                     ??Set_8:
+   \        0xC   0x4000'440C        DC32     0x4000440c
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<USART2_CR1_M_Values<USART2::CR1, 12U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI19USART2_CR1_M_ValuesIN6USART23CR1ELj12ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4902             LDR.N    R1,??Set_9
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF430 0x5080      BICS     R0,R0,#0x1000
+   \        0x8   0x6008             STR      R0,[R1, #+0]
+   \        0xA   0x4770             BX       LR
+   \                     ??Set_9:
+   \        0xC   0x4000'440C        DC32     0x4000440c
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<USART2_CR2_STOP_Values<USART2::CR2, 12U, 2U, ReadWriteMode, USART2::USART2CR2Base>, USART2::USART2CR2Base, 0U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI22USART2_CR2_STOP_ValuesIN6USART23CR2ELj12ELj2E13ReadWriteModeNS1_13USART2CR2BaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4902             LDR.N    R1,??Set_10
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF430 0x5040      BICS     R0,R0,#0x3000
+   \        0x8   0x6008             STR      R0,[R1, #+0]
+   \        0xA   0x4770             BX       LR
+   \                     ??Set_10:
+   \        0xC   0x4000'4410        DC32     0x40004410
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<USART2_CR1_PCE_Values<USART2::CR1, 10U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI21USART2_CR1_PCE_ValuesIN6USART23CR1ELj10ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4902             LDR.N    R1,??Set_11
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF430 0x6080      BICS     R0,R0,#0x400
+   \        0x8   0x6008             STR      R0,[R1, #+0]
+   \        0xA   0x4770             BX       LR
+   \                     ??Set_11:
+   \        0xC   0x4000'440C        DC32     0x4000440c
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<USART2_CR1_RE_Values<USART2::CR1, 2U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI20USART2_CR1_RE_ValuesIN6USART23CR1ELj2ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4902             LDR.N    R1,??Set_12
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF030 0x0004      BICS     R0,R0,#0x4
+   \        0x8   0x6008             STR      R0,[R1, #+0]
+   \        0xA   0x4770             BX       LR
+   \                     ??Set_12:
+   \        0xC   0x4000'440C        DC32     0x4000440c
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<USART2_CR1_TXEIE_Values<USART2::CR1, 7U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 1U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI23USART2_CR1_TXEIE_ValuesIN6USART23CR1ELj7ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_13
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF030 0x0080      BICS     R0,R0,#0x80
+   \        0x8   0xF050 0x0080      ORRS     R0,R0,#0x80
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
+   \                     ??Set_13:
+   \       0x10   0x4000'440C        DC32     0x4000440c
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<USART2_SR_TC_Values<USART2::SR, 6U, 1U, ReadWriteMode, USART2::USART2SRBase>, USART2::USART2SRBase, 0U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI19USART2_SR_TC_ValuesIN6USART22SRELj6ELj1E13ReadWriteModeNS1_12USART2SRBaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4902             LDR.N    R1,??Set_14
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF030 0x0040      BICS     R0,R0,#0x40
+   \        0x8   0x6008             STR      R0,[R1, #+0]
+   \        0xA   0x4770             BX       LR
+   \                     ??Set_14:
+   \        0xC   0x4000'4400        DC32     0x40004400
+
+   \                                 In section .text, align 4
+   \   __vfp bool FieldValueBase<USART2_SR_TXE_Values<USART2::SR, 7U, 1U, ReadMode, USART2::USART2SRBase>, USART2::USART2SRBase, 1U>::IsSet<ReadMode, void>()
+   \                     _ZN14FieldValueBaseI20USART2_SR_TXE_ValuesIN6USART22SRELj7ELj1E8ReadModeNS1_12USART2SRBaseEES4_Lj1EE5IsSetIS3_vEEbv: (+1)
+   \        0x0   0x4802             LDR.N    R0,??IsSet_0
+   \        0x2   0x6800             LDR      R0,[R0, #+0]
+   \        0x4   0x09C0             LSRS     R0,R0,#+7
+   \        0x6   0xF010 0x0001      ANDS     R0,R0,#0x1
+   \        0xA   0x4770             BX       LR
+   \                     ??IsSet_0:
+   \        0xC   0x4000'4400        DC32     0x40004400
+
+   \                                 In section .text, align 4
+   \   __vfp void RegisterBase<1'073'759'236U, 32U, ReadWriteMode>::Write<ReadWriteMode, void>(uint32_t)
+   \                     _ZN12RegisterBaseILj1073759236ELj32E13ReadWriteModeE5WriteIS0_vEEvj: (+1)
+   \        0x0   0x4901             LDR.N    R1,??Write_0
+   \        0x2   0x6008             STR      R0,[R1, #+0]
+   \        0x4   0x4770             BX       LR
+   \        0x6   0xBF00             Nop
+   \                     ??Write_0:
+   \        0x8   0x4000'4404        DC32     0x40004404
+      3          #include "usart2registers.hpp" // USART2
+      4          
+
+   \                                 In section .text, align 2, keep-with-next
+   \   __vfp Usart::subobject Usart()
+   \                     _ZN5UsartC2Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN5UsartC1Ev
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2, keep-with-next
+      5          Usart::Usart()
+      6          {}
+   \                     _ZN5UsartC1Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN6IUsartC2Ev
+   \        0xA   0x....             LDR.N    R0,??DataTable2
+   \        0xC   0x6020             STR      R0,[R4, #+0]
+   \        0xE   0x0020             MOVS     R0,R4
+   \       0x10   0xBD10             POP      {R4,PC}
+      7          
+
+   \                                 In section .text, align 2, keep-with-next
+      8          void Usart::SendMessage(std::string message)
+      9          {
+   \                     _ZN5Usart11SendMessageESs: (+1)
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+     10            std::size_t i = 0;
+   \        0x6   0x2600             MOVS     R6,#+0
+     11            while(i < message.length())
+   \                     ??SendMessage_0: (+1)
+   \        0x8   0x0028             MOVS     R0,R5
+   \        0xA   0x.... 0x....      BL       _ZNKSs6lengthEv
+   \        0xE   0x4286             CMP      R6,R0
+   \       0x10   0xD20C             BCS.N    ??SendMessage_1
+     12            {
+     13              while(!USART2::SR::TXE::DataRegisterEmpty::IsSet())
+   \                     ??SendMessage_2: (+1)
+   \       0x12   0x.... 0x....      BL       _ZN14FieldValueBaseI20USART2_SR_TXE_ValuesIN6USART22SRELj7ELj1E8ReadModeNS1_12USART2SRBaseEES4_Lj1EE5IsSetIS3_vEEbv
+   \       0x16   0x2800             CMP      R0,#+0
+   \       0x18   0xD0FB             BEQ.N    ??SendMessage_2
+     14              {
+     15              }
+     16              USART2::DR::Write(message[i++]);
+   \       0x1A   0x0031             MOVS     R1,R6
+   \       0x1C   0x0028             MOVS     R0,R5
+   \       0x1E   0x.... 0x....      BL       _ZNSsixEj
+   \       0x22   0x1C76             ADDS     R6,R6,#+1
+   \       0x24   0x7800             LDRB     R0,[R0, #+0]
+   \       0x26   0x.... 0x....      BL       _ZN12RegisterBaseILj1073759236ELj32E13ReadWriteModeE5WriteIS0_vEEvj
+   \       0x2A   0xE7ED             B.N      ??SendMessage_0
+     17            }
+     18          }
+   \                     ??SendMessage_1: (+1)
+   \       0x2C   0xBD70             POP      {R4-R6,PC}
+     19          
+
+   \                                 In section .text, align 2, keep-with-next
+     20          void Usart::ConfigUsart()
+     21          {
+   \                     _ZN5Usart11ConfigUsartEv: (+1)
+   \        0x0   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+   \        0x4   0xED2D 0x8B02      VPUSH    {D8}
+   \        0x8   0x0004             MOVS     R4,R0
+     22            GPIOA::MODER::MODER3::Alternate::Set();
+   \        0xA   0x.... 0x....      BL       _ZN14FieldValueBaseI26GPIOA_MODER_MODER15_ValuesIN5GPIOA5MODERELj6ELj2E13ReadWriteModeNS1_14GPIOAMODERBaseEES4_Lj2EE3SetIS3_vEEvv
+     23            GPIOA::MODER::MODER2::Alternate::Set();
+   \        0xE   0x.... 0x....      BL       _ZN14FieldValueBaseI26GPIOA_MODER_MODER15_ValuesIN5GPIOA5MODERELj4ELj2E13ReadWriteModeNS1_14GPIOAMODERBaseEES4_Lj2EE3SetIS3_vEEvv
+     24            GPIOA::AFRL::AFRL3::Af7::Set();
+   \       0x12   0x.... 0x....      BL       _ZN14FieldValueBaseI23GPIOA_AFRL_AFRL7_ValuesIN5GPIOA4AFRLELj12ELj4E13ReadWriteModeNS1_13GPIOAAFRLBaseEES4_Lj7EE3SetIS3_vEEvv
+     25            GPIOA::AFRL::AFRL2::Af7::Set();
+   \       0x16   0x.... 0x....      BL       _ZN14FieldValueBaseI23GPIOA_AFRL_AFRL7_ValuesIN5GPIOA4AFRLELj8ELj4E13ReadWriteModeNS1_13GPIOAAFRLBaseEES4_Lj7EE3SetIS3_vEEvv
+     26            GPIOA::PUPDR::PUPDR2::NoPullUpNoPullDown::Set();
+   \       0x1A   0x.... 0x....      BL       _ZN14FieldValueBaseI26GPIOA_PUPDR_PUPDR15_ValuesIN5GPIOA5PUPDRELj4ELj2E13ReadWriteModeNS1_14GPIOAPUPDRBaseEES4_Lj0EE3SetIS3_vEEvv
+     27            GPIOA::PUPDR::PUPDR3::PullUp::Set();
+   \       0x1E   0x.... 0x....      BL       _ZN14FieldValueBaseI26GPIOA_PUPDR_PUPDR15_ValuesIN5GPIOA5PUPDRELj6ELj2E13ReadWriteModeNS1_14GPIOAPUPDRBaseEES4_Lj1EE3SetIS3_vEEvv
+     28            USART2::CR1::OVER8::OversamplingBy16::Set();
+   \       0x22   0x.... 0x....      BL       _ZN14FieldValueBaseI23USART2_CR1_OVER8_ValuesIN6USART23CR1ELj15ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv
+     29            USART2::CR1::M::Data8bits::Set();
+   \       0x26   0x.... 0x....      BL       _ZN14FieldValueBaseI19USART2_CR1_M_ValuesIN6USART23CR1ELj12ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv
+     30            USART2::CR2::STOP::Value0::Set(); // 1 stop bit
+   \       0x2A   0x.... 0x....      BL       _ZN14FieldValueBaseI22USART2_CR2_STOP_ValuesIN6USART23CR2ELj12ELj2E13ReadWriteModeNS1_13USART2CR2BaseEES4_Lj0EE3SetIS3_vEEvv
+     31            USART2::CR1::PCE::ParityControlDisable::Set();
+   \       0x2E   0x.... 0x....      BL       _ZN14FieldValueBaseI21USART2_CR1_PCE_ValuesIN6USART23CR1ELj10ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv
+     32            USART2::CR1::RE::Disable::Set();
+   \       0x32   0x.... 0x....      BL       _ZN14FieldValueBaseI20USART2_CR1_RE_ValuesIN6USART23CR1ELj2ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv
+     33            USART2::CR1::TXEIE::InterruptWhenTXE::Set();
+   \       0x36   0x.... 0x....      BL       _ZN14FieldValueBaseI23USART2_CR1_TXEIE_ValuesIN6USART23CR1ELj7ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv
+     34            constexpr std::uint32_t SystemCoreClock = 8'000'000U;
+   \       0x3A   0x....             LDR.N    R5,??DataTable2_1
+     35            constexpr std::uint32_t BaudRate = 9600;
+   \       0x3C   0xF44F 0x5616      MOV      R6,#+9600
+     36            double UsartDivDouble = 1.0 / (BaudRate * 8 * (2 - USART2::CR1::OVER8::Get())) * SystemCoreClock;
+   \       0x40   0x.... 0x....      BL       _ZN13RegisterFieldIN6USART23CR1ELj15ELj1E13ReadWriteModevE3GetIS2_vEEjv
+   \       0x44   0xF1D0 0x0002      RSBS     R0,R0,#+2
+   \       0x48   0xF45F 0x3196      MOVS     R1,#+76800
+   \       0x4C   0x4348             MULS     R0,R1,R0
+   \       0x4E   0x.... 0x....      BL       __aeabi_ui2d
+   \       0x52   0x0002             MOVS     R2,R0
+   \       0x54   0x000B             MOVS     R3,R1
+   \       0x56   0x2000             MOVS     R0,#+0
+   \       0x58   0x....             LDR.N    R1,??DataTable2_2
+   \       0x5A   0x.... 0x....      BL       __aeabi_ddiv
+   \       0x5E   0x2200             MOVS     R2,#+0
+   \       0x60   0x....             LDR.N    R3,??DataTable2_3
+   \       0x62   0x.... 0x....      BL       __aeabi_dmul
+   \       0x66   0xEC41 0x0B18      VMOV     D8,R0,R1
+     37            uint32_t UsartDivMantissa = static_cast<uint32_t>(UsartDivDouble);
+   \       0x6A   0xEC51 0x0B18      VMOV     R0,R1,D8
+   \       0x6E   0x.... 0x....      BL       __aeabi_d2uiz
+   \       0x72   0x0007             MOVS     R7,R0
+     38            uint16_t UsartDivFraction = static_cast<uint32_t>(round((UsartDivDouble - UsartDivMantissa) * 16));
+   \       0x74   0x0038             MOVS     R0,R7
+   \       0x76   0x.... 0x....      BL       __aeabi_ui2d
+   \       0x7A   0x0002             MOVS     R2,R0
+   \       0x7C   0x000B             MOVS     R3,R1
+   \       0x7E   0xEC51 0x0B18      VMOV     R0,R1,D8
+   \       0x82   0x.... 0x....      BL       __aeabi_dsub
+   \       0x86   0x2200             MOVS     R2,#+0
+   \       0x88   0x....             LDR.N    R3,??DataTable2_4
+   \       0x8A   0x.... 0x....      BL       __aeabi_dmul
+   \       0x8E   0xEC41 0x0B10      VMOV     D0,R0,R1
+   \       0x92   0x.... 0x....      BL       round
+   \       0x96   0xEC51 0x0B10      VMOV     R0,R1,D0
+   \       0x9A   0x.... 0x....      BL       __aeabi_d2uiz
+   \       0x9E   0x4680             MOV      R8,R0
+     39            USART2::BRR::DIV_Mantissa::Set(UsartDivMantissa);
+   \       0xA0   0x0038             MOVS     R0,R7
+   \       0xA2   0x.... 0x....      BL       _ZN13RegisterFieldIN6USART23BRRELj4ELj12E13ReadWriteModevE3SetIS2_vEEvj
+     40            USART2::BRR::DIV_Fraction::Set(UsartDivFraction);
+   \       0xA6   0x4640             MOV      R0,R8
+   \       0xA8   0xB280             UXTH     R0,R0
+   \       0xAA   0x.... 0x....      BL       _ZN13RegisterFieldIN6USART23BRRELj0ELj4E13ReadWriteModevE3SetIS2_vEEvj
+     41            USART2::SR::TC::TransmitionNotComplete::Set();
+   \       0xAE   0x.... 0x....      BL       _ZN14FieldValueBaseI19USART2_SR_TC_ValuesIN6USART22SRELj6ELj1E13ReadWriteModeNS1_12USART2SRBaseEES4_Lj0EE3SetIS3_vEEvv
+     42          }
+   \       0xB2   0xECBD 0x8B02      VPOP     {D8}
+   \       0xB6   0xE8BD 0x81F0      POP      {R4-R8,PC}
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \        0x0   0x....'....        DC32     _ZTV5Usart+0x8
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \        0x0   0x007A'1200        DC32     0x7a1200
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_2:
+   \        0x0   0x3FF0'0000        DC32     0x3ff00000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_3:
+   \        0x0   0x415E'8480        DC32     0x415e8480
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_4:
+   \        0x0   0x4030'0000        DC32     0x40300000
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   FieldValueBase<GPIOA_AFRL_AFRL7_Values<GPIOA::AFRL, 12U, 4U, ReadWriteMode, GPIOA::GPIOAAFRLBase>, GPIOA::GPIOAAFRLBase, 7U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<GPIOA_AFRL_AFRL7_Values<GPIOA::AFRL, 8U, 4U, ReadWriteMode, GPIOA::GPIOAAFRLBase>, GPIOA::GPIOAAFRLBase, 7U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 4U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 2U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 6U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 2U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<GPIOA_PUPDR_PUPDR15_Values<GPIOA::PUPDR, 4U, 2U, ReadWriteMode, GPIOA::GPIOAPUPDRBase>, GPIOA::GPIOAPUPDRBase, 0U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<GPIOA_PUPDR_PUPDR15_Values<GPIOA::PUPDR, 6U, 2U, ReadWriteMode, GPIOA::GPIOAPUPDRBase>, GPIOA::GPIOAPUPDRBase, 1U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<USART2_CR1_M_Values<USART2::CR1, 12U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<USART2_CR1_OVER8_Values<USART2::CR1, 15U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<USART2_CR1_PCE_Values<USART2::CR1, 10U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<USART2_CR1_RE_Values<USART2::CR1, 2U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<USART2_CR1_TXEIE_Values<USART2::CR1, 7U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 1U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<USART2_CR2_STOP_Values<USART2::CR2, 12U, 2U, ReadWriteMode, USART2::USART2CR2Base>, USART2::USART2CR2Base, 0U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<USART2_SR_TC_Values<USART2::SR, 6U, 1U, ReadWriteMode, USART2::USART2SRBase>, USART2::USART2SRBase, 0U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<USART2_SR_TXE_Values<USART2::SR, 7U, 1U, ReadMode, USART2::USART2SRBase>, USART2::USART2SRBase, 1U>::IsSet<ReadMode, void>()
+       0   IUsart::IUsart() noexcept
+       8   IUsart::subobject IUsart() noexcept
+         8   -> IUsart::IUsart() noexcept
+       0   RegisterBase<1'073'759'236U, 32U, ReadWriteMode>::Write<ReadWriteMode, void>(uint32_t)
+       8   RegisterField<USART2::BRR, 0U, 4U, ReadWriteMode>::Set<ReadWriteMode, void>(uint32_t)
+         8   -> __aeabi_assert
+         8   -> __iar_EmptyStepPoint
+       8   RegisterField<USART2::BRR, 4U, 12U, ReadWriteMode>::Set<ReadWriteMode, void>(uint32_t)
+         8   -> __aeabi_assert
+         8   -> __iar_EmptyStepPoint
+       0   RegisterField<USART2::CR1, 15U, 1U, ReadWriteMode>::Get<ReadWriteMode, void>()
+      32   Usart::ConfigUsart()
+        32   -> FieldValueBase<GPIOA_AFRL_AFRL7_Values<GPIOA::AFRL, 12U, 4U, ReadWriteMode, GPIOA::GPIOAAFRLBase>, GPIOA::GPIOAAFRLBase, 7U>::Set<ReadWriteMode, void>()
+        32   -> FieldValueBase<GPIOA_AFRL_AFRL7_Values<GPIOA::AFRL, 8U, 4U, ReadWriteMode, GPIOA::GPIOAAFRLBase>, GPIOA::GPIOAAFRLBase, 7U>::Set<ReadWriteMode, void>()
+        32   -> FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 4U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 2U>::Set<ReadWriteMode, void>()
+        32   -> FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 6U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 2U>::Set<ReadWriteMode, void>()
+        32   -> FieldValueBase<GPIOA_PUPDR_PUPDR15_Values<GPIOA::PUPDR, 4U, 2U, ReadWriteMode, GPIOA::GPIOAPUPDRBase>, GPIOA::GPIOAPUPDRBase, 0U>::Set<ReadWriteMode, void>()
+        32   -> FieldValueBase<GPIOA_PUPDR_PUPDR15_Values<GPIOA::PUPDR, 6U, 2U, ReadWriteMode, GPIOA::GPIOAPUPDRBase>, GPIOA::GPIOAPUPDRBase, 1U>::Set<ReadWriteMode, void>()
+        32   -> FieldValueBase<USART2_CR1_M_Values<USART2::CR1, 12U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
+        32   -> FieldValueBase<USART2_CR1_OVER8_Values<USART2::CR1, 15U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
+        32   -> FieldValueBase<USART2_CR1_PCE_Values<USART2::CR1, 10U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
+        32   -> FieldValueBase<USART2_CR1_RE_Values<USART2::CR1, 2U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
+        32   -> FieldValueBase<USART2_CR1_TXEIE_Values<USART2::CR1, 7U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 1U>::Set<ReadWriteMode, void>()
+        32   -> FieldValueBase<USART2_CR2_STOP_Values<USART2::CR2, 12U, 2U, ReadWriteMode, USART2::USART2CR2Base>, USART2::USART2CR2Base, 0U>::Set<ReadWriteMode, void>()
+        32   -> FieldValueBase<USART2_SR_TC_Values<USART2::SR, 6U, 1U, ReadWriteMode, USART2::USART2SRBase>, USART2::USART2SRBase, 0U>::Set<ReadWriteMode, void>()
+        32   -> RegisterField<USART2::BRR, 0U, 4U, ReadWriteMode>::Set<ReadWriteMode, void>(uint32_t)
+        32   -> RegisterField<USART2::BRR, 4U, 12U, ReadWriteMode>::Set<ReadWriteMode, void>(uint32_t)
+        32   -> RegisterField<USART2::CR1, 15U, 1U, ReadWriteMode>::Get<ReadWriteMode, void>()
+        32   -> __aeabi_d2uiz
+        32   -> __aeabi_ddiv
+        32   -> __aeabi_dmul
+        32   -> __aeabi_dsub
+        32   -> __aeabi_ui2d
+        32   -> round
+      16   Usart::SendMessage(std::string)
+        16   -> FieldValueBase<USART2_SR_TXE_Values<USART2::SR, 7U, 1U, ReadMode, USART2::USART2SRBase>, USART2::USART2SRBase, 1U>::IsSet<ReadMode, void>()
+        16   -> RegisterBase<1'073'759'236U, 32U, ReadWriteMode>::Write<ReadWriteMode, void>(uint32_t)
+        16   -> std::string::length() const noexcept
+        16   -> std::string::operator[](size_t)
+       8   Usart::Usart()
+         8   -> IUsart::subobject IUsart() noexcept
+       8   Usart::subobject Usart()
+         8   -> Usart::Usart()
+       0   std::_Addressof<char>(char &, std::false_type) noexcept
+       0   std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_second() const noexcept
+       0   std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_second() noexcept
+       8   std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() const noexcept
+         8   -> std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_second() const noexcept
+       8   std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() noexcept
+         8   -> std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_second() noexcept
+       8   std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr()
+         8   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() noexcept
+         8   -> std::_String_val<std::_Simple_types<char>>::_Myptr()
+       8   std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Mysize() const noexcept
+         8   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() const noexcept
+       8   std::_String_val<std::_Simple_types<char>>::_Myptr()
+         8   -> std::addressof<char>(char &) noexcept
+       8   std::addressof<char>(char &) noexcept
+         8   -> std::_Addressof<char>(char &, std::false_type) noexcept
+       8   std::string::length() const noexcept
+         8   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Mysize() const noexcept
+      16   std::string::operator[](size_t)
+        16   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr()
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+       4  ??DataTable2_1
+       4  ??DataTable2_2
+       4  ??DataTable2_3
+       4  ??DataTable2_4
+      20  FieldValueBase<GPIOA_AFRL_AFRL7_Values<GPIOA::AFRL, 12U, 4U, ReadWriteMode, GPIOA::GPIOAAFRLBase>, GPIOA::GPIOAAFRLBase, 7U>::Set<ReadWriteMode, void>()
+      20  FieldValueBase<GPIOA_AFRL_AFRL7_Values<GPIOA::AFRL, 8U, 4U, ReadWriteMode, GPIOA::GPIOAAFRLBase>, GPIOA::GPIOAAFRLBase, 7U>::Set<ReadWriteMode, void>()
+      20  FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 4U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 2U>::Set<ReadWriteMode, void>()
+      20  FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 6U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 2U>::Set<ReadWriteMode, void>()
+      16  FieldValueBase<GPIOA_PUPDR_PUPDR15_Values<GPIOA::PUPDR, 4U, 2U, ReadWriteMode, GPIOA::GPIOAPUPDRBase>, GPIOA::GPIOAPUPDRBase, 0U>::Set<ReadWriteMode, void>()
+      20  FieldValueBase<GPIOA_PUPDR_PUPDR15_Values<GPIOA::PUPDR, 6U, 2U, ReadWriteMode, GPIOA::GPIOAPUPDRBase>, GPIOA::GPIOAPUPDRBase, 1U>::Set<ReadWriteMode, void>()
+      16  FieldValueBase<USART2_CR1_M_Values<USART2::CR1, 12U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
+      16  FieldValueBase<USART2_CR1_OVER8_Values<USART2::CR1, 15U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
+      16  FieldValueBase<USART2_CR1_PCE_Values<USART2::CR1, 10U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
+      16  FieldValueBase<USART2_CR1_RE_Values<USART2::CR1, 2U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
+      20  FieldValueBase<USART2_CR1_TXEIE_Values<USART2::CR1, 7U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 1U>::Set<ReadWriteMode, void>()
+      16  FieldValueBase<USART2_CR2_STOP_Values<USART2::CR2, 12U, 2U, ReadWriteMode, USART2::USART2CR2Base>, USART2::USART2CR2Base, 0U>::Set<ReadWriteMode, void>()
+      16  FieldValueBase<USART2_SR_TC_Values<USART2::SR, 6U, 1U, ReadWriteMode, USART2::USART2SRBase>, USART2::USART2SRBase, 0U>::Set<ReadWriteMode, void>()
+      16  FieldValueBase<USART2_SR_TXE_Values<USART2::SR, 7U, 1U, ReadMode, USART2::USART2SRBase>, USART2::USART2SRBase, 1U>::IsSet<ReadMode, void>()
+       2  IUsart::IUsart() noexcept
+      12  IUsart::subobject IUsart() noexcept
+      12  RegisterBase<1'073'759'236U, 32U, ReadWriteMode>::Write<ReadWriteMode, void>(uint32_t)
+      48  RegisterField<USART2::BRR, 0U, 4U, ReadWriteMode>::Set<ReadWriteMode, void>(uint32_t)
+      52  RegisterField<USART2::BRR, 4U, 12U, ReadWriteMode>::Set<ReadWriteMode, void>(uint32_t)
+      16  RegisterField<USART2::CR1, 15U, 1U, ReadWriteMode>::Get<ReadWriteMode, void>()
+     186  Usart::ConfigUsart()
+      46  Usart::SendMessage(std::string)
+      18  Usart::Usart()
+      12  Usart::subobject Usart()
+       2  std::_Addressof<char>(char &, std::false_type) noexcept
+       2  std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_second() const noexcept
+       2  std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_second() noexcept
+      12  std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() const noexcept
+      12  std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() noexcept
+      16  std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr()
+      14  std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Mysize() const noexcept
+      22  std::_String_val<std::_Simple_types<char>>::_Myptr()
+      20  std::addressof<char>(char &) noexcept
+      14  std::string::length() const noexcept
+      16  std::string::operator[](size_t)
+     609  -- Other
+
+ 
+ 609 bytes in section .rodata
+ 804 bytes in section .text
+ 
+ 282 bytes of CODE  memory (+ 522 bytes shared)
+   1 byte  of CONST memory (+ 608 bytes shared)
+
+Errors: none
+Warnings: none

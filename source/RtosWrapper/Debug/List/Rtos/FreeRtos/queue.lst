@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         26/Apr/2025  19:24:50
+# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         27/Apr/2025  00:21:29
 # Copyright 1999-2022 IAR Systems AB.
 #
 #    Cpu mode                     =  thumb
@@ -102,7 +102,11 @@
 #        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
 #        -I
 #        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
-#        -Ol) --dependencies=n
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+#        -On) --dependencies=n
 #        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Rtos\FreeRtos\queue.o.d
 #    Locale                       =  C
 #    List file                    =
@@ -405,46 +409,47 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     279          BaseType_t xQueueGenericReset( QueueHandle_t xQueue, BaseType_t xNewQueue )
     280          {
    \                     xQueueGenericReset: (+1)
-   \        0x0   0xB538             PUSH     {R3-R5,LR}
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
    \        0x2   0x0005             MOVS     R5,R0
    \        0x4   0x000C             MOVS     R4,R1
     281          Queue_t * const pxQueue = ( Queue_t * ) xQueue;
+   \        0x6   0x002E             MOVS     R6,R5
     282          
     283          	configASSERT( pxQueue );
     284          
     285          	taskENTER_CRITICAL();
-   \        0x6   0x.... 0x....      BL       vPortEnterCritical
+   \        0x8   0x.... 0x....      BL       vPortEnterCritical
     286          	{
     287          		pxQueue->pcTail = pxQueue->pcHead + ( pxQueue->uxLength * pxQueue->uxItemSize );
-   \        0xA   0x6829             LDR      R1,[R5, #+0]
-   \        0xC   0x6BEA             LDR      R2,[R5, #+60]
-   \        0xE   0x6C28             LDR      R0,[R5, #+64]
-   \       0x10   0x4342             MULS     R2,R0,R2
-   \       0x12   0xEB01 0x0002      ADD      R0,R1,R2
-   \       0x16   0x6068             STR      R0,[R5, #+4]
+   \        0xC   0x6831             LDR      R1,[R6, #+0]
+   \        0xE   0x6BF2             LDR      R2,[R6, #+60]
+   \       0x10   0x6C30             LDR      R0,[R6, #+64]
+   \       0x12   0x4342             MULS     R2,R0,R2
+   \       0x14   0xEB01 0x0002      ADD      R0,R1,R2
+   \       0x18   0x6070             STR      R0,[R6, #+4]
     288          		pxQueue->uxMessagesWaiting = ( UBaseType_t ) 0U;
-   \       0x18   0x2000             MOVS     R0,#+0
-   \       0x1A   0x63A8             STR      R0,[R5, #+56]
+   \       0x1A   0x2000             MOVS     R0,#+0
+   \       0x1C   0x63B0             STR      R0,[R6, #+56]
     289          		pxQueue->pcWriteTo = pxQueue->pcHead;
-   \       0x1C   0x6828             LDR      R0,[R5, #+0]
-   \       0x1E   0x60A8             STR      R0,[R5, #+8]
+   \       0x1E   0x6830             LDR      R0,[R6, #+0]
+   \       0x20   0x60B0             STR      R0,[R6, #+8]
     290          		pxQueue->u.pcReadFrom = pxQueue->pcHead + ( ( pxQueue->uxLength - ( UBaseType_t ) 1U ) * pxQueue->uxItemSize );
-   \       0x20   0x6829             LDR      R1,[R5, #+0]
-   \       0x22   0x6BEA             LDR      R2,[R5, #+60]
-   \       0x24   0x1E52             SUBS     R2,R2,#+1
-   \       0x26   0x6C28             LDR      R0,[R5, #+64]
-   \       0x28   0x4342             MULS     R2,R0,R2
-   \       0x2A   0xEB01 0x0002      ADD      R0,R1,R2
-   \       0x2E   0x60E8             STR      R0,[R5, #+12]
+   \       0x22   0x6831             LDR      R1,[R6, #+0]
+   \       0x24   0x6BF2             LDR      R2,[R6, #+60]
+   \       0x26   0x1E52             SUBS     R2,R2,#+1
+   \       0x28   0x6C30             LDR      R0,[R6, #+64]
+   \       0x2A   0x4342             MULS     R2,R0,R2
+   \       0x2C   0xEB01 0x0002      ADD      R0,R1,R2
+   \       0x30   0x60F0             STR      R0,[R6, #+12]
     291          		pxQueue->cRxLock = queueUNLOCKED;
-   \       0x30   0xF05F 0x30FF      MOVS     R0,#+4294967295
-   \       0x34   0xF885 0x0044      STRB     R0,[R5, #+68]
+   \       0x32   0xF05F 0x30FF      MOVS     R0,#+4294967295
+   \       0x36   0xF886 0x0044      STRB     R0,[R6, #+68]
     292          		pxQueue->cTxLock = queueUNLOCKED;
-   \       0x38   0xF885 0x0045      STRB     R0,[R5, #+69]
+   \       0x3A   0xF886 0x0045      STRB     R0,[R6, #+69]
     293          
     294          		if( xNewQueue == pdFALSE )
-   \       0x3C   0x2C00             CMP      R4,#+0
-   \       0x3E   0xD112             BNE.N    ??xQueueGenericReset_0
+   \       0x3E   0x2C00             CMP      R4,#+0
+   \       0x40   0xD112             BNE.N    ??xQueueGenericReset_0
     295          		{
     296          			/* If there are tasks blocked waiting to read from the queue, then
     297          			the tasks will remain blocked as after this function exits the queue
@@ -452,23 +457,23 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     299          			the queue, then one should be unblocked as after this function exits
     300          			it will be possible to write to it. */
     301          			if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToSend ) ) == pdFALSE )
-   \       0x40   0x6928             LDR      R0,[R5, #+16]
-   \       0x42   0x2800             CMP      R0,#+0
-   \       0x44   0xD017             BEQ.N    ??xQueueGenericReset_1
+   \       0x42   0x6930             LDR      R0,[R6, #+16]
+   \       0x44   0x2800             CMP      R0,#+0
+   \       0x46   0xD017             BEQ.N    ??xQueueGenericReset_1
     302          			{
     303          				if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToSend ) ) != pdFALSE )
-   \       0x46   0xF115 0x0010      ADDS     R0,R5,#+16
-   \       0x4A   0x.... 0x....      BL       xTaskRemoveFromEventList
-   \       0x4E   0x2800             CMP      R0,#+0
-   \       0x50   0xD011             BEQ.N    ??xQueueGenericReset_1
+   \       0x48   0xF116 0x0010      ADDS     R0,R6,#+16
+   \       0x4C   0x.... 0x....      BL       xTaskRemoveFromEventList
+   \       0x50   0x2800             CMP      R0,#+0
+   \       0x52   0xD011             BEQ.N    ??xQueueGenericReset_1
     304          				{
     305          					queueYIELD_IF_USING_PREEMPTION();
-   \       0x52   0xF05F 0x5080      MOVS     R0,#+268435456
-   \       0x56   0x.... 0x....      LDR.W    R1,??DataTable5
-   \       0x5A   0x6008             STR      R0,[R1, #+0]
-   \       0x5C   0xF3BF 0x8F4F      DSB      SY
-   \       0x60   0xF3BF 0x8F6F      ISB      SY
-   \       0x64   0xE007             B.N      ??xQueueGenericReset_1
+   \       0x54   0xF05F 0x5080      MOVS     R0,#+268435456
+   \       0x58   0x.... 0x....      LDR.W    R1,??DataTable5
+   \       0x5C   0x6008             STR      R0,[R1, #+0]
+   \       0x5E   0xF3BF 0x8F4F      DSB      SY
+   \       0x62   0xF3BF 0x8F6F      ISB      SY
+   \       0x66   0xE007             B.N      ??xQueueGenericReset_1
     306          				}
     307          				else
     308          				{
@@ -485,22 +490,22 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     319          			/* Ensure the event queues start in the correct state. */
     320          			vListInitialise( &( pxQueue->xTasksWaitingToSend ) );
    \                     ??xQueueGenericReset_0: (+1)
-   \       0x66   0xF115 0x0010      ADDS     R0,R5,#+16
-   \       0x6A   0x.... 0x....      BL       vListInitialise
+   \       0x68   0xF116 0x0010      ADDS     R0,R6,#+16
+   \       0x6C   0x.... 0x....      BL       vListInitialise
     321          			vListInitialise( &( pxQueue->xTasksWaitingToReceive ) );
-   \       0x6E   0xF115 0x0024      ADDS     R0,R5,#+36
-   \       0x72   0x.... 0x....      BL       vListInitialise
+   \       0x70   0xF116 0x0024      ADDS     R0,R6,#+36
+   \       0x74   0x.... 0x....      BL       vListInitialise
     322          		}
     323          	}
     324          	taskEXIT_CRITICAL();
    \                     ??xQueueGenericReset_1: (+1)
-   \       0x76   0x.... 0x....      BL       vPortExitCritical
+   \       0x78   0x.... 0x....      BL       vPortExitCritical
     325          
     326          	/* A value is returned for calling semantic consistency with previous
     327          	versions. */
     328          	return pdPASS;
-   \       0x7A   0x2001             MOVS     R0,#+1
-   \       0x7C   0xBD32             POP      {R1,R4,R5,PC}
+   \       0x7C   0x2001             MOVS     R0,#+1
+   \       0x7E   0xBD70             POP      {R4-R6,PC}
     329          }
     330          /*-----------------------------------------------------------*/
     331          
@@ -511,8 +516,12 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     334          	QueueHandle_t xQueueGenericCreateStatic( const UBaseType_t uxQueueLength, const UBaseType_t uxItemSize, uint8_t *pucQueueStorage, StaticQueue_t *pxStaticQueue, const uint8_t ucQueueType )
     335          	{
    \                     xQueueGenericCreateStatic: (+1)
-   \        0x0   0xB51C             PUSH     {R2-R4,LR}
-   \        0x2   0x001C             MOVS     R4,R3
+   \        0x0   0xE92D 0x43F8      PUSH     {R3-R9,LR}
+   \        0x4   0x4680             MOV      R8,R0
+   \        0x6   0x000C             MOVS     R4,R1
+   \        0x8   0x0015             MOVS     R5,R2
+   \        0xA   0x4699             MOV      R9,R3
+   \        0xC   0x9F08             LDR      R7,[SP, #+32]
     336          	Queue_t *pxNewQueue;
     337          
     338          		configASSERT( uxQueueLength > ( UBaseType_t ) 0 );
@@ -524,26 +533,26 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     344          		/* A queue storage area should be provided if the item size is not 0, and
     345          		should not be provided if the item size is 0. */
     346          		configASSERT( !( ( pucQueueStorage != NULL ) && ( uxItemSize == 0 ) ) );
-   \        0x4   0x2A00             CMP      R2,#+0
-   \        0x6   0xD001             BEQ.N    ??xQueueGenericCreateStatic_0
-   \        0x8   0x2900             CMP      R1,#+0
-   \        0xA   0xD001             BEQ.N    ??xQueueGenericCreateStatic_1
+   \        0xE   0x2D00             CMP      R5,#+0
+   \       0x10   0xD001             BEQ.N    ??xQueueGenericCreateStatic_0
+   \       0x12   0x2C00             CMP      R4,#+0
+   \       0x14   0xD001             BEQ.N    ??xQueueGenericCreateStatic_1
    \                     ??xQueueGenericCreateStatic_0: (+1)
-   \        0xC   0x2301             MOVS     R3,#+1
-   \        0xE   0xE000             B.N      ??xQueueGenericCreateStatic_2
+   \       0x16   0x2001             MOVS     R0,#+1
+   \       0x18   0xE000             B.N      ??xQueueGenericCreateStatic_2
    \                     ??xQueueGenericCreateStatic_1: (+1)
-   \       0x10   0x2300             MOVS     R3,#+0
+   \       0x1A   0x2000             MOVS     R0,#+0
     347          		configASSERT( !( ( pucQueueStorage == NULL ) && ( uxItemSize != 0 ) ) );
    \                     ??xQueueGenericCreateStatic_2: (+1)
-   \       0x12   0x2A00             CMP      R2,#+0
-   \       0x14   0xD101             BNE.N    ??xQueueGenericCreateStatic_3
-   \       0x16   0x2900             CMP      R1,#+0
-   \       0x18   0xD101             BNE.N    ??xQueueGenericCreateStatic_4
+   \       0x1C   0x2D00             CMP      R5,#+0
+   \       0x1E   0xD101             BNE.N    ??xQueueGenericCreateStatic_3
+   \       0x20   0x2C00             CMP      R4,#+0
+   \       0x22   0xD101             BNE.N    ??xQueueGenericCreateStatic_4
    \                     ??xQueueGenericCreateStatic_3: (+1)
-   \       0x1A   0x2301             MOVS     R3,#+1
-   \       0x1C   0xE000             B.N      ??xQueueGenericCreateStatic_5
+   \       0x24   0x2001             MOVS     R0,#+1
+   \       0x26   0xE000             B.N      ??xQueueGenericCreateStatic_5
    \                     ??xQueueGenericCreateStatic_4: (+1)
-   \       0x1E   0x2300             MOVS     R3,#+0
+   \       0x28   0x2000             MOVS     R0,#+0
     348          
     349          		#if( configASSERT_DEFINED == 1 )
     350          		{
@@ -552,10 +561,10 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     353          			the real queue and semaphore structures. */
     354          			volatile size_t xSize = sizeof( StaticQueue_t );
    \                     ??xQueueGenericCreateStatic_5: (+1)
-   \       0x20   0x2348             MOVS     R3,#+72
-   \       0x22   0x9300             STR      R3,[SP, #+0]
+   \       0x2A   0x2048             MOVS     R0,#+72
+   \       0x2C   0x9000             STR      R0,[SP, #+0]
     355          			configASSERT( xSize == sizeof( Queue_t ) );
-   \       0x24   0x9B00             LDR      R3,[SP, #+0]
+   \       0x2E   0x9800             LDR      R0,[SP, #+0]
     356          		}
     357          		#endif /* configASSERT_DEFINED */
     358          
@@ -563,11 +572,11 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     360          		The address of a statically allocated storage area was also passed in
     361          		but is already set. */
     362          		pxNewQueue = ( Queue_t * ) pxStaticQueue; /*lint !e740 Unusual cast is ok as the structures are designed to have the same alignment, and the size is checked by an assert. */
+   \       0x30   0x464E             MOV      R6,R9
     363          
     364          		if( pxNewQueue != NULL )
-   \       0x26   0x2C00             CMP      R4,#+0
-   \       0x28   0xD004             BEQ.N    ??xQueueGenericCreateStatic_6
-   \       0x2A   0x9B04             LDR      R3,[SP, #+16]
+   \       0x32   0x2E00             CMP      R6,#+0
+   \       0x34   0xD007             BEQ.N    ??xQueueGenericCreateStatic_6
     365          		{
     366          			#if( configSUPPORT_DYNAMIC_ALLOCATION == 1 )
     367          			{
@@ -579,15 +588,19 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     373          			#endif /* configSUPPORT_DYNAMIC_ALLOCATION */
     374          
     375          			prvInitialiseNewQueue( uxQueueLength, uxItemSize, pucQueueStorage, ucQueueType, pxNewQueue );
-   \       0x2C   0x9400             STR      R4,[SP, #+0]
-   \       0x2E   0xB2DB             UXTB     R3,R3
-   \       0x30   0x.... 0x....      BL       prvInitialiseNewQueue
+   \       0x36   0x9600             STR      R6,[SP, #+0]
+   \       0x38   0x003B             MOVS     R3,R7
+   \       0x3A   0xB2DB             UXTB     R3,R3
+   \       0x3C   0x002A             MOVS     R2,R5
+   \       0x3E   0x0021             MOVS     R1,R4
+   \       0x40   0x4640             MOV      R0,R8
+   \       0x42   0x.... 0x....      BL       prvInitialiseNewQueue
     376          		}
     377          
     378          		return pxNewQueue;
    \                     ??xQueueGenericCreateStatic_6: (+1)
-   \       0x34   0x0020             MOVS     R0,R4
-   \       0x36   0xBD16             POP      {R1,R2,R4,PC}
+   \       0x46   0x0030             MOVS     R0,R6
+   \       0x48   0xE8BD 0x83F2      POP      {R1,R4-R9,PC}
     379          	}
     380          
     381          #endif /* configSUPPORT_STATIC_ALLOCATION */
@@ -646,43 +659,47 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     432          static void prvInitialiseNewQueue( const UBaseType_t uxQueueLength, const UBaseType_t uxItemSize, uint8_t *pucQueueStorage, const uint8_t ucQueueType, Queue_t *pxNewQueue )
     433          {
    \                     prvInitialiseNewQueue: (+1)
-   \        0x0   0xB580             PUSH     {R7,LR}
-   \        0x2   0x9B02             LDR      R3,[SP, #+8]
+   \        0x0   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+   \        0x4   0x0005             MOVS     R5,R0
+   \        0x6   0x000C             MOVS     R4,R1
+   \        0x8   0x0016             MOVS     R6,R2
+   \        0xA   0x001F             MOVS     R7,R3
+   \        0xC   0xF8DD 0x8018      LDR      R8,[SP, #+24]
     434          	/* Remove compiler warnings about unused parameters should
     435          	configUSE_TRACE_FACILITY not be set to 1. */
     436          	( void ) ucQueueType;
     437          
     438          	if( uxItemSize == ( UBaseType_t ) 0 )
-   \        0x4   0x2900             CMP      R1,#+0
-   \        0x6   0xD101             BNE.N    ??prvInitialiseNewQueue_0
+   \       0x10   0x2C00             CMP      R4,#+0
+   \       0x12   0xD102             BNE.N    ??prvInitialiseNewQueue_0
     439          	{
     440          		/* No RAM was allocated for the queue storage area, but PC head cannot
     441          		be set to NULL because NULL is used as a key to say the queue is used as
     442          		a mutex.  Therefore just set pcHead to point to the queue as a benign
     443          		value that is known to be within the memory map. */
     444          		pxNewQueue->pcHead = ( int8_t * ) pxNewQueue;
-   \        0x8   0x601B             STR      R3,[R3, #+0]
-   \        0xA   0xE000             B.N      ??prvInitialiseNewQueue_1
+   \       0x14   0xF8C8 0x8000      STR      R8,[R8, #+0]
+   \       0x18   0xE001             B.N      ??prvInitialiseNewQueue_1
     445          	}
     446          	else
     447          	{
     448          		/* Set the head to the start of the queue storage area. */
     449          		pxNewQueue->pcHead = ( int8_t * ) pucQueueStorage;
    \                     ??prvInitialiseNewQueue_0: (+1)
-   \        0xC   0x601A             STR      R2,[R3, #+0]
+   \       0x1A   0xF8C8 0x6000      STR      R6,[R8, #+0]
     450          	}
     451          
     452          	/* Initialise the queue members as described where the queue type is
     453          	defined. */
     454          	pxNewQueue->uxLength = uxQueueLength;
    \                     ??prvInitialiseNewQueue_1: (+1)
-   \        0xE   0x63D8             STR      R0,[R3, #+60]
+   \       0x1E   0xF8C8 0x503C      STR      R5,[R8, #+60]
     455          	pxNewQueue->uxItemSize = uxItemSize;
-   \       0x10   0x6419             STR      R1,[R3, #+64]
+   \       0x22   0xF8C8 0x4040      STR      R4,[R8, #+64]
     456          	( void ) xQueueGenericReset( pxNewQueue, pdTRUE );
-   \       0x12   0x2101             MOVS     R1,#+1
-   \       0x14   0x0018             MOVS     R0,R3
-   \       0x16   0x.... 0x....      BL       xQueueGenericReset
+   \       0x26   0x2101             MOVS     R1,#+1
+   \       0x28   0x4640             MOV      R0,R8
+   \       0x2A   0x.... 0x....      BL       xQueueGenericReset
     457          
     458          	#if ( configUSE_TRACE_FACILITY == 1 )
     459          	{
@@ -698,7 +715,7 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     469          
     470          	traceQUEUE_CREATE( pxNewQueue );
     471          }
-   \       0x1A   0xBD01             POP      {R0,PC}
+   \       0x2E   0xE8BD 0x81F0      POP      {R4-R8,PC}
     472          /*-----------------------------------------------------------*/
     473          
     474          #if( configUSE_MUTEXES == 1 )
@@ -708,35 +725,37 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     476          	static void prvInitialiseMutex( Queue_t *pxNewQueue )
     477          	{
    \                     prvInitialiseMutex: (+1)
-   \        0x0   0xB580             PUSH     {R7,LR}
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
     478          		if( pxNewQueue != NULL )
-   \        0x2   0x2800             CMP      R0,#+0
-   \        0x4   0xD00A             BEQ.N    ??prvInitialiseMutex_0
+   \        0x4   0x2C00             CMP      R4,#+0
+   \        0x6   0xD00B             BEQ.N    ??prvInitialiseMutex_0
     479          		{
     480          			/* The queue create function will set all the queue structure members
     481          			correctly for a generic queue, but this function is creating a
     482          			mutex.  Overwrite those members that need to be set differently -
     483          			in particular the information required for priority inheritance. */
     484          			pxNewQueue->pxMutexHolder = NULL;
-   \        0x6   0x2100             MOVS     R1,#+0
-   \        0x8   0x6041             STR      R1,[R0, #+4]
+   \        0x8   0x2000             MOVS     R0,#+0
+   \        0xA   0x6060             STR      R0,[R4, #+4]
     485          			pxNewQueue->uxQueueType = queueQUEUE_IS_MUTEX;
-   \        0xA   0x2100             MOVS     R1,#+0
-   \        0xC   0x6001             STR      R1,[R0, #+0]
+   \        0xC   0x2000             MOVS     R0,#+0
+   \        0xE   0x6020             STR      R0,[R4, #+0]
     486          
     487          			/* In case this is a recursive mutex. */
     488          			pxNewQueue->u.uxRecursiveCallCount = 0;
-   \        0xE   0x2100             MOVS     R1,#+0
-   \       0x10   0x60C1             STR      R1,[R0, #+12]
+   \       0x10   0x2000             MOVS     R0,#+0
+   \       0x12   0x60E0             STR      R0,[R4, #+12]
     489          
     490          			traceCREATE_MUTEX( pxNewQueue );
     491          
     492          			/* Start with the semaphore in the expected state. */
     493          			( void ) xQueueGenericSend( pxNewQueue, NULL, ( TickType_t ) 0U, queueSEND_TO_BACK );
-   \       0x12   0x2300             MOVS     R3,#+0
-   \       0x14   0x2200             MOVS     R2,#+0
-   \       0x16   0x2100             MOVS     R1,#+0
-   \       0x18   0x.... 0x....      BL       xQueueGenericSend
+   \       0x14   0x2300             MOVS     R3,#+0
+   \       0x16   0x2200             MOVS     R2,#+0
+   \       0x18   0x2100             MOVS     R1,#+0
+   \       0x1A   0x0020             MOVS     R0,R4
+   \       0x1C   0x.... 0x....      BL       xQueueGenericSend
     494          		}
     495          		else
     496          		{
@@ -744,7 +763,7 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     498          		}
     499          	}
    \                     ??prvInitialiseMutex_0: (+1)
-   \       0x1C   0xBD01             POP      {R0,PC}
+   \       0x20   0xBD10             POP      {R4,PC}
     500          
     501          #endif /* configUSE_MUTEXES */
     502          /*-----------------------------------------------------------*/
@@ -772,31 +791,35 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     522          	QueueHandle_t xQueueCreateMutexStatic( const uint8_t ucQueueType, StaticQueue_t *pxStaticQueue )
     523          	{
    \                     xQueueCreateMutexStatic: (+1)
-   \        0x0   0xB51C             PUSH     {R2-R4,LR}
-   \        0x2   0x000B             MOVS     R3,R1
+   \        0x0   0xE92D 0x41FC      PUSH     {R2-R8,LR}
+   \        0x4   0x0004             MOVS     R4,R0
+   \        0x6   0x000D             MOVS     R5,R1
     524          	Queue_t *pxNewQueue;
     525          	const UBaseType_t uxMutexLength = ( UBaseType_t ) 1, uxMutexSize = ( UBaseType_t ) 0;
-   \        0x4   0x2401             MOVS     R4,#+1
-   \        0x6   0x2100             MOVS     R1,#+0
+   \        0x8   0x2701             MOVS     R7,#+1
+   \        0xA   0xF05F 0x0800      MOVS     R8,#+0
     526          
     527          		/* Prevent compiler warnings about unused parameters if
     528          		configUSE_TRACE_FACILITY does not equal 1. */
     529          		( void ) ucQueueType;
     530          
     531          		pxNewQueue = ( Queue_t * ) xQueueGenericCreateStatic( uxMutexLength, uxMutexSize, NULL, pxStaticQueue, ucQueueType );
-   \        0x8   0xB2C0             UXTB     R0,R0
-   \        0xA   0x9000             STR      R0,[SP, #+0]
-   \        0xC   0x2200             MOVS     R2,#+0
    \        0xE   0x0020             MOVS     R0,R4
-   \       0x10   0x.... 0x....      BL       xQueueGenericCreateStatic
-   \       0x14   0x0004             MOVS     R4,R0
+   \       0x10   0xB2C0             UXTB     R0,R0
+   \       0x12   0x9000             STR      R0,[SP, #+0]
+   \       0x14   0x002B             MOVS     R3,R5
+   \       0x16   0x2200             MOVS     R2,#+0
+   \       0x18   0x4641             MOV      R1,R8
+   \       0x1A   0x0038             MOVS     R0,R7
+   \       0x1C   0x.... 0x....      BL       xQueueGenericCreateStatic
+   \       0x20   0x0006             MOVS     R6,R0
     532          		prvInitialiseMutex( pxNewQueue );
-   \       0x16   0x0020             MOVS     R0,R4
-   \       0x18   0x.... 0x....      BL       prvInitialiseMutex
+   \       0x22   0x0030             MOVS     R0,R6
+   \       0x24   0x.... 0x....      BL       prvInitialiseMutex
     533          
     534          		return pxNewQueue;
-   \       0x1C   0x0020             MOVS     R0,R4
-   \       0x1E   0xBD16             POP      {R1,R2,R4,PC}
+   \       0x28   0x0030             MOVS     R0,R6
+   \       0x2A   0xE8BD 0x81F6      POP      {R1,R2,R4-R8,PC}
     535          	}
     536          
     537          #endif /* configUSE_MUTEXES */
@@ -990,55 +1013,55 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     723          BaseType_t xQueueGenericSend( QueueHandle_t xQueue, const void * const pvItemToQueue, TickType_t xTicksToWait, const BaseType_t xCopyPosition )
     724          {
    \                     xQueueGenericSend: (+1)
-   \        0x0   0xB5F7             PUSH     {R0-R2,R4-R7,LR}
-   \        0x2   0x0006             MOVS     R6,R0
-   \        0x4   0x000D             MOVS     R5,R1
-   \        0x6   0x001F             MOVS     R7,R3
+   \        0x0   0xE92D 0x43F7      PUSH     {R0-R2,R4-R9,LR}
+   \        0x4   0x0007             MOVS     R7,R0
+   \        0x6   0x000D             MOVS     R5,R1
+   \        0x8   0x4698             MOV      R8,R3
     725          BaseType_t xEntryTimeSet = pdFALSE, xYieldRequired;
-   \        0x8   0x2400             MOVS     R4,#+0
+   \        0xA   0x2400             MOVS     R4,#+0
     726          TimeOut_t xTimeOut;
     727          Queue_t * const pxQueue = ( Queue_t * ) xQueue;
+   \        0xC   0x46B9             MOV      R9,R7
     728          
     729          	configASSERT( pxQueue );
     730          	configASSERT( !( ( pvItemToQueue == NULL ) && ( pxQueue->uxItemSize != ( UBaseType_t ) 0U ) ) );
-   \        0xA   0x2D00             CMP      R5,#+0
-   \        0xC   0xD102             BNE.N    ??xQueueGenericSend_0
-   \        0xE   0x6C30             LDR      R0,[R6, #+64]
-   \       0x10   0x2800             CMP      R0,#+0
-   \       0x12   0xD101             BNE.N    ??xQueueGenericSend_1
+   \        0xE   0x2D00             CMP      R5,#+0
+   \       0x10   0xD103             BNE.N    ??xQueueGenericSend_0
+   \       0x12   0xF8D9 0x0040      LDR      R0,[R9, #+64]
+   \       0x16   0x2800             CMP      R0,#+0
+   \       0x18   0xD101             BNE.N    ??xQueueGenericSend_1
    \                     ??xQueueGenericSend_0: (+1)
-   \       0x14   0x2001             MOVS     R0,#+1
-   \       0x16   0xE000             B.N      ??xQueueGenericSend_2
+   \       0x1A   0x2001             MOVS     R0,#+1
+   \       0x1C   0xE000             B.N      ??xQueueGenericSend_2
    \                     ??xQueueGenericSend_1: (+1)
-   \       0x18   0x2000             MOVS     R0,#+0
+   \       0x1E   0x2000             MOVS     R0,#+0
     731          	configASSERT( !( ( xCopyPosition == queueOVERWRITE ) && ( pxQueue->uxLength != 1 ) ) );
    \                     ??xQueueGenericSend_2: (+1)
-   \       0x1A   0x2F02             CMP      R7,#+2
-   \       0x1C   0xD102             BNE.N    ??xQueueGenericSend_3
-   \       0x1E   0x6BF0             LDR      R0,[R6, #+60]
-   \       0x20   0x2801             CMP      R0,#+1
-   \       0x22   0xD101             BNE.N    ??xQueueGenericSend_4
+   \       0x20   0xF1B8 0x0F02      CMP      R8,#+2
+   \       0x24   0xD103             BNE.N    ??xQueueGenericSend_3
+   \       0x26   0xF8D9 0x003C      LDR      R0,[R9, #+60]
+   \       0x2A   0x2801             CMP      R0,#+1
+   \       0x2C   0xD101             BNE.N    ??xQueueGenericSend_4
    \                     ??xQueueGenericSend_3: (+1)
-   \       0x24   0x2001             MOVS     R0,#+1
-   \       0x26   0xE000             B.N      ??xQueueGenericSend_5
+   \       0x2E   0x2001             MOVS     R0,#+1
+   \       0x30   0xE000             B.N      ??xQueueGenericSend_5
    \                     ??xQueueGenericSend_4: (+1)
-   \       0x28   0x2000             MOVS     R0,#+0
+   \       0x32   0x2000             MOVS     R0,#+0
     732          	#if ( ( INCLUDE_xTaskGetSchedulerState == 1 ) || ( configUSE_TIMERS == 1 ) )
     733          	{
     734          		configASSERT( !( ( xTaskGetSchedulerState() == taskSCHEDULER_SUSPENDED ) && ( xTicksToWait != 0 ) ) );
    \                     ??xQueueGenericSend_5: (+1)
-   \       0x2A   0x.... 0x....      BL       xTaskGetSchedulerState
-   \       0x2E   0x2800             CMP      R0,#+0
-   \       0x30   0xD102             BNE.N    ??xQueueGenericSend_6
-   \       0x32   0x9802             LDR      R0,[SP, #+8]
-   \       0x34   0x2800             CMP      R0,#+0
-   \       0x36   0xD101             BNE.N    ??xQueueGenericSend_7
+   \       0x34   0x.... 0x....      BL       xTaskGetSchedulerState
+   \       0x38   0x2800             CMP      R0,#+0
+   \       0x3A   0xD102             BNE.N    ??xQueueGenericSend_6
+   \       0x3C   0x9802             LDR      R0,[SP, #+8]
+   \       0x3E   0x2800             CMP      R0,#+0
+   \       0x40   0xD101             BNE.N    ??xQueueGenericSend_7
    \                     ??xQueueGenericSend_6: (+1)
-   \       0x38   0x2001             MOVS     R0,#+1
-   \       0x3A   0xE032             B.N      ??xQueueGenericSend_8
+   \       0x42   0x2001             MOVS     R0,#+1
+   \       0x44   0xE000             B.N      ??xQueueGenericSend_8
    \                     ??xQueueGenericSend_7: (+1)
-   \       0x3C   0x2000             MOVS     R0,#+0
-   \       0x3E   0xE030             B.N      ??xQueueGenericSend_8
+   \       0x46   0x2000             MOVS     R0,#+0
     735          	}
     736          	#endif
     737          
@@ -1049,15 +1072,29 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     742          	for( ;; )
     743          	{
     744          		taskENTER_CRITICAL();
+   \                     ??xQueueGenericSend_8: (+1)
+   \       0x48   0x.... 0x....      BL       vPortEnterCritical
     745          		{
     746          			/* Is there room on the queue now?  The running task must be the
     747          			highest priority task wanting to access the queue.  If the head item
     748          			in the queue is to be overwritten then it does not matter if the
     749          			queue is full. */
     750          			if( ( pxQueue->uxMessagesWaiting < pxQueue->uxLength ) || ( xCopyPosition == queueOVERWRITE ) )
+   \       0x4C   0xF8D9 0x0038      LDR      R0,[R9, #+56]
+   \       0x50   0xF8D9 0x103C      LDR      R1,[R9, #+60]
+   \       0x54   0x4288             CMP      R0,R1
+   \       0x56   0xD302             BCC.N    ??xQueueGenericSend_9
+   \       0x58   0xF1B8 0x0F02      CMP      R8,#+2
+   \       0x5C   0xD128             BNE.N    ??xQueueGenericSend_10
     751          			{
     752          				traceQUEUE_SEND( pxQueue );
     753          				xYieldRequired = prvCopyDataToQueue( pxQueue, pvItemToQueue, xCopyPosition );
+   \                     ??xQueueGenericSend_9: (+1)
+   \       0x5E   0x4642             MOV      R2,R8
+   \       0x60   0x0029             MOVS     R1,R5
+   \       0x62   0x4648             MOV      R0,R9
+   \       0x64   0x.... 0x....      BL       prvCopyDataToQueue
+   \       0x68   0x0006             MOVS     R6,R0
     754          
     755          				#if ( configUSE_QUEUE_SETS == 1 )
     756          				{
@@ -1113,14 +1150,27 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     806          					/* If there was a task waiting for data to arrive on the
     807          					queue then unblock it now. */
     808          					if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToReceive ) ) == pdFALSE )
+   \       0x6A   0xF8D9 0x0024      LDR      R0,[R9, #+36]
+   \       0x6E   0x2800             CMP      R0,#+0
+   \       0x70   0xD00F             BEQ.N    ??xQueueGenericSend_11
     809          					{
     810          						if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToReceive ) ) != pdFALSE )
+   \       0x72   0xF119 0x0024      ADDS     R0,R9,#+36
+   \       0x76   0x.... 0x....      BL       xTaskRemoveFromEventList
+   \       0x7A   0x2800             CMP      R0,#+0
+   \       0x7C   0xD014             BEQ.N    ??xQueueGenericSend_12
     811          						{
     812          							/* The unblocked task has a priority higher than
     813          							our own so yield immediately.  Yes it is ok to do
     814          							this from within the critical section - the kernel
     815          							takes care of that. */
     816          							queueYIELD_IF_USING_PREEMPTION();
+   \       0x7E   0xF05F 0x5080      MOVS     R0,#+268435456
+   \       0x82   0x.... 0x....      LDR.W    R1,??DataTable5
+   \       0x86   0x6008             STR      R0,[R1, #+0]
+   \       0x88   0xF3BF 0x8F4F      DSB      SY
+   \       0x8C   0xF3BF 0x8F6F      ISB      SY
+   \       0x90   0xE00A             B.N      ??xQueueGenericSend_12
     817          						}
     818          						else
     819          						{
@@ -1128,12 +1178,20 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     821          						}
     822          					}
     823          					else if( xYieldRequired != pdFALSE )
+   \                     ??xQueueGenericSend_11: (+1)
+   \       0x92   0x2E00             CMP      R6,#+0
+   \       0x94   0xD008             BEQ.N    ??xQueueGenericSend_12
     824          					{
     825          						/* This path is a special case that will only get
     826          						executed if the task was holding multiple mutexes and
     827          						the mutexes were given back in an order that is
     828          						different to that in which they were taken. */
     829          						queueYIELD_IF_USING_PREEMPTION();
+   \       0x96   0xF05F 0x5080      MOVS     R0,#+268435456
+   \       0x9A   0x.... 0x....      LDR.W    R1,??DataTable5
+   \       0x9E   0x6008             STR      R0,[R1, #+0]
+   \       0xA0   0xF3BF 0x8F4F      DSB      SY
+   \       0xA4   0xF3BF 0x8F6F      ISB      SY
     830          					}
     831          					else
     832          					{
@@ -1143,37 +1201,45 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     836          				#endif /* configUSE_QUEUE_SETS */
     837          
     838          				taskEXIT_CRITICAL();
+   \                     ??xQueueGenericSend_12: (+1)
+   \       0xA8   0x.... 0x....      BL       vPortExitCritical
     839          				return pdPASS;
+   \       0xAC   0x2001             MOVS     R0,#+1
+   \       0xAE   0xE052             B.N      ??xQueueGenericSend_13
     840          			}
     841          			else
     842          			{
     843          				if( xTicksToWait == ( TickType_t ) 0 )
-   \                     ??xQueueGenericSend_9: (+1)
-   \       0x40   0x9802             LDR      R0,[SP, #+8]
-   \       0x42   0x2800             CMP      R0,#+0
-   \       0x44   0xD05C             BEQ.N    ??xQueueGenericSend_10
+   \                     ??xQueueGenericSend_10: (+1)
+   \       0xB0   0x9802             LDR      R0,[SP, #+8]
+   \       0xB2   0x2800             CMP      R0,#+0
+   \       0xB4   0xD103             BNE.N    ??xQueueGenericSend_14
     844          				{
     845          					/* The queue was full and no block time is specified (or
     846          					the block time has expired) so leave now. */
     847          					taskEXIT_CRITICAL();
+   \       0xB6   0x.... 0x....      BL       vPortExitCritical
     848          
     849          					/* Return to the original privilege level before exiting
     850          					the function. */
     851          					traceQUEUE_SEND_FAILED( pxQueue );
     852          					return errQUEUE_FULL;
+   \       0xBA   0x2000             MOVS     R0,#+0
+   \       0xBC   0xE04B             B.N      ??xQueueGenericSend_13
     853          				}
     854          				else if( xEntryTimeSet == pdFALSE )
-   \                     ??xQueueGenericSend_11: (+1)
-   \       0x46   0x2C00             CMP      R4,#+0
-   \       0x48   0xD103             BNE.N    ??xQueueGenericSend_12
+   \                     ??xQueueGenericSend_14: (+1)
+   \       0xBE   0x2C00             CMP      R4,#+0
+   \       0xC0   0xD104             BNE.N    ??xQueueGenericSend_15
     855          				{
     856          					/* The queue was full and a block time was specified so
     857          					configure the timeout structure. */
     858          					vTaskSetTimeOutState( &xTimeOut );
-   \       0x4A   0x4668             MOV      R0,SP
-   \       0x4C   0x.... 0x....      BL       vTaskSetTimeOutState
+   \       0xC2   0x4668             MOV      R0,SP
+   \       0xC4   0x.... 0x....      BL       vTaskSetTimeOutState
     859          					xEntryTimeSet = pdTRUE;
-   \       0x50   0x2401             MOVS     R4,#+1
+   \       0xC8   0x2001             MOVS     R0,#+1
+   \       0xCA   0x0004             MOVS     R4,R0
     860          				}
     861          				else
     862          				{
@@ -1183,46 +1249,49 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     866          			}
     867          		}
     868          		taskEXIT_CRITICAL();
-   \                     ??xQueueGenericSend_12: (+1)
-   \       0x52   0x.... 0x....      BL       vPortExitCritical
+   \                     ??xQueueGenericSend_15: (+1)
+   \       0xCC   0x.... 0x....      BL       vPortExitCritical
     869          
     870          		/* Interrupts and other tasks can send to and receive from the queue
     871          		now the critical section has been exited. */
     872          
     873          		vTaskSuspendAll();
-   \       0x56   0x.... 0x....      BL       vTaskSuspendAll
+   \       0xD0   0x.... 0x....      BL       vTaskSuspendAll
     874          		prvLockQueue( pxQueue );
-   \       0x5A   0x.... 0x....      BL       vPortEnterCritical
-   \       0x5E   0xF996 0x0044      LDRSB    R0,[R6, #+68]
-   \       0x62   0xF110 0x0F01      CMN      R0,#+1
-   \       0x66   0xD102             BNE.N    ??xQueueGenericSend_13
-   \       0x68   0x2000             MOVS     R0,#+0
-   \       0x6A   0xF886 0x0044      STRB     R0,[R6, #+68]
-   \                     ??xQueueGenericSend_13: (+1)
-   \       0x6E   0xF996 0x0045      LDRSB    R0,[R6, #+69]
-   \       0x72   0xF110 0x0F01      CMN      R0,#+1
-   \       0x76   0xD102             BNE.N    ??xQueueGenericSend_14
-   \       0x78   0x2000             MOVS     R0,#+0
-   \       0x7A   0xF886 0x0045      STRB     R0,[R6, #+69]
-   \                     ??xQueueGenericSend_14: (+1)
-   \       0x7E   0x.... 0x....      BL       vPortExitCritical
+   \       0xD4   0x.... 0x....      BL       vPortEnterCritical
+   \       0xD8   0xF999 0x0044      LDRSB    R0,[R9, #+68]
+   \       0xDC   0xF110 0x0F01      CMN      R0,#+1
+   \       0xE0   0xD102             BNE.N    ??xQueueGenericSend_16
+   \       0xE2   0x2000             MOVS     R0,#+0
+   \       0xE4   0xF889 0x0044      STRB     R0,[R9, #+68]
+   \                     ??xQueueGenericSend_16: (+1)
+   \       0xE8   0xF999 0x0045      LDRSB    R0,[R9, #+69]
+   \       0xEC   0xF110 0x0F01      CMN      R0,#+1
+   \       0xF0   0xD102             BNE.N    ??xQueueGenericSend_17
+   \       0xF2   0x2000             MOVS     R0,#+0
+   \       0xF4   0xF889 0x0045      STRB     R0,[R9, #+69]
+   \                     ??xQueueGenericSend_17: (+1)
+   \       0xF8   0x.... 0x....      BL       vPortExitCritical
     875          
     876          		/* Update the timeout state to see if it has expired yet. */
     877          		if( xTaskCheckForTimeOut( &xTimeOut, &xTicksToWait ) == pdFALSE )
-   \       0x82   0xA902             ADD      R1,SP,#+8
-   \       0x84   0x4668             MOV      R0,SP
-   \       0x86   0x.... 0x....      BL       xTaskCheckForTimeOut
-   \       0x8A   0x2800             CMP      R0,#+0
-   \       0x8C   0xD152             BNE.N    ??xQueueGenericSend_15
+   \       0xFC   0xA902             ADD      R1,SP,#+8
+   \       0xFE   0x4668             MOV      R0,SP
+   \      0x100   0x.... 0x....      BL       xTaskCheckForTimeOut
+   \      0x104   0x2800             CMP      R0,#+0
+   \      0x106   0xD120             BNE.N    ??xQueueGenericSend_18
     878          		{
     879          			if( prvIsQueueFull( pxQueue ) != pdFALSE )
-   \       0x8E   0x0030             MOVS     R0,R6
-   \       0x90   0x.... 0x....      BL       prvIsQueueFull
-   \       0x94   0x2800             CMP      R0,#+0
-   \       0x96   0xD137             BNE.N    ??xQueueGenericSend_16
+   \      0x108   0x4648             MOV      R0,R9
+   \      0x10A   0x.... 0x....      BL       prvIsQueueFull
+   \      0x10E   0x2800             CMP      R0,#+0
+   \      0x110   0xD015             BEQ.N    ??xQueueGenericSend_19
     880          			{
     881          				traceBLOCKING_ON_QUEUE_SEND( pxQueue );
     882          				vTaskPlaceOnEventList( &( pxQueue->xTasksWaitingToSend ), xTicksToWait );
+   \      0x112   0x9902             LDR      R1,[SP, #+8]
+   \      0x114   0xF119 0x0010      ADDS     R0,R9,#+16
+   \      0x118   0x.... 0x....      BL       vTaskPlaceOnEventList
     883          
     884          				/* Unlocking the queue means queue events can effect the
     885          				event list.  It is possible	that interrupts occurring now
@@ -1230,6 +1299,8 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     887          				scheduler is suspended the task will go onto the pending
     888          				ready last instead of the actual ready list. */
     889          				prvUnlockQueue( pxQueue );
+   \      0x11C   0x4648             MOV      R0,R9
+   \      0x11E   0x.... 0x....      BL       prvUnlockQueue
     890          
     891          				/* Resuming the scheduler will move tasks from the pending
     892          				ready list into the ready list - so it is feasible that this
@@ -1237,93 +1308,46 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     894          				case the yield will not cause a context switch unless there
     895          				is also a higher priority task in the pending ready list. */
     896          				if( xTaskResumeAll() == pdFALSE )
+   \      0x122   0x.... 0x....      BL       xTaskResumeAll
+   \      0x126   0x2800             CMP      R0,#+0
+   \      0x128   0xD18E             BNE.N    ??xQueueGenericSend_8
     897          				{
     898          					portYIELD_WITHIN_API();
+   \      0x12A   0xF05F 0x5080      MOVS     R0,#+268435456
+   \      0x12E   0x.... 0x....      LDR.W    R1,??DataTable5
+   \      0x132   0x6008             STR      R0,[R1, #+0]
+   \      0x134   0xF3BF 0x8F4F      DSB      SY
+   \      0x138   0xF3BF 0x8F6F      ISB      SY
+   \      0x13C   0xE784             B.N      ??xQueueGenericSend_8
     899          				}
     900          			}
     901          			else
     902          			{
     903          				/* Try again. */
     904          				prvUnlockQueue( pxQueue );
-   \                     ??xQueueGenericSend_17: (+1)
-   \       0x98   0x0030             MOVS     R0,R6
-   \       0x9A   0x.... 0x....      BL       prvUnlockQueue
-    905          				( void ) xTaskResumeAll();
-   \       0x9E   0x.... 0x....      BL       xTaskResumeAll
-    906          			}
-   \                     ??xQueueGenericSend_8: (+1)
-   \       0xA2   0x.... 0x....      BL       vPortEnterCritical
-   \       0xA6   0x6BB0             LDR      R0,[R6, #+56]
-   \       0xA8   0x6BF1             LDR      R1,[R6, #+60]
-   \       0xAA   0x4288             CMP      R0,R1
-   \       0xAC   0xD301             BCC.N    ??xQueueGenericSend_18
-   \       0xAE   0x2F02             CMP      R7,#+2
-   \       0xB0   0xD1C6             BNE.N    ??xQueueGenericSend_9
-   \                     ??xQueueGenericSend_18: (+1)
-   \       0xB2   0x003A             MOVS     R2,R7
-   \       0xB4   0x0029             MOVS     R1,R5
-   \       0xB6   0x0030             MOVS     R0,R6
-   \       0xB8   0x.... 0x....      BL       prvCopyDataToQueue
-   \       0xBC   0x6A71             LDR      R1,[R6, #+36]
-   \       0xBE   0x2900             CMP      R1,#+0
-   \       0xC0   0xD00F             BEQ.N    ??xQueueGenericSend_19
-   \       0xC2   0xF116 0x0024      ADDS     R0,R6,#+36
-   \       0xC6   0x.... 0x....      BL       xTaskRemoveFromEventList
-   \       0xCA   0x2800             CMP      R0,#+0
-   \       0xCC   0xD014             BEQ.N    ??xQueueGenericSend_20
-   \       0xCE   0xF05F 0x5080      MOVS     R0,#+268435456
-   \       0xD2   0x.... 0x....      LDR.W    R1,??DataTable5
-   \       0xD6   0x6008             STR      R0,[R1, #+0]
-   \       0xD8   0xF3BF 0x8F4F      DSB      SY
-   \       0xDC   0xF3BF 0x8F6F      ISB      SY
-   \       0xE0   0xE00A             B.N      ??xQueueGenericSend_20
    \                     ??xQueueGenericSend_19: (+1)
-   \       0xE2   0x2800             CMP      R0,#+0
-   \       0xE4   0xD008             BEQ.N    ??xQueueGenericSend_20
-   \       0xE6   0xF05F 0x5080      MOVS     R0,#+268435456
-   \       0xEA   0x.... 0x....      LDR.W    R1,??DataTable5
-   \       0xEE   0x6008             STR      R0,[R1, #+0]
-   \       0xF0   0xF3BF 0x8F4F      DSB      SY
-   \       0xF4   0xF3BF 0x8F6F      ISB      SY
-   \                     ??xQueueGenericSend_20: (+1)
-   \       0xF8   0x.... 0x....      BL       vPortExitCritical
-   \       0xFC   0x2001             MOVS     R0,#+1
-   \       0xFE   0xE01F             B.N      ??xQueueGenericSend_21
-   \                     ??xQueueGenericSend_10: (+1)
-   \      0x100   0x.... 0x....      BL       vPortExitCritical
-   \      0x104   0x2000             MOVS     R0,#+0
-   \      0x106   0xE01B             B.N      ??xQueueGenericSend_21
-   \                     ??xQueueGenericSend_16: (+1)
-   \      0x108   0x9902             LDR      R1,[SP, #+8]
-   \      0x10A   0xF116 0x0010      ADDS     R0,R6,#+16
-   \      0x10E   0x.... 0x....      BL       vTaskPlaceOnEventList
-   \      0x112   0x0030             MOVS     R0,R6
-   \      0x114   0x.... 0x....      BL       prvUnlockQueue
-   \      0x118   0x.... 0x....      BL       xTaskResumeAll
-   \      0x11C   0x2800             CMP      R0,#+0
-   \      0x11E   0xD1C0             BNE.N    ??xQueueGenericSend_8
-   \      0x120   0xF05F 0x5080      MOVS     R0,#+268435456
-   \      0x124   0x.... 0x....      LDR.W    R1,??DataTable5
-   \      0x128   0x6008             STR      R0,[R1, #+0]
-   \      0x12A   0xF3BF 0x8F4F      DSB      SY
-   \      0x12E   0xF3BF 0x8F6F      ISB      SY
-   \      0x132   0xE7B6             B.N      ??xQueueGenericSend_8
+   \      0x13E   0x4648             MOV      R0,R9
+   \      0x140   0x.... 0x....      BL       prvUnlockQueue
+    905          				( void ) xTaskResumeAll();
+   \      0x144   0x.... 0x....      BL       xTaskResumeAll
+   \      0x148   0xE77E             B.N      ??xQueueGenericSend_8
+    906          			}
     907          		}
     908          		else
     909          		{
     910          			/* The timeout has expired. */
     911          			prvUnlockQueue( pxQueue );
-   \                     ??xQueueGenericSend_15: (+1)
-   \      0x134   0x0030             MOVS     R0,R6
-   \      0x136   0x.... 0x....      BL       prvUnlockQueue
+   \                     ??xQueueGenericSend_18: (+1)
+   \      0x14A   0x4648             MOV      R0,R9
+   \      0x14C   0x.... 0x....      BL       prvUnlockQueue
     912          			( void ) xTaskResumeAll();
-   \      0x13A   0x.... 0x....      BL       xTaskResumeAll
+   \      0x150   0x.... 0x....      BL       xTaskResumeAll
     913          
     914          			traceQUEUE_SEND_FAILED( pxQueue );
     915          			return errQUEUE_FULL;
-   \      0x13E   0x2000             MOVS     R0,#+0
-   \                     ??xQueueGenericSend_21: (+1)
-   \      0x140   0xBDFE             POP      {R1-R7,PC}
+   \      0x154   0x2000             MOVS     R0,#+0
+   \                     ??xQueueGenericSend_13: (+1)
+   \      0x156   0xE8BD 0x83FE      POP      {R1-R9,PC}
     916          		}
     917          	}
     918          }
@@ -1334,39 +1358,40 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     921          BaseType_t xQueueGenericSendFromISR( QueueHandle_t xQueue, const void * const pvItemToQueue, BaseType_t * const pxHigherPriorityTaskWoken, const BaseType_t xCopyPosition )
     922          {
    \                     xQueueGenericSendFromISR: (+1)
-   \        0x0   0xE92D 0x43F8      PUSH     {R3-R9,LR}
-   \        0x4   0x0007             MOVS     R7,R0
-   \        0x6   0x000D             MOVS     R5,R1
-   \        0x8   0x0014             MOVS     R4,R2
-   \        0xA   0x4698             MOV      R8,R3
+   \        0x0   0xE92D 0x47F0      PUSH     {R4-R10,LR}
+   \        0x4   0x0006             MOVS     R6,R0
+   \        0x6   0x000C             MOVS     R4,R1
+   \        0x8   0x0015             MOVS     R5,R2
+   \        0xA   0x001F             MOVS     R7,R3
     923          BaseType_t xReturn;
     924          UBaseType_t uxSavedInterruptStatus;
     925          Queue_t * const pxQueue = ( Queue_t * ) xQueue;
+   \        0xC   0x46B0             MOV      R8,R6
     926          
     927          	configASSERT( pxQueue );
     928          	configASSERT( !( ( pvItemToQueue == NULL ) && ( pxQueue->uxItemSize != ( UBaseType_t ) 0U ) ) );
-   \        0xC   0x2D00             CMP      R5,#+0
-   \        0xE   0xD102             BNE.N    ??xQueueGenericSendFromISR_0
-   \       0x10   0x6C38             LDR      R0,[R7, #+64]
-   \       0x12   0x2800             CMP      R0,#+0
-   \       0x14   0xD101             BNE.N    ??xQueueGenericSendFromISR_1
+   \        0xE   0x2C00             CMP      R4,#+0
+   \       0x10   0xD103             BNE.N    ??xQueueGenericSendFromISR_0
+   \       0x12   0xF8D8 0x0040      LDR      R0,[R8, #+64]
+   \       0x16   0x2800             CMP      R0,#+0
+   \       0x18   0xD101             BNE.N    ??xQueueGenericSendFromISR_1
    \                     ??xQueueGenericSendFromISR_0: (+1)
-   \       0x16   0x2001             MOVS     R0,#+1
-   \       0x18   0xE000             B.N      ??xQueueGenericSendFromISR_2
+   \       0x1A   0x2001             MOVS     R0,#+1
+   \       0x1C   0xE000             B.N      ??xQueueGenericSendFromISR_2
    \                     ??xQueueGenericSendFromISR_1: (+1)
-   \       0x1A   0x2000             MOVS     R0,#+0
+   \       0x1E   0x2000             MOVS     R0,#+0
     929          	configASSERT( !( ( xCopyPosition == queueOVERWRITE ) && ( pxQueue->uxLength != 1 ) ) );
    \                     ??xQueueGenericSendFromISR_2: (+1)
-   \       0x1C   0xF1B8 0x0F02      CMP      R8,#+2
-   \       0x20   0xD102             BNE.N    ??xQueueGenericSendFromISR_3
-   \       0x22   0x6BF8             LDR      R0,[R7, #+60]
-   \       0x24   0x2801             CMP      R0,#+1
-   \       0x26   0xD101             BNE.N    ??xQueueGenericSendFromISR_4
+   \       0x20   0x2F02             CMP      R7,#+2
+   \       0x22   0xD103             BNE.N    ??xQueueGenericSendFromISR_3
+   \       0x24   0xF8D8 0x003C      LDR      R0,[R8, #+60]
+   \       0x28   0x2801             CMP      R0,#+1
+   \       0x2A   0xD101             BNE.N    ??xQueueGenericSendFromISR_4
    \                     ??xQueueGenericSendFromISR_3: (+1)
-   \       0x28   0x2001             MOVS     R0,#+1
-   \       0x2A   0xE000             B.N      ??xQueueGenericSendFromISR_5
+   \       0x2C   0x2001             MOVS     R0,#+1
+   \       0x2E   0xE000             B.N      ??xQueueGenericSendFromISR_5
    \                     ??xQueueGenericSendFromISR_4: (+1)
-   \       0x2C   0x2000             MOVS     R0,#+0
+   \       0x30   0x2000             MOVS     R0,#+0
     930          
     931          	/* RTOS ports that support interrupt nesting have the concept of a maximum
     932          	system call (or maximum API call) interrupt priority.  Interrupts that are
@@ -1384,7 +1409,7 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     944          	link: http://www.freertos.org/RTOS-Cortex-M3-M4.html */
     945          	portASSERT_IF_INTERRUPT_PRIORITY_INVALID();
    \                     ??xQueueGenericSendFromISR_5: (+1)
-   \       0x2E   0x.... 0x....      BL       vPortValidateInterruptPriority
+   \       0x32   0x.... 0x....      BL       vPortValidateInterruptPriority
     946          
     947          	/* Similar to xQueueGenericSend, except without blocking if there is no room
     948          	in the queue.  Also don't directly wake a task that was blocked on a queue
@@ -1392,23 +1417,23 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     950          	not (i.e. has a task with a higher priority than us been woken by this
     951          	post). */
     952          	uxSavedInterruptStatus = portSET_INTERRUPT_MASK_FROM_ISR();
-   \       0x32   0xF3EF 0x8611      MRS      R6,BASEPRI
-   \       0x36   0x2050             MOVS     R0,#+80
-   \       0x38   0xF380 0x8811      MSR      BASEPRI,R0
-   \       0x3C   0xF3BF 0x8F4F      DSB      SY
-   \       0x40   0xF3BF 0x8F6F      ISB      SY
+   \       0x36   0xF3EF 0x8911      MRS      R9,BASEPRI
+   \       0x3A   0x2050             MOVS     R0,#+80
+   \       0x3C   0xF380 0x8811      MSR      BASEPRI,R0
+   \       0x40   0xF3BF 0x8F4F      DSB      SY
+   \       0x44   0xF3BF 0x8F6F      ISB      SY
     953          	{
     954          		if( ( pxQueue->uxMessagesWaiting < pxQueue->uxLength ) || ( xCopyPosition == queueOVERWRITE ) )
-   \       0x44   0x6BB8             LDR      R0,[R7, #+56]
-   \       0x46   0x6BF9             LDR      R1,[R7, #+60]
-   \       0x48   0x4288             CMP      R0,R1
-   \       0x4A   0xD302             BCC.N    ??xQueueGenericSendFromISR_6
-   \       0x4C   0xF1B8 0x0F02      CMP      R8,#+2
-   \       0x50   0xD120             BNE.N    ??xQueueGenericSendFromISR_7
+   \       0x48   0xF8D8 0x0038      LDR      R0,[R8, #+56]
+   \       0x4C   0xF8D8 0x103C      LDR      R1,[R8, #+60]
+   \       0x50   0x4288             CMP      R0,R1
+   \       0x52   0xD301             BCC.N    ??xQueueGenericSendFromISR_6
+   \       0x54   0x2F02             CMP      R7,#+2
+   \       0x56   0xD121             BNE.N    ??xQueueGenericSendFromISR_7
     955          		{
     956          			const int8_t cTxLock = pxQueue->cTxLock;
    \                     ??xQueueGenericSendFromISR_6: (+1)
-   \       0x52   0xF997 0x9045      LDRSB    R9,[R7, #+69]
+   \       0x58   0xF998 0xA045      LDRSB    R10,[R8, #+69]
     957          
     958          			traceQUEUE_SEND_FROM_ISR( pxQueue );
     959          
@@ -1418,19 +1443,19 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     963          			called here even though the disinherit function does not check if
     964          			the scheduler is suspended before accessing the ready lists. */
     965          			( void ) prvCopyDataToQueue( pxQueue, pvItemToQueue, xCopyPosition );
-   \       0x56   0x4642             MOV      R2,R8
-   \       0x58   0x0029             MOVS     R1,R5
-   \       0x5A   0x0038             MOVS     R0,R7
-   \       0x5C   0x.... 0x....      BL       prvCopyDataToQueue
+   \       0x5C   0x003A             MOVS     R2,R7
+   \       0x5E   0x0021             MOVS     R1,R4
+   \       0x60   0x4640             MOV      R0,R8
+   \       0x62   0x.... 0x....      BL       prvCopyDataToQueue
     966          
     967          			/* The event list is not altered if the queue is locked.  This will
     968          			be done when the queue is unlocked later. */
     969          			if( cTxLock == queueUNLOCKED )
-   \       0x60   0x4648             MOV      R0,R9
-   \       0x62   0xF05F 0x31FF      MOVS     R1,#+4294967295
-   \       0x66   0xB240             SXTB     R0,R0
-   \       0x68   0x4288             CMP      R0,R1
-   \       0x6A   0xD10D             BNE.N    ??xQueueGenericSendFromISR_8
+   \       0x66   0x4650             MOV      R0,R10
+   \       0x68   0xF05F 0x31FF      MOVS     R1,#+4294967295
+   \       0x6C   0xB240             SXTB     R0,R0
+   \       0x6E   0x4288             CMP      R0,R1
+   \       0x70   0xD10E             BNE.N    ??xQueueGenericSendFromISR_8
     970          			{
     971          				#if ( configUSE_QUEUE_SETS == 1 )
     972          				{
@@ -1486,26 +1511,26 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1022          				#else /* configUSE_QUEUE_SETS */
    1023          				{
    1024          					if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToReceive ) ) == pdFALSE )
-   \       0x6C   0x6A78             LDR      R0,[R7, #+36]
-   \       0x6E   0x2800             CMP      R0,#+0
-   \       0x70   0xD00E             BEQ.N    ??xQueueGenericSendFromISR_9
+   \       0x72   0xF8D8 0x0024      LDR      R0,[R8, #+36]
+   \       0x76   0x2800             CMP      R0,#+0
+   \       0x78   0xD00E             BEQ.N    ??xQueueGenericSendFromISR_9
    1025          					{
    1026          						if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToReceive ) ) != pdFALSE )
-   \       0x72   0xF117 0x0024      ADDS     R0,R7,#+36
-   \       0x76   0x.... 0x....      BL       xTaskRemoveFromEventList
-   \       0x7A   0x2800             CMP      R0,#+0
-   \       0x7C   0xD008             BEQ.N    ??xQueueGenericSendFromISR_9
+   \       0x7A   0xF118 0x0024      ADDS     R0,R8,#+36
+   \       0x7E   0x.... 0x....      BL       xTaskRemoveFromEventList
+   \       0x82   0x2800             CMP      R0,#+0
+   \       0x84   0xD008             BEQ.N    ??xQueueGenericSendFromISR_9
    1027          						{
    1028          							/* The task waiting has a higher priority so record that a
    1029          							context	switch is required. */
    1030          							if( pxHigherPriorityTaskWoken != NULL )
-   \       0x7E   0x2C00             CMP      R4,#+0
-   \       0x80   0xD006             BEQ.N    ??xQueueGenericSendFromISR_9
+   \       0x86   0x2D00             CMP      R5,#+0
+   \       0x88   0xD006             BEQ.N    ??xQueueGenericSendFromISR_9
    1031          							{
    1032          								*pxHigherPriorityTaskWoken = pdTRUE;
-   \       0x82   0x2001             MOVS     R0,#+1
-   \       0x84   0x6020             STR      R0,[R4, #+0]
-   \       0x86   0xE003             B.N      ??xQueueGenericSendFromISR_9
+   \       0x8A   0x2001             MOVS     R0,#+1
+   \       0x8C   0x6028             STR      R0,[R5, #+0]
+   \       0x8E   0xE003             B.N      ??xQueueGenericSendFromISR_9
    1033          							}
    1034          							else
    1035          							{
@@ -1530,29 +1555,29 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1054          				knows that data was posted while it was locked. */
    1055          				pxQueue->cTxLock = ( int8_t ) ( cTxLock + 1 );
    \                     ??xQueueGenericSendFromISR_8: (+1)
-   \       0x88   0xF119 0x0901      ADDS     R9,R9,#+1
-   \       0x8C   0xF887 0x9045      STRB     R9,[R7, #+69]
+   \       0x90   0xF11A 0x0001      ADDS     R0,R10,#+1
+   \       0x94   0xF888 0x0045      STRB     R0,[R8, #+69]
    1056          			}
    1057          
    1058          			xReturn = pdPASS;
    \                     ??xQueueGenericSendFromISR_9: (+1)
-   \       0x90   0x2001             MOVS     R0,#+1
-   \       0x92   0xE000             B.N      ??xQueueGenericSendFromISR_10
+   \       0x98   0x2001             MOVS     R0,#+1
+   \       0x9A   0xE000             B.N      ??xQueueGenericSendFromISR_10
    1059          		}
    1060          		else
    1061          		{
    1062          			traceQUEUE_SEND_FROM_ISR_FAILED( pxQueue );
    1063          			xReturn = errQUEUE_FULL;
    \                     ??xQueueGenericSendFromISR_7: (+1)
-   \       0x94   0x2000             MOVS     R0,#+0
+   \       0x9C   0x2000             MOVS     R0,#+0
    1064          		}
    1065          	}
    1066          	portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedInterruptStatus );
    \                     ??xQueueGenericSendFromISR_10: (+1)
-   \       0x96   0xF386 0x8811      MSR      BASEPRI,R6
+   \       0x9E   0xF389 0x8811      MSR      BASEPRI,R9
    1067          
    1068          	return xReturn;
-   \       0x9A   0xE8BD 0x83F2      POP      {R1,R4-R9,PC}
+   \       0xA2   0xE8BD 0x87F0      POP      {R4-R10,PC}
    1069          }
    1070          /*-----------------------------------------------------------*/
    1071          
@@ -1561,12 +1586,13 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1072          BaseType_t xQueueGiveFromISR( QueueHandle_t xQueue, BaseType_t * const pxHigherPriorityTaskWoken )
    1073          {
    \                     xQueueGiveFromISR: (+1)
-   \        0x0   0xB570             PUSH     {R4-R6,LR}
-   \        0x2   0x0005             MOVS     R5,R0
-   \        0x4   0x000C             MOVS     R4,R1
+   \        0x0   0xE92D 0x43F8      PUSH     {R3-R9,LR}
+   \        0x4   0x0005             MOVS     R5,R0
+   \        0x6   0x000C             MOVS     R4,R1
    1074          BaseType_t xReturn;
    1075          UBaseType_t uxSavedInterruptStatus;
    1076          Queue_t * const pxQueue = ( Queue_t * ) xQueue;
+   \        0x8   0x002E             MOVS     R6,R5
    1077          
    1078          	/* Similar to xQueueGenericSendFromISR() but used with semaphores where the
    1079          	item size is 0.  Don't directly wake a task that was blocked on a queue
@@ -1584,17 +1610,17 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1091          	there is a mutex holder, as priority inheritance makes no sense for an
    1092          	interrupts, only tasks. */
    1093          	configASSERT( !( ( pxQueue->uxQueueType == queueQUEUE_IS_MUTEX ) && ( pxQueue->pxMutexHolder != NULL ) ) );
-   \        0x6   0x6828             LDR      R0,[R5, #+0]
-   \        0x8   0x2800             CMP      R0,#+0
-   \        0xA   0xD102             BNE.N    ??xQueueGiveFromISR_0
-   \        0xC   0x6868             LDR      R0,[R5, #+4]
-   \        0xE   0x2800             CMP      R0,#+0
-   \       0x10   0xD101             BNE.N    ??xQueueGiveFromISR_1
+   \        0xA   0x6830             LDR      R0,[R6, #+0]
+   \        0xC   0x2800             CMP      R0,#+0
+   \        0xE   0xD102             BNE.N    ??xQueueGiveFromISR_0
+   \       0x10   0x6870             LDR      R0,[R6, #+4]
+   \       0x12   0x2800             CMP      R0,#+0
+   \       0x14   0xD101             BNE.N    ??xQueueGiveFromISR_1
    \                     ??xQueueGiveFromISR_0: (+1)
-   \       0x12   0x2001             MOVS     R0,#+1
-   \       0x14   0xE000             B.N      ??xQueueGiveFromISR_2
+   \       0x16   0x2001             MOVS     R0,#+1
+   \       0x18   0xE000             B.N      ??xQueueGiveFromISR_2
    \                     ??xQueueGiveFromISR_1: (+1)
-   \       0x16   0x2000             MOVS     R0,#+0
+   \       0x1A   0x2000             MOVS     R0,#+0
    1094          
    1095          	/* RTOS ports that support interrupt nesting have the concept of a maximum
    1096          	system call (or maximum API call) interrupt priority.  Interrupts that are
@@ -1612,28 +1638,28 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1108          	link: http://www.freertos.org/RTOS-Cortex-M3-M4.html */
    1109          	portASSERT_IF_INTERRUPT_PRIORITY_INVALID();
    \                     ??xQueueGiveFromISR_2: (+1)
-   \       0x18   0x.... 0x....      BL       vPortValidateInterruptPriority
+   \       0x1C   0x.... 0x....      BL       vPortValidateInterruptPriority
    1110          
    1111          	uxSavedInterruptStatus = portSET_INTERRUPT_MASK_FROM_ISR();
-   \       0x1C   0xF3EF 0x8611      MRS      R6,BASEPRI
-   \       0x20   0x2050             MOVS     R0,#+80
-   \       0x22   0xF380 0x8811      MSR      BASEPRI,R0
-   \       0x26   0xF3BF 0x8F4F      DSB      SY
-   \       0x2A   0xF3BF 0x8F6F      ISB      SY
+   \       0x20   0xF3EF 0x8711      MRS      R7,BASEPRI
+   \       0x24   0x2050             MOVS     R0,#+80
+   \       0x26   0xF380 0x8811      MSR      BASEPRI,R0
+   \       0x2A   0xF3BF 0x8F4F      DSB      SY
+   \       0x2E   0xF3BF 0x8F6F      ISB      SY
    1112          	{
    1113          		const UBaseType_t uxMessagesWaiting = pxQueue->uxMessagesWaiting;
-   \       0x2E   0x6BA8             LDR      R0,[R5, #+56]
+   \       0x32   0xF8D6 0x8038      LDR      R8,[R6, #+56]
    1114          
    1115          		/* When the queue is used to implement a semaphore no data is ever
    1116          		moved through the queue but it is still valid to see if the queue 'has
    1117          		space'. */
    1118          		if( uxMessagesWaiting < pxQueue->uxLength )
-   \       0x30   0x6BE9             LDR      R1,[R5, #+60]
-   \       0x32   0x4288             CMP      R0,R1
-   \       0x34   0xD21C             BCS.N    ??xQueueGiveFromISR_3
+   \       0x36   0x6BF0             LDR      R0,[R6, #+60]
+   \       0x38   0x4580             CMP      R8,R0
+   \       0x3A   0xD21E             BCS.N    ??xQueueGiveFromISR_3
    1119          		{
    1120          			const int8_t cTxLock = pxQueue->cTxLock;
-   \       0x36   0xF995 0x1045      LDRSB    R1,[R5, #+69]
+   \       0x3C   0xF996 0x9045      LDRSB    R9,[R6, #+69]
    1121          
    1122          			traceQUEUE_SEND_FROM_ISR( pxQueue );
    1123          
@@ -1644,17 +1670,17 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1128          			priority disinheritance is needed.  Simply increase the count of
    1129          			messages (semaphores) available. */
    1130          			pxQueue->uxMessagesWaiting = uxMessagesWaiting + 1;
-   \       0x3A   0x1C40             ADDS     R0,R0,#+1
-   \       0x3C   0x63A8             STR      R0,[R5, #+56]
+   \       0x40   0xF118 0x0001      ADDS     R0,R8,#+1
+   \       0x44   0x63B0             STR      R0,[R6, #+56]
    1131          
    1132          			/* The event list is not altered if the queue is locked.  This will
    1133          			be done when the queue is unlocked later. */
    1134          			if( cTxLock == queueUNLOCKED )
-   \       0x3E   0x0008             MOVS     R0,R1
-   \       0x40   0xF05F 0x32FF      MOVS     R2,#+4294967295
-   \       0x44   0xB240             SXTB     R0,R0
-   \       0x46   0x4290             CMP      R0,R2
-   \       0x48   0xD10D             BNE.N    ??xQueueGiveFromISR_4
+   \       0x46   0x4648             MOV      R0,R9
+   \       0x48   0xF05F 0x31FF      MOVS     R1,#+4294967295
+   \       0x4C   0xB240             SXTB     R0,R0
+   \       0x4E   0x4288             CMP      R0,R1
+   \       0x50   0xD10D             BNE.N    ??xQueueGiveFromISR_4
    1135          			{
    1136          				#if ( configUSE_QUEUE_SETS == 1 )
    1137          				{
@@ -1710,26 +1736,26 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1187          				#else /* configUSE_QUEUE_SETS */
    1188          				{
    1189          					if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToReceive ) ) == pdFALSE )
-   \       0x4A   0x6A68             LDR      R0,[R5, #+36]
-   \       0x4C   0x2800             CMP      R0,#+0
-   \       0x4E   0xD00D             BEQ.N    ??xQueueGiveFromISR_5
+   \       0x52   0x6A70             LDR      R0,[R6, #+36]
+   \       0x54   0x2800             CMP      R0,#+0
+   \       0x56   0xD00E             BEQ.N    ??xQueueGiveFromISR_5
    1190          					{
    1191          						if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToReceive ) ) != pdFALSE )
-   \       0x50   0xF115 0x0024      ADDS     R0,R5,#+36
-   \       0x54   0x.... 0x....      BL       xTaskRemoveFromEventList
-   \       0x58   0x2800             CMP      R0,#+0
-   \       0x5A   0xD007             BEQ.N    ??xQueueGiveFromISR_5
+   \       0x58   0xF116 0x0024      ADDS     R0,R6,#+36
+   \       0x5C   0x.... 0x....      BL       xTaskRemoveFromEventList
+   \       0x60   0x2800             CMP      R0,#+0
+   \       0x62   0xD008             BEQ.N    ??xQueueGiveFromISR_5
    1192          						{
    1193          							/* The task waiting has a higher priority so record that a
    1194          							context	switch is required. */
    1195          							if( pxHigherPriorityTaskWoken != NULL )
-   \       0x5C   0x2C00             CMP      R4,#+0
-   \       0x5E   0xD005             BEQ.N    ??xQueueGiveFromISR_5
+   \       0x64   0x2C00             CMP      R4,#+0
+   \       0x66   0xD006             BEQ.N    ??xQueueGiveFromISR_5
    1196          							{
    1197          								*pxHigherPriorityTaskWoken = pdTRUE;
-   \       0x60   0x2001             MOVS     R0,#+1
-   \       0x62   0x6020             STR      R0,[R4, #+0]
-   \       0x64   0xE002             B.N      ??xQueueGiveFromISR_5
+   \       0x68   0x2001             MOVS     R0,#+1
+   \       0x6A   0x6020             STR      R0,[R4, #+0]
+   \       0x6C   0xE003             B.N      ??xQueueGiveFromISR_5
    1198          							}
    1199          							else
    1200          							{
@@ -1754,29 +1780,29 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1219          				knows that data was posted while it was locked. */
    1220          				pxQueue->cTxLock = ( int8_t ) ( cTxLock + 1 );
    \                     ??xQueueGiveFromISR_4: (+1)
-   \       0x66   0x1C49             ADDS     R1,R1,#+1
-   \       0x68   0xF885 0x1045      STRB     R1,[R5, #+69]
+   \       0x6E   0xF119 0x0001      ADDS     R0,R9,#+1
+   \       0x72   0xF886 0x0045      STRB     R0,[R6, #+69]
    1221          			}
    1222          
    1223          			xReturn = pdPASS;
    \                     ??xQueueGiveFromISR_5: (+1)
-   \       0x6C   0x2001             MOVS     R0,#+1
-   \       0x6E   0xE000             B.N      ??xQueueGiveFromISR_6
+   \       0x76   0x2001             MOVS     R0,#+1
+   \       0x78   0xE000             B.N      ??xQueueGiveFromISR_6
    1224          		}
    1225          		else
    1226          		{
    1227          			traceQUEUE_SEND_FROM_ISR_FAILED( pxQueue );
    1228          			xReturn = errQUEUE_FULL;
    \                     ??xQueueGiveFromISR_3: (+1)
-   \       0x70   0x2000             MOVS     R0,#+0
+   \       0x7A   0x2000             MOVS     R0,#+0
    1229          		}
    1230          	}
    1231          	portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedInterruptStatus );
    \                     ??xQueueGiveFromISR_6: (+1)
-   \       0x72   0xF386 0x8811      MSR      BASEPRI,R6
+   \       0x7C   0xF387 0x8811      MSR      BASEPRI,R7
    1232          
    1233          	return xReturn;
-   \       0x76   0xBD70             POP      {R4-R6,PC}
+   \       0x80   0xE8BD 0x83F2      POP      {R1,R4-R9,PC}
    1234          }
    1235          /*-----------------------------------------------------------*/
    1236          
@@ -1785,7 +1811,7 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1237          BaseType_t xQueueGenericReceive( QueueHandle_t xQueue, void * const pvBuffer, TickType_t xTicksToWait, const BaseType_t xJustPeeking )
    1238          {
    \                     xQueueGenericReceive: (+1)
-   \        0x0   0xE92D 0x41F6      PUSH     {R1,R2,R4-R8,LR}
+   \        0x0   0xE92D 0x47F6      PUSH     {R1,R2,R4-R10,LR}
    \        0x4   0xB082             SUB      SP,SP,#+8
    \        0x6   0x4680             MOV      R8,R0
    \        0x8   0x000E             MOVS     R6,R1
@@ -1795,35 +1821,35 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1240          TimeOut_t xTimeOut;
    1241          int8_t *pcOriginalReadPosition;
    1242          Queue_t * const pxQueue = ( Queue_t * ) xQueue;
+   \        0xE   0x46C1             MOV      R9,R8
    1243          
    1244          	configASSERT( pxQueue );
    1245          	configASSERT( !( ( pvBuffer == NULL ) && ( pxQueue->uxItemSize != ( UBaseType_t ) 0U ) ) );
-   \        0xE   0x2E00             CMP      R6,#+0
-   \       0x10   0xD103             BNE.N    ??xQueueGenericReceive_0
-   \       0x12   0xF8D8 0x0040      LDR      R0,[R8, #+64]
-   \       0x16   0x2800             CMP      R0,#+0
-   \       0x18   0xD101             BNE.N    ??xQueueGenericReceive_1
+   \       0x10   0x2E00             CMP      R6,#+0
+   \       0x12   0xD103             BNE.N    ??xQueueGenericReceive_0
+   \       0x14   0xF8D9 0x0040      LDR      R0,[R9, #+64]
+   \       0x18   0x2800             CMP      R0,#+0
+   \       0x1A   0xD101             BNE.N    ??xQueueGenericReceive_1
    \                     ??xQueueGenericReceive_0: (+1)
-   \       0x1A   0x2001             MOVS     R0,#+1
-   \       0x1C   0xE000             B.N      ??xQueueGenericReceive_2
+   \       0x1C   0x2001             MOVS     R0,#+1
+   \       0x1E   0xE000             B.N      ??xQueueGenericReceive_2
    \                     ??xQueueGenericReceive_1: (+1)
-   \       0x1E   0x2000             MOVS     R0,#+0
+   \       0x20   0x2000             MOVS     R0,#+0
    1246          	#if ( ( INCLUDE_xTaskGetSchedulerState == 1 ) || ( configUSE_TIMERS == 1 ) )
    1247          	{
    1248          		configASSERT( !( ( xTaskGetSchedulerState() == taskSCHEDULER_SUSPENDED ) && ( xTicksToWait != 0 ) ) );
    \                     ??xQueueGenericReceive_2: (+1)
-   \       0x20   0x.... 0x....      BL       xTaskGetSchedulerState
-   \       0x24   0x2800             CMP      R0,#+0
-   \       0x26   0xD102             BNE.N    ??xQueueGenericReceive_3
-   \       0x28   0x9803             LDR      R0,[SP, #+12]
-   \       0x2A   0x2800             CMP      R0,#+0
-   \       0x2C   0xD101             BNE.N    ??xQueueGenericReceive_4
+   \       0x22   0x.... 0x....      BL       xTaskGetSchedulerState
+   \       0x26   0x2800             CMP      R0,#+0
+   \       0x28   0xD102             BNE.N    ??xQueueGenericReceive_3
+   \       0x2A   0x9803             LDR      R0,[SP, #+12]
+   \       0x2C   0x2800             CMP      R0,#+0
+   \       0x2E   0xD101             BNE.N    ??xQueueGenericReceive_4
    \                     ??xQueueGenericReceive_3: (+1)
-   \       0x2E   0x2001             MOVS     R0,#+1
-   \       0x30   0xE006             B.N      ??xQueueGenericReceive_5
+   \       0x30   0x2001             MOVS     R0,#+1
+   \       0x32   0xE000             B.N      ??xQueueGenericReceive_5
    \                     ??xQueueGenericReceive_4: (+1)
-   \       0x32   0x2000             MOVS     R0,#+0
-   \       0x34   0xE004             B.N      ??xQueueGenericReceive_5
+   \       0x34   0x2000             MOVS     R0,#+0
    1249          	}
    1250          	#endif
    1251          
@@ -1834,33 +1860,51 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1256          	for( ;; )
    1257          	{
    1258          		taskENTER_CRITICAL();
+   \                     ??xQueueGenericReceive_5: (+1)
+   \       0x36   0x.... 0x....      BL       vPortEnterCritical
    1259          		{
    1260          			const UBaseType_t uxMessagesWaiting = pxQueue->uxMessagesWaiting;
+   \       0x3A   0xF8D9 0x5038      LDR      R5,[R9, #+56]
    1261          
    1262          			/* Is there data in the queue now?  To be running the calling task
    1263          			must be the highest priority task wanting to access the queue. */
    1264          			if( uxMessagesWaiting > ( UBaseType_t ) 0 )
+   \       0x3E   0x2D00             CMP      R5,#+0
+   \       0x40   0xD03F             BEQ.N    ??xQueueGenericReceive_6
    1265          			{
    1266          				/* Remember the read position in case the queue is only being
    1267          				peeked. */
    1268          				pcOriginalReadPosition = pxQueue->u.pcReadFrom;
+   \       0x42   0xF8D9 0xA00C      LDR      R10,[R9, #+12]
    1269          
    1270          				prvCopyDataFromQueue( pxQueue, pvBuffer );
+   \       0x46   0x0031             MOVS     R1,R6
+   \       0x48   0x4648             MOV      R0,R9
+   \       0x4A   0x.... 0x....      BL       prvCopyDataFromQueue
    1271          
    1272          				if( xJustPeeking == pdFALSE )
+   \       0x4E   0x2F00             CMP      R7,#+0
+   \       0x50   0xD11E             BNE.N    ??xQueueGenericReceive_7
    1273          				{
    1274          					traceQUEUE_RECEIVE( pxQueue );
    1275          
    1276          					/* Actually removing data, not just peeking. */
    1277          					pxQueue->uxMessagesWaiting = uxMessagesWaiting - 1;
+   \       0x52   0x1E68             SUBS     R0,R5,#+1
+   \       0x54   0xF8C9 0x0038      STR      R0,[R9, #+56]
    1278          
    1279          					#if ( configUSE_MUTEXES == 1 )
    1280          					{
    1281          						if( pxQueue->uxQueueType == queueQUEUE_IS_MUTEX )
+   \       0x58   0xF8D9 0x0000      LDR      R0,[R9, #+0]
+   \       0x5C   0x2800             CMP      R0,#+0
+   \       0x5E   0xD103             BNE.N    ??xQueueGenericReceive_8
    1282          						{
    1283          							/* Record the information required to implement
    1284          							priority inheritance should it become necessary. */
    1285          							pxQueue->pxMutexHolder = ( int8_t * ) pvTaskIncrementMutexHeldCount(); /*lint !e961 Cast is not redundant as TaskHandle_t is a typedef. */
+   \       0x60   0x.... 0x....      BL       pvTaskIncrementMutexHeldCount
+   \       0x64   0xF8C9 0x0004      STR      R0,[R9, #+4]
    1286          						}
    1287          						else
    1288          						{
@@ -1870,10 +1914,24 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1292          					#endif /* configUSE_MUTEXES */
    1293          
    1294          					if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToSend ) ) == pdFALSE )
+   \                     ??xQueueGenericReceive_8: (+1)
+   \       0x68   0xF8D9 0x0010      LDR      R0,[R9, #+16]
+   \       0x6C   0x2800             CMP      R0,#+0
+   \       0x6E   0xD024             BEQ.N    ??xQueueGenericReceive_9
    1295          					{
    1296          						if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToSend ) ) != pdFALSE )
+   \       0x70   0xF119 0x0010      ADDS     R0,R9,#+16
+   \       0x74   0x.... 0x....      BL       xTaskRemoveFromEventList
+   \       0x78   0x2800             CMP      R0,#+0
+   \       0x7A   0xD01E             BEQ.N    ??xQueueGenericReceive_9
    1297          						{
    1298          							queueYIELD_IF_USING_PREEMPTION();
+   \       0x7C   0xF05F 0x5080      MOVS     R0,#+268435456
+   \       0x80   0x.... 0x....      LDR.W    R1,??DataTable5
+   \       0x84   0x6008             STR      R0,[R1, #+0]
+   \       0x86   0xF3BF 0x8F4F      DSB      SY
+   \       0x8A   0xF3BF 0x8F6F      ISB      SY
+   \       0x8E   0xE014             B.N      ??xQueueGenericReceive_9
    1299          						}
    1300          						else
    1301          						{
@@ -1892,15 +1950,29 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1314          					/* The data is not being removed, so reset the read
    1315          					pointer. */
    1316          					pxQueue->u.pcReadFrom = pcOriginalReadPosition;
+   \                     ??xQueueGenericReceive_7: (+1)
+   \       0x90   0xF8C9 0xA00C      STR      R10,[R9, #+12]
    1317          
    1318          					/* The data is being left in the queue, so see if there are
    1319          					any other tasks waiting for the data. */
    1320          					if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToReceive ) ) == pdFALSE )
+   \       0x94   0xF8D9 0x0024      LDR      R0,[R9, #+36]
+   \       0x98   0x2800             CMP      R0,#+0
+   \       0x9A   0xD00E             BEQ.N    ??xQueueGenericReceive_9
    1321          					{
    1322          						if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToReceive ) ) != pdFALSE )
+   \       0x9C   0xF119 0x0024      ADDS     R0,R9,#+36
+   \       0xA0   0x.... 0x....      BL       xTaskRemoveFromEventList
+   \       0xA4   0x2800             CMP      R0,#+0
+   \       0xA6   0xD008             BEQ.N    ??xQueueGenericReceive_9
    1323          						{
    1324          							/* The task waiting has a higher priority than this task. */
    1325          							queueYIELD_IF_USING_PREEMPTION();
+   \       0xA8   0xF05F 0x5080      MOVS     R0,#+268435456
+   \       0xAC   0x.... 0x....      LDR.W    R1,??DataTable5
+   \       0xB0   0x6008             STR      R0,[R1, #+0]
+   \       0xB2   0xF3BF 0x8F4F      DSB      SY
+   \       0xB6   0xF3BF 0x8F6F      ISB      SY
    1326          						}
    1327          						else
    1328          						{
@@ -1914,24 +1986,42 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1336          				}
    1337          
    1338          				taskEXIT_CRITICAL();
+   \                     ??xQueueGenericReceive_9: (+1)
+   \       0xBA   0x.... 0x....      BL       vPortExitCritical
    1339          				return pdPASS;
+   \       0xBE   0x2001             MOVS     R0,#+1
+   \       0xC0   0xE065             B.N      ??xQueueGenericReceive_10
    1340          			}
    1341          			else
    1342          			{
    1343          				if( xTicksToWait == ( TickType_t ) 0 )
+   \                     ??xQueueGenericReceive_6: (+1)
+   \       0xC2   0x9803             LDR      R0,[SP, #+12]
+   \       0xC4   0x2800             CMP      R0,#+0
+   \       0xC6   0xD103             BNE.N    ??xQueueGenericReceive_11
    1344          				{
    1345          					/* The queue was empty and no block time is specified (or
    1346          					the block time has expired) so leave now. */
    1347          					taskEXIT_CRITICAL();
+   \       0xC8   0x.... 0x....      BL       vPortExitCritical
    1348          					traceQUEUE_RECEIVE_FAILED( pxQueue );
    1349          					return errQUEUE_EMPTY;
+   \       0xCC   0x2000             MOVS     R0,#+0
+   \       0xCE   0xE05E             B.N      ??xQueueGenericReceive_10
    1350          				}
    1351          				else if( xEntryTimeSet == pdFALSE )
+   \                     ??xQueueGenericReceive_11: (+1)
+   \       0xD0   0x2C00             CMP      R4,#+0
+   \       0xD2   0xD104             BNE.N    ??xQueueGenericReceive_12
    1352          				{
    1353          					/* The queue was empty and a block time was specified so
    1354          					configure the timeout structure. */
    1355          					vTaskSetTimeOutState( &xTimeOut );
+   \       0xD4   0x4668             MOV      R0,SP
+   \       0xD6   0x.... 0x....      BL       vTaskSetTimeOutState
    1356          					xEntryTimeSet = pdTRUE;
+   \       0xDA   0x2001             MOVS     R0,#+1
+   \       0xDC   0x0004             MOVS     R4,R0
    1357          				}
    1358          				else
    1359          				{
@@ -1941,29 +2031,62 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1363          			}
    1364          		}
    1365          		taskEXIT_CRITICAL();
+   \                     ??xQueueGenericReceive_12: (+1)
+   \       0xDE   0x.... 0x....      BL       vPortExitCritical
    1366          
    1367          		/* Interrupts and other tasks can send to and receive from the queue
    1368          		now the critical section has been exited. */
    1369          
    1370          		vTaskSuspendAll();
+   \       0xE2   0x.... 0x....      BL       vTaskSuspendAll
    1371          		prvLockQueue( pxQueue );
+   \       0xE6   0x.... 0x....      BL       vPortEnterCritical
+   \       0xEA   0xF999 0x0044      LDRSB    R0,[R9, #+68]
+   \       0xEE   0xF110 0x0F01      CMN      R0,#+1
+   \       0xF2   0xD102             BNE.N    ??xQueueGenericReceive_13
+   \       0xF4   0x2000             MOVS     R0,#+0
+   \       0xF6   0xF889 0x0044      STRB     R0,[R9, #+68]
+   \                     ??xQueueGenericReceive_13: (+1)
+   \       0xFA   0xF999 0x0045      LDRSB    R0,[R9, #+69]
+   \       0xFE   0xF110 0x0F01      CMN      R0,#+1
+   \      0x102   0xD102             BNE.N    ??xQueueGenericReceive_14
+   \      0x104   0x2000             MOVS     R0,#+0
+   \      0x106   0xF889 0x0045      STRB     R0,[R9, #+69]
+   \                     ??xQueueGenericReceive_14: (+1)
+   \      0x10A   0x.... 0x....      BL       vPortExitCritical
    1372          
    1373          		/* Update the timeout state to see if it has expired yet. */
    1374          		if( xTaskCheckForTimeOut( &xTimeOut, &xTicksToWait ) == pdFALSE )
+   \      0x10E   0xA903             ADD      R1,SP,#+12
+   \      0x110   0x4668             MOV      R0,SP
+   \      0x112   0x.... 0x....      BL       xTaskCheckForTimeOut
+   \      0x116   0x2800             CMP      R0,#+0
+   \      0x118   0xD12D             BNE.N    ??xQueueGenericReceive_15
    1375          		{
    1376          			if( prvIsQueueEmpty( pxQueue ) != pdFALSE )
+   \      0x11A   0x4648             MOV      R0,R9
+   \      0x11C   0x.... 0x....      BL       prvIsQueueEmpty
+   \      0x120   0x2800             CMP      R0,#+0
+   \      0x122   0xD022             BEQ.N    ??xQueueGenericReceive_16
    1377          			{
    1378          				traceBLOCKING_ON_QUEUE_RECEIVE( pxQueue );
    1379          
    1380          				#if ( configUSE_MUTEXES == 1 )
    1381          				{
    1382          					if( pxQueue->uxQueueType == queueQUEUE_IS_MUTEX )
+   \      0x124   0xF8D9 0x0000      LDR      R0,[R9, #+0]
+   \      0x128   0x2800             CMP      R0,#+0
+   \      0x12A   0xD107             BNE.N    ??xQueueGenericReceive_17
    1383          					{
    1384          						taskENTER_CRITICAL();
+   \      0x12C   0x.... 0x....      BL       vPortEnterCritical
    1385          						{
    1386          							vTaskPriorityInherit( ( void * ) pxQueue->pxMutexHolder );
+   \      0x130   0xF8D9 0x0004      LDR      R0,[R9, #+4]
+   \      0x134   0x.... 0x....      BL       vTaskPriorityInherit
    1387          						}
    1388          						taskEXIT_CRITICAL();
+   \      0x138   0x.... 0x....      BL       vPortExitCritical
    1389          					}
    1390          					else
    1391          					{
@@ -1973,10 +2096,25 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1395          				#endif
    1396          
    1397          				vTaskPlaceOnEventList( &( pxQueue->xTasksWaitingToReceive ), xTicksToWait );
+   \                     ??xQueueGenericReceive_17: (+1)
+   \      0x13C   0x9903             LDR      R1,[SP, #+12]
+   \      0x13E   0xF119 0x0024      ADDS     R0,R9,#+36
+   \      0x142   0x.... 0x....      BL       vTaskPlaceOnEventList
    1398          				prvUnlockQueue( pxQueue );
+   \      0x146   0x4648             MOV      R0,R9
+   \      0x148   0x.... 0x....      BL       prvUnlockQueue
    1399          				if( xTaskResumeAll() == pdFALSE )
+   \      0x14C   0x.... 0x....      BL       xTaskResumeAll
+   \      0x150   0x2800             CMP      R0,#+0
+   \      0x152   0xF47F 0xAF70      BNE.W    ??xQueueGenericReceive_5
    1400          				{
    1401          					portYIELD_WITHIN_API();
+   \      0x156   0xF05F 0x5080      MOVS     R0,#+268435456
+   \      0x15A   0x.... 0x....      LDR.W    R1,??DataTable5
+   \      0x15E   0x6008             STR      R0,[R1, #+0]
+   \      0x160   0xF3BF 0x8F4F      DSB      SY
+   \      0x164   0xF3BF 0x8F6F      ISB      SY
+   \      0x168   0xE765             B.N      ??xQueueGenericReceive_5
    1402          				}
    1403          				else
    1404          				{
@@ -1987,147 +2125,35 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1409          			{
    1410          				/* Try again. */
    1411          				prvUnlockQueue( pxQueue );
-   \                     ??xQueueGenericReceive_6: (+1)
-   \       0x36   0x4640             MOV      R0,R8
-   \       0x38   0x.... 0x....      BL       prvUnlockQueue
-   1412          				( void ) xTaskResumeAll();
-   \       0x3C   0x.... 0x....      BL       xTaskResumeAll
-   1413          			}
-   \                     ??xQueueGenericReceive_5: (+1)
-   \       0x40   0x.... 0x....      BL       vPortEnterCritical
-   \       0x44   0xF8D8 0x5038      LDR      R5,[R8, #+56]
-   \       0x48   0x2D00             CMP      R5,#+0
-   \       0x4A   0xD14E             BNE.N    ??xQueueGenericReceive_7
-   \                     ??xQueueGenericReceive_8: (+1)
-   \       0x4C   0x9803             LDR      R0,[SP, #+12]
-   \       0x4E   0x2800             CMP      R0,#+0
-   \       0x50   0xF000 0x808B      BEQ.W    ??xQueueGenericReceive_9
-   \                     ??xQueueGenericReceive_10: (+1)
-   \       0x54   0x2C00             CMP      R4,#+0
-   \       0x56   0xD103             BNE.N    ??xQueueGenericReceive_11
-   \       0x58   0x4668             MOV      R0,SP
-   \       0x5A   0x.... 0x....      BL       vTaskSetTimeOutState
-   \       0x5E   0x2401             MOVS     R4,#+1
-   \                     ??xQueueGenericReceive_11: (+1)
-   \       0x60   0x.... 0x....      BL       vPortExitCritical
-   \       0x64   0x.... 0x....      BL       vTaskSuspendAll
-   \       0x68   0x.... 0x....      BL       vPortEnterCritical
-   \       0x6C   0xF998 0x0044      LDRSB    R0,[R8, #+68]
-   \       0x70   0xF110 0x0F01      CMN      R0,#+1
-   \       0x74   0xD102             BNE.N    ??xQueueGenericReceive_12
-   \       0x76   0x2000             MOVS     R0,#+0
-   \       0x78   0xF888 0x0044      STRB     R0,[R8, #+68]
-   \                     ??xQueueGenericReceive_12: (+1)
-   \       0x7C   0xF998 0x0045      LDRSB    R0,[R8, #+69]
-   \       0x80   0xF110 0x0F01      CMN      R0,#+1
-   \       0x84   0xD102             BNE.N    ??xQueueGenericReceive_13
-   \       0x86   0x2000             MOVS     R0,#+0
-   \       0x88   0xF888 0x0045      STRB     R0,[R8, #+69]
-   \                     ??xQueueGenericReceive_13: (+1)
-   \       0x8C   0x.... 0x....      BL       vPortExitCritical
-   \       0x90   0xA903             ADD      R1,SP,#+12
-   \       0x92   0x4668             MOV      R0,SP
-   \       0x94   0x.... 0x....      BL       xTaskCheckForTimeOut
-   \       0x98   0x2800             CMP      R0,#+0
-   \       0x9A   0xD16A             BNE.N    ??xQueueGenericReceive_14
-   \       0x9C   0x4640             MOV      R0,R8
-   \       0x9E   0x.... 0x....      BL       prvIsQueueEmpty
-   \       0xA2   0x2800             CMP      R0,#+0
-   \       0xA4   0xD0C7             BEQ.N    ??xQueueGenericReceive_6
-   \       0xA6   0xF8D8 0x0000      LDR      R0,[R8, #+0]
-   \       0xAA   0x2800             CMP      R0,#+0
-   \       0xAC   0xD107             BNE.N    ??xQueueGenericReceive_15
-   \       0xAE   0x.... 0x....      BL       vPortEnterCritical
-   \       0xB2   0xF8D8 0x0004      LDR      R0,[R8, #+4]
-   \       0xB6   0x.... 0x....      BL       vTaskPriorityInherit
-   \       0xBA   0x.... 0x....      BL       vPortExitCritical
-   \                     ??xQueueGenericReceive_15: (+1)
-   \       0xBE   0x9903             LDR      R1,[SP, #+12]
-   \       0xC0   0xF118 0x0024      ADDS     R0,R8,#+36
-   \       0xC4   0x.... 0x....      BL       vTaskPlaceOnEventList
-   \       0xC8   0x4640             MOV      R0,R8
-   \       0xCA   0x.... 0x....      BL       prvUnlockQueue
-   \       0xCE   0x.... 0x....      BL       xTaskResumeAll
-   \       0xD2   0x2800             CMP      R0,#+0
-   \       0xD4   0xD1B4             BNE.N    ??xQueueGenericReceive_5
-   \       0xD6   0xF05F 0x5080      MOVS     R0,#+268435456
-   \       0xDA   0x.... 0x....      LDR.W    R1,??DataTable5
-   \       0xDE   0x6008             STR      R0,[R1, #+0]
-   \       0xE0   0xF3BF 0x8F4F      DSB      SY
-   \       0xE4   0xF3BF 0x8F6F      ISB      SY
-   \       0xE8   0xE7AA             B.N      ??xQueueGenericReceive_5
-   \                     ??xQueueGenericReceive_7: (+1)
-   \       0xEA   0xF8D8 0x400C      LDR      R4,[R8, #+12]
-   \       0xEE   0x0031             MOVS     R1,R6
-   \       0xF0   0x4640             MOV      R0,R8
-   \       0xF2   0x.... 0x....      BL       prvCopyDataFromQueue
-   \       0xF6   0x2F00             CMP      R7,#+0
-   \       0xF8   0xD11E             BNE.N    ??xQueueGenericReceive_16
-   \       0xFA   0x1E6D             SUBS     R5,R5,#+1
-   \       0xFC   0xF8C8 0x5038      STR      R5,[R8, #+56]
-   \      0x100   0xF8D8 0x0000      LDR      R0,[R8, #+0]
-   \      0x104   0x2800             CMP      R0,#+0
-   \      0x106   0xD103             BNE.N    ??xQueueGenericReceive_17
-   \      0x108   0x.... 0x....      BL       pvTaskIncrementMutexHeldCount
-   \      0x10C   0xF8C8 0x0004      STR      R0,[R8, #+4]
-   \                     ??xQueueGenericReceive_17: (+1)
-   \      0x110   0xF8D8 0x0010      LDR      R0,[R8, #+16]
-   \      0x114   0x2800             CMP      R0,#+0
-   \      0x116   0xD024             BEQ.N    ??xQueueGenericReceive_18
-   \      0x118   0xF118 0x0010      ADDS     R0,R8,#+16
-   \      0x11C   0x.... 0x....      BL       xTaskRemoveFromEventList
-   \      0x120   0x2800             CMP      R0,#+0
-   \      0x122   0xD01E             BEQ.N    ??xQueueGenericReceive_18
-   \      0x124   0xF05F 0x5080      MOVS     R0,#+268435456
-   \      0x128   0x.... 0x....      LDR.W    R1,??DataTable5
-   \      0x12C   0x6008             STR      R0,[R1, #+0]
-   \      0x12E   0xF3BF 0x8F4F      DSB      SY
-   \      0x132   0xF3BF 0x8F6F      ISB      SY
-   \      0x136   0xE014             B.N      ??xQueueGenericReceive_18
    \                     ??xQueueGenericReceive_16: (+1)
-   \      0x138   0xF8C8 0x400C      STR      R4,[R8, #+12]
-   \      0x13C   0xF8D8 0x0024      LDR      R0,[R8, #+36]
-   \      0x140   0x2800             CMP      R0,#+0
-   \      0x142   0xD00E             BEQ.N    ??xQueueGenericReceive_18
-   \      0x144   0xF118 0x0024      ADDS     R0,R8,#+36
-   \      0x148   0x.... 0x....      BL       xTaskRemoveFromEventList
-   \      0x14C   0x2800             CMP      R0,#+0
-   \      0x14E   0xD008             BEQ.N    ??xQueueGenericReceive_18
-   \      0x150   0xF05F 0x5080      MOVS     R0,#+268435456
-   \      0x154   0x.... 0x....      LDR.W    R1,??DataTable5
-   \      0x158   0x6008             STR      R0,[R1, #+0]
-   \      0x15A   0xF3BF 0x8F4F      DSB      SY
-   \      0x15E   0xF3BF 0x8F6F      ISB      SY
-   \                     ??xQueueGenericReceive_18: (+1)
-   \      0x162   0x.... 0x....      BL       vPortExitCritical
-   \      0x166   0x2001             MOVS     R0,#+1
-   \      0x168   0xE00F             B.N      ??xQueueGenericReceive_19
-   \                     ??xQueueGenericReceive_9: (+1)
-   \      0x16A   0x.... 0x....      BL       vPortExitCritical
-   \      0x16E   0x2000             MOVS     R0,#+0
-   \      0x170   0xE00B             B.N      ??xQueueGenericReceive_19
+   \      0x16A   0x4648             MOV      R0,R9
+   \      0x16C   0x.... 0x....      BL       prvUnlockQueue
+   1412          				( void ) xTaskResumeAll();
+   \      0x170   0x.... 0x....      BL       xTaskResumeAll
+   \      0x174   0xE75F             B.N      ??xQueueGenericReceive_5
+   1413          			}
    1414          		}
    1415          		else
    1416          		{
    1417          			prvUnlockQueue( pxQueue );
-   \                     ??xQueueGenericReceive_14: (+1)
-   \      0x172   0x4640             MOV      R0,R8
-   \      0x174   0x.... 0x....      BL       prvUnlockQueue
+   \                     ??xQueueGenericReceive_15: (+1)
+   \      0x176   0x4648             MOV      R0,R9
+   \      0x178   0x.... 0x....      BL       prvUnlockQueue
    1418          			( void ) xTaskResumeAll();
-   \      0x178   0x.... 0x....      BL       xTaskResumeAll
+   \      0x17C   0x.... 0x....      BL       xTaskResumeAll
    1419          
    1420          			if( prvIsQueueEmpty( pxQueue ) != pdFALSE )
-   \      0x17C   0x4640             MOV      R0,R8
-   \      0x17E   0x.... 0x....      BL       prvIsQueueEmpty
-   \      0x182   0x2800             CMP      R0,#+0
-   \      0x184   0xF43F 0xAF5C      BEQ.W    ??xQueueGenericReceive_5
+   \      0x180   0x4648             MOV      R0,R9
+   \      0x182   0x.... 0x....      BL       prvIsQueueEmpty
+   \      0x186   0x2800             CMP      R0,#+0
+   \      0x188   0xF43F 0xAF55      BEQ.W    ??xQueueGenericReceive_5
    1421          			{
    1422          				traceQUEUE_RECEIVE_FAILED( pxQueue );
    1423          				return errQUEUE_EMPTY;
-   \      0x188   0x2000             MOVS     R0,#+0
-   \                     ??xQueueGenericReceive_19: (+1)
-   \      0x18A   0xB004             ADD      SP,SP,#+16
-   \      0x18C   0xE8BD 0x81F0      POP      {R4-R8,PC}
+   \      0x18C   0x2000             MOVS     R0,#+0
+   \                     ??xQueueGenericReceive_10: (+1)
+   \      0x18E   0xB004             ADD      SP,SP,#+16
+   \      0x190   0xE8BD 0x87F0      POP      {R4-R10,PC}
    1424          			}
    1425          			else
    1426          			{
@@ -2143,26 +2169,27 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1434          BaseType_t xQueueReceiveFromISR( QueueHandle_t xQueue, void * const pvBuffer, BaseType_t * const pxHigherPriorityTaskWoken )
    1435          {
    \                     xQueueReceiveFromISR: (+1)
-   \        0x0   0xE92D 0x43F8      PUSH     {R3-R9,LR}
+   \        0x0   0xE92D 0x47F0      PUSH     {R4-R10,LR}
    \        0x4   0x0007             MOVS     R7,R0
-   \        0x6   0x000D             MOVS     R5,R1
-   \        0x8   0x0014             MOVS     R4,R2
+   \        0x6   0x000C             MOVS     R4,R1
+   \        0x8   0x0015             MOVS     R5,R2
    1436          BaseType_t xReturn;
    1437          UBaseType_t uxSavedInterruptStatus;
    1438          Queue_t * const pxQueue = ( Queue_t * ) xQueue;
+   \        0xA   0x46B8             MOV      R8,R7
    1439          
    1440          	configASSERT( pxQueue );
    1441          	configASSERT( !( ( pvBuffer == NULL ) && ( pxQueue->uxItemSize != ( UBaseType_t ) 0U ) ) );
-   \        0xA   0x2D00             CMP      R5,#+0
-   \        0xC   0xD102             BNE.N    ??xQueueReceiveFromISR_0
-   \        0xE   0x6C38             LDR      R0,[R7, #+64]
-   \       0x10   0x2800             CMP      R0,#+0
-   \       0x12   0xD101             BNE.N    ??xQueueReceiveFromISR_1
+   \        0xC   0x2C00             CMP      R4,#+0
+   \        0xE   0xD103             BNE.N    ??xQueueReceiveFromISR_0
+   \       0x10   0xF8D8 0x0040      LDR      R0,[R8, #+64]
+   \       0x14   0x2800             CMP      R0,#+0
+   \       0x16   0xD101             BNE.N    ??xQueueReceiveFromISR_1
    \                     ??xQueueReceiveFromISR_0: (+1)
-   \       0x14   0x2001             MOVS     R0,#+1
-   \       0x16   0xE000             B.N      ??xQueueReceiveFromISR_2
+   \       0x18   0x2001             MOVS     R0,#+1
+   \       0x1A   0xE000             B.N      ??xQueueReceiveFromISR_2
    \                     ??xQueueReceiveFromISR_1: (+1)
-   \       0x18   0x2000             MOVS     R0,#+0
+   \       0x1C   0x2000             MOVS     R0,#+0
    1442          
    1443          	/* RTOS ports that support interrupt nesting have the concept of a maximum
    1444          	system call (or maximum API call) interrupt priority.  Interrupts that are
@@ -2180,68 +2207,68 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1456          	link: http://www.freertos.org/RTOS-Cortex-M3-M4.html */
    1457          	portASSERT_IF_INTERRUPT_PRIORITY_INVALID();
    \                     ??xQueueReceiveFromISR_2: (+1)
-   \       0x1A   0x.... 0x....      BL       vPortValidateInterruptPriority
+   \       0x1E   0x.... 0x....      BL       vPortValidateInterruptPriority
    1458          
    1459          	uxSavedInterruptStatus = portSET_INTERRUPT_MASK_FROM_ISR();
-   \       0x1E   0xF3EF 0x8811      MRS      R8,BASEPRI
-   \       0x22   0x2050             MOVS     R0,#+80
-   \       0x24   0xF380 0x8811      MSR      BASEPRI,R0
-   \       0x28   0xF3BF 0x8F4F      DSB      SY
-   \       0x2C   0xF3BF 0x8F6F      ISB      SY
+   \       0x22   0xF3EF 0x8911      MRS      R9,BASEPRI
+   \       0x26   0x2050             MOVS     R0,#+80
+   \       0x28   0xF380 0x8811      MSR      BASEPRI,R0
+   \       0x2C   0xF3BF 0x8F4F      DSB      SY
+   \       0x30   0xF3BF 0x8F6F      ISB      SY
    1460          	{
    1461          		const UBaseType_t uxMessagesWaiting = pxQueue->uxMessagesWaiting;
-   \       0x30   0x6BBE             LDR      R6,[R7, #+56]
+   \       0x34   0xF8D8 0x6038      LDR      R6,[R8, #+56]
    1462          
    1463          		/* Cannot block in an ISR, so check there is data available. */
    1464          		if( uxMessagesWaiting > ( UBaseType_t ) 0 )
-   \       0x32   0x2E00             CMP      R6,#+0
-   \       0x34   0xD021             BEQ.N    ??xQueueReceiveFromISR_3
+   \       0x38   0x2E00             CMP      R6,#+0
+   \       0x3A   0xD023             BEQ.N    ??xQueueReceiveFromISR_3
    1465          		{
    1466          			const int8_t cRxLock = pxQueue->cRxLock;
-   \       0x36   0xF997 0x9044      LDRSB    R9,[R7, #+68]
+   \       0x3C   0xF998 0xA044      LDRSB    R10,[R8, #+68]
    1467          
    1468          			traceQUEUE_RECEIVE_FROM_ISR( pxQueue );
    1469          
    1470          			prvCopyDataFromQueue( pxQueue, pvBuffer );
-   \       0x3A   0x0029             MOVS     R1,R5
-   \       0x3C   0x0038             MOVS     R0,R7
-   \       0x3E   0x.... 0x....      BL       prvCopyDataFromQueue
+   \       0x40   0x0021             MOVS     R1,R4
+   \       0x42   0x4640             MOV      R0,R8
+   \       0x44   0x.... 0x....      BL       prvCopyDataFromQueue
    1471          			pxQueue->uxMessagesWaiting = uxMessagesWaiting - 1;
-   \       0x42   0x1E76             SUBS     R6,R6,#+1
-   \       0x44   0x63BE             STR      R6,[R7, #+56]
+   \       0x48   0x1E70             SUBS     R0,R6,#+1
+   \       0x4A   0xF8C8 0x0038      STR      R0,[R8, #+56]
    1472          
    1473          			/* If the queue is locked the event list will not be modified.
    1474          			Instead update the lock count so the task that unlocks the queue
    1475          			will know that an ISR has removed data while the queue was
    1476          			locked. */
    1477          			if( cRxLock == queueUNLOCKED )
-   \       0x46   0x4648             MOV      R0,R9
-   \       0x48   0xF05F 0x31FF      MOVS     R1,#+4294967295
-   \       0x4C   0xB240             SXTB     R0,R0
-   \       0x4E   0x4288             CMP      R0,R1
-   \       0x50   0xD10D             BNE.N    ??xQueueReceiveFromISR_4
+   \       0x4E   0x4650             MOV      R0,R10
+   \       0x50   0xF05F 0x31FF      MOVS     R1,#+4294967295
+   \       0x54   0xB240             SXTB     R0,R0
+   \       0x56   0x4288             CMP      R0,R1
+   \       0x58   0xD10E             BNE.N    ??xQueueReceiveFromISR_4
    1478          			{
    1479          				if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToSend ) ) == pdFALSE )
-   \       0x52   0x6938             LDR      R0,[R7, #+16]
-   \       0x54   0x2800             CMP      R0,#+0
-   \       0x56   0xD00E             BEQ.N    ??xQueueReceiveFromISR_5
+   \       0x5A   0xF8D8 0x0010      LDR      R0,[R8, #+16]
+   \       0x5E   0x2800             CMP      R0,#+0
+   \       0x60   0xD00E             BEQ.N    ??xQueueReceiveFromISR_5
    1480          				{
    1481          					if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToSend ) ) != pdFALSE )
-   \       0x58   0xF117 0x0010      ADDS     R0,R7,#+16
-   \       0x5C   0x.... 0x....      BL       xTaskRemoveFromEventList
-   \       0x60   0x2800             CMP      R0,#+0
-   \       0x62   0xD008             BEQ.N    ??xQueueReceiveFromISR_5
+   \       0x62   0xF118 0x0010      ADDS     R0,R8,#+16
+   \       0x66   0x.... 0x....      BL       xTaskRemoveFromEventList
+   \       0x6A   0x2800             CMP      R0,#+0
+   \       0x6C   0xD008             BEQ.N    ??xQueueReceiveFromISR_5
    1482          					{
    1483          						/* The task waiting has a higher priority than us so
    1484          						force a context switch. */
    1485          						if( pxHigherPriorityTaskWoken != NULL )
-   \       0x64   0x2C00             CMP      R4,#+0
-   \       0x66   0xD006             BEQ.N    ??xQueueReceiveFromISR_5
+   \       0x6E   0x2D00             CMP      R5,#+0
+   \       0x70   0xD006             BEQ.N    ??xQueueReceiveFromISR_5
    1486          						{
    1487          							*pxHigherPriorityTaskWoken = pdTRUE;
-   \       0x68   0x2001             MOVS     R0,#+1
-   \       0x6A   0x6020             STR      R0,[R4, #+0]
-   \       0x6C   0xE003             B.N      ??xQueueReceiveFromISR_5
+   \       0x72   0x2001             MOVS     R0,#+1
+   \       0x74   0x6028             STR      R0,[R5, #+0]
+   \       0x76   0xE003             B.N      ??xQueueReceiveFromISR_5
    1488          						}
    1489          						else
    1490          						{
@@ -2264,29 +2291,29 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1507          				knows that data was removed while it was locked. */
    1508          				pxQueue->cRxLock = ( int8_t ) ( cRxLock + 1 );
    \                     ??xQueueReceiveFromISR_4: (+1)
-   \       0x6E   0xF119 0x0901      ADDS     R9,R9,#+1
-   \       0x72   0xF887 0x9044      STRB     R9,[R7, #+68]
+   \       0x78   0xF11A 0x0001      ADDS     R0,R10,#+1
+   \       0x7C   0xF888 0x0044      STRB     R0,[R8, #+68]
    1509          			}
    1510          
    1511          			xReturn = pdPASS;
    \                     ??xQueueReceiveFromISR_5: (+1)
-   \       0x76   0x2001             MOVS     R0,#+1
-   \       0x78   0xE000             B.N      ??xQueueReceiveFromISR_6
+   \       0x80   0x2001             MOVS     R0,#+1
+   \       0x82   0xE000             B.N      ??xQueueReceiveFromISR_6
    1512          		}
    1513          		else
    1514          		{
    1515          			xReturn = pdFAIL;
    \                     ??xQueueReceiveFromISR_3: (+1)
-   \       0x7A   0x2000             MOVS     R0,#+0
+   \       0x84   0x2000             MOVS     R0,#+0
    1516          			traceQUEUE_RECEIVE_FROM_ISR_FAILED( pxQueue );
    1517          		}
    1518          	}
    1519          	portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedInterruptStatus );
    \                     ??xQueueReceiveFromISR_6: (+1)
-   \       0x7C   0xF388 0x8811      MSR      BASEPRI,R8
+   \       0x86   0xF389 0x8811      MSR      BASEPRI,R9
    1520          
    1521          	return xReturn;
-   \       0x80   0xE8BD 0x83F2      POP      {R1,R4-R9,PC}
+   \       0x8A   0xE8BD 0x87F0      POP      {R4-R10,PC}
    1522          }
    1523          /*-----------------------------------------------------------*/
    1524          
@@ -2295,26 +2322,27 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1525          BaseType_t xQueuePeekFromISR( QueueHandle_t xQueue,  void * const pvBuffer )
    1526          {
    \                     xQueuePeekFromISR: (+1)
-   \        0x0   0xB5F8             PUSH     {R3-R7,LR}
-   \        0x2   0x0005             MOVS     R5,R0
-   \        0x4   0x000C             MOVS     R4,R1
+   \        0x0   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+   \        0x4   0x0005             MOVS     R5,R0
+   \        0x6   0x000C             MOVS     R4,R1
    1527          BaseType_t xReturn;
    1528          UBaseType_t uxSavedInterruptStatus;
    1529          int8_t *pcOriginalReadPosition;
    1530          Queue_t * const pxQueue = ( Queue_t * ) xQueue;
+   \        0x8   0x002F             MOVS     R7,R5
    1531          
    1532          	configASSERT( pxQueue );
    1533          	configASSERT( !( ( pvBuffer == NULL ) && ( pxQueue->uxItemSize != ( UBaseType_t ) 0U ) ) );
-   \        0x6   0x2C00             CMP      R4,#+0
-   \        0x8   0xD102             BNE.N    ??xQueuePeekFromISR_0
-   \        0xA   0x6C28             LDR      R0,[R5, #+64]
-   \        0xC   0x2800             CMP      R0,#+0
-   \        0xE   0xD101             BNE.N    ??xQueuePeekFromISR_1
+   \        0xA   0x2C00             CMP      R4,#+0
+   \        0xC   0xD102             BNE.N    ??xQueuePeekFromISR_0
+   \        0xE   0x6C38             LDR      R0,[R7, #+64]
+   \       0x10   0x2800             CMP      R0,#+0
+   \       0x12   0xD101             BNE.N    ??xQueuePeekFromISR_1
    \                     ??xQueuePeekFromISR_0: (+1)
-   \       0x10   0x2001             MOVS     R0,#+1
-   \       0x12   0xE000             B.N      ??xQueuePeekFromISR_2
+   \       0x14   0x2001             MOVS     R0,#+1
+   \       0x16   0xE000             B.N      ??xQueuePeekFromISR_2
    \                     ??xQueuePeekFromISR_1: (+1)
-   \       0x14   0x2000             MOVS     R0,#+0
+   \       0x18   0x2000             MOVS     R0,#+0
    1534          	configASSERT( pxQueue->uxItemSize != 0 ); /* Can't peek a semaphore. */
    1535          
    1536          	/* RTOS ports that support interrupt nesting have the concept of a maximum
@@ -2333,52 +2361,53 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1549          	link: http://www.freertos.org/RTOS-Cortex-M3-M4.html */
    1550          	portASSERT_IF_INTERRUPT_PRIORITY_INVALID();
    \                     ??xQueuePeekFromISR_2: (+1)
-   \       0x16   0x.... 0x....      BL       vPortValidateInterruptPriority
+   \       0x1A   0x.... 0x....      BL       vPortValidateInterruptPriority
    1551          
    1552          	uxSavedInterruptStatus = portSET_INTERRUPT_MASK_FROM_ISR();
-   \       0x1A   0xF3EF 0x8611      MRS      R6,BASEPRI
-   \       0x1E   0x2050             MOVS     R0,#+80
-   \       0x20   0xF380 0x8811      MSR      BASEPRI,R0
-   \       0x24   0xF3BF 0x8F4F      DSB      SY
-   \       0x28   0xF3BF 0x8F6F      ISB      SY
+   \       0x1E   0xF3EF 0x8811      MRS      R8,BASEPRI
+   \       0x22   0x2050             MOVS     R0,#+80
+   \       0x24   0xF380 0x8811      MSR      BASEPRI,R0
+   \       0x28   0xF3BF 0x8F4F      DSB      SY
+   \       0x2C   0xF3BF 0x8F6F      ISB      SY
    1553          	{
    1554          		/* Cannot block in an ISR, so check there is data available. */
    1555          		if( pxQueue->uxMessagesWaiting > ( UBaseType_t ) 0 )
-   \       0x2C   0x6BA8             LDR      R0,[R5, #+56]
-   \       0x2E   0x2800             CMP      R0,#+0
-   \       0x30   0xD007             BEQ.N    ??xQueuePeekFromISR_3
+   \       0x30   0x6BB8             LDR      R0,[R7, #+56]
+   \       0x32   0x2800             CMP      R0,#+0
+   \       0x34   0xD008             BEQ.N    ??xQueuePeekFromISR_3
    1556          		{
    1557          			traceQUEUE_PEEK_FROM_ISR( pxQueue );
    1558          
    1559          			/* Remember the read position so it can be reset as nothing is
    1560          			actually being removed from the queue. */
    1561          			pcOriginalReadPosition = pxQueue->u.pcReadFrom;
-   \       0x32   0x68EF             LDR      R7,[R5, #+12]
+   \       0x36   0x68F8             LDR      R0,[R7, #+12]
+   \       0x38   0x0006             MOVS     R6,R0
    1562          			prvCopyDataFromQueue( pxQueue, pvBuffer );
-   \       0x34   0x0021             MOVS     R1,R4
-   \       0x36   0x0028             MOVS     R0,R5
-   \       0x38   0x.... 0x....      BL       prvCopyDataFromQueue
+   \       0x3A   0x0021             MOVS     R1,R4
+   \       0x3C   0x0038             MOVS     R0,R7
+   \       0x3E   0x.... 0x....      BL       prvCopyDataFromQueue
    1563          			pxQueue->u.pcReadFrom = pcOriginalReadPosition;
-   \       0x3C   0x60EF             STR      R7,[R5, #+12]
+   \       0x42   0x60FE             STR      R6,[R7, #+12]
    1564          
    1565          			xReturn = pdPASS;
-   \       0x3E   0x2001             MOVS     R0,#+1
-   \       0x40   0xE000             B.N      ??xQueuePeekFromISR_4
+   \       0x44   0x2001             MOVS     R0,#+1
+   \       0x46   0xE000             B.N      ??xQueuePeekFromISR_4
    1566          		}
    1567          		else
    1568          		{
    1569          			xReturn = pdFAIL;
    \                     ??xQueuePeekFromISR_3: (+1)
-   \       0x42   0x2000             MOVS     R0,#+0
+   \       0x48   0x2000             MOVS     R0,#+0
    1570          			traceQUEUE_PEEK_FROM_ISR_FAILED( pxQueue );
    1571          		}
    1572          	}
    1573          	portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedInterruptStatus );
    \                     ??xQueuePeekFromISR_4: (+1)
-   \       0x44   0xF386 0x8811      MSR      BASEPRI,R6
+   \       0x4A   0xF388 0x8811      MSR      BASEPRI,R8
    1574          
    1575          	return xReturn;
-   \       0x48   0xBDF2             POP      {R1,R4-R7,PC}
+   \       0x4E   0xE8BD 0x81F0      POP      {R4-R8,PC}
    1576          }
    1577          /*-----------------------------------------------------------*/
    1578          
@@ -2387,7 +2416,7 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1579          UBaseType_t uxQueueMessagesWaiting( const QueueHandle_t xQueue )
    1580          {
    \                     uxQueueMessagesWaiting: (+1)
-   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
    \        0x2   0x0004             MOVS     R4,R0
    1581          UBaseType_t uxReturn;
    1582          
@@ -2397,14 +2426,14 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    \        0x4   0x.... 0x....      BL       vPortEnterCritical
    1586          	{
    1587          		uxReturn = ( ( Queue_t * ) xQueue )->uxMessagesWaiting;
-   \        0x8   0x6BA4             LDR      R4,[R4, #+56]
+   \        0x8   0x6BA5             LDR      R5,[R4, #+56]
    1588          	}
    1589          	taskEXIT_CRITICAL();
    \        0xA   0x.... 0x....      BL       vPortExitCritical
    1590          
    1591          	return uxReturn;
-   \        0xE   0x0020             MOVS     R0,R4
-   \       0x10   0xBD10             POP      {R4,PC}
+   \        0xE   0x0028             MOVS     R0,R5
+   \       0x10   0xBD32             POP      {R1,R4,R5,PC}
    1592          } /*lint !e818 Pointer cannot be declared const as xQueue is a typedef not pointer. */
    1593          /*-----------------------------------------------------------*/
    1594          
@@ -2413,28 +2442,29 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1595          UBaseType_t uxQueueSpacesAvailable( const QueueHandle_t xQueue )
    1596          {
    \                     uxQueueSpacesAvailable: (+1)
-   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
    \        0x2   0x0004             MOVS     R4,R0
    1597          UBaseType_t uxReturn;
    1598          Queue_t *pxQueue;
    1599          
    1600          	pxQueue = ( Queue_t * ) xQueue;
+   \        0x4   0x0026             MOVS     R6,R4
    1601          	configASSERT( pxQueue );
    1602          
    1603          	taskENTER_CRITICAL();
-   \        0x4   0x.... 0x....      BL       vPortEnterCritical
+   \        0x6   0x.... 0x....      BL       vPortEnterCritical
    1604          	{
    1605          		uxReturn = pxQueue->uxLength - pxQueue->uxMessagesWaiting;
-   \        0x8   0x6BE0             LDR      R0,[R4, #+60]
-   \        0xA   0x6BA4             LDR      R4,[R4, #+56]
-   \        0xC   0x1B04             SUBS     R4,R0,R4
+   \        0xA   0x6BF0             LDR      R0,[R6, #+60]
+   \        0xC   0x6BB5             LDR      R5,[R6, #+56]
+   \        0xE   0x1B45             SUBS     R5,R0,R5
    1606          	}
    1607          	taskEXIT_CRITICAL();
-   \        0xE   0x.... 0x....      BL       vPortExitCritical
+   \       0x10   0x.... 0x....      BL       vPortExitCritical
    1608          
    1609          	return uxReturn;
-   \       0x12   0x0020             MOVS     R0,R4
-   \       0x14   0xBD10             POP      {R4,PC}
+   \       0x14   0x0028             MOVS     R0,R5
+   \       0x16   0xBD70             POP      {R4-R6,PC}
    1610          } /*lint !e818 Pointer cannot be declared const as xQueue is a typedef not pointer. */
    1611          /*-----------------------------------------------------------*/
    1612          
@@ -2442,16 +2472,17 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    \                                 In section .text, align 2, keep-with-next
    1613          UBaseType_t uxQueueMessagesWaitingFromISR( const QueueHandle_t xQueue )
    1614          {
+   \                     uxQueueMessagesWaitingFromISR: (+1)
+   \        0x0   0x0001             MOVS     R1,R0
    1615          UBaseType_t uxReturn;
    1616          
    1617          	configASSERT( xQueue );
    1618          
    1619          	uxReturn = ( ( Queue_t * ) xQueue )->uxMessagesWaiting;
-   \                     uxQueueMessagesWaitingFromISR: (+1)
-   \        0x0   0x6B80             LDR      R0,[R0, #+56]
+   \        0x2   0x6B88             LDR      R0,[R1, #+56]
    1620          
    1621          	return uxReturn;
-   \        0x2   0x4770             BX       LR
+   \        0x4   0x4770             BX       LR
    1622          } /*lint !e818 Pointer cannot be declared const as xQueue is a typedef not pointer. */
    1623          /*-----------------------------------------------------------*/
    1624          
@@ -2460,8 +2491,10 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1625          void vQueueDelete( QueueHandle_t xQueue )
    1626          {
    \                     vQueueDelete: (+1)
-   \        0x0   0xB580             PUSH     {R7,LR}
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+   \        0x2   0x0004             MOVS     R4,R0
    1627          Queue_t * const pxQueue = ( Queue_t * ) xQueue;
+   \        0x4   0x0025             MOVS     R5,R4
    1628          
    1629          	configASSERT( pxQueue );
    1630          	traceQUEUE_DELETE( pxQueue );
@@ -2469,7 +2502,8 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1632          	#if ( configQUEUE_REGISTRY_SIZE > 0 )
    1633          	{
    1634          		vQueueUnregisterQueue( pxQueue );
-   \        0x2   0x.... 0x....      BL       vQueueUnregisterQueue
+   \        0x6   0x0028             MOVS     R0,R5
+   \        0x8   0x.... 0x....      BL       vQueueUnregisterQueue
    1635          	}
    1636          	#endif
    1637          
@@ -2500,7 +2534,7 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1662          	}
    1663          	#endif /* configSUPPORT_DYNAMIC_ALLOCATION */
    1664          }
-   \        0x6   0xBD01             POP      {R0,PC}
+   \        0xC   0xBD31             POP      {R0,R4,R5,PC}
    1665          /*-----------------------------------------------------------*/
    1666          
    1667          #if ( configUSE_TRACE_FACILITY == 1 )
@@ -2538,39 +2572,40 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1697          static BaseType_t prvCopyDataToQueue( Queue_t * const pxQueue, const void *pvItemToQueue, const BaseType_t xPosition )
    1698          {
    \                     prvCopyDataToQueue: (+1)
-   \        0x0   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+   \        0x0   0xE92D 0x4FF8      PUSH     {R3-R11,LR}
    \        0x4   0x0006             MOVS     R6,R0
-   \        0x6   0x0015             MOVS     R5,R2
+   \        0x6   0x000F             MOVS     R7,R1
+   \        0x8   0x0014             MOVS     R4,R2
    1699          BaseType_t xReturn = pdFALSE;
-   \        0x8   0x2700             MOVS     R7,#+0
+   \        0xA   0xF05F 0x0800      MOVS     R8,#+0
    1700          UBaseType_t uxMessagesWaiting;
    1701          
    1702          	/* This function is called from a critical section. */
    1703          
    1704          	uxMessagesWaiting = pxQueue->uxMessagesWaiting;
-   \        0xA   0x6BB4             LDR      R4,[R6, #+56]
+   \        0xE   0x6BB5             LDR      R5,[R6, #+56]
    1705          
    1706          	if( pxQueue->uxItemSize == ( UBaseType_t ) 0 )
-   \        0xC   0x6C30             LDR      R0,[R6, #+64]
-   \        0xE   0x2800             CMP      R0,#+0
-   \       0x10   0xD109             BNE.N    ??prvCopyDataToQueue_0
+   \       0x10   0x6C30             LDR      R0,[R6, #+64]
+   \       0x12   0x2800             CMP      R0,#+0
+   \       0x14   0xD109             BNE.N    ??prvCopyDataToQueue_0
    1707          	{
    1708          		#if ( configUSE_MUTEXES == 1 )
    1709          		{
    1710          			if( pxQueue->uxQueueType == queueQUEUE_IS_MUTEX )
-   \       0x12   0x6830             LDR      R0,[R6, #+0]
-   \       0x14   0x2800             CMP      R0,#+0
-   \       0x16   0xD131             BNE.N    ??prvCopyDataToQueue_1
+   \       0x16   0x6830             LDR      R0,[R6, #+0]
+   \       0x18   0x2800             CMP      R0,#+0
+   \       0x1A   0xD13A             BNE.N    ??prvCopyDataToQueue_1
    1711          			{
    1712          				/* The mutex is no longer being held. */
    1713          				xReturn = xTaskPriorityDisinherit( ( void * ) pxQueue->pxMutexHolder );
-   \       0x18   0x6870             LDR      R0,[R6, #+4]
-   \       0x1A   0x.... 0x....      BL       xTaskPriorityDisinherit
-   \       0x1E   0x0007             MOVS     R7,R0
+   \       0x1C   0x6870             LDR      R0,[R6, #+4]
+   \       0x1E   0x.... 0x....      BL       xTaskPriorityDisinherit
+   \       0x22   0x4680             MOV      R8,R0
    1714          				pxQueue->pxMutexHolder = NULL;
-   \       0x20   0x2000             MOVS     R0,#+0
-   \       0x22   0x6070             STR      R0,[R6, #+4]
-   \       0x24   0xE02A             B.N      ??prvCopyDataToQueue_1
+   \       0x24   0x2000             MOVS     R0,#+0
+   \       0x26   0x6070             STR      R0,[R6, #+4]
+   \       0x28   0xE033             B.N      ??prvCopyDataToQueue_1
    1715          			}
    1716          			else
    1717          			{
@@ -2581,29 +2616,32 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1722          	}
    1723          	else if( xPosition == queueSEND_TO_BACK )
    \                     ??prvCopyDataToQueue_0: (+1)
-   \       0x26   0x2D00             CMP      R5,#+0
-   \       0x28   0xD10F             BNE.N    ??prvCopyDataToQueue_2
+   \       0x2A   0x2C00             CMP      R4,#+0
+   \       0x2C   0xD114             BNE.N    ??prvCopyDataToQueue_2
    1724          	{
    1725          		( void ) memcpy( ( void * ) pxQueue->pcWriteTo, pvItemToQueue, ( size_t ) pxQueue->uxItemSize ); /*lint !e961 !e418 MISRA exception as the casts are only redundant for some ports, plus previous logic ensures a null pointer can only be passed to memcpy() if the copy size is 0. */
-   \       0x2A   0x6C32             LDR      R2,[R6, #+64]
-   \       0x2C   0x68B5             LDR      R5,[R6, #+8]
-   \       0x2E   0x0028             MOVS     R0,R5
-   \       0x30   0x.... 0x....      BL       __aeabi_memcpy
+   \       0x2E   0xF8D6 0x9040      LDR      R9,[R6, #+64]
+   \       0x32   0x46BA             MOV      R10,R7
+   \       0x34   0xF8D6 0xB008      LDR      R11,[R6, #+8]
+   \       0x38   0x464A             MOV      R2,R9
+   \       0x3A   0x4651             MOV      R1,R10
+   \       0x3C   0x4658             MOV      R0,R11
+   \       0x3E   0x.... 0x....      BL       __aeabi_memcpy
    1726          		pxQueue->pcWriteTo += pxQueue->uxItemSize;
-   \       0x34   0x68B0             LDR      R0,[R6, #+8]
-   \       0x36   0x6C31             LDR      R1,[R6, #+64]
-   \       0x38   0x4408             ADD      R0,R0,R1
-   \       0x3A   0x60B0             STR      R0,[R6, #+8]
+   \       0x42   0x68B0             LDR      R0,[R6, #+8]
+   \       0x44   0x6C31             LDR      R1,[R6, #+64]
+   \       0x46   0x4408             ADD      R0,R0,R1
+   \       0x48   0x60B0             STR      R0,[R6, #+8]
    1727          		if( pxQueue->pcWriteTo >= pxQueue->pcTail ) /*lint !e946 MISRA exception justified as comparison of pointers is the cleanest solution. */
-   \       0x3C   0x68B0             LDR      R0,[R6, #+8]
-   \       0x3E   0x6871             LDR      R1,[R6, #+4]
-   \       0x40   0x4288             CMP      R0,R1
-   \       0x42   0xD31B             BCC.N    ??prvCopyDataToQueue_1
+   \       0x4A   0x68B0             LDR      R0,[R6, #+8]
+   \       0x4C   0x6871             LDR      R1,[R6, #+4]
+   \       0x4E   0x4288             CMP      R0,R1
+   \       0x50   0xD31F             BCC.N    ??prvCopyDataToQueue_1
    1728          		{
    1729          			pxQueue->pcWriteTo = pxQueue->pcHead;
-   \       0x44   0x6830             LDR      R0,[R6, #+0]
-   \       0x46   0x60B0             STR      R0,[R6, #+8]
-   \       0x48   0xE018             B.N      ??prvCopyDataToQueue_1
+   \       0x52   0x6830             LDR      R0,[R6, #+0]
+   \       0x54   0x60B0             STR      R0,[R6, #+8]
+   \       0x56   0xE01C             B.N      ??prvCopyDataToQueue_1
    1730          		}
    1731          		else
    1732          		{
@@ -2614,28 +2652,31 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1737          	{
    1738          		( void ) memcpy( ( void * ) pxQueue->u.pcReadFrom, pvItemToQueue, ( size_t ) pxQueue->uxItemSize ); /*lint !e961 MISRA exception as the casts are only redundant for some ports. */
    \                     ??prvCopyDataToQueue_2: (+1)
-   \       0x4A   0x6C32             LDR      R2,[R6, #+64]
-   \       0x4C   0xF8D6 0x800C      LDR      R8,[R6, #+12]
-   \       0x50   0x4640             MOV      R0,R8
-   \       0x52   0x.... 0x....      BL       __aeabi_memcpy
+   \       0x58   0xF8D6 0x9040      LDR      R9,[R6, #+64]
+   \       0x5C   0x46BA             MOV      R10,R7
+   \       0x5E   0xF8D6 0xB00C      LDR      R11,[R6, #+12]
+   \       0x62   0x464A             MOV      R2,R9
+   \       0x64   0x4651             MOV      R1,R10
+   \       0x66   0x4658             MOV      R0,R11
+   \       0x68   0x.... 0x....      BL       __aeabi_memcpy
    1739          		pxQueue->u.pcReadFrom -= pxQueue->uxItemSize;
-   \       0x56   0x68F0             LDR      R0,[R6, #+12]
-   \       0x58   0x6C31             LDR      R1,[R6, #+64]
-   \       0x5A   0x4249             RSBS     R1,R1,#+0
-   \       0x5C   0x4408             ADD      R0,R0,R1
-   \       0x5E   0x60F0             STR      R0,[R6, #+12]
+   \       0x6C   0x68F0             LDR      R0,[R6, #+12]
+   \       0x6E   0x6C31             LDR      R1,[R6, #+64]
+   \       0x70   0x4249             RSBS     R1,R1,#+0
+   \       0x72   0x4408             ADD      R0,R0,R1
+   \       0x74   0x60F0             STR      R0,[R6, #+12]
    1740          		if( pxQueue->u.pcReadFrom < pxQueue->pcHead ) /*lint !e946 MISRA exception justified as comparison of pointers is the cleanest solution. */
-   \       0x60   0x68F0             LDR      R0,[R6, #+12]
-   \       0x62   0x6831             LDR      R1,[R6, #+0]
-   \       0x64   0x4288             CMP      R0,R1
-   \       0x66   0xD204             BCS.N    ??prvCopyDataToQueue_3
+   \       0x76   0x68F0             LDR      R0,[R6, #+12]
+   \       0x78   0x6831             LDR      R1,[R6, #+0]
+   \       0x7A   0x4288             CMP      R0,R1
+   \       0x7C   0xD204             BCS.N    ??prvCopyDataToQueue_3
    1741          		{
    1742          			pxQueue->u.pcReadFrom = ( pxQueue->pcTail - pxQueue->uxItemSize );
-   \       0x68   0x6870             LDR      R0,[R6, #+4]
-   \       0x6A   0x6C31             LDR      R1,[R6, #+64]
-   \       0x6C   0x4249             RSBS     R1,R1,#+0
-   \       0x6E   0x4408             ADD      R0,R0,R1
-   \       0x70   0x60F0             STR      R0,[R6, #+12]
+   \       0x7E   0x6870             LDR      R0,[R6, #+4]
+   \       0x80   0x6C31             LDR      R1,[R6, #+64]
+   \       0x82   0x4249             RSBS     R1,R1,#+0
+   \       0x84   0x4408             ADD      R0,R0,R1
+   \       0x86   0x60F0             STR      R0,[R6, #+12]
    1743          		}
    1744          		else
    1745          		{
@@ -2644,19 +2685,19 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1748          
    1749          		if( xPosition == queueOVERWRITE )
    \                     ??prvCopyDataToQueue_3: (+1)
-   \       0x72   0x2D02             CMP      R5,#+2
-   \       0x74   0xD102             BNE.N    ??prvCopyDataToQueue_1
+   \       0x88   0x2C02             CMP      R4,#+2
+   \       0x8A   0xD102             BNE.N    ??prvCopyDataToQueue_1
    1750          		{
    1751          			if( uxMessagesWaiting > ( UBaseType_t ) 0 )
-   \       0x76   0x2C00             CMP      R4,#+0
-   \       0x78   0xD000             BEQ.N    ??prvCopyDataToQueue_1
+   \       0x8C   0x2D00             CMP      R5,#+0
+   \       0x8E   0xD000             BEQ.N    ??prvCopyDataToQueue_1
    1752          			{
    1753          				/* An item is not being added but overwritten, so subtract
    1754          				one from the recorded number of items in the queue so when
    1755          				one is added again below the number of recorded items remains
    1756          				correct. */
    1757          				--uxMessagesWaiting;
-   \       0x7A   0x1E64             SUBS     R4,R4,#+1
+   \       0x90   0x1E6D             SUBS     R5,R5,#+1
    1758          			}
    1759          			else
    1760          			{
@@ -2671,12 +2712,12 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1769          
    1770          	pxQueue->uxMessagesWaiting = uxMessagesWaiting + 1;
    \                     ??prvCopyDataToQueue_1: (+1)
-   \       0x7C   0x1C64             ADDS     R4,R4,#+1
-   \       0x7E   0x63B4             STR      R4,[R6, #+56]
+   \       0x92   0x1C68             ADDS     R0,R5,#+1
+   \       0x94   0x63B0             STR      R0,[R6, #+56]
    1771          
    1772          	return xReturn;
-   \       0x80   0x0038             MOVS     R0,R7
-   \       0x82   0xE8BD 0x81F0      POP      {R4-R8,PC}
+   \       0x96   0x4640             MOV      R0,R8
+   \       0x98   0xE8BD 0x8FF2      POP      {R1,R4-R11,PC}
    1773          }
    1774          /*-----------------------------------------------------------*/
    1775          
@@ -2685,27 +2726,28 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1776          static void prvCopyDataFromQueue( Queue_t * const pxQueue, void * const pvBuffer )
    1777          {
    \                     prvCopyDataFromQueue: (+1)
-   \        0x0   0xB510             PUSH     {R4,LR}
-   \        0x2   0x000C             MOVS     R4,R1
+   \        0x0   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+   \        0x4   0x0004             MOVS     R4,R0
+   \        0x6   0x000D             MOVS     R5,R1
    1778          	if( pxQueue->uxItemSize != ( UBaseType_t ) 0 )
-   \        0x4   0x6C01             LDR      R1,[R0, #+64]
-   \        0x6   0x2900             CMP      R1,#+0
-   \        0x8   0xD00E             BEQ.N    ??prvCopyDataFromQueue_0
+   \        0x8   0x6C20             LDR      R0,[R4, #+64]
+   \        0xA   0x2800             CMP      R0,#+0
+   \        0xC   0xD011             BEQ.N    ??prvCopyDataFromQueue_0
    1779          	{
    1780          		pxQueue->u.pcReadFrom += pxQueue->uxItemSize;
-   \        0xA   0x68C1             LDR      R1,[R0, #+12]
-   \        0xC   0x6C02             LDR      R2,[R0, #+64]
-   \        0xE   0x4411             ADD      R1,R1,R2
-   \       0x10   0x60C1             STR      R1,[R0, #+12]
+   \        0xE   0x68E0             LDR      R0,[R4, #+12]
+   \       0x10   0x6C21             LDR      R1,[R4, #+64]
+   \       0x12   0x4408             ADD      R0,R0,R1
+   \       0x14   0x60E0             STR      R0,[R4, #+12]
    1781          		if( pxQueue->u.pcReadFrom >= pxQueue->pcTail ) /*lint !e946 MISRA exception justified as use of the relational operator is the cleanest solutions. */
-   \       0x12   0x68C1             LDR      R1,[R0, #+12]
-   \       0x14   0x6842             LDR      R2,[R0, #+4]
-   \       0x16   0x4291             CMP      R1,R2
-   \       0x18   0xD301             BCC.N    ??prvCopyDataFromQueue_1
+   \       0x16   0x68E0             LDR      R0,[R4, #+12]
+   \       0x18   0x6861             LDR      R1,[R4, #+4]
+   \       0x1A   0x4288             CMP      R0,R1
+   \       0x1C   0xD301             BCC.N    ??prvCopyDataFromQueue_1
    1782          		{
    1783          			pxQueue->u.pcReadFrom = pxQueue->pcHead;
-   \       0x1A   0x6801             LDR      R1,[R0, #+0]
-   \       0x1C   0x60C1             STR      R1,[R0, #+12]
+   \       0x1E   0x6820             LDR      R0,[R4, #+0]
+   \       0x20   0x60E0             STR      R0,[R4, #+12]
    1784          		}
    1785          		else
    1786          		{
@@ -2713,14 +2755,17 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1788          		}
    1789          		( void ) memcpy( ( void * ) pvBuffer, ( void * ) pxQueue->u.pcReadFrom, ( size_t ) pxQueue->uxItemSize ); /*lint !e961 !e418 MISRA exception as the casts are only redundant for some ports.  Also previous logic ensures a null pointer can only be passed to memcpy() when the count is 0. */
    \                     ??prvCopyDataFromQueue_1: (+1)
-   \       0x1E   0x6C02             LDR      R2,[R0, #+64]
-   \       0x20   0x68C1             LDR      R1,[R0, #+12]
-   \       0x22   0x0020             MOVS     R0,R4
-   \       0x24   0x.... 0x....      BL       __aeabi_memcpy
+   \       0x22   0x6C26             LDR      R6,[R4, #+64]
+   \       0x24   0x68E7             LDR      R7,[R4, #+12]
+   \       0x26   0x46A8             MOV      R8,R5
+   \       0x28   0x0032             MOVS     R2,R6
+   \       0x2A   0x0039             MOVS     R1,R7
+   \       0x2C   0x4640             MOV      R0,R8
+   \       0x2E   0x.... 0x....      BL       __aeabi_memcpy
    1790          	}
    1791          }
    \                     ??prvCopyDataFromQueue_0: (+1)
-   \       0x28   0xBD10             POP      {R4,PC}
+   \       0x32   0xE8BD 0x81F0      POP      {R4-R8,PC}
    1792          /*-----------------------------------------------------------*/
    1793          
 
@@ -2728,7 +2773,7 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1794          static void prvUnlockQueue( Queue_t * const pxQueue )
    1795          {
    \                     prvUnlockQueue: (+1)
-   \        0x0   0xB570             PUSH     {R4-R6,LR}
+   \        0x0   0xB5F8             PUSH     {R3-R7,LR}
    \        0x2   0x0004             MOVS     R4,R0
    1796          	/* THIS FUNCTION MUST BE CALLED WITH THE SCHEDULER SUSPENDED. */
    1797          
@@ -2741,10 +2786,14 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1803          	{
    1804          		int8_t cTxLock = pxQueue->cTxLock;
    \        0x8   0xF994 0x5045      LDRSB    R5,[R4, #+69]
-   \        0xC   0xE008             B.N      ??prvUnlockQueue_0
    1805          
    1806          		/* See if data was added to the queue while it was locked. */
    1807          		while( cTxLock > queueLOCKED_UNMODIFIED )
+   \                     ??prvUnlockQueue_0: (+1)
+   \        0xC   0x0028             MOVS     R0,R5
+   \        0xE   0xB240             SXTB     R0,R0
+   \       0x10   0x2801             CMP      R0,#+1
+   \       0x12   0xDB0C             BLT.N    ??prvUnlockQueue_1
    1808          		{
    1809          			/* Data was posted while the queue was locked.  Are any tasks
    1810          			blocked waiting for data to become available? */
@@ -2793,18 +2842,20 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1853          				/* Tasks that are removed from the event list will get added to
    1854          				the pending ready list as the scheduler is still suspended. */
    1855          				if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToReceive ) ) == pdFALSE )
+   \       0x14   0x6A60             LDR      R0,[R4, #+36]
+   \       0x16   0x2800             CMP      R0,#+0
+   \       0x18   0xD009             BEQ.N    ??prvUnlockQueue_2
    1856          				{
    1857          					if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToReceive ) ) != pdFALSE )
-   \                     ??prvUnlockQueue_1: (+1)
-   \        0xE   0xF114 0x0024      ADDS     R0,R4,#+36
-   \       0x12   0x.... 0x....      BL       xTaskRemoveFromEventList
-   \       0x16   0x2800             CMP      R0,#+0
-   \       0x18   0xD001             BEQ.N    ??prvUnlockQueue_2
+   \       0x1A   0xF114 0x0024      ADDS     R0,R4,#+36
+   \       0x1E   0x.... 0x....      BL       xTaskRemoveFromEventList
+   \       0x22   0x2800             CMP      R0,#+0
+   \       0x24   0xD001             BEQ.N    ??prvUnlockQueue_3
    1858          					{
    1859          						/* The task waiting has a higher priority so record that
    1860          						a context switch is required. */
    1861          						vTaskMissedYield();
-   \       0x1A   0x.... 0x....      BL       vTaskMissedYield
+   \       0x26   0x.... 0x....      BL       vTaskMissedYield
    1862          					}
    1863          					else
    1864          					{
@@ -2819,22 +2870,16 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1873          			#endif /* configUSE_QUEUE_SETS */
    1874          
    1875          			--cTxLock;
-   \                     ??prvUnlockQueue_2: (+1)
-   \       0x1E   0x1E6D             SUBS     R5,R5,#+1
-   \                     ??prvUnlockQueue_0: (+1)
-   \       0x20   0x0028             MOVS     R0,R5
-   \       0x22   0xB240             SXTB     R0,R0
-   \       0x24   0x2801             CMP      R0,#+1
-   \       0x26   0xDB02             BLT.N    ??prvUnlockQueue_3
-   \       0x28   0x6A60             LDR      R0,[R4, #+36]
-   \       0x2A   0x2800             CMP      R0,#+0
-   \       0x2C   0xD1EF             BNE.N    ??prvUnlockQueue_1
+   \                     ??prvUnlockQueue_3: (+1)
+   \       0x2A   0x1E6D             SUBS     R5,R5,#+1
+   \       0x2C   0xE7EE             B.N      ??prvUnlockQueue_0
    1876          		}
    1877          
    1878          		pxQueue->cTxLock = queueUNLOCKED;
-   \                     ??prvUnlockQueue_3: (+1)
-   \       0x2E   0xF05F 0x35FF      MOVS     R5,#+4294967295
-   \       0x32   0xF884 0x5045      STRB     R5,[R4, #+69]
+   \                     ??prvUnlockQueue_2: (+1)
+   \                     ??prvUnlockQueue_1: (+1)
+   \       0x2E   0xF05F 0x36FF      MOVS     R6,#+4294967295
+   \       0x32   0xF884 0x6045      STRB     R6,[R4, #+69]
    1879          	}
    1880          	taskEXIT_CRITICAL();
    \       0x36   0x.... 0x....      BL       vPortExitCritical
@@ -2844,22 +2889,28 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    \       0x3A   0x.... 0x....      BL       vPortEnterCritical
    1884          	{
    1885          		int8_t cRxLock = pxQueue->cRxLock;
-   \       0x3E   0xF994 0x6044      LDRSB    R6,[R4, #+68]
-   \       0x42   0xE008             B.N      ??prvUnlockQueue_4
+   \       0x3E   0xF994 0x7044      LDRSB    R7,[R4, #+68]
    1886          
    1887          		while( cRxLock > queueLOCKED_UNMODIFIED )
+   \                     ??prvUnlockQueue_4: (+1)
+   \       0x42   0x0038             MOVS     R0,R7
+   \       0x44   0xB240             SXTB     R0,R0
+   \       0x46   0x2801             CMP      R0,#+1
+   \       0x48   0xDB0C             BLT.N    ??prvUnlockQueue_5
    1888          		{
    1889          			if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToSend ) ) == pdFALSE )
+   \       0x4A   0x6920             LDR      R0,[R4, #+16]
+   \       0x4C   0x2800             CMP      R0,#+0
+   \       0x4E   0xD009             BEQ.N    ??prvUnlockQueue_6
    1890          			{
    1891          				if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToSend ) ) != pdFALSE )
-   \                     ??prvUnlockQueue_5: (+1)
-   \       0x44   0xF114 0x0010      ADDS     R0,R4,#+16
-   \       0x48   0x.... 0x....      BL       xTaskRemoveFromEventList
-   \       0x4C   0x2800             CMP      R0,#+0
-   \       0x4E   0xD001             BEQ.N    ??prvUnlockQueue_6
+   \       0x50   0xF114 0x0010      ADDS     R0,R4,#+16
+   \       0x54   0x.... 0x....      BL       xTaskRemoveFromEventList
+   \       0x58   0x2800             CMP      R0,#+0
+   \       0x5A   0xD001             BEQ.N    ??prvUnlockQueue_7
    1892          				{
    1893          					vTaskMissedYield();
-   \       0x50   0x.... 0x....      BL       vTaskMissedYield
+   \       0x5C   0x.... 0x....      BL       vTaskMissedYield
    1894          				}
    1895          				else
    1896          				{
@@ -2867,17 +2918,10 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1898          				}
    1899          
    1900          				--cRxLock;
-   \                     ??prvUnlockQueue_6: (+1)
-   \       0x54   0x1E76             SUBS     R6,R6,#+1
+   \                     ??prvUnlockQueue_7: (+1)
+   \       0x60   0x1E7F             SUBS     R7,R7,#+1
+   \       0x62   0xE7EE             B.N      ??prvUnlockQueue_4
    1901          			}
-   \                     ??prvUnlockQueue_4: (+1)
-   \       0x56   0x0030             MOVS     R0,R6
-   \       0x58   0xB240             SXTB     R0,R0
-   \       0x5A   0x2801             CMP      R0,#+1
-   \       0x5C   0xDB02             BLT.N    ??prvUnlockQueue_7
-   \       0x5E   0x6920             LDR      R0,[R4, #+16]
-   \       0x60   0x2800             CMP      R0,#+0
-   \       0x62   0xD1EF             BNE.N    ??prvUnlockQueue_5
    1902          			else
    1903          			{
    1904          				break;
@@ -2885,13 +2929,14 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1906          		}
    1907          
    1908          		pxQueue->cRxLock = queueUNLOCKED;
-   \                     ??prvUnlockQueue_7: (+1)
-   \       0x64   0xF884 0x5044      STRB     R5,[R4, #+68]
+   \                     ??prvUnlockQueue_6: (+1)
+   \                     ??prvUnlockQueue_5: (+1)
+   \       0x64   0xF884 0x6044      STRB     R6,[R4, #+68]
    1909          	}
    1910          	taskEXIT_CRITICAL();
    \       0x68   0x.... 0x....      BL       vPortExitCritical
    1911          }
-   \       0x6C   0xBD70             POP      {R4-R6,PC}
+   \       0x6C   0xBDF1             POP      {R0,R4-R7,PC}
    1912          /*-----------------------------------------------------------*/
    1913          
 
@@ -2899,7 +2944,7 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1914          static BaseType_t prvIsQueueEmpty( const Queue_t *pxQueue )
    1915          {
    \                     prvIsQueueEmpty: (+1)
-   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
    \        0x2   0x0004             MOVS     R4,R0
    1916          BaseType_t xReturn;
    1917          
@@ -2912,14 +2957,14 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    \        0xC   0xD101             BNE.N    ??prvIsQueueEmpty_0
    1921          		{
    1922          			xReturn = pdTRUE;
-   \        0xE   0x2401             MOVS     R4,#+1
+   \        0xE   0x2501             MOVS     R5,#+1
    \       0x10   0xE000             B.N      ??prvIsQueueEmpty_1
    1923          		}
    1924          		else
    1925          		{
    1926          			xReturn = pdFALSE;
    \                     ??prvIsQueueEmpty_0: (+1)
-   \       0x12   0x2400             MOVS     R4,#+0
+   \       0x12   0x2500             MOVS     R5,#+0
    1927          		}
    1928          	}
    1929          	taskEXIT_CRITICAL();
@@ -2927,8 +2972,8 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    \       0x14   0x.... 0x....      BL       vPortExitCritical
    1930          
    1931          	return xReturn;
-   \       0x18   0x0020             MOVS     R0,R4
-   \       0x1A   0xBD10             POP      {R4,PC}
+   \       0x18   0x0028             MOVS     R0,R5
+   \       0x1A   0xBD32             POP      {R1,R4,R5,PC}
    1932          }
    1933          /*-----------------------------------------------------------*/
    1934          
@@ -2936,29 +2981,30 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    \                                 In section .text, align 2, keep-with-next
    1935          BaseType_t xQueueIsQueueEmptyFromISR( const QueueHandle_t xQueue )
    1936          {
+   \                     xQueueIsQueueEmptyFromISR: (+1)
+   \        0x0   0x0001             MOVS     R1,R0
    1937          BaseType_t xReturn;
    1938          
    1939          	configASSERT( xQueue );
    1940          	if( ( ( Queue_t * ) xQueue )->uxMessagesWaiting == ( UBaseType_t ) 0 )
-   \                     xQueueIsQueueEmptyFromISR: (+1)
-   \        0x0   0x6B80             LDR      R0,[R0, #+56]
-   \        0x2   0x2800             CMP      R0,#+0
-   \        0x4   0xD101             BNE.N    ??xQueueIsQueueEmptyFromISR_0
+   \        0x2   0x6B88             LDR      R0,[R1, #+56]
+   \        0x4   0x2800             CMP      R0,#+0
+   \        0x6   0xD101             BNE.N    ??xQueueIsQueueEmptyFromISR_0
    1941          	{
    1942          		xReturn = pdTRUE;
-   \        0x6   0x2001             MOVS     R0,#+1
-   \        0x8   0xE000             B.N      ??xQueueIsQueueEmptyFromISR_1
+   \        0x8   0x2001             MOVS     R0,#+1
+   \        0xA   0xE000             B.N      ??xQueueIsQueueEmptyFromISR_1
    1943          	}
    1944          	else
    1945          	{
    1946          		xReturn = pdFALSE;
    \                     ??xQueueIsQueueEmptyFromISR_0: (+1)
-   \        0xA   0x2000             MOVS     R0,#+0
+   \        0xC   0x2000             MOVS     R0,#+0
    1947          	}
    1948          
    1949          	return xReturn;
    \                     ??xQueueIsQueueEmptyFromISR_1: (+1)
-   \        0xC   0x4770             BX       LR
+   \        0xE   0x4770             BX       LR
    1950          } /*lint !e818 xQueue could not be pointer to const because it is a typedef. */
    1951          /*-----------------------------------------------------------*/
    1952          
@@ -2967,7 +3013,7 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    1953          static BaseType_t prvIsQueueFull( const Queue_t *pxQueue )
    1954          {
    \                     prvIsQueueFull: (+1)
-   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
    \        0x2   0x0004             MOVS     R4,R0
    1955          BaseType_t xReturn;
    1956          
@@ -2981,14 +3027,14 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    \        0xE   0xD101             BNE.N    ??prvIsQueueFull_0
    1960          		{
    1961          			xReturn = pdTRUE;
-   \       0x10   0x2401             MOVS     R4,#+1
+   \       0x10   0x2501             MOVS     R5,#+1
    \       0x12   0xE000             B.N      ??prvIsQueueFull_1
    1962          		}
    1963          		else
    1964          		{
    1965          			xReturn = pdFALSE;
    \                     ??prvIsQueueFull_0: (+1)
-   \       0x14   0x2400             MOVS     R4,#+0
+   \       0x14   0x2500             MOVS     R5,#+0
    1966          		}
    1967          	}
    1968          	taskEXIT_CRITICAL();
@@ -2996,8 +3042,8 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    \       0x16   0x.... 0x....      BL       vPortExitCritical
    1969          
    1970          	return xReturn;
-   \       0x1A   0x0020             MOVS     R0,R4
-   \       0x1C   0xBD10             POP      {R4,PC}
+   \       0x1A   0x0028             MOVS     R0,R5
+   \       0x1C   0xBD32             POP      {R1,R4,R5,PC}
    1971          }
    1972          /*-----------------------------------------------------------*/
    1973          
@@ -3005,30 +3051,31 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    \                                 In section .text, align 2, keep-with-next
    1974          BaseType_t xQueueIsQueueFullFromISR( const QueueHandle_t xQueue )
    1975          {
+   \                     xQueueIsQueueFullFromISR: (+1)
+   \        0x0   0x0001             MOVS     R1,R0
    1976          BaseType_t xReturn;
    1977          
    1978          	configASSERT( xQueue );
    1979          	if( ( ( Queue_t * ) xQueue )->uxMessagesWaiting == ( ( Queue_t * ) xQueue )->uxLength )
-   \                     xQueueIsQueueFullFromISR: (+1)
-   \        0x0   0x6B81             LDR      R1,[R0, #+56]
-   \        0x2   0x6BC0             LDR      R0,[R0, #+60]
-   \        0x4   0x4281             CMP      R1,R0
-   \        0x6   0xD101             BNE.N    ??xQueueIsQueueFullFromISR_0
+   \        0x2   0x6B88             LDR      R0,[R1, #+56]
+   \        0x4   0x6BCA             LDR      R2,[R1, #+60]
+   \        0x6   0x4290             CMP      R0,R2
+   \        0x8   0xD101             BNE.N    ??xQueueIsQueueFullFromISR_0
    1980          	{
    1981          		xReturn = pdTRUE;
-   \        0x8   0x2001             MOVS     R0,#+1
-   \        0xA   0xE000             B.N      ??xQueueIsQueueFullFromISR_1
+   \        0xA   0x2001             MOVS     R0,#+1
+   \        0xC   0xE000             B.N      ??xQueueIsQueueFullFromISR_1
    1982          	}
    1983          	else
    1984          	{
    1985          		xReturn = pdFALSE;
    \                     ??xQueueIsQueueFullFromISR_0: (+1)
-   \        0xC   0x2000             MOVS     R0,#+0
+   \        0xE   0x2000             MOVS     R0,#+0
    1986          	}
    1987          
    1988          	return xReturn;
    \                     ??xQueueIsQueueFullFromISR_1: (+1)
-   \        0xE   0x4770             BX       LR
+   \       0x10   0x4770             BX       LR
    1989          } /*lint !e818 xQueue could not be pointer to const because it is a typedef. */
    1990          /*-----------------------------------------------------------*/
    1991          
@@ -3321,38 +3368,39 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    2274          		a free slot. */
    2275          		for( ux = ( UBaseType_t ) 0U; ux < ( UBaseType_t ) configQUEUE_REGISTRY_SIZE; ux++ )
    \        0x2   0x2300             MOVS     R3,#+0
-   \        0x4   0xE000             B.N      ??vQueueAddToRegistry_0
-   \                     ??vQueueAddToRegistry_1: (+1)
-   \        0x6   0x1C5B             ADDS     R3,R3,#+1
    \                     ??vQueueAddToRegistry_0: (+1)
-   \        0x8   0x2B08             CMP      R3,#+8
-   \        0xA   0xD209             BCS.N    ??vQueueAddToRegistry_2
+   \        0x4   0x2B08             CMP      R3,#+8
+   \        0x6   0xD20C             BCS.N    ??vQueueAddToRegistry_1
    2276          		{
    2277          			if( xQueueRegistry[ ux ].pcQueueName == NULL )
-   \        0xC   0x....             LDR.N    R4,??DataTable5_1
-   \        0xE   0xF854 0x2033      LDR      R2,[R4, R3, LSL #+3]
-   \       0x12   0x2A00             CMP      R2,#+0
-   \       0x14   0xD1F7             BNE.N    ??vQueueAddToRegistry_1
+   \        0x8   0x....             LDR.N    R4,??DataTable5_1
+   \        0xA   0xF854 0x2033      LDR      R2,[R4, R3, LSL #+3]
+   \        0xE   0x2A00             CMP      R2,#+0
+   \       0x10   0xD105             BNE.N    ??vQueueAddToRegistry_2
    2278          			{
    2279          				/* Store the information on this queue. */
    2280          				xQueueRegistry[ ux ].pcQueueName = pcQueueName;
-   \       0x16   0xF844 0x1033      STR      R1,[R4, R3, LSL #+3]
+   \       0x12   0xF844 0x1033      STR      R1,[R4, R3, LSL #+3]
    2281          				xQueueRegistry[ ux ].xHandle = xQueue;
-   \       0x1A   0xEB04 0x01C3      ADD      R1,R4,R3, LSL #+3
-   \       0x1E   0x6048             STR      R0,[R1, #+4]
+   \       0x16   0xEB04 0x02C3      ADD      R2,R4,R3, LSL #+3
+   \       0x1A   0x6050             STR      R0,[R2, #+4]
    2282          
    2283          				traceQUEUE_REGISTRY_ADD( xQueue, pcQueueName );
    2284          				break;
+   \       0x1C   0xE001             B.N      ??vQueueAddToRegistry_1
    2285          			}
    2286          			else
    2287          			{
    2288          				mtCOVERAGE_TEST_MARKER();
    2289          			}
    2290          		}
-   2291          	}
    \                     ??vQueueAddToRegistry_2: (+1)
-   \       0x20   0xBC10             POP      {R4}
-   \       0x22   0x4770             BX       LR
+   \       0x1E   0x1C5B             ADDS     R3,R3,#+1
+   \       0x20   0xE7F0             B.N      ??vQueueAddToRegistry_0
+   2291          	}
+   \                     ??vQueueAddToRegistry_1: (+1)
+   \       0x22   0xBC10             POP      {R4}
+   \       0x24   0x4770             BX       LR
    2292          
    2293          #endif /* configQUEUE_REGISTRY_SIZE */
    2294          /*-----------------------------------------------------------*/
@@ -3374,34 +3422,36 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    2304          		removing entries from the registry while it is being searched. */
    2305          		for( ux = ( UBaseType_t ) 0U; ux < ( UBaseType_t ) configQUEUE_REGISTRY_SIZE; ux++ )
    \        0x6   0x2200             MOVS     R2,#+0
-   \        0x8   0xE000             B.N      ??pcQueueGetName_0
-   \                     ??pcQueueGetName_1: (+1)
-   \        0xA   0x1C52             ADDS     R2,R2,#+1
    \                     ??pcQueueGetName_0: (+1)
-   \        0xC   0x2A08             CMP      R2,#+8
-   \        0xE   0xD207             BCS.N    ??pcQueueGetName_2
+   \        0x8   0x2A08             CMP      R2,#+8
+   \        0xA   0xD20B             BCS.N    ??pcQueueGetName_1
    2306          		{
    2307          			if( xQueueRegistry[ ux ].xHandle == xQueue )
-   \       0x10   0x....             LDR.N    R3,??DataTable5_1
-   \       0x12   0xEB03 0x04C2      ADD      R4,R3,R2, LSL #+3
-   \       0x16   0x6864             LDR      R4,[R4, #+4]
-   \       0x18   0x428C             CMP      R4,R1
-   \       0x1A   0xD1F6             BNE.N    ??pcQueueGetName_1
+   \        0xC   0x....             LDR.N    R3,??DataTable5_1
+   \        0xE   0xEB03 0x04C2      ADD      R4,R3,R2, LSL #+3
+   \       0x12   0x6864             LDR      R4,[R4, #+4]
+   \       0x14   0x428C             CMP      R4,R1
+   \       0x16   0xD103             BNE.N    ??pcQueueGetName_2
    2308          			{
    2309          				pcReturn = xQueueRegistry[ ux ].pcQueueName;
-   \       0x1C   0xF853 0x0032      LDR      R0,[R3, R2, LSL #+3]
+   \       0x18   0xF853 0x3032      LDR      R3,[R3, R2, LSL #+3]
+   \       0x1C   0x0018             MOVS     R0,R3
    2310          				break;
+   \       0x1E   0xE001             B.N      ??pcQueueGetName_1
    2311          			}
    2312          			else
    2313          			{
    2314          				mtCOVERAGE_TEST_MARKER();
    2315          			}
    2316          		}
+   \                     ??pcQueueGetName_2: (+1)
+   \       0x20   0x1C52             ADDS     R2,R2,#+1
+   \       0x22   0xE7F1             B.N      ??pcQueueGetName_0
    2317          
    2318          		return pcReturn;
-   \                     ??pcQueueGetName_2: (+1)
-   \       0x20   0xBC10             POP      {R4}
-   \       0x22   0x4770             BX       LR
+   \                     ??pcQueueGetName_1: (+1)
+   \       0x24   0xBC10             POP      {R4}
+   \       0x26   0x4770             BX       LR
    2319          	}
    2320          
    2321          #endif /* configQUEUE_REGISTRY_SIZE */
@@ -3420,43 +3470,44 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    2332          		for( ux = ( UBaseType_t ) 0U; ux < ( UBaseType_t ) configQUEUE_REGISTRY_SIZE; ux++ )
    \                     vQueueUnregisterQueue: (+1)
    \        0x0   0x2100             MOVS     R1,#+0
-   \        0x2   0xE000             B.N      ??vQueueUnregisterQueue_0
-   \                     ??vQueueUnregisterQueue_1: (+1)
-   \        0x4   0x1C49             ADDS     R1,R1,#+1
    \                     ??vQueueUnregisterQueue_0: (+1)
-   \        0x6   0x2908             CMP      R1,#+8
-   \        0x8   0xD20C             BCS.N    ??vQueueUnregisterQueue_2
+   \        0x2   0x2908             CMP      R1,#+8
+   \        0x4   0xD20F             BCS.N    ??vQueueUnregisterQueue_1
    2333          		{
    2334          			if( xQueueRegistry[ ux ].xHandle == xQueue )
-   \        0xA   0x....             LDR.N    R2,??DataTable5_1
-   \        0xC   0xEB02 0x03C1      ADD      R3,R2,R1, LSL #+3
-   \       0x10   0x685B             LDR      R3,[R3, #+4]
-   \       0x12   0x4283             CMP      R3,R0
-   \       0x14   0xD1F6             BNE.N    ??vQueueUnregisterQueue_1
+   \        0x6   0x....             LDR.N    R2,??DataTable5_1
+   \        0x8   0xEB02 0x03C1      ADD      R3,R2,R1, LSL #+3
+   \        0xC   0x685B             LDR      R3,[R3, #+4]
+   \        0xE   0x4283             CMP      R3,R0
+   \       0x10   0xD107             BNE.N    ??vQueueUnregisterQueue_2
    2335          			{
    2336          				/* Set the name to NULL to show that this slot if free again. */
    2337          				xQueueRegistry[ ux ].pcQueueName = NULL;
-   \       0x16   0x2000             MOVS     R0,#+0
-   \       0x18   0xF842 0x0031      STR      R0,[R2, R1, LSL #+3]
+   \       0x12   0x2300             MOVS     R3,#+0
+   \       0x14   0xF842 0x3031      STR      R3,[R2, R1, LSL #+3]
    2338          
    2339          				/* Set the handle to NULL to ensure the same queue handle cannot
    2340          				appear in the registry twice if it is added, removed, then
    2341          				added again. */
    2342          				xQueueRegistry[ ux ].xHandle = ( QueueHandle_t ) 0;
-   \       0x1C   0x2000             MOVS     R0,#+0
-   \       0x1E   0xEB02 0x01C1      ADD      R1,R2,R1, LSL #+3
-   \       0x22   0x6048             STR      R0,[R1, #+4]
+   \       0x18   0x2300             MOVS     R3,#+0
+   \       0x1A   0xEB02 0x02C1      ADD      R2,R2,R1, LSL #+3
+   \       0x1E   0x6053             STR      R3,[R2, #+4]
    2343          				break;
+   \       0x20   0xE001             B.N      ??vQueueUnregisterQueue_1
    2344          			}
    2345          			else
    2346          			{
    2347          				mtCOVERAGE_TEST_MARKER();
    2348          			}
    2349          		}
+   \                     ??vQueueUnregisterQueue_2: (+1)
+   \       0x22   0x1C49             ADDS     R1,R1,#+1
+   \       0x24   0xE7ED             B.N      ??vQueueUnregisterQueue_0
    2350          
    2351          	} /*lint !e818 xQueue could not be pointer to const because it is a typedef. */
-   \                     ??vQueueUnregisterQueue_2: (+1)
-   \       0x24   0x4770             BX       LR
+   \                     ??vQueueUnregisterQueue_1: (+1)
+   \       0x26   0x4770             BX       LR
    2352          
    2353          #endif /* configQUEUE_REGISTRY_SIZE */
    2354          /*-----------------------------------------------------------*/
@@ -3468,11 +3519,12 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    2358          	void vQueueWaitForMessageRestricted( QueueHandle_t xQueue, TickType_t xTicksToWait, const BaseType_t xWaitIndefinitely )
    2359          	{
    \                     vQueueWaitForMessageRestricted: (+1)
-   \        0x0   0xB570             PUSH     {R4-R6,LR}
+   \        0x0   0xB5F8             PUSH     {R3-R7,LR}
    \        0x2   0x0004             MOVS     R4,R0
    \        0x4   0x000D             MOVS     R5,R1
    \        0x6   0x0016             MOVS     R6,R2
    2360          	Queue_t * const pxQueue = ( Queue_t * ) xQueue;
+   \        0x8   0x0027             MOVS     R7,R4
    2361          
    2362          		/* This function should not be called by application code hence the
    2363          		'Restricted' in its name.  It is not part of the public API.  It is
@@ -3489,31 +3541,31 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    2374          		the queue is locked, and the calling task blocks on the queue, then the
    2375          		calling task will be immediately unblocked when the queue is unlocked. */
    2376          		prvLockQueue( pxQueue );
-   \        0x8   0x.... 0x....      BL       vPortEnterCritical
-   \        0xC   0xF994 0x0044      LDRSB    R0,[R4, #+68]
-   \       0x10   0xF110 0x0F01      CMN      R0,#+1
-   \       0x14   0xD102             BNE.N    ??vQueueWaitForMessageRestricted_0
-   \       0x16   0x2000             MOVS     R0,#+0
-   \       0x18   0xF884 0x0044      STRB     R0,[R4, #+68]
+   \        0xA   0x.... 0x....      BL       vPortEnterCritical
+   \        0xE   0xF997 0x0044      LDRSB    R0,[R7, #+68]
+   \       0x12   0xF110 0x0F01      CMN      R0,#+1
+   \       0x16   0xD102             BNE.N    ??vQueueWaitForMessageRestricted_0
+   \       0x18   0x2000             MOVS     R0,#+0
+   \       0x1A   0xF887 0x0044      STRB     R0,[R7, #+68]
    \                     ??vQueueWaitForMessageRestricted_0: (+1)
-   \       0x1C   0xF994 0x0045      LDRSB    R0,[R4, #+69]
-   \       0x20   0xF110 0x0F01      CMN      R0,#+1
-   \       0x24   0xD102             BNE.N    ??vQueueWaitForMessageRestricted_1
-   \       0x26   0x2000             MOVS     R0,#+0
-   \       0x28   0xF884 0x0045      STRB     R0,[R4, #+69]
+   \       0x1E   0xF997 0x0045      LDRSB    R0,[R7, #+69]
+   \       0x22   0xF110 0x0F01      CMN      R0,#+1
+   \       0x26   0xD102             BNE.N    ??vQueueWaitForMessageRestricted_1
+   \       0x28   0x2000             MOVS     R0,#+0
+   \       0x2A   0xF887 0x0045      STRB     R0,[R7, #+69]
    \                     ??vQueueWaitForMessageRestricted_1: (+1)
-   \       0x2C   0x.... 0x....      BL       vPortExitCritical
+   \       0x2E   0x.... 0x....      BL       vPortExitCritical
    2377          		if( pxQueue->uxMessagesWaiting == ( UBaseType_t ) 0U )
-   \       0x30   0x6BA0             LDR      R0,[R4, #+56]
-   \       0x32   0x2800             CMP      R0,#+0
-   \       0x34   0xD105             BNE.N    ??vQueueWaitForMessageRestricted_2
+   \       0x32   0x6BB8             LDR      R0,[R7, #+56]
+   \       0x34   0x2800             CMP      R0,#+0
+   \       0x36   0xD105             BNE.N    ??vQueueWaitForMessageRestricted_2
    2378          		{
    2379          			/* There is nothing in the queue, block for the specified period. */
    2380          			vTaskPlaceOnEventListRestricted( &( pxQueue->xTasksWaitingToReceive ), xTicksToWait, xWaitIndefinitely );
-   \       0x36   0x0032             MOVS     R2,R6
-   \       0x38   0x0029             MOVS     R1,R5
-   \       0x3A   0xF114 0x0024      ADDS     R0,R4,#+36
-   \       0x3E   0x.... 0x....      BL       vTaskPlaceOnEventListRestricted
+   \       0x38   0x0032             MOVS     R2,R6
+   \       0x3A   0x0029             MOVS     R1,R5
+   \       0x3C   0xF117 0x0024      ADDS     R0,R7,#+36
+   \       0x40   0x.... 0x....      BL       vTaskPlaceOnEventListRestricted
    2381          		}
    2382          		else
    2383          		{
@@ -3521,10 +3573,10 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    2385          		}
    2386          		prvUnlockQueue( pxQueue );
    \                     ??vQueueWaitForMessageRestricted_2: (+1)
-   \       0x42   0x0020             MOVS     R0,R4
-   \       0x44   0x.... 0x....      BL       prvUnlockQueue
+   \       0x44   0x0038             MOVS     R0,R7
+   \       0x46   0x.... 0x....      BL       prvUnlockQueue
    2387          	}
-   \       0x48   0xBD70             POP      {R4-R6,PC}
+   \       0x4A   0xBDF1             POP      {R0,R4-R7,PC}
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable5:
@@ -3718,87 +3770,87 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    .cstack Function
    ------- --------
        4   pcQueueGetName
-       8   prvCopyDataFromQueue
-         8   -> __aeabi_memcpy
-      24   prvCopyDataToQueue
+      24   prvCopyDataFromQueue
         24   -> __aeabi_memcpy
-        24   -> xTaskPriorityDisinherit
+      40   prvCopyDataToQueue
+        40   -> __aeabi_memcpy
+        40   -> xTaskPriorityDisinherit
        8   prvInitialiseMutex
          8   -> xQueueGenericSend
-       8   prvInitialiseNewQueue
-         8   -> xQueueGenericReset
-       8   prvIsQueueEmpty
-         8   -> vPortEnterCritical
-         8   -> vPortExitCritical
-       8   prvIsQueueFull
-         8   -> vPortEnterCritical
-         8   -> vPortExitCritical
-      16   prvUnlockQueue
+      24   prvInitialiseNewQueue
+        24   -> xQueueGenericReset
+      16   prvIsQueueEmpty
         16   -> vPortEnterCritical
         16   -> vPortExitCritical
-        16   -> vTaskMissedYield
-        16   -> xTaskRemoveFromEventList
-       8   uxQueueMessagesWaiting
-         8   -> vPortEnterCritical
-         8   -> vPortExitCritical
+      16   prvIsQueueFull
+        16   -> vPortEnterCritical
+        16   -> vPortExitCritical
+      24   prvUnlockQueue
+        24   -> vPortEnterCritical
+        24   -> vPortExitCritical
+        24   -> vTaskMissedYield
+        24   -> xTaskRemoveFromEventList
+      16   uxQueueMessagesWaiting
+        16   -> vPortEnterCritical
+        16   -> vPortExitCritical
        0   uxQueueMessagesWaitingFromISR
-       8   uxQueueSpacesAvailable
-         8   -> vPortEnterCritical
-         8   -> vPortExitCritical
-       4   vQueueAddToRegistry
-       8   vQueueDelete
-         8   -> vQueueUnregisterQueue
-       0   vQueueUnregisterQueue
-      16   vQueueWaitForMessageRestricted
-        16   -> prvUnlockQueue
+      16   uxQueueSpacesAvailable
         16   -> vPortEnterCritical
         16   -> vPortExitCritical
-        16   -> vTaskPlaceOnEventListRestricted
-      16   xQueueCreateMutexStatic
-        16   -> prvInitialiseMutex
-        16   -> xQueueGenericCreateStatic
-      16   xQueueGenericCreateStatic
-        16   -> prvInitialiseNewQueue
-      40   xQueueGenericReceive
-        40   -> prvCopyDataFromQueue
-        40   -> prvIsQueueEmpty
+       4   vQueueAddToRegistry
+      16   vQueueDelete
+        16   -> vQueueUnregisterQueue
+       0   vQueueUnregisterQueue
+      24   vQueueWaitForMessageRestricted
+        24   -> prvUnlockQueue
+        24   -> vPortEnterCritical
+        24   -> vPortExitCritical
+        24   -> vTaskPlaceOnEventListRestricted
+      32   xQueueCreateMutexStatic
+        32   -> prvInitialiseMutex
+        32   -> xQueueGenericCreateStatic
+      32   xQueueGenericCreateStatic
+        32   -> prvInitialiseNewQueue
+      48   xQueueGenericReceive
+        48   -> prvCopyDataFromQueue
+        48   -> prvIsQueueEmpty
+        48   -> prvUnlockQueue
+        48   -> pvTaskIncrementMutexHeldCount
+        48   -> vPortEnterCritical
+        48   -> vPortExitCritical
+        48   -> vTaskPlaceOnEventList
+        48   -> vTaskPriorityInherit
+        48   -> vTaskSetTimeOutState
+        48   -> vTaskSuspendAll
+        48   -> xTaskCheckForTimeOut
+        48   -> xTaskGetSchedulerState
+        48   -> xTaskRemoveFromEventList
+        48   -> xTaskResumeAll
+      16   xQueueGenericReset
+        16   -> vListInitialise
+        16   -> vPortEnterCritical
+        16   -> vPortExitCritical
+        16   -> xTaskRemoveFromEventList
+      40   xQueueGenericSend
+        40   -> prvCopyDataToQueue
+        40   -> prvIsQueueFull
         40   -> prvUnlockQueue
-        40   -> pvTaskIncrementMutexHeldCount
         40   -> vPortEnterCritical
         40   -> vPortExitCritical
         40   -> vTaskPlaceOnEventList
-        40   -> vTaskPriorityInherit
         40   -> vTaskSetTimeOutState
         40   -> vTaskSuspendAll
         40   -> xTaskCheckForTimeOut
         40   -> xTaskGetSchedulerState
         40   -> xTaskRemoveFromEventList
         40   -> xTaskResumeAll
-      16   xQueueGenericReset
-        16   -> vListInitialise
-        16   -> vPortEnterCritical
-        16   -> vPortExitCritical
-        16   -> xTaskRemoveFromEventList
-      32   xQueueGenericSend
-        32   -> prvCopyDataToQueue
-        32   -> prvIsQueueFull
-        32   -> prvUnlockQueue
-        32   -> vPortEnterCritical
-        32   -> vPortExitCritical
-        32   -> vTaskPlaceOnEventList
-        32   -> vTaskSetTimeOutState
-        32   -> vTaskSuspendAll
-        32   -> xTaskCheckForTimeOut
-        32   -> xTaskGetSchedulerState
-        32   -> xTaskRemoveFromEventList
-        32   -> xTaskResumeAll
       32   xQueueGenericSendFromISR
         32   -> prvCopyDataToQueue
         32   -> vPortValidateInterruptPriority
         32   -> xTaskRemoveFromEventList
-      16   xQueueGiveFromISR
-        16   -> vPortValidateInterruptPriority
-        16   -> xTaskRemoveFromEventList
+      32   xQueueGiveFromISR
+        32   -> vPortValidateInterruptPriority
+        32   -> xTaskRemoveFromEventList
        0   xQueueIsQueueEmptyFromISR
        0   xQueueIsQueueFullFromISR
       24   xQueuePeekFromISR
@@ -3816,39 +3868,39 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    -----  --------------
        4  ??DataTable5
        4  ??DataTable5_1
-      36  pcQueueGetName
-      42  prvCopyDataFromQueue
-     134  prvCopyDataToQueue
-      30  prvInitialiseMutex
-      28  prvInitialiseNewQueue
+      40  pcQueueGetName
+      54  prvCopyDataFromQueue
+     156  prvCopyDataToQueue
+      34  prvInitialiseMutex
+      50  prvInitialiseNewQueue
       28  prvIsQueueEmpty
       30  prvIsQueueFull
      110  prvUnlockQueue
       18  uxQueueMessagesWaiting
-       4  uxQueueMessagesWaitingFromISR
-      22  uxQueueSpacesAvailable
-      36  vQueueAddToRegistry
-       8  vQueueDelete
-      38  vQueueUnregisterQueue
-      74  vQueueWaitForMessageRestricted
-      32  xQueueCreateMutexStatic
-      56  xQueueGenericCreateStatic
-     400  xQueueGenericReceive
-     126  xQueueGenericReset
-     322  xQueueGenericSend
-     158  xQueueGenericSendFromISR
-     120  xQueueGiveFromISR
-      14  xQueueIsQueueEmptyFromISR
-      16  xQueueIsQueueFullFromISR
-      74  xQueuePeekFromISR
-     132  xQueueReceiveFromISR
+       6  uxQueueMessagesWaitingFromISR
+      24  uxQueueSpacesAvailable
+      38  vQueueAddToRegistry
+      14  vQueueDelete
+      40  vQueueUnregisterQueue
+      76  vQueueWaitForMessageRestricted
+      46  xQueueCreateMutexStatic
+      76  xQueueGenericCreateStatic
+     404  xQueueGenericReceive
+     128  xQueueGenericReset
+     346  xQueueGenericSend
+     166  xQueueGenericSendFromISR
+     132  xQueueGiveFromISR
+      16  xQueueIsQueueEmptyFromISR
+      18  xQueueIsQueueFullFromISR
+      82  xQueuePeekFromISR
+     142  xQueueReceiveFromISR
       64  xQueueRegistry
 
  
     64 bytes in section .bss
- 2'096 bytes in section .text
+ 2'282 bytes in section .text
  
- 2'096 bytes of CODE memory
+ 2'282 bytes of CODE memory
     64 bytes of DATA memory
 
 Errors: none

@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        26/Apr/2025  19:24:51
+// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        27/Apr/2025  00:21:27
 // Copyright 1999-2022 IAR Systems AB.
 //
 //    Cpu mode     =  thumb
@@ -102,7 +102,11 @@
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
 //        -I
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
-//        -Ol) --dependencies=n
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+//        -On) --dependencies=n
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Rtos\FreeRtos\portable\IAR\ARM_CM4F\port.o.d
 //    Locale       =  C
 //    List file    =
@@ -449,14 +453,14 @@ pxPortInitialiseStack:
 //  235 	pxTopOfStack--;
         SUBS     R0,R0,#+4      
 //  236 	*pxTopOfStack = ( ( StackType_t ) pxCode ) & portSTART_ADDRESS_MASK;	/* PC */
-        LSRS     R1,R1,#+1      
-        LSLS     R1,R1,#+1      
-        STR      R1,[R0, #+0]   
+        LSRS     R3,R1,#+1      
+        LSLS     R3,R3,#+1      
+        STR      R3,[R0, #+0]   
 //  237 	pxTopOfStack--;
         SUBS     R0,R0,#+4      
 //  238 	*pxTopOfStack = ( StackType_t ) prvTaskExitError;	/* LR */
-        ADR.W    R1,prvTaskExitError
-        STR      R1,[R0, #+0]   
+        ADR.W    R3,prvTaskExitError
+        STR      R3,[R0, #+0]   
 //  239 
 //  240 	/* Save code space by skipping register initialisation. */
 //  241 	pxTopOfStack -= 5;	/* R12, R3, R2 and R1. */
@@ -469,8 +473,8 @@ pxPortInitialiseStack:
 //  246 	pxTopOfStack--;
         SUBS     R0,R0,#+4      
 //  247 	*pxTopOfStack = portINITIAL_EXEC_RETURN;
-        MVNS     R1,#+2         
-        STR      R1,[R0, #+0]   
+        MVNS     R3,#+2         
+        STR      R3,[R0, #+0]   
 //  248 
 //  249 	pxTopOfStack -= 8;	/* R11, R10, R9, R8, R7, R6, R5 and R4. */
         SUBS     R0,R0,#+32     
@@ -577,11 +581,13 @@ xPortStartScheduler:
         LDR.N    R1,??DataTable5_3
         MOVS     R2,#+7         
         STR      R2,[R1, #+0]   
-        B.N      ??xPortStartScheduler_0
 //  311 		while( ( ucMaxPriorityValue & portTOP_BIT_OF_BYTE ) == portTOP_BIT_OF_BYTE )
+??xPortStartScheduler_0:
+        LDRB     R2,[SP, #+0]   
+        LSLS     R2,R2,#+24     
+        BPL.N    ??xPortStartScheduler_1
 //  312 		{
 //  313 			ulMaxPRIGROUPValue--;
-??xPortStartScheduler_1:
         LDR      R2,[R1, #+0]   
         SUBS     R2,R2,#+1      
         STR      R2,[R1, #+0]   
@@ -589,15 +595,13 @@ xPortStartScheduler:
         LDRB     R2,[SP, #+0]   
         LSLS     R2,R2,#+1      
         STRB     R2,[SP, #+0]   
+        B.N      ??xPortStartScheduler_0
 //  315 		}
-??xPortStartScheduler_0:
-        LDRB     R2,[SP, #+0]   
-        LSLS     R2,R2,#+24     
-        BMI.N    ??xPortStartScheduler_1
 //  316 
 //  317 		/* Shift the priority group value back to its position within the AIRCR
 //  318 		register. */
 //  319 		ulMaxPRIGROUPValue <<= portPRIGROUP_SHIFT;
+??xPortStartScheduler_1:
         LDR      R2,[R1, #+0]   
         LSLS     R2,R2,#+8      
         STR      R2,[R1, #+0]   
@@ -802,12 +806,13 @@ vPortValidateInterruptPriority:
         mrs R0, ipsr
         CMP      R0,#+16        
         BCC.N    ??vPortValidateInterruptPriority_0
-        LDR.N    R1,??DataTable5_8
-        LDR      R1,[R1, #+0]   
-        LDRB     R0,[R1, R0]    
+        LDR.N    R2,??DataTable5_8
+        LDR      R2,[R2, #+0]   
+        LDRB     R2,[R2, R0]    
+        MOVS     R1,R2          
 ??vPortValidateInterruptPriority_0:
-        LDR.N    R0,??DataTable5_9
-        LDR      R0,[R0, #+0]   
+        LDR.N    R2,??DataTable5_9
+        LDR      R2,[R2, #+0]   
         BX       LR             
           CFI EndBlock cfiBlock7
 
@@ -1175,9 +1180,9 @@ vPortSetupTimerInterrupt:
 //   5 bytes in section .bss
 //   4 bytes in section .data
 //   4 bytes in section .rodata
-// 386 bytes in section .text
+// 388 bytes in section .text
 // 
-// 350 bytes of CODE  memory (+ 36 bytes shared)
+// 352 bytes of CODE  memory (+ 36 bytes shared)
 //   4 bytes of CONST memory
 //   9 bytes of DATA  memory
 //

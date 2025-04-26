@@ -2,17 +2,26 @@
 #define DIGITALFILTER_HPP
 
 #include "IDigitalFilter.hpp" // for IDigitalFilter
-#include "math.h" // for tau calculation
 
-class DigitalFilter : public IDigitalFilter
+template<typename T, const T& dt, const T& rc>
+class DigitalFilter : public IDigitalFilter<T>
 {
 public:
-  DigitalFilter();
-  float FilterValue(float value) override;
+  using tValueType = T;
+  tValueType FilterValue(tValueType value) override
+  {
+    static bool isFirstTime = true;
+    if(isFirstTime)
+    {
+      oldValue = value;
+      return value;
+    }
+    auto filteredValue = oldValue + (value - oldValue) * tau;
+    oldValue = filteredValue;
+    return filteredValue;
+  }
 private:
-  float oldValue;
-  float& dt;
-  float& rc;
+  tValueType oldValue;
   const float tau = 1 - exp(- dt / rc);
 };
 

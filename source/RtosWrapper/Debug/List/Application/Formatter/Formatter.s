@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        26/Apr/2025  19:24:51
+// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        27/Apr/2025  00:21:27
 // Copyright 1999-2022 IAR Systems AB.
 //
 //    Cpu mode     =  thumb
@@ -102,7 +102,11 @@
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
 //        -I
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
-//        -Ol --c++ --no_exceptions --no_rtti) --dependencies=n
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+//        -On --c++ --no_exceptions --no_rtti) --dependencies=n
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Formatter\Formatter.o.d
 //    Locale       =  C
 //    List file    =
@@ -568,8 +572,8 @@ _ZN9_MbstatetC1Ev:
 _ZN9_MbstatetC1ERKS_:
         LDR      R2,[R1, #+0]   
         STR      R2,[R0, #+0]   
-        LDR      R1,[R1, #+4]   
-        STR      R1,[R0, #+4]   
+        LDR      R2,[R1, #+4]   
+        STR      R2,[R0, #+4]   
         BX       LR             
           CFI EndBlock cfiBlock1
 
@@ -613,14 +617,17 @@ _ZSt10_AddressofIcEPT_RS0_St17integral_constantIbLb0EE:
         THUMB
 // __vfp char *std::addressof<char>(char &) noexcept
 _ZSt9addressofIcEPT_RS0_:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
-        LDR.N    R1,??addressof_0
-        LDRB     R1,[R1, #+0]   
+        MOVS     R4,R0          
+        LDR.N    R0,??addressof_0
+        LDRB     R1,[R0, #+0]   
+        MOVS     R0,R4          
           CFI FunCall _ZSt10_AddressofIcEPT_RS0_St17integral_constantIbLb0EE
         BL       _ZSt10_AddressofIcEPT_RS0_St17integral_constantIbLb0EE
-        POP      {R1,PC}        
+        POP      {R4,PC}        
         DATA
 ??addressof_0:
         DATA32
@@ -1292,12 +1299,14 @@ _ZnwjPv:
         THUMB
 // __vfp std::fpos<_Mbstatet>::fpos(long)
 _ZNSt4fposI9_MbstatetEC1El:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
         MOVS     R4,R0          
-        STR      R1,[R4, #+0]   
+        MOVS     R5,R1          
+        STR      R5,[R4, #+0]   
         LDR.N    R1,??fpos_0    
         ADDS     R0,R4,#+8      
           CFI FunCall _ZN6_FpostC1ERKS_
@@ -1306,7 +1315,8 @@ _ZNSt4fposI9_MbstatetEC1El:
           CFI FunCall _ZN9_MbstatetC1Ev
         BL       _ZN9_MbstatetC1Ev
         MOVS     R0,R4          
-        POP      {R4,PC}        
+        POP      {R1,R4,R5,PC}  
+        Nop                     
         DATA
 ??fpos_0:
         DATA32
@@ -1335,12 +1345,15 @@ _ZNKSt4fposI9_MbstatetEcvlEv:
         THUMB
 // __vfp size_t std::char_traits<char>::length(char const *)
 _ZNSt11char_traitsIcE6lengthEPKc:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall strlen
         BL       strlen         
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock15
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -1350,16 +1363,28 @@ _ZNSt11char_traitsIcE6lengthEPKc:
         THUMB
 // __vfp char *std::char_traits<char>::copy(char *, char const *, size_t)
 _ZNSt11char_traitsIcE4copyEPcPKcj:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R9,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R9 Frame(CFA, -8)
+          CFI R8 Frame(CFA, -12)
+          CFI R7 Frame(CFA, -16)
+          CFI R6 Frame(CFA, -20)
+          CFI R5 Frame(CFA, -24)
+          CFI R4 Frame(CFA, -28)
+          CFI CFA R13+32
         MOVS     R4,R0          
-        MOVS     R0,R4          
+        MOVS     R5,R1          
+        MOVS     R6,R2          
+        MOVS     R7,R6          
+        MOV      R8,R5          
+        MOV      R9,R4          
+        MOVS     R2,R7          
+        MOV      R1,R8          
+        MOV      R0,R9          
           CFI FunCall __aeabi_memcpy
         BL       __aeabi_memcpy 
-        MOVS     R0,R4          
-        POP      {R4,PC}        
+        MOV      R0,R9          
+        POP      {R1,R4-R9,PC}  
           CFI EndBlock cfiBlock16
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -1369,16 +1394,28 @@ _ZNSt11char_traitsIcE4copyEPcPKcj:
         THUMB
 // __vfp char *std::char_traits<char>::move(char *, char const *, size_t)
 _ZNSt11char_traitsIcE4moveEPcPKcj:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R9,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R9 Frame(CFA, -8)
+          CFI R8 Frame(CFA, -12)
+          CFI R7 Frame(CFA, -16)
+          CFI R6 Frame(CFA, -20)
+          CFI R5 Frame(CFA, -24)
+          CFI R4 Frame(CFA, -28)
+          CFI CFA R13+32
         MOVS     R4,R0          
-        MOVS     R0,R4          
+        MOVS     R5,R1          
+        MOVS     R6,R2          
+        MOVS     R7,R6          
+        MOV      R8,R5          
+        MOV      R9,R4          
+        MOVS     R2,R7          
+        MOV      R1,R8          
+        MOV      R0,R9          
           CFI FunCall __aeabi_memmove
         BL       __aeabi_memmove
-        MOVS     R0,R4          
-        POP      {R4,PC}        
+        MOV      R0,R9          
+        POP      {R1,R4-R9,PC}  
           CFI EndBlock cfiBlock17
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -1388,17 +1425,29 @@ _ZNSt11char_traitsIcE4moveEPcPKcj:
         THUMB
 // __vfp char *std::char_traits<char>::assign(char *, size_t, char)
 _ZNSt11char_traitsIcE6assignEPcjc:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R9,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R9 Frame(CFA, -8)
+          CFI R8 Frame(CFA, -12)
+          CFI R7 Frame(CFA, -16)
+          CFI R6 Frame(CFA, -20)
+          CFI R5 Frame(CFA, -24)
+          CFI R4 Frame(CFA, -28)
+          CFI CFA R13+32
         MOVS     R4,R0          
-        UXTB     R2,R2          
-        MOVS     R0,R4          
+        MOVS     R5,R1          
+        MOVS     R6,R2          
+        MOVS     R7,R5          
+        MOV      R8,R6          
+        UXTB     R8,R8          
+        MOV      R9,R4          
+        MOV      R2,R8          
+        MOVS     R1,R7          
+        MOV      R0,R9          
           CFI FunCall __aeabi_memset
         BL       __aeabi_memset 
-        MOVS     R0,R4          
-        POP      {R4,PC}        
+        MOV      R0,R9          
+        POP      {R1,R4-R9,PC}  
           CFI EndBlock cfiBlock18
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -1409,8 +1458,8 @@ _ZNSt11char_traitsIcE6assignEPcjc:
         THUMB
 // __vfp void std::char_traits<char>::assign(char &, char const &) noexcept
 _ZNSt11char_traitsIcE6assignERcRKc:
-        LDRB     R1,[R1, #+0]   
-        STRB     R1,[R0, #+0]   
+        LDRB     R2,[R1, #+0]   
+        STRB     R2,[R0, #+0]   
         BX       LR             
           CFI EndBlock cfiBlock19
 
@@ -1532,12 +1581,14 @@ _ZNSt11char_traitsIcE3eofEv:
         THUMB
 // __vfp std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Compressed_pair<std::allocator<char> const &>(std::_One_then_variadic_args_t, std::allocator<char> const &)
 _ZNSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EEC1IRKS1_JEEESt25_One_then_variadic_args_tOT_DpOT0_:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
         MOVS     R4,R0          
-        MOVS     R0,R2          
+        MOVS     R5,R2          
+        MOVS     R0,R5          
           CFI FunCall _ZSt7forwardIRKSaIcEEOT_RNSt16remove_referenceIS3_E4typeE
         BL       _ZSt7forwardIRKSaIcEEOT_RNSt16remove_referenceIS3_E4typeE
         MOVS     R1,R0          
@@ -1548,7 +1599,7 @@ _ZNSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesI
           CFI FunCall _ZNSt11_String_valISt13_Simple_typesIcEEC1Ev
         BL       _ZNSt11_String_valISt13_Simple_typesIcEEC1Ev
         MOVS     R0,R4          
-        POP      {R4,PC}        
+        POP      {R1,R4,R5,PC}  
           CFI EndBlock cfiBlock26
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -1602,19 +1653,25 @@ _ZNKSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_types
         THUMB
 // __vfp char *std::_Allocate<char>(size_t, char *)
 _ZSt9_AllocateIcEPT_jS1_:
-        PUSH     {R7,LR}        
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
-        MOVS     R1,#+0         
-        CMP      R0,#+0         
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,#+0         
+        CMP      R4,#+0         
         BNE.N    ??_Allocate_0  
-        MOVS     R0,R1          
+        MOVS     R0,R5          
         B.N      ??_Allocate_1  
 ??_Allocate_0:
+        MOVS     R6,R4          
+        MOVS     R0,R6          
           CFI FunCall _Znwj
         BL       _Znwj          
 ??_Allocate_1:
-        POP      {R1,PC}        
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock31
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -1624,12 +1681,17 @@ _ZSt9_AllocateIcEPT_jS1_:
         THUMB
 // __vfp void std::_Deallocate<char>(char *, size_t)
 _ZSt11_DeallocateIcEvPT_j:
-        PUSH     {R7,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R0,R4          
           CFI FunCall _ZdlPv
         BL       _ZdlPv         
-        POP      {R0,PC}        
+        POP      {R0,R4,R5,PC}  
           CFI EndBlock cfiBlock32
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -1650,14 +1712,20 @@ _ZNSaIcEC1ERKS_:
         THUMB
 // __vfp void std::allocator<char>::deallocate(char *, size_t)
 _ZNSaIcE10deallocateEPcj:
-        PUSH     {R7,LR}        
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
-        MOVS     R0,R1          
-        MOVS     R1,R2          
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R6,R2          
+        MOVS     R1,R6          
+        MOVS     R0,R5          
           CFI FunCall _ZSt11_DeallocateIcEvPT_j
         BL       _ZSt11_DeallocateIcEvPT_j
-        POP      {R0,PC}        
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock34
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -1667,14 +1735,18 @@ _ZNSaIcE10deallocateEPcj:
         THUMB
 // __vfp char * std::allocator<char>::allocate(size_t)
 _ZNSaIcE8allocateEj:
-        PUSH     {R7,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
-        MOVS     R0,R1          
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
         MOVS     R1,#+0         
+        MOVS     R0,R5          
           CFI FunCall _ZSt9_AllocateIcEPT_jS1_
         BL       _ZSt9_AllocateIcEPT_jS1_
-        POP      {R1,PC}        
+        POP      {R1,R4,R5,PC}  
           CFI EndBlock cfiBlock35
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -1684,19 +1756,24 @@ _ZNSaIcE8allocateEj:
         THUMB
 // __vfp void std::allocator<char>::construct<char *, char *>(char * *, char * &&)
 _ZNSaIcE9constructIPcJS1_EEEvPT_DpOT0_:
-        PUSH     {R3-R5,LR}     
+        PUSH     {R3-R7,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
-          CFI CFA R13+16
-        MOVS     R5,R2          
+          CFI R7 Frame(CFA, -8)
+          CFI R6 Frame(CFA, -12)
+          CFI R5 Frame(CFA, -16)
+          CFI R4 Frame(CFA, -20)
+          CFI CFA R13+24
+        MOVS     R5,R0          
+        MOVS     R6,R1          
+        MOVS     R7,R2          
+        MOVS     R1,R6          
         MOVS     R0,#+4         
           CFI FunCall _ZnwjPv
         BL       _ZnwjPv        
         MOVS     R4,R0          
         CMP      R4,#+0         
         BEQ.N    ??construct_0  
-        MOVS     R0,R5          
+        MOVS     R0,R7          
           CFI FunCall _ZSt7forwardIPcEOT_RNSt16remove_referenceIS1_E4typeE
         BL       _ZSt7forwardIPcEOT_RNSt16remove_referenceIS1_E4typeE
         LDR      R0,[R0, #+0]   
@@ -1705,7 +1782,7 @@ _ZNSaIcE9constructIPcJS1_EEEvPT_DpOT0_:
 ??construct_0:
         MOVS     R0,#+0         
 ??construct_1:
-        POP      {R0,R4,R5,PC}  
+        POP      {R0,R4-R7,PC}  
           CFI EndBlock cfiBlock36
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -1715,19 +1792,24 @@ _ZNSaIcE9constructIPcJS1_EEEvPT_DpOT0_:
         THUMB
 // __vfp void std::allocator<char>::construct<char *, char * &>(char * *, char * &)
 _ZNSaIcE9constructIPcJRS1_EEEvPT_DpOT0_:
-        PUSH     {R3-R5,LR}     
+        PUSH     {R3-R7,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
-          CFI CFA R13+16
-        MOVS     R5,R2          
+          CFI R7 Frame(CFA, -8)
+          CFI R6 Frame(CFA, -12)
+          CFI R5 Frame(CFA, -16)
+          CFI R4 Frame(CFA, -20)
+          CFI CFA R13+24
+        MOVS     R5,R0          
+        MOVS     R6,R1          
+        MOVS     R7,R2          
+        MOVS     R1,R6          
         MOVS     R0,#+4         
           CFI FunCall _ZnwjPv
         BL       _ZnwjPv        
         MOVS     R4,R0          
         CMP      R4,#+0         
         BEQ.N    ??construct_2  
-        MOVS     R0,R5          
+        MOVS     R0,R7          
           CFI FunCall _ZSt7forwardIRPcEOT_RNSt16remove_referenceIS2_E4typeE
         BL       _ZSt7forwardIRPcEOT_RNSt16remove_referenceIS2_E4typeE
         LDR      R0,[R0, #+0]   
@@ -1736,7 +1818,7 @@ _ZNSaIcE9constructIPcJRS1_EEEvPT_DpOT0_:
 ??construct_2:
         MOVS     R0,#+0         
 ??construct_3:
-        POP      {R0,R4,R5,PC}  
+        POP      {R0,R4-R7,PC}  
           CFI EndBlock cfiBlock37
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -1758,6 +1840,7 @@ _ZNSaIcE7destroyIPcEEvPT_:
         THUMB
 // __vfp size_t std::allocator<char>::max_size() const noexcept
 _ZNKSaIcE8max_sizeEv:
+        MOVS     R1,R0          
         MOVS     R0,#+4294967295
         BX       LR             
           CFI EndBlock cfiBlock39
@@ -1782,6 +1865,7 @@ _ZSteqIccEbRKSaIT_ERKSaIT0_E:
         THUMB
 // __vfp bool std::operator!=<char, char>(std::allocator<char> const &, std::allocator<char> const &)
 _ZStneIccEbRKSaIT_ERKSaIT0_E:
+        MOVS     R2,R0          
         MOVS     R0,#+0         
         BX       LR             
           CFI EndBlock cfiBlock41
@@ -1793,14 +1877,16 @@ _ZStneIccEbRKSaIT_ERKSaIT0_E:
         THUMB
 // __vfp void std::allocator_traits<std::allocator<char>>::construct<char *, char *>(std::allocator<char> &, char * *, char * &&)
 _ZNSt16allocator_traitsISaIcEE9constructIPcJS3_EEEvRS0_PT_DpOT0_:
-        PUSH     {R3-R5,LR}     
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
           CFI CFA R13+16
         MOVS     R4,R0          
         MOVS     R5,R1          
-        MOVS     R0,R2          
+        MOVS     R6,R2          
+        MOVS     R0,R6          
           CFI FunCall _ZSt7forwardIPcEOT_RNSt16remove_referenceIS1_E4typeE
         BL       _ZSt7forwardIPcEOT_RNSt16remove_referenceIS1_E4typeE
         MOVS     R2,R0          
@@ -1808,7 +1894,7 @@ _ZNSt16allocator_traitsISaIcEE9constructIPcJS3_EEEvRS0_PT_DpOT0_:
         MOVS     R0,R4          
           CFI FunCall _ZNSaIcE9constructIPcJS1_EEEvPT_DpOT0_
         BL       _ZNSaIcE9constructIPcJS1_EEEvPT_DpOT0_
-        POP      {R0,R4,R5,PC}  
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock42
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -1818,14 +1904,16 @@ _ZNSt16allocator_traitsISaIcEE9constructIPcJS3_EEEvRS0_PT_DpOT0_:
         THUMB
 // __vfp void std::allocator_traits<std::allocator<char>>::construct<char *, char * &>(std::allocator<char> &, char * *, char * &)
 _ZNSt16allocator_traitsISaIcEE9constructIPcJRS3_EEEvRS0_PT_DpOT0_:
-        PUSH     {R3-R5,LR}     
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
           CFI CFA R13+16
         MOVS     R4,R0          
         MOVS     R5,R1          
-        MOVS     R0,R2          
+        MOVS     R6,R2          
+        MOVS     R0,R6          
           CFI FunCall _ZSt7forwardIRPcEOT_RNSt16remove_referenceIS2_E4typeE
         BL       _ZSt7forwardIRPcEOT_RNSt16remove_referenceIS2_E4typeE
         MOVS     R2,R0          
@@ -1833,7 +1921,7 @@ _ZNSt16allocator_traitsISaIcEE9constructIPcJRS3_EEEvRS0_PT_DpOT0_:
         MOVS     R0,R4          
           CFI FunCall _ZNSaIcE9constructIPcJRS1_EEEvPT_DpOT0_
         BL       _ZNSaIcE9constructIPcJRS1_EEEvPT_DpOT0_
-        POP      {R0,R4,R5,PC}  
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock43
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -1843,12 +1931,18 @@ _ZNSt16allocator_traitsISaIcEE9constructIPcJRS3_EEEvRS0_PT_DpOT0_:
         THUMB
 // __vfp void std::allocator_traits<std::allocator<char>>::destroy<char *>(std::allocator<char> &, char * *)
 _ZNSt16allocator_traitsISaIcEE7destroyIPcEEvRS0_PT_:
-        PUSH     {R7,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R1,R5          
+        MOVS     R0,R4          
           CFI FunCall _ZNSaIcE7destroyIPcEEvPT_
         BL       _ZNSaIcE7destroyIPcEEvPT_
-        POP      {R0,PC}        
+        POP      {R0,R4,R5,PC}  
           CFI EndBlock cfiBlock44
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -1858,12 +1952,15 @@ _ZNSt16allocator_traitsISaIcEE7destroyIPcEEvRS0_PT_:
         THUMB
 // __vfp size_t std::allocator_traits<std::allocator<char>>::max_size(std::allocator<char> const &) noexcept
 _ZNSt16allocator_traitsISaIcEE8max_sizeERKS0_:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNKSaIcE8max_sizeEv
         BL       _ZNKSaIcE8max_sizeEv
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock45
 
         SECTION `.rodata`:CONST:REORDER:NOROOT(0)
@@ -1928,12 +2025,15 @@ _ZZSt9use_facetISt8numpunctIcEERKT_vE8_MyFacet:
         THUMB
 // __vfp Formatter::subobject Formatter()
 _ZN9FormatterC2Ev:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZN9FormatterC1Ev
         BL       _ZN9FormatterC1Ev
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock46
 
         SECTION `.text`:CODE:NOROOT(1)
@@ -1979,8 +2079,8 @@ _Z12FormatStringfhSsb:
           CFI CFA R13+144
         MOVS     R4,R0          
         VMOV.F32 S16,S0         
-        MOVS     R6,R1          
-        MOVS     R5,R2          
+        MOVS     R5,R1          
+        MOVS     R6,R2          
         MOVS     R7,R3          
 //    9   std::ostringstream oss;
         MOVS     R1,#+2         
@@ -1988,25 +2088,21 @@ _Z12FormatStringfhSsb:
           CFI FunCall _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEC1ENSt5_IosbIiE9_OpenmodeE
         BL       _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEC1ENSt5_IosbIiE9_OpenmodeE
 //   10   oss.precision(precision);
-        UXTB     R6,R6          
-        MOVS     R1,R6          
+        MOVS     R1,R5          
+        UXTB     R1,R1          
         MOV      R0,SP          
         LDR      R2,[SP, #+0]   
         LDR      R2,[R2, #-12]  
         ADD      R0,R0,R2       
           CFI FunCall _ZNSt8ios_base9precisionEi
         BL       _ZNSt8ios_base9precisionEi
-//   11   switch(isFilteredValue)
-        UXTB     R7,R7          
-        CMP      R7,#+0         
-        BEQ.N    ??FormatString_0
-        CMP      R7,#+1         
-        BEQ.N    ??FormatString_1
-        B.N      ??FormatString_2
+//   11   if (!isFilteredValue)
+        MOVS     R0,R7          
+        UXTB     R0,R0          
+        CMP      R0,#+0         
+        BNE.N    ??FormatString_0
 //   12   {
-//   13   case false:
-//   14     oss << "Неотфильтрованное напряжение: " << std::fixed << value << unit << std::endl;
-??FormatString_0:
+//   13     oss << "Неотфильтрованное напряжение: " << std::fixed << value << unit << std::endl;
         LDR.N    R1,??DataTable2_1
         MOV      R0,SP          
           CFI FunCall _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
@@ -2017,17 +2113,18 @@ _Z12FormatStringfhSsb:
         VMOV.F32 S0,S16         
           CFI FunCall _ZNSolsEf
         BL       _ZNSolsEf      
-        MOVS     R1,R5          
+        MOVS     R1,R6          
           CFI FunCall _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E
         BL       _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E
         LDR.N    R1,??DataTable2_3
           CFI FunCall _ZNSolsEPFRSoS_E
         BL       _ZNSolsEPFRSoS_E
-//   15     break;
-        B.N      ??FormatString_2
-//   16   case true:
+        B.N      ??FormatString_1
+//   14   }
+//   15   else
+//   16   {
 //   17     oss << "Напряжение: " << std::fixed << value << unit << std::endl;
-??FormatString_1:
+??FormatString_0:
         LDR.N    R1,??DataTable2_4
         MOV      R0,SP          
           CFI FunCall _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
@@ -2038,16 +2135,15 @@ _Z12FormatStringfhSsb:
         VMOV.F32 S0,S16         
           CFI FunCall _ZNSolsEf
         BL       _ZNSolsEf      
-        MOVS     R1,R5          
+        MOVS     R1,R6          
           CFI FunCall _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E
         BL       _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E
         LDR.N    R1,??DataTable2_3
           CFI FunCall _ZNSolsEPFRSoS_E
         BL       _ZNSolsEPFRSoS_E
-//   18     break;
-//   19   }
-//   20   return std::move(oss).str();
-??FormatString_2:
+//   18   }
+//   19   return std::move(oss).str();
+??FormatString_1:
         MOV      R0,SP          
           CFI FunCall _ZSt4moveIRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEEONSt16remove_referenceIT_E4typeEOS7_
         BL       _ZSt4moveIRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEEONSt16remove_referenceIT_E4typeEOS7_
@@ -2064,7 +2160,7 @@ _Z12FormatStringfhSsb:
           CFI D8 SameValue
           CFI CFA R13+24
         POP      {R0,R4-R7,PC}  
-//   21 }
+//   20 }
           CFI EndBlock cfiBlock48
 
         SECTION `.text`:CODE:NOROOT(2)
@@ -2109,12 +2205,15 @@ _Z12FormatStringfhSsb:
         THUMB
 // __vfp std::_Wrap_alloc<std::allocator<char>>::subobject _Wrap_alloc(std::allocator<char> const &)
 _ZNSt11_Wrap_allocISaIcEEC2ERKS0_:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt11_Wrap_allocISaIcEEC1ERKS0_
         BL       _ZNSt11_Wrap_allocISaIcEEC1ERKS0_
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock49
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2135,12 +2234,18 @@ _ZNSt11_Wrap_allocISaIcEEC1ERKS0_:
         THUMB
 // __vfp char * std::_Wrap_alloc<std::allocator<char>>::allocate(size_t)
 _ZNSt11_Wrap_allocISaIcEE8allocateEj:
-        PUSH     {R7,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R1,R5          
+        MOVS     R0,R4          
           CFI FunCall _ZNSaIcE8allocateEj
         BL       _ZNSaIcE8allocateEj
-        POP      {R1,PC}        
+        POP      {R1,R4,R5,PC}  
           CFI EndBlock cfiBlock51
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2150,12 +2255,21 @@ _ZNSt11_Wrap_allocISaIcEE8allocateEj:
         THUMB
 // __vfp void std::_Wrap_alloc<std::allocator<char>>::deallocate(char *, size_t)
 _ZNSt11_Wrap_allocISaIcEE10deallocateEPcj:
-        PUSH     {R7,LR}        
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R6,R2          
+        MOVS     R2,R6          
+        MOVS     R1,R5          
+        MOVS     R0,R4          
           CFI FunCall _ZNSaIcE10deallocateEPcj
         BL       _ZNSaIcE10deallocateEPcj
-        POP      {R0,PC}        
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock52
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2165,14 +2279,16 @@ _ZNSt11_Wrap_allocISaIcEE10deallocateEPcj:
         THUMB
 // __vfp void std::_Wrap_alloc<std::allocator<char>>::construct<char *, char *>(char * *, char * &&)
 _ZNSt11_Wrap_allocISaIcEE9constructIPcJS3_EEEvPT_DpOT0_:
-        PUSH     {R3-R5,LR}     
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
           CFI CFA R13+16
         MOVS     R4,R0          
         MOVS     R5,R1          
-        MOVS     R0,R2          
+        MOVS     R6,R2          
+        MOVS     R0,R6          
           CFI FunCall _ZSt7forwardIPcEOT_RNSt16remove_referenceIS1_E4typeE
         BL       _ZSt7forwardIPcEOT_RNSt16remove_referenceIS1_E4typeE
         MOVS     R2,R0          
@@ -2180,7 +2296,7 @@ _ZNSt11_Wrap_allocISaIcEE9constructIPcJS3_EEEvPT_DpOT0_:
         MOVS     R0,R4          
           CFI FunCall _ZNSt16allocator_traitsISaIcEE9constructIPcJS3_EEEvRS0_PT_DpOT0_
         BL       _ZNSt16allocator_traitsISaIcEE9constructIPcJS3_EEEvRS0_PT_DpOT0_
-        POP      {R0,R4,R5,PC}  
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock53
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2190,14 +2306,16 @@ _ZNSt11_Wrap_allocISaIcEE9constructIPcJS3_EEEvPT_DpOT0_:
         THUMB
 // __vfp void std::_Wrap_alloc<std::allocator<char>>::construct<char *, char * &>(char * *, char * &)
 _ZNSt11_Wrap_allocISaIcEE9constructIPcJRS3_EEEvPT_DpOT0_:
-        PUSH     {R3-R5,LR}     
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
           CFI CFA R13+16
         MOVS     R4,R0          
         MOVS     R5,R1          
-        MOVS     R0,R2          
+        MOVS     R6,R2          
+        MOVS     R0,R6          
           CFI FunCall _ZSt7forwardIRPcEOT_RNSt16remove_referenceIS2_E4typeE
         BL       _ZSt7forwardIRPcEOT_RNSt16remove_referenceIS2_E4typeE
         MOVS     R2,R0          
@@ -2205,7 +2323,7 @@ _ZNSt11_Wrap_allocISaIcEE9constructIPcJRS3_EEEvPT_DpOT0_:
         MOVS     R0,R4          
           CFI FunCall _ZNSt16allocator_traitsISaIcEE9constructIPcJRS3_EEEvRS0_PT_DpOT0_
         BL       _ZNSt16allocator_traitsISaIcEE9constructIPcJRS3_EEEvRS0_PT_DpOT0_
-        POP      {R0,R4,R5,PC}  
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock54
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2215,12 +2333,18 @@ _ZNSt11_Wrap_allocISaIcEE9constructIPcJRS3_EEEvPT_DpOT0_:
         THUMB
 // __vfp void std::_Wrap_alloc<std::allocator<char>>::destroy<char *>(char * *)
 _ZNSt11_Wrap_allocISaIcEE7destroyIPcEEvPT_:
-        PUSH     {R7,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R1,R5          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt16allocator_traitsISaIcEE7destroyIPcEEvRS0_PT_
         BL       _ZNSt16allocator_traitsISaIcEE7destroyIPcEEvRS0_PT_
-        POP      {R0,PC}        
+        POP      {R0,R4,R5,PC}  
           CFI EndBlock cfiBlock55
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2230,12 +2354,15 @@ _ZNSt11_Wrap_allocISaIcEE7destroyIPcEEvPT_:
         THUMB
 // __vfp size_t std::_Wrap_alloc<std::allocator<char>>::max_size(std::_Nil) const noexcept
 _ZNKSt11_Wrap_allocISaIcEE8max_sizeESt4_Nil:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt16allocator_traitsISaIcEE8max_sizeERKS0_
         BL       _ZNSt16allocator_traitsISaIcEE8max_sizeERKS0_
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock56
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2245,12 +2372,18 @@ _ZNKSt11_Wrap_allocISaIcEE8max_sizeESt4_Nil:
         THUMB
 // __vfp bool std::operator==<std::allocator<char>, std::allocator<char>>(std::_Wrap_alloc<std::allocator<char>> const &, std::_Wrap_alloc<std::allocator<char>> const &)
 _ZSteqISaIcES0_EbRKSt11_Wrap_allocIT_ERKS1_IT0_E:
-        PUSH     {R7,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R1,R5          
+        MOVS     R0,R4          
           CFI FunCall _ZSteqIccEbRKSaIT_ERKSaIT0_E
         BL       _ZSteqIccEbRKSaIT_ERKSaIT0_E
-        POP      {R1,PC}        
+        POP      {R1,R4,R5,PC}  
           CFI EndBlock cfiBlock57
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2260,9 +2393,15 @@ _ZSteqISaIcES0_EbRKSt11_Wrap_allocIT_ERKS1_IT0_E:
         THUMB
 // __vfp bool std::operator!=<std::allocator<char>, std::allocator<char>>(std::_Wrap_alloc<std::allocator<char>> const &, std::_Wrap_alloc<std::allocator<char>> const &)
 _ZStneISaIcES0_EbRKSt11_Wrap_allocIT_ERKS1_IT0_E:
-        PUSH     {R7,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R1,R5          
+        MOVS     R0,R4          
           CFI FunCall _ZSteqISaIcES0_EbRKSt11_Wrap_allocIT_ERKS1_IT0_E
         BL       _ZSteqISaIcES0_EbRKSt11_Wrap_allocIT_ERKS1_IT0_E
         CMP      R0,#+0         
@@ -2273,7 +2412,7 @@ _ZStneISaIcES0_EbRKSt11_Wrap_allocIT_ERKS1_IT0_E:
         MOVS     R0,#+0         
 `??operator!=_1`:
         UXTB     R0,R0          
-        POP      {R1,PC}        
+        POP      {R1,R4,R5,PC}  
           CFI EndBlock cfiBlock58
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2298,19 +2437,22 @@ _ZNSt11_String_valISt13_Simple_typesIcEEC1Ev:
         THUMB
 // __vfp char *std::_String_val<std::_Simple_types<char>>::_Myptr()
 _ZNSt11_String_valISt13_Simple_typesIcEE6_MyptrEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
-        LDR      R1,[R0, #+20]  
-        CMP      R1,#+16        
+        MOVS     R4,R0          
+        LDR      R0,[R4, #+20]  
+        CMP      R0,#+16        
         BCC.N    ??_Myptr_0     
-        LDR      R0,[R0, #+0]   
+        LDR      R0,[R4, #+0]   
           CFI FunCall _ZSt9addressofIcEPT_RS0_
         BL       _ZSt9addressofIcEPT_RS0_
         B.N      ??_Myptr_1     
 ??_Myptr_0:
+        MOVS     R0,R4          
 ??_Myptr_1:
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock60
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2320,19 +2462,22 @@ _ZNSt11_String_valISt13_Simple_typesIcEE6_MyptrEv:
         THUMB
 // __vfp char const *std::_String_val<std::_Simple_types<char>>::_Myptr() const
 _ZNKSt11_String_valISt13_Simple_typesIcEE6_MyptrEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
-        LDR      R1,[R0, #+20]  
-        CMP      R1,#+16        
+        MOVS     R4,R0          
+        LDR      R0,[R4, #+20]  
+        CMP      R0,#+16        
         BCC.N    ??_Myptr_2     
-        LDR      R0,[R0, #+0]   
+        LDR      R0,[R4, #+0]   
           CFI FunCall _ZSt9addressofIcEPT_RS0_
         BL       _ZSt9addressofIcEPT_RS0_
         B.N      ??_Myptr_3     
 ??_Myptr_2:
+        MOVS     R0,R4          
 ??_Myptr_3:
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock61
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2342,14 +2487,17 @@ _ZNKSt11_String_valISt13_Simple_typesIcEE6_MyptrEv:
         THUMB
 // __vfp char *std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr()
 _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
           CFI FunCall _ZNSt11_String_valISt13_Simple_typesIcEE6_MyptrEv
         BL       _ZNSt11_String_valISt13_Simple_typesIcEE6_MyptrEv
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock62
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2359,14 +2507,17 @@ _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv:
         THUMB
 // __vfp char const *std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr() const
 _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
         BL       _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
           CFI FunCall _ZNKSt11_String_valISt13_Simple_typesIcEE6_MyptrEv
         BL       _ZNKSt11_String_valISt13_Simple_typesIcEE6_MyptrEv
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock63
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2376,12 +2527,15 @@ _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv:
         THUMB
 // __vfp std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::subobject _String_alloc(std::allocator<char> const &)
 _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEEC2ERKS1_:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEEC1ERKS1_
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEEC1ERKS1_
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock64
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
@@ -2391,19 +2545,22 @@ _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEEC2ERKS1_:
         THUMB
 // __vfp std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_String_alloc(std::allocator<char> const &)
 _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEEC1ERKS1_:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
         MOVS     R4,R0          
-        MOVS     R2,R1          
+        MOVS     R5,R1          
+        MOVS     R2,R5          
         LDR.N    R0,??_String_alloc_0
         LDRB     R1,[R0, #+0]   
         MOVS     R0,R4          
           CFI FunCall _ZNSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EEC1IRKS1_JEEESt25_One_then_variadic_args_tOT_DpOT0_
         BL       _ZNSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EEC1IRKS1_JEEESt25_One_then_variadic_args_tOT_DpOT0_
         MOVS     R0,R4          
-        POP      {R4,PC}        
+        POP      {R1,R4,R5,PC}  
+        Nop                     
         DATA
 ??_String_alloc_0:
         DATA32
@@ -2417,12 +2574,15 @@ _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEEC1ERKS1_:
         THUMB
 // __vfp std::_Wrap_alloc<std::allocator<char>> &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Getal() noexcept
 _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE10_Get_firstEv
         BL       _ZNSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE10_Get_firstEv
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock66
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2432,12 +2592,15 @@ _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv:
         THUMB
 // __vfp std::_Wrap_alloc<std::allocator<char>> const &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Getal() const noexcept
 _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNKSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE10_Get_firstEv
         BL       _ZNKSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE10_Get_firstEv
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock67
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2447,12 +2610,15 @@ _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv:
         THUMB
 // __vfp std::_String_val<std::_Simple_types<char>> &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() noexcept
 _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE11_Get_secondEv
         BL       _ZNSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE11_Get_secondEv
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock68
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2462,12 +2628,15 @@ _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv:
         THUMB
 // __vfp std::_String_val<std::_Simple_types<char>> const &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() const noexcept
 _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNKSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE11_Get_secondEv
         BL       _ZNKSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE11_Get_secondEv
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock69
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2477,12 +2646,15 @@ _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv:
         THUMB
 // __vfp std::_String_val<std::_Simple_types<char>>::_Bxty &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Bx() noexcept
 _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock70
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2492,13 +2664,16 @@ _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv:
         THUMB
 // __vfp size_t &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Mysize() noexcept
 _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
         ADDS     R0,R0,#+16     
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock71
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2508,13 +2683,16 @@ _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv:
         THUMB
 // __vfp size_t const &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Mysize() const noexcept
 _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
         BL       _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
         ADDS     R0,R0,#+16     
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock72
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2524,13 +2702,16 @@ _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv:
         THUMB
 // __vfp size_t &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myres() noexcept
 _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
         ADDS     R0,R0,#+20     
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock73
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2778,23 +2959,23 @@ _ZNSs10_Assign_rvEOSs:
           CFI R5 Frame(CFA, -16)
           CFI R4 Frame(CFA, -20)
           CFI CFA R13+24
-        MOVS     R5,R0          
-        MOVS     R4,R1          
-        MOVS     R0,R4          
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
         LDR      R0,[R0, #+0]   
         CMP      R0,#+16        
         BCS.N    ??_Assign_rv_0 
-        MOVS     R0,R4          
+        MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
         MOVS     R6,R0          
-        MOVS     R0,R4          
+        MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
         MOVS     R7,R0          
-        MOVS     R0,R5          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
         LDR      R2,[R6, #+0]   
@@ -2804,48 +2985,48 @@ _ZNSs10_Assign_rvEOSs:
         BL       _ZNSt11char_traitsIcE4moveEPcPKcj
         B.N      ??_Assign_rv_1 
 ??_Assign_rv_0:
-        MOVS     R0,R4          
+        MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
         MOVS     R6,R0          
-        MOVS     R0,R5          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
         MOVS     R7,R0          
-        MOVS     R0,R5          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
         MOVS     R2,R6          
         MOVS     R1,R7          
           CFI FunCall _ZNSt11_Wrap_allocISaIcEE9constructIPcJRS3_EEEvPT_DpOT0_
         BL       _ZNSt11_Wrap_allocISaIcEE9constructIPcJRS3_EEEvPT_DpOT0_
-        MOVS     R0,R4          
+        MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
         MOVS     R1,#+0         
         STR      R1,[R0, #+0]   
 ??_Assign_rv_1:
-        MOVS     R0,R5          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
         MOVS     R6,R0          
-        MOVS     R0,R4          
+        MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
         LDR      R0,[R0, #+0]   
         STR      R0,[R6, #+0]   
+        MOVS     R0,R4          
+          CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
+        BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
+        MOVS     R6,R0          
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
-        MOVS     R5,R0          
-        MOVS     R0,R4          
-          CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
-        BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
         LDR      R0,[R0, #+0]   
-        STR      R0,[R5, #+0]   
+        STR      R0,[R6, #+0]   
         MOVS     R2,#+0         
         MOVS     R1,#+0         
-        MOVS     R0,R4          
+        MOVS     R0,R5          
           CFI FunCall _ZNSs5_TidyEbj
         BL       _ZNSs5_TidyEbj 
         POP      {R0,R4-R7,PC}  
@@ -2915,14 +3096,20 @@ _ZNSsaSERKSs:
         THUMB
 // __vfp std::string &std::string::assign(std::string const &)
 _ZNSs6assignERKSs:
-        PUSH     {R7,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
         MOVS     R3,#+4294967295
         MOVS     R2,#+0         
+        MOVS     R1,R5          
+        MOVS     R0,R4          
           CFI FunCall _ZNSs6assignERKSsjj
         BL       _ZNSs6assignERKSsjj
-        POP      {R1,PC}        
+        POP      {R1,R4,R5,PC}  
           CFI EndBlock cfiBlock83
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -2932,14 +3119,15 @@ _ZNSs6assignERKSs:
         THUMB
 // __vfp std::string &std::string::assign(std::string const &, size_t, size_t)
 _ZNSs6assignERKSsjj:
-        PUSH     {R4-R8,LR}     
+        PUSH     {R3-R9,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R8 Frame(CFA, -8)
-          CFI R7 Frame(CFA, -12)
-          CFI R6 Frame(CFA, -16)
-          CFI R5 Frame(CFA, -20)
-          CFI R4 Frame(CFA, -24)
-          CFI CFA R13+24
+          CFI R9 Frame(CFA, -8)
+          CFI R8 Frame(CFA, -12)
+          CFI R7 Frame(CFA, -16)
+          CFI R6 Frame(CFA, -20)
+          CFI R5 Frame(CFA, -24)
+          CFI R4 Frame(CFA, -28)
+          CFI CFA R13+32
         MOVS     R4,R0          
         MOVS     R5,R1          
         MOVS     R6,R2          
@@ -2963,8 +3151,7 @@ _ZNSs6assignERKSsjj:
 ??assign_5:
         CMP      R4,R5          
         BNE.N    ??assign_6     
-        ADDS     R8,R8,R6       
-        MOV      R1,R8          
+        ADDS     R1,R8,R6       
         MOVS     R0,R4          
           CFI FunCall _ZNSs5eraseEj
         BL       _ZNSs5eraseEj  
@@ -2985,12 +3172,12 @@ _ZNSs6assignERKSsjj:
         MOVS     R0,R5          
           CFI FunCall _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
         BL       _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
-        MOVS     R5,R0          
+        MOV      R9,R0          
         MOVS     R0,R4          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
         MOV      R2,R8          
-        ADD      R1,R5,R6       
+        ADD      R1,R9,R6       
           CFI FunCall _ZNSt11char_traitsIcE4copyEPcPKcj
         BL       _ZNSt11char_traitsIcE4copyEPcPKcj
         MOV      R1,R8          
@@ -2999,7 +3186,7 @@ _ZNSs6assignERKSsjj:
         BL       _ZNSs4_EosEj   
 ??assign_7:
         MOVS     R0,R4          
-        POP      {R4-R8,PC}     
+        POP      {R1,R4-R9,PC}  
           CFI EndBlock cfiBlock84
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -3028,8 +3215,8 @@ _ZNSs6assignEPKcj:
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
         MOVS     R3,R6          
-        SUBS     R5,R5,R0       
-        MOVS     R2,R5          
+        SUBS     R0,R5,R0       
+        MOVS     R2,R0          
         MOVS     R1,R4          
         MOVS     R0,R4          
           CFI FunCall _ZNSs6assignERKSsjj
@@ -3175,8 +3362,9 @@ _ZNSs6insertEjjc:
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
-        LDR      R8,[R0, #+0]   
-        ADDS     R8,R4,R8       
+        LDR      R0,[R0, #+0]   
+        ADDS     R0,R4,R0       
+        MOV      R8,R0          
         MOVS     R2,#+0         
         MOV      R1,R8          
         MOVS     R0,R5          
@@ -3300,8 +3488,7 @@ _ZNSs5eraseEjj:
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
         LDR      R8,[R0, #+0]   
         SUBS     R8,R8,R4       
-        SUBS     R6,R8,R6       
-        MOVS     R2,R6          
+        SUBS     R2,R8,R6       
         ADD      R1,R7,R4       
         MOVS     R0,R7          
           CFI FunCall _ZNSt11char_traitsIcE4moveEPcPKcj
@@ -3322,15 +3509,18 @@ _ZNSs5eraseEjj:
         THUMB
 // __vfp char & std::string::operator[](size_t)
 _ZNSsixEj:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
-        MOVS     R4,R1          
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
-        ADD      R0,R0,R4       
-        POP      {R4,PC}        
+        ADD      R0,R0,R5       
+        POP      {R1,R4,R5,PC}  
           CFI EndBlock cfiBlock91
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -3340,15 +3530,18 @@ _ZNSsixEj:
         THUMB
 // __vfp char const & std::string::operator[](size_t) const
 _ZNKSsixEj:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
-        MOVS     R4,R1          
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R0,R4          
           CFI FunCall _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
         BL       _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
-        ADD      R0,R0,R4       
-        POP      {R4,PC}        
+        ADD      R0,R0,R5       
+        POP      {R1,R4,R5,PC}  
           CFI EndBlock cfiBlock92
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -3358,12 +3551,15 @@ _ZNKSsixEj:
         THUMB
 // __vfp char const *std::string::c_str() const noexcept
 _ZNKSs5c_strEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
         BL       _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock93
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -3373,13 +3569,16 @@ _ZNKSs5c_strEv:
         THUMB
 // __vfp size_t std::string::size() const noexcept
 _ZNKSs4sizeEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
         BL       _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
         LDR      R0,[R0, #+0]   
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock94
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -3389,13 +3588,16 @@ _ZNKSs4sizeEv:
         THUMB
 // __vfp size_t std::string::max_size() const noexcept
 _ZNKSs8max_sizeEv:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
         BL       _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
-        MOVS     R1,R4          
+        MOVS     R1,R5          
           CFI FunCall _ZNKSt11_Wrap_allocISaIcEE8max_sizeESt4_Nil
         BL       _ZNKSt11_Wrap_allocISaIcEE8max_sizeESt4_Nil
         CMP      R0,#+2         
@@ -3405,7 +3607,7 @@ _ZNKSs8max_sizeEv:
 ??max_size_0:
         SUBS     R0,R0,#+1      
 ??max_size_1:
-        POP      {R4,PC}        
+        POP      {R1,R4,R5,PC}  
           CFI EndBlock cfiBlock95
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -3415,19 +3617,21 @@ _ZNKSs8max_sizeEv:
         THUMB
 // __vfp void std::string::get_allocator() const noexcept
 _ZNKSs13get_allocatorEv:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
         MOVS     R4,R0          
-        MOVS     R0,R1          
+        MOVS     R5,R1          
+        MOVS     R0,R5          
           CFI FunCall _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
         BL       _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
         MOVS     R1,R0          
         MOVS     R0,R4          
           CFI FunCall _ZNSaIcEC1ERKS_
         BL       _ZNSaIcEC1ERKS_
-        POP      {R4,PC}        
+        POP      {R0,R4,R5,PC}  
           CFI EndBlock cfiBlock96
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -3437,32 +3641,36 @@ _ZNKSs13get_allocatorEv:
         THUMB
 // __vfp void std::string::_Chassign(size_t, size_t, char)
 _ZNSs9_ChassignEjjc:
-        PUSH     {R3-R5,LR}     
+        PUSH     {R2-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
-          CFI CFA R13+16
-        MOVS     R4,R1          
-        MOVS     R5,R2          
-        CMP      R5,#+1         
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
+          CFI CFA R13+24
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R6,R2          
+        CMP      R6,#+1         
         BNE.N    ??_Chassign_0  
+        MOVS     R0,R4          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
-        MOV      R1,SP          
-        ADD      R0,R0,R4       
+        ADD      R1,SP,#+4      
+        ADD      R0,R0,R5       
           CFI FunCall _ZNSt11char_traitsIcE6assignERcRKc
         BL       _ZNSt11char_traitsIcE6assignERcRKc
         B.N      ??_Chassign_1  
 ??_Chassign_0:
+        MOVS     R0,R4          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
-        LDRB     R2,[SP, #+0]   
-        MOVS     R1,R5          
-        ADD      R0,R0,R4       
+        LDRB     R2,[SP, #+4]   
+        MOVS     R1,R6          
+        ADD      R0,R0,R5       
           CFI FunCall _ZNSt11char_traitsIcE6assignEPcjc
         BL       _ZNSt11char_traitsIcE6assignEPcjc
 ??_Chassign_1:
-        POP      {R0,R4,R5,PC}  
+        POP      {R0,R1,R4-R6,PC}
           CFI EndBlock cfiBlock97
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -3472,71 +3680,73 @@ _ZNSs9_ChassignEjjc:
         THUMB
 // __vfp void std::string::_Copy(size_t, size_t)
 _ZNSs5_CopyEjj:
-        PUSH     {R2-R8,LR}     
+        PUSH     {R3-R9,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R8 Frame(CFA, -8)
-          CFI R7 Frame(CFA, -12)
-          CFI R6 Frame(CFA, -16)
-          CFI R5 Frame(CFA, -20)
-          CFI R4 Frame(CFA, -24)
+          CFI R9 Frame(CFA, -8)
+          CFI R8 Frame(CFA, -12)
+          CFI R7 Frame(CFA, -16)
+          CFI R6 Frame(CFA, -20)
+          CFI R5 Frame(CFA, -24)
+          CFI R4 Frame(CFA, -28)
           CFI CFA R13+32
         MOVS     R5,R0          
-        MOVS     R7,R1          
+        MOVS     R6,R1          
         MOVS     R4,R2          
-        ORRS     R6,R7,#0xF     
+        ORRS     R7,R6,#0xF     
         MOVS     R0,R5          
           CFI FunCall _ZNKSs8max_sizeEv
         BL       _ZNKSs8max_sizeEv
-        CMP      R0,R6          
+        CMP      R0,R7          
         BCS.N    ??_Copy_0      
-        MOVS     R6,R7          
+        MOVS     R7,R6          
         B.N      ??_Copy_1      
 ??_Copy_0:
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
         MOVS     R1,#+3         
-        UDIV     R1,R6,R1       
+        UDIV     R1,R7,R1       
         LDR      R0,[R0, #+0]   
         CMP      R1,R0, LSR #+1 
         BCS.N    ??_Copy_1      
         MOVS     R0,R5          
           CFI FunCall _ZNKSs8max_sizeEv
         BL       _ZNKSs8max_sizeEv
-        MOVS     R6,R0          
+        MOV      R8,R0          
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
-        MOVS     R7,R0          
+        MOV      R9,R0          
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
-        LDR      R1,[R7, #+0]   
-        SUBS     R6,R6,R1, LSR #+1
+        LDR      R1,[R9, #+0]   
+        SUBS     R8,R8,R1, LSR #+1
         LDR      R0,[R0, #+0]   
-        CMP      R6,R0          
+        CMP      R8,R0          
         BCC.N    ??_Copy_2      
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
-        MOVS     R6,R0          
+        MOV      R8,R0          
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
-        LDR      R6,[R6, #+0]   
+        LDR      R1,[R8, #+0]   
         LDR      R0,[R0, #+0]   
-        ADDS     R6,R6,R0, LSR #+1
+        ADDS     R1,R1,R0, LSR #+1
+        MOVS     R7,R1          
         B.N      ??_Copy_1      
 ??_Copy_2:
         MOVS     R0,R5          
           CFI FunCall _ZNKSs8max_sizeEv
         BL       _ZNKSs8max_sizeEv
-        MOVS     R6,R0          
+        MOVS     R7,R0          
 ??_Copy_1:
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
-        ADDS     R1,R6,#+1      
+        ADDS     R1,R7,#+1      
           CFI FunCall _ZNSt11_Wrap_allocISaIcEE8allocateEj
         BL       _ZNSt11_Wrap_allocISaIcEE8allocateEj
         STR      R0,[SP, #+0]   
@@ -3545,12 +3755,12 @@ _ZNSs5_CopyEjj:
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
-        MOVS     R7,R0          
+        MOV      R8,R0          
         LDR      R0,[SP, #+0]   
           CFI FunCall _ZSt9addressofIcEPT_RS0_
         BL       _ZSt9addressofIcEPT_RS0_
         MOVS     R2,R4          
-        MOVS     R1,R7          
+        MOV      R1,R8          
           CFI FunCall _ZNSt11char_traitsIcE4copyEPcPKcj
         BL       _ZNSt11char_traitsIcE4copyEPcPKcj
 ??_Copy_3:
@@ -3562,27 +3772,27 @@ _ZNSs5_CopyEjj:
         MOV      R0,SP          
           CFI FunCall _ZSt4moveIRPcEONSt16remove_referenceIT_E4typeEOS3_
         BL       _ZSt4moveIRPcEONSt16remove_referenceIT_E4typeEOS3_
-        MOVS     R7,R0          
+        MOV      R8,R0          
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
-        MOV      R8,R0          
+        MOV      R9,R0          
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
-        MOVS     R2,R7          
-        MOV      R1,R8          
+        MOV      R2,R8          
+        MOV      R1,R9          
           CFI FunCall _ZNSt11_Wrap_allocISaIcEE9constructIPcJS3_EEEvPT_DpOT0_
         BL       _ZNSt11_Wrap_allocISaIcEE9constructIPcJS3_EEEvPT_DpOT0_
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
-        STR      R6,[R0, #+0]   
+        STR      R7,[R0, #+0]   
         MOVS     R1,R4          
         MOVS     R0,R5          
           CFI FunCall _ZNSs4_EosEj
         BL       _ZNSs4_EosEj   
-        POP      {R0,R1,R4-R8,PC}
+        POP      {R0,R4-R9,PC}  
           CFI EndBlock cfiBlock98
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -3658,8 +3868,9 @@ _ZNSs5_GrowEjb:
         BL       _ZNSs5_CopyEjj 
         B.N      ??_Grow_2      
 ??_Grow_1:
-        UXTB     R6,R6          
-        CMP      R6,#+0         
+        MOVS     R0,R6          
+        UXTB     R0,R0          
+        CMP      R0,#+0         
         BEQ.N    ??_Grow_3      
         CMP      R4,#+16        
         BCS.N    ??_Grow_3      
@@ -3750,17 +3961,20 @@ _ZNSs7_InsideEPKc:
         THUMB
 // __vfp void std::string::_Tidy(bool, size_t)
 _ZNSs5_TidyEbj:
-        PUSH     {R3-R7,LR}     
+        PUSH     {R4-R8,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R7 Frame(CFA, -8)
-          CFI R6 Frame(CFA, -12)
-          CFI R5 Frame(CFA, -16)
-          CFI R4 Frame(CFA, -20)
+          CFI R8 Frame(CFA, -8)
+          CFI R7 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -16)
+          CFI R5 Frame(CFA, -20)
+          CFI R4 Frame(CFA, -24)
           CFI CFA R13+24
         MOVS     R5,R0          
+        MOVS     R6,R1          
         MOVS     R4,R2          
-        UXTB     R1,R1          
-        CMP      R1,#+0         
+        MOVS     R0,R6          
+        UXTB     R0,R0          
+        CMP      R0,#+0         
         BEQ.N    ??_Tidy_0      
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
@@ -3771,41 +3985,41 @@ _ZNSs5_TidyEbj:
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
-        LDR      R6,[R0, #+0]   
+        LDR      R7,[R0, #+0]   
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
-        MOVS     R7,R0          
+        MOV      R8,R0          
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
-        MOVS     R1,R7          
+        MOV      R1,R8          
           CFI FunCall _ZNSt11_Wrap_allocISaIcEE7destroyIPcEEvPT_
         BL       _ZNSt11_Wrap_allocISaIcEE7destroyIPcEEvPT_
         CMP      R4,#+0         
         BEQ.N    ??_Tidy_1      
-        MOVS     R0,R6          
+        MOVS     R0,R7          
           CFI FunCall _ZSt9addressofIcEPT_RS0_
         BL       _ZSt9addressofIcEPT_RS0_
-        MOVS     R7,R0          
+        MOV      R8,R0          
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
         MOVS     R2,R4          
-        MOVS     R1,R7          
+        MOV      R1,R8          
           CFI FunCall _ZNSt11char_traitsIcE4copyEPcPKcj
         BL       _ZNSt11char_traitsIcE4copyEPcPKcj
 ??_Tidy_1:
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
-        MOVS     R7,R0          
+        MOV      R8,R0          
         MOVS     R0,R5          
           CFI FunCall _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
         BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
-        LDR      R2,[R7, #+0]   
+        LDR      R2,[R8, #+0]   
         ADDS     R2,R2,#+1      
-        MOVS     R1,R6          
+        MOVS     R1,R7          
           CFI FunCall _ZNSt11_Wrap_allocISaIcEE10deallocateEPcj
         BL       _ZNSt11_Wrap_allocISaIcEE10deallocateEPcj
 ??_Tidy_0:
@@ -3818,7 +4032,7 @@ _ZNSs5_TidyEbj:
         MOVS     R0,R5          
           CFI FunCall _ZNSs4_EosEj
         BL       _ZNSs4_EosEj   
-        POP      {R0,R4-R7,PC}  
+        POP      {R4-R8,PC}     
           CFI EndBlock cfiBlock102
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -4140,16 +4354,16 @@ _ZSt10_MaklocstrIcEPT_PKcS1_:
         BL       __iar_Raise_bad_alloc
 ??_Maklocstr_0:
         MOVS     R0,R5          
-        B.N      ??_Maklocstr_1 
-??_Maklocstr_2:
+??_Maklocstr_1:
+        CMP      R4,#+0         
+        BEQ.N    ??_Maklocstr_2 
         LDRB     R1,[R6, #+0]   
         STRB     R1,[R0, #+0]   
         SUBS     R4,R4,#+1      
         ADDS     R0,R0,#+1      
         ADDS     R6,R6,#+1      
-??_Maklocstr_1:
-        CMP      R4,#+0         
-        BNE.N    ??_Maklocstr_2 
+        B.N      ??_Maklocstr_1 
+??_Maklocstr_2:
         MOVS     R0,R5          
         POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock116
@@ -4162,6 +4376,7 @@ _ZSt10_MaklocstrIcEPT_PKcS1_:
         THUMB
 // __vfp char std::ctype<char>::widen(char) const
 _ZNKSt5ctypeIcE5widenEc:
+        MOVS     R2,R0          
         MOVS     R0,R1          
         UXTB     R0,R0          
         BX       LR             
@@ -4175,16 +4390,23 @@ _ZNKSt5ctypeIcE5widenEc:
         THUMB
 // __vfp char const *std::ctype<char>::widen(char const *, char const *, char *) const
 _ZNKSt5ctypeIcE5widenEPKcS2_Pc:
-        B.N      ??widen_0      
-??widen_1:
+        PUSH     {R4}           
+          CFI R4 Frame(CFA, -4)
+          CFI CFA R13+4
+        MOVS     R4,R0          
+??widen_0:
+        CMP      R1,R2          
+        BEQ.N    ??widen_1      
         LDRB     R0,[R1, #+0]   
         STRB     R0,[R3, #+0]   
         ADDS     R1,R1,#+1      
         ADDS     R3,R3,#+1      
-??widen_0:
-        CMP      R1,R2          
-        BNE.N    ??widen_1      
+        B.N      ??widen_0      
+??widen_1:
         MOVS     R0,R2          
+        POP      {R4}           
+          CFI R4 SameValue
+          CFI CFA R13+0
         BX       LR             
           CFI EndBlock cfiBlock118
 
@@ -4195,12 +4417,15 @@ _ZNKSt5ctypeIcE5widenEPKcS2_Pc:
         THUMB
 // __vfp std::ctype<char>::subobject ctype()
 _ZNSt5ctypeIcEC2Ev:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt5ctypeIcEC1Ev
         BL       _ZNSt5ctypeIcEC1Ev
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock119
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
@@ -4273,9 +4498,12 @@ _ZNKSt8ios_base7rdstateEv:
         THUMB
 // __vfp bool std::ios_base::good() const
 _ZNKSt8ios_base4goodEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNKSt8ios_base7rdstateEv
         BL       _ZNKSt8ios_base7rdstateEv
         CMP      R0,#+0         
@@ -4286,7 +4514,7 @@ _ZNKSt8ios_base4goodEv:
         MOVS     R0,#+0         
 ??good_1:
         UXTB     R0,R0          
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock124
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -4309,19 +4537,21 @@ _ZNKSt8ios_base5flagsEv:
         THUMB
 // __vfp std::ios_base::fmtflags std::ios_base::setf(std::ios_base::fmtflags, std::ios_base::fmtflags)
 _ZNSt8ios_base4setfENSt5_IosbIiE9_FmtflagsES2_:
-        PUSH     {R4}           
-          CFI R4 Frame(CFA, -4)
-          CFI CFA R13+4
-        MOVS     R3,R0          
-        LDRH     R0,[R3, #+10]  
-        LDRH     R4,[R3, #+10]  
-        BICS     R4,R4,R2       
-        ANDS     R1,R2,R1       
-        ORRS     R1,R1,R4       
-        STRH     R1,[R3, #+10]  
+        PUSH     {R4,R5}        
+          CFI R5 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
+          CFI CFA R13+8
+        MOVS     R4,R0          
+        LDRH     R0,[R4, #+10]  
+        LDRH     R5,[R4, #+10]  
+        BICS     R5,R5,R2       
+        ANDS     R3,R2,R1       
+        ORRS     R5,R3,R5       
+        STRH     R5,[R4, #+10]  
         UXTH     R0,R0          
-        POP      {R4}           
+        POP      {R4,R5}        
           CFI R4 SameValue
+          CFI R5 SameValue
           CFI CFA R13+0
         BX       LR             
           CFI EndBlock cfiBlock126
@@ -4385,12 +4615,15 @@ _ZNSt8ios_base5widthEi:
         THUMB
 // __vfp std::ios_base::subobject ios_base()
 _ZNSt8ios_baseC2Ev:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt8ios_baseC1Ev
         BL       _ZNSt8ios_baseC1Ev
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock131
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
@@ -4433,8 +4666,8 @@ _ZStanNSt5_IosbIiE9_FmtflagsES1_:
 // __vfp std::ios_base::iostate &std::operator|=(std::ios_base::iostate &, std::ios_base::iostate)
 _ZStoRRNSt5_IosbIiE8_IostateES1_:
         LDRB     R2,[R0, #+0]   
-        ORRS     R1,R1,R2       
-        STRB     R1,[R0, #+0]   
+        ORRS     R2,R1,R2       
+        STRB     R2,[R0, #+0]   
         BX       LR             
           CFI EndBlock cfiBlock134
 
@@ -4471,12 +4704,15 @@ _ZStorNSt5_IosbIiE9_OpenmodeES1_:
         THUMB
 // __vfp std::streambuf::subobject basic_streambuf()
 _ZNSt15basic_streambufIcSt11char_traitsIcEEC2Ev:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEEC1Ev
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEEC1Ev
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock137
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
@@ -4545,14 +4781,17 @@ _ZNSt15basic_streambufIcSt11char_traitsIcEED0Ev:
         THUMB
 // __vfp int std::streambuf::pubsync()
 _ZNSt15basic_streambufIcSt11char_traitsIcEE7pubsyncEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
-        LDR      R1,[R0, #+0]   
+        MOVS     R4,R0          
+        MOVS     R0,R4          
+        LDR      R1,[R4, #+0]   
         LDR      R1,[R1, #+56]  
           CFI IndirectCall
         BLX      R1             
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock141
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -4601,14 +4840,23 @@ _ZNSt15basic_streambufIcSt11char_traitsIcEE5sputcEc:
         THUMB
 // __vfp int std::streambuf::sputn(char const *, int)
 _ZNSt15basic_streambufIcSt11char_traitsIcEE5sputnEPKci:
-        PUSH     {R7,LR}        
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
-        LDR      R3,[R0, #+0]   
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R6,R2          
+        MOVS     R2,R6          
+        MOVS     R1,R5          
+        MOVS     R0,R4          
+        LDR      R3,[R4, #+0]   
         LDR      R3,[R3, #+40]  
           CFI IndirectCall
         BLX      R3             
-        POP      {R1,PC}        
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock143
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -4708,9 +4956,9 @@ _ZNKSt15basic_streambufIcSt11char_traitsIcEE5egptrEv:
 _ZNSt15basic_streambufIcSt11char_traitsIcEE5gbumpEi:
         LDR      R2,[R0, #+28]  
         LDR      R2,[R2, #+0]   
-        ADD      R1,R2,R1       
-        LDR      R0,[R0, #+28]  
-        STR      R1,[R0, #+0]   
+        ADD      R2,R2,R1       
+        LDR      R3,[R0, #+28]  
+        STR      R2,[R3, #+0]   
         BX       LR             
           CFI EndBlock cfiBlock151
 
@@ -4727,10 +4975,10 @@ _ZNSt15basic_streambufIcSt11char_traitsIcEE4setgEPcS3_S3_:
           CFI CFA R13+4
         LDR      R4,[R0, #+12]  
         STR      R1,[R4, #+0]   
-        LDR      R1,[R0, #+28]  
-        STR      R2,[R1, #+0]   
-        LDR      R0,[R0, #+44]  
-        STR      R3,[R0, #+0]   
+        LDR      R4,[R0, #+28]  
+        STR      R2,[R4, #+0]   
+        LDR      R4,[R0, #+44]  
+        STR      R3,[R4, #+0]   
         POP      {R4}           
           CFI R4 SameValue
           CFI CFA R13+0
@@ -4801,9 +5049,9 @@ _ZNKSt15basic_streambufIcSt11char_traitsIcEE8_GnavailEv:
 _ZNSt15basic_streambufIcSt11char_traitsIcEE5pbumpEi:
         LDR      R2,[R0, #+32]  
         LDR      R2,[R2, #+0]   
-        ADD      R1,R2,R1       
-        LDR      R0,[R0, #+32]  
-        STR      R1,[R0, #+0]   
+        ADD      R2,R2,R1       
+        LDR      R3,[R0, #+32]  
+        STR      R2,[R3, #+0]   
         BX       LR             
           CFI EndBlock cfiBlock156
 
@@ -4819,8 +5067,8 @@ _ZNSt15basic_streambufIcSt11char_traitsIcEE4setpEPcS3_:
         STR      R1,[R3, #+0]   
         LDR      R3,[R0, #+32]  
         STR      R1,[R3, #+0]   
-        LDR      R0,[R0, #+48]  
-        STR      R2,[R0, #+0]   
+        LDR      R3,[R0, #+48]  
+        STR      R2,[R3, #+0]   
         BX       LR             
           CFI EndBlock cfiBlock157
 
@@ -4837,10 +5085,10 @@ _ZNSt15basic_streambufIcSt11char_traitsIcEE4setpEPcS3_S3_:
           CFI CFA R13+4
         LDR      R4,[R0, #+16]  
         STR      R1,[R4, #+0]   
-        LDR      R1,[R0, #+32]  
-        STR      R2,[R1, #+0]   
-        LDR      R0,[R0, #+48]  
-        STR      R3,[R0, #+0]   
+        LDR      R4,[R0, #+32]  
+        STR      R2,[R4, #+0]   
+        LDR      R4,[R0, #+48]  
+        STR      R3,[R4, #+0]   
         POP      {R4}           
           CFI R4 SameValue
           CFI CFA R13+0
@@ -4934,6 +5182,7 @@ _ZNSt15basic_streambufIcSt11char_traitsIcEE5_InitEv:
         THUMB
 // __vfp int std::streambuf::overflow(int)
 _ZNSt15basic_streambufIcSt11char_traitsIcEE8overflowEi:
+        MOVS     R2,R0          
         MOVS     R0,#+4294967295
         BX       LR             
           CFI EndBlock cfiBlock162
@@ -4946,6 +5195,7 @@ _ZNSt15basic_streambufIcSt11char_traitsIcEE8overflowEi:
         THUMB
 // __vfp int std::streambuf::pbackfail(int)
 _ZNSt15basic_streambufIcSt11char_traitsIcEE9pbackfailEi:
+        MOVS     R2,R0          
         MOVS     R0,#+4294967295
         BX       LR             
           CFI EndBlock cfiBlock163
@@ -4958,6 +5208,7 @@ _ZNSt15basic_streambufIcSt11char_traitsIcEE9pbackfailEi:
         THUMB
 // __vfp int std::streambuf::showmanyc()
 _ZNSt15basic_streambufIcSt11char_traitsIcEE9showmanycEv:
+        MOVS     R1,R0          
         MOVS     R0,#+0         
         BX       LR             
           CFI EndBlock cfiBlock164
@@ -4970,6 +5221,7 @@ _ZNSt15basic_streambufIcSt11char_traitsIcEE9showmanycEv:
         THUMB
 // __vfp int std::streambuf::underflow()
 _ZNSt15basic_streambufIcSt11char_traitsIcEE9underflowEv:
+        MOVS     R1,R0          
         MOVS     R0,#+4294967295
         BX       LR             
           CFI EndBlock cfiBlock165
@@ -5029,39 +5281,39 @@ _ZNSt15basic_streambufIcSt11char_traitsIcEE6xsgetnEPci:
           CFI R4 Frame(CFA, -24)
           CFI CFA R13+32
         MOVS     R4,R0          
-        MOVS     R5,R1          
-        MOVS     R6,R2          
+        MOVS     R6,R1          
+        MOV      R8,R2          
         MOVS     R7,#+0         
-        B.N      ??xsgetn_0     
-??xsgetn_1:
-        CMP      R6,R8          
-        BGE.N    ??xsgetn_2     
-        MOV      R8,R6          
-??xsgetn_2:
-        MOVS     R0,R4          
-          CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
-        BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
-        MOV      R2,R8          
-        MOVS     R1,R0          
-        MOVS     R0,R5          
-          CFI FunCall _ZNSt11char_traitsIcE4copyEPcPKcj
-        BL       _ZNSt11char_traitsIcE4copyEPcPKcj
-        ADD      R5,R5,R8       
-        ADDS     R7,R8,R7       
-        SUBS     R6,R6,R8       
-        MOV      R1,R8          
-        MOVS     R0,R4          
-          CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE5gbumpEi
-        BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE5gbumpEi
 ??xsgetn_0:
-        CMP      R6,#+1         
-        BLT.N    ??xsgetn_3     
+        CMP      R8,#+1         
+        BLT.N    ??xsgetn_1     
         MOVS     R0,R4          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE8_GnavailEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE8_GnavailEv
-        MOV      R8,R0          
+        MOVS     R5,R0          
         CMP      R0,#+1         
-        BGE.N    ??xsgetn_1     
+        BLT.N    ??xsgetn_2     
+        CMP      R8,R5          
+        BGE.N    ??xsgetn_3     
+        MOV      R5,R8          
+??xsgetn_3:
+        MOVS     R0,R4          
+          CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
+        BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
+        MOVS     R2,R5          
+        MOVS     R1,R0          
+        MOVS     R0,R6          
+          CFI FunCall _ZNSt11char_traitsIcE4copyEPcPKcj
+        BL       _ZNSt11char_traitsIcE4copyEPcPKcj
+        ADD      R6,R6,R5       
+        ADDS     R7,R5,R7       
+        SUBS     R8,R8,R5       
+        MOVS     R1,R5          
+        MOVS     R0,R4          
+          CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE5gbumpEi
+        BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE5gbumpEi
+        B.N      ??xsgetn_0     
+??xsgetn_2:
         MOVS     R0,#+4294967295
         STR      R0,[SP, #+4]   
         MOVS     R0,R4          
@@ -5075,17 +5327,25 @@ _ZNSt15basic_streambufIcSt11char_traitsIcEE6xsgetnEPci:
           CFI FunCall _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         BL       _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         CMP      R0,#+0         
-        BNE.N    ??xsgetn_4     
+        BEQ.N    ??xsgetn_4     
+        MOVS     R0,#+1         
+        B.N      ??xsgetn_5     
+??xsgetn_4:
+        MOVS     R0,#+0         
+??xsgetn_5:
+        UXTB     R0,R0          
+        CMP      R0,#+0         
+        BNE.N    ??xsgetn_1     
+??xsgetn_6:
         MOV      R0,SP          
           CFI FunCall _ZNSt11char_traitsIcE12to_char_typeERKi
         BL       _ZNSt11char_traitsIcE12to_char_typeERKi
-        STRB     R0,[R5, #+0]   
-        ADDS     R5,R5,#+1      
+        STRB     R0,[R6, #+0]   
+        ADDS     R6,R6,#+1      
         ADDS     R7,R7,#+1      
-        SUBS     R6,R6,#+1      
+        SUBS     R8,R8,#+1      
         B.N      ??xsgetn_0     
-??xsgetn_4:
-??xsgetn_3:
+??xsgetn_1:
         MOVS     R0,R7          
         POP      {R1,R2,R4-R8,PC}
           CFI EndBlock cfiBlock167
@@ -5107,37 +5367,37 @@ _ZNSt15basic_streambufIcSt11char_traitsIcEE6xsputnEPKci:
           CFI CFA R13+32
         MOVS     R4,R0          
         MOVS     R5,R1          
-        MOVS     R7,R2          
-        MOVS     R6,#+0         
-        B.N      ??xsputn_0     
-??xsputn_1:
-        CMP      R7,R8          
-        BGE.N    ??xsputn_2     
-        MOV      R8,R7          
-??xsputn_2:
-        MOVS     R0,R4          
-          CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
-        BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
-        MOV      R2,R8          
-        MOVS     R1,R5          
-          CFI FunCall _ZNSt11char_traitsIcE4copyEPcPKcj
-        BL       _ZNSt11char_traitsIcE4copyEPcPKcj
-        ADD      R5,R5,R8       
-        ADDS     R6,R8,R6       
-        SUBS     R7,R7,R8       
-        MOV      R1,R8          
-        MOVS     R0,R4          
-          CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE5pbumpEi
-        BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE5pbumpEi
+        MOVS     R6,R2          
+        MOVS     R8,#+0         
 ??xsputn_0:
-        CMP      R7,#+1         
-        BLT.N    ??xsputn_3     
+        CMP      R6,#+1         
+        BLT.N    ??xsputn_1     
         MOVS     R0,R4          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE8_PnavailEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE8_PnavailEv
-        MOV      R8,R0          
+        MOVS     R7,R0          
         CMP      R0,#+1         
-        BGE.N    ??xsputn_1     
+        BLT.N    ??xsputn_2     
+        CMP      R6,R7          
+        BGE.N    ??xsputn_3     
+        MOVS     R7,R6          
+??xsputn_3:
+        MOVS     R0,R4          
+          CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
+        BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
+        MOVS     R2,R7          
+        MOVS     R1,R5          
+          CFI FunCall _ZNSt11char_traitsIcE4copyEPcPKcj
+        BL       _ZNSt11char_traitsIcE4copyEPcPKcj
+        ADD      R5,R5,R7       
+        ADDS     R8,R7,R8       
+        SUBS     R6,R6,R7       
+        MOVS     R1,R7          
+        MOVS     R0,R4          
+          CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE5pbumpEi
+        BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE5pbumpEi
+        B.N      ??xsputn_0     
+??xsputn_2:
         MOVS     R0,#+4294967295
         STR      R0,[SP, #+4]   
         MOVS     R0,R5          
@@ -5155,14 +5415,22 @@ _ZNSt15basic_streambufIcSt11char_traitsIcEE6xsputnEPKci:
           CFI FunCall _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         BL       _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         CMP      R0,#+0         
-        BNE.N    ??xsputn_4     
-        ADDS     R5,R5,#+1      
-        ADDS     R6,R6,#+1      
-        SUBS     R7,R7,#+1      
-        B.N      ??xsputn_0     
+        BEQ.N    ??xsputn_4     
+        MOVS     R0,#+1         
+        B.N      ??xsputn_5     
 ??xsputn_4:
-??xsputn_3:
-        MOVS     R0,R6          
+        MOVS     R0,#+0         
+??xsputn_5:
+        UXTB     R0,R0          
+        CMP      R0,#+0         
+        BNE.N    ??xsputn_1     
+??xsputn_6:
+        ADDS     R5,R5,#+1      
+        ADDS     R8,R8,#+1      
+        SUBS     R6,R6,#+1      
+        B.N      ??xsputn_0     
+??xsputn_1:
+        MOV      R0,R8          
         POP      {R1,R2,R4-R8,PC}
           CFI EndBlock cfiBlock168
 
@@ -5173,14 +5441,17 @@ _ZNSt15basic_streambufIcSt11char_traitsIcEE6xsputnEPKci:
         THUMB
 // __vfp void std::streambuf::seekoff(long, std::ios_base::seekdir, std::ios_base::openmode)
 _ZNSt15basic_streambufIcSt11char_traitsIcEE7seekoffElNSt5_IosbIiE8_SeekdirENS4_9_OpenmodeE:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R1          
         LDR.N    R1,??seekoff_0 
         LDR      R1,[R1, #+0]   
           CFI FunCall _ZNSt4fposI9_MbstatetEC1El
         BL       _ZNSt4fposI9_MbstatetEC1El
-        POP      {R0,PC}        
+        POP      {R4,PC}        
+        Nop                     
         DATA
 ??seekoff_0:
         DATA32
@@ -5194,14 +5465,17 @@ _ZNSt15basic_streambufIcSt11char_traitsIcEE7seekoffElNSt5_IosbIiE8_SeekdirENS4_9
         THUMB
 // __vfp void std::streambuf::seekpos(std::streampos, std::ios_base::openmode)
 _ZNSt15basic_streambufIcSt11char_traitsIcEE7seekposESt4fposI9_MbstatetENSt5_IosbIiE9_OpenmodeE:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R1          
         LDR.N    R1,??seekpos_0 
         LDR      R1,[R1, #+0]   
           CFI FunCall _ZNSt4fposI9_MbstatetEC1El
         BL       _ZNSt4fposI9_MbstatetEC1El
-        POP      {R0,PC}        
+        POP      {R4,PC}        
+        Nop                     
         DATA
 ??seekpos_0:
         DATA32
@@ -5227,6 +5501,7 @@ _ZNSt15basic_streambufIcSt11char_traitsIcEE6setbufEPci:
         THUMB
 // __vfp int std::streambuf::sync()
 _ZNSt15basic_streambufIcSt11char_traitsIcEE4syncEv:
+        MOVS     R1,R0          
         MOVS     R0,#+0         
         BX       LR             
           CFI EndBlock cfiBlock172
@@ -5252,16 +5527,19 @@ _ZNSt19ostreambuf_iteratorIcSt11char_traitsIcEEC1EPSt15basic_streambufIcS1_E:
         THUMB
 // __vfp std::ostreambuf_iterator<char, std::char_traits<char>> &std::ostreambuf_iterator<char, std::char_traits<char>>::operator=(char)
 _ZNSt19ostreambuf_iteratorIcSt11char_traitsIcEEaSEc:
-        PUSH     {R2-R4,LR}     
+        PUSH     {R1-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+16
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+24
         MOVS     R4,R0          
+        MOVS     R5,R1          
         MOVS     R0,#+4294967295
         STR      R0,[SP, #+4]   
         LDR      R0,[R4, #+4]   
         CMP      R0,#+0         
         BEQ.N    `??operator=_1`
+        MOVS     R1,R5          
         UXTB     R1,R1          
         LDR      R0,[R4, #+4]   
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE5sputcEc
@@ -5272,13 +5550,21 @@ _ZNSt19ostreambuf_iteratorIcSt11char_traitsIcEEaSEc:
           CFI FunCall _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         BL       _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         CMP      R0,#+0         
-        BEQ.N    `??operator=_2`
+        BNE.N    `??operator=_2`
+        MOVS     R0,#+1         
+        B.N      `??operator=_3`
+`??operator=_2`:
+        MOVS     R0,#+0         
+`??operator=_3`:
+        UXTB     R0,R0          
+        CMP      R0,#+0         
+        BNE.N    `??operator=_4`
 `??operator=_1`:
         MOVS     R0,#+1         
         STRB     R0,[R4, #+0]   
-`??operator=_2`:
+`??operator=_4`:
         MOVS     R0,R4          
-        POP      {R1,R2,R4,PC}  
+        POP      {R1-R5,PC}     
           CFI EndBlock cfiBlock174
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -5322,14 +5608,17 @@ _ZNKSt19ostreambuf_iteratorIcSt11char_traitsIcEE6failedEv:
         THUMB
 // __vfp char std::numpunct<char>::decimal_point() const
 _ZNKSt8numpunctIcE13decimal_pointEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
-        LDR      R1,[R0, #+0]   
+        MOVS     R4,R0          
+        MOVS     R0,R4          
+        LDR      R1,[R4, #+0]   
         LDR      R1,[R1, #+8]   
           CFI IndirectCall
         BLX      R1             
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock178
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -5339,14 +5628,17 @@ _ZNKSt8numpunctIcE13decimal_pointEv:
         THUMB
 // __vfp char std::numpunct<char>::thousands_sep() const
 _ZNKSt8numpunctIcE13thousands_sepEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
-        LDR      R1,[R0, #+0]   
+        MOVS     R4,R0          
+        MOVS     R0,R4          
+        LDR      R1,[R4, #+0]   
         LDR      R1,[R1, #+12]  
           CFI IndirectCall
         BLX      R1             
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock179
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -5356,14 +5648,17 @@ _ZNKSt8numpunctIcE13thousands_sepEv:
         THUMB
 // __vfp void std::numpunct<char>::grouping() const
 _ZNKSt8numpunctIcE8groupingEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
-        LDR      R2,[R1, #+0]   
+        MOVS     R4,R1          
+        MOVS     R1,R4          
+        LDR      R2,[R4, #+0]   
         LDR      R2,[R2, #+16]  
           CFI IndirectCall
         BLX      R2             
-        POP      {R0,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock180
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -5373,14 +5668,17 @@ _ZNKSt8numpunctIcE8groupingEv:
         THUMB
 // __vfp void std::numpunct<char>::falsename() const
 _ZNKSt8numpunctIcE9falsenameEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
-        LDR      R2,[R1, #+0]   
+        MOVS     R4,R1          
+        MOVS     R1,R4          
+        LDR      R2,[R4, #+0]   
         LDR      R2,[R2, #+20]  
           CFI IndirectCall
         BLX      R2             
-        POP      {R0,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock181
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -5390,14 +5688,17 @@ _ZNKSt8numpunctIcE9falsenameEv:
         THUMB
 // __vfp void std::numpunct<char>::truename() const
 _ZNKSt8numpunctIcE8truenameEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
-        LDR      R2,[R1, #+0]   
+        MOVS     R4,R1          
+        MOVS     R1,R4          
+        LDR      R2,[R4, #+0]   
         LDR      R2,[R2, #+24]  
           CFI IndirectCall
         BLX      R2             
-        POP      {R0,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock182
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
@@ -5442,12 +5743,15 @@ _ZNSt8numpunctIcEC1Ev:
         THUMB
 // __vfp std::numpunct<char>::subobject numpunct()
 _ZNSt8numpunctIcEC2Ev:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt8numpunctIcEC1Ev
         BL       _ZNSt8numpunctIcEC1Ev
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock184
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
@@ -5505,12 +5809,15 @@ _ZNSt8numpunctIcED0Ev:
         THUMB
 // __vfp std::numpunct<char>::subobject ~numpunct() noexcept
 _ZNSt8numpunctIcED2Ev:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt8numpunctIcED1Ev
         BL       _ZNSt8numpunctIcED1Ev
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock187
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -5615,13 +5922,15 @@ _ZNKSt8numpunctIcE16do_thousands_sepEv:
         THUMB
 // __vfp void std::numpunct<char>::do_grouping() const
 _ZNKSt8numpunctIcE11do_groupingEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
-        LDR      R1,[R1, #+4]   
+        MOVS     R4,R1          
+        LDR      R1,[R4, #+4]   
           CFI FunCall _ZNSsC1EPKc
         BL       _ZNSsC1EPKc    
-        POP      {R0,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock192
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -5631,13 +5940,15 @@ _ZNKSt8numpunctIcE11do_groupingEv:
         THUMB
 // __vfp void std::numpunct<char>::do_falsename() const
 _ZNKSt8numpunctIcE12do_falsenameEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
-        LDR      R1,[R1, #+12]  
+        MOVS     R4,R1          
+        LDR      R1,[R4, #+12]  
           CFI FunCall _ZNSsC1EPKc
         BL       _ZNSsC1EPKc    
-        POP      {R0,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock193
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -5647,13 +5958,15 @@ _ZNKSt8numpunctIcE12do_falsenameEv:
         THUMB
 // __vfp void std::numpunct<char>::do_truename() const
 _ZNKSt8numpunctIcE11do_truenameEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
-        LDR      R1,[R1, #+16]  
+        MOVS     R4,R1          
+        LDR      R1,[R4, #+16]  
           CFI FunCall _ZNSsC1EPKc
         BL       _ZNSsC1EPKc    
-        POP      {R0,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock194
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -5738,12 +6051,15 @@ _ZNSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEEC1Ev:
         THUMB
 // __vfp std::num_put<char, std::ostream::_Iter>::subobject num_put()
 _ZNSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEEC2Ev:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEEC1Ev
         BL       _ZNSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEEC1Ev
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock199
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -5753,29 +6069,45 @@ _ZNSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEEC2Ev:
         THUMB
 // __vfp std::ostream::_Iter std::num_put<char, std::ostream::_Iter>::put(std::ostream::_Iter, std::ios_base &, char, double) const
 _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE3putES3_RSt8ios_basecd:
-        PUSH     {R3-R5,LR}     
+        PUSH     {R3-R7,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
-          CFI CFA R13+16
+          CFI R7 Frame(CFA, -8)
+          CFI R6 Frame(CFA, -12)
+          CFI R5 Frame(CFA, -16)
+          CFI R4 Frame(CFA, -20)
+          CFI CFA R13+24
+        VPUSH    {D8}           
+          CFI D8 Frame(CFA, -32)
+          CFI CFA R13+32
         SUB      SP,SP,#+24     
-          CFI CFA R13+40
-        MOVS     R4,R0          
-        VSTR     D0,[SP, #+8]   
-        LDRB     R0,[SP, #+44]  
+          CFI CFA R13+56
+        MOVS     R6,R0          
+        MOVS     R7,R1          
+        MOVS     R4,R2          
+        MOVS     R5,R3          
+        VMOV.F32 S16,S0         
+        VMOV.F32 S17,S1         
+        VSTR     D8,[SP, #+8]   
+        LDRB     R0,[SP, #+60]  
         STR      R0,[SP, #+4]   
-        LDR      R0,[SP, #+40]  
+        LDR      R0,[SP, #+56]  
         STR      R0,[SP, #+0]   
+        MOVS     R2,R4          
+        MOVS     R3,R5          
+        MOVS     R1,R7          
         ADD      R0,SP,#+16     
-        LDR      R5,[R1, #+0]   
-        LDR      R5,[R5, #+28]  
+        LDR      R12,[R7, #+0]  
+        LDR      R12,[R12, #+28]
           CFI IndirectCall
-        BLX      R5             
+        BLX      R12            
         LDRD     R0,R1,[SP, #+16]
-        STRD     R0,R1,[R4, #+0]
-        ADD      SP,SP,#+28     
-          CFI CFA R13+12
-        POP      {R4,R5,PC}     
+        STRD     R0,R1,[R6, #+0]
+        ADD      SP,SP,#+24     
+          CFI CFA R13+32
+        VPOP     {D8}           
+          CFI D8 SameValue
+          CFI CFA R13+24
+        POP      {R0,R4-R7,PC}  
           CFI EndBlock cfiBlock200
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -5785,22 +6117,24 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE3putES3_RSt8ios_bas
         THUMB
 // __vfp std::ostream::_Iter std::num_put<char, std::ostream::_Iter>::do_put(std::ostream::_Iter, std::ios_base &, char, bool) const
 _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_basecb:
-        PUSH     {R1-R9,LR}     
+        PUSH     {R1-R11,LR}    
           CFI R14 Frame(CFA, -4)
-          CFI R9 Frame(CFA, -8)
-          CFI R8 Frame(CFA, -12)
-          CFI R7 Frame(CFA, -16)
-          CFI R6 Frame(CFA, -20)
-          CFI R5 Frame(CFA, -24)
-          CFI R4 Frame(CFA, -28)
-          CFI CFA R13+40
+          CFI R11 Frame(CFA, -8)
+          CFI R10 Frame(CFA, -12)
+          CFI R9 Frame(CFA, -16)
+          CFI R8 Frame(CFA, -20)
+          CFI R7 Frame(CFA, -24)
+          CFI R6 Frame(CFA, -28)
+          CFI R5 Frame(CFA, -32)
+          CFI R4 Frame(CFA, -36)
+          CFI CFA R13+48
         SUB      SP,SP,#+88     
-          CFI CFA R13+128
-        MOVS     R5,R0          
-        MOV      R8,R1          
-        LDR      R6,[SP, #+128] 
-        LDR      R4,[SP, #+132] 
-        LDR      R7,[SP, #+136] 
+          CFI CFA R13+136
+        MOVS     R7,R0          
+        MOVS     R5,R1          
+        LDR      R6,[SP, #+136] 
+        LDR      R4,[SP, #+140] 
+        LDR      R10,[SP, #+144]
         MOVS     R0,R6          
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
@@ -5810,20 +6144,22 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
         CMP      R0,#+0         
         BNE.N    ??do_put_7     
-        UXTB     R7,R7          
-        STR      R7,[SP, #+8]   
-        UXTB     R4,R4          
-        STR      R4,[SP, #+4]   
+        MOV      R0,R10         
+        UXTB     R0,R0          
+        STR      R0,[SP, #+8]   
+        MOVS     R0,R4          
+        UXTB     R0,R0          
+        STR      R0,[SP, #+4]   
         STR      R6,[SP, #+0]   
         LDRD     R2,R3,[SP, #+92]
-        MOV      R1,R8          
+        MOVS     R1,R5          
         ADD      R0,SP,#+32     
-        LDR      R4,[R8, #+0]   
-        LDR      R4,[R4, #+12]  
+        LDR      R12,[R5, #+0]  
+        LDR      R12,[R12, #+12]
           CFI IndirectCall
-        BLX      R4             
+        BLX      R12            
         LDRD     R0,R1,[SP, #+32]
-        STRD     R0,R1,[R5, #+0]
+        STRD     R0,R1,[R7, #+0]
         B.N      ??do_put_8     
 ??do_put_7:
           CFI FunCall _ZSt9use_facetISt8numpunctIcEERKT_v
@@ -5832,8 +6168,9 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         ADD      R0,SP,#+8      
           CFI FunCall _ZNSsC1Ev
         BL       _ZNSsC1Ev      
-        UXTB     R7,R7          
-        CMP      R7,#+0         
+        MOV      R0,R10         
+        UXTB     R0,R0          
+        CMP      R0,#+0         
         BEQ.N    ??do_put_9     
         MOV      R1,R9          
         ADD      R0,SP,#+64     
@@ -5868,25 +6205,24 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         ADD      R0,SP,#+8      
           CFI FunCall _ZNKSs4sizeEv
         BL       _ZNKSs4sizeEv  
-        MOVS     R7,R0          
+        MOV      R8,R0          
         MOVS     R0,R6          
           CFI FunCall _ZNKSt8ios_base5widthEv
         BL       _ZNKSt8ios_base5widthEv
-        CMP      R7,R0          
+        CMP      R8,R0          
         BCC.N    ??do_put_12    
 ??do_put_11:
-        MOVS     R7,#+0         
+        MOVS     R8,#+0         
         B.N      ??do_put_13    
 ??do_put_12:
         MOVS     R0,R6          
           CFI FunCall _ZNKSt8ios_base5widthEv
         BL       _ZNKSt8ios_base5widthEv
-        MOV      R9,R0          
+        MOV      R8,R0          
         ADD      R0,SP,#+8      
           CFI FunCall _ZNKSs4sizeEv
         BL       _ZNKSs4sizeEv  
-        MOVS     R7,R0          
-        SUBS     R7,R9,R7       
+        SUBS     R8,R8,R0       
 ??do_put_13:
         MOVS     R0,R6          
           CFI FunCall _ZNKSt8ios_base5flagsEv
@@ -5897,28 +6233,29 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
         CMP      R0,#+64        
         BEQ.N    ??do_put_14    
-        STR      R7,[SP, #+4]   
+        STR      R8,[SP, #+4]   
         MOVS     R0,R4          
         UXTB     R0,R0          
         STR      R0,[SP, #+0]   
         LDRD     R2,R3,[SP, #+92]
-        MOV      R1,R8          
+        MOVS     R1,R5          
         ADD      R0,SP,#+92     
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
-        MOVS     R7,#+0         
+        MOVS     R0,#+0         
+        MOV      R8,R0          
 ??do_put_14:
         ADD      R0,SP,#+8      
           CFI FunCall _ZNKSs4sizeEv
         BL       _ZNKSs4sizeEv  
-        MOV      R9,R0          
+        MOV      R11,R0         
         ADD      R0,SP,#+8      
           CFI FunCall _ZNKSs5c_strEv
         BL       _ZNKSs5c_strEv 
-        STR      R9,[SP, #+4]   
+        STR      R11,[SP, #+4]  
         STR      R0,[SP, #+0]   
         LDRD     R2,R3,[SP, #+92]
-        MOV      R1,R8          
+        MOVS     R1,R5          
         ADD      R0,SP,#+92     
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
@@ -5926,11 +6263,12 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         MOVS     R0,R6          
           CFI FunCall _ZNSt8ios_base5widthEi
         BL       _ZNSt8ios_base5widthEi
-        STR      R7,[SP, #+4]   
-        UXTB     R4,R4          
-        STR      R4,[SP, #+0]   
+        STR      R8,[SP, #+4]   
+        MOVS     R0,R4          
+        UXTB     R0,R0          
+        STR      R0,[SP, #+0]   
         LDRD     R2,R3,[SP, #+92]
-        MOV      R1,R8          
+        MOVS     R1,R5          
         ADD      R0,SP,#+32     
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
@@ -5938,11 +6276,11 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
           CFI FunCall _ZNSsD1Ev
         BL       _ZNSsD1Ev      
         LDRD     R0,R1,[SP, #+32]
-        STRD     R0,R1,[R5, #+0]
+        STRD     R0,R1,[R7, #+0]
 ??do_put_8:
         ADD      SP,SP,#+100    
-          CFI CFA R13+28
-        POP      {R4-R9,PC}     
+          CFI CFA R13+36
+        POP      {R4-R11,PC}    
           CFI EndBlock cfiBlock201
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
@@ -5952,21 +6290,22 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         THUMB
 // __vfp std::ostream::_Iter std::num_put<char, std::ostream::_Iter>::do_put(std::ostream::_Iter, std::ios_base &, char, long) const
 _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_basecl:
-        PUSH     {R4-R8,LR}     
+        PUSH     {R3-R9,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R8 Frame(CFA, -8)
-          CFI R7 Frame(CFA, -12)
-          CFI R6 Frame(CFA, -16)
-          CFI R5 Frame(CFA, -20)
-          CFI R4 Frame(CFA, -24)
-          CFI CFA R13+24
+          CFI R9 Frame(CFA, -8)
+          CFI R8 Frame(CFA, -12)
+          CFI R7 Frame(CFA, -16)
+          CFI R6 Frame(CFA, -20)
+          CFI R5 Frame(CFA, -24)
+          CFI R4 Frame(CFA, -28)
+          CFI CFA R13+32
         SUB      SP,SP,#+96     
-          CFI CFA R13+120
+          CFI CFA R13+128
         MOVS     R6,R0          
         MOVS     R7,R1          
         MOVS     R4,R2          
         MOVS     R5,R3          
-        LDR      R8,[SP, #+120] 
+        LDR      R8,[SP, #+128] 
         MOV      R0,R8          
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
@@ -5977,15 +6316,16 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         MOVS     R0,R7          
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IfmtEPcPKcNSt5_IosbIiE9_FmtflagsE
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IfmtEPcPKcNSt5_IosbIiE9_FmtflagsE
-        LDR      R2,[SP, #+128] 
+        LDR      R2,[SP, #+136] 
         ADD      R1,SP,#+16     
         ADD      R0,SP,#+32     
           CFI FunCall sprintf
         BL       sprintf        
-        STR      R0,[SP, #+12]  
+        MOV      R9,R0          
+        STR      R9,[SP, #+12]  
         ADD      R0,SP,#+32     
         STR      R0,[SP, #+8]   
-        LDRB     R0,[SP, #+124] 
+        LDRB     R0,[SP, #+132] 
         STR      R0,[SP, #+4]   
         STR      R8,[SP, #+0]   
         MOVS     R2,R4          
@@ -5996,9 +6336,9 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IputES3_RSt8ios_basecPcj
         LDRD     R0,R1,[SP, #+24]
         STRD     R0,R1,[R6, #+0]
-        ADD      SP,SP,#+96     
-          CFI CFA R13+24
-        POP      {R4-R8,PC}     
+        ADD      SP,SP,#+100    
+          CFI CFA R13+28
+        POP      {R4-R9,PC}     
         Nop                     
         DATA
 ??do_put_0:
@@ -6013,21 +6353,22 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         THUMB
 // __vfp std::ostream::_Iter std::num_put<char, std::ostream::_Iter>::do_put(std::ostream::_Iter, std::ios_base &, char, unsigned long) const
 _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_basecm:
-        PUSH     {R4-R8,LR}     
+        PUSH     {R3-R9,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R8 Frame(CFA, -8)
-          CFI R7 Frame(CFA, -12)
-          CFI R6 Frame(CFA, -16)
-          CFI R5 Frame(CFA, -20)
-          CFI R4 Frame(CFA, -24)
-          CFI CFA R13+24
+          CFI R9 Frame(CFA, -8)
+          CFI R8 Frame(CFA, -12)
+          CFI R7 Frame(CFA, -16)
+          CFI R6 Frame(CFA, -20)
+          CFI R5 Frame(CFA, -24)
+          CFI R4 Frame(CFA, -28)
+          CFI CFA R13+32
         SUB      SP,SP,#+96     
-          CFI CFA R13+120
+          CFI CFA R13+128
         MOVS     R6,R0          
         MOVS     R7,R1          
         MOVS     R4,R2          
         MOVS     R5,R3          
-        LDR      R8,[SP, #+120] 
+        LDR      R8,[SP, #+128] 
         MOV      R0,R8          
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
@@ -6038,15 +6379,16 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         MOVS     R0,R7          
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IfmtEPcPKcNSt5_IosbIiE9_FmtflagsE
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IfmtEPcPKcNSt5_IosbIiE9_FmtflagsE
-        LDR      R2,[SP, #+128] 
+        LDR      R2,[SP, #+136] 
         ADD      R1,SP,#+16     
         ADD      R0,SP,#+32     
           CFI FunCall sprintf
         BL       sprintf        
-        STR      R0,[SP, #+12]  
+        MOV      R9,R0          
+        STR      R9,[SP, #+12]  
         ADD      R0,SP,#+32     
         STR      R0,[SP, #+8]   
-        LDRB     R0,[SP, #+124] 
+        LDRB     R0,[SP, #+132] 
         STR      R0,[SP, #+4]   
         STR      R8,[SP, #+0]   
         MOVS     R2,R4          
@@ -6057,9 +6399,9 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IputES3_RSt8ios_basecPcj
         LDRD     R0,R1,[SP, #+24]
         STRD     R0,R1,[R6, #+0]
-        ADD      SP,SP,#+96     
-          CFI CFA R13+24
-        POP      {R4-R8,PC}     
+        ADD      SP,SP,#+100    
+          CFI CFA R13+28
+        POP      {R4-R9,PC}     
         Nop                     
         DATA
 ??do_put_1:
@@ -6074,21 +6416,22 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         THUMB
 // __vfp std::ostream::_Iter std::num_put<char, std::ostream::_Iter>::do_put(std::ostream::_Iter, std::ios_base &, char, long long) const
 _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_basecx:
-        PUSH     {R4-R8,LR}     
+        PUSH     {R3-R9,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R8 Frame(CFA, -8)
-          CFI R7 Frame(CFA, -12)
-          CFI R6 Frame(CFA, -16)
-          CFI R5 Frame(CFA, -20)
-          CFI R4 Frame(CFA, -24)
-          CFI CFA R13+24
+          CFI R9 Frame(CFA, -8)
+          CFI R8 Frame(CFA, -12)
+          CFI R7 Frame(CFA, -16)
+          CFI R6 Frame(CFA, -20)
+          CFI R5 Frame(CFA, -24)
+          CFI R4 Frame(CFA, -28)
+          CFI CFA R13+32
         SUB      SP,SP,#+96     
-          CFI CFA R13+120
+          CFI CFA R13+128
         MOVS     R6,R0          
         MOVS     R7,R1          
         MOVS     R4,R2          
         MOVS     R5,R3          
-        LDR      R8,[SP, #+120] 
+        LDR      R8,[SP, #+128] 
         MOV      R0,R8          
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
@@ -6099,15 +6442,16 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         MOVS     R0,R7          
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IfmtEPcPKcNSt5_IosbIiE9_FmtflagsE
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IfmtEPcPKcNSt5_IosbIiE9_FmtflagsE
-        LDRD     R2,R3,[SP, #+128]
+        LDRD     R2,R3,[SP, #+136]
         ADD      R1,SP,#+16     
         ADD      R0,SP,#+32     
           CFI FunCall sprintf
         BL       sprintf        
-        STR      R0,[SP, #+12]  
+        MOV      R9,R0          
+        STR      R9,[SP, #+12]  
         ADD      R0,SP,#+32     
         STR      R0,[SP, #+8]   
-        LDRB     R0,[SP, #+124] 
+        LDRB     R0,[SP, #+132] 
         STR      R0,[SP, #+4]   
         STR      R8,[SP, #+0]   
         MOVS     R2,R4          
@@ -6118,9 +6462,9 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IputES3_RSt8ios_basecPcj
         LDRD     R0,R1,[SP, #+24]
         STRD     R0,R1,[R6, #+0]
-        ADD      SP,SP,#+96     
-          CFI CFA R13+24
-        POP      {R4-R8,PC}     
+        ADD      SP,SP,#+100    
+          CFI CFA R13+28
+        POP      {R4-R9,PC}     
         DATA
 ??do_put_2:
         DATA32
@@ -6134,21 +6478,22 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         THUMB
 // __vfp std::ostream::_Iter std::num_put<char, std::ostream::_Iter>::do_put(std::ostream::_Iter, std::ios_base &, char, unsigned long long) const
 _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_basecy:
-        PUSH     {R4-R8,LR}     
+        PUSH     {R3-R9,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R8 Frame(CFA, -8)
-          CFI R7 Frame(CFA, -12)
-          CFI R6 Frame(CFA, -16)
-          CFI R5 Frame(CFA, -20)
-          CFI R4 Frame(CFA, -24)
-          CFI CFA R13+24
+          CFI R9 Frame(CFA, -8)
+          CFI R8 Frame(CFA, -12)
+          CFI R7 Frame(CFA, -16)
+          CFI R6 Frame(CFA, -20)
+          CFI R5 Frame(CFA, -24)
+          CFI R4 Frame(CFA, -28)
+          CFI CFA R13+32
         SUB      SP,SP,#+96     
-          CFI CFA R13+120
+          CFI CFA R13+128
         MOVS     R6,R0          
         MOVS     R7,R1          
         MOVS     R4,R2          
         MOVS     R5,R3          
-        LDR      R8,[SP, #+120] 
+        LDR      R8,[SP, #+128] 
         MOV      R0,R8          
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
@@ -6159,15 +6504,16 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         MOVS     R0,R7          
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IfmtEPcPKcNSt5_IosbIiE9_FmtflagsE
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IfmtEPcPKcNSt5_IosbIiE9_FmtflagsE
-        LDRD     R2,R3,[SP, #+128]
+        LDRD     R2,R3,[SP, #+136]
         ADD      R1,SP,#+16     
         ADD      R0,SP,#+32     
           CFI FunCall sprintf
         BL       sprintf        
-        STR      R0,[SP, #+12]  
+        MOV      R9,R0          
+        STR      R9,[SP, #+12]  
         ADD      R0,SP,#+32     
         STR      R0,[SP, #+8]   
-        LDRB     R0,[SP, #+124] 
+        LDRB     R0,[SP, #+132] 
         STR      R0,[SP, #+4]   
         STR      R8,[SP, #+0]   
         MOVS     R2,R4          
@@ -6178,9 +6524,9 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IputES3_RSt8ios_basecPcj
         LDRD     R0,R1,[SP, #+24]
         STRD     R0,R1,[R6, #+0]
-        ADD      SP,SP,#+96     
-          CFI CFA R13+24
-        POP      {R4-R8,PC}     
+        ADD      SP,SP,#+100    
+          CFI CFA R13+28
+        POP      {R4-R9,PC}     
         DATA
 ??do_put_3:
         DATA32
@@ -6194,7 +6540,7 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         THUMB
 // __softfp std::ostream::_Iter std::num_put<char, std::ostream::_Iter>::do_put(std::ostream::_Iter, std::ios_base &, char, double) const
 _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_basecd:
-        PUSH     {R0,R4-R11,LR} 
+        PUSH     {R0-R11,LR}    
           CFI R14 Frame(CFA, -4)
           CFI R11 Frame(CFA, -8)
           CFI R10 Frame(CFA, -12)
@@ -6204,22 +6550,22 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
           CFI R6 Frame(CFA, -28)
           CFI R5 Frame(CFA, -32)
           CFI R4 Frame(CFA, -36)
-          CFI CFA R13+40
+          CFI CFA R13+52
+        SUB      SP,SP,#+4      
+          CFI CFA R13+56
         VPUSH    {D8}           
-          CFI D8 Frame(CFA, -48)
-          CFI CFA R13+48
+          CFI D8 Frame(CFA, -64)
+          CFI CFA R13+64
         SUB      SP,SP,#+152    
-          CFI CFA R13+200
-        MOV      R11,R1         
-        MOV      R8,R2          
-        MOV      R9,R3          
-        LDR      R10,[SP, #+200]
-        MOV      R0,R10         
+          CFI CFA R13+216
+        LDR      R9,[SP, #+216] 
+        VLDR     D8,[SP, #+224] 
+        MOV      R0,R9          
           CFI FunCall _ZNKSt8ios_base9precisionEv
         BL       _ZNKSt8ios_base9precisionEv
         CMP      R0,#+1         
         BGE.N    ??do_put_15    
-        MOV      R0,R10         
+        MOV      R0,R9          
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
         MOV      R1,#+8192      
@@ -6231,27 +6577,24 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         MOVS     R0,#+6         
         B.N      ??do_put_16    
 ??do_put_15:
-        MOV      R0,R10         
+        MOV      R0,R9          
           CFI FunCall _ZNKSt8ios_base9precisionEv
         BL       _ZNKSt8ios_base9precisionEv
 ??do_put_16:
         CMP      R0,#+37        
         BLT.N    ??do_put_17    
-        MOVS     R1,#+36        
-        STR      R1,[SP, #+8]   
+        MOVS     R11,#+36       
         B.N      ??do_put_18    
 ??do_put_17:
-        STR      R0,[SP, #+8]   
+        MOV      R11,R0         
 ??do_put_18:
-        LDR      R1,[SP, #+8]   
-        SUBS     R0,R0,R1       
+        SUBS     R0,R0,R11      
         MOVS     R4,R0          
         MOVS     R6,#+0         
         MOVS     R5,#+0         
-        MOV      R0,R10         
+        MOV      R0,R9          
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
-        VLDR     D8,[SP, #+208] 
         MOV      R1,#+12288     
         UXTH     R0,R0          
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
@@ -6285,73 +6628,72 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         VMOV     R0,R1,D8       
         EORS     R1,R1,#0x80000000
         VMOV     D8,R0,R1       
-        B.N      ??do_put_22    
-??do_put_23:
+??do_put_22:
+        VMOV     R0,R1,D8       
+        LDR.N    R2,??do_put_4+0x4
+        LDR.N    R3,??do_put_4+0x8
+          CFI FunCall __aeabi_cdrcmple
+        BL       __aeabi_cdrcmple
+        BHI.N    ??do_put_23    
+        MOVW     R0,#+5000      
+        CMP      R6,R0          
+        BCS.N    ??do_put_23    
         VMOV     R0,R1,D8       
         MOVS     R2,#+536870912 
-        LDR.N    R3,??do_put_4+0x4
+        LDR.N    R3,??do_put_4+0xC
           CFI FunCall __aeabi_ddiv
         BL       __aeabi_ddiv   
         VMOV     D8,R0,R1       
         ADDS     R6,R6,#+10     
-??do_put_22:
-        VMOV     R0,R1,D8       
-        LDR.N    R2,??do_put_4+0x8
-        LDR.N    R3,??do_put_4+0xC
-          CFI FunCall __aeabi_cdrcmple
-        BL       __aeabi_cdrcmple
-        BHI.N    ??do_put_24    
-        MOVW     R0,#+5000      
-        CMP      R6,R0          
-        BCC.N    ??do_put_23    
-??do_put_24:
+        B.N      ??do_put_22    
+??do_put_23:
         VMOV     R0,R1,D8       
         MOVS     R2,#+0         
         MOVS     R3,#+0         
           CFI FunCall __aeabi_cdrcmple
         BL       __aeabi_cdrcmple
-        BCS.N    ??do_put_25    
-        B.N      ??do_put_26    
-??do_put_27:
-        VMOV     R2,R3,D8       
-        MOVS     R0,#+536870912 
-        LDR.N    R1,??do_put_4+0x4
-          CFI FunCall __aeabi_dmul
-        BL       __aeabi_dmul   
-        VMOV     D8,R0,R1       
-        SUBS     R4,R4,#+10     
-        ADDS     R5,R5,#+10     
-??do_put_26:
+        BCS.N    ??do_put_24    
+??do_put_25:
         CMP      R4,#+10        
-        BLT.N    ??do_put_25    
+        BLT.N    ??do_put_24    
         VMOV     R0,R1,D8       
         LDR.N    R2,??do_put_4+0x10
         LDR.N    R3,??do_put_4+0x14
           CFI FunCall __aeabi_cdcmple
         BL       __aeabi_cdcmple
-        BCS.N    ??do_put_25    
+        BCS.N    ??do_put_24    
         MOVW     R0,#+5000      
         CMP      R5,R0          
-        BCC.N    ??do_put_27    
-??do_put_25:
-        UXTB     R7,R7          
-        CMP      R7,#+0         
+        BCS.N    ??do_put_24    
+        VMOV     R2,R3,D8       
+        MOVS     R0,#+536870912 
+        LDR.N    R1,??do_put_4+0xC
+          CFI FunCall __aeabi_dmul
+        BL       __aeabi_dmul   
+        VMOV     D8,R0,R1       
+        SUBS     R4,R4,#+10     
+        ADDS     R5,R5,#+10     
+        B.N      ??do_put_25    
+??do_put_24:
+        MOVS     R0,R7          
+        UXTB     R0,R0          
+        CMP      R0,#+0         
         BEQ.N    ??do_put_19    
         VMOV     R0,R1,D8       
         EORS     R1,R1,#0x80000000
         VMOV     D8,R0,R1       
 ??do_put_19:
-        MOV      R0,R10         
+        MOV      R0,R9          
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
         MOVS     R3,R0          
         UXTH     R3,R3          
         MOVS     R2,#+0         
         ADD      R1,SP,#+28     
-        MOV      R0,R11         
+        LDR      R0,[SP, #+168] 
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FfmtEPccNSt5_IosbIiE9_FmtflagsE
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FfmtEPccNSt5_IosbIiE9_FmtflagsE
-        MOV      R0,R10         
+        MOV      R0,R9          
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
         MOV      R1,#+8192      
@@ -6359,8 +6701,8 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
         CMP      R0,#+0         
-        BEQ.N    ??do_put_28    
-        MOV      R0,R10         
+        BEQ.N    ??do_put_26    
+        MOV      R0,R9          
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
         MOV      R1,#+4096      
@@ -6368,61 +6710,66 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
         CMP      R0,#+0         
-        BEQ.N    ??do_put_28    
-        MOVS     R0,#+1         
-        B.N      ??do_put_29    
-??do_put_28:
-        MOVS     R0,#+0         
-??do_put_29:
-        MOVS     R1,#+0         
+        BEQ.N    ??do_put_26    
+        MOVS     R7,#+1         
+        B.N      ??do_put_27    
+??do_put_26:
+        MOVS     R7,#+0         
+??do_put_27:
+        MOVS     R10,#+0        
+        MOVS     R0,R7          
         UXTB     R0,R0          
         CMP      R0,#+0         
-        BEQ.N    ??do_put_30    
+        BEQ.N    ??do_put_28    
         VMOV     R2,R3,D8       
         ADD      R1,SP,#+28     
         ADD      R0,SP,#+44     
           CFI FunCall sprintf
         BL       sprintf        
-        B.N      ??do_put_31    
-??do_put_30:
+        MOV      R8,R0          
+        B.N      ??do_put_29    
+??do_put_28:
         VSTR     D8,[SP, #+0]   
-        LDR      R2,[SP, #+8]   
+        MOV      R2,R11         
         ADD      R1,SP,#+28     
         ADD      R0,SP,#+44     
           CFI FunCall sprintf
         BL       sprintf        
-??do_put_31:
-        MOV      R2,R8          
-        MOV      R3,R9          
-        LDR      R7,[SP, #+160] 
-        STR      R0,[SP, #+24]  
+        MOV      R8,R0          
+??do_put_29:
+        STR      R8,[SP, #+24]  
         STR      R4,[SP, #+20]  
         STR      R5,[SP, #+16]  
         STR      R6,[SP, #+12]  
         ADD      R0,SP,#+44     
         STR      R0,[SP, #+8]   
-        LDRB     R0,[SP, #+204] 
+        LDRB     R0,[SP, #+220] 
         STR      R0,[SP, #+4]   
-        STR      R10,[SP, #+0]  
-        MOV      R1,R11         
+        STR      R9,[SP, #+0]   
+        LDRD     R2,R3,[SP, #+172]
+        LDR      R1,[SP, #+168] 
         ADD      R0,SP,#+36     
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FputES3_RSt8ios_basecPKcjjjj
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FputES3_RSt8ios_basecPKcjjjj
         LDRD     R0,R1,[SP, #+36]
-        STRD     R0,R1,[R7, #+0]
+        LDR      R2,[SP, #+164] 
+        STRD     R0,R1,[R2, #+0]
         ADD      SP,SP,#+152    
-          CFI CFA R13+48
+          CFI CFA R13+64
         VPOP     {D8}           
           CFI D8 SameValue
-          CFI CFA R13+40
-        POP      {R0,R4-R11,PC} 
+          CFI CFA R13+56
+        ADD      SP,SP,#+20     
+          CFI CFA R13+36
+        POP      {R4-R11,PC}    
+        Nop                     
         DATA
 ??do_put_4:
         DATA32
         DC32     0x3fe00000     
-        DC32     0x4202a05f     
         DC32     0x72c74d82     
         DC32     0x47334261     
+        DC32     0x4202a05f     
         DC32     0xb7f87a10     
         DC32     0x38aa95a5     
           CFI EndBlock cfiBlock206
@@ -6434,7 +6781,7 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         THUMB
 // __softfp std::ostream::_Iter std::num_put<char, std::ostream::_Iter>::do_put(std::ostream::_Iter, std::ios_base &, char, long double) const
 _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_basece:
-        PUSH     {R0,R4-R11,LR} 
+        PUSH     {R0,R1,R4-R11,LR}
           CFI R14 Frame(CFA, -4)
           CFI R11 Frame(CFA, -8)
           CFI R10 Frame(CFA, -12)
@@ -6444,22 +6791,24 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
           CFI R6 Frame(CFA, -28)
           CFI R5 Frame(CFA, -32)
           CFI R4 Frame(CFA, -36)
-          CFI CFA R13+40
-        VPUSH    {D8}           
-          CFI D8 Frame(CFA, -48)
+          CFI CFA R13+44
+        SUB      SP,SP,#+4      
           CFI CFA R13+48
+        VPUSH    {D8}           
+          CFI D8 Frame(CFA, -56)
+          CFI CFA R13+56
         SUB      SP,SP,#+152    
-          CFI CFA R13+200
-        MOV      R11,R1         
-        MOV      R8,R2          
-        MOV      R9,R3          
-        LDR      R10,[SP, #+200]
-        MOV      R0,R10         
+          CFI CFA R13+208
+        MOV      R10,R2         
+        MOV      R11,R3         
+        LDR      R8,[SP, #+208] 
+        VLDR     D8,[SP, #+216] 
+        MOV      R0,R8          
           CFI FunCall _ZNKSt8ios_base9precisionEv
         BL       _ZNKSt8ios_base9precisionEv
         CMP      R0,#+1         
-        BGE.N    ??do_put_32    
-        MOV      R0,R10         
+        BGE.N    ??do_put_30    
+        MOV      R0,R8          
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
         MOV      R1,#+8192      
@@ -6467,158 +6816,155 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
         CMP      R0,#+0         
-        BNE.N    ??do_put_32    
+        BNE.N    ??do_put_30    
         MOVS     R0,#+6         
-        B.N      ??do_put_33    
-??do_put_32:
-        MOV      R0,R10         
+        B.N      ??do_put_31    
+??do_put_30:
+        MOV      R0,R8          
           CFI FunCall _ZNKSt8ios_base9precisionEv
         BL       _ZNKSt8ios_base9precisionEv
-??do_put_33:
+??do_put_31:
         CMP      R0,#+37        
-        BLT.N    ??do_put_34    
-        MOVS     R1,#+36        
-        STR      R1,[SP, #+8]   
-        B.N      ??do_put_35    
-??do_put_34:
-        STR      R0,[SP, #+8]   
-??do_put_35:
-        LDR      R1,[SP, #+8]   
-        SUBS     R0,R0,R1       
+        BLT.N    ??do_put_32    
+        MOVS     R9,#+36        
+        B.N      ??do_put_33    
+??do_put_32:
+        MOV      R9,R0          
+??do_put_33:
+        SUBS     R0,R0,R9       
         MOVS     R4,R0          
         MOVS     R6,#+0         
         MOVS     R5,#+0         
-        MOV      R0,R10         
+        MOV      R0,R8          
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
-        VLDR     D8,[SP, #+208] 
         MOV      R1,#+12288     
         UXTH     R0,R0          
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
         CMP      R0,#+8192      
-        BNE.N    ??do_put_36    
+        BNE.N    ??do_put_34    
         VMOV     R0,R1,D8       
         MOVS     R2,#+0         
         MOVS     R3,#+0         
           CFI FunCall __aeabi_cdcmple
         BL       __aeabi_cdcmple
-        BCS.N    ??do_put_37    
+        BCS.N    ??do_put_35    
         MOVS     R7,#+1         
-        B.N      ??do_put_38    
-??do_put_37:
+        B.N      ??do_put_36    
+??do_put_35:
         MOVS     R7,#+0         
-??do_put_38:
+??do_put_36:
         MOVS     R0,R7          
         UXTB     R0,R0          
         CMP      R0,#+0         
-        BEQ.N    ??do_put_39    
+        BEQ.N    ??do_put_37    
         VMOV     R0,R1,D8       
         EORS     R1,R1,#0x80000000
         VMOV     D8,R0,R1       
-        B.N      ??do_put_39    
-??do_put_40:
+??do_put_37:
+        VMOV     R0,R1,D8       
+        LDR.N    R2,??do_put_5  
+        LDR.N    R3,??do_put_5+0x4
+          CFI FunCall __aeabi_cdrcmple
+        BL       __aeabi_cdrcmple
+        BHI.N    ??do_put_38    
+        MOVW     R0,#+5000      
+        CMP      R6,R0          
+        BCS.N    ??do_put_38    
         VMOV     R0,R1,D8       
         MOVS     R2,#+536870912 
-        LDR.N    R3,??do_put_5  
+        LDR.N    R3,??do_put_5+0x8
           CFI FunCall __aeabi_ddiv
         BL       __aeabi_ddiv   
         VMOV     D8,R0,R1       
         ADDS     R6,R6,#+10     
-??do_put_39:
-        VMOV     R0,R1,D8       
-        LDR.N    R2,??do_put_5+0x4
-        LDR.N    R3,??do_put_5+0x8
-          CFI FunCall __aeabi_cdrcmple
-        BL       __aeabi_cdrcmple
-        BHI.N    ??do_put_41    
-        MOVW     R0,#+5000      
-        CMP      R6,R0          
-        BCC.N    ??do_put_40    
-??do_put_41:
+        B.N      ??do_put_37    
+??do_put_38:
         VMOV     R0,R1,D8       
         MOVS     R2,#+0         
         MOVS     R3,#+0         
           CFI FunCall __aeabi_cdrcmple
         BL       __aeabi_cdrcmple
-        BCS.N    ??do_put_42    
-        B.N      ??do_put_43    
-??do_put_44:
-        VMOV     R2,R3,D8       
-        MOVS     R0,#+536870912 
-        LDR.N    R1,??do_put_5  
-          CFI FunCall __aeabi_dmul
-        BL       __aeabi_dmul   
-        VMOV     D8,R0,R1       
-        SUBS     R4,R4,#+10     
-        ADDS     R5,R5,#+10     
-??do_put_43:
+        BCS.N    ??do_put_39    
+??do_put_40:
         CMP      R4,#+10        
-        BLT.N    ??do_put_42    
+        BLT.N    ??do_put_39    
         VMOV     R0,R1,D8       
         LDR.N    R2,??do_put_5+0xC
         LDR.N    R3,??do_put_5+0x10
           CFI FunCall __aeabi_cdcmple
         BL       __aeabi_cdcmple
-        BCS.N    ??do_put_42    
+        BCS.N    ??do_put_39    
         MOVW     R0,#+5000      
         CMP      R5,R0          
-        BCC.N    ??do_put_44    
-??do_put_42:
-        UXTB     R7,R7          
-        CMP      R7,#+0         
-        BEQ.N    ??do_put_36    
+        BCS.N    ??do_put_39    
+        VMOV     R2,R3,D8       
+        MOVS     R0,#+536870912 
+        LDR.N    R1,??do_put_5+0x8
+          CFI FunCall __aeabi_dmul
+        BL       __aeabi_dmul   
+        VMOV     D8,R0,R1       
+        SUBS     R4,R4,#+10     
+        ADDS     R5,R5,#+10     
+        B.N      ??do_put_40    
+??do_put_39:
+        MOVS     R0,R7          
+        UXTB     R0,R0          
+        CMP      R0,#+0         
+        BEQ.N    ??do_put_34    
         VMOV     R0,R1,D8       
         EORS     R1,R1,#0x80000000
         VMOV     D8,R0,R1       
-??do_put_36:
-        LDR      R7,[SP, #+160] 
-        MOV      R0,R10         
+??do_put_34:
+        MOV      R0,R8          
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
         MOVS     R3,R0          
         UXTH     R3,R3          
         MOVS     R2,#+76        
         ADD      R1,SP,#+28     
-        MOV      R0,R11         
+        LDR      R0,[SP, #+168] 
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FfmtEPccNSt5_IosbIiE9_FmtflagsE
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FfmtEPccNSt5_IosbIiE9_FmtflagsE
         VSTR     D8,[SP, #+0]   
-        LDR      R2,[SP, #+8]   
+        MOV      R2,R9          
         ADD      R1,SP,#+28     
         ADD      R0,SP,#+44     
           CFI FunCall sprintf
         BL       sprintf        
-        STR      R0,[SP, #+24]  
+        MOVS     R7,R0          
+        STR      R7,[SP, #+24]  
         STR      R4,[SP, #+20]  
         STR      R5,[SP, #+16]  
         STR      R6,[SP, #+12]  
         ADD      R0,SP,#+44     
         STR      R0,[SP, #+8]   
-        LDRB     R0,[SP, #+204] 
+        LDRB     R0,[SP, #+212] 
         STR      R0,[SP, #+4]   
-        STR      R10,[SP, #+0]  
-        MOV      R2,R8          
-        MOV      R3,R9          
-        MOV      R1,R11         
+        STR      R8,[SP, #+0]   
+        MOV      R2,R10         
+        MOV      R3,R11         
+        LDR      R1,[SP, #+168] 
         ADD      R0,SP,#+36     
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FputES3_RSt8ios_basecPKcjjjj
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FputES3_RSt8ios_basecPKcjjjj
         LDRD     R0,R1,[SP, #+36]
-        STRD     R0,R1,[R7, #+0]
+        LDR      R2,[SP, #+164] 
+        STRD     R0,R1,[R2, #+0]
         ADD      SP,SP,#+152    
-          CFI CFA R13+48
+          CFI CFA R13+56
         VPOP     {D8}           
           CFI D8 SameValue
-          CFI CFA R13+40
-        POP      {R0,R4-R11,PC} 
+          CFI CFA R13+48
+        POP      {R0-R2,R4-R11,PC}
         Nop                     
         DATA
 ??do_put_5:
         DATA32
-        DC32     0x4202a05f     
         DC32     0x72c74d82     
         DC32     0x47334261     
+        DC32     0x4202a05f     
         DC32     0xb7f87a10     
         DC32     0x38aa95a5     
           CFI EndBlock cfiBlock207
@@ -6630,17 +6976,18 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         THUMB
 // __vfp std::ostream::_Iter std::num_put<char, std::ostream::_Iter>::do_put(std::ostream::_Iter, std::ios_base &, char, void const *) const
 _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_basecPKv:
-        PUSH     {R3-R7,LR}     
+        PUSH     {R4-R8,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R7 Frame(CFA, -8)
-          CFI R6 Frame(CFA, -12)
-          CFI R5 Frame(CFA, -16)
-          CFI R4 Frame(CFA, -20)
+          CFI R8 Frame(CFA, -8)
+          CFI R7 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -16)
+          CFI R5 Frame(CFA, -20)
+          CFI R4 Frame(CFA, -24)
           CFI CFA R13+24
         SUB      SP,SP,#+88     
           CFI CFA R13+112
         MOVS     R6,R0          
-        MOVS     R7,R1          
+        MOV      R8,R1          
         MOVS     R4,R2          
         MOVS     R5,R3          
         LDR      R2,[SP, #+120] 
@@ -6648,7 +6995,8 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         ADD      R0,SP,#+24     
           CFI FunCall sprintf
         BL       sprintf        
-        STR      R0,[SP, #+12]  
+        MOVS     R7,R0          
+        STR      R7,[SP, #+12]  
         ADD      R0,SP,#+24     
         STR      R0,[SP, #+8]   
         LDRB     R0,[SP, #+116] 
@@ -6657,16 +7005,15 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         STR      R0,[SP, #+0]   
         MOVS     R2,R4          
         MOVS     R3,R5          
-        MOVS     R1,R7          
+        MOV      R1,R8          
         ADD      R0,SP,#+16     
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IputES3_RSt8ios_basecPcj
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IputES3_RSt8ios_basecPcj
         LDRD     R0,R1,[SP, #+16]
         STRD     R0,R1,[R6, #+0]
-        ADD      SP,SP,#+92     
-          CFI CFA R13+20
-        POP      {R4-R7,PC}     
-        Nop                     
+        ADD      SP,SP,#+88     
+          CFI CFA R13+24
+        POP      {R4-R8,PC}     
         DATA
 ??do_put_6:
         DATA32
@@ -6680,146 +7027,153 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios_
         THUMB
 // __vfp char *std::num_put<char, std::ostream::_Iter>::_Ffmt(char *, char, std::ios_base::fmtflags) const
 _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FfmtEPccNSt5_IosbIiE9_FmtflagsE:
-        PUSH     {R3-R7,LR}     
+        PUSH     {R4-R10,LR}    
           CFI R14 Frame(CFA, -4)
-          CFI R7 Frame(CFA, -8)
-          CFI R6 Frame(CFA, -12)
-          CFI R5 Frame(CFA, -16)
-          CFI R4 Frame(CFA, -20)
-          CFI CFA R13+24
-        MOVS     R4,R1          
-        MOVS     R7,R2          
-        MOVS     R6,R3          
-        MOVS     R0,R4          
+          CFI R10 Frame(CFA, -8)
+          CFI R9 Frame(CFA, -12)
+          CFI R8 Frame(CFA, -16)
+          CFI R7 Frame(CFA, -20)
+          CFI R6 Frame(CFA, -24)
+          CFI R5 Frame(CFA, -28)
+          CFI R4 Frame(CFA, -32)
+          CFI CFA R13+32
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R6,R2          
+        MOVS     R7,R3          
+        MOVS     R0,R5          
         MOVS     R1,#+37        
         STRB     R1,[R0, #+0]   
-        ADDS     R5,R0,#+1      
+        ADDS     R10,R0,#+1     
         MOVS     R1,#+32        
-        MOVS     R0,R6          
+        MOVS     R0,R7          
         UXTH     R0,R0          
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
         CMP      R0,#+0         
         BEQ.N    ??_Ffmt_0      
         MOVS     R0,#+43        
-        STRB     R0,[R5, #+0]   
-        ADDS     R5,R5,#+1      
+        STRB     R0,[R10, #+0]  
+        ADDS     R10,R10,#+1    
 ??_Ffmt_0:
         MOVS     R1,#+16        
-        MOVS     R0,R6          
+        MOVS     R0,R7          
         UXTH     R0,R0          
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
         CMP      R0,#+0         
         BEQ.N    ??_Ffmt_1      
         MOVS     R0,#+35        
-        STRB     R0,[R5, #+0]   
-        ADDS     R5,R5,#+1      
+        STRB     R0,[R10, #+0]  
+        ADDS     R10,R10,#+1    
 ??_Ffmt_1:
         MOV      R1,#+8192      
-        MOVS     R0,R6          
+        MOVS     R0,R7          
         UXTH     R0,R0          
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
         CMP      R0,#+0         
         BEQ.N    ??_Ffmt_2      
         MOV      R1,#+4096      
-        MOVS     R0,R6          
+        MOVS     R0,R7          
         UXTH     R0,R0          
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
         CMP      R0,#+0         
         BEQ.N    ??_Ffmt_2      
-        MOVS     R0,#+1         
+        MOVS     R8,#+1         
         B.N      ??_Ffmt_3      
 ??_Ffmt_2:
-        MOVS     R0,#+0         
+        MOVS     R8,#+0         
 ??_Ffmt_3:
+        MOV      R0,R8          
         UXTB     R0,R0          
         CMP      R0,#+0         
         BNE.N    ??_Ffmt_4      
         MOVS     R0,#+46        
-        STRB     R0,[R5, #+0]   
-        ADDS     R0,R5,#+1      
+        STRB     R0,[R10, #+0]  
+        ADDS     R0,R10,#+1     
         MOVS     R1,#+42        
         STRB     R1,[R0, #+0]   
-        ADDS     R5,R0,#+1      
+        ADDS     R10,R0,#+1     
 ??_Ffmt_4:
-        MOVS     R0,R7          
+        MOVS     R0,R6          
         UXTB     R0,R0          
         CMP      R0,#+0         
         BEQ.N    ??_Ffmt_5      
-        STRB     R7,[R5, #+0]   
-        ADDS     R5,R5,#+1      
+        STRB     R6,[R10, #+0]  
+        ADDS     R10,R10,#+1    
 ??_Ffmt_5:
         MOV      R1,#+12288     
-        MOVS     R0,R6          
+        MOVS     R0,R7          
         UXTH     R0,R0          
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
-        MOVS     R7,R0          
+        MOV      R9,R0          
         MOVS     R1,#+4         
-        MOVS     R0,R6          
+        MOVS     R0,R7          
         UXTH     R0,R0          
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
         CMP      R0,#+0         
         BEQ.N    ??_Ffmt_6      
-        ADDS     R0,R5,#+1      
-        MOVS     R1,R7          
-        UXTH     R1,R1          
-        CMP      R1,#+8192      
+        ADDS     R1,R10,#+1     
+        MOV      R0,R9          
+        UXTH     R0,R0          
+        CMP      R0,#+8192      
         BNE.N    ??_Ffmt_7      
-        MOVS     R1,#+102       
+        MOVS     R0,#+102       
         B.N      ??_Ffmt_8      
 ??_Ffmt_7:
-        MOVS     R1,R7          
-        UXTH     R1,R1          
-        CMP      R1,#+12288     
+        MOV      R0,R9          
+        UXTH     R0,R0          
+        CMP      R0,#+12288     
         BNE.N    ??_Ffmt_9      
-        MOVS     R1,#+65        
+        MOVS     R0,#+65        
         B.N      ??_Ffmt_8      
 ??_Ffmt_9:
-        UXTH     R7,R7          
-        CMP      R7,#+4096      
+        MOV      R0,R9          
+        UXTH     R0,R0          
+        CMP      R0,#+4096      
         BNE.N    ??_Ffmt_10     
-        MOVS     R1,#+69        
+        MOVS     R0,#+69        
         B.N      ??_Ffmt_8      
 ??_Ffmt_10:
-        MOVS     R1,#+71        
+        MOVS     R0,#+71        
 ??_Ffmt_8:
-        STRB     R1,[R5, #+0]   
+        STRB     R0,[R10, #+0]  
         B.N      ??_Ffmt_11     
 ??_Ffmt_6:
-        ADDS     R0,R5,#+1      
-        MOVS     R1,R7          
-        UXTH     R1,R1          
-        CMP      R1,#+8192      
+        ADDS     R1,R10,#+1     
+        MOV      R0,R9          
+        UXTH     R0,R0          
+        CMP      R0,#+8192      
         BNE.N    ??_Ffmt_12     
-        MOVS     R1,#+102       
+        MOVS     R0,#+102       
         B.N      ??_Ffmt_13     
 ??_Ffmt_12:
-        MOVS     R1,R7          
-        UXTH     R1,R1          
-        CMP      R1,#+12288     
+        MOV      R0,R9          
+        UXTH     R0,R0          
+        CMP      R0,#+12288     
         BNE.N    ??_Ffmt_14     
-        MOVS     R1,#+97        
+        MOVS     R0,#+97        
         B.N      ??_Ffmt_13     
 ??_Ffmt_14:
-        UXTH     R7,R7          
-        CMP      R7,#+4096      
+        MOV      R0,R9          
+        UXTH     R0,R0          
+        CMP      R0,#+4096      
         BNE.N    ??_Ffmt_15     
-        MOVS     R1,#+101       
+        MOVS     R0,#+101       
         B.N      ??_Ffmt_13     
 ??_Ffmt_15:
-        MOVS     R1,#+103       
+        MOVS     R0,#+103       
 ??_Ffmt_13:
-        STRB     R1,[R5, #+0]   
+        STRB     R0,[R10, #+0]  
 ??_Ffmt_11:
-        MOVS     R1,#+0         
-        STRB     R1,[R0, #+0]   
-        MOVS     R0,R4          
-        POP      {R1,R4-R7,PC}  
+        MOVS     R0,#+0         
+        STRB     R0,[R1, #+0]   
+        MOVS     R0,R5          
+        POP      {R4-R10,PC}    
           CFI EndBlock cfiBlock209
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
@@ -6829,7 +7183,7 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FfmtEPccNSt5_Iosb
         THUMB
 // __vfp std::ostream::_Iter std::num_put<char, std::ostream::_Iter>::_Fput(std::ostream::_Iter, std::ios_base &, char, char const *, size_t, size_t, size_t, size_t) const
 _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FputES3_RSt8ios_basecPKcjjjj:
-        PUSH     {R0-R11,LR}    
+        PUSH     {R0,R2-R11,LR} 
           CFI R14 Frame(CFA, -4)
           CFI R11 Frame(CFA, -8)
           CFI R10 Frame(CFA, -12)
@@ -6839,27 +7193,28 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FputES3_RSt8ios_b
           CFI R6 Frame(CFA, -28)
           CFI R5 Frame(CFA, -32)
           CFI R4 Frame(CFA, -36)
-          CFI CFA R13+52
-        SUB      SP,SP,#+68     
-          CFI CFA R13+120
-        LDR      R11,[SP, #+128]
+          CFI CFA R13+48
+        SUB      SP,SP,#+88     
+          CFI CFA R13+136
+        MOV      R10,R1         
+        LDR      R11,[SP, #+136]
         LDR      R4,[SP, #+144] 
-        CMP      R4,#+0         
+        LDR      R8,[SP, #+160] 
+        CMP      R8,#+0         
         BEQ.N    ??_Fput_1      
-        LDRB     R0,[R11, #+0]  
+        LDRB     R0,[R4, #+0]   
         CMP      R0,#+43        
         BEQ.N    ??_Fput_2      
-        LDRB     R0,[R11, #+0]  
+        LDRB     R0,[R4, #+0]   
         CMP      R0,#+45        
         BNE.N    ??_Fput_1      
 ??_Fput_2:
-        MOVS     R6,#+1         
+        MOVS     R5,#+1         
         B.N      ??_Fput_3      
 ??_Fput_1:
-        MOVS     R6,#+0         
+        MOVS     R5,#+0         
 ??_Fput_3:
-        LDR      R5,[SP, #+120] 
-        MOVS     R0,R5          
+        MOV      R0,R11         
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
         MOV      R1,#+12288     
@@ -6868,289 +7223,285 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FputES3_RSt8ios_b
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
         CMP      R0,#+12288     
         BEQ.N    ??_Fput_4      
-        LDR.N    R1,??_Fput_0   
+        LDR.W    R9,??_Fput_0   
         B.N      ??_Fput_5      
 ??_Fput_4:
-        LDR.N    R1,??_Fput_0+0x4
-        ADDS     R0,R6,#+2      
-        CMP      R4,R0          
+        LDR.W    R9,??_Fput_0+0x4
+        ADDS     R0,R5,#+2      
+        CMP      R8,R0          
         BCC.N    ??_Fput_5      
-        LDRB     R0,[R11, R6]   
+        LDRB     R0,[R4, R5]    
         CMP      R0,#+48        
         BNE.N    ??_Fput_5      
-        ADD      R0,R11,R6      
+        ADD      R0,R4,R5       
         LDRB     R0,[R0, #+1]   
         CMP      R0,#+120       
         BEQ.N    ??_Fput_6      
-        ADD      R0,R11,R6      
+        ADD      R0,R4,R5       
         LDRB     R0,[R0, #+1]   
         CMP      R0,#+88        
         BNE.N    ??_Fput_5      
 ??_Fput_6:
-        ADDS     R6,R6,#+2      
+        ADDS     R5,R5,#+2      
 ??_Fput_5:
-        LDR      R7,[SP, #+132] 
-        MOV      R0,R11         
+        MOV      R1,R9          
+        MOVS     R0,R4          
           CFI FunCall strcspn
         BL       strcspn        
-        MOV      R8,R0          
+        STR      R0,[SP, #+24]  
         LDR.N    R0,??_Fput_0+0x8
         LDRH     R0,[R0, #+0]   
-        STRH     R0,[SP, #+8]   
+        STRH     R0,[SP, #+12]  
         MOVS     R0,#+46        
-        STRB     R0,[SP, #+8]   
-        ADD      R1,SP,#+8      
-        MOV      R0,R11         
+        STRB     R0,[SP, #+12]  
+        ADD      R1,SP,#+12     
+        MOVS     R0,R4          
           CFI FunCall strcspn
         BL       strcspn        
-        MOV      R9,R0          
+        STR      R0,[SP, #+16]  
           CFI FunCall _ZSt9use_facetISt5ctypeIcEERKT_v
         BL       _ZSt9use_facetISt5ctypeIcEERKT_v
-        STR      R0,[SP, #+0]   
+        STR      R0,[SP, #+28]  
         MOVS     R1,#+48        
-        LDR      R0,[SP, #+0]   
+        LDR      R0,[SP, #+28]  
           CFI FunCall _ZNKSt5ctypeIcE5widenEc
         BL       _ZNKSt5ctypeIcE5widenEc
-        MOV      R10,R0         
+        STRB     R0,[SP, #+8]   
         MOVS     R2,#+0         
-        MOVS     R1,R4          
-        ADD      R0,SP,#+12     
+        MOV      R1,R8          
+        ADD      R0,SP,#+32     
           CFI FunCall _ZNSsC1Ejc
         BL       _ZNSsC1Ejc     
         MOVS     R1,#+0         
           CFI FunCall _ZNSsixEj
         BL       _ZNSsixEj      
         MOVS     R3,R0          
-        ADD      R2,R11,R4      
-        MOV      R1,R11         
-        LDR      R0,[SP, #+0]   
+        ADD      R2,R4,R8       
+        MOVS     R1,R4          
+        LDR      R0,[SP, #+28]  
           CFI FunCall _ZNKSt5ctypeIcE5widenEPKcS2_Pc
         BL       _ZNKSt5ctypeIcE5widenEPKcS2_Pc
           CFI FunCall _ZSt9use_facetISt8numpunctIcEERKT_v
         BL       _ZSt9use_facetISt8numpunctIcEERKT_v
-        MOV      R11,R0         
-        MOV      R1,R11         
-        ADD      R0,SP,#+44     
+        STR      R0,[SP, #+20]  
+        LDR      R1,[SP, #+20]  
+        ADD      R0,SP,#+64     
           CFI FunCall _ZNKSt8numpunctIcE8groupingEv
         BL       _ZNKSt8numpunctIcE8groupingEv
-        MOV      R0,R11         
+        LDR      R0,[SP, #+20]  
           CFI FunCall _ZNKSt8numpunctIcE13thousands_sepEv
         BL       _ZNKSt8numpunctIcE13thousands_sepEv
-        STRB     R0,[SP, #+0]   
-        MOVS     R0,R7          
-        CMP      R9,R4          
+        STRB     R0,[SP, #+9]   
+        LDR      R6,[SP, #+148] 
+        LDR      R0,[SP, #+16]  
+        CMP      R0,R8          
         BNE.N    ??_Fput_7      
-        ADDS     R0,R8,R0       
-        MOVS     R4,R0          
-        MOV      R3,R10         
-        UXTB     R3,R3          
-        MOVS     R2,R7          
-        MOV      R1,R8          
-        ADD      R0,SP,#+12     
+        LDR      R0,[SP, #+24]  
+        ADDS     R6,R0,R6       
+        LDRB     R3,[SP, #+8]   
+        LDR      R2,[SP, #+148] 
+        LDR      R1,[SP, #+24]  
+        ADD      R0,SP,#+32     
           CFI FunCall _ZNSs6insertEjjc
         BL       _ZNSs6insertEjjc
         B.N      ??_Fput_8      
 ??_Fput_7:
-        LDR      R2,[SP, #+140] 
-        ADDS     R0,R9,R0       
-        MOVS     R4,R0          
-        MOV      R3,R10         
-        UXTB     R3,R3          
-        MOV      R1,R8          
-        ADD      R0,SP,#+12     
+        LDR      R0,[SP, #+16]  
+        ADDS     R6,R0,R6       
+        LDRB     R3,[SP, #+8]   
+        LDR      R2,[SP, #+156] 
+        LDR      R1,[SP, #+24]  
+        ADD      R0,SP,#+32     
           CFI FunCall _ZNSs6insertEjjc
         BL       _ZNSs6insertEjjc
-        MOV      R3,R10         
-        UXTB     R3,R3          
-        LDR      R2,[SP, #+136] 
-        ADDS     R1,R9,#+1      
-        ADD      R0,SP,#+12     
+        LDRB     R3,[SP, #+8]   
+        LDR      R2,[SP, #+152] 
+        LDR      R1,[SP, #+16]  
+        ADDS     R1,R1,#+1      
+        ADD      R0,SP,#+32     
           CFI FunCall _ZNSs6insertEjjc
         BL       _ZNSs6insertEjjc
-        MOV      R1,R9          
-        ADD      R0,SP,#+12     
+        LDR      R1,[SP, #+16]  
+        ADD      R0,SP,#+32     
           CFI FunCall _ZNSsixEj
         BL       _ZNSsixEj      
-        MOV      R8,R0          
-        MOV      R0,R11         
+        MOVS     R7,R0          
+        LDR      R0,[SP, #+20]  
           CFI FunCall _ZNKSt8numpunctIcE13decimal_pointEv
         BL       _ZNKSt8numpunctIcE13decimal_pointEv
-        STRB     R0,[R8, #+0]   
-        MOV      R3,R10         
-        UXTB     R3,R3          
-        MOVS     R2,R7          
-        MOV      R1,R9          
-        ADD      R0,SP,#+12     
+        STRB     R0,[R7, #+0]   
+        LDRB     R3,[SP, #+8]   
+        LDR      R2,[SP, #+148] 
+        LDR      R1,[SP, #+16]  
+        ADD      R0,SP,#+32     
           CFI FunCall _ZNSs6insertEjjc
         BL       _ZNSs6insertEjjc
 ??_Fput_8:
         MOVS     R1,#+0         
-        ADD      R0,SP,#+44     
+        ADD      R0,SP,#+64     
           CFI FunCall _ZNKSsixEj
         BL       _ZNKSsixEj     
         MOVS     R7,R0          
-        B.N      ??_Fput_9      
-??_Fput_10:
+??_Fput_9:
         LDRB     R0,[R7, #+0]   
-        SUBS     R4,R4,R0       
-        LDRB     R3,[SP, #+0]   
+        CMP      R0,#+255       
+        BEQ.N    ??_Fput_10     
+        LDRB     R0,[R7, #+0]   
+        CMP      R0,#+0         
+        BEQ.N    ??_Fput_10     
+        LDRB     R0,[R7, #+0]   
+        SUBS     R1,R6,R5       
+        CMP      R0,R1          
+        BCS.N    ??_Fput_10     
+        LDRB     R0,[R7, #+0]   
+        SUBS     R6,R6,R0       
+        LDRB     R3,[SP, #+9]   
         MOVS     R2,#+1         
-        MOVS     R1,R4          
-        ADD      R0,SP,#+12     
+        MOVS     R1,R6          
+        ADD      R0,SP,#+32     
           CFI FunCall _ZNSs6insertEjjc
         BL       _ZNSs6insertEjjc
         LDRB     R0,[R7, #+1]   
         CMP      R0,#+0         
         BEQ.N    ??_Fput_9      
         ADDS     R7,R7,#+1      
-??_Fput_9:
-        LDRB     R0,[R7, #+0]   
-        CMP      R0,#+255       
-        BEQ.N    ??_Fput_11     
-        LDRB     R0,[R7, #+0]   
-        CMP      R0,#+0         
-        BEQ.N    ??_Fput_11     
-        LDRB     R0,[R7, #+0]   
-        SUBS     R1,R4,R6       
-        CMP      R0,R1          
-        BCC.N    ??_Fput_10     
-??_Fput_11:
-        ADD      R0,SP,#+12     
+        B.N      ??_Fput_9      
+??_Fput_10:
+        ADD      R0,SP,#+32     
           CFI FunCall _ZNKSs4sizeEv
         BL       _ZNKSs4sizeEv  
-        MOVS     R7,R0          
-        MOVS     R0,R5          
+        STR      R0,[SP, #+160] 
+        MOV      R0,R11         
           CFI FunCall _ZNKSt8ios_base5widthEv
         BL       _ZNKSt8ios_base5widthEv
         CMP      R0,#+1         
-        BLT.N    ??_Fput_12     
-        MOVS     R0,R5          
+        BLT.N    ??_Fput_11     
+        MOV      R0,R11         
           CFI FunCall _ZNKSt8ios_base5widthEv
         BL       _ZNKSt8ios_base5widthEv
-        CMP      R7,R0          
-        BCC.N    ??_Fput_13     
+        LDR      R1,[SP, #+160] 
+        CMP      R1,R0          
+        BCC.N    ??_Fput_12     
+??_Fput_11:
+        MOVS     R8,#+0         
+        B.N      ??_Fput_13     
 ??_Fput_12:
-        MOVS     R9,#+0         
-        B.N      ??_Fput_14     
-??_Fput_13:
-        MOVS     R0,R5          
+        MOV      R0,R11         
           CFI FunCall _ZNKSt8ios_base5widthEv
         BL       _ZNKSt8ios_base5widthEv
-        MOV      R9,R0          
-        SUBS     R9,R9,R7       
-??_Fput_14:
-        MOVS     R0,R5          
+        LDR      R8,[SP, #+160] 
+        SUBS     R8,R0,R8       
+??_Fput_13:
+        MOV      R0,R11         
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
         MOV      R1,#+448       
         UXTH     R0,R0          
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
-        LDR      R8,[SP, #+72]  
-        LDR      R4,[SP, #+124] 
-        MOVS     R1,R0          
-        UXTH     R1,R1          
-        CMP      R1,#+64        
-        BEQ.N    ??_Fput_15     
-        MOVS     R1,R0          
-        UXTH     R1,R1          
-        CMP      R1,#+256       
-        BEQ.N    ??_Fput_15     
-        STR      R9,[SP, #+4]   
-        MOVS     R0,R4          
-        UXTB     R0,R0          
-        STR      R0,[SP, #+0]   
-        LDRD     R2,R3,[SP, #+76]
-        MOV      R1,R8          
-        ADD      R0,SP,#+76     
-          CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
-        BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
-        MOVS     R9,#+0         
-        MOVS     R1,#+0         
-        ADD      R0,SP,#+12     
-          CFI FunCall _ZNSsixEj
-        BL       _ZNSsixEj      
-        STR      R6,[SP, #+4]   
-        STR      R0,[SP, #+0]   
-        LDRD     R2,R3,[SP, #+76]
-        MOV      R1,R8          
-        ADD      R0,SP,#+76     
-          CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
-        BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
-        B.N      ??_Fput_16     
-??_Fput_15:
-        UXTH     R0,R0          
+        STRH     R0,[SP, #+10]  
+        LDRH     R0,[SP, #+10]  
+        CMP      R0,#+64        
+        BEQ.N    ??_Fput_14     
+        LDRH     R0,[SP, #+10]  
         CMP      R0,#+256       
-        BNE.N    ??_Fput_17     
-        MOVS     R1,#+0         
-        ADD      R0,SP,#+12     
-          CFI FunCall _ZNSsixEj
-        BL       _ZNSsixEj      
-        STR      R6,[SP, #+4]   
+        BEQ.N    ??_Fput_14     
+        STR      R8,[SP, #+4]   
+        LDRB     R0,[SP, #+140] 
         STR      R0,[SP, #+0]   
-        LDRD     R2,R3,[SP, #+76]
-        MOV      R1,R8          
-        ADD      R0,SP,#+76     
-          CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
-        BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
-        STR      R9,[SP, #+4]   
-        MOVS     R0,R4          
-        UXTB     R0,R0          
-        STR      R0,[SP, #+0]   
-        LDRD     R2,R3,[SP, #+76]
-        MOV      R1,R8          
-        ADD      R0,SP,#+76     
+        LDRD     R2,R3,[SP, #+92]
+        MOV      R1,R10         
+        ADD      R0,SP,#+92     
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
-        MOVS     R9,#+0         
-        B.N      ??_Fput_16     
-??_Fput_17:
+        MOVS     R0,#+0         
+        MOV      R8,R0          
         MOVS     R1,#+0         
-        ADD      R0,SP,#+12     
+        ADD      R0,SP,#+32     
           CFI FunCall _ZNSsixEj
         BL       _ZNSsixEj      
-        STR      R6,[SP, #+4]   
+        STR      R5,[SP, #+4]   
         STR      R0,[SP, #+0]   
-        LDRD     R2,R3,[SP, #+76]
-        MOV      R1,R8          
-        ADD      R0,SP,#+76     
+        LDRD     R2,R3,[SP, #+92]
+        MOV      R1,R10         
+        ADD      R0,SP,#+92     
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
+        B.N      ??_Fput_15     
+??_Fput_14:
+        LDRH     R0,[SP, #+10]  
+        CMP      R0,#+256       
+        BNE.N    ??_Fput_16     
+        MOVS     R1,#+0         
+        ADD      R0,SP,#+32     
+          CFI FunCall _ZNSsixEj
+        BL       _ZNSsixEj      
+        STR      R5,[SP, #+4]   
+        STR      R0,[SP, #+0]   
+        LDRD     R2,R3,[SP, #+92]
+        MOV      R1,R10         
+        ADD      R0,SP,#+92     
+          CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
+        BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
+        STR      R8,[SP, #+4]   
+        LDRB     R0,[SP, #+140] 
+        STR      R0,[SP, #+0]   
+        LDRD     R2,R3,[SP, #+92]
+        MOV      R1,R10         
+        ADD      R0,SP,#+92     
+          CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
+        BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
+        MOVS     R0,#+0         
+        MOV      R8,R0          
+        B.N      ??_Fput_15     
 ??_Fput_16:
-        LDR      R10,[SP, #+68] 
-        MOVS     R1,R6          
-        ADD      R0,SP,#+12     
+        MOVS     R1,#+0         
+        ADD      R0,SP,#+32     
           CFI FunCall _ZNSsixEj
         BL       _ZNSsixEj      
-        SUBS     R7,R7,R6       
-        STR      R7,[SP, #+4]   
+        STR      R5,[SP, #+4]   
         STR      R0,[SP, #+0]   
-        LDRD     R2,R3,[SP, #+76]
-        MOV      R1,R8          
-        ADD      R0,SP,#+76     
+        LDRD     R2,R3,[SP, #+92]
+        MOV      R1,R10         
+        ADD      R0,SP,#+92     
+          CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
+        BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
+??_Fput_15:
+        MOVS     R1,R5          
+        ADD      R0,SP,#+32     
+          CFI FunCall _ZNSsixEj
+        BL       _ZNSsixEj      
+        LDR      R1,[SP, #+160] 
+        SUBS     R1,R1,R5       
+        STR      R1,[SP, #+4]   
+        STR      R0,[SP, #+0]   
+        LDRD     R2,R3,[SP, #+92]
+        MOV      R1,R10         
+        ADD      R0,SP,#+92     
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
         MOVS     R1,#+0         
-        MOVS     R0,R5          
+        MOV      R0,R11         
           CFI FunCall _ZNSt8ios_base5widthEi
         BL       _ZNSt8ios_base5widthEi
-        STR      R9,[SP, #+4]   
-        UXTB     R4,R4          
-        STR      R4,[SP, #+0]   
-        LDRD     R2,R3,[SP, #+76]
-        MOV      R1,R8          
-        ADD      R0,SP,#+36     
+        STR      R8,[SP, #+4]   
+        LDRB     R0,[SP, #+140] 
+        STR      R0,[SP, #+0]   
+        LDRD     R2,R3,[SP, #+92]
+        MOV      R1,R10         
+        ADD      R0,SP,#+56     
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
-        ADD      R0,SP,#+44     
+        ADD      R0,SP,#+64     
           CFI FunCall _ZNSsD1Ev
         BL       _ZNSsD1Ev      
-        ADD      R0,SP,#+12     
+        ADD      R0,SP,#+32     
           CFI FunCall _ZNSsD1Ev
         BL       _ZNSsD1Ev      
-        LDRD     R0,R1,[SP, #+36]
-        STRD     R0,R1,[R10, #+0]
-        ADD      SP,SP,#+84     
+        LDRD     R0,R1,[SP, #+56]
+        LDR      R2,[SP, #+88]  
+        STRD     R0,R1,[R2, #+0]
+        ADD      SP,SP,#+100    
           CFI CFA R13+36
         POP      {R4-R11,PC}    
         Nop                     
@@ -7169,79 +7520,84 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FputES3_RSt8ios_b
         THUMB
 // __vfp char *std::num_put<char, std::ostream::_Iter>::_Ifmt(char *, char const *, std::ios_base::fmtflags) const
 _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IfmtEPcPKcNSt5_IosbIiE9_FmtflagsE:
-        PUSH     {R4-R8,LR}     
+        PUSH     {R4-R10,LR}    
           CFI R14 Frame(CFA, -4)
-          CFI R8 Frame(CFA, -8)
-          CFI R7 Frame(CFA, -12)
-          CFI R6 Frame(CFA, -16)
-          CFI R5 Frame(CFA, -20)
-          CFI R4 Frame(CFA, -24)
-          CFI CFA R13+24
-        MOVS     R4,R1          
-        MOVS     R5,R2          
-        MOVS     R6,R3          
-        MOVS     R0,R4          
+          CFI R10 Frame(CFA, -8)
+          CFI R9 Frame(CFA, -12)
+          CFI R8 Frame(CFA, -16)
+          CFI R7 Frame(CFA, -20)
+          CFI R6 Frame(CFA, -24)
+          CFI R5 Frame(CFA, -28)
+          CFI R4 Frame(CFA, -32)
+          CFI CFA R13+32
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R6,R2          
+        MOVS     R7,R3          
+        MOVS     R0,R5          
         MOVS     R1,#+37        
         STRB     R1,[R0, #+0]   
-        ADDS     R7,R0,#+1      
+        ADDS     R8,R0,#+1      
         MOVS     R1,#+32        
-        MOVS     R0,R6          
+        MOVS     R0,R7          
         UXTH     R0,R0          
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
         CMP      R0,#+0         
         BEQ.N    ??_Ifmt_0      
         MOVS     R0,#+43        
-        STRB     R0,[R7, #+0]   
-        ADDS     R7,R7,#+1      
+        STRB     R0,[R8, #+0]   
+        ADDS     R8,R8,#+1      
 ??_Ifmt_0:
         MOVS     R1,#+8         
-        MOVS     R0,R6          
+        MOVS     R0,R7          
         UXTH     R0,R0          
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
         CMP      R0,#+0         
         BEQ.N    ??_Ifmt_1      
         MOVS     R0,#+35        
-        STRB     R0,[R7, #+0]   
-        ADDS     R7,R7,#+1      
+        STRB     R0,[R8, #+0]   
+        ADDS     R8,R8,#+1      
 ??_Ifmt_1:
-        LDRB     R0,[R5, #+0]   
+        LDRB     R0,[R6, #+0]   
         CMP      R0,#+76        
         BEQ.N    ??_Ifmt_2      
-        LDRB     R0,[R5, #+0]   
-        STRB     R0,[R7, #+0]   
-        ADDS     R7,R7,#+1      
+        LDRB     R0,[R6, #+0]   
+        STRB     R0,[R8, #+0]   
+        ADDS     R10,R8,#+1     
         B.N      ??_Ifmt_3      
 ??_Ifmt_2:
         MOVS     R0,#+108       
-        STRB     R0,[R7, #+0]   
-        ADDS     R0,R7,#+1      
+        STRB     R0,[R8, #+0]   
+        ADDS     R0,R8,#+1      
         MOVS     R1,#+108       
         STRB     R1,[R0, #+0]   
-        ADDS     R7,R0,#+1      
+        ADDS     R10,R0,#+1     
 ??_Ifmt_3:
         MOV      R1,#+3584      
-        MOVS     R0,R6          
+        MOVS     R0,R7          
         UXTH     R0,R0          
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
-        ADDS     R8,R7,#+1      
-        MOVS     R1,R0          
-        UXTH     R1,R1          
-        CMP      R1,#+1024      
+        MOV      R9,R0          
+        ADDS     R8,R10,#+1     
+        MOV      R0,R9          
+        UXTH     R0,R0          
+        CMP      R0,#+1024      
         BNE.N    ??_Ifmt_4      
         MOVS     R0,#+111       
         B.N      ??_Ifmt_5      
 ??_Ifmt_4:
+        MOV      R0,R9          
         UXTH     R0,R0          
         CMP      R0,#+2048      
         BEQ.N    ??_Ifmt_6      
-        LDRB     R0,[R5, #+1]   
+        LDRB     R0,[R6, #+1]   
         B.N      ??_Ifmt_5      
 ??_Ifmt_6:
         MOVS     R1,#+4         
-        MOVS     R0,R6          
+        MOVS     R0,R7          
         UXTH     R0,R0          
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
@@ -7252,11 +7608,11 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IfmtEPcPKcNSt5_Io
 ??_Ifmt_7:
         MOVS     R0,#+120       
 ??_Ifmt_5:
-        STRB     R0,[R7, #+0]   
+        STRB     R0,[R10, #+0]  
         MOVS     R0,#+0         
         STRB     R0,[R8, #+0]   
-        MOVS     R0,R4          
-        POP      {R4-R8,PC}     
+        MOVS     R0,R5          
+        POP      {R4-R10,PC}    
           CFI EndBlock cfiBlock211
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -7266,7 +7622,7 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IfmtEPcPKcNSt5_Io
         THUMB
 // __vfp std::ostream::_Iter std::num_put<char, std::ostream::_Iter>::_Iput(std::ostream::_Iter, std::ios_base &, char, char *, size_t) const
 _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IputES3_RSt8ios_basecPcj:
-        PUSH     {R0,R4-R11,LR} 
+        PUSH     {R0,R2-R11,LR} 
           CFI R14 Frame(CFA, -4)
           CFI R11 Frame(CFA, -8)
           CFI R10 Frame(CFA, -12)
@@ -7276,20 +7632,19 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IputES3_RSt8ios_b
           CFI R6 Frame(CFA, -28)
           CFI R5 Frame(CFA, -32)
           CFI R4 Frame(CFA, -36)
-          CFI CFA R13+40
-        SUB      SP,SP,#+64     
-          CFI CFA R13+104
-        MOV      R10,R1         
-        MOVS     R4,R2          
-        MOVS     R5,R3          
-        LDR      R9,[SP, #+112] 
-        LDR      R8,[SP, #+116] 
+          CFI CFA R13+48
+        SUB      SP,SP,#+72     
+          CFI CFA R13+120
+        MOVS     R4,R1          
+        LDR      R9,[SP, #+120] 
+        LDR      R5,[SP, #+128] 
+        LDR      R8,[SP, #+132] 
         CMP      R8,#+0         
         BEQ.N    ??_Iput_0      
-        LDRB     R0,[R9, #+0]   
+        LDRB     R0,[R5, #+0]   
         CMP      R0,#+43        
         BEQ.N    ??_Iput_1      
-        LDRB     R0,[R9, #+0]   
+        LDRB     R0,[R5, #+0]   
         CMP      R0,#+45        
         BNE.N    ??_Iput_0      
 ??_Iput_1:
@@ -7298,8 +7653,7 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IputES3_RSt8ios_b
 ??_Iput_0:
         MOVS     R6,#+0         
 ??_Iput_2:
-        LDR      R7,[SP, #+104] 
-        MOVS     R0,R7          
+        MOV      R0,R9          
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
         MOV      R1,#+3584      
@@ -7311,14 +7665,14 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IputES3_RSt8ios_b
         ADDS     R0,R6,#+2      
         CMP      R8,R0          
         BCC.N    ??_Iput_3      
-        LDRB     R0,[R9, R6]    
+        LDRB     R0,[R5, R6]    
         CMP      R0,#+48        
         BNE.N    ??_Iput_3      
-        ADD      R0,R9,R6       
+        ADD      R0,R5,R6       
         LDRB     R0,[R0, #+1]   
         CMP      R0,#+120       
         BEQ.N    ??_Iput_4      
-        ADD      R0,R9,R6       
+        ADD      R0,R5,R6       
         LDRB     R0,[R0, #+1]   
         CMP      R0,#+88        
         BNE.N    ??_Iput_3      
@@ -7327,7 +7681,7 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IputES3_RSt8ios_b
 ??_Iput_3:
           CFI FunCall _ZSt9use_facetISt5ctypeIcEERKT_v
         BL       _ZSt9use_facetISt5ctypeIcEERKT_v
-        MOV      R11,R0         
+        STR      R0,[SP, #+12]  
         MOVS     R2,#+0         
         MOV      R1,R8          
         ADD      R0,SP,#+16     
@@ -7337,196 +7691,195 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IputES3_RSt8ios_b
           CFI FunCall _ZNSsixEj
         BL       _ZNSsixEj      
         MOVS     R3,R0          
-        ADD      R2,R9,R8       
-        MOV      R1,R9          
-        MOV      R0,R11         
+        ADD      R2,R5,R8       
+        MOVS     R1,R5          
+        LDR      R0,[SP, #+12]  
           CFI FunCall _ZNKSt5ctypeIcE5widenEPKcS2_Pc
         BL       _ZNKSt5ctypeIcE5widenEPKcS2_Pc
           CFI FunCall _ZSt9use_facetISt8numpunctIcEERKT_v
         BL       _ZSt9use_facetISt8numpunctIcEERKT_v
-        MOV      R9,R0          
-        MOV      R1,R9          
-        ADD      R0,SP,#+40     
+        STR      R0,[SP, #+8]   
+        LDR      R1,[SP, #+8]   
+        ADD      R0,SP,#+48     
           CFI FunCall _ZNKSt8numpunctIcE8groupingEv
         BL       _ZNKSt8numpunctIcE8groupingEv
         MOVS     R1,#+0         
-        ADD      R0,SP,#+40     
+        ADD      R0,SP,#+48     
           CFI FunCall _ZNKSsixEj
         BL       _ZNKSsixEj     
-        MOV      R11,R0         
-        LDRB     R0,[R11, #+0]  
+        MOVS     R7,R0          
+        LDRB     R0,[R7, #+0]   
         CMP      R0,#+255       
         BEQ.N    ??_Iput_5      
-        LDRB     R0,[R11, #+0]  
+        LDRB     R0,[R7, #+0]   
         CMP      R0,#+0         
         BEQ.N    ??_Iput_5      
-        MOV      R0,R9          
+        LDR      R0,[SP, #+8]   
           CFI FunCall _ZNKSt8numpunctIcE13thousands_sepEv
         BL       _ZNKSt8numpunctIcE13thousands_sepEv
-        MOV      R9,R0          
-        B.N      ??_Iput_6      
-??_Iput_7:
-        LDRB     R0,[R11, #+0]  
+        MOV      R10,R0         
+??_Iput_6:
+        LDRB     R0,[R7, #+0]   
+        CMP      R0,#+255       
+        BEQ.N    ??_Iput_5      
+        LDRB     R0,[R7, #+0]   
+        CMP      R0,#+0         
+        BEQ.N    ??_Iput_5      
+        LDRB     R0,[R7, #+0]   
+        SUBS     R1,R8,R6       
+        CMP      R0,R1          
+        BCS.N    ??_Iput_5      
+        LDRB     R0,[R7, #+0]   
         SUBS     R8,R8,R0       
-        MOV      R3,R9          
+        MOV      R3,R10         
         UXTB     R3,R3          
         MOVS     R2,#+1         
         MOV      R1,R8          
         ADD      R0,SP,#+16     
           CFI FunCall _ZNSs6insertEjjc
         BL       _ZNSs6insertEjjc
-        LDRB     R0,[R11, #+1]  
+        LDRB     R0,[R7, #+1]   
         CMP      R0,#+0         
         BEQ.N    ??_Iput_6      
-        ADDS     R11,R11,#+1    
-??_Iput_6:
-        LDRB     R0,[R11, #+0]  
-        CMP      R0,#+255       
-        BEQ.N    ??_Iput_5      
-        LDRB     R0,[R11, #+0]  
-        CMP      R0,#+0         
-        BEQ.N    ??_Iput_5      
-        LDRB     R0,[R11, #+0]  
-        SUBS     R1,R8,R6       
-        CMP      R0,R1          
-        BCC.N    ??_Iput_7      
+        ADDS     R7,R7,#+1      
+        B.N      ??_Iput_6      
 ??_Iput_5:
         ADD      R0,SP,#+16     
           CFI FunCall _ZNKSs4sizeEv
         BL       _ZNKSs4sizeEv  
-        MOV      R8,R0          
-        MOVS     R0,R7          
+        MOV      R11,R0         
+        MOV      R0,R9          
           CFI FunCall _ZNKSt8ios_base5widthEv
         BL       _ZNKSt8ios_base5widthEv
         CMP      R0,#+1         
-        BLT.N    ??_Iput_8      
-        MOVS     R0,R7          
+        BLT.N    ??_Iput_7      
+        MOV      R0,R9          
           CFI FunCall _ZNKSt8ios_base5widthEv
         BL       _ZNKSt8ios_base5widthEv
-        CMP      R8,R0          
-        BCC.N    ??_Iput_9      
+        CMP      R11,R0         
+        BCC.N    ??_Iput_8      
+??_Iput_7:
+        MOVS     R8,#+0         
+        B.N      ??_Iput_9      
 ??_Iput_8:
-        MOVS     R9,#+0         
-        B.N      ??_Iput_10     
-??_Iput_9:
-        MOVS     R0,R7          
+        MOV      R0,R9          
           CFI FunCall _ZNKSt8ios_base5widthEv
         BL       _ZNKSt8ios_base5widthEv
-        MOV      R9,R0          
-        SUBS     R9,R9,R8       
-??_Iput_10:
-        MOVS     R0,R7          
+        MOV      R8,R0          
+        SUBS     R8,R8,R11      
+??_Iput_9:
+        MOV      R0,R9          
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
         MOV      R1,#+448       
         UXTH     R0,R0          
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
-        STRD     R4,R5,[SP, #+8]
-        LDR      R4,[SP, #+108] 
-        MOVS     R1,R0          
-        UXTH     R1,R1          
-        CMP      R1,#+64        
-        BEQ.N    ??_Iput_11     
-        MOVS     R1,R0          
-        UXTH     R1,R1          
-        CMP      R1,#+256       
-        BEQ.N    ??_Iput_11     
-        STR      R9,[SP, #+4]   
-        MOVS     R0,R4          
-        UXTB     R0,R0          
-        STR      R0,[SP, #+0]   
-        LDRD     R2,R3,[SP, #+8]
-        MOV      R1,R10         
-        ADD      R0,SP,#+8      
-          CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
-        BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
-        MOVS     R9,#+0         
-        MOVS     R1,#+0         
-        ADD      R0,SP,#+16     
-          CFI FunCall _ZNSsixEj
-        BL       _ZNSsixEj      
-        STR      R6,[SP, #+4]   
-        STR      R0,[SP, #+0]   
-        LDRD     R2,R3,[SP, #+8]
-        MOV      R1,R10         
-        ADD      R0,SP,#+8      
-          CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
-        BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
-        B.N      ??_Iput_12     
-??_Iput_11:
+        MOV      R10,R0         
+        MOV      R0,R10         
+        UXTH     R0,R0          
+        CMP      R0,#+64        
+        BEQ.N    ??_Iput_10     
+        MOV      R0,R10         
         UXTH     R0,R0          
         CMP      R0,#+256       
-        BNE.N    ??_Iput_13     
-        MOVS     R1,#+0         
-        ADD      R0,SP,#+16     
-          CFI FunCall _ZNSsixEj
-        BL       _ZNSsixEj      
-        STR      R6,[SP, #+4]   
+        BEQ.N    ??_Iput_10     
+        STR      R8,[SP, #+4]   
+        LDRB     R0,[SP, #+124] 
         STR      R0,[SP, #+0]   
-        LDRD     R2,R3,[SP, #+8]
-        MOV      R1,R10         
-        ADD      R0,SP,#+8      
-          CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
-        BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
-        STR      R9,[SP, #+4]   
-        MOVS     R0,R4          
-        UXTB     R0,R0          
-        STR      R0,[SP, #+0]   
-        LDRD     R2,R3,[SP, #+8]
-        MOV      R1,R10         
-        ADD      R0,SP,#+8      
+        LDRD     R2,R3,[SP, #+76]
+        MOVS     R1,R4          
+        ADD      R0,SP,#+76     
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
-        MOVS     R9,#+0         
-        B.N      ??_Iput_12     
-??_Iput_13:
+        MOVS     R0,#+0         
+        MOV      R8,R0          
         MOVS     R1,#+0         
         ADD      R0,SP,#+16     
           CFI FunCall _ZNSsixEj
         BL       _ZNSsixEj      
         STR      R6,[SP, #+4]   
         STR      R0,[SP, #+0]   
-        LDRD     R2,R3,[SP, #+8]
-        MOV      R1,R10         
-        ADD      R0,SP,#+8      
+        LDRD     R2,R3,[SP, #+76]
+        MOVS     R1,R4          
+        ADD      R0,SP,#+76     
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
+        B.N      ??_Iput_11     
+??_Iput_10:
+        MOV      R0,R10         
+        UXTH     R0,R0          
+        CMP      R0,#+256       
+        BNE.N    ??_Iput_12     
+        MOVS     R1,#+0         
+        ADD      R0,SP,#+16     
+          CFI FunCall _ZNSsixEj
+        BL       _ZNSsixEj      
+        STR      R6,[SP, #+4]   
+        STR      R0,[SP, #+0]   
+        LDRD     R2,R3,[SP, #+76]
+        MOVS     R1,R4          
+        ADD      R0,SP,#+76     
+          CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
+        BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
+        STR      R8,[SP, #+4]   
+        LDRB     R0,[SP, #+124] 
+        STR      R0,[SP, #+0]   
+        LDRD     R2,R3,[SP, #+76]
+        MOVS     R1,R4          
+        ADD      R0,SP,#+76     
+          CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
+        BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
+        MOVS     R0,#+0         
+        MOV      R8,R0          
+        B.N      ??_Iput_11     
 ??_Iput_12:
-        LDR      R5,[SP, #+64]  
+        MOVS     R1,#+0         
+        ADD      R0,SP,#+16     
+          CFI FunCall _ZNSsixEj
+        BL       _ZNSsixEj      
+        STR      R6,[SP, #+4]   
+        STR      R0,[SP, #+0]   
+        LDRD     R2,R3,[SP, #+76]
+        MOVS     R1,R4          
+        ADD      R0,SP,#+76     
+          CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
+        BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
+??_Iput_11:
         MOVS     R1,R6          
         ADD      R0,SP,#+16     
           CFI FunCall _ZNSsixEj
         BL       _ZNSsixEj      
-        SUBS     R8,R8,R6       
-        STR      R8,[SP, #+4]   
+        SUBS     R1,R11,R6      
+        STR      R1,[SP, #+4]   
         STR      R0,[SP, #+0]   
-        LDRD     R2,R3,[SP, #+8]
-        MOV      R1,R10         
-        ADD      R0,SP,#+8      
+        LDRD     R2,R3,[SP, #+76]
+        MOVS     R1,R4          
+        ADD      R0,SP,#+76     
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj
         MOVS     R1,#+0         
-        MOVS     R0,R7          
+        MOV      R0,R9          
           CFI FunCall _ZNSt8ios_base5widthEi
         BL       _ZNSt8ios_base5widthEi
-        STR      R9,[SP, #+4]   
-        UXTB     R4,R4          
-        STR      R4,[SP, #+0]   
-        LDRD     R2,R3,[SP, #+8]
-        MOV      R1,R10         
-        ADD      R0,SP,#+8      
+        STR      R8,[SP, #+4]   
+        LDRB     R0,[SP, #+124] 
+        STR      R0,[SP, #+0]   
+        LDRD     R2,R3,[SP, #+76]
+        MOVS     R1,R4          
+        ADD      R0,SP,#+40     
           CFI FunCall _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
         BL       _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj
-        ADD      R0,SP,#+40     
+        ADD      R0,SP,#+48     
           CFI FunCall _ZNSsD1Ev
         BL       _ZNSsD1Ev      
         ADD      R0,SP,#+16     
           CFI FunCall _ZNSsD1Ev
         BL       _ZNSsD1Ev      
-        LDRD     R0,R1,[SP, #+8]
-        STRD     R0,R1,[R5, #+0]
-        ADD      SP,SP,#+68     
+        LDRD     R0,R1,[SP, #+40]
+        LDR      R2,[SP, #+72]  
+        STRD     R0,R1,[R2, #+0]
+        ADD      SP,SP,#+84     
           CFI CFA R13+36
         POP      {R4-R11,PC}    
           CFI EndBlock cfiBlock212
@@ -7538,34 +7891,36 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_IputES3_RSt8ios_b
         THUMB
 // __vfp std::ostream::_Iter std::num_put<char, std::ostream::_Iter>::_Put(std::ostream::_Iter, char const *, size_t) const
 _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj:
-        PUSH     {R2-R6,LR}     
+        PUSH     {R1-R7,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R6 Frame(CFA, -8)
-          CFI R5 Frame(CFA, -12)
-          CFI R4 Frame(CFA, -16)
-          CFI CFA R13+24
+          CFI R7 Frame(CFA, -8)
+          CFI R6 Frame(CFA, -12)
+          CFI R5 Frame(CFA, -16)
+          CFI R4 Frame(CFA, -20)
+          CFI CFA R13+32
         MOVS     R5,R0          
-        LDR      R6,[SP, #+24]  
-        LDR      R4,[SP, #+28]  
-        B.N      ??_Put_0       
-??_Put_1:
-        MOV      R0,SP          
+        MOVS     R6,R1          
+        LDR      R7,[SP, #+32]  
+        LDR      R4,[SP, #+36]  
+??_Put_0:
+        CMP      R4,#+0         
+        BEQ.N    ??_Put_1       
+        ADD      R0,SP,#+4      
           CFI FunCall _ZNSt19ostreambuf_iteratorIcSt11char_traitsIcEEdeEv
         BL       _ZNSt19ostreambuf_iteratorIcSt11char_traitsIcEEdeEv
-        LDRB     R1,[R6, #+0]   
+        LDRB     R1,[R7, #+0]   
           CFI FunCall _ZNSt19ostreambuf_iteratorIcSt11char_traitsIcEEaSEc
         BL       _ZNSt19ostreambuf_iteratorIcSt11char_traitsIcEEaSEc
         SUBS     R4,R4,#+1      
-        MOV      R0,SP          
+        ADD      R0,SP,#+4      
           CFI FunCall _ZNSt19ostreambuf_iteratorIcSt11char_traitsIcEEppEv
         BL       _ZNSt19ostreambuf_iteratorIcSt11char_traitsIcEEppEv
-        ADDS     R6,R6,#+1      
-??_Put_0:
-        CMP      R4,#+0         
-        BNE.N    ??_Put_1       
-        LDRD     R0,R1,[SP, #+0]
+        ADDS     R7,R7,#+1      
+        B.N      ??_Put_0       
+??_Put_1:
+        LDRD     R0,R1,[SP, #+4]
         STRD     R0,R1,[R5, #+0]
-        POP      {R0,R1,R4-R6,PC}
+        POP      {R0-R2,R4-R7,PC}
           CFI EndBlock cfiBlock213
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -7575,18 +7930,21 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_PutES3_PKcj:
         THUMB
 // __vfp std::ostream::_Iter std::num_put<char, std::ostream::_Iter>::_Rep(std::ostream::_Iter, char, size_t) const
 _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj:
-        PUSH     {R2-R6,LR}     
+        PUSH     {R1-R7,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R6 Frame(CFA, -8)
-          CFI R5 Frame(CFA, -12)
-          CFI R4 Frame(CFA, -16)
-          CFI CFA R13+24
+          CFI R7 Frame(CFA, -8)
+          CFI R6 Frame(CFA, -12)
+          CFI R5 Frame(CFA, -16)
+          CFI R4 Frame(CFA, -20)
+          CFI CFA R13+32
         MOVS     R6,R0          
-        LDR      R5,[SP, #+24]  
-        LDR      R4,[SP, #+28]  
-        B.N      ??_Rep_0       
-??_Rep_1:
-        MOV      R0,SP          
+        MOVS     R7,R1          
+        LDR      R5,[SP, #+32]  
+        LDR      R4,[SP, #+36]  
+??_Rep_0:
+        CMP      R4,#+0         
+        BEQ.N    ??_Rep_1       
+        ADD      R0,SP,#+4      
           CFI FunCall _ZNSt19ostreambuf_iteratorIcSt11char_traitsIcEEdeEv
         BL       _ZNSt19ostreambuf_iteratorIcSt11char_traitsIcEEdeEv
         MOVS     R1,R5          
@@ -7594,15 +7952,14 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE4_RepES3_cj:
           CFI FunCall _ZNSt19ostreambuf_iteratorIcSt11char_traitsIcEEaSEc
         BL       _ZNSt19ostreambuf_iteratorIcSt11char_traitsIcEEaSEc
         SUBS     R4,R4,#+1      
-        MOV      R0,SP          
+        ADD      R0,SP,#+4      
           CFI FunCall _ZNSt19ostreambuf_iteratorIcSt11char_traitsIcEEppEv
         BL       _ZNSt19ostreambuf_iteratorIcSt11char_traitsIcEEppEv
-??_Rep_0:
-        CMP      R4,#+0         
-        BNE.N    ??_Rep_1       
-        LDRD     R0,R1,[SP, #+0]
+        B.N      ??_Rep_0       
+??_Rep_1:
+        LDRD     R0,R1,[SP, #+4]
         STRD     R0,R1,[R6, #+0]
-        POP      {R0,R1,R4-R6,PC}
+        POP      {R0-R2,R4-R7,PC}
           CFI EndBlock cfiBlock214
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -7653,12 +8010,15 @@ _ZNSt9basic_iosIcSt11char_traitsIcEED0Ev:
         THUMB
 // __vfp std::ios::subobject ~basic_ios() noexcept
 _ZNSt9basic_iosIcSt11char_traitsIcEED2Ev:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt9basic_iosIcSt11char_traitsIcEED1Ev
         BL       _ZNSt9basic_iosIcSt11char_traitsIcEED1Ev
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock217
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -7668,21 +8028,30 @@ _ZNSt9basic_iosIcSt11char_traitsIcEED2Ev:
         THUMB
 // __vfp void std::ios::clear(std::ios_base::iostate, bool)
 _ZNSt9basic_iosIcSt11char_traitsIcEE5clearENSt5_IosbIiE8_IostateEb:
-        PUSH     {R7,LR}        
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
-        LDR      R3,[R0, #+28]  
-        CMP      R3,#+0         
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R6,R2          
+        LDR      R0,[R4, #+28]  
+        CMP      R0,#+0         
         BNE.N    ??clear_0      
-        ORRS     R1,R1,#0x4     
+        ORRS     R1,R5,#0x4     
         B.N      ??clear_1      
 ??clear_0:
+        MOVS     R1,R5          
 ??clear_1:
+        MOVS     R2,R6          
         UXTB     R2,R2          
         UXTB     R1,R1          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt8ios_base5clearENSt5_IosbIiE8_IostateEb
         BL       _ZNSt8ios_base5clearENSt5_IosbIiE8_IostateEb
-        POP      {R0,PC}        
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock218
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -7708,10 +8077,10 @@ _ZNSt9basic_iosIcSt11char_traitsIcEE8setstateENSt5_IosbIiE8_IostateEb:
         MOVS     R0,R4          
           CFI FunCall _ZNKSt8ios_base7rdstateEv
         BL       _ZNKSt8ios_base7rdstateEv
+        MOVS     R1,R0          
         MOVS     R2,R6          
         UXTB     R2,R2          
-        ORRS     R5,R5,R0       
-        MOVS     R1,R5          
+        ORRS     R1,R5,R1       
         UXTB     R1,R1          
         MOVS     R0,R4          
           CFI FunCall _ZNSt9basic_iosIcSt11char_traitsIcEE5clearENSt5_IosbIiE8_IostateEb
@@ -7763,18 +8132,23 @@ _ZNKSt9basic_iosIcSt11char_traitsIcEE4fillEv:
         THUMB
 // __vfp char std::ios::widen(char) const
 _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc:
-        PUSH     {R4,LR}        
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
-        MOVS     R4,R1          
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
           CFI FunCall _ZSt9use_facetISt5ctypeIcEERKT_v
         BL       _ZSt9use_facetISt5ctypeIcEERKT_v
-        MOVS     R1,R4          
+        MOVS     R6,R0          
+        MOVS     R1,R5          
         UXTB     R1,R1          
+        MOVS     R0,R6          
           CFI FunCall _ZNKSt5ctypeIcE5widenEc
         BL       _ZNKSt5ctypeIcE5widenEc
-        POP      {R4,PC}        
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock223
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -7813,8 +8187,9 @@ _ZNSt9basic_iosIcSt11char_traitsIcEE4initEPSt15basic_streambufIcS1_Eb:
           CFI FunCall _ZNSt9basic_iosIcSt11char_traitsIcEE8setstateENSt5_IosbIiE8_IostateEb
         BL       _ZNSt9basic_iosIcSt11char_traitsIcEE8setstateENSt5_IosbIiE8_IostateEb
 ??init_0:
-        UXTB     R6,R6          
-        CMP      R6,#+0         
+        MOVS     R0,R6          
+        UXTB     R0,R0          
+        CMP      R0,#+0         
         BEQ.N    ??init_1       
         MOVS     R0,R4          
           CFI FunCall _ZNSt8ios_base7_AddstdEPS_
@@ -7830,12 +8205,15 @@ _ZNSt9basic_iosIcSt11char_traitsIcEE4initEPSt15basic_streambufIcS1_Eb:
         THUMB
 // __vfp std::ios::subobject basic_ios()
 _ZNSt9basic_iosIcSt11char_traitsIcEEC2Ev:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSt9basic_iosIcSt11char_traitsIcEEC1Ev
         BL       _ZNSt9basic_iosIcSt11char_traitsIcEEC1Ev
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock225
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
@@ -7892,28 +8270,31 @@ _ZSt5fixedRSt8ios_base:
         THUMB
 // __vfp std::ostream::subobject basic_ostream(std::streambuf *, bool)
 _ZNSoC2EPSt15basic_streambufIcSt11char_traitsIcEEb:
-        PUSH     {R4,LR}        
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
+          CFI CFA R13+16
         MOVS     R4,R0          
-        MOVS     R0,R2          
-        LDR      R2,[R1, #+0]   
-        STR      R2,[R4, #+0]   
-        LDR      R1,[R1, #+4]   
-        LDR      R2,[R4, #+0]   
-        LDR      R2,[R2, #-12]  
-        STR      R1,[R4, R2]    
-        MOVS     R2,R3          
+        MOVS     R5,R2          
+        MOVS     R6,R3          
+        LDR      R0,[R1, #+0]   
+        STR      R0,[R4, #+0]   
+        LDR      R0,[R1, #+4]   
+        LDR      R1,[R4, #+0]   
+        LDR      R1,[R1, #-12]  
+        STR      R0,[R4, R1]    
+        MOVS     R2,R6          
         UXTB     R2,R2          
-        MOVS     R1,R0          
+        MOVS     R1,R5          
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
           CFI FunCall _ZNSt9basic_iosIcSt11char_traitsIcEE4initEPSt15basic_streambufIcS1_Eb
         BL       _ZNSt9basic_iosIcSt11char_traitsIcEE4initEPSt15basic_streambufIcS1_Eb
         MOVS     R0,R4          
-        POP      {R4,PC}        
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock228
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -7985,12 +8366,15 @@ _ZNSoD1Ev:
         THUMB
 // __vfp std::ostream::_Sentry_base::subobject _Sentry_base(std::ostream &)
 _ZNSo12_Sentry_baseC2ERSo:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSo12_Sentry_baseC1ERSo
         BL       _ZNSo12_Sentry_baseC1ERSo
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock232
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -8000,12 +8384,14 @@ _ZNSo12_Sentry_baseC2ERSo:
         THUMB
 // __vfp std::ostream::_Sentry_base::_Sentry_base(std::ostream &)
 _ZNSo12_Sentry_baseC1ERSo:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
         MOVS     R4,R0          
-        STR      R1,[R4, #+0]   
+        MOVS     R5,R1          
+        STR      R5,[R4, #+0]   
         LDR      R0,[R4, #+0]   
         CMP      R0,#+0         
         BEQ.N    ??_Sentry_base_0
@@ -8042,7 +8428,7 @@ _ZNSo12_Sentry_baseC1ERSo:
         BLX      R1             
 ??_Sentry_base_2:
         MOVS     R0,R4          
-        POP      {R4,PC}        
+        POP      {R1,R4,R5,PC}  
           CFI EndBlock cfiBlock233
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -8052,12 +8438,15 @@ _ZNSo12_Sentry_baseC1ERSo:
         THUMB
 // __vfp std::ostream::_Sentry_base::subobject ~_Sentry_base() noexcept
 _ZNSo12_Sentry_baseD2Ev:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSo12_Sentry_baseD1Ev
         BL       _ZNSo12_Sentry_baseD1Ev
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock234
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -8118,12 +8507,15 @@ _ZNSo12_Sentry_baseD1Ev:
         THUMB
 // __vfp std::ostream::_Flush_sentry::subobject _Flush_sentry(std::ostream &)
 _ZNSo13_Flush_sentryC2ERSo:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSo13_Flush_sentryC1ERSo
         BL       _ZNSo13_Flush_sentryC1ERSo
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock236
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -8167,12 +8559,15 @@ _ZNSo13_Flush_sentryC1ERSo:
         THUMB
 // __vfp std::ostream::_Flush_sentry::subobject ~_Flush_sentry() noexcept
 _ZNSo13_Flush_sentryD2Ev:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZNSo13_Flush_sentryD1Ev
         BL       _ZNSo13_Flush_sentryD1Ev
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock238
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -8360,12 +8755,17 @@ _ZNSo5_OsfxEv:
         THUMB
 // __vfp std::ostream &std::ostream::operator<<(std::ostream &(*)(std::ostream &))
 _ZNSolsEPFRSoS_E:
-        PUSH     {R7,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R0,R4          
           CFI IndirectCall
-        BLX      R1             
-        POP      {R1,PC}        
+        BLX      R5             
+        POP      {R1,R4,R5,PC}  
           CFI EndBlock cfiBlock244
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -8375,18 +8775,20 @@ _ZNSolsEPFRSoS_E:
         THUMB
 // __vfp std::ostream &std::ostream::operator<<(std::ios_base &(*)(std::ios_base &))
 _ZNSolsEPFRSt8ios_baseS0_E:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
         MOVS     R4,R0          
+        MOVS     R5,R1          
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
           CFI IndirectCall
-        BLX      R1             
+        BLX      R5             
         MOVS     R0,R4          
-        POP      {R4,PC}        
+        POP      {R1,R4,R5,PC}  
           CFI EndBlock cfiBlock245
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -8462,6 +8864,14 @@ _ZNSolsEf:
           CFI FunCall _ZNKSt19ostreambuf_iteratorIcSt11char_traitsIcEE6failedEv
         BL       _ZNKSt19ostreambuf_iteratorIcSt11char_traitsIcEE6failedEv
         CMP      R0,#+0         
+        BEQ.N    `??operator<<_1`
+        MOVS     R0,#+1         
+        B.N      `??operator<<_2`
+`??operator<<_1`:
+        MOVS     R0,#+0         
+`??operator<<_2`:
+        UXTB     R0,R0          
+        CMP      R0,#+0         
         BEQ.N    `??operator<<_0`
         MOVS     R1,#+4         
         ADD      R0,SP,#+8      
@@ -8535,6 +8945,14 @@ _ZNSo3putEc:
         ADD      R0,SP,#+8      
           CFI FunCall _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         BL       _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
+        CMP      R0,#+0         
+        BEQ.N    ??put_2        
+        MOVS     R0,#+1         
+        B.N      ??put_3        
+??put_2:
+        MOVS     R0,#+0         
+??put_3:
+        UXTB     R0,R0          
         CMP      R0,#+0         
         BEQ.N    ??put_1        
         MOVS     R1,#+4         
@@ -8628,57 +9046,57 @@ _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc:
         SUB      SP,SP,#+28     
           CFI CFA R13+56
         MOVS     R4,R0          
-        MOVS     R6,R1          
+        MOVS     R5,R1          
         MOVS     R0,#+0         
         STRB     R0,[SP, #+0]   
-        MOVS     R0,R6          
+        MOVS     R0,R5          
           CFI FunCall _ZNSt11char_traitsIcE6lengthEPKc
         BL       _ZNSt11char_traitsIcE6lengthEPKc
-        MOVS     R7,R0          
+        MOVS     R6,R0          
         CMP      R4,#+0         
-        BEQ.N    `??operator<<_1`
+        BEQ.N    `??operator<<_3`
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
-        B.N      `??operator<<_2`
-`??operator<<_1`:
+        B.N      `??operator<<_4`
+`??operator<<_3`:
         MOVS     R0,#+0         
-`??operator<<_2`:
+`??operator<<_4`:
           CFI FunCall _ZNKSt8ios_base5widthEv
         BL       _ZNKSt8ios_base5widthEv
         CMP      R0,#+1         
-        BLT.N    `??operator<<_3`
+        BLT.N    `??operator<<_5`
         CMP      R4,#+0         
-        BEQ.N    `??operator<<_4`
+        BEQ.N    `??operator<<_6`
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
-        B.N      `??operator<<_5`
-`??operator<<_4`:
-        MOVS     R0,#+0         
-`??operator<<_5`:
-          CFI FunCall _ZNKSt8ios_base5widthEv
-        BL       _ZNKSt8ios_base5widthEv
-        CMP      R7,R0          
-        BLT.N    `??operator<<_6`
-`??operator<<_3`:
-        MOVS     R5,#+0         
         B.N      `??operator<<_7`
 `??operator<<_6`:
+        MOVS     R0,#+0         
+`??operator<<_7`:
+          CFI FunCall _ZNKSt8ios_base5widthEv
+        BL       _ZNKSt8ios_base5widthEv
+        CMP      R6,R0          
+        BLT.N    `??operator<<_8`
+`??operator<<_5`:
+        MOVS     R7,#+0         
+        B.N      `??operator<<_9`
+`??operator<<_8`:
         CMP      R4,#+0         
-        BEQ.N    `??operator<<_8`
+        BEQ.N    `??operator<<_10`
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
-        B.N      `??operator<<_9`
-`??operator<<_8`:
+        B.N      `??operator<<_11`
+`??operator<<_10`:
         MOVS     R0,#+0         
-`??operator<<_9`:
+`??operator<<_11`:
           CFI FunCall _ZNKSt8ios_base5widthEv
         BL       _ZNKSt8ios_base5widthEv
-        MOVS     R5,R0          
-        SUBS     R5,R5,R7       
-`??operator<<_7`:
+        MOVS     R7,R0          
+        SUBS     R7,R7,R6       
+`??operator<<_9`:
         MOVS     R1,R4          
         ADD      R0,SP,#+20     
           CFI FunCall _ZNSo6sentryC1ERSo
@@ -8686,22 +9104,22 @@ _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc:
           CFI FunCall _ZNKSo13_Flush_sentrycvbEv
         BL       _ZNKSo13_Flush_sentrycvbEv
         CMP      R0,#+0         
-        BNE.N    `??operator<<_10`
+        BNE.N    `??operator<<_12`
         MOVS     R1,#+4         
         MOV      R0,SP          
           CFI FunCall _ZStoRRNSt5_IosbIiE8_IostateES1_
         BL       _ZStoRRNSt5_IosbIiE8_IostateES1_
-        B.N      `??operator<<_11`
-`??operator<<_10`:
+        B.N      `??operator<<_13`
+`??operator<<_12`:
         CMP      R4,#+0         
-        BEQ.N    `??operator<<_12`
+        BEQ.N    `??operator<<_14`
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
-        B.N      `??operator<<_13`
-`??operator<<_12`:
+        B.N      `??operator<<_15`
+`??operator<<_14`:
         MOVS     R0,#+0         
-`??operator<<_13`:
+`??operator<<_15`:
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
         MOV      R1,#+448       
@@ -8709,36 +9127,33 @@ _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc:
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
         CMP      R0,#+64        
-        BNE.N    `??operator<<_14`
-        B.N      `??operator<<_15`
-`??operator<<_16`:
-        SUBS     R5,R5,#+1      
-`??operator<<_14`:
-        CMP      R5,#+1         
-        BLT.N    `??operator<<_15`
+        BEQ.N    `??operator<<_16`
+`??operator<<_17`:
+        CMP      R7,#+1         
+        BLT.N    `??operator<<_16`
         MOVS     R0,#+4294967295
         STR      R0,[SP, #+16]  
         CMP      R4,#+0         
-        BEQ.N    `??operator<<_17`
+        BEQ.N    `??operator<<_18`
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
-        B.N      `??operator<<_18`
-`??operator<<_17`:
-        MOVS     R0,#+0         
+        B.N      `??operator<<_19`
 `??operator<<_18`:
+        MOVS     R0,#+0         
+`??operator<<_19`:
           CFI FunCall _ZNKSt9basic_iosIcSt11char_traitsIcEE4fillEv
         BL       _ZNKSt9basic_iosIcSt11char_traitsIcEE4fillEv
         MOV      R8,R0          
         CMP      R4,#+0         
-        BEQ.N    `??operator<<_19`
+        BEQ.N    `??operator<<_20`
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
-        B.N      `??operator<<_20`
-`??operator<<_19`:
-        MOVS     R0,#+0         
+        B.N      `??operator<<_21`
 `??operator<<_20`:
+        MOVS     R0,#+0         
+`??operator<<_21`:
           CFI FunCall _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
         BL       _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
         MOV      R1,R8          
@@ -8751,72 +9166,81 @@ _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc:
           CFI FunCall _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         BL       _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         CMP      R0,#+0         
-        BEQ.N    `??operator<<_16`
-        MOVS     R1,#+4         
-        MOV      R0,SP          
-          CFI FunCall _ZStoRRNSt5_IosbIiE8_IostateES1_
-        BL       _ZStoRRNSt5_IosbIiE8_IostateES1_
-`??operator<<_15`:
-        LDRB     R0,[SP, #+0]   
-        CMP      R0,#+0         
-        BNE.N    `??operator<<_21`
-        CMP      R4,#+0         
         BEQ.N    `??operator<<_22`
-        LDR      R0,[R4, #+0]   
-        LDR      R0,[R0, #-12]  
-        ADD      R0,R4,R0       
+        MOVS     R0,#+1         
         B.N      `??operator<<_23`
 `??operator<<_22`:
         MOVS     R0,#+0         
 `??operator<<_23`:
-          CFI FunCall _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
-        BL       _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
-        MOVS     R2,R7          
-        MOVS     R1,R6          
-          CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE5sputnEPKci
-        BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE5sputnEPKci
-        CMP      R0,R7          
-        BEQ.N    `??operator<<_21`
+        UXTB     R0,R0          
+        CMP      R0,#+0         
+        BEQ.N    `??operator<<_24`
         MOVS     R1,#+4         
         MOV      R0,SP          
           CFI FunCall _ZStoRRNSt5_IosbIiE8_IostateES1_
         BL       _ZStoRRNSt5_IosbIiE8_IostateES1_
-`??operator<<_21`:
+        B.N      `??operator<<_16`
+`??operator<<_24`:
+        SUBS     R7,R7,#+1      
+        B.N      `??operator<<_17`
+`??operator<<_16`:
         LDRB     R0,[SP, #+0]   
         CMP      R0,#+0         
-        BNE.N    `??operator<<_24`
-        B.N      `??operator<<_25`
+        BNE.N    `??operator<<_25`
+        CMP      R4,#+0         
+        BEQ.N    `??operator<<_26`
+        LDR      R0,[R4, #+0]   
+        LDR      R0,[R0, #-12]  
+        ADD      R0,R4,R0       
+        B.N      `??operator<<_27`
 `??operator<<_26`:
-        SUBS     R5,R5,#+1      
+        MOVS     R0,#+0         
+`??operator<<_27`:
+          CFI FunCall _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
+        BL       _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
+        MOVS     R2,R6          
+        MOVS     R1,R5          
+          CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE5sputnEPKci
+        BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE5sputnEPKci
+        CMP      R0,R6          
+        BEQ.N    `??operator<<_25`
+        MOVS     R1,#+4         
+        MOV      R0,SP          
+          CFI FunCall _ZStoRRNSt5_IosbIiE8_IostateES1_
+        BL       _ZStoRRNSt5_IosbIiE8_IostateES1_
 `??operator<<_25`:
-        CMP      R5,#+1         
-        BLT.N    `??operator<<_24`
+        LDRB     R0,[SP, #+0]   
+        CMP      R0,#+0         
+        BNE.N    `??operator<<_28`
+`??operator<<_29`:
+        CMP      R7,#+1         
+        BLT.N    `??operator<<_28`
         MOVS     R0,#+4294967295
         STR      R0,[SP, #+8]   
         CMP      R4,#+0         
-        BEQ.N    `??operator<<_27`
+        BEQ.N    `??operator<<_30`
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
-        B.N      `??operator<<_28`
-`??operator<<_27`:
+        B.N      `??operator<<_31`
+`??operator<<_30`:
         MOVS     R0,#+0         
-`??operator<<_28`:
+`??operator<<_31`:
           CFI FunCall _ZNKSt9basic_iosIcSt11char_traitsIcEE4fillEv
         BL       _ZNKSt9basic_iosIcSt11char_traitsIcEE4fillEv
-        MOVS     R6,R0          
+        MOV      R8,R0          
         CMP      R4,#+0         
-        BEQ.N    `??operator<<_29`
+        BEQ.N    `??operator<<_32`
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
-        B.N      `??operator<<_30`
-`??operator<<_29`:
+        B.N      `??operator<<_33`
+`??operator<<_32`:
         MOVS     R0,#+0         
-`??operator<<_30`:
+`??operator<<_33`:
           CFI FunCall _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
         BL       _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
-        MOVS     R1,R6          
+        MOV      R1,R8          
         UXTB     R1,R1          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE5sputcEc
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE5sputcEc
@@ -8826,19 +9250,31 @@ _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc:
           CFI FunCall _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         BL       _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         CMP      R0,#+0         
-        BEQ.N    `??operator<<_26`
+        BEQ.N    `??operator<<_34`
+        MOVS     R0,#+1         
+        B.N      `??operator<<_35`
+`??operator<<_34`:
+        MOVS     R0,#+0         
+`??operator<<_35`:
+        UXTB     R0,R0          
+        CMP      R0,#+0         
+        BEQ.N    `??operator<<_36`
         MOVS     R1,#+4         
         MOV      R0,SP          
           CFI FunCall _ZStoRRNSt5_IosbIiE8_IostateES1_
         BL       _ZStoRRNSt5_IosbIiE8_IostateES1_
-`??operator<<_24`:
+        B.N      `??operator<<_28`
+`??operator<<_36`:
+        SUBS     R7,R7,#+1      
+        B.N      `??operator<<_29`
+`??operator<<_28`:
         MOVS     R1,#+0         
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
           CFI FunCall _ZNSt8ios_base5widthEi
         BL       _ZNSt8ios_base5widthEi
-`??operator<<_11`:
+`??operator<<_13`:
         MOVS     R2,#+0         
         LDRB     R1,[SP, #+0]   
         LDR      R0,[R4, #+0]   
@@ -8909,57 +9345,57 @@ _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E:
         SUB      SP,SP,#+28     
           CFI CFA R13+56
         MOVS     R4,R0          
-        MOVS     R7,R1          
+        MOVS     R6,R1          
         MOVS     R0,#+0         
         STRB     R0,[SP, #+0]   
-        MOVS     R0,R7          
+        MOVS     R0,R6          
           CFI FunCall _ZNKSs4sizeEv
         BL       _ZNKSs4sizeEv  
-        MOVS     R6,R0          
+        MOVS     R7,R0          
         CMP      R4,#+0         
-        BEQ.N    `??operator<<_31`
+        BEQ.N    `??operator<<_37`
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
-        B.N      `??operator<<_32`
-`??operator<<_31`:
+        B.N      `??operator<<_38`
+`??operator<<_37`:
         MOVS     R0,#+0         
-`??operator<<_32`:
+`??operator<<_38`:
           CFI FunCall _ZNKSt8ios_base5widthEv
         BL       _ZNKSt8ios_base5widthEv
         CMP      R0,#+1         
-        BLT.N    `??operator<<_33`
+        BLT.N    `??operator<<_39`
         CMP      R4,#+0         
-        BEQ.N    `??operator<<_34`
+        BEQ.N    `??operator<<_40`
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
-        B.N      `??operator<<_35`
-`??operator<<_34`:
+        B.N      `??operator<<_41`
+`??operator<<_40`:
         MOVS     R0,#+0         
-`??operator<<_35`:
+`??operator<<_41`:
           CFI FunCall _ZNKSt8ios_base5widthEv
         BL       _ZNKSt8ios_base5widthEv
-        CMP      R6,R0          
-        BCC.N    `??operator<<_36`
-`??operator<<_33`:
+        CMP      R7,R0          
+        BCC.N    `??operator<<_42`
+`??operator<<_39`:
         MOVS     R5,#+0         
-        B.N      `??operator<<_37`
-`??operator<<_36`:
+        B.N      `??operator<<_43`
+`??operator<<_42`:
         CMP      R4,#+0         
-        BEQ.N    `??operator<<_38`
+        BEQ.N    `??operator<<_44`
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
-        B.N      `??operator<<_39`
-`??operator<<_38`:
+        B.N      `??operator<<_45`
+`??operator<<_44`:
         MOVS     R0,#+0         
-`??operator<<_39`:
+`??operator<<_45`:
           CFI FunCall _ZNKSt8ios_base5widthEv
         BL       _ZNKSt8ios_base5widthEv
         MOVS     R5,R0          
-        SUBS     R5,R5,R6       
-`??operator<<_37`:
+        SUBS     R5,R5,R7       
+`??operator<<_43`:
         MOVS     R1,R4          
         ADD      R0,SP,#+20     
           CFI FunCall _ZNSo6sentryC1ERSo
@@ -8967,22 +9403,22 @@ _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E:
           CFI FunCall _ZNKSo13_Flush_sentrycvbEv
         BL       _ZNKSo13_Flush_sentrycvbEv
         CMP      R0,#+0         
-        BNE.N    `??operator<<_40`
+        BNE.N    `??operator<<_46`
         MOVS     R1,#+4         
         MOV      R0,SP          
           CFI FunCall _ZStoRRNSt5_IosbIiE8_IostateES1_
         BL       _ZStoRRNSt5_IosbIiE8_IostateES1_
-        B.N      `??operator<<_41`
-`??operator<<_40`:
+        B.N      `??operator<<_47`
+`??operator<<_46`:
         CMP      R4,#+0         
-        BEQ.N    `??operator<<_42`
+        BEQ.N    `??operator<<_48`
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
-        B.N      `??operator<<_43`
-`??operator<<_42`:
+        B.N      `??operator<<_49`
+`??operator<<_48`:
         MOVS     R0,#+0         
-`??operator<<_43`:
+`??operator<<_49`:
           CFI FunCall _ZNKSt8ios_base5flagsEv
         BL       _ZNKSt8ios_base5flagsEv
         MOV      R1,#+448       
@@ -8990,36 +9426,33 @@ _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E:
           CFI FunCall _ZStanNSt5_IosbIiE9_FmtflagsES1_
         BL       _ZStanNSt5_IosbIiE9_FmtflagsES1_
         CMP      R0,#+64        
-        BNE.N    `??operator<<_44`
-        B.N      `??operator<<_45`
-`??operator<<_46`:
-        SUBS     R5,R5,#+1      
-`??operator<<_44`:
+        BEQ.N    `??operator<<_50`
+`??operator<<_51`:
         CMP      R5,#+0         
-        BEQ.N    `??operator<<_45`
+        BEQ.N    `??operator<<_50`
         MOVS     R0,#+4294967295
         STR      R0,[SP, #+16]  
         CMP      R4,#+0         
-        BEQ.N    `??operator<<_47`
+        BEQ.N    `??operator<<_52`
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
-        B.N      `??operator<<_48`
-`??operator<<_47`:
+        B.N      `??operator<<_53`
+`??operator<<_52`:
         MOVS     R0,#+0         
-`??operator<<_48`:
+`??operator<<_53`:
           CFI FunCall _ZNKSt9basic_iosIcSt11char_traitsIcEE4fillEv
         BL       _ZNKSt9basic_iosIcSt11char_traitsIcEE4fillEv
         MOV      R8,R0          
         CMP      R4,#+0         
-        BEQ.N    `??operator<<_49`
+        BEQ.N    `??operator<<_54`
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
-        B.N      `??operator<<_50`
-`??operator<<_49`:
+        B.N      `??operator<<_55`
+`??operator<<_54`:
         MOVS     R0,#+0         
-`??operator<<_50`:
+`??operator<<_55`:
           CFI FunCall _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
         BL       _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
         MOV      R1,R8          
@@ -9032,72 +9465,82 @@ _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E:
           CFI FunCall _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         BL       _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         CMP      R0,#+0         
-        BEQ.N    `??operator<<_46`
-        MOVS     R1,#+4         
-        MOV      R0,SP          
-          CFI FunCall _ZStoRRNSt5_IosbIiE8_IostateES1_
-        BL       _ZStoRRNSt5_IosbIiE8_IostateES1_
-`??operator<<_45`:
-        LDRB     R0,[SP, #+0]   
-        CMP      R0,#+0         
-        BNE.N    `??operator<<_51`
-        MOVS     R0,R7          
-          CFI FunCall _ZNKSs5c_strEv
-        BL       _ZNKSs5c_strEv 
-        MOVS     R7,R0          
-        CMP      R4,#+0         
-        BEQ.N    `??operator<<_52`
-        LDR      R0,[R4, #+0]   
-        LDR      R0,[R0, #-12]  
-        ADD      R0,R4,R0       
-        B.N      `??operator<<_53`
-`??operator<<_52`:
-        MOVS     R0,#+0         
-`??operator<<_53`:
-          CFI FunCall _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
-        BL       _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
-        MOVS     R2,R6          
-        MOVS     R1,R7          
-          CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE5sputnEPKci
-        BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE5sputnEPKci
-        CMP      R0,R6          
-        BEQ.N    `??operator<<_51`
-        MOVS     R1,#+4         
-        MOV      R0,SP          
-          CFI FunCall _ZStoRRNSt5_IosbIiE8_IostateES1_
-        BL       _ZStoRRNSt5_IosbIiE8_IostateES1_
-        B.N      `??operator<<_54`
-`??operator<<_55`:
-        SUBS     R5,R5,#+1      
-`??operator<<_51`:
-        CMP      R5,#+0         
-        BEQ.N    `??operator<<_54`
-        MOVS     R0,#+4294967295
-        STR      R0,[SP, #+8]   
-        CMP      R4,#+0         
         BEQ.N    `??operator<<_56`
-        LDR      R0,[R4, #+0]   
-        LDR      R0,[R0, #-12]  
-        ADD      R0,R4,R0       
+        MOVS     R0,#+1         
         B.N      `??operator<<_57`
 `??operator<<_56`:
         MOVS     R0,#+0         
 `??operator<<_57`:
-          CFI FunCall _ZNKSt9basic_iosIcSt11char_traitsIcEE4fillEv
-        BL       _ZNKSt9basic_iosIcSt11char_traitsIcEE4fillEv
-        MOVS     R6,R0          
-        CMP      R4,#+0         
+        UXTB     R0,R0          
+        CMP      R0,#+0         
         BEQ.N    `??operator<<_58`
+        MOVS     R1,#+4         
+        MOV      R0,SP          
+          CFI FunCall _ZStoRRNSt5_IosbIiE8_IostateES1_
+        BL       _ZStoRRNSt5_IosbIiE8_IostateES1_
+        B.N      `??operator<<_50`
+`??operator<<_58`:
+        SUBS     R5,R5,#+1      
+        B.N      `??operator<<_51`
+`??operator<<_50`:
+        LDRB     R0,[SP, #+0]   
+        CMP      R0,#+0         
+        BNE.N    `??operator<<_59`
+        MOVS     R0,R6          
+          CFI FunCall _ZNKSs5c_strEv
+        BL       _ZNKSs5c_strEv 
+        MOV      R8,R0          
+        CMP      R4,#+0         
+        BEQ.N    `??operator<<_60`
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
-        B.N      `??operator<<_59`
-`??operator<<_58`:
+        B.N      `??operator<<_61`
+`??operator<<_60`:
         MOVS     R0,#+0         
-`??operator<<_59`:
+`??operator<<_61`:
           CFI FunCall _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
         BL       _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
-        MOVS     R1,R6          
+        MOVS     R2,R7          
+        MOV      R1,R8          
+          CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE5sputnEPKci
+        BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE5sputnEPKci
+        CMP      R0,R7          
+        BEQ.N    `??operator<<_59`
+        MOVS     R1,#+4         
+        MOV      R0,SP          
+          CFI FunCall _ZStoRRNSt5_IosbIiE8_IostateES1_
+        BL       _ZStoRRNSt5_IosbIiE8_IostateES1_
+        B.N      `??operator<<_62`
+`??operator<<_59`:
+        CMP      R5,#+0         
+        BEQ.N    `??operator<<_62`
+        MOVS     R0,#+4294967295
+        STR      R0,[SP, #+8]   
+        CMP      R4,#+0         
+        BEQ.N    `??operator<<_63`
+        LDR      R0,[R4, #+0]   
+        LDR      R0,[R0, #-12]  
+        ADD      R0,R4,R0       
+        B.N      `??operator<<_64`
+`??operator<<_63`:
+        MOVS     R0,#+0         
+`??operator<<_64`:
+          CFI FunCall _ZNKSt9basic_iosIcSt11char_traitsIcEE4fillEv
+        BL       _ZNKSt9basic_iosIcSt11char_traitsIcEE4fillEv
+        MOV      R8,R0          
+        CMP      R4,#+0         
+        BEQ.N    `??operator<<_65`
+        LDR      R0,[R4, #+0]   
+        LDR      R0,[R0, #-12]  
+        ADD      R0,R4,R0       
+        B.N      `??operator<<_66`
+`??operator<<_65`:
+        MOVS     R0,#+0         
+`??operator<<_66`:
+          CFI FunCall _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
+        BL       _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
+        MOV      R1,R8          
         UXTB     R1,R1          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE5sputcEc
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE5sputcEc
@@ -9107,19 +9550,31 @@ _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E:
           CFI FunCall _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         BL       _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         CMP      R0,#+0         
-        BEQ.N    `??operator<<_55`
+        BEQ.N    `??operator<<_67`
+        MOVS     R0,#+1         
+        B.N      `??operator<<_68`
+`??operator<<_67`:
+        MOVS     R0,#+0         
+`??operator<<_68`:
+        UXTB     R0,R0          
+        CMP      R0,#+0         
+        BEQ.N    `??operator<<_69`
         MOVS     R1,#+4         
         MOV      R0,SP          
           CFI FunCall _ZStoRRNSt5_IosbIiE8_IostateES1_
         BL       _ZStoRRNSt5_IosbIiE8_IostateES1_
-`??operator<<_54`:
+        B.N      `??operator<<_62`
+`??operator<<_69`:
+        SUBS     R5,R5,#+1      
+        B.N      `??operator<<_59`
+`??operator<<_62`:
         MOVS     R1,#+0         
         LDR      R0,[R4, #+0]   
         LDR      R0,[R0, #-12]  
         ADD      R0,R4,R0       
           CFI FunCall _ZNSt8ios_base5widthEi
         BL       _ZNSt8ios_base5widthEi
-`??operator<<_41`:
+`??operator<<_47`:
         MOVS     R2,#+0         
         LDRB     R1,[SP, #+0]   
         LDR      R0,[R4, #+0]   
@@ -9143,12 +9598,15 @@ _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E:
         THUMB
 // __vfp IFormatter::subobject IFormatter() noexcept
 _ZN10IFormatterC2Ev:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
           CFI FunCall _ZN10IFormatterC1Ev
         BL       _ZN10IFormatterC1Ev
-        POP      {R1,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock252
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -9368,19 +9826,18 @@ _ZNKSt15basic_stringbufIcSt11char_traitsIcESaIcEE3strEv:
         THUMB
 // __vfp int std::stringbuf::overflow(int)
 _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE8overflowEi:
-        PUSH     {R0,R1,R4-R9,LR}
+        PUSH     {R0,R1,R4-R10,LR}
           CFI R14 Frame(CFA, -4)
-          CFI R9 Frame(CFA, -8)
-          CFI R8 Frame(CFA, -12)
-          CFI R7 Frame(CFA, -16)
-          CFI R6 Frame(CFA, -20)
-          CFI R5 Frame(CFA, -24)
-          CFI R4 Frame(CFA, -28)
-          CFI CFA R13+36
-        SUB      SP,SP,#+4      
+          CFI R10 Frame(CFA, -8)
+          CFI R9 Frame(CFA, -12)
+          CFI R8 Frame(CFA, -16)
+          CFI R7 Frame(CFA, -20)
+          CFI R6 Frame(CFA, -24)
+          CFI R5 Frame(CFA, -28)
+          CFI R4 Frame(CFA, -32)
           CFI CFA R13+40
-        MOVS     R5,R0          
-        LDRB     R0,[R5, #+56]  
+        MOVS     R6,R0          
+        LDRB     R0,[R6, #+56]  
         LSLS     R0,R0,#+30     
         BPL.N    ??overflow_0   
         MOVS     R0,#+4294967295
@@ -9388,227 +9845,226 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE8overflowEi:
 ??overflow_0:
         MOVS     R0,#+4294967295
         STR      R0,[SP, #+0]   
-        ADD      R1,SP,#+8      
+        ADD      R1,SP,#+4      
         MOV      R0,SP          
           CFI FunCall _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         BL       _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         CMP      R0,#+0         
         BEQ.N    ??overflow_2   
-        ADD      R0,SP,#+8      
+        ADD      R0,SP,#+4      
           CFI FunCall _ZNSt11char_traitsIcE7not_eofERKi
         BL       _ZNSt11char_traitsIcE7not_eofERKi
         B.N      ??overflow_1   
 ??overflow_2:
-        LDRB     R0,[R5, #+56]  
+        LDRB     R0,[R6, #+56]  
         LSLS     R0,R0,#+28     
         BPL.N    ??overflow_3   
-        MOVS     R0,R5          
+        MOVS     R0,R6          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         CMP      R0,#+0         
         BEQ.N    ??overflow_3   
-        MOVS     R0,R5          
+        MOVS     R0,R6          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
-        LDR      R1,[R5, #+52]  
+        LDR      R1,[R6, #+52]  
         CMP      R0,R1          
         BCS.N    ??overflow_3   
-        MOVS     R0,R5          
+        MOVS     R0,R6          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5epptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5epptrEv
         MOVS     R4,R0          
-        MOVS     R0,R5          
+        MOVS     R0,R6          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5pbaseEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5pbaseEv
         MOVS     R3,R4          
-        LDR      R2,[R5, #+52]  
+        LDR      R2,[R6, #+52]  
         MOVS     R1,R0          
-        MOVS     R0,R5          
+        MOVS     R0,R6          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE4setpEPcS3_S3_
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE4setpEPcS3_S3_
 ??overflow_3:
-        MOVS     R0,R5          
+        MOVS     R0,R6          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         CMP      R0,#+0         
         BEQ.N    ??overflow_4   
-        MOVS     R0,R5          
+        MOVS     R0,R6          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         MOVS     R4,R0          
-        MOVS     R0,R5          
+        MOVS     R0,R6          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5epptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5epptrEv
         CMP      R4,R0          
         BCS.N    ??overflow_4   
-        MOVS     R0,R5          
+        MOVS     R0,R6          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE6_PnincEv
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE6_PnincEv
         MOVS     R4,R0          
-        ADD      R0,SP,#+8      
+        ADD      R0,SP,#+4      
           CFI FunCall _ZNSt11char_traitsIcE12to_char_typeERKi
         BL       _ZNSt11char_traitsIcE12to_char_typeERKi
         STRB     R0,[R4, #+0]   
-        LDR      R0,[SP, #+8]   
+        LDR      R0,[SP, #+4]   
         B.N      ??overflow_1   
 ??overflow_4:
-        MOVS     R0,R5          
+        MOVS     R0,R6          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         CMP      R0,#+0         
         BNE.N    ??overflow_5   
-        MOVS     R4,#+0         
+        MOVS     R5,#+0         
         B.N      ??overflow_6   
 ??overflow_5:
-        MOVS     R0,R5          
+        MOVS     R0,R6          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5epptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5epptrEv
-        MOVS     R6,R0          
-        MOVS     R0,R5          
+        MOVS     R4,R0          
+        MOVS     R0,R6          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
-        MOVS     R4,R0          
-        SUBS     R4,R6,R4       
+        MOVS     R5,R0          
+        SUBS     R5,R4,R5       
 ??overflow_6:
-        MOV      R8,R4          
-        MOV      R0,R8          
+        MOVS     R7,R5          
+        MOVS     R0,R7          
         LSRS     R0,R0,#+1      
         CMP      R0,#+32        
         BCS.N    ??overflow_7   
-        MOVS     R0,#+32        
+        MOVS     R4,#+32        
         B.N      ??overflow_8   
 ??overflow_7:
-        MOV      R0,R8          
-        LSRS     R0,R0,#+1      
+        MOVS     R4,R7          
+        LSRS     R4,R4,#+1      
+??overflow_8:
+        CMP      R4,#+0         
+        BEQ.N    ??overflow_9   
+        MVNS     R0,#+2147483648
+        SUBS     R0,R0,R4       
+        CMP      R0,R7          
+        BCS.N    ??overflow_9   
+        LSRS     R4,R4,#+1      
         B.N      ??overflow_8   
 ??overflow_9:
-        LSRS     R0,R0,#+1      
-??overflow_8:
-        CMP      R0,#+0         
-        BEQ.N    ??overflow_10  
-        MVNS     R1,#+2147483648
-        SUBS     R1,R1,R0       
-        CMP      R1,R8          
-        BCC.N    ??overflow_9   
-??overflow_10:
-        CMP      R0,#+0         
-        BNE.N    ??overflow_11  
+        CMP      R4,#+0         
+        BNE.N    ??overflow_10  
         MOVS     R0,#+4294967295
         B.N      ??overflow_1   
-??overflow_11:
-        ADDS     R8,R0,R8       
-        MOV      R1,R8          
-        ADDS     R0,R5,#+60     
+??overflow_10:
+        ADDS     R7,R4,R7       
+        MOVS     R1,R7          
+        ADDS     R0,R6,#+60     
           CFI FunCall _ZNSaIcE8allocateEj
         BL       _ZNSaIcE8allocateEj
-        MOVS     R7,R0          
-        MOVS     R0,R5          
+        MOV      R8,R0          
+        MOVS     R0,R6          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
-        MOVS     R6,R0          
-        CMP      R4,#+0         
-        BEQ.N    ??overflow_12  
-        MOVS     R2,R4          
-        MOVS     R1,R6          
-        MOVS     R0,R7          
+        MOV      R9,R0          
+        CMP      R5,#+0         
+        BEQ.N    ??overflow_11  
+        MOVS     R2,R5          
+        MOV      R1,R9          
+        MOV      R0,R8          
           CFI FunCall _ZNSt11char_traitsIcE4copyEPcPKcj
         BL       _ZNSt11char_traitsIcE4copyEPcPKcj
-??overflow_12:
-        CMP      R4,#+0         
-        BNE.N    ??overflow_13  
-        STR      R7,[R5, #+52]  
-        ADD      R2,R7,R8       
-        MOVS     R1,R7          
-        MOVS     R0,R5          
+??overflow_11:
+        CMP      R5,#+0         
+        BNE.N    ??overflow_12  
+        STR      R8,[R6, #+52]  
+        ADD      R2,R8,R7       
+        MOV      R1,R8          
+        MOVS     R0,R6          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE4setpEPcS3_
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE4setpEPcS3_
-        LDRB     R0,[R5, #+56]  
+        LDRB     R0,[R6, #+56]  
         LSLS     R0,R0,#+29     
-        BPL.N    ??overflow_14  
-        MOVS     R3,R7          
+        BPL.N    ??overflow_13  
+        MOV      R3,R8          
         MOVS     R2,#+0         
-        MOVS     R1,R7          
-        MOVS     R0,R5          
+        MOV      R1,R8          
+        MOVS     R0,R6          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE4setgEPcS3_S3_
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE4setgEPcS3_S3_
-        B.N      ??overflow_15  
-??overflow_14:
-        ADDS     R3,R7,#+1      
-        MOVS     R2,R7          
-        MOVS     R1,R7          
-        MOVS     R0,R5          
-          CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE4setgEPcS3_S3_
-        BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE4setgEPcS3_S3_
-        B.N      ??overflow_15  
+        B.N      ??overflow_14  
 ??overflow_13:
-        LDR      R0,[R5, #+52]  
-        SUBS     R0,R0,R6       
-        ADD      R0,R7,R0       
-        STR      R0,[R5, #+52]  
-        MOVS     R0,R5          
+        ADDS     R3,R8,#+1      
+        MOV      R2,R8          
+        MOV      R1,R8          
+        MOVS     R0,R6          
+          CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE4setgEPcS3_S3_
+        BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE4setgEPcS3_S3_
+        B.N      ??overflow_14  
+??overflow_12:
+        LDR      R0,[R6, #+52]  
+        SUBS     R0,R0,R9       
+        ADD      R0,R8,R0       
+        STR      R0,[R6, #+52]  
+        MOVS     R0,R6          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
-        MOV      R9,R0          
-        MOVS     R0,R5          
+        MOV      R10,R0         
+        MOVS     R0,R6          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5pbaseEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5pbaseEv
-        ADD      R3,R7,R8       
-        SUBS     R9,R9,R6       
-        ADD      R2,R7,R9       
-        SUBS     R0,R0,R6       
-        ADD      R1,R7,R0       
-        MOVS     R0,R5          
+        ADD      R3,R8,R7       
+        SUBS     R10,R10,R9     
+        ADD      R2,R8,R10      
+        SUBS     R0,R0,R9       
+        ADD      R1,R8,R0       
+        MOVS     R0,R6          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE4setpEPcS3_S3_
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE4setpEPcS3_S3_
-        LDRB     R0,[R5, #+56]  
+        LDRB     R0,[R6, #+56]  
         LSLS     R0,R0,#+29     
-        BPL.N    ??overflow_16  
-        MOVS     R3,R7          
+        BPL.N    ??overflow_15  
+        MOV      R3,R8          
         MOVS     R2,#+0         
-        MOVS     R1,R7          
-        MOVS     R0,R5          
+        MOV      R1,R8          
+        MOVS     R0,R6          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE4setgEPcS3_S3_
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE4setgEPcS3_S3_
-        B.N      ??overflow_15  
-??overflow_16:
-        MOVS     R0,R5          
+        B.N      ??overflow_14  
+??overflow_15:
+        MOVS     R0,R6          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
-        MOV      R8,R0          
-        MOVS     R0,R5          
+        MOV      R10,R0         
+        MOVS     R0,R6          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
-        ADDS     R3,R8,#+1      
-        SUBS     R0,R0,R6       
-        ADD      R2,R7,R0       
-        MOVS     R1,R7          
-        MOVS     R0,R5          
+        ADDS     R3,R10,#+1     
+        SUBS     R0,R0,R9       
+        ADD      R2,R8,R0       
+        MOV      R1,R8          
+        MOVS     R0,R6          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE4setgEPcS3_S3_
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE4setgEPcS3_S3_
-??overflow_15:
-        LDRB     R0,[R5, #+56]  
+??overflow_14:
+        LDRB     R0,[R6, #+56]  
         LSLS     R0,R0,#+31     
-        BPL.N    ??overflow_17  
-        MOVS     R2,R4          
-        MOVS     R1,R6          
-        ADDS     R0,R5,#+60     
+        BPL.N    ??overflow_16  
+        MOVS     R2,R5          
+        MOV      R1,R9          
+        ADDS     R0,R6,#+60     
           CFI FunCall _ZNSaIcE10deallocateEPcj
         BL       _ZNSaIcE10deallocateEPcj
-??overflow_17:
-        LDR      R0,[R5, #+56]  
+??overflow_16:
+        LDR      R0,[R6, #+56]  
         ORRS     R0,R0,#0x1     
-        STR      R0,[R5, #+56]  
-        MOVS     R0,R5          
+        STR      R0,[R6, #+56]  
+        MOVS     R0,R6          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE6_PnincEv
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE6_PnincEv
-        MOVS     R4,R0          
-        ADD      R0,SP,#+8      
+        MOV      R10,R0         
+        ADD      R0,SP,#+4      
           CFI FunCall _ZNSt11char_traitsIcE12to_char_typeERKi
         BL       _ZNSt11char_traitsIcE12to_char_typeERKi
-        STRB     R0,[R4, #+0]   
-        LDR      R0,[SP, #+8]   
+        STRB     R0,[R10, #+0]  
+        LDR      R0,[SP, #+4]   
 ??overflow_1:
-        POP      {R1-R9,PC}     
+        POP      {R1,R2,R4-R10,PC}
           CFI EndBlock cfiBlock258
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -9661,13 +10117,21 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE9pbackfailEi:
           CFI FunCall _ZNSt11char_traitsIcE2eqERKcS2_
         BL       _ZNSt11char_traitsIcE2eqERKcS2_
         CMP      R0,#+0         
+        BEQ.N    ??pbackfail_2  
+        MOVS     R0,#+1         
+        B.N      ??pbackfail_3  
+??pbackfail_2:
+        MOVS     R0,#+0         
+??pbackfail_3:
+        UXTB     R0,R0          
+        CMP      R0,#+0         
         BNE.N    ??pbackfail_1  
         LDRB     R0,[R4, #+56]  
         LSLS     R0,R0,#+30     
         BPL.N    ??pbackfail_1  
 ??pbackfail_0:
         MOVS     R0,#+4294967295
-        B.N      ??pbackfail_2  
+        B.N      ??pbackfail_4  
 ??pbackfail_1:
         MOVS     R1,#+4294967295
         MOVS     R0,R4          
@@ -9679,20 +10143,20 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE9pbackfailEi:
           CFI FunCall _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         BL       _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
         CMP      R0,#+0         
-        BNE.N    ??pbackfail_3  
+        BNE.N    ??pbackfail_5  
         MOVS     R0,R4          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
-        MOVS     R4,R0          
+        MOVS     R5,R0          
         ADD      R0,SP,#+12     
           CFI FunCall _ZNSt11char_traitsIcE12to_char_typeERKi
         BL       _ZNSt11char_traitsIcE12to_char_typeERKi
-        STRB     R0,[R4, #+0]   
-??pbackfail_3:
+        STRB     R0,[R5, #+0]   
+??pbackfail_5:
         ADD      R0,SP,#+12     
           CFI FunCall _ZNSt11char_traitsIcE7not_eofERKi
         BL       _ZNSt11char_traitsIcE7not_eofERKi
-??pbackfail_2:
+??pbackfail_4:
         ADD      SP,SP,#+16     
           CFI CFA R13+16
         POP      {R4-R6,PC}     
@@ -9802,18 +10266,21 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE9underflowEv:
         THUMB
 // __vfp void std::stringbuf::seekoff(long, std::ios_base::seekdir, std::ios_base::openmode)
 _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekoffElNSt5_IosbIiE8_SeekdirENS5_9_OpenmodeE:
-        PUSH     {R4-R8,LR}     
+        PUSH     {R4-R10,LR}    
           CFI R14 Frame(CFA, -4)
-          CFI R8 Frame(CFA, -8)
-          CFI R7 Frame(CFA, -12)
-          CFI R6 Frame(CFA, -16)
-          CFI R5 Frame(CFA, -20)
-          CFI R4 Frame(CFA, -24)
-          CFI CFA R13+24
+          CFI R10 Frame(CFA, -8)
+          CFI R9 Frame(CFA, -12)
+          CFI R8 Frame(CFA, -16)
+          CFI R7 Frame(CFA, -20)
+          CFI R6 Frame(CFA, -24)
+          CFI R5 Frame(CFA, -28)
+          CFI R4 Frame(CFA, -32)
+          CFI CFA R13+32
         MOVS     R6,R0          
         MOVS     R7,R1          
         MOVS     R4,R2          
         MOV      R8,R3          
+        LDR      R5,[SP, #+32]  
         MOVS     R0,R7          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
@@ -9830,7 +10297,6 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekoffElNSt5_IosbIiE8_SeekdirE
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         STR      R0,[R7, #+52]  
 ??seekoff_2:
-        LDR      R5,[SP, #+24]  
         MOVS     R1,#+1         
         MOVS     R0,R5          
         UXTB     R0,R0          
@@ -9869,19 +10335,22 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekoffElNSt5_IosbIiE8_SeekdirE
         MOVS     R0,R7          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
-        MOV      R8,R0          
+        MOV      R9,R0          
         MOVS     R0,R7          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
-        SUBS     R8,R8,R0       
-        ADDS     R4,R8,R4       
+        SUBS     R9,R9,R0       
+        ADDS     R9,R9,R4       
+        MOV      R4,R9          
         B.N      ??seekoff_5    
 ??seekoff_6:
-        UXTB     R8,R8          
-        CMP      R8,#+0         
+        MOV      R0,R8          
+        UXTB     R0,R0          
+        CMP      R0,#+0         
         BEQ.N    ??seekoff_5    
         LDR.N    R0,??seekoff_1 
-        LDR      R4,[R0, #+0]   
+        LDR      R0,[R0, #+0]   
+        MOVS     R4,R0          
 ??seekoff_5:
         CMP      R4,#+0         
         BMI.N    ??seekoff_7    
@@ -9895,13 +10364,13 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekoffElNSt5_IosbIiE8_SeekdirE
         MOVS     R0,R7          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
-        MOV      R8,R0          
+        MOV      R9,R0          
         MOVS     R0,R7          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
-        SUBS     R8,R8,R0       
-        ADDS     R8,R4,R8       
-        MOV      R1,R8          
+        SUBS     R9,R9,R0       
+        ADDS     R9,R4,R9       
+        MOV      R1,R9          
         MOVS     R0,R7          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE5gbumpEi
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE5gbumpEi
@@ -9920,16 +10389,16 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekoffElNSt5_IosbIiE8_SeekdirE
         MOVS     R0,R7          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5epptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5epptrEv
-        MOVS     R5,R0          
+        MOV      R9,R0          
         MOVS     R0,R7          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
-        MOV      R8,R0          
+        MOV      R10,R0         
         MOVS     R0,R7          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5pbaseEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5pbaseEv
-        MOVS     R3,R5          
-        MOV      R2,R8          
+        MOV      R3,R9          
+        MOV      R2,R10         
         MOVS     R1,R0          
         MOVS     R0,R7          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE4setpEPcS3_S3_
@@ -9937,7 +10406,8 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekoffElNSt5_IosbIiE8_SeekdirE
         B.N      ??seekoff_8    
 ??seekoff_7:
         LDR.N    R0,??seekoff_1 
-        LDR      R4,[R0, #+0]   
+        LDR      R0,[R0, #+0]   
+        MOVS     R4,R0          
         B.N      ??seekoff_8    
 ??seekoff_3:
         MOVS     R1,#+2         
@@ -9971,19 +10441,22 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekoffElNSt5_IosbIiE8_SeekdirE
         MOVS     R0,R7          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
-        MOVS     R5,R0          
+        MOV      R9,R0          
         MOVS     R0,R7          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
-        SUBS     R5,R5,R0       
-        ADDS     R4,R5,R4       
+        SUBS     R9,R9,R0       
+        ADDS     R9,R9,R4       
+        MOV      R4,R9          
         B.N      ??seekoff_11   
 ??seekoff_12:
-        UXTB     R8,R8          
-        CMP      R8,#+0         
+        MOV      R0,R8          
+        UXTB     R0,R0          
+        CMP      R0,#+0         
         BEQ.N    ??seekoff_11   
         LDR.N    R0,??seekoff_1 
-        LDR      R4,[R0, #+0]   
+        LDR      R0,[R0, #+0]   
+        MOVS     R4,R0          
 ??seekoff_11:
         CMP      R4,#+0         
         BMI.N    ??seekoff_13   
@@ -9997,32 +10470,35 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekoffElNSt5_IosbIiE8_SeekdirE
         MOVS     R0,R7          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
-        MOVS     R5,R0          
+        MOV      R9,R0          
         MOVS     R0,R7          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
-        SUBS     R5,R5,R0       
-        ADDS     R5,R4,R5       
-        MOVS     R1,R5          
+        SUBS     R9,R9,R0       
+        ADDS     R9,R4,R9       
+        MOV      R1,R9          
         MOVS     R0,R7          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE5pbumpEi
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE5pbumpEi
         B.N      ??seekoff_8    
 ??seekoff_13:
         LDR.N    R0,??seekoff_1 
-        LDR      R4,[R0, #+0]   
+        LDR      R0,[R0, #+0]   
+        MOVS     R4,R0          
         B.N      ??seekoff_8    
 ??seekoff_9:
         CMP      R4,#+0         
         BEQ.N    ??seekoff_8    
         LDR.N    R0,??seekoff_1 
-        LDR      R4,[R0, #+0]   
+        LDR      R0,[R0, #+0]   
+        MOVS     R4,R0          
 ??seekoff_8:
         MOVS     R1,R4          
         MOVS     R0,R6          
           CFI FunCall _ZNSt4fposI9_MbstatetEC1El
         BL       _ZNSt4fposI9_MbstatetEC1El
-        POP      {R4-R8,PC}     
+        POP      {R4-R10,PC}    
+        Nop                     
         DATA
 ??seekoff_1:
         DATA32
@@ -10036,21 +10512,24 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekoffElNSt5_IosbIiE8_SeekdirE
         THUMB
 // __vfp void std::stringbuf::seekpos(std::streampos, std::ios_base::openmode)
 _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekposESt4fposI9_MbstatetENSt5_IosbIiE9_OpenmodeE:
-        PUSH     {R4-R8,LR}     
+        PUSH     {R4-R10,LR}    
           CFI R14 Frame(CFA, -4)
-          CFI R8 Frame(CFA, -8)
-          CFI R7 Frame(CFA, -12)
-          CFI R6 Frame(CFA, -16)
-          CFI R5 Frame(CFA, -20)
-          CFI R4 Frame(CFA, -24)
-          CFI CFA R13+24
+          CFI R10 Frame(CFA, -8)
+          CFI R9 Frame(CFA, -12)
+          CFI R8 Frame(CFA, -16)
+          CFI R7 Frame(CFA, -20)
+          CFI R6 Frame(CFA, -24)
+          CFI R5 Frame(CFA, -28)
+          CFI R4 Frame(CFA, -32)
+          CFI CFA R13+32
         MOVS     R4,R0          
         MOVS     R5,R1          
+        MOVS     R6,R2          
         MOVS     R7,R3          
-        MOVS     R0,R2          
+        MOVS     R0,R6          
           CFI FunCall _ZNKSt4fposI9_MbstatetEcvlEv
         BL       _ZNKSt4fposI9_MbstatetEcvlEv
-        MOVS     R6,R0          
+        MOV      R8,R0          
         MOVS     R0,R5          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
@@ -10067,9 +10546,9 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekposESt4fposI9_MbstatetENSt5
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         STR      R0,[R5, #+52]  
 ??seekpos_2:
-        LDR.W    R8,??seekpos_1 
-        LDR      R0,[R8, #+0]   
-        CMP      R6,R0          
+        LDR.W    R9,??seekpos_1 
+        LDR      R0,[R9, #+0]   
+        CMP      R8,R0          
         BEQ.N    ??seekpos_3    
         MOVS     R1,#+1         
         MOVS     R0,R7          
@@ -10083,25 +10562,25 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekposESt4fposI9_MbstatetENSt5
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
         CMP      R0,#+0         
         BEQ.N    ??seekpos_4    
-        CMP      R6,#+0         
+        CMP      R8,#+0         
         BMI.N    ??seekpos_5    
         MOVS     R0,R5          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
         LDR      R1,[R5, #+52]  
         SUBS     R0,R1,R0       
-        CMP      R0,R6          
+        CMP      R0,R8          
         BLT.N    ??seekpos_5    
         MOVS     R0,R5          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
-        MOV      R8,R0          
+        MOV      R9,R0          
         MOVS     R0,R5          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
-        SUBS     R8,R8,R0       
-        ADDS     R8,R6,R8       
-        MOV      R1,R8          
+        SUBS     R9,R9,R0       
+        ADDS     R9,R8,R9       
+        MOV      R1,R9          
         MOVS     R0,R5          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE5gbumpEi
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE5gbumpEi
@@ -10120,23 +10599,24 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekposESt4fposI9_MbstatetENSt5
         MOVS     R0,R5          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5epptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5epptrEv
-        MOVS     R7,R0          
+        MOV      R9,R0          
         MOVS     R0,R5          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
-        MOV      R8,R0          
+        MOV      R10,R0         
         MOVS     R0,R5          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5pbaseEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5pbaseEv
-        MOVS     R3,R7          
-        MOV      R2,R8          
+        MOV      R3,R9          
+        MOV      R2,R10         
         MOVS     R1,R0          
         MOVS     R0,R5          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE4setpEPcS3_S3_
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE4setpEPcS3_S3_
         B.N      ??seekpos_3    
 ??seekpos_5:
-        LDR      R6,[R8, #+0]   
+        LDR      R0,[R9, #+0]   
+        MOV      R8,R0          
         B.N      ??seekpos_3    
 ??seekpos_4:
         MOVS     R1,#+2         
@@ -10151,40 +10631,42 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekposESt4fposI9_MbstatetENSt5
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         CMP      R0,#+0         
         BEQ.N    ??seekpos_6    
-        CMP      R6,#+0         
+        CMP      R8,#+0         
         BMI.N    ??seekpos_7    
         MOVS     R0,R5          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
         LDR      R1,[R5, #+52]  
         SUBS     R0,R1,R0       
-        CMP      R0,R6          
+        CMP      R0,R8          
         BLT.N    ??seekpos_7    
         MOVS     R0,R5          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE5ebackEv
-        MOVS     R7,R0          
+        MOV      R9,R0          
         MOVS     R0,R5          
           CFI FunCall _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4pptrEv
-        SUBS     R7,R7,R0       
-        ADDS     R7,R6,R7       
-        MOVS     R1,R7          
+        SUBS     R9,R9,R0       
+        ADDS     R9,R8,R9       
+        MOV      R1,R9          
         MOVS     R0,R5          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE5pbumpEi
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE5pbumpEi
         B.N      ??seekpos_3    
 ??seekpos_7:
-        LDR      R6,[R8, #+0]   
+        LDR      R0,[R9, #+0]   
+        MOV      R8,R0          
         B.N      ??seekpos_3    
 ??seekpos_6:
-        LDR      R6,[R8, #+0]   
+        LDR      R0,[R9, #+0]   
+        MOV      R8,R0          
 ??seekpos_3:
-        MOVS     R1,R6          
+        MOV      R1,R8          
         MOVS     R0,R4          
           CFI FunCall _ZNSt4fposI9_MbstatetEC1El
         BL       _ZNSt4fposI9_MbstatetEC1El
-        POP      {R4-R8,PC}     
+        POP      {R4-R10,PC}    
         Nop                     
         DATA
 ??seekpos_1:
@@ -10199,19 +10681,21 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekposESt4fposI9_MbstatetENSt5
         THUMB
 // __vfp void std::stringbuf::_Init(char const *, size_t, int)
 _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE5_InitEPKcji:
-        PUSH     {R3-R7,LR}     
+        PUSH     {R4-R8,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R7 Frame(CFA, -8)
-          CFI R6 Frame(CFA, -12)
-          CFI R5 Frame(CFA, -16)
-          CFI R4 Frame(CFA, -20)
+          CFI R8 Frame(CFA, -8)
+          CFI R7 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -16)
+          CFI R5 Frame(CFA, -20)
+          CFI R4 Frame(CFA, -24)
           CFI CFA R13+24
         MOVS     R5,R0          
-        MOVS     R7,R1          
+        MOVS     R6,R1          
         MOVS     R4,R2          
+        MOVS     R7,R3          
         MOVS     R0,#+0         
         STR      R0,[R5, #+52]  
-        STR      R3,[R5, #+56]  
+        STR      R7,[R5, #+56]  
         CMP      R4,#+0         
         BEQ.N    ??_Init_1      
         LDRB     R0,[R5, #+56]  
@@ -10222,20 +10706,20 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE5_InitEPKcji:
         ADDS     R0,R5,#+60     
           CFI FunCall _ZNSaIcE8allocateEj
         BL       _ZNSaIcE8allocateEj
-        MOVS     R6,R0          
+        MOV      R8,R0          
         MOVS     R2,R4          
-        MOVS     R1,R7          
-        MOVS     R0,R6          
+        MOVS     R1,R6          
+        MOV      R0,R8          
           CFI FunCall _ZNSt11char_traitsIcE4copyEPcPKcj
         BL       _ZNSt11char_traitsIcE4copyEPcPKcj
-        ADD      R0,R6,R4       
+        ADD      R0,R8,R4       
         STR      R0,[R5, #+52]  
         LDRB     R0,[R5, #+56]  
         LSLS     R0,R0,#+29     
         BMI.N    ??_Init_2      
-        ADD      R3,R6,R4       
-        MOVS     R2,R6          
-        MOVS     R1,R6          
+        ADD      R3,R8,R4       
+        MOV      R2,R8          
+        MOV      R1,R8          
         MOVS     R0,R5          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE4setgEPcS3_S3_
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE4setgEPcS3_S3_
@@ -10246,13 +10730,13 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE5_InitEPKcji:
         LDRB     R0,[R5, #+56]  
         TST      R0,#0x18       
         BEQ.N    ??_Init_4      
-        ADD      R2,R6,R4       
+        ADD      R2,R8,R4       
         B.N      ??_Init_5      
 ??_Init_4:
-        MOVS     R2,R6          
+        MOV      R2,R8          
 ??_Init_5:
-        ADD      R3,R6,R4       
-        MOVS     R1,R6          
+        ADD      R3,R8,R4       
+        MOV      R1,R8          
         MOVS     R0,R5          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE4setpEPcS3_S3_
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE4setpEPcS3_S3_
@@ -10261,9 +10745,9 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE5_InitEPKcji:
         BL       _ZNKSt15basic_streambufIcSt11char_traitsIcEE4gptrEv
         CMP      R0,#+0         
         BNE.N    ??_Init_3      
-        MOVS     R3,R6          
+        MOV      R3,R8          
         MOVS     R2,#+0         
-        MOVS     R1,R6          
+        MOV      R1,R8          
         MOVS     R0,R5          
           CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE4setgEPcS3_S3_
         BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE4setgEPcS3_S3_
@@ -10272,7 +10756,7 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE5_InitEPKcji:
         ORRS     R0,R0,#0x1     
         STR      R0,[R5, #+56]  
 ??_Init_1:
-        POP      {R0,R4-R7,PC}  
+        POP      {R4-R8,PC}     
           CFI EndBlock cfiBlock263
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -10348,51 +10832,53 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE5_TidyEv:
         THUMB
 // __vfp int std::stringbuf::_Getstate(std::ios_base::openmode)
 _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE9_GetstateENSt5_IosbIiE9_OpenmodeE:
-        PUSH     {R3-R5,LR}     
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
           CFI CFA R13+16
-        MOVS     R4,R1          
-        MOVS     R5,#+0         
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R6,#+0         
         MOVS     R1,#+1         
-        MOVS     R0,R4          
+        MOVS     R0,R5          
         UXTB     R0,R0          
           CFI FunCall _ZStanNSt5_IosbIiE9_OpenmodeES1_
         BL       _ZStanNSt5_IosbIiE9_OpenmodeES1_
         CMP      R0,#+0         
         BNE.N    ??_Getstate_0  
-        ORRS     R5,R5,#0x4     
+        ORRS     R6,R6,#0x4     
 ??_Getstate_0:
         MOVS     R1,#+2         
-        MOVS     R0,R4          
+        MOVS     R0,R5          
         UXTB     R0,R0          
           CFI FunCall _ZStanNSt5_IosbIiE9_OpenmodeES1_
         BL       _ZStanNSt5_IosbIiE9_OpenmodeES1_
         CMP      R0,#+0         
         BNE.N    ??_Getstate_1  
-        ORRS     R5,R5,#0x2     
+        ORRS     R6,R6,#0x2     
 ??_Getstate_1:
         MOVS     R1,#+8         
-        MOVS     R0,R4          
+        MOVS     R0,R5          
         UXTB     R0,R0          
           CFI FunCall _ZStanNSt5_IosbIiE9_OpenmodeES1_
         BL       _ZStanNSt5_IosbIiE9_OpenmodeES1_
         CMP      R0,#+0         
         BEQ.N    ??_Getstate_2  
-        ORRS     R5,R5,#0x8     
+        ORRS     R6,R6,#0x8     
 ??_Getstate_2:
         MOVS     R1,#+4         
-        MOVS     R0,R4          
+        MOVS     R0,R5          
         UXTB     R0,R0          
           CFI FunCall _ZStanNSt5_IosbIiE9_OpenmodeES1_
         BL       _ZStanNSt5_IosbIiE9_OpenmodeES1_
         CMP      R0,#+0         
         BEQ.N    ??_Getstate_3  
-        ORRS     R5,R5,#0x10    
+        ORRS     R6,R6,#0x10    
 ??_Getstate_3:
-        MOVS     R0,R5          
-        POP      {R1,R4,R5,PC}  
+        MOVS     R0,R6          
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock265
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -10562,13 +11048,15 @@ _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED1Ev:
         THUMB
 // __vfp void std::ostringstream::str() const
 _ZNKSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE3strEv:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
-        ADDS     R1,R1,#+4      
+        MOVS     R4,R1          
+        ADDS     R1,R4,#+4      
           CFI FunCall _ZNKSt15basic_stringbufIcSt11char_traitsIcESaIcEE3strEv
         BL       _ZNKSt15basic_stringbufIcSt11char_traitsIcESaIcEE3strEv
-        POP      {R0,PC}        
+        POP      {R4,PC}        
           CFI EndBlock cfiBlock271
 
         SECTION `.iar_vfe_vtableinfo_ZTVSt5ctypeIcE`:DATA:NOALLOC:NOROOT(2)
@@ -11091,9 +11579,9 @@ _ZTv0_n12_NSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED1Ev:
 // 
 //     31 bytes in section .bss
 //  1'217 bytes in section .rodata
-// 12'306 bytes in section .text
+// 13'082 bytes in section .text
 // 
-// 202 bytes of CODE  memory (+ 12'104 bytes shared)
+// 202 bytes of CODE  memory (+ 12'880 bytes shared)
 //  88 bytes of CONST memory (+  1'129 bytes shared)
 //   0 bytes of DATA  memory (+     31 bytes shared)
 //

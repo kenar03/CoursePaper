@@ -8,14 +8,13 @@ std::string FormatString(const float value, const uint8_t precision, const std::
 {
   std::ostringstream oss;
   oss.precision(precision);
-  switch(isFilteredValue)
+  if (!isFilteredValue)
   {
-  case false:
     oss << "Неотфильтрованное напряжение: " << std::fixed << value << unit << std::endl;
-    break;
-  case true:
+  }
+  else
+  {
     oss << "Напряжение: " << std::fixed << value << unit << std::endl;
-    break;
   }
   return std::move(oss).str();
 }

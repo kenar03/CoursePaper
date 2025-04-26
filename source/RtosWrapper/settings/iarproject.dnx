@@ -16,7 +16,7 @@
         <ShowSource>1</ShowSource>
     </Trace1>
     <DebugChecksum>
-        <Checksum>2964016265</Checksum>
+        <Checksum>3320069357</Checksum>
     </DebugChecksum>
     <Disassembly>
         <MixedMode>1</MixedMode>
@@ -35,12 +35,12 @@
         <ShowArgs>0</ShowArgs>
     </CallStack>
     <StLinkDriver>
-        <stlinkResetStyle>0</stlinkResetStyle>
-        <stlinkResetStrategy>0</stlinkResetStrategy>
-        <stlinkserialNo>38FF6B064B46323642302543</stlinkserialNo>
+        <stlinkserialNo>57FF6F067886565536061167</stlinkserialNo>
         <stlinkfoundProbes />
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
         <CStepIntDis>_ 0</CStepIntDis>
+        <stlinkResetStyle>0</stlinkResetStyle>
+        <stlinkResetStrategy>0</stlinkResetStrategy>
     </StLinkDriver>
     <SWOTraceHWSettings>
         <OverrideDefaultClocks>0</OverrideDefaultClocks>
@@ -65,8 +65,8 @@
         <MemConfigValue>D:\Games\Programs\IAR\arm\CONFIG\debugger\ST\STM32F411RE.ddf</MemConfigValue>
     </PlDriver>
     <ArmDriver>
-        <EnableCache>0</EnableCache>
         <EnforceMemoryConfiguration>1</EnforceMemoryConfiguration>
+        <EnableCache>0</EnableCache>
     </ArmDriver>
     <CallStackLog>
         <Enabled>0</Enabled>
@@ -136,6 +136,10 @@
         <ShowTimeSum>1</ShowTimeSum>
         <SumSortOrder>0</SumSortOrder>
     </EventLog>
+    <TermIOLog>
+        <LoggingEnabled>_ 0</LoggingEnabled>
+        <LogFile>_ ""</LogFile>
+    </TermIOLog>
     <DriverProfiling>
         <Enabled>0</Enabled>
         <Mode>3</Mode>
@@ -143,14 +147,10 @@
         <Symbiont>0</Symbiont>
         <Exclusions />
     </DriverProfiling>
-    <TermIOLog>
-        <LoggingEnabled>_ 0</LoggingEnabled>
-        <LogFile>_ ""</LogFile>
-    </TermIOLog>
     <LogFile>
         <LoggingEnabled>_ 0</LoggingEnabled>
-        <LogFile>_ "$PROJ_DIR$\LogFile1.log"</LogFile>
-        <Category2>_ 2</Category2>
+        <LogFile>_ ""</LogFile>
+        <Category2>_ 0</Category2>
     </LogFile>
     <DisassembleMode>
         <mode>0</mode>

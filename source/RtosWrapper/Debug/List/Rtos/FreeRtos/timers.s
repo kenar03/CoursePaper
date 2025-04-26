@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        26/Apr/2025  19:24:50
+// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        27/Apr/2025  00:21:28
 // Copyright 1999-2022 IAR Systems AB.
 //
 //    Cpu mode     =  thumb
@@ -102,7 +102,11 @@
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
 //        -I
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
-//        -Ol) --dependencies=n
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+//        -On) --dependencies=n
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Rtos\FreeRtos\timers.o.d
 //    Locale       =  C
 //    List file    =
@@ -563,7 +567,8 @@ xTimerCreateTimerTask:
         BEQ.N    ??xTimerCreateTimerTask_0
 //  287 			{
 //  288 				xReturn = pdPASS;
-        MOVS     R4,#+1         
+        MOVS     R0,#+1         
+        MOVS     R4,R0          
 //  289 			}
 //  290 		}
 //  291 		#else
@@ -640,12 +645,20 @@ xTimerCreateTimerTask:
 //  351 										StaticTimer_t *pxTimerBuffer ) /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
 //  352 	{
 xTimerCreateStatic:
-        PUSH     {R1-R5,LR}     
+        PUSH     {R1-R9,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
-          CFI CFA R13+24
-        LDR      R4,[SP, #+28]  
+          CFI R9 Frame(CFA, -8)
+          CFI R8 Frame(CFA, -12)
+          CFI R7 Frame(CFA, -16)
+          CFI R6 Frame(CFA, -20)
+          CFI R5 Frame(CFA, -24)
+          CFI R4 Frame(CFA, -28)
+          CFI CFA R13+40
+        MOVS     R5,R0          
+        MOVS     R6,R1          
+        MOVS     R7,R2          
+        MOV      R8,R3          
+        LDR      R9,[SP, #+44]  
 //  353 	Timer_t *pxNewTimer;
 //  354 
 //  355 		#if( configASSERT_DEFINED == 1 )
@@ -654,16 +667,17 @@ xTimerCreateStatic:
 //  358 			variable of type StaticTimer_t equals the size of the real timer
 //  359 			structures. */
 //  360 			volatile size_t xSize = sizeof( StaticTimer_t );
-        MOVS     R5,#+40        
-        STR      R5,[SP, #+0]   
+        MOVS     R0,#+40        
+        STR      R0,[SP, #+0]   
 //  361 			configASSERT( xSize == sizeof( Timer_t ) );
-        LDR      R5,[SP, #+0]   
+        LDR      R0,[SP, #+0]   
 //  362 		}
 //  363 		#endif /* configASSERT_DEFINED */
 //  364 
 //  365 		/* A pointer to a StaticTimer_t structure MUST be provided, use it. */
 //  366 		configASSERT( pxTimerBuffer );
 //  367 		pxNewTimer = ( Timer_t * ) pxTimerBuffer; /*lint !e740 Unusual cast is ok as the structures are designed to have the same alignment, and the size is checked by an assert. */
+        MOV      R4,R9          
 //  368 
 //  369 		if( pxNewTimer != NULL )
         CMP      R4,#+0         
@@ -671,8 +685,12 @@ xTimerCreateStatic:
 //  370 		{
 //  371 			prvInitialiseNewTimer( pcTimerName, xTimerPeriodInTicks, uxAutoReload, pvTimerID, pxCallbackFunction, pxNewTimer );
         STR      R4,[SP, #+4]   
-        LDR      R5,[SP, #+24]  
-        STR      R5,[SP, #+0]   
+        LDR      R0,[SP, #+40]  
+        STR      R0,[SP, #+0]   
+        MOV      R3,R8          
+        MOVS     R2,R7          
+        MOVS     R1,R6          
+        MOVS     R0,R5          
           CFI FunCall prvInitialiseNewTimer
         BL       prvInitialiseNewTimer
 //  372 
@@ -688,7 +706,7 @@ xTimerCreateStatic:
 //  382 		return pxNewTimer;
 ??xTimerCreateStatic_0:
         MOVS     R0,R4          
-        POP      {R1-R5,PC}     
+        POP      {R1-R9,PC}     
 //  383 	}
           CFI EndBlock cfiBlock1
 //  384 
@@ -721,6 +739,7 @@ prvInitialiseNewTimer:
         MOVS     R6,R1          
         MOVS     R7,R2          
         MOV      R8,R3          
+        LDR      R9,[SP, #+32]  
         LDR      R4,[SP, #+36]  
 //  395 	/* 0 is not a valid value for xTimerPeriodInTicks. */
 //  396 	configASSERT( ( xTimerPeriodInTicks > 0 ) );
@@ -728,7 +747,6 @@ prvInitialiseNewTimer:
 //  398 	if( pxNewTimer != NULL )
         CMP      R4,#+0         
         BEQ.N    ??prvInitialiseNewTimer_0
-        LDR      R9,[SP, #+32]  
 //  399 	{
 //  400 		/* Ensure the infrastructure used by the timer service task has been
 //  401 		created/initialised. */
@@ -768,16 +786,23 @@ prvInitialiseNewTimer:
 //  417 BaseType_t xTimerGenericCommand( TimerHandle_t xTimer, const BaseType_t xCommandID, const TickType_t xOptionalValue, BaseType_t * const pxHigherPriorityTaskWoken, const TickType_t xTicksToWait )
 //  418 {
 xTimerGenericCommand:
-        PUSH     {R0-R6,LR}     
+        PUSH     {R0-R10,LR}    
           CFI R14 Frame(CFA, -4)
-          CFI R6 Frame(CFA, -8)
-          CFI R5 Frame(CFA, -12)
-          CFI R4 Frame(CFA, -16)
-          CFI CFA R13+32
+          CFI R10 Frame(CFA, -8)
+          CFI R9 Frame(CFA, -12)
+          CFI R8 Frame(CFA, -16)
+          CFI R7 Frame(CFA, -20)
+          CFI R6 Frame(CFA, -24)
+          CFI R5 Frame(CFA, -28)
+          CFI R4 Frame(CFA, -32)
+          CFI CFA R13+48
         MOVS     R4,R0          
-        MOVS     R5,R3          
+        MOVS     R5,R1          
+        MOVS     R6,R2          
+        MOVS     R7,R3          
+        LDR      R8,[SP, #+48]  
 //  419 BaseType_t xReturn = pdFAIL;
-        MOVS     R0,#+0         
+        MOVS     R9,#+0         
 //  420 DaemonTaskMessage_t xMessage;
 //  421 
 //  422 	configASSERT( xTimer );
@@ -785,21 +810,21 @@ xTimerGenericCommand:
 //  424 	/* Send a message to the timer service task to perform a particular action
 //  425 	on a particular timer definition. */
 //  426 	if( xTimerQueue != NULL )
-        LDR.W    R6,??DataTable12
-        LDR      R3,[R6, #+0]   
-        CMP      R3,#+0         
+        LDR.W    R10,??DataTable12
+        LDR      R0,[R10, #+0]  
+        CMP      R0,#+0         
         BEQ.N    ??xTimerGenericCommand_0
 //  427 	{
 //  428 		/* Send a command to the timer service task to start the xTimer timer. */
 //  429 		xMessage.xMessageID = xCommandID;
-        STR      R1,[SP, #+0]   
+        STR      R5,[SP, #+0]   
 //  430 		xMessage.u.xTimerParameters.xMessageValue = xOptionalValue;
-        STR      R2,[SP, #+4]   
+        STR      R6,[SP, #+4]   
 //  431 		xMessage.u.xTimerParameters.pxTimer = ( Timer_t * ) xTimer;
         STR      R4,[SP, #+8]   
 //  432 
 //  433 		if( xCommandID < tmrFIRST_FROM_ISR_COMMAND )
-        CMP      R1,#+6         
+        CMP      R5,#+6         
         BGE.N    ??xTimerGenericCommand_1
 //  434 		{
 //  435 			if( xTaskGetSchedulerState() == taskSCHEDULER_RUNNING )
@@ -807,14 +832,15 @@ xTimerGenericCommand:
         BL       xTaskGetSchedulerState
         CMP      R0,#+2         
         BNE.N    ??xTimerGenericCommand_2
-        LDR      R2,[SP, #+32]  
 //  436 			{
 //  437 				xReturn = xQueueSendToBack( xTimerQueue, &xMessage, xTicksToWait );
         MOVS     R3,#+0         
+        MOV      R2,R8          
         MOV      R1,SP          
-        LDR      R0,[R6, #+0]   
+        LDR      R0,[R10, #+0]  
           CFI FunCall xQueueGenericSend
         BL       xQueueGenericSend
+        MOV      R9,R0          
         B.N      ??xTimerGenericCommand_0
 //  438 			}
 //  439 			else
@@ -824,9 +850,10 @@ xTimerGenericCommand:
         MOVS     R3,#+0         
         MOVS     R2,#+0         
         MOV      R1,SP          
-        LDR      R0,[R6, #+0]   
+        LDR      R0,[R10, #+0]  
           CFI FunCall xQueueGenericSend
         BL       xQueueGenericSend
+        MOV      R9,R0          
         B.N      ??xTimerGenericCommand_0
 //  442 			}
 //  443 		}
@@ -835,11 +862,12 @@ xTimerGenericCommand:
 //  446 			xReturn = xQueueSendToBackFromISR( xTimerQueue, &xMessage, pxHigherPriorityTaskWoken );
 ??xTimerGenericCommand_1:
         MOVS     R3,#+0         
-        MOVS     R2,R5          
+        MOVS     R2,R7          
         MOV      R1,SP          
-        LDR      R0,[R6, #+0]   
+        LDR      R0,[R10, #+0]  
           CFI FunCall xQueueGenericSendFromISR
         BL       xQueueGenericSendFromISR
+        MOV      R9,R0          
 //  447 		}
 //  448 
 //  449 		traceTIMER_COMMAND_SEND( xTimer, xCommandID, xOptionalValue, xReturn );
@@ -851,9 +879,10 @@ xTimerGenericCommand:
 //  455 
 //  456 	return xReturn;
 ??xTimerGenericCommand_0:
+        MOV      R0,R9          
         ADD      SP,SP,#+16     
-          CFI CFA R13+16
-        POP      {R4-R6,PC}     
+          CFI CFA R13+32
+        POP      {R4-R10,PC}    
 //  457 }
           CFI EndBlock cfiBlock3
 //  458 /*-----------------------------------------------------------*/
@@ -886,11 +915,13 @@ xTimerGetTimerDaemonTaskHandle:
         THUMB
 //  469 TickType_t xTimerGetPeriod( TimerHandle_t xTimer )
 //  470 {
+xTimerGetPeriod:
+        MOVS     R1,R0          
 //  471 Timer_t *pxTimer = ( Timer_t * ) xTimer;
+        MOVS     R0,R1          
 //  472 
 //  473 	configASSERT( xTimer );
 //  474 	return pxTimer->xTimerPeriodInTicks;
-xTimerGetPeriod:
         LDR      R0,[R0, #+24]  
         BX       LR             
 //  475 }
@@ -905,13 +936,15 @@ xTimerGetPeriod:
         THUMB
 //  478 TickType_t xTimerGetExpiryTime( TimerHandle_t xTimer )
 //  479 {
+xTimerGetExpiryTime:
+        MOVS     R1,R0          
 //  480 Timer_t * pxTimer = ( Timer_t * ) xTimer;
+        MOVS     R2,R1          
 //  481 TickType_t xReturn;
 //  482 
 //  483 	configASSERT( xTimer );
 //  484 	xReturn = listGET_LIST_ITEM_VALUE( &( pxTimer->xTimerListItem ) );
-xTimerGetExpiryTime:
-        LDR      R0,[R0, #+4]   
+        LDR      R0,[R2, #+4]   
 //  485 	return xReturn;
         BX       LR             
 //  486 }
@@ -926,11 +959,13 @@ xTimerGetExpiryTime:
         THUMB
 //  489 const char * pcTimerGetName( TimerHandle_t xTimer ) /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
 //  490 {
+pcTimerGetName:
+        MOVS     R1,R0          
 //  491 Timer_t *pxTimer = ( Timer_t * ) xTimer;
+        MOVS     R0,R1          
 //  492 
 //  493 	configASSERT( xTimer );
 //  494 	return pxTimer->pcTimerName;
-pcTimerGetName:
         LDR      R0,[R0, #+0]   
         BX       LR             
 //  495 }
@@ -945,11 +980,12 @@ pcTimerGetName:
 //  498 static void prvProcessExpiredTimer( const TickType_t xNextExpireTime, const TickType_t xTimeNow )
 //  499 {
 prvProcessExpiredTimer:
-        PUSH     {R2-R6,LR}     
+        PUSH     {R3-R7,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R6 Frame(CFA, -8)
-          CFI R5 Frame(CFA, -12)
-          CFI R4 Frame(CFA, -16)
+          CFI R7 Frame(CFA, -8)
+          CFI R6 Frame(CFA, -12)
+          CFI R5 Frame(CFA, -16)
+          CFI R4 Frame(CFA, -20)
           CFI CFA R13+24
         MOVS     R4,R0          
         MOVS     R5,R1          
@@ -958,12 +994,12 @@ prvProcessExpiredTimer:
         LDR.W    R0,??DataTable12_3
         LDR      R0,[R0, #+0]   
         LDR      R0,[R0, #+12]  
-        LDR      R6,[R0, #+12]  
+        LDR      R7,[R0, #+12]  
 //  502 
 //  503 	/* Remove the timer from the list of active timers.  A check has already
 //  504 	been performed to ensure the list is not empty. */
 //  505 	( void ) uxListRemove( &( pxTimer->xTimerListItem ) );
-        ADDS     R0,R6,#+4      
+        ADDS     R0,R7,#+4      
           CFI FunCall uxListRemove
         BL       uxListRemove   
 //  506 	traceTIMER_EXPIRED( pxTimer );
@@ -971,7 +1007,7 @@ prvProcessExpiredTimer:
 //  508 	/* If the timer is an auto reload timer then calculate the next
 //  509 	expiry time and re-insert the timer in the list of active timers. */
 //  510 	if( pxTimer->uxAutoReload == ( UBaseType_t ) pdTRUE )
-        LDR      R0,[R6, #+28]  
+        LDR      R0,[R7, #+28]  
         CMP      R0,#+1         
         BNE.N    ??prvProcessExpiredTimer_0
 //  511 	{
@@ -981,9 +1017,9 @@ prvProcessExpiredTimer:
 //  515 		if( prvInsertTimerInActiveList( pxTimer, ( xNextExpireTime + pxTimer->xTimerPeriodInTicks ), xTimeNow, xNextExpireTime ) != pdFALSE )
         MOVS     R3,R4          
         MOVS     R2,R5          
-        LDR      R1,[R6, #+24]  
+        LDR      R1,[R7, #+24]  
         ADDS     R1,R1,R4       
-        MOVS     R0,R6          
+        MOVS     R0,R7          
           CFI FunCall prvInsertTimerInActiveList
         BL       prvInsertTimerInActiveList
         CMP      R0,#+0         
@@ -997,9 +1033,10 @@ prvProcessExpiredTimer:
         MOVS     R3,#+0         
         MOVS     R2,R4          
         MOVS     R1,#+0         
-        MOVS     R0,R6          
+        MOVS     R0,R7          
           CFI FunCall xTimerGenericCommand
         BL       xTimerGenericCommand
+        MOVS     R6,R0          
 //  520 			configASSERT( xResult );
 //  521 			( void ) xResult;
 //  522 		}
@@ -1016,12 +1053,12 @@ prvProcessExpiredTimer:
 //  533 	/* Call the timer callback. */
 //  534 	pxTimer->pxCallbackFunction( ( TimerHandle_t ) pxTimer );
 ??prvProcessExpiredTimer_0:
-        MOVS     R0,R6          
-        LDR      R1,[R6, #+36]  
+        MOVS     R0,R7          
+        LDR      R1,[R7, #+36]  
           CFI IndirectCall
         BLX      R1             
 //  535 }
-        POP      {R0,R1,R4-R6,PC}
+        POP      {R0,R4-R7,PC}  
           CFI EndBlock cfiBlock8
 //  536 /*-----------------------------------------------------------*/
 //  537 
@@ -1033,9 +1070,12 @@ prvProcessExpiredTimer:
 //  538 static void prvTimerTask( void *pvParameters )
 //  539 {
 prvTimerTask:
-        PUSH     {R7,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R4,R0          
 //  540 TickType_t xNextExpireTime;
 //  541 BaseType_t xListWasEmpty;
 //  542 
@@ -1063,11 +1103,13 @@ prvTimerTask:
         MOV      R0,SP          
           CFI FunCall prvGetNextExpireTime
         BL       prvGetNextExpireTime
+        MOVS     R5,R0          
 //  563 
 //  564 		/* If a timer has expired, process it.  Otherwise, block this task
 //  565 		until either a timer does expire, or a command is received. */
 //  566 		prvProcessTimerOrBlockTask( xNextExpireTime, xListWasEmpty );
         LDR      R1,[SP, #+0]   
+        MOVS     R0,R5          
           CFI FunCall prvProcessTimerOrBlockTask
         BL       prvProcessTimerOrBlockTask
 //  567 
@@ -1166,8 +1208,7 @@ prvProcessTimerOrBlockTask:
 //  610 				vQueueWaitForMessageRestricted( xTimerQueue, ( xNextExpireTime - xTimeNow ), xListWasEmpty );
 ??prvProcessTimerOrBlockTask_3:
         MOVS     R2,R4          
-        SUBS     R5,R5,R6       
-        MOVS     R1,R5          
+        SUBS     R1,R5,R6       
         LDR.N    R0,??DataTable12
         LDR      R0,[R0, #+0]   
           CFI FunCall vQueueWaitForMessageRestricted
@@ -1219,6 +1260,8 @@ prvProcessTimerOrBlockTask:
         THUMB
 //  634 static TickType_t prvGetNextExpireTime( BaseType_t * const pxListWasEmpty )
 //  635 {
+prvGetNextExpireTime:
+        MOVS     R1,R0          
 //  636 TickType_t xNextExpireTime;
 //  637 
 //  638 	/* Timers are listed in expiry time order, with the head of the list
@@ -1229,21 +1272,20 @@ prvProcessTimerOrBlockTask:
 //  643 	timer lists will be switched and the next expiry time can be
 //  644 	re-assessed.  */
 //  645 	*pxListWasEmpty = listLIST_IS_EMPTY( pxCurrentTimerList );
-prvGetNextExpireTime:
         LDR.N    R2,??DataTable12_3
-        LDR      R1,[R2, #+0]   
-        LDR      R1,[R1, #+0]   
-        CMP      R1,#+0         
+        LDR      R0,[R2, #+0]   
+        LDR      R0,[R0, #+0]   
+        CMP      R0,#+0         
         BNE.N    ??prvGetNextExpireTime_0
-        MOVS     R1,#+1         
+        MOVS     R0,#+1         
         B.N      ??prvGetNextExpireTime_1
 ??prvGetNextExpireTime_0:
-        MOVS     R1,#+0         
+        MOVS     R0,#+0         
 ??prvGetNextExpireTime_1:
-        UXTB     R1,R1          
-        STR      R1,[R0, #+0]   
+        UXTB     R0,R0          
+        STR      R0,[R1, #+0]   
 //  646 	if( *pxListWasEmpty == pdFALSE )
-        LDR      R0,[R0, #+0]   
+        LDR      R0,[R1, #+0]   
         CMP      R0,#+0         
         BNE.N    ??prvGetNextExpireTime_2
 //  647 	{
@@ -1337,41 +1379,50 @@ prvSampleTimeNow:
 //  683 static BaseType_t prvInsertTimerInActiveList( Timer_t * const pxTimer, const TickType_t xNextExpiryTime, const TickType_t xTimeNow, const TickType_t xCommandTime )
 //  684 {
 prvInsertTimerInActiveList:
-        PUSH     {R4,LR}        
+        PUSH     {R4-R8,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R8 Frame(CFA, -8)
+          CFI R7 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -16)
+          CFI R5 Frame(CFA, -20)
+          CFI R4 Frame(CFA, -24)
+          CFI CFA R13+24
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R6,R2          
+        MOVS     R7,R3          
 //  685 BaseType_t xProcessTimerNow = pdFALSE;
-        MOVS     R4,#+0         
+        MOVS     R8,#+0         
 //  686 
 //  687 	listSET_LIST_ITEM_VALUE( &( pxTimer->xTimerListItem ), xNextExpiryTime );
-        STR      R1,[R0, #+4]   
+        STR      R5,[R4, #+4]   
 //  688 	listSET_LIST_ITEM_OWNER( &( pxTimer->xTimerListItem ), pxTimer );
-        STR      R0,[R0, #+16]  
+        STR      R4,[R4, #+16]  
 //  689 
 //  690 	if( xNextExpiryTime <= xTimeNow )
-        CMP      R2,R1          
+        CMP      R6,R5          
         BCC.N    ??prvInsertTimerInActiveList_0
 //  691 	{
 //  692 		/* Has the expiry time elapsed between the command to start/reset a
 //  693 		timer was issued, and the time the command was processed? */
 //  694 		if( ( ( TickType_t ) ( xTimeNow - xCommandTime ) ) >= pxTimer->xTimerPeriodInTicks ) /*lint !e961 MISRA exception as the casts are only redundant for some ports. */
-        SUBS     R2,R2,R3       
-        LDR      R1,[R0, #+24]  
-        CMP      R2,R1          
+        SUBS     R0,R6,R7       
+        LDR      R1,[R4, #+24]  
+        CMP      R0,R1          
         BCC.N    ??prvInsertTimerInActiveList_1
 //  695 		{
 //  696 			/* The time between a command being issued and the command being
 //  697 			processed actually exceeds the timers period.  */
 //  698 			xProcessTimerNow = pdTRUE;
-        MOVS     R4,#+1         
+        MOVS     R0,#+1         
+        MOV      R8,R0          
         B.N      ??prvInsertTimerInActiveList_2
 //  699 		}
 //  700 		else
 //  701 		{
 //  702 			vListInsert( pxOverflowTimerList, &( pxTimer->xTimerListItem ) );
 ??prvInsertTimerInActiveList_1:
-        ADDS     R1,R0,#+4      
+        ADDS     R1,R4,#+4      
         LDR.N    R0,??DataTable12_4
         LDR      R0,[R0, #+0]   
           CFI FunCall vListInsert
@@ -1383,23 +1434,24 @@ prvInsertTimerInActiveList:
 //  706 	{
 //  707 		if( ( xTimeNow < xCommandTime ) && ( xNextExpiryTime >= xCommandTime ) )
 ??prvInsertTimerInActiveList_0:
-        CMP      R2,R3          
+        CMP      R6,R7          
         BCS.N    ??prvInsertTimerInActiveList_3
-        CMP      R1,R3          
+        CMP      R5,R7          
         BCC.N    ??prvInsertTimerInActiveList_3
 //  708 		{
 //  709 			/* If, since the command was issued, the tick count has overflowed
 //  710 			but the expiry time has not, then the timer must have already passed
 //  711 			its expiry time and should be processed immediately. */
 //  712 			xProcessTimerNow = pdTRUE;
-        MOVS     R4,#+1         
+        MOVS     R0,#+1         
+        MOV      R8,R0          
         B.N      ??prvInsertTimerInActiveList_2
 //  713 		}
 //  714 		else
 //  715 		{
 //  716 			vListInsert( pxCurrentTimerList, &( pxTimer->xTimerListItem ) );
 ??prvInsertTimerInActiveList_3:
-        ADDS     R1,R0,#+4      
+        ADDS     R1,R4,#+4      
         LDR.N    R0,??DataTable12_3
         LDR      R0,[R0, #+0]   
           CFI FunCall vListInsert
@@ -1409,8 +1461,8 @@ prvInsertTimerInActiveList:
 //  719 
 //  720 	return xProcessTimerNow;
 ??prvInsertTimerInActiveList_2:
-        MOVS     R0,R4          
-        POP      {R4,PC}        
+        MOV      R0,R8          
+        POP      {R4-R8,PC}     
 //  721 }
           CFI EndBlock cfiBlock13
 //  722 /*-----------------------------------------------------------*/
@@ -1423,27 +1475,43 @@ prvInsertTimerInActiveList:
 //  724 static void	prvProcessReceivedCommands( void )
 //  725 {
 prvProcessReceivedCommands:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R7,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R7 Frame(CFA, -8)
+          CFI R6 Frame(CFA, -12)
+          CFI R5 Frame(CFA, -16)
+          CFI R4 Frame(CFA, -20)
+          CFI CFA R13+24
         SUB      SP,SP,#+24     
-          CFI CFA R13+32
-        B.N      ??prvProcessReceivedCommands_0
+          CFI CFA R13+48
 //  726 DaemonTaskMessage_t xMessage;
 //  727 Timer_t *pxTimer;
 //  728 BaseType_t xTimerListsWereSwitched, xResult;
 //  729 TickType_t xTimeNow;
 //  730 
 //  731 	while( xQueueReceive( xTimerQueue, &xMessage, tmrNO_DELAY ) != pdFAIL ) /*lint !e603 xMessage does not have to be initialised as it is passed out, not in, and it is not used unless xQueueReceive() returns pdTRUE. */
+??prvProcessReceivedCommands_0:
+        MOVS     R3,#+0         
+        MOVS     R2,#+0         
+        ADD      R1,SP,#+4      
+        LDR.N    R0,??DataTable12
+        LDR      R0,[R0, #+0]   
+          CFI FunCall xQueueGenericReceive
+        BL       xQueueGenericReceive
+        CMP      R0,#+0         
+        BEQ.N    ??prvProcessReceivedCommands_1
 //  732 	{
 //  733 		#if ( INCLUDE_xTimerPendFunctionCall == 1 )
 //  734 		{
 //  735 			/* Negative commands are pended function calls rather than timer
 //  736 			commands. */
 //  737 			if( xMessage.xMessageID < ( BaseType_t ) 0 )
+        LDR      R0,[SP, #+4]   
+        CMP      R0,#+0         
+        BPL.N    ??prvProcessReceivedCommands_2
 //  738 			{
 //  739 				const CallbackParameters_t * const pxCallback = &( xMessage.u.xCallbackParameters );
+        ADD      R7,SP,#+8      
 //  740 
 //  741 				/* The timer uses the xCallbackParameters member to request a
 //  742 				callback be executed.  Check the callback is not NULL. */
@@ -1451,6 +1519,11 @@ prvProcessReceivedCommands:
 //  744 
 //  745 				/* Call the function. */
 //  746 				pxCallback->pxCallbackFunction( pxCallback->pvParameter1, pxCallback->ulParameter2 );
+        LDR      R1,[R7, #+8]   
+        LDR      R0,[R7, #+4]   
+        LDR      R2,[R7, #+0]   
+          CFI IndirectCall
+        BLX      R2             
 //  747 			}
 //  748 			else
 //  749 			{
@@ -1462,15 +1535,27 @@ prvProcessReceivedCommands:
 //  755 		/* Commands that are positive are timer commands rather than pended
 //  756 		function calls. */
 //  757 		if( xMessage.xMessageID >= ( BaseType_t ) 0 )
+??prvProcessReceivedCommands_2:
+        LDR      R0,[SP, #+4]   
+        CMP      R0,#+0         
+        BMI.N    ??prvProcessReceivedCommands_0
 //  758 		{
 //  759 			/* The messages uses the xTimerParameters member to work on a
 //  760 			software timer. */
 //  761 			pxTimer = xMessage.u.xTimerParameters.pxTimer;
+        LDR      R0,[SP, #+12]  
+        MOVS     R4,R0          
 //  762 
 //  763 			if( listIS_CONTAINED_WITHIN( NULL, &( pxTimer->xTimerListItem ) ) == pdFALSE )
+        LDR      R0,[R4, #+20]  
+        CMP      R0,#+0         
+        BEQ.N    ??prvProcessReceivedCommands_3
 //  764 			{
 //  765 				/* The timer is in a list, remove it. */
 //  766 				( void ) uxListRemove( &( pxTimer->xTimerListItem ) );
+        ADDS     R0,R4,#+4      
+          CFI FunCall uxListRemove
+        BL       uxListRemove   
 //  767 			}
 //  768 			else
 //  769 			{
@@ -1486,8 +1571,31 @@ prvProcessReceivedCommands:
 //  779 			queue with a time that is ahead of the timer daemon task (because it
 //  780 			pre-empted the timer daemon task after the xTimeNow value was set). */
 //  781 			xTimeNow = prvSampleTimeNow( &xTimerListsWereSwitched );
+??prvProcessReceivedCommands_3:
+        ADD      R0,SP,#+20     
+          CFI FunCall prvSampleTimeNow
+        BL       prvSampleTimeNow
+        MOVS     R6,R0          
 //  782 
 //  783 			switch( xMessage.xMessageID )
+        LDR      R0,[SP, #+4]   
+        CMP      R0,#+0         
+        BEQ.N    ??prvProcessReceivedCommands_4
+        CMP      R0,#+2         
+        BEQ.N    ??prvProcessReceivedCommands_4
+        BCC.N    ??prvProcessReceivedCommands_4
+        CMP      R0,#+4         
+        BEQ.N    ??prvProcessReceivedCommands_5
+        BCC.N    ??prvProcessReceivedCommands_6
+        CMP      R0,#+6         
+        BEQ.N    ??prvProcessReceivedCommands_4
+        BCC.N    ??prvProcessReceivedCommands_7
+        CMP      R0,#+8         
+        BEQ.N    ??prvProcessReceivedCommands_6
+        BCC.N    ??prvProcessReceivedCommands_4
+        CMP      R0,#+9         
+        BEQ.N    ??prvProcessReceivedCommands_5
+        B.N      ??prvProcessReceivedCommands_8
 //  784 			{
 //  785 				case tmrCOMMAND_START :
 //  786 			    case tmrCOMMAND_START_FROM_ISR :
@@ -1496,9 +1604,9 @@ prvProcessReceivedCommands:
 //  789 				case tmrCOMMAND_START_DONT_TRACE :
 //  790 					/* Start or restart a timer. */
 //  791 					if( prvInsertTimerInActiveList( pxTimer,  xMessage.u.xTimerParameters.xMessageValue + pxTimer->xTimerPeriodInTicks, xTimeNow, xMessage.u.xTimerParameters.xMessageValue ) != pdFALSE )
-??prvProcessReceivedCommands_1:
+??prvProcessReceivedCommands_4:
         LDR      R3,[SP, #+8]   
-        MOVS     R2,R1          
+        MOVS     R2,R6          
         LDR      R1,[SP, #+8]   
         LDR      R0,[R4, #+24]  
         ADDS     R1,R0,R1       
@@ -1506,7 +1614,7 @@ prvProcessReceivedCommands:
           CFI FunCall prvInsertTimerInActiveList
         BL       prvInsertTimerInActiveList
         CMP      R0,#+0         
-        BEQ.N    ??prvProcessReceivedCommands_2
+        BEQ.N    ??prvProcessReceivedCommands_9
 //  792 					{
 //  793 						/* The timer expired before it was added to the active
 //  794 						timer list.  Process it now. */
@@ -1520,7 +1628,7 @@ prvProcessReceivedCommands:
 //  798 						if( pxTimer->uxAutoReload == ( UBaseType_t ) pdTRUE )
         LDR      R0,[R4, #+28]  
         CMP      R0,#+1         
-        BNE.N    ??prvProcessReceivedCommands_2
+        BNE.N    ??prvProcessReceivedCommands_9
 //  799 						{
 //  800 							xResult = xTimerGenericCommand( pxTimer, tmrCOMMAND_START_DONT_TRACE, xMessage.u.xTimerParameters.xMessageValue + pxTimer->xTimerPeriodInTicks, NULL, tmrNO_DELAY );
         MOVS     R0,#+0         
@@ -1533,6 +1641,7 @@ prvProcessReceivedCommands:
         MOVS     R0,R4          
           CFI FunCall xTimerGenericCommand
         BL       xTimerGenericCommand
+        MOVS     R5,R0          
 //  801 							configASSERT( xResult );
 //  802 							( void ) xResult;
 //  803 						}
@@ -1546,73 +1655,21 @@ prvProcessReceivedCommands:
 //  811 						mtCOVERAGE_TEST_MARKER();
 //  812 					}
 //  813 					break;
-??prvProcessReceivedCommands_2:
-??prvProcessReceivedCommands_0:
-        MOVS     R3,#+0         
-        MOVS     R2,#+0         
-        ADD      R1,SP,#+4      
-        LDR.N    R0,??DataTable12
-        LDR      R0,[R0, #+0]   
-          CFI FunCall xQueueGenericReceive
-        BL       xQueueGenericReceive
-        CMP      R0,#+0         
-        BEQ.N    ??prvProcessReceivedCommands_3
-        LDR      R0,[SP, #+4]   
-        CMP      R0,#+0         
-        BPL.N    ??prvProcessReceivedCommands_4
-        ADD      R2,SP,#+8      
-        LDR      R1,[R2, #+8]   
-        LDR      R0,[R2, #+4]   
-        LDR      R2,[R2, #+0]   
-          CFI IndirectCall
-        BLX      R2             
-??prvProcessReceivedCommands_4:
-        LDR      R0,[SP, #+4]   
-        CMP      R0,#+0         
-        BMI.N    ??prvProcessReceivedCommands_0
-        LDR      R4,[SP, #+12]  
-        LDR      R0,[R4, #+20]  
-        CMP      R0,#+0         
-        BEQ.N    ??prvProcessReceivedCommands_5
-        ADDS     R0,R4,#+4      
-          CFI FunCall uxListRemove
-        BL       uxListRemove   
-??prvProcessReceivedCommands_5:
-        ADD      R0,SP,#+20     
-          CFI FunCall prvSampleTimeNow
-        BL       prvSampleTimeNow
-        MOVS     R1,R0          
-        LDR      R0,[SP, #+4]   
-        CMP      R0,#+0         
-        BEQ.N    ??prvProcessReceivedCommands_1
-        CMP      R0,#+2         
-        BEQ.N    ??prvProcessReceivedCommands_1
-        BCC.N    ??prvProcessReceivedCommands_1
-        CMP      R0,#+4         
-        BEQ.N    ??prvProcessReceivedCommands_6
-        BCC.N    ??prvProcessReceivedCommands_7
-        CMP      R0,#+6         
-        BEQ.N    ??prvProcessReceivedCommands_1
-        BCC.N    ??prvProcessReceivedCommands_8
-        CMP      R0,#+8         
-        BEQ.N    ??prvProcessReceivedCommands_7
-        BCC.N    ??prvProcessReceivedCommands_1
-        CMP      R0,#+9         
-        BEQ.N    ??prvProcessReceivedCommands_6
-        B.N      ??prvProcessReceivedCommands_9
+??prvProcessReceivedCommands_9:
+        B.N      ??prvProcessReceivedCommands_0
 //  814 
 //  815 				case tmrCOMMAND_STOP :
 //  816 				case tmrCOMMAND_STOP_FROM_ISR :
 //  817 					/* The timer has already been removed from the active list.
 //  818 					There is nothing to do here. */
 //  819 					break;
-??prvProcessReceivedCommands_7:
+??prvProcessReceivedCommands_6:
         B.N      ??prvProcessReceivedCommands_0
 //  820 
 //  821 				case tmrCOMMAND_CHANGE_PERIOD :
 //  822 				case tmrCOMMAND_CHANGE_PERIOD_FROM_ISR :
 //  823 					pxTimer->xTimerPeriodInTicks = xMessage.u.xTimerParameters.xMessageValue;
-??prvProcessReceivedCommands_6:
+??prvProcessReceivedCommands_5:
         LDR      R0,[SP, #+8]   
         STR      R0,[R4, #+24]  
 //  824 					configASSERT( ( pxTimer->xTimerPeriodInTicks > 0 ) );
@@ -1624,10 +1681,10 @@ prvProcessReceivedCommands:
 //  830 					meaning (unlike for the xTimerStart() case above) there is
 //  831 					no fail case that needs to be handled here. */
 //  832 					( void ) prvInsertTimerInActiveList( pxTimer, ( xTimeNow + pxTimer->xTimerPeriodInTicks ), xTimeNow, xTimeNow );
-        MOVS     R3,R1          
-        MOVS     R2,R1          
-        LDR      R0,[R4, #+24]  
-        ADDS     R1,R0,R1       
+        MOVS     R3,R6          
+        MOVS     R2,R6          
+        LDR      R1,[R4, #+24]  
+        ADDS     R1,R1,R6       
         MOVS     R0,R4          
           CFI FunCall prvInsertTimerInActiveList
         BL       prvInsertTimerInActiveList
@@ -1660,22 +1717,22 @@ prvProcessReceivedCommands:
 //  858 					}
 //  859 					#endif /* configSUPPORT_DYNAMIC_ALLOCATION */
 //  860 					break;
-??prvProcessReceivedCommands_8:
+??prvProcessReceivedCommands_7:
         B.N      ??prvProcessReceivedCommands_0
 //  861 
 //  862 				default	:
 //  863 					/* Don't expect to get here. */
 //  864 					break;
-??prvProcessReceivedCommands_9:
+??prvProcessReceivedCommands_8:
         B.N      ??prvProcessReceivedCommands_0
 //  865 			}
 //  866 		}
 //  867 	}
 //  868 }
-??prvProcessReceivedCommands_3:
-        ADD      SP,SP,#+24     
-          CFI CFA R13+8
-        POP      {R4,PC}        
+??prvProcessReceivedCommands_1:
+        ADD      SP,SP,#+28     
+          CFI CFA R13+20
+        POP      {R4-R7,PC}     
           CFI EndBlock cfiBlock14
 //  869 /*-----------------------------------------------------------*/
 //  870 
@@ -1687,13 +1744,14 @@ prvProcessReceivedCommands:
 //  871 static void prvSwitchTimerLists( void )
 //  872 {
 prvSwitchTimerLists:
-        PUSH     {R2-R6,LR}     
+        PUSH     {R2-R8,LR}     
+          CFI R4 Frame(CFA, -24)
+          CFI R5 Frame(CFA, -20)
+          CFI R6 Frame(CFA, -16)
+          CFI R7 Frame(CFA, -12)
+          CFI R8 Frame(CFA, -8)
           CFI R14 Frame(CFA, -4)
-          CFI R6 Frame(CFA, -8)
-          CFI R5 Frame(CFA, -12)
-          CFI R4 Frame(CFA, -16)
-          CFI CFA R13+24
-        B.N      ??prvSwitchTimerLists_0
+          CFI CFA R13+32
 //  873 TickType_t xNextExpireTime, xReloadTime;
 //  874 List_t *pxTemp;
 //  875 Timer_t *pxTimer;
@@ -1704,20 +1762,44 @@ prvSwitchTimerLists:
 //  880 	then they must have expired and should be processed before the lists
 //  881 	are switched. */
 //  882 	while( listLIST_IS_EMPTY( pxCurrentTimerList ) == pdFALSE )
+??prvSwitchTimerLists_0:
+        LDR.W    R8,??DataTable12_3
+        LDR      R0,[R8, #+0]   
+        LDR      R0,[R0, #+0]   
+        CMP      R0,#+0         
+        BEQ.N    ??prvSwitchTimerLists_1
 //  883 	{
 //  884 		xNextExpireTime = listGET_ITEM_VALUE_OF_HEAD_ENTRY( pxCurrentTimerList );
+        LDR      R0,[R8, #+0]   
+        LDR      R0,[R0, #+12]  
+        LDR      R0,[R0, #+0]   
+        MOVS     R4,R0          
 //  885 
 //  886 		/* Remove the timer from the list. */
 //  887 		pxTimer = ( Timer_t * ) listGET_OWNER_OF_HEAD_ENTRY( pxCurrentTimerList );
+        LDR      R0,[R8, #+0]   
+        LDR      R0,[R0, #+12]  
+        LDR      R0,[R0, #+12]  
+        MOVS     R6,R0          
 //  888 		( void ) uxListRemove( &( pxTimer->xTimerListItem ) );
+        ADDS     R0,R6,#+4      
+          CFI FunCall uxListRemove
+        BL       uxListRemove   
 //  889 		traceTIMER_EXPIRED( pxTimer );
 //  890 
 //  891 		/* Execute its callback, then send a command to restart the timer if
 //  892 		it is an auto-reload timer.  It cannot be restarted here as the lists
 //  893 		have not yet been switched. */
 //  894 		pxTimer->pxCallbackFunction( ( TimerHandle_t ) pxTimer );
+        MOVS     R0,R6          
+        LDR      R1,[R6, #+36]  
+          CFI IndirectCall
+        BLX      R1             
 //  895 
 //  896 		if( pxTimer->uxAutoReload == ( UBaseType_t ) pdTRUE )
+        LDR      R0,[R6, #+28]  
+        CMP      R0,#+1         
+        BNE.N    ??prvSwitchTimerLists_0
 //  897 		{
 //  898 			/* Calculate the reload value, and if the reload value results in
 //  899 			the timer going into the same timer list then it has already expired
@@ -1726,56 +1808,37 @@ prvSwitchTimerLists:
 //  902 			to restart the timer to ensure it is only inserted into a list after
 //  903 			the lists have been swapped. */
 //  904 			xReloadTime = ( xNextExpireTime + pxTimer->xTimerPeriodInTicks );
+        LDR      R0,[R6, #+24]  
+        ADDS     R0,R0,R4       
+        MOVS     R5,R0          
 //  905 			if( xReloadTime > xNextExpireTime )
+        CMP      R4,R5          
+        BCS.N    ??prvSwitchTimerLists_2
 //  906 			{
 //  907 				listSET_LIST_ITEM_VALUE( &( pxTimer->xTimerListItem ), xReloadTime );
-??prvSwitchTimerLists_1:
-        STR      R0,[R6, #+4]   
+        STR      R5,[R6, #+4]   
 //  908 				listSET_LIST_ITEM_OWNER( &( pxTimer->xTimerListItem ), pxTimer );
         STR      R6,[R6, #+16]  
 //  909 				vListInsert( pxCurrentTimerList, &( pxTimer->xTimerListItem ) );
         ADDS     R1,R6,#+4      
-        LDR      R0,[R4, #+0]   
+        LDR      R0,[R8, #+0]   
           CFI FunCall vListInsert
         BL       vListInsert    
+        B.N      ??prvSwitchTimerLists_0
 //  910 			}
-??prvSwitchTimerLists_0:
-        LDR.N    R4,??DataTable12_3
-        LDR      R0,[R4, #+0]   
-        LDR      R0,[R0, #+0]   
-        CMP      R0,#+0         
-        BEQ.N    ??prvSwitchTimerLists_2
-        LDR      R0,[R4, #+0]   
-        LDR      R0,[R0, #+12]  
-        LDR      R5,[R0, #+0]   
-        LDR      R0,[R4, #+0]   
-        LDR      R0,[R0, #+12]  
-        LDR      R6,[R0, #+12]  
-        ADDS     R0,R6,#+4      
-          CFI FunCall uxListRemove
-        BL       uxListRemove   
-        MOVS     R0,R6          
-        LDR      R1,[R6, #+36]  
-          CFI IndirectCall
-        BLX      R1             
-        LDR      R0,[R6, #+28]  
-        CMP      R0,#+1         
-        BNE.N    ??prvSwitchTimerLists_0
-        LDR      R0,[R6, #+24]  
-        ADDS     R0,R0,R5       
-        CMP      R5,R0          
-        BCC.N    ??prvSwitchTimerLists_1
 //  911 			else
 //  912 			{
 //  913 				xResult = xTimerGenericCommand( pxTimer, tmrCOMMAND_START_DONT_TRACE, xNextExpireTime, NULL, tmrNO_DELAY );
+??prvSwitchTimerLists_2:
         MOVS     R0,#+0         
         STR      R0,[SP, #+0]   
         MOVS     R3,#+0         
-        MOVS     R2,R5          
+        MOVS     R2,R4          
         MOVS     R1,#+0         
         MOVS     R0,R6          
           CFI FunCall xTimerGenericCommand
         BL       xTimerGenericCommand
+        MOVS     R7,R0          
 //  914 				configASSERT( xResult );
 //  915 				( void ) xResult;
         B.N      ??prvSwitchTimerLists_0
@@ -1788,16 +1851,16 @@ prvSwitchTimerLists:
 //  922 	}
 //  923 
 //  924 	pxTemp = pxCurrentTimerList;
-??prvSwitchTimerLists_2:
-        LDR      R0,[R4, #+0]   
+??prvSwitchTimerLists_1:
+        LDR      R0,[R8, #+0]   
 //  925 	pxCurrentTimerList = pxOverflowTimerList;
         LDR.N    R1,??DataTable12_4
         LDR      R2,[R1, #+0]   
-        STR      R2,[R4, #+0]   
+        STR      R2,[R8, #+0]   
 //  926 	pxOverflowTimerList = pxTemp;
         STR      R0,[R1, #+0]   
 //  927 }
-        POP      {R0,R1,R4-R6,PC}
+        POP      {R0,R1,R4-R8,PC}
           CFI EndBlock cfiBlock15
 //  928 /*-----------------------------------------------------------*/
 //  929 
@@ -1921,13 +1984,16 @@ prvCheckForValidListAndQueue:
 //  981 BaseType_t xTimerIsTimerActive( TimerHandle_t xTimer )
 //  982 {
 xTimerIsTimerActive:
-        PUSH     {R4,LR}        
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
+          CFI CFA R13+16
         MOVS     R4,R0          
 //  983 BaseType_t xTimerIsInActiveList;
 //  984 Timer_t *pxTimer = ( Timer_t * ) xTimer;
+        MOVS     R6,R4          
 //  985 
 //  986 	configASSERT( xTimer );
 //  987 
@@ -1940,13 +2006,13 @@ xTimerIsTimerActive:
 //  992 		it is referenced from either the current or the overflow timer lists in
 //  993 		one go, but the logic has to be reversed, hence the '!'. */
 //  994 		xTimerIsInActiveList = ( BaseType_t ) !( listIS_CONTAINED_WITHIN( NULL, &( pxTimer->xTimerListItem ) ) );
-        LDR      R0,[R4, #+20]  
+        LDR      R0,[R6, #+20]  
         CMP      R0,#+0         
         BEQ.N    ??xTimerIsTimerActive_0
-        MOVS     R4,#+1         
+        MOVS     R5,#+1         
         B.N      ??xTimerIsTimerActive_1
 ??xTimerIsTimerActive_0:
-        MOVS     R4,#+0         
+        MOVS     R5,#+0         
 //  995 	}
 //  996 	taskEXIT_CRITICAL();
 ??xTimerIsTimerActive_1:
@@ -1954,8 +2020,8 @@ xTimerIsTimerActive:
         BL       vPortExitCritical
 //  997 
 //  998 	return xTimerIsInActiveList;
-        MOVS     R0,R4          
-        POP      {R4,PC}        
+        MOVS     R0,R5          
+        POP      {R4-R6,PC}     
 //  999 } /*lint !e818 Can't be pointer to const due to the typedef. */
           CFI EndBlock cfiBlock17
 // 1000 /*-----------------------------------------------------------*/
@@ -1968,12 +2034,15 @@ xTimerIsTimerActive:
 // 1002 void *pvTimerGetTimerID( const TimerHandle_t xTimer )
 // 1003 {
 pvTimerGetTimerID:
-        PUSH     {R4,LR}        
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
+          CFI CFA R13+16
         MOVS     R4,R0          
 // 1004 Timer_t * const pxTimer = ( Timer_t * ) xTimer;
+        MOVS     R5,R4          
 // 1005 void *pvReturn;
 // 1006 
 // 1007 	configASSERT( xTimer );
@@ -1983,15 +2052,15 @@ pvTimerGetTimerID:
         BL       vPortEnterCritical
 // 1010 	{
 // 1011 		pvReturn = pxTimer->pvTimerID;
-        LDR      R4,[R4, #+32]  
+        LDR      R6,[R5, #+32]  
 // 1012 	}
 // 1013 	taskEXIT_CRITICAL();
           CFI FunCall vPortExitCritical
         BL       vPortExitCritical
 // 1014 
 // 1015 	return pvReturn;
-        MOVS     R0,R4          
-        POP      {R4,PC}        
+        MOVS     R0,R6          
+        POP      {R4-R6,PC}     
 // 1016 }
           CFI EndBlock cfiBlock18
 // 1017 /*-----------------------------------------------------------*/
@@ -2004,14 +2073,16 @@ pvTimerGetTimerID:
 // 1019 void vTimerSetTimerID( TimerHandle_t xTimer, void *pvNewID )
 // 1020 {
 vTimerSetTimerID:
-        PUSH     {R3-R5,LR}     
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
           CFI CFA R13+16
         MOVS     R4,R0          
         MOVS     R5,R1          
 // 1021 Timer_t * const pxTimer = ( Timer_t * ) xTimer;
+        MOVS     R6,R4          
 // 1022 
 // 1023 	configASSERT( xTimer );
 // 1024 
@@ -2020,13 +2091,13 @@ vTimerSetTimerID:
         BL       vPortEnterCritical
 // 1026 	{
 // 1027 		pxTimer->pvTimerID = pvNewID;
-        STR      R5,[R4, #+32]  
+        STR      R5,[R6, #+32]  
 // 1028 	}
 // 1029 	taskEXIT_CRITICAL();
           CFI FunCall vPortExitCritical
         BL       vPortExitCritical
 // 1030 }
-        POP      {R0,R4,R5,PC}  
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock19
 // 1031 /*-----------------------------------------------------------*/
 // 1032 
@@ -2040,29 +2111,37 @@ vTimerSetTimerID:
 // 1035 	BaseType_t xTimerPendFunctionCallFromISR( PendedFunction_t xFunctionToPend, void *pvParameter1, uint32_t ulParameter2, BaseType_t *pxHigherPriorityTaskWoken )
 // 1036 	{
 xTimerPendFunctionCallFromISR:
-        PUSH     {R0-R4,LR}     
+        PUSH     {R3-R7,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
+          CFI R7 Frame(CFA, -8)
+          CFI R6 Frame(CFA, -12)
+          CFI R5 Frame(CFA, -16)
+          CFI R4 Frame(CFA, -20)
           CFI CFA R13+24
-        MOVS     R4,R3          
+        SUB      SP,SP,#+16     
+          CFI CFA R13+40
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R6,R2          
+        MOVS     R7,R3          
 // 1037 	DaemonTaskMessage_t xMessage;
 // 1038 	BaseType_t xReturn;
 // 1039 
 // 1040 		/* Complete the message with the function parameters and post it to the
 // 1041 		daemon task. */
 // 1042 		xMessage.xMessageID = tmrCOMMAND_EXECUTE_CALLBACK_FROM_ISR;
-        MVNS     R3,#+1         
-        STR      R3,[SP, #+0]   
+        MVNS     R0,#+1         
+        STR      R0,[SP, #+0]   
 // 1043 		xMessage.u.xCallbackParameters.pxCallbackFunction = xFunctionToPend;
-        STR      R0,[SP, #+4]   
+        STR      R4,[SP, #+4]   
 // 1044 		xMessage.u.xCallbackParameters.pvParameter1 = pvParameter1;
-        STR      R1,[SP, #+8]   
+        STR      R5,[SP, #+8]   
 // 1045 		xMessage.u.xCallbackParameters.ulParameter2 = ulParameter2;
-        STR      R2,[SP, #+12]  
+        STR      R6,[SP, #+12]  
 // 1046 
 // 1047 		xReturn = xQueueSendFromISR( xTimerQueue, &xMessage, pxHigherPriorityTaskWoken );
         MOVS     R3,#+0         
-        MOVS     R2,R4          
+        MOVS     R2,R7          
         MOV      R1,SP          
         LDR.N    R0,??DataTable12
         LDR      R0,[R0, #+0]   
@@ -2072,9 +2151,9 @@ xTimerPendFunctionCallFromISR:
 // 1049 		tracePEND_FUNC_CALL_FROM_ISR( xFunctionToPend, pvParameter1, ulParameter2, xReturn );
 // 1050 
 // 1051 		return xReturn;
-        ADD      SP,SP,#+16     
-          CFI CFA R13+8
-        POP      {R4,PC}        
+        ADD      SP,SP,#+20     
+          CFI CFA R13+20
+        POP      {R4-R7,PC}     
 // 1052 	}
           CFI EndBlock cfiBlock20
 // 1053 
@@ -2091,11 +2170,19 @@ xTimerPendFunctionCallFromISR:
 // 1059 	BaseType_t xTimerPendFunctionCall( PendedFunction_t xFunctionToPend, void *pvParameter1, uint32_t ulParameter2, TickType_t xTicksToWait )
 // 1060 	{
 xTimerPendFunctionCall:
-        PUSH     {R0-R4,LR}     
+        PUSH     {R3-R7,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
+          CFI R7 Frame(CFA, -8)
+          CFI R6 Frame(CFA, -12)
+          CFI R5 Frame(CFA, -16)
+          CFI R4 Frame(CFA, -20)
           CFI CFA R13+24
-        MOVS     R4,R3          
+        SUB      SP,SP,#+16     
+          CFI CFA R13+40
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R6,R2          
+        MOVS     R7,R3          
 // 1061 	DaemonTaskMessage_t xMessage;
 // 1062 	BaseType_t xReturn;
 // 1063 
@@ -2107,18 +2194,18 @@ xTimerPendFunctionCall:
 // 1069 		/* Complete the message with the function parameters and post it to the
 // 1070 		daemon task. */
 // 1071 		xMessage.xMessageID = tmrCOMMAND_EXECUTE_CALLBACK;
-        MOVS     R3,#+4294967295
-        STR      R3,[SP, #+0]   
+        MOVS     R0,#+4294967295
+        STR      R0,[SP, #+0]   
 // 1072 		xMessage.u.xCallbackParameters.pxCallbackFunction = xFunctionToPend;
-        STR      R0,[SP, #+4]   
+        STR      R4,[SP, #+4]   
 // 1073 		xMessage.u.xCallbackParameters.pvParameter1 = pvParameter1;
-        STR      R1,[SP, #+8]   
+        STR      R5,[SP, #+8]   
 // 1074 		xMessage.u.xCallbackParameters.ulParameter2 = ulParameter2;
-        STR      R2,[SP, #+12]  
+        STR      R6,[SP, #+12]  
 // 1075 
 // 1076 		xReturn = xQueueSendToBack( xTimerQueue, &xMessage, xTicksToWait );
         MOVS     R3,#+0         
-        MOVS     R2,R4          
+        MOVS     R2,R7          
         MOV      R1,SP          
         LDR.N    R0,??DataTable12
         LDR      R0,[R0, #+0]   
@@ -2128,9 +2215,9 @@ xTimerPendFunctionCall:
 // 1078 		tracePEND_FUNC_CALL( xFunctionToPend, pvParameter1, ulParameter2, xReturn );
 // 1079 
 // 1080 		return xReturn;
-        ADD      SP,SP,#+16     
-          CFI CFA R13+8
-        POP      {R4,PC}        
+        ADD      SP,SP,#+20     
+          CFI CFA R13+20
+        POP      {R4-R7,PC}     
 // 1081 	}
           CFI EndBlock cfiBlock21
 
@@ -2252,9 +2339,9 @@ xTimerPendFunctionCall:
 // 
 //   292 bytes in section .bss
 //    16 bytes in section .rodata
-// 1'140 bytes in section .text
+// 1'286 bytes in section .text
 // 
-// 1'140 bytes of CODE  memory
+// 1'286 bytes of CODE  memory
 //    16 bytes of CONST memory
 //   292 bytes of DATA  memory
 //

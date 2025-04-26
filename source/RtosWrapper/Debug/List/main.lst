@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         26/Apr/2025  19:24:50
+# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         27/Apr/2025  00:34:24
 # Copyright 1999-2022 IAR Systems AB.
 #
 #    Cpu mode                     =  thumb
@@ -102,7 +102,11 @@
 #        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
 #        -I
 #        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
-#        -Ol --c++ --no_exceptions --no_rtti) --dependencies=n
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+#        -On --c++ --no_exceptions --no_rtti) --dependencies=n
 #        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\main.o.d
 #    Locale                       =  C
 #    List file                    =
@@ -123,33 +127,129 @@
 
 D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\main.cpp
       1          #include "rtos.hpp"         // for Rtos
+
+   \                                 In section .text, align 2
+   \   __vfp uint32_t *std::array<uint32_t, 512U>::data() noexcept
+   \                     _ZNSt5arrayIjLj512EE4dataEv: (+1)
+   \        0x0   0x4770             BX       LR
+
+   \                                 In section .text, align 4
+   \   __vfp void OsWrapper::RtosWrapper::wCreateThread<OsWrapper::Rtos, MeasurementTask>(MeasurementTask &, char const *, OsWrapper::ThreadPriority, uint16_t, uint32_t *)
+   \                     _ZN9OsWrapper11RtosWrapper13wCreateThreadINS_4RtosE15MeasurementTaskEEvRT0_PKcNS_14ThreadPriorityEtPj: (+1)
+   \        0x0   0xE92D 0x41FF      PUSH     {R0-R8,LR}
+   \        0x4   0x0005             MOVS     R5,R0
+   \        0x6   0x000E             MOVS     R6,R1
+   \        0x8   0x0017             MOVS     R7,R2
+   \        0xA   0x4698             MOV      R8,R3
+   \        0xC   0x9C0A             LDR      R4,[SP, #+40]
+   \        0xE   0x2C00             CMP      R4,#+0
+   \       0x10   0xD00D             BEQ.N    ??wCreateThread_1
+   \       0x12   0x1D28             ADDS     R0,R5,#+4
+   \       0x14   0x9002             STR      R0,[SP, #+8]
+   \       0x16   0x9401             STR      R4,[SP, #+4]
+   \       0x18   0x0038             MOVS     R0,R7
+   \       0x1A   0xB2C0             UXTB     R0,R0
+   \       0x1C   0x9000             STR      R0,[SP, #+0]
+   \       0x1E   0x002B             MOVS     R3,R5
+   \       0x20   0x4642             MOV      R2,R8
+   \       0x22   0xB292             UXTH     R2,R2
+   \       0x24   0x0031             MOVS     R1,R6
+   \       0x26   0x4803             LDR.N    R0,??wCreateThread_0
+   \       0x28   0x.... 0x....      BL       xTaskCreateStatic
+   \       0x2C   0x6568             STR      R0,[R5, #+84]
+   \                     ??wCreateThread_1: (+1)
+   \       0x2E   0xE8BD 0x81FF      POP      {R0-R8,PC}
+   \       0x32   0xBF00             Nop
+   \                     ??wCreateThread_0:
+   \       0x34   0x....'....        DC32     _ZN9OsWrapper4Rtos3RunEPv
+
+   \                                 In section .text, align 2
+   \   __vfp void OsWrapper::RtosWrapper::wStart()
+   \                     _ZN9OsWrapper11RtosWrapper6wStartEv: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+   \        0x2   0x.... 0x....      BL       vTaskStartScheduler
+   \        0x6   0xBD01             POP      {R0,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp uint32_t OsWrapper::RtosWrapper::wGetTicks()
+   \                     _ZN9OsWrapper11RtosWrapper9wGetTicksEv: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+   \        0x2   0x.... 0x....      BL       xTaskGetTickCount
+   \        0x6   0xBD02             POP      {R1,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void OsWrapper::IThread::Run()
+   \                     _ZN9OsWrapper7IThread3RunEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x.... 0x....      BL       _ZN9OsWrapper11RtosWrapper9wGetTicksEv
+   \        0x8   0x65A0             STR      R0,[R4, #+88]
+   \        0xA   0x0020             MOVS     R0,R4
+   \        0xC   0x6821             LDR      R1,[R4, #+0]
+   \        0xE   0x6809             LDR      R1,[R1, #+0]
+   \       0x10   0x4788             BLX      R1
+   \       0x12   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void OsWrapper::Rtos::CreateThread<MeasurementTask>(MeasurementTask &, char const *, OsWrapper::ThreadPriority)
+   \                     _ZN9OsWrapper4Rtos12CreateThreadI15MeasurementTaskEEvRT_PKcNS_14ThreadPriorityE: (+1)
+   \        0x0   0xB57C             PUSH     {R2-R6,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0016             MOVS     R6,R2
+   \        0x8   0xF114 0x005C      ADDS     R0,R4,#+92
+   \        0xC   0x.... 0x....      BL       _ZNSt5arrayIjLj512EE4dataEv
+   \       0x10   0x9000             STR      R0,[SP, #+0]
+   \       0x12   0xF44F 0x7300      MOV      R3,#+512
+   \       0x16   0x0032             MOVS     R2,R6
+   \       0x18   0xB2D2             UXTB     R2,R2
+   \       0x1A   0x0029             MOVS     R1,R5
+   \       0x1C   0x0020             MOVS     R0,R4
+   \       0x1E   0x.... 0x....      BL       _ZN9OsWrapper11RtosWrapper13wCreateThreadINS_4RtosE15MeasurementTaskEEvRT0_PKcNS_14ThreadPriorityEtPj
+   \       0x22   0xBD73             POP      {R0,R1,R4-R6,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void OsWrapper::Rtos::Start()
+   \                     _ZN9OsWrapper4Rtos5StartEv: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+   \        0x2   0x.... 0x....      BL       _ZN9OsWrapper11RtosWrapper6wStartEv
+   \        0x6   0xBD01             POP      {R0,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void OsWrapper::Rtos::Run(void *)
+   \                     _ZN9OsWrapper4Rtos3RunEPv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN9OsWrapper7IThread3RunEv
+   \        0xA   0xBD10             POP      {R4,PC}
       2          
       3          #include "rccregisters.hpp" // for RCC
 
    \                                 In section .text, align 4
-   \   __vfp void FieldValueBase<RCC_CR_HSION_Values<RCC::CR, 0U, 1U, ReadWriteMode, RCC::RCCCRBase>, RCC::RCCCRBase, 1U>::Set<ReadWriteMode, void>()
-   \                     _ZN14FieldValueBaseI19RCC_CR_HSION_ValuesIN3RCC2CRELj0ELj1E13ReadWriteModeNS1_9RCCCRBaseEES4_Lj1EE3SetIS3_vEEvv: (+1)
+   \   __vfp void FieldValueBase<RCC_CR_HSEON_Values<RCC::CR, 16U, 1U, ReadWriteMode, RCC::RCCCRBase>, RCC::RCCCRBase, 1U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI19RCC_CR_HSEON_ValuesIN3RCC2CRELj16ELj1E13ReadWriteModeNS1_9RCCCRBaseEES4_Lj1EE3SetIS3_vEEvv: (+1)
    \        0x0   0x4903             LDR.N    R1,??Set_0
    \        0x2   0x6808             LDR      R0,[R1, #+0]
-   \        0x4   0x0840             LSRS     R0,R0,#+1
-   \        0x6   0x0040             LSLS     R0,R0,#+1
-   \        0x8   0xF050 0x0001      ORRS     R0,R0,#0x1
+   \        0x4   0xF430 0x3080      BICS     R0,R0,#0x10000
+   \        0x8   0xF450 0x3080      ORRS     R0,R0,#0x10000
    \        0xC   0x6008             STR      R0,[R1, #+0]
    \        0xE   0x4770             BX       LR
    \                     ??Set_0:
    \       0x10   0x4002'3800        DC32     0x40023800
 
    \                                 In section .text, align 4
-   \   __vfp void FieldValueBase<RCC_CFGR_SW_Values<RCC::CFGR, 0U, 2U, ReadWriteMode, RCC::RCCCFGRBase>, RCC::RCCCFGRBase, 0U>::Set<ReadWriteMode, void>()
-   \                     _ZN14FieldValueBaseI18RCC_CFGR_SW_ValuesIN3RCC4CFGRELj0ELj2E13ReadWriteModeNS1_11RCCCFGRBaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
-   \        0x0   0x4902             LDR.N    R1,??Set_1
+   \   __vfp void FieldValueBase<RCC_CFGR_SW_Values<RCC::CFGR, 0U, 2U, ReadWriteMode, RCC::RCCCFGRBase>, RCC::RCCCFGRBase, 1U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI18RCC_CFGR_SW_ValuesIN3RCC4CFGRELj0ELj2E13ReadWriteModeNS1_11RCCCFGRBaseEES4_Lj1EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_1
    \        0x2   0x6808             LDR      R0,[R1, #+0]
    \        0x4   0x0880             LSRS     R0,R0,#+2
    \        0x6   0x0080             LSLS     R0,R0,#+2
-   \        0x8   0x6008             STR      R0,[R1, #+0]
-   \        0xA   0x4770             BX       LR
+   \        0x8   0xF050 0x0001      ORRS     R0,R0,#0x1
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
    \                     ??Set_1:
-   \        0xC   0x4002'3808        DC32     0x40023808
+   \       0x10   0x4002'3808        DC32     0x40023808
 
    \                                 In section .text, align 4
    \   __vfp void FieldValueBase<RCC_AHB1ENR_DMA2EN_Values<RCC::APB2ENR, 14U, 1U, ReadWriteMode, RCC::RCCAPB2ENRBase>, RCC::RCCAPB2ENRBase, 1U>::Set<ReadWriteMode, void>()
@@ -225,11 +325,35 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\main.cpp
    \       0x10   0x4002'3840        DC32     0x40023840
 
    \                                 In section .text, align 4
-   \   __vfp bool FieldValueBase<RCC_CR_HSIRDY_Values<RCC::CR, 1U, 1U, ReadMode, RCC::RCCCRBase>, RCC::RCCCRBase, 0U>::IsSet<ReadMode, void>()
-   \                     _ZN14FieldValueBaseI20RCC_CR_HSIRDY_ValuesIN3RCC2CRELj1ELj1E8ReadModeNS1_9RCCCRBaseEES4_Lj0EE5IsSetIS3_vEEbv: (+1)
+   \   __vfp void FieldValueBase<USART2_CR1_UE_Values<USART2::CR1, 13U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 1U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI20USART2_CR1_UE_ValuesIN6USART23CR1ELj13ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_8
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF430 0x5000      BICS     R0,R0,#0x2000
+   \        0x8   0xF450 0x5000      ORRS     R0,R0,#0x2000
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
+   \                     ??Set_8:
+   \       0x10   0x4000'440C        DC32     0x4000440c
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<USART2_CR1_TE_Values<USART2::CR1, 3U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 1U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI20USART2_CR1_TE_ValuesIN6USART23CR1ELj3ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_9
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF030 0x0008      BICS     R0,R0,#0x8
+   \        0x8   0xF050 0x0008      ORRS     R0,R0,#0x8
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
+   \                     ??Set_9:
+   \       0x10   0x4000'440C        DC32     0x4000440c
+
+   \                                 In section .text, align 4
+   \   __vfp bool FieldValueBase<RCC_CR_HSERDY_Values<RCC::CR, 17U, 1U, ReadMode, RCC::RCCCRBase>, RCC::RCCCRBase, 0U>::IsSet<ReadMode, void>()
+   \                     _ZN14FieldValueBaseI20RCC_CR_HSERDY_ValuesIN3RCC2CRELj17ELj1E8ReadModeNS1_9RCCCRBaseEES4_Lj0EE5IsSetIS3_vEEbv: (+1)
    \        0x0   0x4804             LDR.N    R0,??IsSet_0
    \        0x2   0x6800             LDR      R0,[R0, #+0]
-   \        0x4   0x0840             LSRS     R0,R0,#+1
+   \        0x4   0x0C40             LSRS     R0,R0,#+17
    \        0x6   0xF010 0x0001      ANDS     R0,R0,#0x1
    \        0xA   0xF090 0x0001      EORS     R0,R0,#0x1
    \        0xE   0xB2C0             UXTB     R0,R0
@@ -239,46 +363,48 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\main.cpp
    \       0x14   0x4002'3800        DC32     0x40023800
 
    \                                 In section .text, align 4
-   \   __vfp bool FieldValueBase<RCC_CFGR_SWS_Values<RCC::CFGR, 2U, 2U, ReadMode, RCC::RCCCFGRBase>, RCC::RCCCFGRBase, 0U>::IsSet<ReadMode, void>()
-   \                     _ZN14FieldValueBaseI19RCC_CFGR_SWS_ValuesIN3RCC4CFGRELj2ELj2E8ReadModeNS1_11RCCCFGRBaseEES4_Lj0EE5IsSetIS3_vEEbv: (+1)
-   \        0x0   0x4804             LDR.N    R0,??IsSet_1
+   \   __vfp bool FieldValueBase<RCC_CFGR_SWS_Values<RCC::CFGR, 2U, 2U, ReadMode, RCC::RCCCFGRBase>, RCC::RCCCFGRBase, 1U>::IsSet<ReadMode, void>()
+   \                     _ZN14FieldValueBaseI19RCC_CFGR_SWS_ValuesIN3RCC4CFGRELj2ELj2E8ReadModeNS1_11RCCCFGRBaseEES4_Lj1EE5IsSetIS3_vEEbv: (+1)
+   \        0x0   0x4805             LDR.N    R0,??IsSet_1
    \        0x2   0x6800             LDR      R0,[R0, #+0]
-   \        0x4   0xF010 0x0F0C      TST      R0,#0xC
-   \        0x8   0xD101             BNE.N    ??IsSet_2
-   \        0xA   0x2001             MOVS     R0,#+1
-   \        0xC   0xE000             B.N      ??IsSet_3
+   \        0x4   0xF010 0x000C      ANDS     R0,R0,#0xC
+   \        0x8   0x2804             CMP      R0,#+4
+   \        0xA   0xD101             BNE.N    ??IsSet_2
+   \        0xC   0x2001             MOVS     R0,#+1
+   \        0xE   0xE000             B.N      ??IsSet_3
    \                     ??IsSet_2: (+1)
-   \        0xE   0x2000             MOVS     R0,#+0
+   \       0x10   0x2000             MOVS     R0,#+0
    \                     ??IsSet_3: (+1)
-   \       0x10   0xB2C0             UXTB     R0,R0
-   \       0x12   0x4770             BX       LR
+   \       0x12   0xB2C0             UXTB     R0,R0
+   \       0x14   0x4770             BX       LR
+   \       0x16   0xBF00             Nop
    \                     ??IsSet_1:
-   \       0x14   0x4002'3808        DC32     0x40023808
+   \       0x18   0x4002'3808        DC32     0x40023808
 
    \                                 In section .text, align 4
    \   __vfp void Register<1'073'887'280U, 32U, ReadWriteMode, RCC::RCCAHB1ENRBase, RCC_AHB1ENR_GPIOCEN_Values<RCC::AHB1ENR, 2U, 1U, ReadWriteMode, RCC::RCCAHB1ENRBase>::Enable, RCC_AHB1ENR_GPIOAEN_Values<RCC::AHB1ENR, 0U, 1U, ReadWriteMode, RCC::RCCAHB1ENRBase>::Enable>::Set<ReadWriteMode, void>()
    \                     _ZN8RegisterILj1073887280ELj32E13ReadWriteModeN3RCC14RCCAHB1ENRBaseEJ10FieldValueI26RCC_AHB1ENR_GPIOCEN_ValuesINS1_7AHB1ENRELj2ELj1ES0_S2_ES2_Lj1EvES3_I26RCC_AHB1ENR_GPIOAEN_ValuesIS5_Lj0ELj1ES0_S2_ES2_Lj1EvEEE3SetIS0_vEEvv: (+1)
-   \        0x0   0x4903             LDR.N    R1,??Set_8
+   \        0x0   0x4903             LDR.N    R1,??Set_10
    \        0x2   0x6808             LDR      R0,[R1, #+0]
    \        0x4   0xF030 0x0005      BICS     R0,R0,#0x5
    \        0x8   0xF050 0x0005      ORRS     R0,R0,#0x5
    \        0xC   0x6008             STR      R0,[R1, #+0]
    \        0xE   0x4770             BX       LR
-   \                     ??Set_8:
+   \                     ??Set_10:
    \       0x10   0x4002'3830        DC32     0x40023830
 
    \                                 In section .text, align 4
    \   __vfp void Register<1'073'874'944U, 32U, ReadWriteMode, GPIOC::GPIOCMODERBase, GPIOC_MODER_MODER15_Values<GPIOC::MODER, 10U, 2U, ReadWriteMode, GPIOC::GPIOCMODERBase>::Output, GPIOC_MODER_MODER15_Values<GPIOC::MODER, 16U, 2U, ReadWriteMode, GPIOC::GPIOCMODERBase>::Output, GPIOC_MODER_MODER15_Values<GPIOC::MODER, 18U, 2U, ReadWriteMode, GPIOC::GPIOCMODERBase>::Output>::Set<ReadWriteMode, void>()
    \                     _ZN8RegisterILj1073874944ELj32E13ReadWriteModeN5GPIOC14GPIOCMODERBaseEJ10FieldValueI26GPIOC_MODER_MODER15_ValuesINS1_5MODERELj10ELj2ES0_S2_ES2_Lj1EvES3_IS4_IS5_Lj16ELj2ES0_S2_ES2_Lj1EvES3_IS4_IS5_Lj18ELj2ES0_S2_ES2_Lj1EvEEE3SetIS0_vEEvv: (+1)
-   \        0x0   0x4A04             LDR.N    R2,??Set_9
+   \        0x0   0x4A04             LDR.N    R2,??Set_11
    \        0x2   0x6811             LDR      R1,[R2, #+0]
-   \        0x4   0x4804             LDR.N    R0,??Set_9+0x4
+   \        0x4   0x4804             LDR.N    R0,??Set_11+0x4
    \        0x6   0x4001             ANDS     R1,R0,R1
    \        0x8   0xF441 0x2180      ORR      R1,R1,#0x40000
    \        0xC   0xF451 0x3182      ORRS     R1,R1,#0x10400
    \       0x10   0x6011             STR      R1,[R2, #+0]
    \       0x12   0x4770             BX       LR
-   \                     ??Set_9:
+   \                     ??Set_11:
    \       0x14   0x4002'0800        DC32     0x40020800
    \       0x18   0xFFF0'F3FF        DC32     0xfff0f3ff
 
@@ -306,138 +432,480 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\main.cpp
       6          #include "gpiocregisters.hpp"  // for GPIOC
       7          #include "usart2registers.hpp" // for Usart2 registers
       8          
-      9          
+      9          #include "AdcDmaDataProvider.hpp" // for AdcDmaDataProvider
+     10          #include "DigitalFilter.hpp" // for DigitalFilter
+
+   \                                 In section .text, align 2
+   \   __vfp IDigitalFilter<float>::subobject IDigitalFilter() noexcept
+   \                     _ZN14IDigitalFilterIfEC2Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN14IDigitalFilterIfEC1Ev
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp IDigitalFilter<float>::IDigitalFilter() noexcept
+   \                     _ZN14IDigitalFilterIfEC1Ev: (+1)
+   \        0x0   0x4770             BX       LR
+
+   \                                 In section .text, align 4, keep-with-next
+   \   static __vfp DigitalFilter<float, dt, rc>::DigitalFilter() noexcept
+   \                     _ZN13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEEC1Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0xED2D 0x8B02      VPUSH    {D8}
+   \        0x6   0x0004             MOVS     R4,R0
+   \        0x8   0x0020             MOVS     R0,R4
+   \        0xA   0x.... 0x....      BL       _ZN14IDigitalFilterIfEC2Ev
+   \        0xE   0x....             LDR.N    R0,??DataTable6_13
+   \       0x10   0x6020             STR      R0,[R4, #+0]
+   \       0x12   0xED9F 0x....      VLDR.W   S16,??DataTable6
+   \       0x16   0xEEB0 0x0A48      VMOV.F32 S0,S16
+   \       0x1A   0x.... 0x....      BL       expf
+   \       0x1E   0xEEF7 0x0A00      VMOV.F32 S1,#1.0
+   \       0x22   0xEE30 0x0AC0      VSUB.F32 S0,S1,S0
+   \       0x26   0xED84 0x0A02      VSTR     S0,[R4, #+8]
+   \       0x2A   0x0020             MOVS     R0,R4
+   \       0x2C   0xECBD 0x8B02      VPOP     {D8}
+   \       0x30   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2, keep-with-next
+   \   static __vfp float DigitalFilter<float, dt, rc>::FilterValue(float)
+   \                     _ZN13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEE11FilterValueEf: (+1)
+   \        0x0   0xEEF0 0x0A40      VMOV.F32 S1,S0
+   \        0x4   0x....             LDR.N    R1,??DataTable6_14
+   \        0x6   0x7809             LDRB     R1,[R1, #+0]
+   \        0x8   0x2900             CMP      R1,#+0
+   \        0xA   0xD004             BEQ.N    ??FilterValue_0
+   \        0xC   0xEDC0 0x0A01      VSTR     S1,[R0, #+4]
+   \       0x10   0xEEB0 0x0A60      VMOV.F32 S0,S1
+   \       0x14   0xE00B             B.N      ??FilterValue_1
+   \                     ??FilterValue_0: (+1)
+   \       0x16   0xED90 0x0A01      VLDR     S0,[R0, #+4]
+   \       0x1A   0xEE30 0x1AC0      VSUB.F32 S2,S1,S0
+   \       0x1E   0xEDD0 0x1A02      VLDR     S3,[R0, #+8]
+   \       0x22   0xED90 0x0A01      VLDR     S0,[R0, #+4]
+   \       0x26   0xEE01 0x0A21      VMLA.F32 S0,S2,S3
+   \       0x2A   0xED80 0x0A01      VSTR     S0,[R0, #+4]
+   \                     ??FilterValue_1: (+1)
+   \       0x2E   0x4770             BX       LR
+
+   \                                 In section .data, align 1
+   \   __absolute bool isFirstTime
+   \                     `DigitalFilter<float, dt, rc>::FilterValue(float)::isFirstTime`:
+   \        0x0   0x01               DC8 1
+     11          #include "Voltage.hpp" // for Voltage
+
+   \                                 In section .text, align 2
+   \   __vfp IVoltage::subobject IVoltage() noexcept
+   \                     _ZN8IVoltageC2Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN8IVoltageC1Ev
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp IVoltage::IVoltage() noexcept
+   \                     _ZN8IVoltageC1Ev: (+1)
+   \        0x0   0x4770             BX       LR
+
+   \                                 In section .text, align 2, keep-with-next
+   \   static __vfp Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::Voltage(IRawDataProvider &)
+   \                     _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEEC1ER16IRawDataProvider: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0020             MOVS     R0,R4
+   \        0x8   0x.... 0x....      BL       _ZN8IVoltageC2Ev
+   \        0xC   0x....             LDR.N    R0,??DataTable6_15
+   \        0xE   0x6020             STR      R0,[R4, #+0]
+   \       0x10   0x6065             STR      R5,[R4, #+4]
+   \       0x12   0x0020             MOVS     R0,R4
+   \       0x14   0xBD32             POP      {R1,R4,R5,PC}
+
+   \                                 In section .text, align 2, keep-with-next
+   \   static __vfp float Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::Measure()
+   \                     _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEE7MeasureEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0xED2D 0x8B02      VPUSH    {D8}
+   \        0x6   0x0004             MOVS     R4,R0
+   \        0x8   0x0020             MOVS     R0,R4
+   \        0xA   0x.... 0x....      BL       _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEE13CalculateGainEv
+   \        0xE   0xEEB0 0x8A40      VMOV.F32 S16,S0
+   \       0x12   0x6860             LDR      R0,[R4, #+4]
+   \       0x14   0x6861             LDR      R1,[R4, #+4]
+   \       0x16   0x6809             LDR      R1,[R1, #+0]
+   \       0x18   0x6809             LDR      R1,[R1, #+0]
+   \       0x1A   0x4788             BLX      R1
+   \       0x1C   0xEE00 0x0A10      VMOV     S0,R0
+   \       0x20   0xEEF8 0x8A40      VCVT.F32.U32 S17,S0
+   \       0x24   0x0020             MOVS     R0,R4
+   \       0x26   0x.... 0x....      BL       _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEE15CalculateOffsetEv
+   \       0x2A   0xEE08 0x0A88      VMLA.F32 S0,S17,S16
+   \       0x2E   0xECBD 0x8B02      VPOP     {D8}
+   \       0x32   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 4, keep-with-next
+   \   static __vfp float Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::CalculateGain()
+   \                     _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEE13CalculateGainEv: (+1)
+   \        0x0   0xED9F 0x....      VLDR.W   S0,??DataTable6_1
+   \        0x4   0x4770             BX       LR
+
+   \                                 In section .text, align 4, keep-with-next
+   \   static __vfp float Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::CalculateOffset()
+   \                     _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEE15CalculateOffsetEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEE13CalculateGainEv
+   \        0xA   0xEEF0 0x0A40      VMOV.F32 S1,S0
+   \        0xE   0xED9F 0x....      VLDR.W   S2,??DataTable6_2
+   \       0x12   0xED9F 0x....      VLDR.W   S0,??DataTable6_3
+   \       0x16   0xEE00 0x0AC1      VMLS.F32 S0,S1,S2
+   \       0x1A   0xBD10             POP      {R4,PC}
+     12          #include "DataRepository.hpp" // for DataRepository
+     13          #include "LedController.hpp" // for LedController
+     14          #include "LedCalculator.hpp" // for LedCalculator
+     15          #include "Usart.hpp" // for Usart
+     16          
+     17          #include "MeasurementTask.hpp" // for MeasurementTask
+     18          
 
    \                                 In section .data, align 4
-     10          std::uint32_t SystemCoreClock = 16'000'000U;
+     19          std::uint32_t SystemCoreClock = 8'000'000U;
    \                     SystemCoreClock:
-   \        0x0   0x00F4'2400        DC32 16'000'000
-     11          
-     12          extern "C" {
+   \        0x0   0x007A'1200        DC32 8'000'000
+     20          
+     21          extern "C" {
 
    \                                 In section .text, align 2, keep-with-next
-     13            int __low_level_init(void)
-     14            {
+     22            int __low_level_init(void)
+     23            {
    \                     __low_level_init: (+1)
    \        0x0   0xB580             PUSH     {R7,LR}
-     15              //Switch on internal 16 MHz oscillator
-     16              RCC::CR::HSION::On::Set();
-   \        0x2   0x.... 0x....      BL       _ZN14FieldValueBaseI19RCC_CR_HSION_ValuesIN3RCC2CRELj0ELj1E13ReadWriteModeNS1_9RCCCRBaseEES4_Lj1EE3SetIS3_vEEvv
-     17              while (RCC::CR::HSIRDY::NotReady::IsSet())
+     24              //Switch on internal 16 MHz oscillator
+     25              RCC::CR::HSEON::On::Set();
+   \        0x2   0x.... 0x....      BL       _ZN14FieldValueBaseI19RCC_CR_HSEON_ValuesIN3RCC2CRELj16ELj1E13ReadWriteModeNS1_9RCCCRBaseEES4_Lj1EE3SetIS3_vEEvv
+     26              while (RCC::CR::HSERDY::NotReady::IsSet())
    \                     ??__low_level_init_0: (+1)
-   \        0x6   0x.... 0x....      BL       _ZN14FieldValueBaseI20RCC_CR_HSIRDY_ValuesIN3RCC2CRELj1ELj1E8ReadModeNS1_9RCCCRBaseEES4_Lj0EE5IsSetIS3_vEEbv
+   \        0x6   0x.... 0x....      BL       _ZN14FieldValueBaseI20RCC_CR_HSERDY_ValuesIN3RCC2CRELj17ELj1E8ReadModeNS1_9RCCCRBaseEES4_Lj0EE5IsSetIS3_vEEbv
    \        0xA   0x2800             CMP      R0,#+0
    \        0xC   0xD1FB             BNE.N    ??__low_level_init_0
-     18              {
-     19          
-     20              }
-     21              //Switch system clock on internal oscillator
-     22              RCC::CFGR::SW::Hsi::Set();
-   \        0xE   0x.... 0x....      BL       _ZN14FieldValueBaseI18RCC_CFGR_SW_ValuesIN3RCC4CFGRELj0ELj2E13ReadWriteModeNS1_11RCCCFGRBaseEES4_Lj0EE3SetIS3_vEEvv
-     23              while (!RCC::CFGR::SWS::Hsi::IsSet())
+     27              {
+     28          
+     29              }
+     30              //Switch system clock on internal oscillator
+     31              RCC::CFGR::SW::Hse::Set();
+   \        0xE   0x.... 0x....      BL       _ZN14FieldValueBaseI18RCC_CFGR_SW_ValuesIN3RCC4CFGRELj0ELj2E13ReadWriteModeNS1_11RCCCFGRBaseEES4_Lj1EE3SetIS3_vEEvv
+     32              while (!RCC::CFGR::SWS::Hse::IsSet())
    \                     ??__low_level_init_1: (+1)
-   \       0x12   0x.... 0x....      BL       _ZN14FieldValueBaseI19RCC_CFGR_SWS_ValuesIN3RCC4CFGRELj2ELj2E8ReadModeNS1_11RCCCFGRBaseEES4_Lj0EE5IsSetIS3_vEEbv
+   \       0x12   0x.... 0x....      BL       _ZN14FieldValueBaseI19RCC_CFGR_SWS_ValuesIN3RCC4CFGRELj2ELj2E8ReadModeNS1_11RCCCFGRBaseEES4_Lj1EE5IsSetIS3_vEEbv
    \       0x16   0x2800             CMP      R0,#+0
    \       0x18   0xD0FB             BEQ.N    ??__low_level_init_1
-     24              {
-     25          
-     26              }
-     27              //Switch on clock on PortA and PortC
-     28              RCC::AHB1ENRPack<
-     29                RCC::AHB1ENR::GPIOCEN::Enable,
-     30                RCC::AHB1ENR::GPIOAEN::Enable
-     31                  >::Set();
-   \       0x1A   0x.... 0x....      BL       _ZN8RegisterILj1073887280ELj32E13ReadWriteModeN3RCC14RCCAHB1ENRBaseEJ10FieldValueI26RCC_AHB1ENR_GPIOCEN_ValuesINS1_7AHB1ENRELj2ELj1ES0_S2_ES2_Lj1EvES3_I26RCC_AHB1ENR_GPIOAEN_ValuesIS5_Lj0ELj1ES0_S2_ES2_Lj1EvEEE3SetIS0_vEEvv
-     32          
-     33              RCC::APB2ENR::SYSCFGEN::Enable::Set();
-   \       0x1E   0x.... 0x....      BL       _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7APB2ENRELj14ELj1E13ReadWriteModeNS1_14RCCAPB2ENRBaseEES4_Lj1EE3SetIS3_vEEvv
+     33              {
      34          
-     35              //LED1 on PortA.5, set PortA.5 as output
-     36              GPIOA::MODER::MODER5::Output::Set();
+     35              }
+     36              //Switch on clock on PortA and PortC
+     37              RCC::AHB1ENRPack<
+     38                RCC::AHB1ENR::GPIOCEN::Enable,
+     39                RCC::AHB1ENR::GPIOAEN::Enable
+     40                  >::Set();
+   \       0x1A   0x.... 0x....      BL       _ZN8RegisterILj1073887280ELj32E13ReadWriteModeN3RCC14RCCAHB1ENRBaseEJ10FieldValueI26RCC_AHB1ENR_GPIOCEN_ValuesINS1_7AHB1ENRELj2ELj1ES0_S2_ES2_Lj1EvES3_I26RCC_AHB1ENR_GPIOAEN_ValuesIS5_Lj0ELj1ES0_S2_ES2_Lj1EvEEE3SetIS0_vEEvv
+     41          
+     42              RCC::APB2ENR::SYSCFGEN::Enable::Set();
+   \       0x1E   0x.... 0x....      BL       _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7APB2ENRELj14ELj1E13ReadWriteModeNS1_14RCCAPB2ENRBaseEES4_Lj1EE3SetIS3_vEEvv
+     43          
+     44              //LED1 on PortA.5, set PortA.5 as output
+     45              GPIOA::MODER::MODER5::Output::Set();
    \       0x22   0x.... 0x....      BL       _ZN14FieldValueBaseI26GPIOA_MODER_MODER15_ValuesIN5GPIOA5MODERELj10ELj2E13ReadWriteModeNS1_14GPIOAMODERBaseEES4_Lj1EE3SetIS3_vEEvv
-     37          
-     38              /* LED2 on PortC.9, LED3 on PortC.8, LED4 on PortC.5 so set PortC.5,8,9 as output */
-     39              GPIOC::MODERPack<
-     40                GPIOC::MODER::MODER5::Output,
-     41                GPIOC::MODER::MODER8::Output,
-     42                GPIOC::MODER::MODER9::Output
-     43                  >::Set();
+     46          
+     47              /* LED2 on PortC.9, LED3 on PortC.8, LED4 on PortC.5 so set PortC.5,8,9 as output */
+     48              GPIOC::MODERPack<
+     49                GPIOC::MODER::MODER5::Output,
+     50                GPIOC::MODER::MODER8::Output,
+     51                GPIOC::MODER::MODER9::Output
+     52                  >::Set();
    \       0x26   0x.... 0x....      BL       _ZN8RegisterILj1073874944ELj32E13ReadWriteModeN5GPIOC14GPIOCMODERBaseEJ10FieldValueI26GPIOC_MODER_MODER15_ValuesINS1_5MODERELj10ELj2ES0_S2_ES2_Lj1EvES3_IS4_IS5_Lj16ELj2ES0_S2_ES2_Lj1EvES3_IS4_IS5_Lj18ELj2ES0_S2_ES2_Lj1EvEEE3SetIS0_vEEvv
-     44              // Potentiometer on Port A0
-     45              GPIOA::MODER::MODER0::Analog::Set();
+     53              // Potentiometer on Port A0
+     54              GPIOA::MODER::MODER0::Analog::Set();
    \       0x2A   0x.... 0x....      BL       _ZN14FieldValueBaseI26GPIOA_MODER_MODER15_ValuesIN5GPIOA5MODERELj0ELj2E13ReadWriteModeNS1_14GPIOAMODERBaseEES4_Lj3EE3SetIS3_vEEvv
-     46              // RCC on ADC
-     47              RCC::APB2ENR::ADC1EN::Enable::Set();
+     55              // RCC on ADC
+     56              RCC::APB2ENR::ADC1EN::Enable::Set();
    \       0x2E   0x.... 0x....      BL       _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7APB2ENRELj8ELj1E13ReadWriteModeNS1_14RCCAPB2ENRBaseEES4_Lj1EE3SetIS3_vEEvv
-     48              // RCC on DMA
-     49              RCC::AHB1ENR::DMA2EN::Enable::Set();
+     57              // RCC on DMA
+     58              RCC::AHB1ENR::DMA2EN::Enable::Set();
    \       0x32   0x.... 0x....      BL       _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7AHB1ENRELj22ELj1E13ReadWriteModeNS1_14RCCAHB1ENRBaseEES4_Lj1EE3SetIS3_vEEvv
-     50              // RCC on USART2
-     51              RCC::APB1ENR::USART2EN::Enable::Set();
+     59              // RCC on USART2
+     60              RCC::APB1ENR::USART2EN::Enable::Set();
    \       0x36   0x.... 0x....      BL       _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7APB1ENRELj17ELj1E13ReadWriteModeNS1_14RCCAPB1ENRBaseEES4_Lj1EE3SetIS3_vEEvv
-     52              return 1;
+     61              return 1;
    \       0x3A   0x2001             MOVS     R0,#+1
    \       0x3C   0xBD02             POP      {R1,PC}
-     53            }
-     54          }
-     55          
-     56          constexpr auto dt = 0.1f;
-                                ^
-Warning[Pe177]: variable "dt" was declared but never referenced
-     57          constexpr auto rc = 5.0f;
-                                ^
-Warning[Pe177]: variable "rc" was declared but never referenced
-     58          constexpr auto offset = 0.0f;
-                                ^
-Warning[Pe177]: variable "offset" was declared but never referenced
-     59          constexpr auto gain = 0.000806206f;
-                                ^
-Warning[Pe177]: variable "gain" was declared but never referenced
-     60          /*
-     61          AdcDmaDataProvider adc;
-     62          DigitalFilter<float, dt, rc> digitalFloatFilter;
-     63          Voltage<gain, offset> voltage(static_cast<IDataProvider&>(adc));
-     64          FloatDataStorage filteredVoltage;
-     65          LEDindication ledIndication;
-     66          Usart usart;
-     67          
-     68          MeasurementTask measurementTask(digitalFloatFilter, voltage, adc, ledIndication, filteredVoltage);
-     69          BluetoothTask bluetoothTask(filteredVoltage, usart);
-     70          */
+     62            }
+     63          }
+     64          
+     65          constexpr auto dt = 0.1f;
+     66          constexpr auto rc = 5.0f;
+     67          constexpr auto minAdcCounts = 2U;
+     68          constexpr auto maxAdcCounts = 4093U;
+     69          constexpr auto minVoltage = 0.0001f;
+
+   \                                 In section .rodata, align 4
+     70          constexpr auto maxVoltage = 3.275f;
+   \                     maxVoltage:
+   \        0x0   0x4051'999A        DC32 0x4051'999a
+     71          constexpr auto maxLedAmount = 4U;
+     72          
 
    \                                 In section .text, align 2, keep-with-next
-     71          int main()
-     72          {
-     73            /*
-     74            USART2::CR1::UE::Enable::Set();
-     75            USART2::CR1::TE::Enable::Set();
-     76            using namespace OsWrapper;
-     77            Rtos::CreateThread(measurementTask, "MeasurementTask", ThreadPriority::priorityMax);
-     78            Rtos::CreateThread(bluetoothTask, "BluetoothTask", ThreadPriority::lowest);
-     79            Rtos::Start();
-     80          */
-     81            return 0;
+   \   static __intrinsic __vfp void __sti__routine()
+   \                     __sti__routine: (+1)
+   \        0x0   0xE92D 0x43FE      PUSH     {R1-R9,LR}
+     73          AdcDmaDataProvider adc;
+   \        0x4   0x....             LDR.N    R4,??DataTable6_4
+   \        0x6   0x0020             MOVS     R0,R4
+   \        0x8   0x.... 0x....      BL       _ZN18AdcDmaDataProviderC1Ev
+     74          DigitalFilter<float, dt, rc> digitalFilter;
+   \        0xC   0x....             LDR.N    R5,??DataTable6_5
+   \        0xE   0x0028             MOVS     R0,R5
+   \       0x10   0x.... 0x....      BL       _ZN13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEEC1Ev
+     75          Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage> voltage(static_cast<IRawDataProvider&>(adc));
+   \       0x14   0x....             LDR.N    R6,??DataTable6_6
+   \       0x16   0x0021             MOVS     R1,R4
+   \       0x18   0x0030             MOVS     R0,R6
+   \       0x1A   0x.... 0x....      BL       _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEEC1ER16IRawDataProvider
+     76          DataRepository filteredVoltage;
+   \       0x1E   0x....             LDR.N    R7,??DataTable6_7
+   \       0x20   0x0038             MOVS     R0,R7
+   \       0x22   0x.... 0x....      BL       _ZN14DataRepositoryC1Ev
+     77          LedCalculator ledCalculator(maxLedAmount, maxVoltage);
+   \       0x26   0x2004             MOVS     R0,#+4
+   \       0x28   0xF88D 0x0000      STRB     R0,[SP, #+0]
+   \       0x2C   0x.... 0x....      LDR.W    R8,??DataTable6_8
+   \       0x30   0x....             LDR.N    R2,??DataTable6_9
+   \       0x32   0x4669             MOV      R1,SP
+   \       0x34   0x4640             MOV      R0,R8
+   \       0x36   0x.... 0x....      BL       _ZN13LedCalculatorC1ERKhRKf
+     78          LedController ledController;
+   \       0x3A   0x.... 0x....      LDR.W    R9,??DataTable6_10
+   \       0x3E   0x4648             MOV      R0,R9
+   \       0x40   0x.... 0x....      BL       _ZN13LedControllerC1Ev
+     79          Usart usart;
+   \       0x44   0x....             LDR.N    R0,??DataTable6_11
+   \       0x46   0x.... 0x....      BL       _ZN5UsartC1Ev
+     80          
+     81          MeasurementTask measurementTask(adc, digitalFilter, voltage, ledCalculator, ledController, filteredVoltage);
+   \       0x4A   0x1D38             ADDS     R0,R7,#+4
+   \       0x4C   0x9002             STR      R0,[SP, #+8]
+   \       0x4E   0xF8CD 0x9004      STR      R9,[SP, #+4]
+   \       0x52   0xF8CD 0x8000      STR      R8,[SP, #+0]
+   \       0x56   0x0033             MOVS     R3,R6
+   \       0x58   0x002A             MOVS     R2,R5
+   \       0x5A   0x0021             MOVS     R1,R4
+   \       0x5C   0x....             LDR.N    R0,??DataTable6_12
+   \       0x5E   0x.... 0x....      BL       _ZN15MeasurementTaskC1ER16IRawDataProviderR14IDigitalFilterIfER8IVoltageR14ILedCalculatorR14ILedControllerR22IDataRepositoryUpdater
+   \       0x62   0xE8BD 0x83F7      POP      {R0-R2,R4-R9,PC}
+
+   \                                 In section .bss, align 4
+   \                     `adc`:
+   \        0x0                      DS8 8
+
+   \                                 In section .bss, align 4
+   \                     digitalFilter:
+   \        0x0                      DS8 12
+
+   \                                 In section .bss, align 4
+   \                     voltage:
+   \        0x0                      DS8 8
+
+   \                                 In section .bss, align 4
+   \                     filteredVoltage:
+   \        0x0                      DS8 16
+
+   \                                 In section .bss, align 4
+   \                     ledCalculator:
+   \        0x0                      DS8 12
+
+   \                                 In section .bss, align 4
+   \                     ledController:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     usart:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     measurementTask:
+   \        0x0                      DS8 2'164
+     82          // BluetoothTask bluetoothTask(filteredVoltage, usart);
+     83          
+
+   \                                 In section .text, align 2, keep-with-next
+     84          int main()
+     85          {
    \                     main: (+1)
-   \        0x0   0x2000             MOVS     R0,#+0
-   \        0x2   0x4770             BX       LR
-     82          }
+   \        0x0   0xB580             PUSH     {R7,LR}
+     86            adc.ConfigAdc();
+   \        0x2   0x....             LDR.N    R0,??DataTable6_4
+   \        0x4   0x.... 0x....      BL       _ZN18AdcDmaDataProvider9ConfigAdcEv
+     87            USART2::CR1::UE::Enable::Set();
+   \        0x8   0x.... 0x....      BL       _ZN14FieldValueBaseI20USART2_CR1_UE_ValuesIN6USART23CR1ELj13ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv
+     88            USART2::CR1::TE::Enable::Set();
+   \        0xC   0x.... 0x....      BL       _ZN14FieldValueBaseI20USART2_CR1_TE_ValuesIN6USART23CR1ELj3ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv
+     89            using namespace OsWrapper;
+     90            Rtos::CreateThread(measurementTask, "MeasurementTask", ThreadPriority::priorityMax);
+   \       0x10   0x22FF             MOVS     R2,#+255
+   \       0x12   0x....             LDR.N    R1,??DataTable6_16
+   \       0x14   0x....             LDR.N    R0,??DataTable6_12
+   \       0x16   0x.... 0x....      BL       _ZN9OsWrapper4Rtos12CreateThreadI15MeasurementTaskEEvRT_PKcNS_14ThreadPriorityE
+     91            // Rtos::CreateThread(bluetoothTask, "BluetoothTask", ThreadPriority::lowest);
+     92            Rtos::Start();
+   \       0x1A   0x.... 0x....      BL       _ZN9OsWrapper4Rtos5StartEv
+     93            return 0;
+   \       0x1E   0x2000             MOVS     R0,#+0
+   \       0x20   0xBD02             POP      {R1,PC}
+     94          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6:
+   \        0x0   0xBCA3'D70A        DC32     0xbca3d70a
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_1:
+   \        0x0   0x3A51'D98B        DC32     0x3a51d98b
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_2:
+   \        0x0   0x457F'D000        DC32     0x457fd000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_3:
+   \        0x0   0x4051'999A        DC32     0x4051999a
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_4:
+   \        0x0   0x....'....        DC32     `adc`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_5:
+   \        0x0   0x....'....        DC32     digitalFilter
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_6:
+   \        0x0   0x....'....        DC32     voltage
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_7:
+   \        0x0   0x....'....        DC32     filteredVoltage
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_8:
+   \        0x0   0x....'....        DC32     ledCalculator
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_9:
+   \        0x0   0x....'....        DC32     maxVoltage
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_10:
+   \        0x0   0x....'....        DC32     ledController
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_11:
+   \        0x0   0x....'....        DC32     usart
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_12:
+   \        0x0   0x....'....        DC32     measurementTask
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_13:
+   \        0x0   0x....'....        DC32     _ZTV13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEE+0x8
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_14:
+   \        0x0   0x....'....        DC32     `DigitalFilter<float, dt, rc>::FilterValue(float)::isFirstTime`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_15:
+   \        0x0   0x....'....        DC32     _ZTV7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEE+0x8
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_16:
+   \        0x0   0x....'....        DC32     ?_0
+
+   \                                 In section .rodata, align 4
+   \                     ?_0:
+   \        0x0   0x4D 0x65          DC8 "MeasurementTask"
+
+   \              0x61 0x73    
+
+   \              0x75 0x72    
+
+   \              0x65 0x6D    
+
+   \              0x65 0x6E    
+
+   \              0x74 0x54    
+
+   \              0x61 0x73    
+
+   \              0x6B 0x00
 
    Maximum stack usage in bytes:
 
    .cstack Function
    ------- --------
+      16   DigitalFilter<float, dt, rc>::DigitalFilter() noexcept
+        16   -> IDigitalFilter<float>::subobject IDigitalFilter() noexcept
+        16   -> expf
+       0   DigitalFilter<float, dt, rc>::FilterValue(float)
        0   FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 0U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 3U>::Set<ReadWriteMode, void>()
        0   FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 10U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 1U>::Set<ReadWriteMode, void>()
        0   FieldValueBase<RCC_AHB1ENR_DMA2EN_Values<RCC::AHB1ENR, 22U, 1U, ReadWriteMode, RCC::RCCAHB1ENRBase>, RCC::RCCAHB1ENRBase, 1U>::Set<ReadWriteMode, void>()
        0   FieldValueBase<RCC_AHB1ENR_DMA2EN_Values<RCC::APB1ENR, 17U, 1U, ReadWriteMode, RCC::RCCAPB1ENRBase>, RCC::RCCAPB1ENRBase, 1U>::Set<ReadWriteMode, void>()
        0   FieldValueBase<RCC_AHB1ENR_DMA2EN_Values<RCC::APB2ENR, 14U, 1U, ReadWriteMode, RCC::RCCAPB2ENRBase>, RCC::RCCAPB2ENRBase, 1U>::Set<ReadWriteMode, void>()
        0   FieldValueBase<RCC_AHB1ENR_DMA2EN_Values<RCC::APB2ENR, 8U, 1U, ReadWriteMode, RCC::RCCAPB2ENRBase>, RCC::RCCAPB2ENRBase, 1U>::Set<ReadWriteMode, void>()
-       0   FieldValueBase<RCC_CFGR_SWS_Values<RCC::CFGR, 2U, 2U, ReadMode, RCC::RCCCFGRBase>, RCC::RCCCFGRBase, 0U>::IsSet<ReadMode, void>()
-       0   FieldValueBase<RCC_CFGR_SW_Values<RCC::CFGR, 0U, 2U, ReadWriteMode, RCC::RCCCFGRBase>, RCC::RCCCFGRBase, 0U>::Set<ReadWriteMode, void>()
-       0   FieldValueBase<RCC_CR_HSION_Values<RCC::CR, 0U, 1U, ReadWriteMode, RCC::RCCCRBase>, RCC::RCCCRBase, 1U>::Set<ReadWriteMode, void>()
-       0   FieldValueBase<RCC_CR_HSIRDY_Values<RCC::CR, 1U, 1U, ReadMode, RCC::RCCCRBase>, RCC::RCCCRBase, 0U>::IsSet<ReadMode, void>()
+       0   FieldValueBase<RCC_CFGR_SWS_Values<RCC::CFGR, 2U, 2U, ReadMode, RCC::RCCCFGRBase>, RCC::RCCCFGRBase, 1U>::IsSet<ReadMode, void>()
+       0   FieldValueBase<RCC_CFGR_SW_Values<RCC::CFGR, 0U, 2U, ReadWriteMode, RCC::RCCCFGRBase>, RCC::RCCCFGRBase, 1U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<RCC_CR_HSEON_Values<RCC::CR, 16U, 1U, ReadWriteMode, RCC::RCCCRBase>, RCC::RCCCRBase, 1U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<RCC_CR_HSERDY_Values<RCC::CR, 17U, 1U, ReadMode, RCC::RCCCRBase>, RCC::RCCCRBase, 0U>::IsSet<ReadMode, void>()
+       0   FieldValueBase<USART2_CR1_TE_Values<USART2::CR1, 3U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 1U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<USART2_CR1_UE_Values<USART2::CR1, 13U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 1U>::Set<ReadWriteMode, void>()
+       0   IDigitalFilter<float>::IDigitalFilter() noexcept
+       8   IDigitalFilter<float>::subobject IDigitalFilter() noexcept
+         8   -> IDigitalFilter<float>::IDigitalFilter() noexcept
+       0   IVoltage::IVoltage() noexcept
+       8   IVoltage::subobject IVoltage() noexcept
+         8   -> IVoltage::IVoltage() noexcept
+       8   OsWrapper::IThread::Run()
+         8   -- Indirect call
+         8   -> OsWrapper::RtosWrapper::wGetTicks()
+      24   OsWrapper::Rtos::CreateThread<MeasurementTask>(MeasurementTask &, char const *, OsWrapper::ThreadPriority)
+        24   -> OsWrapper::RtosWrapper::wCreateThread<OsWrapper::Rtos, MeasurementTask>(MeasurementTask &, char const *, OsWrapper::ThreadPriority, uint16_t, uint32_t *)
+        24   -> std::array<uint32_t, 512U>::data() noexcept
+       8   OsWrapper::Rtos::Run(void *)
+         8   -> OsWrapper::IThread::Run()
+       8   OsWrapper::Rtos::Start()
+         8   -> OsWrapper::RtosWrapper::wStart()
+      40   OsWrapper::RtosWrapper::wCreateThread<OsWrapper::Rtos, MeasurementTask>(MeasurementTask &, char const *, OsWrapper::ThreadPriority, uint16_t, uint32_t *)
+        40   -> xTaskCreateStatic
+       8   OsWrapper::RtosWrapper::wGetTicks()
+         8   -> xTaskGetTickCount
+       8   OsWrapper::RtosWrapper::wStart()
+         8   -> vTaskStartScheduler
        0   Register<1'073'874'944U, 32U, ReadWriteMode, GPIOC::GPIOCMODERBase, GPIOC_MODER_MODER15_Values<GPIOC::MODER, 10U, 2U, ReadWriteMode, GPIOC::GPIOCMODERBase>::Output, GPIOC_MODER_MODER15_Values<GPIOC::MODER, 16U, 2U, ReadWriteMode, GPIOC::GPIOCMODERBase>::Output, GPIOC_MODER_MODER15_Values<GPIOC::MODER, 18U, 2U, ReadWriteMode, GPIOC::GPIOCMODERBase>::Output>::Set<ReadWriteMode, void>()
        0   Register<1'073'887'280U, 32U, ReadWriteMode, RCC::RCCAHB1ENRBase, RCC_AHB1ENR_GPIOCEN_Values<RCC::AHB1ENR, 2U, 1U, ReadWriteMode, RCC::RCCAHB1ENRBase>::Enable, RCC_AHB1ENR_GPIOAEN_Values<RCC::AHB1ENR, 0U, 1U, ReadWriteMode, RCC::RCCAHB1ENRBase>::Enable>::Set<ReadWriteMode, void>()
+       0   Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::CalculateGain()
+       8   Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::CalculateOffset()
+         8   -> Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::CalculateGain()
+      16   Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::Measure()
+        16   -- Indirect call
+        16   -> Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::CalculateGain()
+        16   -> Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::CalculateOffset()
+      16   Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::Voltage(IRawDataProvider &)
+        16   -> IVoltage::subobject IVoltage() noexcept
        8   __low_level_init
          8   -> FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 0U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 3U>::Set<ReadWriteMode, void>()
          8   -> FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 10U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 1U>::Set<ReadWriteMode, void>()
@@ -445,48 +913,114 @@ Warning[Pe177]: variable "gain" was declared but never referenced
          8   -> FieldValueBase<RCC_AHB1ENR_DMA2EN_Values<RCC::APB1ENR, 17U, 1U, ReadWriteMode, RCC::RCCAPB1ENRBase>, RCC::RCCAPB1ENRBase, 1U>::Set<ReadWriteMode, void>()
          8   -> FieldValueBase<RCC_AHB1ENR_DMA2EN_Values<RCC::APB2ENR, 14U, 1U, ReadWriteMode, RCC::RCCAPB2ENRBase>, RCC::RCCAPB2ENRBase, 1U>::Set<ReadWriteMode, void>()
          8   -> FieldValueBase<RCC_AHB1ENR_DMA2EN_Values<RCC::APB2ENR, 8U, 1U, ReadWriteMode, RCC::RCCAPB2ENRBase>, RCC::RCCAPB2ENRBase, 1U>::Set<ReadWriteMode, void>()
-         8   -> FieldValueBase<RCC_CFGR_SWS_Values<RCC::CFGR, 2U, 2U, ReadMode, RCC::RCCCFGRBase>, RCC::RCCCFGRBase, 0U>::IsSet<ReadMode, void>()
-         8   -> FieldValueBase<RCC_CFGR_SW_Values<RCC::CFGR, 0U, 2U, ReadWriteMode, RCC::RCCCFGRBase>, RCC::RCCCFGRBase, 0U>::Set<ReadWriteMode, void>()
-         8   -> FieldValueBase<RCC_CR_HSION_Values<RCC::CR, 0U, 1U, ReadWriteMode, RCC::RCCCRBase>, RCC::RCCCRBase, 1U>::Set<ReadWriteMode, void>()
-         8   -> FieldValueBase<RCC_CR_HSIRDY_Values<RCC::CR, 1U, 1U, ReadMode, RCC::RCCCRBase>, RCC::RCCCRBase, 0U>::IsSet<ReadMode, void>()
+         8   -> FieldValueBase<RCC_CFGR_SWS_Values<RCC::CFGR, 2U, 2U, ReadMode, RCC::RCCCFGRBase>, RCC::RCCCFGRBase, 1U>::IsSet<ReadMode, void>()
+         8   -> FieldValueBase<RCC_CFGR_SW_Values<RCC::CFGR, 0U, 2U, ReadWriteMode, RCC::RCCCFGRBase>, RCC::RCCCFGRBase, 1U>::Set<ReadWriteMode, void>()
+         8   -> FieldValueBase<RCC_CR_HSEON_Values<RCC::CR, 16U, 1U, ReadWriteMode, RCC::RCCCRBase>, RCC::RCCCRBase, 1U>::Set<ReadWriteMode, void>()
+         8   -> FieldValueBase<RCC_CR_HSERDY_Values<RCC::CR, 17U, 1U, ReadMode, RCC::RCCCRBase>, RCC::RCCCRBase, 0U>::IsSet<ReadMode, void>()
          8   -> Register<1'073'874'944U, 32U, ReadWriteMode, GPIOC::GPIOCMODERBase, GPIOC_MODER_MODER15_Values<GPIOC::MODER, 10U, 2U, ReadWriteMode, GPIOC::GPIOCMODERBase>::Output, GPIOC_MODER_MODER15_Values<GPIOC::MODER, 16U, 2U, ReadWriteMode, GPIOC::GPIOCMODERBase>::Output, GPIOC_MODER_MODER15_Values<GPIOC::MODER, 18U, 2U, ReadWriteMode, GPIOC::GPIOCMODERBase>::Output>::Set<ReadWriteMode, void>()
          8   -> Register<1'073'887'280U, 32U, ReadWriteMode, RCC::RCCAHB1ENRBase, RCC_AHB1ENR_GPIOCEN_Values<RCC::AHB1ENR, 2U, 1U, ReadWriteMode, RCC::RCCAHB1ENRBase>::Enable, RCC_AHB1ENR_GPIOAEN_Values<RCC::AHB1ENR, 0U, 1U, ReadWriteMode, RCC::RCCAHB1ENRBase>::Enable>::Set<ReadWriteMode, void>()
-       0   main
+      40   __sti__routine()
+        40   -> AdcDmaDataProvider::AdcDmaDataProvider()
+        40   -> DataRepository::DataRepository()
+        40   -> DigitalFilter<float, dt, rc>::DigitalFilter() noexcept
+        40   -> LedCalculator::LedCalculator(uint8_t const &, float const &)
+        40   -> LedController::LedController()
+        40   -> MeasurementTask::MeasurementTask(IRawDataProvider &, IDigitalFilter<float> &, IVoltage &, ILedCalculator &, ILedController &, IDataRepositoryUpdater &)
+        40   -> Usart::Usart()
+        40   -> Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::Voltage(IRawDataProvider &)
+       8   main
+         8   -> AdcDmaDataProvider::ConfigAdc()
+         8   -> FieldValueBase<USART2_CR1_TE_Values<USART2::CR1, 3U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 1U>::Set<ReadWriteMode, void>()
+         8   -> FieldValueBase<USART2_CR1_UE_Values<USART2::CR1, 13U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 1U>::Set<ReadWriteMode, void>()
+         8   -> OsWrapper::Rtos::CreateThread<MeasurementTask>(MeasurementTask &, char const *, OsWrapper::ThreadPriority)
+         8   -> OsWrapper::Rtos::Start()
+       0   std::array<uint32_t, 512U>::data() noexcept
 
 
    Section sizes:
 
    Bytes  Function/Label
    -----  --------------
+       4  ??DataTable6
+       4  ??DataTable6_1
+       4  ??DataTable6_10
+       4  ??DataTable6_11
+       4  ??DataTable6_12
+       4  ??DataTable6_13
+       4  ??DataTable6_14
+       4  ??DataTable6_15
+       4  ??DataTable6_16
+       4  ??DataTable6_2
+       4  ??DataTable6_3
+       4  ??DataTable6_4
+       4  ??DataTable6_5
+       4  ??DataTable6_6
+       4  ??DataTable6_7
+       4  ??DataTable6_8
+       4  ??DataTable6_9
+      16  ?_0
+      50  DigitalFilter<float, dt, rc>::DigitalFilter() noexcept
+      48  DigitalFilter<float, dt, rc>::FilterValue(float)
       20  FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 0U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 3U>::Set<ReadWriteMode, void>()
       20  FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 10U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 1U>::Set<ReadWriteMode, void>()
       20  FieldValueBase<RCC_AHB1ENR_DMA2EN_Values<RCC::AHB1ENR, 22U, 1U, ReadWriteMode, RCC::RCCAHB1ENRBase>, RCC::RCCAHB1ENRBase, 1U>::Set<ReadWriteMode, void>()
       20  FieldValueBase<RCC_AHB1ENR_DMA2EN_Values<RCC::APB1ENR, 17U, 1U, ReadWriteMode, RCC::RCCAPB1ENRBase>, RCC::RCCAPB1ENRBase, 1U>::Set<ReadWriteMode, void>()
       20  FieldValueBase<RCC_AHB1ENR_DMA2EN_Values<RCC::APB2ENR, 14U, 1U, ReadWriteMode, RCC::RCCAPB2ENRBase>, RCC::RCCAPB2ENRBase, 1U>::Set<ReadWriteMode, void>()
       20  FieldValueBase<RCC_AHB1ENR_DMA2EN_Values<RCC::APB2ENR, 8U, 1U, ReadWriteMode, RCC::RCCAPB2ENRBase>, RCC::RCCAPB2ENRBase, 1U>::Set<ReadWriteMode, void>()
-      24  FieldValueBase<RCC_CFGR_SWS_Values<RCC::CFGR, 2U, 2U, ReadMode, RCC::RCCCFGRBase>, RCC::RCCCFGRBase, 0U>::IsSet<ReadMode, void>()
-      16  FieldValueBase<RCC_CFGR_SW_Values<RCC::CFGR, 0U, 2U, ReadWriteMode, RCC::RCCCFGRBase>, RCC::RCCCFGRBase, 0U>::Set<ReadWriteMode, void>()
-      20  FieldValueBase<RCC_CR_HSION_Values<RCC::CR, 0U, 1U, ReadWriteMode, RCC::RCCCRBase>, RCC::RCCCRBase, 1U>::Set<ReadWriteMode, void>()
-      24  FieldValueBase<RCC_CR_HSIRDY_Values<RCC::CR, 1U, 1U, ReadMode, RCC::RCCCRBase>, RCC::RCCCRBase, 0U>::IsSet<ReadMode, void>()
+      28  FieldValueBase<RCC_CFGR_SWS_Values<RCC::CFGR, 2U, 2U, ReadMode, RCC::RCCCFGRBase>, RCC::RCCCFGRBase, 1U>::IsSet<ReadMode, void>()
+      20  FieldValueBase<RCC_CFGR_SW_Values<RCC::CFGR, 0U, 2U, ReadWriteMode, RCC::RCCCFGRBase>, RCC::RCCCFGRBase, 1U>::Set<ReadWriteMode, void>()
+      20  FieldValueBase<RCC_CR_HSEON_Values<RCC::CR, 16U, 1U, ReadWriteMode, RCC::RCCCRBase>, RCC::RCCCRBase, 1U>::Set<ReadWriteMode, void>()
+      24  FieldValueBase<RCC_CR_HSERDY_Values<RCC::CR, 17U, 1U, ReadMode, RCC::RCCCRBase>, RCC::RCCCRBase, 0U>::IsSet<ReadMode, void>()
+      20  FieldValueBase<USART2_CR1_TE_Values<USART2::CR1, 3U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 1U>::Set<ReadWriteMode, void>()
+      20  FieldValueBase<USART2_CR1_UE_Values<USART2::CR1, 13U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 1U>::Set<ReadWriteMode, void>()
+       2  IDigitalFilter<float>::IDigitalFilter() noexcept
+      12  IDigitalFilter<float>::subobject IDigitalFilter() noexcept
+       2  IVoltage::IVoltage() noexcept
+      12  IVoltage::subobject IVoltage() noexcept
+      20  OsWrapper::IThread::Run()
+      36  OsWrapper::Rtos::CreateThread<MeasurementTask>(MeasurementTask &, char const *, OsWrapper::ThreadPriority)
+      12  OsWrapper::Rtos::Run(void *)
+       8  OsWrapper::Rtos::Start()
+      56  OsWrapper::RtosWrapper::wCreateThread<OsWrapper::Rtos, MeasurementTask>(MeasurementTask &, char const *, OsWrapper::ThreadPriority, uint16_t, uint32_t *)
+       8  OsWrapper::RtosWrapper::wGetTicks()
+       8  OsWrapper::RtosWrapper::wStart()
       28  Register<1'073'874'944U, 32U, ReadWriteMode, GPIOC::GPIOCMODERBase, GPIOC_MODER_MODER15_Values<GPIOC::MODER, 10U, 2U, ReadWriteMode, GPIOC::GPIOCMODERBase>::Output, GPIOC_MODER_MODER15_Values<GPIOC::MODER, 16U, 2U, ReadWriteMode, GPIOC::GPIOCMODERBase>::Output, GPIOC_MODER_MODER15_Values<GPIOC::MODER, 18U, 2U, ReadWriteMode, GPIOC::GPIOCMODERBase>::Output>::Set<ReadWriteMode, void>()
       20  Register<1'073'887'280U, 32U, ReadWriteMode, RCC::RCCAHB1ENRBase, RCC_AHB1ENR_GPIOCEN_Values<RCC::AHB1ENR, 2U, 1U, ReadWriteMode, RCC::RCCAHB1ENRBase>::Enable, RCC_AHB1ENR_GPIOAEN_Values<RCC::AHB1ENR, 0U, 1U, ReadWriteMode, RCC::RCCAHB1ENRBase>::Enable>::Set<ReadWriteMode, void>()
        4  SystemCoreClock
+       6  Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::CalculateGain()
+      28  Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::CalculateOffset()
+      52  Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::Measure()
+      22  Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::Voltage(IRawDataProvider &)
       62  __low_level_init
-       4  main
+     102  __sti__routine()
+       8  adc
+      12  digitalFilter
+      16  filteredVoltage
+       1  isFirstTime
+      12  ledCalculator
+       4  ledController
+      34  main
        4  mask
        4  mask
+       4  maxVoltage
+   2'164  measurementTask
+       2  std::array<uint32_t, 512U>::data() noexcept
+       4  usart
        4  value
        4  value
-      24  -- Other
+       8  voltage
+     384  -- Other
 
  
-   4 bytes in section .data
-  40 bytes in section .rodata
- 318 bytes in section .text
+ 2'228 bytes in section .bss
+     5 bytes in section .data
+     4 bytes in section .init_array
+   416 bytes in section .rodata
+   950 bytes in section .text
  
- 66 bytes of CODE  memory (+ 252 bytes shared)
-  0 bytes of CONST memory (+  40 bytes shared)
-  4 bytes of DATA  memory
+   476 bytes of CODE  memory (+ 478 bytes shared)
+    68 bytes of CONST memory (+ 348 bytes shared)
+ 2'233 bytes of DATA  memory
 
 Errors: none
-Warnings: 4
+Warnings: none

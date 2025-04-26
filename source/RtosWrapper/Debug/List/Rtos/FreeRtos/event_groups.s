@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        26/Apr/2025  19:24:51
+// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        27/Apr/2025  00:21:29
 // Copyright 1999-2022 IAR Systems AB.
 //
 //    Cpu mode     =  thumb
@@ -102,7 +102,11 @@
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
 //        -I
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
-//        -Ol) --dependencies=n
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+//        -On) --dependencies=n
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Rtos\FreeRtos\event_groups.o.d
 //    Locale       =  C
 //    List file    =
@@ -329,11 +333,12 @@
 //  135 	EventGroupHandle_t xEventGroupCreateStatic( StaticEventGroup_t *pxEventGroupBuffer )
 //  136 	{
 xEventGroupCreateStatic:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
-        MOVS     R4,R0          
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R5,R0          
 //  137 	EventGroup_t *pxEventBits;
 //  138 
 //  139 		/* A StaticEventGroup_t object must be provided. */
@@ -341,6 +346,7 @@ xEventGroupCreateStatic:
 //  141 
 //  142 		/* The user has provided a statically allocated event group - use it. */
 //  143 		pxEventBits = ( EventGroup_t * ) pxEventGroupBuffer; /*lint !e740 EventGroup_t and StaticEventGroup_t are guaranteed to have the same size and alignment requirement - checked by configASSERT(). */
+        MOVS     R4,R5          
 //  144 
 //  145 		if( pxEventBits != NULL )
         CMP      R4,#+0         
@@ -373,7 +379,7 @@ xEventGroupCreateStatic:
 //  166 		return ( EventGroupHandle_t ) pxEventBits;
 ??xEventGroupCreateStatic_0:
         MOVS     R0,R4          
-        POP      {R4,PC}        
+        POP      {R1,R4,R5,PC}  
 //  167 	}
           CFI EndBlock cfiBlock0
 //  168 
@@ -424,25 +430,28 @@ xEventGroupCreateStatic:
 //  208 EventBits_t xEventGroupSync( EventGroupHandle_t xEventGroup, const EventBits_t uxBitsToSet, const EventBits_t uxBitsToWaitFor, TickType_t xTicksToWait )
 //  209 {
 xEventGroupSync:
-        PUSH     {R3-R9,LR}     
+        PUSH     {R1-R11,LR}    
           CFI R14 Frame(CFA, -4)
-          CFI R9 Frame(CFA, -8)
-          CFI R8 Frame(CFA, -12)
-          CFI R7 Frame(CFA, -16)
-          CFI R6 Frame(CFA, -20)
-          CFI R5 Frame(CFA, -24)
-          CFI R4 Frame(CFA, -28)
-          CFI CFA R13+32
-        MOV      R8,R0          
-        MOVS     R5,R1          
-        MOVS     R6,R2          
+          CFI R11 Frame(CFA, -8)
+          CFI R10 Frame(CFA, -12)
+          CFI R9 Frame(CFA, -16)
+          CFI R8 Frame(CFA, -20)
+          CFI R7 Frame(CFA, -24)
+          CFI R6 Frame(CFA, -28)
+          CFI R5 Frame(CFA, -32)
+          CFI R4 Frame(CFA, -36)
+          CFI CFA R13+48
+        MOVS     R5,R0          
+        MOVS     R6,R1          
+        MOVS     R7,R2          
         MOVS     R4,R3          
 //  210 EventBits_t uxOriginalBitValue, uxReturn;
 //  211 EventGroup_t *pxEventBits = ( EventGroup_t * ) xEventGroup;
-        MOV      R7,R8          
+        MOV      R8,R5          
 //  212 BaseType_t xAlreadyYielded;
 //  213 BaseType_t xTimeoutOccurred = pdFALSE;
         MOVS     R0,#+0         
+        STR      R0,[SP, #+0]   
 //  214 
 //  215 	configASSERT( ( uxBitsToWaitFor & eventEVENT_BITS_CONTROL_BYTES ) == 0 );
 //  216 	configASSERT( uxBitsToWaitFor != 0 );
@@ -469,33 +478,34 @@ xEventGroupSync:
         BL       vTaskSuspendAll
 //  224 	{
 //  225 		uxOriginalBitValue = pxEventBits->uxEventBits;
-        LDR      R9,[R7, #+0]   
+        LDR      R9,[R8, #+0]   
 //  226 
 //  227 		( void ) xEventGroupSetBits( xEventGroup, uxBitsToSet );
-        MOVS     R1,R5          
-        MOV      R0,R8          
+        MOVS     R1,R6          
+        MOVS     R0,R5          
           CFI FunCall xEventGroupSetBits
         BL       xEventGroupSetBits
 //  228 
 //  229 		if( ( ( uxOriginalBitValue | uxBitsToSet ) & uxBitsToWaitFor ) == uxBitsToWaitFor )
-        ORRS     R0,R5,R9       
-        ANDS     R0,R6,R0       
-        CMP      R0,R6          
+        ORRS     R0,R6,R9       
+        ANDS     R0,R7,R0       
+        CMP      R0,R7          
         BNE.N    ??xEventGroupSync_3
 //  230 		{
 //  231 			/* All the rendezvous bits are now set - no need to block. */
 //  232 			uxReturn = ( uxOriginalBitValue | uxBitsToSet );
-        ORRS     R5,R5,R9       
+        ORRS     R10,R6,R9      
 //  233 
 //  234 			/* Rendezvous always clear the bits.  They will have been cleared
 //  235 			already unless this is the only task in the rendezvous. */
 //  236 			pxEventBits->uxEventBits &= ~uxBitsToWaitFor;
-        LDR      R0,[R7, #+0]   
-        BICS     R0,R0,R6       
-        STR      R0,[R7, #+0]   
+        LDR      R0,[R8, #+0]   
+        BICS     R0,R0,R7       
+        STR      R0,[R8, #+0]   
 //  237 
 //  238 			xTicksToWait = 0;
-        MOVS     R4,#+0         
+        MOVS     R0,#+0         
+        MOVS     R4,R0          
         B.N      ??xEventGroupSync_4
 //  239 		}
 //  240 		else
@@ -512,8 +522,8 @@ xEventGroupSync:
 //  248 				found.  Then enter the blocked state. */
 //  249 				vTaskPlaceOnUnorderedEventList( &( pxEventBits->xTasksWaitingForBits ), ( uxBitsToWaitFor | eventCLEAR_EVENTS_ON_EXIT_BIT | eventWAIT_FOR_ALL_BITS ), xTicksToWait );
         MOVS     R2,R4          
-        ORRS     R1,R6,#0x5000000
-        ADDS     R0,R7,#+4      
+        ORRS     R1,R7,#0x5000000
+        ADDS     R0,R8,#+4      
           CFI FunCall vTaskPlaceOnUnorderedEventList
         BL       vTaskPlaceOnUnorderedEventList
 //  250 
@@ -522,7 +532,7 @@ xEventGroupSync:
 //  253 				warning about uxReturn being returned without being set if the
 //  254 				assignment is omitted. */
 //  255 				uxReturn = 0;
-        MOVS     R5,#+0         
+        MOVS     R10,#+0        
         B.N      ??xEventGroupSync_4
 //  256 			}
 //  257 			else
@@ -531,7 +541,7 @@ xEventGroupSync:
 //  260 				specified - just return the current event bit value. */
 //  261 				uxReturn = pxEventBits->uxEventBits;
 ??xEventGroupSync_5:
-        LDR      R5,[R7, #+0]   
+        LDR      R10,[R8, #+0]  
 //  262 			}
 //  263 		}
 //  264 	}
@@ -539,12 +549,14 @@ xEventGroupSync:
 ??xEventGroupSync_4:
           CFI FunCall xTaskResumeAll
         BL       xTaskResumeAll 
+        STR      R0,[SP, #+4]   
 //  266 
 //  267 	if( xTicksToWait != ( TickType_t ) 0 )
         CMP      R4,#+0         
         BEQ.N    ??xEventGroupSync_6
 //  268 	{
 //  269 		if( xAlreadyYielded == pdFALSE )
+        LDR      R0,[SP, #+4]   
         CMP      R0,#+0         
         BNE.N    ??xEventGroupSync_7
 //  270 		{
@@ -568,10 +580,10 @@ xEventGroupSync:
 ??xEventGroupSync_7:
           CFI FunCall uxTaskResetEventItemValue
         BL       uxTaskResetEventItemValue
-        MOVS     R5,R0          
+        MOV      R11,R0         
 //  283 
 //  284 		if( ( uxReturn & eventUNBLOCKED_DUE_TO_BIT_SET ) == ( EventBits_t ) 0 )
-        LSLS     R0,R5,#+6      
+        LSLS     R0,R11,#+6     
         BMI.N    ??xEventGroupSync_8
 //  285 		{
 //  286 			/* The task timed out, just return the current event bit value. */
@@ -580,21 +592,22 @@ xEventGroupSync:
         BL       vPortEnterCritical
 //  288 			{
 //  289 				uxReturn = pxEventBits->uxEventBits;
-        LDR      R5,[R7, #+0]   
+        LDR      R0,[R8, #+0]   
+        MOV      R11,R0         
 //  290 
 //  291 				/* Although the task got here because it timed out before the
 //  292 				bits it was waiting for were set, it is possible that since it
 //  293 				unblocked another task has set the bits.  If this is the case
 //  294 				then it needs to clear the bits before exiting. */
 //  295 				if( ( uxReturn & uxBitsToWaitFor ) == uxBitsToWaitFor )
-        ANDS     R0,R6,R5       
-        CMP      R0,R6          
+        ANDS     R0,R7,R11      
+        CMP      R0,R7          
         BNE.N    ??xEventGroupSync_9
 //  296 				{
 //  297 					pxEventBits->uxEventBits &= ~uxBitsToWaitFor;
-        LDR      R0,[R7, #+0]   
-        BICS     R6,R0,R6       
-        STR      R6,[R7, #+0]   
+        LDR      R0,[R8, #+0]   
+        BICS     R0,R0,R7       
+        STR      R0,[R8, #+0]   
 //  298 				}
 //  299 				else
 //  300 				{
@@ -608,6 +621,7 @@ xEventGroupSync:
 //  305 
 //  306 			xTimeoutOccurred = pdTRUE;
         MOVS     R0,#+1         
+        STR      R0,[SP, #+0]   
 //  307 		}
 //  308 		else
 //  309 		{
@@ -618,15 +632,16 @@ xEventGroupSync:
 //  314 		returned. */
 //  315 		uxReturn &= ~eventEVENT_BITS_CONTROL_BYTES;
 ??xEventGroupSync_8:
-        BIC      R5,R5,#0xFF000000
+        MOV      R10,R11        
+        BIC      R10,R10,#0xFF000000
 //  316 	}
 //  317 
 //  318 	traceEVENT_GROUP_SYNC_END( xEventGroup, uxBitsToSet, uxBitsToWaitFor, xTimeoutOccurred );
 //  319 
 //  320 	return uxReturn;
 ??xEventGroupSync_6:
-        MOVS     R0,R5          
-        POP      {R1,R4-R9,PC}  
+        MOV      R0,R10         
+        POP      {R1-R11,PC}    
 //  321 }
           CFI EndBlock cfiBlock1
 //  322 /*-----------------------------------------------------------*/
@@ -639,27 +654,31 @@ xEventGroupSync:
 //  324 EventBits_t xEventGroupWaitBits( EventGroupHandle_t xEventGroup, const EventBits_t uxBitsToWaitFor, const BaseType_t xClearOnExit, const BaseType_t xWaitForAllBits, TickType_t xTicksToWait )
 //  325 {
 xEventGroupWaitBits:
-        PUSH     {R4-R10,LR}    
+        PUSH     {R0,R4-R11,LR} 
           CFI R14 Frame(CFA, -4)
-          CFI R10 Frame(CFA, -8)
-          CFI R9 Frame(CFA, -12)
-          CFI R8 Frame(CFA, -16)
-          CFI R7 Frame(CFA, -20)
-          CFI R6 Frame(CFA, -24)
-          CFI R5 Frame(CFA, -28)
-          CFI R4 Frame(CFA, -32)
-          CFI CFA R13+32
-        MOV      R8,R1          
-        MOVS     R5,R2          
+          CFI R11 Frame(CFA, -8)
+          CFI R10 Frame(CFA, -12)
+          CFI R9 Frame(CFA, -16)
+          CFI R8 Frame(CFA, -20)
+          CFI R7 Frame(CFA, -24)
+          CFI R6 Frame(CFA, -28)
+          CFI R5 Frame(CFA, -32)
+          CFI R4 Frame(CFA, -36)
+          CFI CFA R13+40
+        SUB      SP,SP,#+16     
+          CFI CFA R13+56
+        MOVS     R7,R1          
+        MOVS     R4,R2          
         MOVS     R6,R3          
-        LDR      R4,[SP, #+32]  
+        LDR      R5,[SP, #+56]  
 //  326 EventGroup_t *pxEventBits = ( EventGroup_t * ) xEventGroup;
-        MOVS     R7,R0          
+        LDR      R8,[SP, #+16]  
 //  327 EventBits_t uxReturn, uxControlBits = 0;
-        MOVS     R10,#+0        
+        MOVS     R9,#+0         
 //  328 BaseType_t xWaitConditionMet, xAlreadyYielded;
 //  329 BaseType_t xTimeoutOccurred = pdFALSE;
         MOVS     R0,#+0         
+        STR      R0,[SP, #+0]   
 //  330 
 //  331 	/* Check the user is not attempting to wait on the bits used by the kernel
 //  332 	itself, and that at least one bit is being requested. */
@@ -673,7 +692,7 @@ xEventGroupWaitBits:
         BL       xTaskGetSchedulerState
         CMP      R0,#+0         
         BNE.N    ??xEventGroupWaitBits_0
-        CMP      R4,#+0         
+        CMP      R5,#+0         
         BNE.N    ??xEventGroupWaitBits_1
 ??xEventGroupWaitBits_0:
         MOVS     R0,#+1         
@@ -689,35 +708,39 @@ xEventGroupWaitBits:
         BL       vTaskSuspendAll
 //  343 	{
 //  344 		const EventBits_t uxCurrentEventBits = pxEventBits->uxEventBits;
-        LDR      R9,[R7, #+0]   
+        LDR      R11,[R8, #+0]  
 //  345 
 //  346 		/* Check to see if the wait condition is already met or not. */
 //  347 		xWaitConditionMet = prvTestWaitCondition( uxCurrentEventBits, uxBitsToWaitFor, xWaitForAllBits );
         MOVS     R2,R6          
-        MOV      R1,R8          
-        MOV      R0,R9          
+        MOVS     R1,R7          
+        MOV      R0,R11         
           CFI FunCall prvTestWaitCondition
         BL       prvTestWaitCondition
+        STR      R0,[SP, #+8]   
 //  348 
 //  349 		if( xWaitConditionMet != pdFALSE )
+        LDR      R0,[SP, #+8]   
         CMP      R0,#+0         
         BEQ.N    ??xEventGroupWaitBits_3
 //  350 		{
 //  351 			/* The wait condition has already been met so there is no need to
 //  352 			block. */
 //  353 			uxReturn = uxCurrentEventBits;
+        MOV      R10,R11        
 //  354 			xTicksToWait = ( TickType_t ) 0;
-        MOVS     R4,#+0         
+        MOVS     R0,#+0         
+        MOVS     R5,R0          
 //  355 
 //  356 			/* Clear the wait bits if requested to do so. */
 //  357 			if( xClearOnExit != pdFALSE )
-        CMP      R5,#+0         
+        CMP      R4,#+0         
         BEQ.N    ??xEventGroupWaitBits_4
 //  358 			{
 //  359 				pxEventBits->uxEventBits &= ~uxBitsToWaitFor;
-        LDR      R0,[R7, #+0]   
-        BICS     R0,R0,R8       
-        STR      R0,[R7, #+0]   
+        LDR      R0,[R8, #+0]   
+        BICS     R0,R0,R7       
+        STR      R0,[R8, #+0]   
         B.N      ??xEventGroupWaitBits_4
 //  360 			}
 //  361 			else
@@ -727,12 +750,14 @@ xEventGroupWaitBits:
 //  365 		}
 //  366 		else if( xTicksToWait == ( TickType_t ) 0 )
 ??xEventGroupWaitBits_3:
-        CMP      R4,#+0         
-        BEQ.N    ??xEventGroupWaitBits_4
+        CMP      R5,#+0         
+        BNE.N    ??xEventGroupWaitBits_5
 //  367 		{
 //  368 			/* The wait condition has not been met, but no block time was
 //  369 			specified, so just return the current value. */
 //  370 			uxReturn = uxCurrentEventBits;
+        MOV      R10,R11        
+        B.N      ??xEventGroupWaitBits_4
 //  371 		}
 //  372 		else
 //  373 		{
@@ -742,11 +767,11 @@ xEventGroupWaitBits:
 //  377 			unblock the task. */
 //  378 			if( xClearOnExit != pdFALSE )
 ??xEventGroupWaitBits_5:
-        CMP      R5,#+0         
+        CMP      R4,#+0         
         BEQ.N    ??xEventGroupWaitBits_6
 //  379 			{
 //  380 				uxControlBits |= eventCLEAR_EVENTS_ON_EXIT_BIT;
-        ORRS     R10,R10,#0x1000000
+        ORRS     R9,R9,#0x1000000
 //  381 			}
 //  382 			else
 //  383 			{
@@ -759,7 +784,7 @@ xEventGroupWaitBits:
         BEQ.N    ??xEventGroupWaitBits_7
 //  388 			{
 //  389 				uxControlBits |= eventWAIT_FOR_ALL_BITS;
-        ORRS     R10,R10,#0x4000000
+        ORRS     R9,R9,#0x4000000
 //  390 			}
 //  391 			else
 //  392 			{
@@ -771,10 +796,9 @@ xEventGroupWaitBits:
 //  398 			found.  Then enter the blocked state. */
 //  399 			vTaskPlaceOnUnorderedEventList( &( pxEventBits->xTasksWaitingForBits ), ( uxBitsToWaitFor | uxControlBits ), xTicksToWait );
 ??xEventGroupWaitBits_7:
-        MOVS     R2,R4          
-        ORRS     R10,R10,R8     
-        MOV      R1,R10         
-        ADDS     R0,R7,#+4      
+        MOVS     R2,R5          
+        ORRS     R1,R9,R7       
+        ADDS     R0,R8,#+4      
           CFI FunCall vTaskPlaceOnUnorderedEventList
         BL       vTaskPlaceOnUnorderedEventList
 //  400 
@@ -782,7 +806,7 @@ xEventGroupWaitBits:
 //  402 			some compilers mistakenly generate a warning about the variable
 //  403 			being returned without being set if it is not done. */
 //  404 			uxReturn = 0;
-        MOVS     R9,#+0         
+        MOVS     R10,#+0        
 //  405 
 //  406 			traceEVENT_GROUP_WAIT_BITS_BLOCK( xEventGroup, uxBitsToWaitFor );
 //  407 		}
@@ -791,12 +815,14 @@ xEventGroupWaitBits:
 ??xEventGroupWaitBits_4:
           CFI FunCall xTaskResumeAll
         BL       xTaskResumeAll 
+        STR      R0,[SP, #+4]   
 //  410 
 //  411 	if( xTicksToWait != ( TickType_t ) 0 )
-        CMP      R4,#+0         
+        CMP      R5,#+0         
         BEQ.N    ??xEventGroupWaitBits_8
 //  412 	{
 //  413 		if( xAlreadyYielded == pdFALSE )
+        LDR      R0,[SP, #+4]   
         CMP      R0,#+0         
         BNE.N    ??xEventGroupWaitBits_9
 //  414 		{
@@ -820,10 +846,10 @@ xEventGroupWaitBits:
 ??xEventGroupWaitBits_9:
           CFI FunCall uxTaskResetEventItemValue
         BL       uxTaskResetEventItemValue
-        MOV      R9,R0          
+        MOV      R11,R0         
 //  427 
 //  428 		if( ( uxReturn & eventUNBLOCKED_DUE_TO_BIT_SET ) == ( EventBits_t ) 0 )
-        LSLS     R0,R9,#+6      
+        LSLS     R0,R11,#+6     
         BMI.N    ??xEventGroupWaitBits_10
 //  429 		{
 //  430 			taskENTER_CRITICAL();
@@ -832,27 +858,28 @@ xEventGroupWaitBits:
 //  431 			{
 //  432 				/* The task timed out, just return the current event bit value. */
 //  433 				uxReturn = pxEventBits->uxEventBits;
-        LDR      R9,[R7, #+0]   
+        LDR      R0,[R8, #+0]   
+        MOV      R11,R0         
 //  434 
 //  435 				/* It is possible that the event bits were updated between this
 //  436 				task leaving the Blocked state and running again. */
 //  437 				if( prvTestWaitCondition( uxReturn, uxBitsToWaitFor, xWaitForAllBits ) != pdFALSE )
         MOVS     R2,R6          
-        MOV      R1,R8          
-        MOV      R0,R9          
+        MOVS     R1,R7          
+        MOV      R0,R11         
           CFI FunCall prvTestWaitCondition
         BL       prvTestWaitCondition
         CMP      R0,#+0         
         BEQ.N    ??xEventGroupWaitBits_11
 //  438 				{
 //  439 					if( xClearOnExit != pdFALSE )
-        CMP      R5,#+0         
+        CMP      R4,#+0         
         BEQ.N    ??xEventGroupWaitBits_11
 //  440 					{
 //  441 						pxEventBits->uxEventBits &= ~uxBitsToWaitFor;
-        LDR      R0,[R7, #+0]   
-        BICS     R8,R0,R8       
-        STR      R8,[R7, #+0]   
+        LDR      R0,[R8, #+0]   
+        BICS     R0,R0,R7       
+        STR      R0,[R8, #+0]   
 //  442 					}
 //  443 					else
 //  444 					{
@@ -872,6 +899,7 @@ xEventGroupWaitBits:
 //  455 			/* Prevent compiler warnings when trace macros are not used. */
 //  456 			xTimeoutOccurred = pdFALSE;
         MOVS     R0,#+0         
+        STR      R0,[SP, #+0]   
 //  457 		}
 //  458 		else
 //  459 		{
@@ -881,14 +909,17 @@ xEventGroupWaitBits:
 //  463 		/* The task blocked so control bits may have been set. */
 //  464 		uxReturn &= ~eventEVENT_BITS_CONTROL_BYTES;
 ??xEventGroupWaitBits_10:
-        BIC      R9,R9,#0xFF000000
+        MOV      R10,R11        
+        BIC      R10,R10,#0xFF000000
 //  465 	}
 //  466 	traceEVENT_GROUP_WAIT_BITS_END( xEventGroup, uxBitsToWaitFor, xTimeoutOccurred );
 //  467 
 //  468 	return uxReturn;
 ??xEventGroupWaitBits_8:
-        MOV      R0,R9          
-        POP      {R4-R10,PC}    
+        MOV      R0,R10         
+        ADD      SP,SP,#+20     
+          CFI CFA R13+36
+        POP      {R4-R11,PC}    
 //  469 }
           CFI EndBlock cfiBlock2
 
@@ -908,15 +939,17 @@ xEventGroupWaitBits:
 //  472 EventBits_t xEventGroupClearBits( EventGroupHandle_t xEventGroup, const EventBits_t uxBitsToClear )
 //  473 {
 xEventGroupClearBits:
-        PUSH     {R4-R6,LR}     
+        PUSH     {R3-R7,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R6 Frame(CFA, -8)
-          CFI R5 Frame(CFA, -12)
-          CFI R4 Frame(CFA, -16)
-          CFI CFA R13+16
+          CFI R7 Frame(CFA, -8)
+          CFI R6 Frame(CFA, -12)
+          CFI R5 Frame(CFA, -16)
+          CFI R4 Frame(CFA, -20)
+          CFI CFA R13+24
         MOVS     R4,R0          
         MOVS     R5,R1          
 //  474 EventGroup_t *pxEventBits = ( EventGroup_t * ) xEventGroup;
+        MOVS     R6,R4          
 //  475 EventBits_t uxReturn;
 //  476 
 //  477 	/* Check the user is not attempting to clear the bits used by the kernel
@@ -933,21 +966,21 @@ xEventGroupClearBits:
 //  486 		/* The value returned is the event group value prior to the bits being
 //  487 		cleared. */
 //  488 		uxReturn = pxEventBits->uxEventBits;
-        LDR      R6,[R4, #+0]   
+        LDR      R7,[R6, #+0]   
 //  489 
 //  490 		/* Clear the bits. */
 //  491 		pxEventBits->uxEventBits &= ~uxBitsToClear;
-        LDR      R0,[R4, #+0]   
-        BICS     R5,R0,R5       
-        STR      R5,[R4, #+0]   
+        LDR      R0,[R6, #+0]   
+        BICS     R0,R0,R5       
+        STR      R0,[R6, #+0]   
 //  492 	}
 //  493 	taskEXIT_CRITICAL();
           CFI FunCall vPortExitCritical
         BL       vPortExitCritical
 //  494 
 //  495 	return uxReturn;
-        MOVS     R0,R6          
-        POP      {R4-R6,PC}     
+        MOVS     R0,R7          
+        POP      {R1,R4-R7,PC}  
 //  496 }
           CFI EndBlock cfiBlock3
 //  497 /*-----------------------------------------------------------*/
@@ -975,23 +1008,25 @@ xEventGroupClearBits:
         THUMB
 //  514 EventBits_t xEventGroupGetBitsFromISR( EventGroupHandle_t xEventGroup )
 //  515 {
+xEventGroupGetBitsFromISR:
+        MOVS     R1,R0          
 //  516 UBaseType_t uxSavedInterruptStatus;
 //  517 EventGroup_t *pxEventBits = ( EventGroup_t * ) xEventGroup;
+        MOVS     R3,R1          
 //  518 EventBits_t uxReturn;
 //  519 
 //  520 	uxSavedInterruptStatus = portSET_INTERRUPT_MASK_FROM_ISR();
-xEventGroupGetBitsFromISR:
-        MRS      R1,BASEPRI     
-        MOVS     R2,#+80        
-        MSR      BASEPRI,R2     
+        MRS      R2,BASEPRI     
+        MOVS     R0,#+80        
+        MSR      BASEPRI,R0     
         DSB      SY             
         ISB      SY             
 //  521 	{
 //  522 		uxReturn = pxEventBits->uxEventBits;
-        LDR      R0,[R0, #+0]   
+        LDR      R0,[R3, #+0]   
 //  523 	}
 //  524 	portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedInterruptStatus );
-        MSR      BASEPRI,R1     
+        MSR      BASEPRI,R2     
 //  525 
 //  526 	return uxReturn;
         BX       LR             
@@ -1007,24 +1042,28 @@ xEventGroupGetBitsFromISR:
 //  530 EventBits_t xEventGroupSetBits( EventGroupHandle_t xEventGroup, const EventBits_t uxBitsToSet )
 //  531 {
 xEventGroupSetBits:
-        PUSH     {R4-R8,LR}     
+        PUSH     {R1-R11,LR}    
           CFI R14 Frame(CFA, -4)
-          CFI R8 Frame(CFA, -8)
-          CFI R7 Frame(CFA, -12)
-          CFI R6 Frame(CFA, -16)
-          CFI R5 Frame(CFA, -20)
-          CFI R4 Frame(CFA, -24)
-          CFI CFA R13+24
-        MOVS     R4,R0          
-        MOVS     R7,R1          
+          CFI R11 Frame(CFA, -8)
+          CFI R10 Frame(CFA, -12)
+          CFI R9 Frame(CFA, -16)
+          CFI R8 Frame(CFA, -20)
+          CFI R7 Frame(CFA, -24)
+          CFI R6 Frame(CFA, -28)
+          CFI R5 Frame(CFA, -32)
+          CFI R4 Frame(CFA, -36)
+          CFI CFA R13+48
+        MOVS     R5,R0          
+        MOVS     R6,R1          
 //  532 ListItem_t *pxListItem, *pxNext;
 //  533 ListItem_t const *pxListEnd;
 //  534 List_t *pxList;
 //  535 EventBits_t uxBitsToClear = 0, uxBitsWaitedFor, uxControlBits;
-        MOVS     R5,#+0         
+        MOVS     R11,#+0        
 //  536 EventGroup_t *pxEventBits = ( EventGroup_t * ) xEventGroup;
+        MOV      R9,R5          
 //  537 BaseType_t xMatchFound = pdFALSE;
-        MOVS     R0,#+0         
+        MOVS     R4,#+0         
 //  538 
 //  539 	/* Check the user is not attempting to set the bits used by the kernel
 //  540 	itself. */
@@ -1032,9 +1071,12 @@ xEventGroupSetBits:
 //  542 	configASSERT( ( uxBitsToSet & eventEVENT_BITS_CONTROL_BYTES ) == 0 );
 //  543 
 //  544 	pxList = &( pxEventBits->xTasksWaitingForBits );
-        ADDS     R8,R4,#+4      
+        ADDS     R0,R9,#+4      
+        STR      R0,[SP, #+0]   
 //  545 	pxListEnd = listGET_END_MARKER( pxList ); /*lint !e826 !e740 The mini list structure is used as the list end to save RAM.  This is checked and valid. */
-        ADDS     R6,R8,#+8      
+        LDR      R0,[SP, #+0]   
+        ADDS     R0,R0,#+8      
+        STR      R0,[SP, #+8]   
 //  546 	vTaskSuspendAll();
           CFI FunCall vTaskSuspendAll
         BL       vTaskSuspendAll
@@ -1042,32 +1084,53 @@ xEventGroupSetBits:
 //  548 		traceEVENT_GROUP_SET_BITS( xEventGroup, uxBitsToSet );
 //  549 
 //  550 		pxListItem = listGET_HEAD_ENTRY( pxList );
-        LDR      R2,[R8, #+12]  
+        LDR      R0,[SP, #+0]   
+        LDR      R10,[R0, #+12] 
 //  551 
 //  552 		/* Set the bits. */
 //  553 		pxEventBits->uxEventBits |= uxBitsToSet;
-        LDR      R0,[R4, #+0]   
-        ORRS     R7,R7,R0       
-        STR      R7,[R4, #+0]   
-        B.N      ??xEventGroupSetBits_0
+        LDR      R0,[R9, #+0]   
+        ORRS     R0,R6,R0       
+        STR      R0,[R9, #+0]   
 //  554 
 //  555 		/* See if the new bit value should unblock any tasks. */
 //  556 		while( pxListItem != pxListEnd )
+??xEventGroupSetBits_0:
+        LDR      R0,[SP, #+8]   
+        CMP      R10,R0         
+        BEQ.N    ??xEventGroupSetBits_1
 //  557 		{
 //  558 			pxNext = listGET_NEXT( pxListItem );
+        LDR      R0,[R10, #+4]  
+        STR      R0,[SP, #+4]   
 //  559 			uxBitsWaitedFor = listGET_LIST_ITEM_VALUE( pxListItem );
+        LDR      R0,[R10, #+0]  
 //  560 			xMatchFound = pdFALSE;
+        MOVS     R1,#+0         
+        MOVS     R4,R1          
 //  561 
 //  562 			/* Split the bits waited for from the control bits. */
 //  563 			uxControlBits = uxBitsWaitedFor & eventEVENT_BITS_CONTROL_BYTES;
+        ANDS     R1,R0,#0xFF000000
+        MOV      R8,R1          
 //  564 			uxBitsWaitedFor &= ~eventEVENT_BITS_CONTROL_BYTES;
+        BIC      R0,R0,#0xFF000000
+        MOVS     R7,R0          
 //  565 
 //  566 			if( ( uxControlBits & eventWAIT_FOR_ALL_BITS ) == ( EventBits_t ) 0 )
+        LSLS     R0,R8,#+5      
+        BMI.N    ??xEventGroupSetBits_2
 //  567 			{
 //  568 				/* Just looking for single bit being set. */
 //  569 				if( ( uxBitsWaitedFor & pxEventBits->uxEventBits ) != ( EventBits_t ) 0 )
+        LDR      R0,[R9, #+0]   
+        TST      R7,R0          
+        BEQ.N    ??xEventGroupSetBits_3
 //  570 				{
 //  571 					xMatchFound = pdTRUE;
+        MOVS     R0,#+1         
+        MOVS     R4,R0          
+        B.N      ??xEventGroupSetBits_3
 //  572 				}
 //  573 				else
 //  574 				{
@@ -1075,46 +1138,34 @@ xEventGroupSetBits:
 //  576 				}
 //  577 			}
 //  578 			else if( ( uxBitsWaitedFor & pxEventBits->uxEventBits ) == uxBitsWaitedFor )
-??xEventGroupSetBits_1:
-        LDR      R12,[R4, #+0]  
-        ANDS     R12,R12,R1     
-        CMP      R12,R1         
-        BNE.N    ??xEventGroupSetBits_2
+??xEventGroupSetBits_2:
+        LDR      R0,[R9, #+0]   
+        ANDS     R0,R0,R7       
+        CMP      R0,R7          
+        BNE.N    ??xEventGroupSetBits_3
 //  579 			{
 //  580 				/* All bits are set. */
 //  581 				xMatchFound = pdTRUE;
         MOVS     R0,#+1         
-        B.N      ??xEventGroupSetBits_2
+        MOVS     R4,R0          
 //  582 			}
-??xEventGroupSetBits_3:
-        LDR      R7,[R2, #+4]   
-        LDR      R1,[R2, #+0]   
-        MOVS     R0,#+0         
-        ANDS     R3,R1,#0xFF000000
-        BIC      R1,R1,#0xFF000000
-        LSLS     R12,R3,#+5     
-        BMI.N    ??xEventGroupSetBits_1
-        LDR      R12,[R4, #+0]  
-        TST      R1,R12         
-        BEQ.N    ??xEventGroupSetBits_2
-        MOVS     R0,#+1         
 //  583 			else
 //  584 			{
 //  585 				/* Need all bits to be set, but not all the bits were set. */
 //  586 			}
 //  587 
 //  588 			if( xMatchFound != pdFALSE )
-??xEventGroupSetBits_2:
-        CMP      R0,#+0         
+??xEventGroupSetBits_3:
+        CMP      R4,#+0         
         BEQ.N    ??xEventGroupSetBits_4
 //  589 			{
 //  590 				/* The bits match.  Should the bits be cleared on exit? */
 //  591 				if( ( uxControlBits & eventCLEAR_EVENTS_ON_EXIT_BIT ) != ( EventBits_t ) 0 )
-        LSLS     R0,R3,#+7      
+        LSLS     R0,R8,#+7      
         BPL.N    ??xEventGroupSetBits_5
 //  592 				{
 //  593 					uxBitsToClear |= uxBitsWaitedFor;
-        ORRS     R5,R1,R5       
+        ORRS     R11,R7,R11     
 //  594 				}
 //  595 				else
 //  596 				{
@@ -1128,9 +1179,9 @@ xEventGroupSetBits:
 //  604 				than because it timed out. */
 //  605 				( void ) xTaskRemoveFromUnorderedEventList( pxListItem, pxEventBits->uxEventBits | eventUNBLOCKED_DUE_TO_BIT_SET );
 ??xEventGroupSetBits_5:
-        LDR      R1,[R4, #+0]   
+        LDR      R1,[R9, #+0]   
         ORRS     R1,R1,#0x2000000
-        MOVS     R0,R2          
+        MOV      R0,R10         
           CFI FunCall xTaskRemoveFromUnorderedEventList
         BL       xTaskRemoveFromUnorderedEventList
 //  606 			}
@@ -1140,27 +1191,26 @@ xEventGroupSetBits:
 //  610 			and inserted into the ready/pending reading list. */
 //  611 			pxListItem = pxNext;
 ??xEventGroupSetBits_4:
-        MOVS     R2,R7          
+        LDR      R0,[SP, #+4]   
+        MOV      R10,R0         
+        B.N      ??xEventGroupSetBits_0
 //  612 		}
-??xEventGroupSetBits_0:
-        CMP      R2,R6          
-        BNE.N    ??xEventGroupSetBits_3
 //  613 
 //  614 		/* Clear any bits that matched when the eventCLEAR_EVENTS_ON_EXIT_BIT
 //  615 		bit was set in the control word. */
 //  616 		pxEventBits->uxEventBits &= ~uxBitsToClear;
-??xEventGroupSetBits_6:
-        LDR      R0,[R4, #+0]   
-        BICS     R5,R0,R5       
-        STR      R5,[R4, #+0]   
+??xEventGroupSetBits_1:
+        LDR      R0,[R9, #+0]   
+        BICS     R0,R0,R11      
+        STR      R0,[R9, #+0]   
 //  617 	}
 //  618 	( void ) xTaskResumeAll();
           CFI FunCall xTaskResumeAll
         BL       xTaskResumeAll 
 //  619 
 //  620 	return pxEventBits->uxEventBits;
-        LDR      R0,[R4, #+0]   
-        POP      {R4-R8,PC}     
+        LDR      R0,[R9, #+0]   
+        POP      {R1-R11,PC}    
 //  621 }
           CFI EndBlock cfiBlock5
 //  622 /*-----------------------------------------------------------*/
@@ -1173,37 +1223,40 @@ xEventGroupSetBits:
 //  624 void vEventGroupDelete( EventGroupHandle_t xEventGroup )
 //  625 {
 vEventGroupDelete:
-        PUSH     {R4,LR}        
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
+          CFI CFA R13+16
+        MOVS     R4,R0          
 //  626 EventGroup_t *pxEventBits = ( EventGroup_t * ) xEventGroup;
+        MOVS     R6,R4          
 //  627 const List_t *pxTasksWaitingForBits = &( pxEventBits->xTasksWaitingForBits );
-        ADDS     R4,R0,#+4      
+        ADDS     R5,R6,#+4      
 //  628 
 //  629 	vTaskSuspendAll();
           CFI FunCall vTaskSuspendAll
         BL       vTaskSuspendAll
-        B.N      ??vEventGroupDelete_0
 //  630 	{
 //  631 		traceEVENT_GROUP_DELETE( xEventGroup );
 //  632 
 //  633 		while( listCURRENT_LIST_LENGTH( pxTasksWaitingForBits ) > ( UBaseType_t ) 0 )
+??vEventGroupDelete_0:
+        LDR      R0,[R5, #+0]   
+        CMP      R0,#+0         
+        BEQ.N    ??vEventGroupDelete_1
 //  634 		{
 //  635 			/* Unblock the task, returning 0 as the event list is being deleted
 //  636 			and	cannot therefore have any bits set. */
 //  637 			configASSERT( pxTasksWaitingForBits->xListEnd.pxNext != ( ListItem_t * ) &( pxTasksWaitingForBits->xListEnd ) );
 //  638 			( void ) xTaskRemoveFromUnorderedEventList( pxTasksWaitingForBits->xListEnd.pxNext, eventUNBLOCKED_DUE_TO_BIT_SET );
-??vEventGroupDelete_1:
         MOVS     R1,#+33554432  
-        LDR      R0,[R4, #+12]  
+        LDR      R0,[R5, #+12]  
           CFI FunCall xTaskRemoveFromUnorderedEventList
         BL       xTaskRemoveFromUnorderedEventList
+        B.N      ??vEventGroupDelete_0
 //  639 		}
-??vEventGroupDelete_0:
-        LDR      R0,[R4, #+0]   
-        CMP      R0,#+0         
-        BNE.N    ??vEventGroupDelete_1
 //  640 
 //  641 		#if( ( configSUPPORT_DYNAMIC_ALLOCATION == 1 ) && ( configSUPPORT_STATIC_ALLOCATION == 0 ) )
 //  642 		{
@@ -1227,10 +1280,11 @@ vEventGroupDelete:
 //  660 		#endif /* configSUPPORT_DYNAMIC_ALLOCATION */
 //  661 	}
 //  662 	( void ) xTaskResumeAll();
+??vEventGroupDelete_1:
           CFI FunCall xTaskResumeAll
         BL       xTaskResumeAll 
 //  663 }
-        POP      {R4,PC}        
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock6
 //  664 /*-----------------------------------------------------------*/
 //  665 
@@ -1244,14 +1298,20 @@ vEventGroupDelete:
 //  668 void vEventGroupSetBitsCallback( void *pvEventGroup, const uint32_t ulBitsToSet )
 //  669 {
 vEventGroupSetBitsCallback:
-        PUSH     {R7,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
 //  670 	( void ) xEventGroupSetBits( pvEventGroup, ( EventBits_t ) ulBitsToSet );
+        MOVS     R1,R5          
+        MOVS     R0,R4          
           CFI FunCall xEventGroupSetBits
         BL       xEventGroupSetBits
 //  671 }
-        POP      {R0,PC}        
+        POP      {R0,R4,R5,PC}  
           CFI EndBlock cfiBlock7
 //  672 /*-----------------------------------------------------------*/
 //  673 
@@ -1265,14 +1325,20 @@ vEventGroupSetBitsCallback:
 //  676 void vEventGroupClearBitsCallback( void *pvEventGroup, const uint32_t ulBitsToClear )
 //  677 {
 vEventGroupClearBitsCallback:
-        PUSH     {R7,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
 //  678 	( void ) xEventGroupClearBits( pvEventGroup, ( EventBits_t ) ulBitsToClear );
+        MOVS     R1,R5          
+        MOVS     R0,R4          
           CFI FunCall xEventGroupClearBits
         BL       xEventGroupClearBits
 //  679 }
-        POP      {R0,PC}        
+        POP      {R0,R4,R5,PC}  
           CFI EndBlock cfiBlock8
 //  680 /*-----------------------------------------------------------*/
 //  681 
@@ -1285,6 +1351,9 @@ vEventGroupClearBitsCallback:
 //  682 static BaseType_t prvTestWaitCondition( const EventBits_t uxCurrentEventBits, const EventBits_t uxBitsToWaitFor, const BaseType_t xWaitForAllBits )
 //  683 {
 prvTestWaitCondition:
+        PUSH     {R4}           
+          CFI R4 Frame(CFA, -4)
+          CFI CFA R13+4
         MOVS     R3,R0          
 //  684 BaseType_t xWaitConditionMet = pdFALSE;
         MOVS     R0,#+0         
@@ -1300,7 +1369,8 @@ prvTestWaitCondition:
         BEQ.N    ??prvTestWaitCondition_1
 //  691 		{
 //  692 			xWaitConditionMet = pdTRUE;
-        MOVS     R0,#+1         
+        MOVS     R4,#+1         
+        MOVS     R0,R4          
         B.N      ??prvTestWaitCondition_1
 //  693 		}
 //  694 		else
@@ -1314,12 +1384,13 @@ prvTestWaitCondition:
 //  702 		Are they set already? */
 //  703 		if( ( uxCurrentEventBits & uxBitsToWaitFor ) == uxBitsToWaitFor )
 ??prvTestWaitCondition_0:
-        ANDS     R3,R1,R3       
-        CMP      R3,R1          
+        ANDS     R4,R1,R3       
+        CMP      R4,R1          
         BNE.N    ??prvTestWaitCondition_1
 //  704 		{
 //  705 			xWaitConditionMet = pdTRUE;
-        MOVS     R0,#+1         
+        MOVS     R4,#+1         
+        MOVS     R0,R4          
 //  706 		}
 //  707 		else
 //  708 		{
@@ -1329,6 +1400,9 @@ prvTestWaitCondition:
 //  712 
 //  713 	return xWaitConditionMet;
 ??prvTestWaitCondition_1:
+        POP      {R4}           
+          CFI R4 SameValue
+          CFI CFA R13+0
         BX       LR             
 //  714 }
           CFI EndBlock cfiBlock9
@@ -1378,9 +1452,9 @@ prvTestWaitCondition:
 //  751 #endif
 //  752 
 // 
-// 662 bytes in section .text
+// 802 bytes in section .text
 // 
-// 662 bytes of CODE memory
+// 802 bytes of CODE memory
 //
 //Errors: none
 //Warnings: none

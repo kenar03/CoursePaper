@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         26/Apr/2025  19:24:51
+# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         27/Apr/2025  00:21:27
 # Copyright 1999-2022 IAR Systems AB.
 #
 #    Cpu mode          =  thumb
@@ -102,7 +102,11 @@
 #        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
 #        -I
 #        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
-#        -Ol) --dependencies=n
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+#        -On) --dependencies=n
 #        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Rtos\FreeRtos\portable\IAR\ARM_CM4F\port.o.d
 #    Locale            =  C
 #    List file         =
@@ -376,14 +380,14 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     235          	pxTopOfStack--;
    \        0x8   0x1F00             SUBS     R0,R0,#+4
     236          	*pxTopOfStack = ( ( StackType_t ) pxCode ) & portSTART_ADDRESS_MASK;	/* PC */
-   \        0xA   0x0849             LSRS     R1,R1,#+1
-   \        0xC   0x0049             LSLS     R1,R1,#+1
-   \        0xE   0x6001             STR      R1,[R0, #+0]
+   \        0xA   0x084B             LSRS     R3,R1,#+1
+   \        0xC   0x005B             LSLS     R3,R3,#+1
+   \        0xE   0x6003             STR      R3,[R0, #+0]
     237          	pxTopOfStack--;
    \       0x10   0x1F00             SUBS     R0,R0,#+4
     238          	*pxTopOfStack = ( StackType_t ) prvTaskExitError;	/* LR */
-   \       0x12   0x.... 0x....      ADR.W    R1,prvTaskExitError
-   \       0x16   0x6001             STR      R1,[R0, #+0]
+   \       0x12   0x.... 0x....      ADR.W    R3,prvTaskExitError
+   \       0x16   0x6003             STR      R3,[R0, #+0]
     239          
     240          	/* Save code space by skipping register initialisation. */
     241          	pxTopOfStack -= 5;	/* R12, R3, R2 and R1. */
@@ -396,8 +400,8 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     246          	pxTopOfStack--;
    \       0x1C   0x1F00             SUBS     R0,R0,#+4
     247          	*pxTopOfStack = portINITIAL_EXEC_RETURN;
-   \       0x1E   0xF07F 0x0102      MVNS     R1,#+2
-   \       0x22   0x6001             STR      R1,[R0, #+0]
+   \       0x1E   0xF07F 0x0302      MVNS     R3,#+2
+   \       0x22   0x6003             STR      R3,[R0, #+0]
     248          
     249          	pxTopOfStack -= 8;	/* R11, R10, R9, R8, R7, R6, R5 and R4. */
    \       0x24   0x3820             SUBS     R0,R0,#+32
@@ -493,27 +497,27 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    \       0x24   0x....             LDR.N    R1,??DataTable5_3
    \       0x26   0x2207             MOVS     R2,#+7
    \       0x28   0x600A             STR      R2,[R1, #+0]
-   \       0x2A   0xE007             B.N      ??xPortStartScheduler_0
     311          		while( ( ucMaxPriorityValue & portTOP_BIT_OF_BYTE ) == portTOP_BIT_OF_BYTE )
+   \                     ??xPortStartScheduler_0: (+1)
+   \       0x2A   0xF89D 0x2000      LDRB     R2,[SP, #+0]
+   \       0x2E   0x0612             LSLS     R2,R2,#+24
+   \       0x30   0xD508             BPL.N    ??xPortStartScheduler_1
     312          		{
     313          			ulMaxPRIGROUPValue--;
-   \                     ??xPortStartScheduler_1: (+1)
-   \       0x2C   0x680A             LDR      R2,[R1, #+0]
-   \       0x2E   0x1E52             SUBS     R2,R2,#+1
-   \       0x30   0x600A             STR      R2,[R1, #+0]
+   \       0x32   0x680A             LDR      R2,[R1, #+0]
+   \       0x34   0x1E52             SUBS     R2,R2,#+1
+   \       0x36   0x600A             STR      R2,[R1, #+0]
     314          			ucMaxPriorityValue <<= ( uint8_t ) 0x01;
-   \       0x32   0xF89D 0x2000      LDRB     R2,[SP, #+0]
-   \       0x36   0x0052             LSLS     R2,R2,#+1
-   \       0x38   0xF88D 0x2000      STRB     R2,[SP, #+0]
+   \       0x38   0xF89D 0x2000      LDRB     R2,[SP, #+0]
+   \       0x3C   0x0052             LSLS     R2,R2,#+1
+   \       0x3E   0xF88D 0x2000      STRB     R2,[SP, #+0]
+   \       0x42   0xE7F2             B.N      ??xPortStartScheduler_0
     315          		}
-   \                     ??xPortStartScheduler_0: (+1)
-   \       0x3C   0xF89D 0x2000      LDRB     R2,[SP, #+0]
-   \       0x40   0x0612             LSLS     R2,R2,#+24
-   \       0x42   0xD4F3             BMI.N    ??xPortStartScheduler_1
     316          
     317          		/* Shift the priority group value back to its position within the AIRCR
     318          		register. */
     319          		ulMaxPRIGROUPValue <<= portPRIGROUP_SHIFT;
+   \                     ??xPortStartScheduler_1: (+1)
    \       0x44   0x680A             LDR      R2,[R1, #+0]
    \       0x46   0x0212             LSLS     R2,R2,#+8
    \       0x48   0x600A             STR      R2,[R1, #+0]
@@ -895,13 +899,14 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     595          		/* Is the interrupt number a user defined interrupt? */
     596          		if( ulCurrentInterrupt >= portFIRST_USER_INTERRUPT_NUMBER )
    \        0x4   0x2810             CMP      R0,#+16
-   \        0x6   0xD302             BCC.N    ??vPortValidateInterruptPriority_0
+   \        0x6   0xD303             BCC.N    ??vPortValidateInterruptPriority_0
     597          		{
     598          			/* Look up the interrupt's priority. */
     599          			ucCurrentPriority = pcInterruptPriorityRegisters[ ulCurrentInterrupt ];
-   \        0x8   0x....             LDR.N    R1,??DataTable5_8
-   \        0xA   0x6809             LDR      R1,[R1, #+0]
-   \        0xC   0x5C08             LDRB     R0,[R1, R0]
+   \        0x8   0x....             LDR.N    R2,??DataTable5_8
+   \        0xA   0x6812             LDR      R2,[R2, #+0]
+   \        0xC   0x5C12             LDRB     R2,[R2, R0]
+   \        0xE   0x0011             MOVS     R1,R2
     600          
     601          			/* The following assertion will fail if a service routine (ISR) for
     602          			an interrupt that has been assigned a priority above
@@ -944,10 +949,10 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
     639          		of zero will result in unpredicable behaviour. */
     640          		configASSERT( ( portAIRCR_REG & portPRIORITY_GROUP_MASK ) <= ulMaxPRIGROUPValue );
    \                     ??vPortValidateInterruptPriority_0: (+1)
-   \        0xE   0x....             LDR.N    R0,??DataTable5_9
-   \       0x10   0x6800             LDR      R0,[R0, #+0]
+   \       0x10   0x....             LDR.N    R2,??DataTable5_9
+   \       0x12   0x6812             LDR      R2,[R2, #+0]
     641          	}
-   \       0x12   0x4770             BX       LR
+   \       0x14   0x4770             BX       LR
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable5:
@@ -1055,7 +1060,7 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
       34  vPortEnterCritical
       22  vPortExitCritical
       36  vPortSetupTimerInterrupt
-      20  vPortValidateInterruptPriority
+      22  vPortValidateInterruptPriority
      136  xPortStartScheduler
       40  xPortSysTickHandler
 
@@ -1063,9 +1068,9 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos
    5 bytes in section .bss
    4 bytes in section .data
    4 bytes in section .rodata
- 386 bytes in section .text
+ 388 bytes in section .text
  
- 350 bytes of CODE  memory (+ 36 bytes shared)
+ 352 bytes of CODE  memory (+ 36 bytes shared)
    4 bytes of CONST memory
    9 bytes of DATA  memory
 

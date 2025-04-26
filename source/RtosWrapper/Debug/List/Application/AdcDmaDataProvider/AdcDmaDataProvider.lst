@@ -1,0 +1,585 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         27/Apr/2025  00:21:27
+# Copyright 1999-2022 IAR Systems AB.
+#
+#    Cpu mode                     =  thumb
+#    Endian                       =  little
+#    Source file                  =
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\AdcDmaDataProvider.cpp
+#    Command line                 =
+#        -f
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\AdcDmaDataProvider\AdcDmaDataProvider.o.rsp
+#        (D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\AdcDmaDataProvider.cpp
+#        -lC
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\AdcDmaDataProvider
+#        -lA
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\AdcDmaDataProvider
+#        -o
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\AdcDmaDataProvider
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\Games\Programs\IAR\arm\inc\c\DLib_Config_Normal.h -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\wrapper\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\wrapper\FreeRtos\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\include\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\Common\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\ARM_CM4F\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\MemMang\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\MyTasks\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Common\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\CMSIS\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Diagnostic\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\GpioPort\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\IrqController\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Pin\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Port\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Atomic\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\Singleton\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\RomObject\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DataRepository\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DataRepository\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+#        -On --c++ --no_exceptions --no_rtti) --dependencies=n
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\AdcDmaDataProvider\AdcDmaDataProvider.o.d
+#    Locale                       =  C
+#    List file                    =
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\AdcDmaDataProvider\AdcDmaDataProvider.lst
+#    Object file                  =
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\AdcDmaDataProvider\AdcDmaDataProvider.o
+#    Runtime model:                  
+#      __CPP_Exceptions           =  Disabled
+#      __CPP_Language             =  C++14
+#      __CPP_Library              =  DLib
+#      __CPP_Runtime              =  1
+#      __SystemLibrary            =  DLib
+#      __dlib_file_descriptor     =  0
+#      __dlib_full_locale_support =  0
+#      __dlib_version             =  6
+#
+###############################################################################
+
+D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\AdcDmaDataProvider.cpp
+      1          #include "AdcDmaDataProvider.hpp"   // for AdcDmaDataProvider
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<DMA2_S0CR_EN_Values<DMA2::S0CR, 0U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI19DMA2_S0CR_EN_ValuesIN4DMA24S0CRELj0ELj1E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4902             LDR.N    R1,??Set_0
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0x0840             LSRS     R0,R0,#+1
+   \        0x6   0x0040             LSLS     R0,R0,#+1
+   \        0x8   0x6008             STR      R0,[R1, #+0]
+   \        0xA   0x4770             BX       LR
+   \                     ??Set_0:
+   \        0xC   0x4002'6410        DC32     0x40026410
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<DMA2_S0CR_CHSEL_Values<DMA2::S0CR, 25U, 3U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI22DMA2_S0CR_CHSEL_ValuesIN4DMA24S0CRELj25ELj3E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4902             LDR.N    R1,??Set_1
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF030 0x6060      BICS     R0,R0,#0xE000000
+   \        0x8   0x6008             STR      R0,[R1, #+0]
+   \        0xA   0x4770             BX       LR
+   \                     ??Set_1:
+   \        0xC   0x4002'6410        DC32     0x40026410
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<DMA2_S0CR_CT_Values<DMA2::S0CR, 19U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI19DMA2_S0CR_CT_ValuesIN4DMA24S0CRELj19ELj1E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4902             LDR.N    R1,??Set_2
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF430 0x2000      BICS     R0,R0,#0x80000
+   \        0x8   0x6008             STR      R0,[R1, #+0]
+   \        0xA   0x4770             BX       LR
+   \                     ??Set_2:
+   \        0xC   0x4002'6410        DC32     0x40026410
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<DMA2_S0CR_DBM_Values<DMA2::S0CR, 18U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI20DMA2_S0CR_DBM_ValuesIN4DMA24S0CRELj18ELj1E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4902             LDR.N    R1,??Set_3
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF430 0x2080      BICS     R0,R0,#0x40000
+   \        0x8   0x6008             STR      R0,[R1, #+0]
+   \        0xA   0x4770             BX       LR
+   \                     ??Set_3:
+   \        0xC   0x4002'6410        DC32     0x40026410
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<DMA2_S0CR_MSIZE_Values<DMA2::S0CR, 13U, 2U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 2U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI22DMA2_S0CR_MSIZE_ValuesIN4DMA24S0CRELj13ELj2E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj2EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_4
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF430 0x40C0      BICS     R0,R0,#0x6000
+   \        0x8   0xF450 0x4080      ORRS     R0,R0,#0x4000
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
+   \                     ??Set_4:
+   \       0x10   0x4002'6410        DC32     0x40026410
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<DMA2_S0CR_PSIZE_Values<DMA2::S0CR, 11U, 2U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 2U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI22DMA2_S0CR_PSIZE_ValuesIN4DMA24S0CRELj11ELj2E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj2EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_5
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF430 0x50C0      BICS     R0,R0,#0x1800
+   \        0x8   0xF450 0x5080      ORRS     R0,R0,#0x1000
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
+   \                     ??Set_5:
+   \       0x10   0x4002'6410        DC32     0x40026410
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<DMA2_S0CR_CIRC_Values<DMA2::S0CR, 8U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 1U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI21DMA2_S0CR_CIRC_ValuesIN4DMA24S0CRELj8ELj1E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj1EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_6
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF430 0x7080      BICS     R0,R0,#0x100
+   \        0x8   0xF450 0x7080      ORRS     R0,R0,#0x100
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
+   \                     ??Set_6:
+   \       0x10   0x4002'6410        DC32     0x40026410
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<DMA2_S0CR_DIR_Values<DMA2::S0CR, 6U, 2U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI20DMA2_S0CR_DIR_ValuesIN4DMA24S0CRELj6ELj2E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4902             LDR.N    R1,??Set_7
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF030 0x00C0      BICS     R0,R0,#0xC0
+   \        0x8   0x6008             STR      R0,[R1, #+0]
+   \        0xA   0x4770             BX       LR
+   \                     ??Set_7:
+   \        0xC   0x4002'6410        DC32     0x40026410
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<DMA2_S0CR_PFCTRL_Values<DMA2::S0CR, 5U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI23DMA2_S0CR_PFCTRL_ValuesIN4DMA24S0CRELj5ELj1E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4902             LDR.N    R1,??Set_8
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF030 0x0020      BICS     R0,R0,#0x20
+   \        0x8   0x6008             STR      R0,[R1, #+0]
+   \        0xA   0x4770             BX       LR
+   \                     ??Set_8:
+   \        0xC   0x4002'6410        DC32     0x40026410
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<DMA2_S0CR_EN_Values<DMA2::S0CR, 0U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 1U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI19DMA2_S0CR_EN_ValuesIN4DMA24S0CRELj0ELj1E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj1EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_9
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0x0840             LSRS     R0,R0,#+1
+   \        0x6   0x0040             LSLS     R0,R0,#+1
+   \        0x8   0xF050 0x0001      ORRS     R0,R0,#0x1
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
+   \                     ??Set_9:
+   \       0x10   0x4002'6410        DC32     0x40026410
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<ADC1_CR1_RES_Values<ADC1::CR1, 24U, 2U, ReadWriteMode, ADC1::ADC1CR1Base>, ADC1::ADC1CR1Base, 0U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI19ADC1_CR1_RES_ValuesIN4ADC13CR1ELj24ELj2E13ReadWriteModeNS1_11ADC1CR1BaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4902             LDR.N    R1,??Set_10
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF030 0x7040      BICS     R0,R0,#0x3000000
+   \        0x8   0x6008             STR      R0,[R1, #+0]
+   \        0xA   0x4770             BX       LR
+   \                     ??Set_10:
+   \        0xC   0x4001'2004        DC32     0x40012004
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<ADC1_CR1_SCAN_Values<ADC1::CR1, 8U, 1U, ReadWriteMode, ADC1::ADC1CR1Base>, ADC1::ADC1CR1Base, 1U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI20ADC1_CR1_SCAN_ValuesIN4ADC13CR1ELj8ELj1E13ReadWriteModeNS1_11ADC1CR1BaseEES4_Lj1EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_11
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF430 0x7080      BICS     R0,R0,#0x100
+   \        0x8   0xF450 0x7080      ORRS     R0,R0,#0x100
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
+   \                     ??Set_11:
+   \       0x10   0x4001'2004        DC32     0x40012004
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<ADC1_CR2_CONT_Values<ADC1::CR2, 1U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI20ADC1_CR2_CONT_ValuesIN4ADC13CR2ELj1ELj1E13ReadWriteModeNS1_11ADC1CR2BaseEES4_Lj1EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_12
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF030 0x0002      BICS     R0,R0,#0x2
+   \        0x8   0xF050 0x0002      ORRS     R0,R0,#0x2
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
+   \                     ??Set_12:
+   \       0x10   0x4001'2008        DC32     0x40012008
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<ADC1_CR2_DMA_Values<ADC1::CR2, 8U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI19ADC1_CR2_DMA_ValuesIN4ADC13CR2ELj8ELj1E13ReadWriteModeNS1_11ADC1CR2BaseEES4_Lj1EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_13
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF430 0x7080      BICS     R0,R0,#0x100
+   \        0x8   0xF450 0x7080      ORRS     R0,R0,#0x100
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
+   \                     ??Set_13:
+   \       0x10   0x4001'2008        DC32     0x40012008
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<ADC1_CR2_DDS_Values<ADC1::CR2, 9U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI19ADC1_CR2_DDS_ValuesIN4ADC13CR2ELj9ELj1E13ReadWriteModeNS1_11ADC1CR2BaseEES4_Lj1EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_14
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF430 0x7000      BICS     R0,R0,#0x200
+   \        0x8   0xF450 0x7000      ORRS     R0,R0,#0x200
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
+   \                     ??Set_14:
+   \       0x10   0x4001'2008        DC32     0x40012008
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<ADC1_CR2_ADON_Values<ADC1::CR2, 0U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI20ADC1_CR2_ADON_ValuesIN4ADC13CR2ELj0ELj1E13ReadWriteModeNS1_11ADC1CR2BaseEES4_Lj1EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_15
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0x0840             LSRS     R0,R0,#+1
+   \        0x6   0x0040             LSLS     R0,R0,#+1
+   \        0x8   0xF050 0x0001      ORRS     R0,R0,#0x1
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
+   \                     ??Set_15:
+   \       0x10   0x4001'2008        DC32     0x40012008
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<ADC1_CR2_SWSTART_Values<ADC1::CR2, 30U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI23ADC1_CR2_SWSTART_ValuesIN4ADC13CR2ELj30ELj1E13ReadWriteModeNS1_11ADC1CR2BaseEES4_Lj1EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4903             LDR.N    R1,??Set_16
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF030 0x4080      BICS     R0,R0,#0x40000000
+   \        0x8   0xF050 0x4080      ORRS     R0,R0,#0x40000000
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+   \        0xE   0x4770             BX       LR
+   \                     ??Set_16:
+   \       0x10   0x4001'2008        DC32     0x40012008
+
+   \                                 In section .text, align 4
+   \   __vfp void RegisterBase<1'073'898'516U, 32U, ReadWriteMode>::Write<ReadWriteMode, void>(uint32_t)
+   \                     _ZN12RegisterBaseILj1073898516ELj32E13ReadWriteModeE5WriteIS0_vEEvj: (+1)
+   \        0x0   0x4901             LDR.N    R1,??Write_0
+   \        0x2   0x6008             STR      R0,[R1, #+0]
+   \        0x4   0x4770             BX       LR
+   \        0x6   0xBF00             Nop
+   \                     ??Write_0:
+   \        0x8   0x4002'6414        DC32     0x40026414
+
+   \                                 In section .text, align 4
+   \   __vfp void RegisterBase<1'073'898'520U, 32U, ReadWriteMode>::Write<ReadWriteMode, void>(uint32_t)
+   \                     _ZN12RegisterBaseILj1073898520ELj32E13ReadWriteModeE5WriteIS0_vEEvj: (+1)
+   \        0x0   0x4901             LDR.N    R1,??Write_1
+   \        0x2   0x6008             STR      R0,[R1, #+0]
+   \        0x4   0x4770             BX       LR
+   \        0x6   0xBF00             Nop
+   \                     ??Write_1:
+   \        0x8   0x4002'6418        DC32     0x40026418
+
+   \                                 In section .text, align 4
+   \   __vfp void RegisterBase<1'073'898'524U, 32U, ReadWriteMode>::Write<ReadWriteMode, void>(uint32_t)
+   \                     _ZN12RegisterBaseILj1073898524ELj32E13ReadWriteModeE5WriteIS0_vEEvj: (+1)
+   \        0x0   0x4901             LDR.N    R1,??Write_2
+   \        0x2   0x6008             STR      R0,[R1, #+0]
+   \        0x4   0x4770             BX       LR
+   \        0x6   0xBF00             Nop
+   \                     ??Write_2:
+   \        0x8   0x4002'641C        DC32     0x4002641c
+
+   \                                 In section .text, align 2
+   \   __vfp IRawDataProvider::subobject IRawDataProvider() noexcept
+   \                     _ZN16IRawDataProviderC2Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN16IRawDataProviderC1Ev
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp IRawDataProvider::IRawDataProvider() noexcept
+   \                     _ZN16IRawDataProviderC1Ev: (+1)
+   \        0x0   0x4770             BX       LR
+      2          
+
+   \                                 In section .text, align 2, keep-with-next
+   \   __vfp AdcDmaDataProvider::subobject AdcDmaDataProvider()
+   \                     _ZN18AdcDmaDataProviderC2Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN18AdcDmaDataProviderC1Ev
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2, keep-with-next
+      3          AdcDmaDataProvider :: AdcDmaDataProvider() : data(0)
+      4          {
+   \                     _ZN18AdcDmaDataProviderC1Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN16IRawDataProviderC2Ev
+   \        0xA   0x....             LDR.N    R0,??DataTable2
+   \        0xC   0x6020             STR      R0,[R4, #+0]
+   \        0xE   0x2000             MOVS     R0,#+0
+   \       0x10   0x6060             STR      R0,[R4, #+4]
+      5          }
+   \       0x12   0x0020             MOVS     R0,R4
+   \       0x14   0xBD10             POP      {R4,PC}
+      6          
+
+   \                                 In section .text, align 2, keep-with-next
+      7          void AdcDmaDataProvider :: ConfigDma()
+      8          {
+   \                     _ZN18AdcDmaDataProvider9ConfigDmaEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+      9            DMA2::S0CR::EN::Value0::Set();             // disable
+   \        0x4   0x.... 0x....      BL       _ZN14FieldValueBaseI19DMA2_S0CR_EN_ValuesIN4DMA24S0CRELj0ELj1E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj0EE3SetIS3_vEEvv
+     10            DMA2::S0CR::CHSEL::Value0::Set();             // channel 0 (adc channel)
+   \        0x8   0x.... 0x....      BL       _ZN14FieldValueBaseI22DMA2_S0CR_CHSEL_ValuesIN4DMA24S0CRELj25ELj3E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj0EE3SetIS3_vEEvv
+     11            DMA2::S0CR::CT::Value0::Set();                // DMA_SxM0AR
+   \        0xC   0x.... 0x....      BL       _ZN14FieldValueBaseI19DMA2_S0CR_CT_ValuesIN4DMA24S0CRELj19ELj1E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj0EE3SetIS3_vEEvv
+     12            DMA2::S0CR::DBM::Value0::Set();               // off buffer switching
+   \       0x10   0x.... 0x....      BL       _ZN14FieldValueBaseI20DMA2_S0CR_DBM_ValuesIN4DMA24S0CRELj18ELj1E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj0EE3SetIS3_vEEvv
+     13            DMA2::S0CR::MSIZE::Value2::Set();             // word (32-bit)
+   \       0x14   0x.... 0x....      BL       _ZN14FieldValueBaseI22DMA2_S0CR_MSIZE_ValuesIN4DMA24S0CRELj13ELj2E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj2EE3SetIS3_vEEvv
+     14            DMA2::S0CR::PSIZE::Value2::Set();             // word (32-bit)
+   \       0x18   0x.... 0x....      BL       _ZN14FieldValueBaseI22DMA2_S0CR_PSIZE_ValuesIN4DMA24S0CRELj11ELj2E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj2EE3SetIS3_vEEvv
+     15            DMA2::S0CR::CIRC::Value1::Set();             // circle DMA
+   \       0x1C   0x.... 0x....      BL       _ZN14FieldValueBaseI21DMA2_S0CR_CIRC_ValuesIN4DMA24S0CRELj8ELj1E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj1EE3SetIS3_vEEvv
+     16            DMA2::S0CR::DIR::Value0::Set();               // from peripheral to memory
+   \       0x20   0x.... 0x....      BL       _ZN14FieldValueBaseI20DMA2_S0CR_DIR_ValuesIN4DMA24S0CRELj6ELj2E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj0EE3SetIS3_vEEvv
+     17            DMA2::S0CR::PFCTRL::Value0::Set();            // DMA controller
+   \       0x24   0x.... 0x....      BL       _ZN14FieldValueBaseI23DMA2_S0CR_PFCTRL_ValuesIN4DMA24S0CRELj5ELj1E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj0EE3SetIS3_vEEvv
+     18            DMA2::S0PAR::Write(ADC1::DR::Address);       // get from peripheral
+   \       0x28   0x....             LDR.N    R0,??DataTable2_1
+   \       0x2A   0x.... 0x....      BL       _ZN12RegisterBaseILj1073898520ELj32E13ReadWriteModeE5WriteIS0_vEEvj
+     19            DMA2::S0M0AR::Write(reinterpret_cast<std::uint32_t>(&data));                // write data to address
+   \       0x2E   0x1D20             ADDS     R0,R4,#+4
+   \       0x30   0x.... 0x....      BL       _ZN12RegisterBaseILj1073898524ELj32E13ReadWriteModeE5WriteIS0_vEEvj
+     20            DMA2::S0NDTR::Write(1);                       // number of data items to transfer bit
+   \       0x34   0x2001             MOVS     R0,#+1
+   \       0x36   0x.... 0x....      BL       _ZN12RegisterBaseILj1073898516ELj32E13ReadWriteModeE5WriteIS0_vEEvj
+     21            DMA2::S0CR::EN::Value1::Set();              // enable
+   \       0x3A   0x.... 0x....      BL       _ZN14FieldValueBaseI19DMA2_S0CR_EN_ValuesIN4DMA24S0CRELj0ELj1E13ReadWriteModeNS1_12DMA2S0CRBaseEES4_Lj1EE3SetIS3_vEEvv
+     22          };
+   \       0x3E   0xBD10             POP      {R4,PC}
+     23          
+
+   \                                 In section .text, align 2, keep-with-next
+     24          void AdcDmaDataProvider :: ConfigAdc()
+     25          {
+   \                     _ZN18AdcDmaDataProvider9ConfigAdcEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+     26            ConfigDma();
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN18AdcDmaDataProvider9ConfigDmaEv
+     27            ADC1::CR1::RES::Bits12::Set();
+   \        0xA   0x.... 0x....      BL       _ZN14FieldValueBaseI19ADC1_CR1_RES_ValuesIN4ADC13CR1ELj24ELj2E13ReadWriteModeNS1_11ADC1CR1BaseEES4_Lj0EE3SetIS3_vEEvv
+     28            ADC1::CR1::SCAN::Enable::Set();
+   \        0xE   0x.... 0x....      BL       _ZN14FieldValueBaseI20ADC1_CR1_SCAN_ValuesIN4ADC13CR1ELj8ELj1E13ReadWriteModeNS1_11ADC1CR1BaseEES4_Lj1EE3SetIS3_vEEvv
+     29            ADC1::CR2::CONT::ContinuousConversion::Set();
+   \       0x12   0x.... 0x....      BL       _ZN14FieldValueBaseI20ADC1_CR2_CONT_ValuesIN4ADC13CR2ELj1ELj1E13ReadWriteModeNS1_11ADC1CR2BaseEES4_Lj1EE3SetIS3_vEEvv
+     30            ADC1::CR2::DMA::Enable::Set();                // Enable DMA
+   \       0x16   0x.... 0x....      BL       _ZN14FieldValueBaseI19ADC1_CR2_DMA_ValuesIN4ADC13CR2ELj8ELj1E13ReadWriteModeNS1_11ADC1CR2BaseEES4_Lj1EE3SetIS3_vEEvv
+     31            ADC1::CR2::DDS::DMARequest::Set();
+   \       0x1A   0x.... 0x....      BL       _ZN14FieldValueBaseI19ADC1_CR2_DDS_ValuesIN4ADC13CR2ELj9ELj1E13ReadWriteModeNS1_11ADC1CR2BaseEES4_Lj1EE3SetIS3_vEEvv
+     32            ADC1::CR2::ADON::Enable::Set();
+   \       0x1E   0x.... 0x....      BL       _ZN14FieldValueBaseI20ADC1_CR2_ADON_ValuesIN4ADC13CR2ELj0ELj1E13ReadWriteModeNS1_11ADC1CR2BaseEES4_Lj1EE3SetIS3_vEEvv
+     33            ADC1::CR2::SWSTART::On::Set();
+   \       0x22   0x.... 0x....      BL       _ZN14FieldValueBaseI23ADC1_CR2_SWSTART_ValuesIN4ADC13CR2ELj30ELj1E13ReadWriteModeNS1_11ADC1CR2BaseEES4_Lj1EE3SetIS3_vEEvv
+     34          };
+   \       0x26   0xBD10             POP      {R4,PC}
+     35          
+
+   \                                 In section .text, align 2, keep-with-next
+     36          std::uint32_t AdcDmaDataProvider :: GetRawData()
+     37          {
+     38            return static_cast<std::uint32_t>(data);
+   \                     _ZN18AdcDmaDataProvider10GetRawDataEv: (+1)
+   \        0x0   0x6840             LDR      R0,[R0, #+4]
+   \        0x2   0x4770             BX       LR
+     39          };
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \        0x0   0x....'....        DC32     _ZTV18AdcDmaDataProvider+0x8
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \        0x0   0x4001'204C        DC32     0x4001204c
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   AdcDmaDataProvider::AdcDmaDataProvider()
+         8   -> IRawDataProvider::subobject IRawDataProvider() noexcept
+       8   AdcDmaDataProvider::ConfigAdc()
+         8   -> AdcDmaDataProvider::ConfigDma()
+         8   -> FieldValueBase<ADC1_CR1_RES_Values<ADC1::CR1, 24U, 2U, ReadWriteMode, ADC1::ADC1CR1Base>, ADC1::ADC1CR1Base, 0U>::Set<ReadWriteMode, void>()
+         8   -> FieldValueBase<ADC1_CR1_SCAN_Values<ADC1::CR1, 8U, 1U, ReadWriteMode, ADC1::ADC1CR1Base>, ADC1::ADC1CR1Base, 1U>::Set<ReadWriteMode, void>()
+         8   -> FieldValueBase<ADC1_CR2_ADON_Values<ADC1::CR2, 0U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+         8   -> FieldValueBase<ADC1_CR2_CONT_Values<ADC1::CR2, 1U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+         8   -> FieldValueBase<ADC1_CR2_DDS_Values<ADC1::CR2, 9U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+         8   -> FieldValueBase<ADC1_CR2_DMA_Values<ADC1::CR2, 8U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+         8   -> FieldValueBase<ADC1_CR2_SWSTART_Values<ADC1::CR2, 30U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+       8   AdcDmaDataProvider::ConfigDma()
+         8   -> FieldValueBase<DMA2_S0CR_CHSEL_Values<DMA2::S0CR, 25U, 3U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+         8   -> FieldValueBase<DMA2_S0CR_CIRC_Values<DMA2::S0CR, 8U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 1U>::Set<ReadWriteMode, void>()
+         8   -> FieldValueBase<DMA2_S0CR_CT_Values<DMA2::S0CR, 19U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+         8   -> FieldValueBase<DMA2_S0CR_DBM_Values<DMA2::S0CR, 18U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+         8   -> FieldValueBase<DMA2_S0CR_DIR_Values<DMA2::S0CR, 6U, 2U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+         8   -> FieldValueBase<DMA2_S0CR_EN_Values<DMA2::S0CR, 0U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+         8   -> FieldValueBase<DMA2_S0CR_EN_Values<DMA2::S0CR, 0U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 1U>::Set<ReadWriteMode, void>()
+         8   -> FieldValueBase<DMA2_S0CR_MSIZE_Values<DMA2::S0CR, 13U, 2U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 2U>::Set<ReadWriteMode, void>()
+         8   -> FieldValueBase<DMA2_S0CR_PFCTRL_Values<DMA2::S0CR, 5U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+         8   -> FieldValueBase<DMA2_S0CR_PSIZE_Values<DMA2::S0CR, 11U, 2U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 2U>::Set<ReadWriteMode, void>()
+         8   -> RegisterBase<1'073'898'516U, 32U, ReadWriteMode>::Write<ReadWriteMode, void>(uint32_t)
+         8   -> RegisterBase<1'073'898'520U, 32U, ReadWriteMode>::Write<ReadWriteMode, void>(uint32_t)
+         8   -> RegisterBase<1'073'898'524U, 32U, ReadWriteMode>::Write<ReadWriteMode, void>(uint32_t)
+       0   AdcDmaDataProvider::GetRawData()
+       8   AdcDmaDataProvider::subobject AdcDmaDataProvider()
+         8   -> AdcDmaDataProvider::AdcDmaDataProvider()
+       0   FieldValueBase<ADC1_CR1_RES_Values<ADC1::CR1, 24U, 2U, ReadWriteMode, ADC1::ADC1CR1Base>, ADC1::ADC1CR1Base, 0U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<ADC1_CR1_SCAN_Values<ADC1::CR1, 8U, 1U, ReadWriteMode, ADC1::ADC1CR1Base>, ADC1::ADC1CR1Base, 1U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<ADC1_CR2_ADON_Values<ADC1::CR2, 0U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<ADC1_CR2_CONT_Values<ADC1::CR2, 1U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<ADC1_CR2_DDS_Values<ADC1::CR2, 9U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<ADC1_CR2_DMA_Values<ADC1::CR2, 8U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<ADC1_CR2_SWSTART_Values<ADC1::CR2, 30U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<DMA2_S0CR_CHSEL_Values<DMA2::S0CR, 25U, 3U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<DMA2_S0CR_CIRC_Values<DMA2::S0CR, 8U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 1U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<DMA2_S0CR_CT_Values<DMA2::S0CR, 19U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<DMA2_S0CR_DBM_Values<DMA2::S0CR, 18U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<DMA2_S0CR_DIR_Values<DMA2::S0CR, 6U, 2U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<DMA2_S0CR_EN_Values<DMA2::S0CR, 0U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<DMA2_S0CR_EN_Values<DMA2::S0CR, 0U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 1U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<DMA2_S0CR_MSIZE_Values<DMA2::S0CR, 13U, 2U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 2U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<DMA2_S0CR_PFCTRL_Values<DMA2::S0CR, 5U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+       0   FieldValueBase<DMA2_S0CR_PSIZE_Values<DMA2::S0CR, 11U, 2U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 2U>::Set<ReadWriteMode, void>()
+       0   IRawDataProvider::IRawDataProvider() noexcept
+       8   IRawDataProvider::subobject IRawDataProvider() noexcept
+         8   -> IRawDataProvider::IRawDataProvider() noexcept
+       0   RegisterBase<1'073'898'516U, 32U, ReadWriteMode>::Write<ReadWriteMode, void>(uint32_t)
+       0   RegisterBase<1'073'898'520U, 32U, ReadWriteMode>::Write<ReadWriteMode, void>(uint32_t)
+       0   RegisterBase<1'073'898'524U, 32U, ReadWriteMode>::Write<ReadWriteMode, void>(uint32_t)
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+       4  ??DataTable2_1
+      22  AdcDmaDataProvider::AdcDmaDataProvider()
+      40  AdcDmaDataProvider::ConfigAdc()
+      64  AdcDmaDataProvider::ConfigDma()
+       4  AdcDmaDataProvider::GetRawData()
+      12  AdcDmaDataProvider::subobject AdcDmaDataProvider()
+      16  FieldValueBase<ADC1_CR1_RES_Values<ADC1::CR1, 24U, 2U, ReadWriteMode, ADC1::ADC1CR1Base>, ADC1::ADC1CR1Base, 0U>::Set<ReadWriteMode, void>()
+      20  FieldValueBase<ADC1_CR1_SCAN_Values<ADC1::CR1, 8U, 1U, ReadWriteMode, ADC1::ADC1CR1Base>, ADC1::ADC1CR1Base, 1U>::Set<ReadWriteMode, void>()
+      20  FieldValueBase<ADC1_CR2_ADON_Values<ADC1::CR2, 0U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+      20  FieldValueBase<ADC1_CR2_CONT_Values<ADC1::CR2, 1U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+      20  FieldValueBase<ADC1_CR2_DDS_Values<ADC1::CR2, 9U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+      20  FieldValueBase<ADC1_CR2_DMA_Values<ADC1::CR2, 8U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+      20  FieldValueBase<ADC1_CR2_SWSTART_Values<ADC1::CR2, 30U, 1U, ReadWriteMode, ADC1::ADC1CR2Base>, ADC1::ADC1CR2Base, 1U>::Set<ReadWriteMode, void>()
+      16  FieldValueBase<DMA2_S0CR_CHSEL_Values<DMA2::S0CR, 25U, 3U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+      20  FieldValueBase<DMA2_S0CR_CIRC_Values<DMA2::S0CR, 8U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 1U>::Set<ReadWriteMode, void>()
+      16  FieldValueBase<DMA2_S0CR_CT_Values<DMA2::S0CR, 19U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+      16  FieldValueBase<DMA2_S0CR_DBM_Values<DMA2::S0CR, 18U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+      16  FieldValueBase<DMA2_S0CR_DIR_Values<DMA2::S0CR, 6U, 2U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+      16  FieldValueBase<DMA2_S0CR_EN_Values<DMA2::S0CR, 0U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+      20  FieldValueBase<DMA2_S0CR_EN_Values<DMA2::S0CR, 0U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 1U>::Set<ReadWriteMode, void>()
+      20  FieldValueBase<DMA2_S0CR_MSIZE_Values<DMA2::S0CR, 13U, 2U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 2U>::Set<ReadWriteMode, void>()
+      16  FieldValueBase<DMA2_S0CR_PFCTRL_Values<DMA2::S0CR, 5U, 1U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 0U>::Set<ReadWriteMode, void>()
+      20  FieldValueBase<DMA2_S0CR_PSIZE_Values<DMA2::S0CR, 11U, 2U, ReadWriteMode, DMA2::DMA2S0CRBase>, DMA2::DMA2S0CRBase, 2U>::Set<ReadWriteMode, void>()
+       2  IRawDataProvider::IRawDataProvider() noexcept
+      12  IRawDataProvider::subobject IRawDataProvider() noexcept
+      12  RegisterBase<1'073'898'516U, 32U, ReadWriteMode>::Write<ReadWriteMode, void>(uint32_t)
+      12  RegisterBase<1'073'898'520U, 32U, ReadWriteMode>::Write<ReadWriteMode, void>(uint32_t)
+      12  RegisterBase<1'073'898'524U, 32U, ReadWriteMode>::Write<ReadWriteMode, void>(uint32_t)
+      76  -- Other
+
+ 
+  76 bytes in section .rodata
+ 512 bytes in section .text
+ 
+ 150 bytes of CODE  memory (+ 362 bytes shared)
+   0 bytes of CONST memory (+  76 bytes shared)
+
+Errors: none
+Warnings: none

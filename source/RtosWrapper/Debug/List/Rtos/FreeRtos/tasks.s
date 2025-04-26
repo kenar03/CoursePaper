@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        26/Apr/2025  19:24:51
+// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        27/Apr/2025  00:21:28
 // Copyright 1999-2022 IAR Systems AB.
 //
 //    Cpu mode     =  thumb
@@ -102,7 +102,11 @@
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
 //        -I
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
-//        -Ol) --dependencies=n
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+//        -On) --dependencies=n
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Rtos\FreeRtos\tasks.o.d
 //    Locale       =  C
 //    List file    =
@@ -914,14 +918,24 @@ uxSchedulerSuspended:
 //  592 									StaticTask_t * const pxTaskBuffer ) /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
 //  593 	{
 xTaskCreateStatic:
-        PUSH     {R4,R5,LR}     
+        PUSH     {R3-R10,LR}    
           CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
-          CFI CFA R13+12
+          CFI R10 Frame(CFA, -8)
+          CFI R9 Frame(CFA, -12)
+          CFI R8 Frame(CFA, -16)
+          CFI R7 Frame(CFA, -20)
+          CFI R6 Frame(CFA, -24)
+          CFI R5 Frame(CFA, -28)
+          CFI R4 Frame(CFA, -32)
+          CFI CFA R13+36
         SUB      SP,SP,#+20     
-          CFI CFA R13+32
-        LDR      R4,[SP, #+40]  
+          CFI CFA R13+56
+        MOVS     R6,R0          
+        MOVS     R7,R1          
+        MOV      R8,R2          
+        MOV      R9,R3          
+        LDR      R4,[SP, #+60]  
+        LDR      R5,[SP, #+64]  
 //  594 	TCB_t *pxNewTCB;
 //  595 	TaskHandle_t xReturn;
 //  596 
@@ -929,17 +943,17 @@ xTaskCreateStatic:
 //  598 		configASSERT( pxTaskBuffer != NULL );
 //  599 
 //  600 		if( ( pxTaskBuffer != NULL ) && ( puxStackBuffer != NULL ) )
-        CMP      R4,#+0         
-        BEQ.N    ??xTaskCreateStatic_0
-        LDR      R5,[SP, #+36]  
         CMP      R5,#+0         
+        BEQ.N    ??xTaskCreateStatic_0
+        CMP      R4,#+0         
         BEQ.N    ??xTaskCreateStatic_0
 //  601 		{
 //  602 			/* The memory used for the task's TCB and stack are passed into this
 //  603 			function - use them. */
 //  604 			pxNewTCB = ( TCB_t * ) pxTaskBuffer; /*lint !e740 Unusual cast is ok as the structures are designed to have the same alignment, and the size is checked by an assert. */
+        MOV      R10,R5         
 //  605 			pxNewTCB->pxStack = ( StackType_t * ) puxStackBuffer;
-        STR      R5,[R4, #+48]  
+        STR      R4,[R10, #+48] 
 //  606 
 //  607 			#if( tskSTATIC_AND_DYNAMIC_ALLOCATION_POSSIBLE != 0 )
 //  608 			{
@@ -950,17 +964,21 @@ xTaskCreateStatic:
 //  613 			#endif /* configSUPPORT_DYNAMIC_ALLOCATION */
 //  614 
 //  615 			prvInitialiseNewTask( pxTaskCode, pcName, ulStackDepth, pvParameters, uxPriority, &xReturn, pxNewTCB, NULL );
-        MOVS     R5,#+0         
-        STR      R5,[SP, #+12]  
-        STR      R4,[SP, #+8]   
-        ADD      R5,SP,#+16     
-        STR      R5,[SP, #+4]   
-        LDR      R5,[SP, #+32]  
-        STR      R5,[SP, #+0]   
+        MOVS     R0,#+0         
+        STR      R0,[SP, #+12]  
+        STR      R10,[SP, #+8]  
+        ADD      R0,SP,#+16     
+        STR      R0,[SP, #+4]   
+        LDR      R0,[SP, #+56]  
+        STR      R0,[SP, #+0]   
+        MOV      R3,R9          
+        MOV      R2,R8          
+        MOVS     R1,R7          
+        MOVS     R0,R6          
           CFI FunCall prvInitialiseNewTask
         BL       prvInitialiseNewTask
 //  616 			prvAddNewTaskToReadyList( pxNewTCB );
-        MOVS     R0,R4          
+        MOV      R0,R10         
           CFI FunCall prvAddNewTaskToReadyList
         BL       prvAddNewTaskToReadyList
         B.N      ??xTaskCreateStatic_1
@@ -976,9 +994,9 @@ xTaskCreateStatic:
 //  623 		return xReturn;
 ??xTaskCreateStatic_1:
         LDR      R0,[SP, #+16]  
-        ADD      SP,SP,#+20     
-          CFI CFA R13+12
-        POP      {R4,R5,PC}     
+        ADD      SP,SP,#+24     
+          CFI CFA R13+32
+        POP      {R4-R10,PC}    
 //  624 	}
           CFI EndBlock cfiBlock0
 //  625 
@@ -1138,18 +1156,24 @@ xTaskCreateStatic:
 //  774 									const MemoryRegion_t * const xRegions ) /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
 //  775 {
 prvInitialiseNewTask:
-        PUSH     {R3-R9,LR}     
+        PUSH     {R3-R11,LR}    
           CFI R14 Frame(CFA, -4)
-          CFI R9 Frame(CFA, -8)
-          CFI R8 Frame(CFA, -12)
-          CFI R7 Frame(CFA, -16)
-          CFI R6 Frame(CFA, -20)
-          CFI R5 Frame(CFA, -24)
-          CFI R4 Frame(CFA, -28)
-          CFI CFA R13+32
+          CFI R11 Frame(CFA, -8)
+          CFI R10 Frame(CFA, -12)
+          CFI R9 Frame(CFA, -16)
+          CFI R8 Frame(CFA, -20)
+          CFI R7 Frame(CFA, -24)
+          CFI R6 Frame(CFA, -28)
+          CFI R5 Frame(CFA, -32)
+          CFI R4 Frame(CFA, -36)
+          CFI CFA R13+40
         MOVS     R5,R0          
-        MOVS     R6,R3          
-        LDR      R7,[SP, #+40]  
+        MOVS     R6,R1          
+        MOVS     R7,R2          
+        MOV      R8,R3          
+        LDR      R9,[SP, #+40]  
+        LDR      R4,[SP, #+44]  
+        LDR      R10,[SP, #+48] 
 //  776 StackType_t *pxTopOfStack;
 //  777 UBaseType_t x;
 //  778 
@@ -1182,12 +1206,13 @@ prvInitialiseNewTask:
 //  805 	#if( portSTACK_GROWTH < 0 )
 //  806 	{
 //  807 		pxTopOfStack = pxNewTCB->pxStack + ( ulStackDepth - ( uint32_t ) 1 );
-        LDR      R0,[R7, #+48]  
-        ADD      R0,R0,R2, LSL #+2
-        SUBS     R8,R0,#+4      
+        LDR      R0,[R10, #+48] 
+        ADD      R0,R0,R7, LSL #+2
+        SUBS     R0,R0,#+4      
 //  808 		pxTopOfStack = ( StackType_t * ) ( ( ( portPOINTER_SIZE_TYPE ) pxTopOfStack ) & ( ~( ( portPOINTER_SIZE_TYPE ) portBYTE_ALIGNMENT_MASK ) ) ); /*lint !e923 MISRA exception.  Avoiding casts between pointers and integers is not practical.  Size differences accounted for using portPOINTER_SIZE_TYPE type. */
-        LSRS     R8,R8,#+3      
-        LSLS     R8,R8,#+3      
+        LSRS     R0,R0,#+3      
+        LSLS     R0,R0,#+3      
+        STR      R0,[SP, #+0]   
 //  809 
 //  810 		/* Check the alignment of the calculated top of stack is correct. */
 //  811 		configASSERT( ( ( ( portPOINTER_SIZE_TYPE ) pxTopOfStack & ( portPOINTER_SIZE_TYPE ) portBYTE_ALIGNMENT_MASK ) == 0UL ) );
@@ -1207,42 +1232,41 @@ prvInitialiseNewTask:
 //  825 
 //  826 	/* Store the task name in the TCB. */
 //  827 	for( x = ( UBaseType_t ) 0; x < ( UBaseType_t ) configMAX_TASK_NAME_LEN; x++ )
-        MOVS     R2,#+0         
-        B.N      ??prvInitialiseNewTask_0
-??prvInitialiseNewTask_1:
-        ADDS     R2,R2,#+1      
+        MOVS     R11,#+0        
 ??prvInitialiseNewTask_0:
-        CMP      R2,#+10        
-        BCS.N    ??prvInitialiseNewTask_2
+        CMP      R11,#+10       
+        BCS.N    ??prvInitialiseNewTask_1
 //  828 	{
 //  829 		pxNewTCB->pcTaskName[ x ] = pcName[ x ];
-        LDRB     R0,[R1, R2]    
-        ADD      R3,R7,R2       
-        STRB     R0,[R3, #+52]  
+        LDRB     R0,[R6, R11]   
+        ADD      R1,R10,R11     
+        STRB     R0,[R1, #+52]  
 //  830 
 //  831 		/* Don't copy all configMAX_TASK_NAME_LEN if the string is shorter than
 //  832 		configMAX_TASK_NAME_LEN characters just in case the memory after the
 //  833 		string is not accessible (extremely unlikely). */
 //  834 		if( pcName[ x ] == 0x00 )
-        LDRB     R0,[R1, R2]    
+        LDRB     R0,[R6, R11]   
         CMP      R0,#+0         
-        BNE.N    ??prvInitialiseNewTask_1
+        BEQ.N    ??prvInitialiseNewTask_1
 //  835 		{
 //  836 			break;
-??prvInitialiseNewTask_2:
-        LDR      R9,[SP, #+32]  
 //  837 		}
 //  838 		else
 //  839 		{
 //  840 			mtCOVERAGE_TEST_MARKER();
 //  841 		}
 //  842 	}
+??prvInitialiseNewTask_2:
+        ADDS     R11,R11,#+1    
+        B.N      ??prvInitialiseNewTask_0
 //  843 
 //  844 	/* Ensure the name string is terminated in the case that the string length
 //  845 	was greater or equal to configMAX_TASK_NAME_LEN. */
 //  846 	pxNewTCB->pcTaskName[ configMAX_TASK_NAME_LEN - 1 ] = '\0';
+??prvInitialiseNewTask_1:
         MOVS     R0,#+0         
-        STRB     R0,[R7, #+61]  
+        STRB     R0,[R10, #+61] 
 //  847 
 //  848 	/* This is used as an array index so must ensure it's not too large.  First
 //  849 	remove the privilege bit if one is present. */
@@ -1251,9 +1275,8 @@ prvInitialiseNewTask:
         BCC.N    ??prvInitialiseNewTask_3
 //  851 	{
 //  852 		uxPriority = ( UBaseType_t ) configMAX_PRIORITIES - ( UBaseType_t ) 1U;
-        MOVS     R9,#+4         
-??prvInitialiseNewTask_3:
-        LDR      R4,[SP, #+36]  
+        MOVS     R0,#+4         
+        MOV      R9,R0          
 //  853 	}
 //  854 	else
 //  855 	{
@@ -1261,37 +1284,38 @@ prvInitialiseNewTask:
 //  857 	}
 //  858 
 //  859 	pxNewTCB->uxPriority = uxPriority;
-        STR      R9,[R7, #+44]  
+??prvInitialiseNewTask_3:
+        STR      R9,[R10, #+44] 
 //  860 	#if ( configUSE_MUTEXES == 1 )
 //  861 	{
 //  862 		pxNewTCB->uxBasePriority = uxPriority;
-        STR      R9,[R7, #+64]  
+        STR      R9,[R10, #+64] 
 //  863 		pxNewTCB->uxMutexesHeld = 0;
         MOVS     R0,#+0         
-        STR      R0,[R7, #+68]  
+        STR      R0,[R10, #+68] 
 //  864 	}
 //  865 	#endif /* configUSE_MUTEXES */
 //  866 
 //  867 	vListInitialiseItem( &( pxNewTCB->xStateListItem ) );
-        ADDS     R0,R7,#+4      
+        ADDS     R0,R10,#+4     
           CFI FunCall vListInitialiseItem
         BL       vListInitialiseItem
 //  868 	vListInitialiseItem( &( pxNewTCB->xEventListItem ) );
-        ADDS     R0,R7,#+24     
+        ADDS     R0,R10,#+24    
           CFI FunCall vListInitialiseItem
         BL       vListInitialiseItem
 //  869 
 //  870 	/* Set the pxNewTCB as a link back from the ListItem_t.  This is so we can get
 //  871 	back to	the containing TCB from a generic item in a list. */
 //  872 	listSET_LIST_ITEM_OWNER( &( pxNewTCB->xStateListItem ), pxNewTCB );
-        STR      R7,[R7, #+16]  
+        STR      R10,[R10, #+16]
 //  873 
 //  874 	/* Event lists are always in priority order. */
 //  875 	listSET_LIST_ITEM_VALUE( &( pxNewTCB->xEventListItem ), ( TickType_t ) configMAX_PRIORITIES - ( TickType_t ) uxPriority ); /*lint !e961 MISRA exception as the casts are only redundant for some ports. */
-        RSBS     R9,R9,#+5      
-        STR      R9,[R7, #+24]  
+        RSBS     R0,R9,#+5      
+        STR      R0,[R10, #+24] 
 //  876 	listSET_LIST_ITEM_OWNER( &( pxNewTCB->xEventListItem ), pxNewTCB );
-        STR      R7,[R7, #+36]  
+        STR      R10,[R10, #+36]
 //  877 
 //  878 	#if ( portCRITICAL_NESTING_IN_TCB == 1 )
 //  879 	{
@@ -1335,10 +1359,10 @@ prvInitialiseNewTask:
 //  917 	{
 //  918 		pxNewTCB->ulNotifiedValue = 0;
         MOVS     R0,#+0         
-        STR      R0,[R7, #+72]  
+        STR      R0,[R10, #+72] 
 //  919 		pxNewTCB->ucNotifyState = taskNOT_WAITING_NOTIFICATION;
         MOVS     R0,#+0         
-        STRB     R0,[R7, #+76]  
+        STRB     R0,[R10, #+76] 
 //  920 	}
 //  921 	#endif
 //  922 
@@ -1366,12 +1390,12 @@ prvInitialiseNewTask:
 //  944 	#else /* portUSING_MPU_WRAPPERS */
 //  945 	{
 //  946 		pxNewTCB->pxTopOfStack = pxPortInitialiseStack( pxTopOfStack, pxTaskCode, pvParameters );
-        MOVS     R2,R6          
+        MOV      R2,R8          
         MOVS     R1,R5          
-        MOV      R0,R8          
+        LDR      R0,[SP, #+0]   
           CFI FunCall pxPortInitialiseStack
         BL       pxPortInitialiseStack
-        STR      R0,[R7, #+0]   
+        STR      R0,[R10, #+0]  
 //  947 	}
 //  948 	#endif /* portUSING_MPU_WRAPPERS */
 //  949 
@@ -1382,7 +1406,7 @@ prvInitialiseNewTask:
 //  952 		/* Pass the handle out in an anonymous way.  The handle can be used to
 //  953 		change the created task's priority, delete the created task, etc.*/
 //  954 		*pxCreatedTask = ( TaskHandle_t ) pxNewTCB;
-        STR      R7,[R4, #+0]   
+        STR      R10,[R4, #+0]  
 //  955 	}
 //  956 	else
 //  957 	{
@@ -1390,7 +1414,7 @@ prvInitialiseNewTask:
 //  959 	}
 //  960 }
 ??prvInitialiseNewTask_4:
-        POP      {R0,R4-R9,PC}  
+        POP      {R0,R4-R11,PC} 
           CFI EndBlock cfiBlock1
 //  961 /*-----------------------------------------------------------*/
 //  962 
@@ -1415,12 +1439,12 @@ prvAddNewTaskToReadyList:
         BL       vPortEnterCritical
 //  968 	{
 //  969 		uxCurrentNumberOfTasks++;
-        LDR.W    R1,??DataTable35
+        LDR.W    R1,??DataTable34
         LDR      R0,[R1, #+0]   
         ADDS     R0,R0,#+1      
         STR      R0,[R1, #+0]   
 //  970 		if( pxCurrentTCB == NULL )
-        LDR.W    R5,??DataTable35_1
+        LDR.W    R5,??DataTable35
         LDR      R0,[R5, #+0]   
         CMP      R0,#+0         
         BNE.N    ??prvAddNewTaskToReadyList_0
@@ -1455,7 +1479,7 @@ prvAddNewTaskToReadyList:
 //  992 			so far. */
 //  993 			if( xSchedulerRunning == pdFALSE )
 ??prvAddNewTaskToReadyList_0:
-        LDR.W    R0,??DataTable35_2
+        LDR.W    R0,??DataTable35_1
         LDR      R0,[R0, #+0]   
         CMP      R0,#+0         
         BNE.N    ??prvAddNewTaskToReadyList_1
@@ -1483,7 +1507,7 @@ prvAddNewTaskToReadyList:
 // 1009 
 // 1010 		uxTaskNumber++;
 ??prvAddNewTaskToReadyList_1:
-        LDR.W    R0,??DataTable35_3
+        LDR.W    R0,??DataTable35_2
         LDR      R1,[R0, #+0]   
         ADDS     R1,R1,#+1      
         STR      R1,[R0, #+0]   
@@ -1497,7 +1521,7 @@ prvAddNewTaskToReadyList:
 // 1018 		traceTASK_CREATE( pxNewTCB );
 // 1019 
 // 1020 		prvAddTaskToReadyList( pxNewTCB );
-        LDR.W    R1,??DataTable35_4
+        LDR.W    R1,??DataTable35_3
         LDR      R2,[R1, #+0]   
         MOVS     R3,#+1         
         LDR      R0,[R4, #+44]  
@@ -1520,7 +1544,7 @@ prvAddNewTaskToReadyList:
         BL       vPortExitCritical
 // 1025 
 // 1026 	if( xSchedulerRunning != pdFALSE )
-        LDR.W    R0,??DataTable35_2
+        LDR.W    R0,??DataTable35_1
         LDR      R0,[R0, #+0]   
         CMP      R0,#+0         
         BEQ.N    ??prvAddNewTaskToReadyList_2
@@ -1536,7 +1560,7 @@ prvAddNewTaskToReadyList:
 // 1031 		{
 // 1032 			taskYIELD_IF_USING_PREEMPTION();
         MOVS     R0,#+268435456 
-        LDR.W    R1,??DataTable37
+        LDR.W    R1,??DataTable36_1
         STR      R0,[R1, #+0]   
         DSB      SY             
         ISB      SY             
@@ -1658,12 +1682,14 @@ prvAddNewTaskToReadyList:
 // 1140 	void vTaskDelayUntil( TickType_t * const pxPreviousWakeTime, const TickType_t xTimeIncrement )
 // 1141 	{
 vTaskDelayUntil:
-        PUSH     {R4-R6,LR}     
+        PUSH     {R4-R8,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R6 Frame(CFA, -8)
-          CFI R5 Frame(CFA, -12)
-          CFI R4 Frame(CFA, -16)
-          CFI CFA R13+16
+          CFI R8 Frame(CFA, -8)
+          CFI R7 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -16)
+          CFI R5 Frame(CFA, -20)
+          CFI R4 Frame(CFA, -24)
+          CFI CFA R13+24
         MOVS     R5,R0          
         MOVS     R6,R1          
 // 1142 	TickType_t xTimeToWake;
@@ -1673,7 +1699,7 @@ vTaskDelayUntil:
 // 1145 		configASSERT( pxPreviousWakeTime );
 // 1146 		configASSERT( ( xTimeIncrement > 0U ) );
 // 1147 		configASSERT( uxSchedulerSuspended == 0 );
-        LDR.W    R0,??DataTable39
+        LDR.W    R0,??DataTable37
         LDR      R0,[R0, #+0]   
 // 1148 
 // 1149 		vTaskSuspendAll();
@@ -1683,17 +1709,17 @@ vTaskDelayUntil:
 // 1151 			/* Minor optimisation.  The tick count cannot change in this
 // 1152 			block. */
 // 1153 			const TickType_t xConstTickCount = xTickCount;
-        LDR.W    R0,??DataTable36_1
-        LDR      R0,[R0, #+0]   
+        LDR.W    R0,??DataTable35_4
+        LDR      R8,[R0, #+0]   
 // 1154 
 // 1155 			/* Generate the tick time at which the task wants to wake. */
 // 1156 			xTimeToWake = *pxPreviousWakeTime + xTimeIncrement;
-        LDR      R1,[R5, #+0]   
-        ADDS     R6,R6,R1       
+        LDR      R7,[R5, #+0]   
+        ADDS     R7,R6,R7       
 // 1157 
 // 1158 			if( xConstTickCount < *pxPreviousWakeTime )
-        LDR      R1,[R5, #+0]   
-        CMP      R0,R1          
+        LDR      R0,[R5, #+0]   
+        CMP      R8,R0          
         BCS.N    ??vTaskDelayUntil_0
 // 1159 			{
 // 1160 				/* The tick count has overflowed since this function was
@@ -1702,14 +1728,15 @@ vTaskDelayUntil:
 // 1163 				and the wake time is greater than the tick time.  When this
 // 1164 				is the case it is as if neither time had overflowed. */
 // 1165 				if( ( xTimeToWake < *pxPreviousWakeTime ) && ( xTimeToWake > xConstTickCount ) )
-        LDR      R1,[R5, #+0]   
-        CMP      R6,R1          
+        LDR      R0,[R5, #+0]   
+        CMP      R7,R0          
         BCS.N    ??vTaskDelayUntil_1
-        CMP      R0,R6          
+        CMP      R8,R7          
         BCS.N    ??vTaskDelayUntil_1
 // 1166 				{
 // 1167 					xShouldDelay = pdTRUE;
-        MOVS     R4,#+1         
+        MOVS     R0,#+1         
+        MOVS     R4,R0          
         B.N      ??vTaskDelayUntil_1
 // 1168 				}
 // 1169 				else
@@ -1724,15 +1751,16 @@ vTaskDelayUntil:
 // 1178 				tick time is less than the wake time. */
 // 1179 				if( ( xTimeToWake < *pxPreviousWakeTime ) || ( xTimeToWake > xConstTickCount ) )
 ??vTaskDelayUntil_0:
-        LDR      R1,[R5, #+0]   
-        CMP      R6,R1          
+        LDR      R0,[R5, #+0]   
+        CMP      R7,R0          
         BCC.N    ??vTaskDelayUntil_2
-        CMP      R0,R6          
+        CMP      R8,R7          
         BCS.N    ??vTaskDelayUntil_1
 // 1180 				{
 // 1181 					xShouldDelay = pdTRUE;
 ??vTaskDelayUntil_2:
-        MOVS     R4,#+1         
+        MOVS     R0,#+1         
+        MOVS     R4,R0          
 // 1182 				}
 // 1183 				else
 // 1184 				{
@@ -1743,7 +1771,7 @@ vTaskDelayUntil:
 // 1189 			/* Update the wake time ready for the next call. */
 // 1190 			*pxPreviousWakeTime = xTimeToWake;
 ??vTaskDelayUntil_1:
-        STR      R6,[R5, #+0]   
+        STR      R7,[R5, #+0]   
 // 1191 
 // 1192 			if( xShouldDelay != pdFALSE )
         CMP      R4,#+0         
@@ -1755,8 +1783,7 @@ vTaskDelayUntil:
 // 1197 				the time to wake, so subtract the current tick count. */
 // 1198 				prvAddCurrentTaskToDelayedList( xTimeToWake - xConstTickCount, pdFALSE );
         MOVS     R1,#+0         
-        SUBS     R6,R6,R0       
-        MOVS     R0,R6          
+        SUBS     R0,R7,R8       
           CFI FunCall prvAddCurrentTaskToDelayedList
         BL       prvAddCurrentTaskToDelayedList
 // 1199 			}
@@ -1777,9 +1804,9 @@ vTaskDelayUntil:
         BNE.N    ??vTaskDelayUntil_4
 // 1210 		{
 // 1211 			portYIELD_WITHIN_API();
-        MOVS     R0,#+268435456 
-        LDR.W    R1,??DataTable37
-        STR      R0,[R1, #+0]   
+        MOVS     R1,#+268435456 
+        LDR.W    R2,??DataTable36_1
+        STR      R1,[R2, #+0]   
         DSB      SY             
         ISB      SY             
 // 1212 		}
@@ -1789,7 +1816,7 @@ vTaskDelayUntil:
 // 1216 		}
 // 1217 	}
 ??vTaskDelayUntil_4:
-        POP      {R4-R6,PC}     
+        POP      {R4-R8,PC}     
           CFI EndBlock cfiBlock3
 // 1218 
 // 1219 #endif /* INCLUDE_vTaskDelayUntil */
@@ -1805,21 +1832,22 @@ vTaskDelayUntil:
 // 1224 	void vTaskDelay( const TickType_t xTicksToDelay )
 // 1225 	{
 vTaskDelay:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
-        MOVS     R4,R0          
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R5,R0          
 // 1226 	BaseType_t xAlreadyYielded = pdFALSE;
-        MOVS     R0,#+0         
+        MOVS     R4,#+0         
 // 1227 
 // 1228 		/* A delay time of zero just forces a reschedule. */
 // 1229 		if( xTicksToDelay > ( TickType_t ) 0U )
-        CMP      R4,#+0         
+        CMP      R5,#+0         
         BEQ.N    ??vTaskDelay_0 
 // 1230 		{
 // 1231 			configASSERT( uxSchedulerSuspended == 0 );
-        LDR.W    R0,??DataTable39
+        LDR.W    R0,??DataTable37
         LDR      R0,[R0, #+0]   
 // 1232 			vTaskSuspendAll();
           CFI FunCall vTaskSuspendAll
@@ -1836,13 +1864,14 @@ vTaskDelay:
 // 1242 				executing task. */
 // 1243 				prvAddCurrentTaskToDelayedList( xTicksToDelay, pdFALSE );
         MOVS     R1,#+0         
-        MOVS     R0,R4          
+        MOVS     R0,R5          
           CFI FunCall prvAddCurrentTaskToDelayedList
         BL       prvAddCurrentTaskToDelayedList
 // 1244 			}
 // 1245 			xAlreadyYielded = xTaskResumeAll();
           CFI FunCall xTaskResumeAll
         BL       xTaskResumeAll 
+        MOVS     R4,R0          
 // 1246 		}
 // 1247 		else
 // 1248 		{
@@ -1853,12 +1882,12 @@ vTaskDelay:
 // 1253 		have put ourselves to sleep. */
 // 1254 		if( xAlreadyYielded == pdFALSE )
 ??vTaskDelay_0:
-        CMP      R0,#+0         
+        CMP      R4,#+0         
         BNE.N    ??vTaskDelay_1 
 // 1255 		{
 // 1256 			portYIELD_WITHIN_API();
         MOVS     R0,#+268435456 
-        LDR.W    R1,??DataTable37
+        LDR.W    R1,??DataTable36_1
         STR      R0,[R1, #+0]   
         DSB      SY             
         ISB      SY             
@@ -1869,7 +1898,7 @@ vTaskDelay:
 // 1261 		}
 // 1262 	}
 ??vTaskDelay_1:
-        POP      {R4,PC}        
+        POP      {R0,R4,R5,PC}  
           CFI EndBlock cfiBlock4
 // 1263 
 // 1264 #endif /* INCLUDE_vTaskDelay */
@@ -2182,12 +2211,13 @@ vTaskDelay:
 // 1566 	void vTaskSuspend( TaskHandle_t xTaskToSuspend )
 // 1567 	{
 vTaskSuspend:
-        PUSH     {R4-R6,LR}     
+        PUSH     {R3-R7,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R6 Frame(CFA, -8)
-          CFI R5 Frame(CFA, -12)
-          CFI R4 Frame(CFA, -16)
-          CFI CFA R13+16
+          CFI R7 Frame(CFA, -8)
+          CFI R6 Frame(CFA, -12)
+          CFI R5 Frame(CFA, -16)
+          CFI R4 Frame(CFA, -20)
+          CFI CFA R13+24
         MOVS     R4,R0          
 // 1568 	TCB_t *pxTCB;
 // 1569 
@@ -2200,18 +2230,19 @@ vTaskSuspend:
 // 1574 			pxTCB = prvGetTCBFromHandle( xTaskToSuspend );
         CMP      R4,#+0         
         BNE.N    ??vTaskSuspend_0
-        LDR.W    R0,??DataTable35_1
-        LDR      R4,[R0, #+0]   
+        LDR.W    R0,??DataTable35
+        LDR      R5,[R0, #+0]   
         B.N      ??vTaskSuspend_1
+??vTaskSuspend_0:
+        MOVS     R5,R4          
 // 1575 
 // 1576 			traceTASK_SUSPEND( pxTCB );
 // 1577 
 // 1578 			/* Remove task from the ready/delayed list and place in the
 // 1579 			suspended list. */
 // 1580 			if( uxListRemove( &( pxTCB->xStateListItem ) ) == ( UBaseType_t ) 0 )
-??vTaskSuspend_0:
 ??vTaskSuspend_1:
-        ADDS     R0,R4,#+4      
+        ADDS     R0,R5,#+4      
           CFI FunCall uxListRemove
         BL       uxListRemove   
         CMP      R0,#+0         
@@ -2219,16 +2250,16 @@ vTaskSuspend:
 // 1581 			{
 // 1582 				taskRESET_READY_PRIORITY( pxTCB->uxPriority );
         LDR.W    R1,??DataTable36
-        LDR      R2,[R4, #+44]  
+        LDR      R2,[R5, #+44]  
         MOVS     R0,#+20        
         MULS     R2,R0,R2       
         LDR      R0,[R1, R2]    
         CMP      R0,#+0         
         BNE.N    ??vTaskSuspend_2
-        LDR.W    R1,??DataTable35_4
+        LDR.W    R1,??DataTable35_3
         LDR      R2,[R1, #+0]   
         MOVS     R3,#+1         
-        LDR      R0,[R4, #+44]  
+        LDR      R0,[R5, #+44]  
         LSLS     R3,R3,R0       
         BICS     R2,R2,R3       
         STR      R2,[R1, #+0]   
@@ -2241,12 +2272,12 @@ vTaskSuspend:
 // 1589 			/* Is the task waiting on an event also? */
 // 1590 			if( listLIST_ITEM_CONTAINER( &( pxTCB->xEventListItem ) ) != NULL )
 ??vTaskSuspend_2:
-        LDR      R0,[R4, #+40]  
+        LDR      R0,[R5, #+40]  
         CMP      R0,#+0         
         BEQ.N    ??vTaskSuspend_3
 // 1591 			{
 // 1592 				( void ) uxListRemove( &( pxTCB->xEventListItem ) );
-        ADDS     R0,R4,#+24     
+        ADDS     R0,R5,#+24     
           CFI FunCall uxListRemove
         BL       uxListRemove   
 // 1593 			}
@@ -2257,9 +2288,9 @@ vTaskSuspend:
 // 1598 
 // 1599 			vListInsertEnd( &xSuspendedTaskList, &( pxTCB->xStateListItem ) );
 ??vTaskSuspend_3:
-        LDR.W    R5,??DataTable36_2
-        ADDS     R1,R4,#+4      
-        MOVS     R0,R5          
+        LDR.W    R6,??DataTable36_2
+        ADDS     R1,R5,#+4      
+        MOVS     R0,R6          
           CFI FunCall vListInsertEnd
         BL       vListInsertEnd 
 // 1600 		}
@@ -2268,8 +2299,8 @@ vTaskSuspend:
         BL       vPortExitCritical
 // 1602 
 // 1603 		if( xSchedulerRunning != pdFALSE )
-        LDR.W    R6,??DataTable35_2
-        LDR      R0,[R6, #+0]   
+        LDR.W    R7,??DataTable35_1
+        LDR      R0,[R7, #+0]   
         CMP      R0,#+0         
         BEQ.N    ??vTaskSuspend_4
 // 1604 		{
@@ -2294,23 +2325,23 @@ vTaskSuspend:
 // 1617 
 // 1618 		if( pxTCB == pxCurrentTCB )
 ??vTaskSuspend_4:
-        LDR.W    R1,??DataTable35_1
+        LDR.W    R1,??DataTable35
         LDR      R0,[R1, #+0]   
-        CMP      R4,R0          
+        CMP      R5,R0          
         BNE.N    ??vTaskSuspend_5
 // 1619 		{
 // 1620 			if( xSchedulerRunning != pdFALSE )
-        LDR      R0,[R6, #+0]   
+        LDR      R0,[R7, #+0]   
         CMP      R0,#+0         
         BEQ.N    ??vTaskSuspend_6
 // 1621 			{
 // 1622 				/* The current task has just been suspended. */
 // 1623 				configASSERT( uxSchedulerSuspended == 0 );
-        LDR.W    R0,??DataTable38
+        LDR.W    R0,??DataTable37
         LDR      R0,[R0, #+0]   
 // 1624 				portYIELD_WITHIN_API();
         MOVS     R0,#+268435456 
-        LDR.W    R1,??DataTable37
+        LDR.W    R1,??DataTable36_1
         STR      R0,[R1, #+0]   
         DSB      SY             
         ISB      SY             
@@ -2323,8 +2354,8 @@ vTaskSuspend:
 // 1630 				must be adjusted to point to a different task. */
 // 1631 				if( listCURRENT_LIST_LENGTH( &xSuspendedTaskList ) == uxCurrentNumberOfTasks )
 ??vTaskSuspend_6:
-        LDR      R0,[R5, #+0]   
-        LDR.W    R2,??DataTable35
+        LDR      R0,[R6, #+0]   
+        LDR.W    R2,??DataTable34
         LDR      R2,[R2, #+0]   
         CMP      R0,R2          
         BNE.N    ??vTaskSuspend_7
@@ -2353,7 +2384,7 @@ vTaskSuspend:
 // 1648 		}
 // 1649 	}
 ??vTaskSuspend_5:
-        POP      {R4-R6,PC}     
+        POP      {R0,R4-R7,PC}  
           CFI EndBlock cfiBlock5
 // 1650 
 // 1651 #endif /* INCLUDE_vTaskSuspend */
@@ -2370,10 +2401,14 @@ vTaskSuspend:
 // 1656 	static BaseType_t prvTaskIsTaskSuspended( const TaskHandle_t xTask )
 // 1657 	{
 prvTaskIsTaskSuspended:
-        MOVS     R1,R0          
+        PUSH     {R4}           
+          CFI R4 Frame(CFA, -4)
+          CFI CFA R13+4
+        MOVS     R2,R0          
 // 1658 	BaseType_t xReturn = pdFALSE;
         MOVS     R0,#+0         
 // 1659 	const TCB_t * const pxTCB = ( TCB_t * ) xTask;
+        MOVS     R3,R2          
 // 1660 
 // 1661 		/* Accesses xPendingReadyList so must be called from a critical
 // 1662 		section. */
@@ -2383,27 +2418,28 @@ prvTaskIsTaskSuspended:
 // 1666 
 // 1667 		/* Is the task being resumed actually in the suspended list? */
 // 1668 		if( listIS_CONTAINED_WITHIN( &xSuspendedTaskList, &( pxTCB->xStateListItem ) ) != pdFALSE )
-        LDR      R2,[R1, #+20]  
-        LDR.W    R3,??DataTable36_2
-        CMP      R2,R3          
+        LDR      R1,[R3, #+20]  
+        LDR.W    R4,??DataTable36_2
+        CMP      R1,R4          
         BNE.N    ??prvTaskIsTaskSuspended_0
 // 1669 		{
 // 1670 			/* Has the task already been resumed from within an ISR? */
 // 1671 			if( listIS_CONTAINED_WITHIN( &xPendingReadyList, &( pxTCB->xEventListItem ) ) == pdFALSE )
-        LDR      R2,[R1, #+40]  
-        LDR.W    R3,??DataTable42
-        CMP      R2,R3          
+        LDR      R1,[R3, #+40]  
+        LDR.W    R4,??DataTable42
+        CMP      R1,R4          
         BEQ.N    ??prvTaskIsTaskSuspended_0
 // 1672 			{
 // 1673 				/* Is it in the suspended list because it is in the	Suspended
 // 1674 				state, or because is is blocked with no timeout? */
 // 1675 				if( listIS_CONTAINED_WITHIN( NULL, &( pxTCB->xEventListItem ) ) != pdFALSE )
-        LDR      R1,[R1, #+40]  
+        LDR      R1,[R3, #+40]  
         CMP      R1,#+0         
         BNE.N    ??prvTaskIsTaskSuspended_0
 // 1676 				{
 // 1677 					xReturn = pdTRUE;
-        MOVS     R0,#+1         
+        MOVS     R1,#+1         
+        MOVS     R0,R1          
 // 1678 				}
 // 1679 				else
 // 1680 				{
@@ -2422,6 +2458,9 @@ prvTaskIsTaskSuspended:
 // 1693 
 // 1694 		return xReturn;
 ??prvTaskIsTaskSuspended_0:
+        POP      {R4}           
+          CFI R4 SameValue
+          CFI CFA R13+0
         BX       LR             
 // 1695 	} /*lint !e818 xTask cannot be a pointer to const because it is a typedef. */
           CFI EndBlock cfiBlock6
@@ -2439,13 +2478,15 @@ prvTaskIsTaskSuspended:
 // 1702 	void vTaskResume( TaskHandle_t xTaskToResume )
 // 1703 	{
 vTaskResume:
-        PUSH     {R3-R5,LR}     
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
           CFI CFA R13+16
-        MOVS     R4,R0          
+        MOVS     R5,R0          
 // 1704 	TCB_t * const pxTCB = ( TCB_t * ) xTaskToResume;
+        MOVS     R4,R5          
 // 1705 
 // 1706 		/* It does not make sense to resume the calling task. */
 // 1707 		configASSERT( xTaskToResume );
@@ -2455,8 +2496,8 @@ vTaskResume:
 // 1711 		if( ( pxTCB != NULL ) && ( pxTCB != pxCurrentTCB ) )
         CMP      R4,#+0         
         BEQ.N    ??vTaskResume_0
-        LDR.W    R5,??DataTable35_1
-        LDR      R0,[R5, #+0]   
+        LDR.W    R6,??DataTable35
+        LDR      R0,[R6, #+0]   
         CMP      R4,R0          
         BEQ.N    ??vTaskResume_0
 // 1712 		{
@@ -2480,7 +2521,7 @@ vTaskResume:
           CFI FunCall uxListRemove
         BL       uxListRemove   
 // 1722 					prvAddTaskToReadyList( pxTCB );
-        LDR.W    R1,??DataTable35_4
+        LDR.W    R1,??DataTable35_3
         LDR      R2,[R1, #+0]   
         MOVS     R3,#+1         
         LDR      R0,[R4, #+44]  
@@ -2499,7 +2540,7 @@ vTaskResume:
 // 1724 					/* We may have just resumed a higher priority task. */
 // 1725 					if( pxTCB->uxPriority >= pxCurrentTCB->uxPriority )
         LDR      R0,[R4, #+44]  
-        LDR      R1,[R5, #+0]   
+        LDR      R1,[R6, #+0]   
         LDR      R1,[R1, #+44]  
         CMP      R0,R1          
         BCC.N    ??vTaskResume_1
@@ -2509,7 +2550,7 @@ vTaskResume:
 // 1729 						next yield. */
 // 1730 						taskYIELD_IF_USING_PREEMPTION();
         MOVS     R0,#+268435456 
-        LDR.W    R1,??DataTable37
+        LDR.W    R1,??DataTable36_1
         STR      R0,[R1, #+0]   
         DSB      SY             
         ISB      SY             
@@ -2535,7 +2576,7 @@ vTaskResume:
 // 1747 		}
 // 1748 	}
 ??vTaskResume_0:
-        POP      {R0,R4,R5,PC}  
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock7
 // 1749 
 // 1750 #endif /* INCLUDE_vTaskSuspend */
@@ -2552,16 +2593,18 @@ vTaskResume:
 // 1756 	BaseType_t xTaskResumeFromISR( TaskHandle_t xTaskToResume )
 // 1757 	{
 xTaskResumeFromISR:
-        PUSH     {R4-R6,LR}     
+        PUSH     {R3-R7,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R6 Frame(CFA, -8)
-          CFI R5 Frame(CFA, -12)
-          CFI R4 Frame(CFA, -16)
-          CFI CFA R13+16
-        MOVS     R6,R0          
+          CFI R7 Frame(CFA, -8)
+          CFI R6 Frame(CFA, -12)
+          CFI R5 Frame(CFA, -16)
+          CFI R4 Frame(CFA, -20)
+          CFI CFA R13+24
+        MOVS     R4,R0          
 // 1758 	BaseType_t xYieldRequired = pdFALSE;
-        MOVS     R4,#+0         
+        MOVS     R5,#+0         
 // 1759 	TCB_t * const pxTCB = ( TCB_t * ) xTaskToResume;
+        MOVS     R6,R4          
 // 1760 	UBaseType_t uxSavedInterruptStatus;
 // 1761 
 // 1762 		configASSERT( xTaskToResume );
@@ -2587,7 +2630,7 @@ xTaskResumeFromISR:
         BL       vPortValidateInterruptPriority
 // 1781 
 // 1782 		uxSavedInterruptStatus = portSET_INTERRUPT_MASK_FROM_ISR();
-        MRS      R5,BASEPRI     
+        MRS      R7,BASEPRI     
         MOVS     R0,#+80        
         MSR      BASEPRI,R0     
         DSB      SY             
@@ -2604,7 +2647,7 @@ xTaskResumeFromISR:
 // 1787 
 // 1788 				/* Check the ready lists can be accessed. */
 // 1789 				if( uxSchedulerSuspended == ( UBaseType_t ) pdFALSE )
-        LDR.W    R0,??DataTable38
+        LDR.W    R0,??DataTable37
         LDR      R0,[R0, #+0]   
         CMP      R0,#+0         
         BNE.N    ??xTaskResumeFromISR_1
@@ -2613,14 +2656,15 @@ xTaskResumeFromISR:
 // 1792 					suspended list to the ready list directly. */
 // 1793 					if( pxTCB->uxPriority >= pxCurrentTCB->uxPriority )
         LDR      R0,[R6, #+44]  
-        LDR.W    R1,??DataTable35_1
+        LDR.W    R1,??DataTable35
         LDR      R1,[R1, #+0]   
         LDR      R1,[R1, #+44]  
         CMP      R0,R1          
         BCC.N    ??xTaskResumeFromISR_2
 // 1794 					{
 // 1795 						xYieldRequired = pdTRUE;
-        MOVS     R4,#+1         
+        MOVS     R0,#+1         
+        MOVS     R5,R0          
 // 1796 					}
 // 1797 					else
 // 1798 					{
@@ -2633,7 +2677,7 @@ xTaskResumeFromISR:
           CFI FunCall uxListRemove
         BL       uxListRemove   
 // 1803 					prvAddTaskToReadyList( pxTCB );
-        LDR.W    R1,??DataTable35_4
+        LDR.W    R1,??DataTable35_3
         LDR      R2,[R1, #+0]   
         MOVS     R3,#+1         
         LDR      R0,[R6, #+44]  
@@ -2670,11 +2714,11 @@ xTaskResumeFromISR:
 // 1817 		}
 // 1818 		portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedInterruptStatus );
 ??xTaskResumeFromISR_0:
-        MSR      BASEPRI,R5     
+        MSR      BASEPRI,R7     
 // 1819 
 // 1820 		return xYieldRequired;
-        MOVS     R0,R4          
-        POP      {R4-R6,PC}     
+        MOVS     R0,R5          
+        POP      {R1,R4-R7,PC}  
 // 1821 	}
           CFI EndBlock cfiBlock8
 // 1822 
@@ -2723,7 +2767,7 @@ vTaskStartScheduler:
 // 1844 												( tskIDLE_PRIORITY | portPRIVILEGE_BIT ),
 // 1845 												pxIdleTaskStackBuffer,
 // 1846 												pxIdleTaskTCBBuffer ); /*lint !e961 MISRA exception, justified as it is not a redundant explicit cast to all supported compilers. */
-        LDR.W    R4,??DataTable41
+        LDR.W    R4,??DataTable39
         LDR      R0,[SP, #+16]  
         STR      R0,[SP, #+8]   
         LDR      R0,[SP, #+12]  
@@ -2732,7 +2776,7 @@ vTaskStartScheduler:
         STR      R0,[SP, #+0]   
         MOVS     R3,#+0         
         LDR      R2,[SP, #+20]  
-        LDR.W    R1,??DataTable42_1
+        LDR.W    R1,??DataTable39_1
         ADR.W    R0,prvIdleTask 
           CFI FunCall xTaskCreateStatic
         BL       xTaskCreateStatic
@@ -2744,14 +2788,14 @@ vTaskStartScheduler:
         BEQ.N    ??vTaskStartScheduler_0
 // 1849 		{
 // 1850 			xReturn = pdPASS;
-        MOVS     R0,#+1         
+        MOVS     R4,#+1         
         B.N      ??vTaskStartScheduler_1
 // 1851 		}
 // 1852 		else
 // 1853 		{
 // 1854 			xReturn = pdFAIL;
 ??vTaskStartScheduler_0:
-        MOVS     R0,#+0         
+        MOVS     R4,#+0         
 // 1855 		}
 // 1856 	}
 // 1857 	#else
@@ -2769,12 +2813,13 @@ vTaskStartScheduler:
 // 1869 	{
 // 1870 		if( xReturn == pdPASS )
 ??vTaskStartScheduler_1:
-        CMP      R0,#+1         
+        CMP      R4,#+1         
         BNE.N    ??vTaskStartScheduler_2
 // 1871 		{
 // 1872 			xReturn = xTimerCreateTimerTask();
           CFI FunCall xTimerCreateTimerTask
         BL       xTimerCreateTimerTask
+        MOVS     R4,R0          
 // 1873 		}
 // 1874 		else
 // 1875 		{
@@ -2785,7 +2830,7 @@ vTaskStartScheduler:
 // 1880 
 // 1881 	if( xReturn == pdPASS )
 ??vTaskStartScheduler_2:
-        CMP      R0,#+1         
+        CMP      R4,#+1         
         BNE.N    ??vTaskStartScheduler_3
 // 1882 	{
 // 1883 		/* Interrupts are turned off here, to ensure a tick does not occur
@@ -2809,15 +2854,15 @@ vTaskStartScheduler:
 // 1897 
 // 1898 		xNextTaskUnblockTime = portMAX_DELAY;
         MOVS     R0,#+4294967295
-        LDR.W    R1,??DataTable42_2
+        LDR.W    R1,??DataTable39_2
         STR      R0,[R1, #+0]   
 // 1899 		xSchedulerRunning = pdTRUE;
         MOVS     R0,#+1         
-        LDR.W    R1,??DataTable35_2
+        LDR.W    R1,??DataTable35_1
         STR      R0,[R1, #+0]   
 // 1900 		xTickCount = ( TickType_t ) 0U;
         MOVS     R0,#+0         
-        LDR.W    R1,??DataTable42_3
+        LDR.W    R1,??DataTable42_1
         STR      R0,[R1, #+0]   
 // 1901 
 // 1902 		/* If configGENERATE_RUN_TIME_STATS is defined then the following
@@ -2881,7 +2926,7 @@ vTaskEndScheduler:
         ISB      SY             
 // 1939 	xSchedulerRunning = pdFALSE;
         MOVS     R0,#+0         
-        LDR.W    R1,??DataTable35_2
+        LDR.W    R1,??DataTable35_1
         STR      R0,[R1, #+0]   
 // 1940 	vPortEndScheduler();
           CFI FunCall vPortEndScheduler
@@ -2905,7 +2950,7 @@ vTaskEndScheduler:
 // 1949 	http://goo.gl/wu4acr */
 // 1950 	++uxSchedulerSuspended;
 vTaskSuspendAll:
-        LDR.W    R0,??DataTable39
+        LDR.W    R0,??DataTable37
         LDR      R1,[R0, #+0]   
         ADDS     R1,R1,#+1      
         STR      R1,[R0, #+0]   
@@ -2985,22 +3030,23 @@ vTaskSuspendAll:
 // 2017 BaseType_t xTaskResumeAll( void )
 // 2018 {
 xTaskResumeAll:
-        PUSH     {R4-R6,LR}     
+        PUSH     {R3-R7,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R6 Frame(CFA, -8)
-          CFI R5 Frame(CFA, -12)
-          CFI R4 Frame(CFA, -16)
-          CFI CFA R13+16
+          CFI R7 Frame(CFA, -8)
+          CFI R6 Frame(CFA, -12)
+          CFI R5 Frame(CFA, -16)
+          CFI R4 Frame(CFA, -20)
+          CFI CFA R13+24
 // 2019 TCB_t *pxTCB = NULL;
-        MOVS     R4,#+0         
-// 2020 BaseType_t xAlreadyYielded = pdFALSE;
         MOVS     R5,#+0         
+// 2020 BaseType_t xAlreadyYielded = pdFALSE;
+        MOVS     R6,#+0         
 // 2021 
 // 2022 	/* If uxSchedulerSuspended is zero then this function does not match a
 // 2023 	previous call to vTaskSuspendAll(). */
 // 2024 	configASSERT( uxSchedulerSuspended );
-        LDR.W    R6,??DataTable38
-        LDR      R0,[R6, #+0]   
+        LDR.W    R4,??DataTable37
+        LDR      R0,[R4, #+0]   
 // 2025 
 // 2026 	/* It is possible that an ISR caused a task to be removed from an event
 // 2027 	list while the scheduler was suspended.  If this was the case then the
@@ -3012,49 +3058,53 @@ xTaskResumeAll:
         BL       vPortEnterCritical
 // 2032 	{
 // 2033 		--uxSchedulerSuspended;
-        LDR      R0,[R6, #+0]   
+        LDR      R0,[R4, #+0]   
         SUBS     R0,R0,#+1      
-        STR      R0,[R6, #+0]   
+        STR      R0,[R4, #+0]   
 // 2034 
 // 2035 		if( uxSchedulerSuspended == ( UBaseType_t ) pdFALSE )
-        LDR      R0,[R6, #+0]   
+        LDR      R0,[R4, #+0]   
         CMP      R0,#+0         
         BNE.N    ??xTaskResumeAll_0
 // 2036 		{
 // 2037 			if( uxCurrentNumberOfTasks > ( UBaseType_t ) 0U )
-        LDR.W    R0,??DataTable35
+        LDR.W    R0,??DataTable34
         LDR      R0,[R0, #+0]   
         CMP      R0,#+0         
-        BNE.N    ??xTaskResumeAll_1
-        B.N      ??xTaskResumeAll_0
+        BEQ.N    ??xTaskResumeAll_0
 // 2038 			{
 // 2039 				/* Move any readied tasks from the pending list into the
 // 2040 				appropriate ready list. */
 // 2041 				while( listLIST_IS_EMPTY( &xPendingReadyList ) == pdFALSE )
+??xTaskResumeAll_1:
+        LDR.W    R1,??DataTable42
+        LDR      R0,[R1, #+0]   
+        CMP      R0,#+0         
+        BEQ.N    ??xTaskResumeAll_2
 // 2042 				{
 // 2043 					pxTCB = ( TCB_t * ) listGET_OWNER_OF_HEAD_ENTRY( ( &xPendingReadyList ) );
-??xTaskResumeAll_2:
         LDR      R0,[R1, #+12]  
-        LDR      R4,[R0, #+12]  
+        LDR      R0,[R0, #+12]  
+        MOVS     R5,R0          
 // 2044 					( void ) uxListRemove( &( pxTCB->xEventListItem ) );
-        ADDS     R0,R4,#+24     
+        ADDS     R0,R5,#+24     
           CFI FunCall uxListRemove
         BL       uxListRemove   
 // 2045 					( void ) uxListRemove( &( pxTCB->xStateListItem ) );
-        ADDS     R0,R4,#+4      
+        ADDS     R0,R5,#+4      
           CFI FunCall uxListRemove
         BL       uxListRemove   
 // 2046 					prvAddTaskToReadyList( pxTCB );
-        LDR.W    R1,??DataTable35_4
+        LDR.W    R1,??DataTable35_3
         LDR      R2,[R1, #+0]   
         MOVS     R3,#+1         
-        LDR      R0,[R4, #+44]  
+        LDR      R0,[R5, #+44]  
         LSLS     R3,R3,R0       
         ORRS     R2,R3,R2       
         STR      R2,[R1, #+0]   
-        ADDS     R1,R4,#+4      
+        ADDS     R1,R5,#+4      
         LDR.W    R2,??DataTable36
-        LDR      R3,[R4, #+44]  
+        LDR      R3,[R5, #+44]  
         MOVS     R0,#+20        
         MULS     R3,R0,R3       
         ADD      R0,R2,R3       
@@ -3064,8 +3114,8 @@ xTaskResumeAll:
 // 2048 					/* If the moved task has a priority higher than the current
 // 2049 					task then a yield must be performed. */
 // 2050 					if( pxTCB->uxPriority >= pxCurrentTCB->uxPriority )
-        LDR      R0,[R4, #+44]  
-        LDR.W    R1,??DataTable35_1
+        LDR      R0,[R5, #+44]  
+        LDR.W    R1,??DataTable35
         LDR      R1,[R1, #+0]   
         LDR      R1,[R1, #+44]  
         CMP      R0,R1          
@@ -3073,22 +3123,19 @@ xTaskResumeAll:
 // 2051 					{
 // 2052 						xYieldPending = pdTRUE;
         MOVS     R0,#+1         
-        LDR.W    R1,??DataTable42_4
+        LDR.W    R1,??DataTable42_2
         STR      R0,[R1, #+0]   
+        B.N      ??xTaskResumeAll_1
 // 2053 					}
 // 2054 					else
 // 2055 					{
 // 2056 						mtCOVERAGE_TEST_MARKER();
 // 2057 					}
 // 2058 				}
-??xTaskResumeAll_1:
-        LDR.W    R1,??DataTable42
-        LDR      R0,[R1, #+0]   
-        CMP      R0,#+0         
-        BNE.N    ??xTaskResumeAll_2
 // 2059 
 // 2060 				if( pxTCB != NULL )
-        CMP      R4,#+0         
+??xTaskResumeAll_2:
+        CMP      R5,#+0         
         BEQ.N    ??xTaskResumeAll_3
 // 2061 				{
 // 2062 					/* A task was unblocked while the scheduler was suspended,
@@ -3109,8 +3156,8 @@ xTaskResumeAll:
 // 2075 				{
 // 2076 					UBaseType_t uxPendedCounts = uxPendedTicks; /* Non-volatile copy. */
 ??xTaskResumeAll_3:
-        LDR.W    R6,??DataTable42_5
-        LDR      R4,[R6, #+0]   
+        LDR.W    R7,??DataTable42_3
+        LDR      R4,[R7, #+0]   
 // 2077 
 // 2078 					if( uxPendedCounts > ( UBaseType_t ) 0U )
         CMP      R4,#+0         
@@ -3127,7 +3174,7 @@ xTaskResumeAll:
 // 2083 							{
 // 2084 								xYieldPending = pdTRUE;
         MOVS     R0,#+1         
-        LDR.W    R1,??DataTable42_4
+        LDR.W    R1,??DataTable42_2
         STR      R0,[R1, #+0]   
 // 2085 							}
 // 2086 							else
@@ -3143,7 +3190,7 @@ xTaskResumeAll:
 // 2092 
 // 2093 						uxPendedTicks = 0;
         MOVS     R0,#+0         
-        STR      R0,[R6, #+0]   
+        STR      R0,[R7, #+0]   
 // 2094 					}
 // 2095 					else
 // 2096 					{
@@ -3153,7 +3200,7 @@ xTaskResumeAll:
 // 2100 
 // 2101 				if( xYieldPending != pdFALSE )
 ??xTaskResumeAll_4:
-        LDR.W    R0,??DataTable42_4
+        LDR.W    R0,??DataTable42_2
         LDR      R0,[R0, #+0]   
         CMP      R0,#+0         
         BEQ.N    ??xTaskResumeAll_0
@@ -3161,12 +3208,13 @@ xTaskResumeAll:
 // 2103 					#if( configUSE_PREEMPTION != 0 )
 // 2104 					{
 // 2105 						xAlreadyYielded = pdTRUE;
-        MOVS     R5,#+1         
+        MOVS     R0,#+1         
+        MOVS     R6,R0          
 // 2106 					}
 // 2107 					#endif
 // 2108 					taskYIELD_IF_USING_PREEMPTION();
         MOVS     R0,#+268435456 
-        LDR.W    R1,??DataTable37
+        LDR.W    R1,??DataTable36_1
         STR      R0,[R1, #+0]   
         DSB      SY             
         ISB      SY             
@@ -3188,8 +3236,8 @@ xTaskResumeAll:
         BL       vPortExitCritical
 // 2122 
 // 2123 	return xAlreadyYielded;
-        MOVS     R0,R5          
-        POP      {R4-R6,PC}     
+        MOVS     R0,R6          
+        POP      {R1,R4-R7,PC}  
 // 2124 }
           CFI EndBlock cfiBlock12
 // 2125 /*-----------------------------------------------------------*/
@@ -3209,7 +3257,7 @@ xTaskResumeAll:
 // 2133 	{
 // 2134 		xTicks = xTickCount;
 xTaskGetTickCount:
-        LDR.W    R0,??DataTable42_3
+        LDR.W    R0,??DataTable42_1
         LDR      R0,[R0, #+0]   
 // 2135 	}
 // 2136 	portTICK_TYPE_EXIT_CRITICAL();
@@ -3253,10 +3301,10 @@ xTaskGetTickCountFromISR:
         BL       vPortValidateInterruptPriority
 // 2162 
 // 2163 	uxSavedInterruptStatus = portTICK_TYPE_SET_INTERRUPT_MASK_FROM_ISR();
-        MOVS     R0,#+0         
+        MOVS     R1,#+0         
 // 2164 	{
 // 2165 		xReturn = xTickCount;
-        LDR.W    R0,??DataTable42_3
+        LDR.W    R0,??DataTable42_1
         LDR      R0,[R0, #+0]   
 // 2166 	}
 // 2167 	portTICK_TYPE_CLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedInterruptStatus );
@@ -3279,7 +3327,7 @@ xTaskGetTickCountFromISR:
 // 2176 	BaseType_t. */
 // 2177 	return uxCurrentNumberOfTasks;
 uxTaskGetNumberOfTasks:
-        LDR.W    R0,??DataTable35
+        LDR.W    R0,??DataTable34
         LDR      R0,[R0, #+0]   
         BX       LR             
 // 2178 }
@@ -3294,20 +3342,22 @@ uxTaskGetNumberOfTasks:
         THUMB
 // 2181 char *pcTaskGetName( TaskHandle_t xTaskToQuery ) /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
 // 2182 {
+pcTaskGetName:
+        MOVS     R1,R0          
 // 2183 TCB_t *pxTCB;
 // 2184 
 // 2185 	/* If null is passed in here then the name of the calling task is being
 // 2186 	queried. */
 // 2187 	pxTCB = prvGetTCBFromHandle( xTaskToQuery );
-pcTaskGetName:
-        CMP      R0,#+0         
+        CMP      R1,#+0         
         BNE.N    ??pcTaskGetName_0
-        LDR.W    R0,??DataTable42_6
+        LDR.W    R0,??DataTable42_4
         LDR      R0,[R0, #+0]   
         B.N      ??pcTaskGetName_1
+??pcTaskGetName_0:
+        MOVS     R0,R1          
 // 2188 	configASSERT( pxTCB );
 // 2189 	return &( pxTCB->pcTaskName[ 0 ] );
-??pcTaskGetName_0:
 ??pcTaskGetName_1:
         ADDS     R0,R0,#+52     
         BX       LR             
@@ -3629,24 +3679,25 @@ pcTaskGetName:
 // 2499 BaseType_t xTaskIncrementTick( void )
 // 2500 {
 xTaskIncrementTick:
-        PUSH     {R3-R7,LR}     
+        PUSH     {R4-R8,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R7 Frame(CFA, -8)
-          CFI R6 Frame(CFA, -12)
-          CFI R5 Frame(CFA, -16)
-          CFI R4 Frame(CFA, -20)
+          CFI R8 Frame(CFA, -8)
+          CFI R7 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -16)
+          CFI R5 Frame(CFA, -20)
+          CFI R4 Frame(CFA, -24)
           CFI CFA R13+24
 // 2501 TCB_t * pxTCB;
 // 2502 TickType_t xItemValue;
 // 2503 BaseType_t xSwitchRequired = pdFALSE;
-        MOVS     R5,#+0         
+        MOVS     R7,#+0         
 // 2504 
 // 2505 	/* Called by the portable layer each time a tick interrupt occurs.
 // 2506 	Increments the tick then checks to see if the new tick value will cause any
 // 2507 	tasks to be unblocked. */
 // 2508 	traceTASK_INCREMENT_TICK( xTickCount );
 // 2509 	if( uxSchedulerSuspended == ( UBaseType_t ) pdFALSE )
-        LDR.W    R0,??DataTable38
+        LDR.W    R0,??DataTable37
         LDR      R0,[R0, #+0]   
         CMP      R0,#+0         
         BNE.N    ??xTaskIncrementTick_0
@@ -3654,7 +3705,7 @@ xTaskIncrementTick:
 // 2511 		/* Minor optimisation.  The tick count cannot change in this
 // 2512 		block. */
 // 2513 		const TickType_t xConstTickCount = xTickCount + 1;
-        LDR.W    R0,??DataTable36_1
+        LDR.W    R0,??DataTable35_4
         LDR      R4,[R0, #+0]   
         ADDS     R4,R4,#+1      
 // 2514 
@@ -3668,14 +3719,14 @@ xTaskIncrementTick:
         BNE.N    ??xTaskIncrementTick_1
 // 2520 		{
 // 2521 			taskSWITCH_DELAYED_LISTS();
+        LDR.W    R0,??DataTable42_5
+        LDR      R1,[R0, #+0]   
+        LDR      R8,[R0, #+0]   
+        LDR.W    R1,??DataTable42_6
+        LDR      R2,[R1, #+0]   
+        STR      R2,[R0, #+0]   
+        STR      R8,[R1, #+0]   
         LDR.W    R0,??DataTable42_7
-        LDR      R1,[R0, #+0]   
-        LDR      R1,[R0, #+0]   
-        LDR.W    R2,??DataTable42_8
-        LDR      R3,[R2, #+0]   
-        STR      R3,[R0, #+0]   
-        STR      R1,[R2, #+0]   
-        LDR.W    R0,??DataTable42_9
         LDR      R1,[R0, #+0]   
         ADDS     R1,R1,#+1      
         STR      R1,[R0, #+0]   
@@ -3693,15 +3744,20 @@ xTaskIncrementTick:
 // 2531 		look any further down the list. */
 // 2532 		if( xConstTickCount >= xNextTaskUnblockTime )
 ??xTaskIncrementTick_1:
-        LDR.W    R6,??DataTable42_2
-        LDR      R0,[R6, #+0]   
+        LDR.W    R8,??DataTable39_2
+        LDR      R0,[R8, #+0]   
         CMP      R4,R0          
         BCC.N    ??xTaskIncrementTick_2
-        B.N      ??xTaskIncrementTick_3
 // 2533 		{
 // 2534 			for( ;; )
 // 2535 			{
 // 2536 				if( listLIST_IS_EMPTY( pxDelayedTaskList ) != pdFALSE )
+??xTaskIncrementTick_3:
+        LDR.W    R1,??DataTable42_5
+        LDR      R0,[R1, #+0]   
+        LDR      R0,[R0, #+0]   
+        CMP      R0,#+0         
+        BNE.N    ??xTaskIncrementTick_4
 // 2537 				{
 // 2538 					/* The delayed list is empty.  Set xNextTaskUnblockTime
 // 2539 					to the maximum possible value so it is extremely
@@ -3709,7 +3765,10 @@ xTaskIncrementTick:
 // 2541 					if( xTickCount >= xNextTaskUnblockTime ) test will pass
 // 2542 					next time through. */
 // 2543 					xNextTaskUnblockTime = portMAX_DELAY; /*lint !e961 MISRA exception as the casts are only redundant for some ports. */
+        MOVS     R0,#+4294967295
+        STR      R0,[R8, #+0]   
 // 2544 					break;
+        B.N      ??xTaskIncrementTick_2
 // 2545 				}
 // 2546 				else
 // 2547 				{
@@ -3721,13 +3780,15 @@ xTaskIncrementTick:
 ??xTaskIncrementTick_4:
         LDR      R0,[R1, #+0]   
         LDR      R0,[R0, #+12]  
-        LDR      R7,[R0, #+12]  
+        LDR      R0,[R0, #+12]  
+        MOVS     R5,R0          
 // 2553 					xItemValue = listGET_LIST_ITEM_VALUE( &( pxTCB->xStateListItem ) );
-        LDR      R0,[R7, #+4]   
+        LDR      R0,[R5, #+4]   
+        MOVS     R6,R0          
 // 2554 
 // 2555 					if( xConstTickCount < xItemValue )
-        CMP      R4,R0          
-        BCC.N    ??xTaskIncrementTick_5
+        CMP      R4,R6          
+        BCS.N    ??xTaskIncrementTick_5
 // 2556 					{
 // 2557 						/* It is not time to unblock this item yet, but the
 // 2558 						item value is the time at which the task at the head
@@ -3735,7 +3796,9 @@ xTaskIncrementTick:
 // 2560 						state -	so record the item value in
 // 2561 						xNextTaskUnblockTime. */
 // 2562 						xNextTaskUnblockTime = xItemValue;
+        STR      R6,[R8, #+0]   
 // 2563 						break;
+        B.N      ??xTaskIncrementTick_2
 // 2564 					}
 // 2565 					else
 // 2566 					{
@@ -3744,20 +3807,20 @@ xTaskIncrementTick:
 // 2569 
 // 2570 					/* It is time to remove the item from the Blocked state. */
 // 2571 					( void ) uxListRemove( &( pxTCB->xStateListItem ) );
-??xTaskIncrementTick_6:
-        ADDS     R0,R7,#+4      
+??xTaskIncrementTick_5:
+        ADDS     R0,R5,#+4      
           CFI FunCall uxListRemove
         BL       uxListRemove   
 // 2572 
 // 2573 					/* Is the task waiting on an event also?  If so remove
 // 2574 					it from the event list. */
 // 2575 					if( listLIST_ITEM_CONTAINER( &( pxTCB->xEventListItem ) ) != NULL )
-        LDR      R0,[R7, #+40]  
+        LDR      R0,[R5, #+40]  
         CMP      R0,#+0         
-        BEQ.N    ??xTaskIncrementTick_7
+        BEQ.N    ??xTaskIncrementTick_6
 // 2576 					{
 // 2577 						( void ) uxListRemove( &( pxTCB->xEventListItem ) );
-        ADDS     R0,R7,#+24     
+        ADDS     R0,R5,#+24     
           CFI FunCall uxListRemove
         BL       uxListRemove   
 // 2578 					}
@@ -3769,17 +3832,17 @@ xTaskIncrementTick:
 // 2584 					/* Place the unblocked task into the appropriate ready
 // 2585 					list. */
 // 2586 					prvAddTaskToReadyList( pxTCB );
-??xTaskIncrementTick_7:
-        LDR.W    R1,??DataTable35_4
+??xTaskIncrementTick_6:
+        LDR.W    R1,??DataTable35_3
         LDR      R2,[R1, #+0]   
         MOVS     R3,#+1         
-        LDR      R0,[R7, #+44]  
+        LDR      R0,[R5, #+44]  
         LSLS     R3,R3,R0       
         ORRS     R2,R3,R2       
         STR      R2,[R1, #+0]   
-        ADDS     R1,R7,#+4      
+        ADDS     R1,R5,#+4      
         LDR.W    R2,??DataTable36
-        LDR      R3,[R7, #+44]  
+        LDR      R3,[R5, #+44]  
         MOVS     R0,#+20        
         MULS     R3,R0,R3       
         ADD      R0,R2,R3       
@@ -3795,32 +3858,23 @@ xTaskIncrementTick:
 // 2594 						priority that is equal to or higher than the
 // 2595 						currently executing task. */
 // 2596 						if( pxTCB->uxPriority >= pxCurrentTCB->uxPriority )
-        LDR      R0,[R7, #+44]  
-        LDR.W    R1,??DataTable35_1
+        LDR      R0,[R5, #+44]  
+        LDR.W    R1,??DataTable35
         LDR      R1,[R1, #+0]   
         LDR      R1,[R1, #+44]  
         CMP      R0,R1          
         BCC.N    ??xTaskIncrementTick_3
 // 2597 						{
 // 2598 							xSwitchRequired = pdTRUE;
-        MOVS     R5,#+1         
+        MOVS     R0,#+1         
+        MOVS     R7,R0          
+        B.N      ??xTaskIncrementTick_3
 // 2599 						}
 // 2600 						else
 // 2601 						{
 // 2602 							mtCOVERAGE_TEST_MARKER();
 // 2603 						}
 // 2604 					}
-??xTaskIncrementTick_3:
-        LDR.W    R1,??DataTable42_7
-        LDR      R0,[R1, #+0]   
-        LDR      R0,[R0, #+0]   
-        CMP      R0,#+0         
-        BNE.N    ??xTaskIncrementTick_4
-        MOVS     R0,#+4294967295
-        STR      R0,[R6, #+0]   
-        B.N      ??xTaskIncrementTick_2
-??xTaskIncrementTick_5:
-        STR      R0,[R6, #+0]   
 // 2605 					#endif /* configUSE_PREEMPTION */
 // 2606 				}
 // 2607 			}
@@ -3834,18 +3888,19 @@ xTaskIncrementTick:
 // 2615 			if( listCURRENT_LIST_LENGTH( &( pxReadyTasksLists[ pxCurrentTCB->uxPriority ] ) ) > ( UBaseType_t ) 1 )
 ??xTaskIncrementTick_2:
         LDR.W    R1,??DataTable36
-        LDR.W    R0,??DataTable35_1
+        LDR.W    R0,??DataTable35
         LDR      R0,[R0, #+0]   
         LDR      R2,[R0, #+44]  
         MOVS     R0,#+20        
         MULS     R2,R0,R2       
         LDR      R0,[R1, R2]    
         CMP      R0,#+2         
-        BCC.N    ??xTaskIncrementTick_8
+        BCC.N    ??xTaskIncrementTick_7
 // 2616 			{
 // 2617 				xSwitchRequired = pdTRUE;
-        MOVS     R5,#+1         
-        B.N      ??xTaskIncrementTick_8
+        MOVS     R0,#+1         
+        MOVS     R7,R0          
+        B.N      ??xTaskIncrementTick_7
 // 2618 			}
 // 2619 			else
 // 2620 			{
@@ -3873,7 +3928,7 @@ xTaskIncrementTick:
 // 2642 	{
 // 2643 		++uxPendedTicks;
 ??xTaskIncrementTick_0:
-        LDR.W    R0,??DataTable42_5
+        LDR.W    R0,??DataTable42_3
         LDR      R1,[R0, #+0]   
         ADDS     R1,R1,#+1      
         STR      R1,[R0, #+0]   
@@ -3890,14 +3945,15 @@ xTaskIncrementTick:
 // 2654 	#if ( configUSE_PREEMPTION == 1 )
 // 2655 	{
 // 2656 		if( xYieldPending != pdFALSE )
-??xTaskIncrementTick_8:
-        LDR.W    R0,??DataTable42_4
+??xTaskIncrementTick_7:
+        LDR.W    R0,??DataTable42_2
         LDR      R0,[R0, #+0]   
         CMP      R0,#+0         
-        BEQ.N    ??xTaskIncrementTick_9
+        BEQ.N    ??xTaskIncrementTick_8
 // 2657 		{
 // 2658 			xSwitchRequired = pdTRUE;
-        MOVS     R5,#+1         
+        MOVS     R0,#+1         
+        MOVS     R7,R0          
 // 2659 		}
 // 2660 		else
 // 2661 		{
@@ -3907,9 +3963,9 @@ xTaskIncrementTick:
 // 2665 	#endif /* configUSE_PREEMPTION */
 // 2666 
 // 2667 	return xSwitchRequired;
-??xTaskIncrementTick_9:
-        MOVS     R0,R5          
-        POP      {R1,R4-R7,PC}  
+??xTaskIncrementTick_8:
+        MOVS     R0,R7          
+        POP      {R4-R8,PC}     
 // 2668 }
           CFI EndBlock cfiBlock17
 // 2669 /*-----------------------------------------------------------*/
@@ -4014,7 +4070,7 @@ xTaskIncrementTick:
 // 2762 {
 // 2763 	if( uxSchedulerSuspended != ( UBaseType_t ) pdFALSE )
 vTaskSwitchContext:
-        LDR.W    R0,??DataTable38
+        LDR.W    R0,??DataTable37
         LDR      R0,[R0, #+0]   
         CMP      R0,#+0         
         BEQ.N    ??vTaskSwitchContext_0
@@ -4023,7 +4079,7 @@ vTaskSwitchContext:
 // 2766 		switch. */
 // 2767 		xYieldPending = pdTRUE;
         MOVS     R0,#+1         
-        LDR.W    R1,??DataTable42_4
+        LDR.W    R1,??DataTable42_2
         STR      R0,[R1, #+0]   
         B.N      ??vTaskSwitchContext_1
 // 2768 	}
@@ -4032,7 +4088,7 @@ vTaskSwitchContext:
 // 2771 		xYieldPending = pdFALSE;
 ??vTaskSwitchContext_0:
         MOVS     R0,#+0         
-        LDR.W    R1,??DataTable42_4
+        LDR.W    R1,??DataTable42_2
         STR      R0,[R1, #+0]   
 // 2772 		traceTASK_SWITCHED_OUT();
 // 2773 
@@ -4069,29 +4125,29 @@ vTaskSwitchContext:
 // 2804 		/* Select a new task to run using either the generic C or port
 // 2805 		optimised asm code. */
 // 2806 		taskSELECT_HIGHEST_PRIORITY_TASK();
-        LDR.W    R0,??DataTable35_4
+        LDR.W    R0,??DataTable35_3
         LDR      R0,[R0, #+0]   
         CLZ      R1,R0          
         RSBS     R1,R1,#+31     
-        LDR.W    R2,??DataTable36
-        MOVS     R0,#+20        
-        MULS     R1,R0,R1       
-        ADD      R0,R2,R1       
-        LDR      R1,[R0, #+4]   
-        LDR      R1,[R1, #+4]   
-        STR      R1,[R0, #+4]   
-        LDR      R1,[R0, #+4]   
-        ADDS     R2,R0,#+8      
-        CMP      R1,R2          
+        LDR.W    R0,??DataTable36
+        MOVS     R2,#+20        
+        MUL      R2,R2,R1       
+        ADD      R0,R0,R2       
+        LDR      R2,[R0, #+4]   
+        LDR      R2,[R2, #+4]   
+        STR      R2,[R0, #+4]   
+        LDR      R2,[R0, #+4]   
+        ADDS     R3,R0,#+8      
+        CMP      R2,R3          
         BNE.N    ??vTaskSwitchContext_2
-        LDR      R1,[R0, #+4]   
-        LDR      R1,[R1, #+4]   
-        STR      R1,[R0, #+4]   
+        LDR      R2,[R0, #+4]   
+        LDR      R2,[R2, #+4]   
+        STR      R2,[R0, #+4]   
 ??vTaskSwitchContext_2:
         LDR      R0,[R0, #+4]   
         LDR      R0,[R0, #+12]  
-        LDR.W    R1,??DataTable35_1
-        STR      R0,[R1, #+0]   
+        LDR.W    R2,??DataTable35
+        STR      R0,[R2, #+0]   
 // 2807 		traceTASK_SWITCHED_IN();
 // 2808 
 // 2809 		#if ( configUSE_NEWLIB_REENTRANT == 1 )
@@ -4116,11 +4172,13 @@ vTaskSwitchContext:
 // 2820 void vTaskPlaceOnEventList( List_t * const pxEventList, const TickType_t xTicksToWait )
 // 2821 {
 vTaskPlaceOnEventList:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
-        MOVS     R4,R1          
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
 // 2822 	configASSERT( pxEventList );
 // 2823 
 // 2824 	/* THIS FUNCTION MUST BE CALLED WITH EITHER INTERRUPTS DISABLED OR THE
@@ -4131,19 +4189,20 @@ vTaskPlaceOnEventList:
 // 2829 	is the first to be woken by the event.  The queue that contains the event
 // 2830 	list is locked, preventing simultaneous access from interrupts. */
 // 2831 	vListInsert( pxEventList, &( pxCurrentTCB->xEventListItem ) );
-        LDR.W    R1,??DataTable42_6
-        LDR      R1,[R1, #+0]   
-        ADDS     R1,R1,#+24     
+        LDR.W    R0,??DataTable42_4
+        LDR      R0,[R0, #+0]   
+        ADDS     R1,R0,#+24     
+        MOVS     R0,R4          
           CFI FunCall vListInsert
         BL       vListInsert    
 // 2832 
 // 2833 	prvAddCurrentTaskToDelayedList( xTicksToWait, pdTRUE );
         MOVS     R1,#+1         
-        MOVS     R0,R4          
+        MOVS     R0,R5          
           CFI FunCall prvAddCurrentTaskToDelayedList
         BL       prvAddCurrentTaskToDelayedList
 // 2834 }
-        POP      {R4,PC}        
+        POP      {R0,R4,R5,PC}  
           CFI EndBlock cfiBlock19
 // 2835 /*-----------------------------------------------------------*/
 // 2836 
@@ -4155,27 +4214,31 @@ vTaskPlaceOnEventList:
 // 2837 void vTaskPlaceOnUnorderedEventList( List_t * pxEventList, const TickType_t xItemValue, const TickType_t xTicksToWait )
 // 2838 {
 vTaskPlaceOnUnorderedEventList:
-        PUSH     {R4,LR}        
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
-        MOVS     R4,R2          
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R6,R2          
 // 2839 	configASSERT( pxEventList );
 // 2840 
 // 2841 	/* THIS FUNCTION MUST BE CALLED WITH THE SCHEDULER SUSPENDED.  It is used by
 // 2842 	the event groups implementation. */
 // 2843 	configASSERT( uxSchedulerSuspended != 0 );
-        LDR.W    R2,??DataTable39
-        LDR      R2,[R2, #+0]   
+        LDR.W    R0,??DataTable38
+        LDR      R0,[R0, #+0]   
 // 2844 
 // 2845 	/* Store the item value in the event list item.  It is safe to access the
 // 2846 	event list item here as interrupts won't access the event list item of a
 // 2847 	task that is not in the Blocked state. */
 // 2848 	listSET_LIST_ITEM_VALUE( &( pxCurrentTCB->xEventListItem ), xItemValue | taskEVENT_LIST_ITEM_VALUE_IN_USE );
-        LDR.W    R2,??DataTable42_6
-        ORRS     R1,R1,#0x80000000
-        LDR      R3,[R2, #+0]   
-        STR      R1,[R3, #+24]  
+        LDR.W    R0,??DataTable42_4
+        ORRS     R1,R5,#0x80000000
+        LDR      R2,[R0, #+0]   
+        STR      R1,[R2, #+24]  
 // 2849 
 // 2850 	/* Place the event list item of the TCB at the end of the appropriate event
 // 2851 	list.  It is safe to access the event list here because it is part of an
@@ -4183,18 +4246,19 @@ vTaskPlaceOnUnorderedEventList:
 // 2853 	directly (instead they access them indirectly by pending function calls to
 // 2854 	the task level). */
 // 2855 	vListInsertEnd( pxEventList, &( pxCurrentTCB->xEventListItem ) );
-        LDR      R1,[R2, #+0]   
-        ADDS     R1,R1,#+24     
+        LDR      R0,[R0, #+0]   
+        ADDS     R1,R0,#+24     
+        MOVS     R0,R4          
           CFI FunCall vListInsertEnd
         BL       vListInsertEnd 
 // 2856 
 // 2857 	prvAddCurrentTaskToDelayedList( xTicksToWait, pdTRUE );
         MOVS     R1,#+1         
-        MOVS     R0,R4          
+        MOVS     R0,R6          
           CFI FunCall prvAddCurrentTaskToDelayedList
         BL       prvAddCurrentTaskToDelayedList
 // 2858 }
-        POP      {R4,PC}        
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock20
 // 2859 /*-----------------------------------------------------------*/
 // 2860 
@@ -4208,12 +4272,14 @@ vTaskPlaceOnUnorderedEventList:
 // 2863 	void vTaskPlaceOnEventListRestricted( List_t * const pxEventList, TickType_t xTicksToWait, const BaseType_t xWaitIndefinitely )
 // 2864 	{
 vTaskPlaceOnEventListRestricted:
-        PUSH     {R3-R5,LR}     
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
           CFI CFA R13+16
-        MOVS     R5,R1          
+        MOVS     R5,R0          
+        MOVS     R6,R1          
         MOVS     R4,R2          
 // 2865 		configASSERT( pxEventList );
 // 2866 
@@ -4228,9 +4294,10 @@ vTaskPlaceOnEventListRestricted:
 // 2875 		be waiting on this event list, so the faster vListInsertEnd() function
 // 2876 		can be used in place of vListInsert. */
 // 2877 		vListInsertEnd( pxEventList, &( pxCurrentTCB->xEventListItem ) );
-        LDR.W    R1,??DataTable42_6
-        LDR      R1,[R1, #+0]   
-        ADDS     R1,R1,#+24     
+        LDR.W    R0,??DataTable42_4
+        LDR      R0,[R0, #+0]   
+        ADDS     R1,R0,#+24     
+        MOVS     R0,R5          
           CFI FunCall vListInsertEnd
         BL       vListInsertEnd 
 // 2878 
@@ -4242,18 +4309,19 @@ vTaskPlaceOnEventListRestricted:
         BEQ.N    ??vTaskPlaceOnEventListRestricted_0
 // 2883 		{
 // 2884 			xTicksToWait = portMAX_DELAY;
-        MOVS     R5,#+4294967295
+        MOVS     R0,#+4294967295
+        MOVS     R6,R0          
 // 2885 		}
 // 2886 
 // 2887 		traceTASK_DELAY_UNTIL( ( xTickCount + xTicksToWait ) );
 // 2888 		prvAddCurrentTaskToDelayedList( xTicksToWait, xWaitIndefinitely );
 ??vTaskPlaceOnEventListRestricted_0:
         MOVS     R1,R4          
-        MOVS     R0,R5          
+        MOVS     R0,R6          
           CFI FunCall prvAddCurrentTaskToDelayedList
         BL       prvAddCurrentTaskToDelayedList
 // 2889 	}
-        POP      {R0,R4,R5,PC}  
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock21
 // 2890 
 // 2891 #endif /* configUSE_TIMERS */
@@ -4267,10 +4335,12 @@ vTaskPlaceOnEventListRestricted:
 // 2894 BaseType_t xTaskRemoveFromEventList( const List_t * const pxEventList )
 // 2895 {
 xTaskRemoveFromEventList:
-        PUSH     {R4,LR}        
+        PUSH     {R3-R5,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R5 Frame(CFA, -8)
+          CFI R4 Frame(CFA, -12)
+          CFI CFA R13+16
+        MOVS     R4,R0          
 // 2896 TCB_t *pxUnblockedTCB;
 // 2897 BaseType_t xReturn;
 // 2898 
@@ -4288,35 +4358,35 @@ xTaskRemoveFromEventList:
 // 2910 	This function assumes that a check has already been made to ensure that
 // 2911 	pxEventList is not empty. */
 // 2912 	pxUnblockedTCB = ( TCB_t * ) listGET_OWNER_OF_HEAD_ENTRY( pxEventList );
-        LDR      R0,[R0, #+12]  
-        LDR      R4,[R0, #+12]  
+        LDR      R0,[R4, #+12]  
+        LDR      R5,[R0, #+12]  
 // 2913 	configASSERT( pxUnblockedTCB );
 // 2914 	( void ) uxListRemove( &( pxUnblockedTCB->xEventListItem ) );
-        ADDS     R0,R4,#+24     
+        ADDS     R0,R5,#+24     
           CFI FunCall uxListRemove
         BL       uxListRemove   
 // 2915 
 // 2916 	if( uxSchedulerSuspended == ( UBaseType_t ) pdFALSE )
-        LDR.W    R0,??DataTable39
+        LDR.W    R0,??DataTable38
         LDR      R0,[R0, #+0]   
         CMP      R0,#+0         
         BNE.N    ??xTaskRemoveFromEventList_0
 // 2917 	{
 // 2918 		( void ) uxListRemove( &( pxUnblockedTCB->xStateListItem ) );
-        ADDS     R0,R4,#+4      
+        ADDS     R0,R5,#+4      
           CFI FunCall uxListRemove
         BL       uxListRemove   
 // 2919 		prvAddTaskToReadyList( pxUnblockedTCB );
-        LDR.W    R1,??DataTable35_4
+        LDR.W    R1,??DataTable35_3
         LDR      R2,[R1, #+0]   
         MOVS     R3,#+1         
-        LDR      R0,[R4, #+44]  
+        LDR      R0,[R5, #+44]  
         LSLS     R3,R3,R0       
         ORRS     R2,R3,R2       
         STR      R2,[R1, #+0]   
-        ADDS     R1,R4,#+4      
+        ADDS     R1,R5,#+4      
         LDR.W    R2,??DataTable36
-        LDR      R3,[R4, #+44]  
+        LDR      R3,[R5, #+44]  
         MOVS     R0,#+20        
         MULS     R3,R0,R3       
         ADD      R0,R2,R3       
@@ -4330,7 +4400,7 @@ xTaskRemoveFromEventList:
 // 2924 		pending until the scheduler is resumed. */
 // 2925 		vListInsertEnd( &( xPendingReadyList ), &( pxUnblockedTCB->xEventListItem ) );
 ??xTaskRemoveFromEventList_0:
-        ADDS     R1,R4,#+24     
+        ADDS     R1,R5,#+24     
         LDR.W    R0,??DataTable42
           CFI FunCall vListInsertEnd
         BL       vListInsertEnd 
@@ -4338,10 +4408,10 @@ xTaskRemoveFromEventList:
 // 2927 
 // 2928 	if( pxUnblockedTCB->uxPriority > pxCurrentTCB->uxPriority )
 ??xTaskRemoveFromEventList_1:
-        LDR.W    R0,??DataTable35_1
+        LDR.W    R0,??DataTable35
         LDR      R0,[R0, #+0]   
         LDR      R0,[R0, #+44]  
-        LDR      R1,[R4, #+44]  
+        LDR      R1,[R5, #+44]  
         CMP      R0,R1          
         BCS.N    ??xTaskRemoveFromEventList_2
 // 2929 	{
@@ -4355,7 +4425,7 @@ xTaskRemoveFromEventList:
 // 2936 		"xHigherPriorityTaskWoken" parameter to an ISR safe FreeRTOS function. */
 // 2937 		xYieldPending = pdTRUE;
         MOVS     R1,#+1         
-        LDR.W    R2,??DataTable42_4
+        LDR.W    R2,??DataTable42_2
         STR      R1,[R2, #+0]   
         B.N      ??xTaskRemoveFromEventList_3
 // 2938 	}
@@ -4382,7 +4452,7 @@ xTaskRemoveFromEventList:
 // 2957 
 // 2958 	return xReturn;
 ??xTaskRemoveFromEventList_3:
-        POP      {R4,PC}        
+        POP      {R1,R4,R5,PC}  
 // 2959 }
           CFI EndBlock cfiBlock22
 // 2960 /*-----------------------------------------------------------*/
@@ -4395,30 +4465,35 @@ xTaskRemoveFromEventList:
 // 2962 BaseType_t xTaskRemoveFromUnorderedEventList( ListItem_t * pxEventListItem, const TickType_t xItemValue )
 // 2963 {
 xTaskRemoveFromUnorderedEventList:
-        PUSH     {R4,LR}        
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
 // 2964 TCB_t *pxUnblockedTCB;
 // 2965 BaseType_t xReturn;
 // 2966 
 // 2967 	/* THIS FUNCTION MUST BE CALLED WITH THE SCHEDULER SUSPENDED.  It is used by
 // 2968 	the event flags implementation. */
 // 2969 	configASSERT( uxSchedulerSuspended != pdFALSE );
-        LDR.W    R2,??DataTable39
-        LDR      R2,[R2, #+0]   
+        LDR.W    R0,??DataTable38
+        LDR      R0,[R0, #+0]   
 // 2970 
 // 2971 	/* Store the new item value in the event list. */
 // 2972 	listSET_LIST_ITEM_VALUE( pxEventListItem, xItemValue | taskEVENT_LIST_ITEM_VALUE_IN_USE );
-        ORRS     R1,R1,#0x80000000
-        STR      R1,[R0, #+0]   
+        ORRS     R0,R5,#0x80000000
+        STR      R0,[R4, #+0]   
 // 2973 
 // 2974 	/* Remove the event list form the event flag.  Interrupts do not access
 // 2975 	event flags. */
 // 2976 	pxUnblockedTCB = ( TCB_t * ) listGET_LIST_ITEM_OWNER( pxEventListItem );
-        LDR      R4,[R0, #+12]  
+        LDR      R6,[R4, #+12]  
 // 2977 	configASSERT( pxUnblockedTCB );
 // 2978 	( void ) uxListRemove( pxEventListItem );
+        MOVS     R0,R4          
           CFI FunCall uxListRemove
         BL       uxListRemove   
 // 2979 
@@ -4426,20 +4501,20 @@ xTaskRemoveFromUnorderedEventList:
 // 2981 	scheduler is suspended so interrupts will not be accessing the ready
 // 2982 	lists. */
 // 2983 	( void ) uxListRemove( &( pxUnblockedTCB->xStateListItem ) );
-        ADDS     R0,R4,#+4      
+        ADDS     R0,R6,#+4      
           CFI FunCall uxListRemove
         BL       uxListRemove   
 // 2984 	prvAddTaskToReadyList( pxUnblockedTCB );
-        LDR.W    R1,??DataTable35_4
+        LDR.W    R1,??DataTable35_3
         LDR      R2,[R1, #+0]   
         MOVS     R3,#+1         
-        LDR      R0,[R4, #+44]  
+        LDR      R0,[R6, #+44]  
         LSLS     R3,R3,R0       
         ORRS     R2,R3,R2       
         STR      R2,[R1, #+0]   
-        ADDS     R1,R4,#+4      
+        ADDS     R1,R6,#+4      
         LDR.W    R2,??DataTable36
-        LDR      R3,[R4, #+44]  
+        LDR      R3,[R6, #+44]  
         MOVS     R0,#+20        
         MULS     R3,R0,R3       
         ADD      R0,R2,R3       
@@ -4447,10 +4522,10 @@ xTaskRemoveFromUnorderedEventList:
         BL       vListInsertEnd 
 // 2985 
 // 2986 	if( pxUnblockedTCB->uxPriority > pxCurrentTCB->uxPriority )
-        LDR.W    R0,??DataTable35_1
+        LDR.W    R0,??DataTable35
         LDR      R0,[R0, #+0]   
         LDR      R0,[R0, #+44]  
-        LDR      R1,[R4, #+44]  
+        LDR      R1,[R6, #+44]  
         CMP      R0,R1          
         BCS.N    ??xTaskRemoveFromUnorderedEventList_0
 // 2987 	{
@@ -4465,7 +4540,7 @@ xTaskRemoveFromUnorderedEventList:
 // 2995 		"xHigherPriorityTaskWoken" parameter to an ISR safe FreeRTOS function. */
 // 2996 		xYieldPending = pdTRUE;
         MOVS     R1,#+1         
-        LDR.W    R2,??DataTable42_4
+        LDR.W    R2,??DataTable42_2
         STR      R1,[R2, #+0]   
         B.N      ??xTaskRemoveFromUnorderedEventList_1
 // 2997 	}
@@ -4478,7 +4553,7 @@ xTaskRemoveFromUnorderedEventList:
 // 3002 
 // 3003 	return xReturn;
 ??xTaskRemoveFromUnorderedEventList_1:
-        POP      {R4,PC}        
+        POP      {R4-R6,PC}     
 // 3004 }
           CFI EndBlock cfiBlock23
 // 3005 /*-----------------------------------------------------------*/
@@ -4494,11 +4569,11 @@ xTaskRemoveFromUnorderedEventList:
 // 3009 	configASSERT( pxTimeOut );
 // 3010 	pxTimeOut->xOverflowCount = xNumOfOverflows;
 vTaskSetTimeOutState:
-        LDR.W    R1,??DataTable42_9
+        LDR.W    R1,??DataTable42_7
         LDR      R1,[R1, #+0]   
         STR      R1,[R0, #+0]   
 // 3011 	pxTimeOut->xTimeOnEntering = xTickCount;
-        LDR.W    R1,??DataTable42_3
+        LDR.W    R1,??DataTable42_1
         LDR      R1,[R1, #+0]   
         STR      R1,[R0, #+4]   
 // 3012 }
@@ -4514,13 +4589,15 @@ vTaskSetTimeOutState:
 // 3015 BaseType_t xTaskCheckForTimeOut( TimeOut_t * const pxTimeOut, TickType_t * const pxTicksToWait )
 // 3016 {
 xTaskCheckForTimeOut:
-        PUSH     {R3-R5,LR}     
+        PUSH     {R3-R7,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
-          CFI CFA R13+16
-        MOVS     R5,R0          
-        MOVS     R4,R1          
+          CFI R7 Frame(CFA, -8)
+          CFI R6 Frame(CFA, -12)
+          CFI R5 Frame(CFA, -16)
+          CFI R4 Frame(CFA, -20)
+          CFI CFA R13+24
+        MOVS     R4,R0          
+        MOVS     R5,R1          
 // 3017 BaseType_t xReturn;
 // 3018 
 // 3019 	configASSERT( pxTimeOut );
@@ -4532,8 +4609,8 @@ xTaskCheckForTimeOut:
 // 3023 	{
 // 3024 		/* Minor optimisation.  The tick count cannot change in this block. */
 // 3025 		const TickType_t xConstTickCount = xTickCount;
-        LDR.W    R0,??DataTable36_1
-        LDR      R1,[R0, #+0]   
+        LDR.W    R0,??DataTable35_4
+        LDR      R6,[R0, #+0]   
 // 3026 
 // 3027 		#if( INCLUDE_xTaskAbortDelay == 1 )
 // 3028 			if( pxCurrentTCB->ucDelayAborted != pdFALSE )
@@ -4548,7 +4625,7 @@ xTaskCheckForTimeOut:
 // 3037 
 // 3038 		#if ( INCLUDE_vTaskSuspend == 1 )
 // 3039 			if( *pxTicksToWait == portMAX_DELAY )
-        LDR      R0,[R4, #+0]   
+        LDR      R0,[R5, #+0]   
         CMN      R0,#+1         
         BNE.N    ??xTaskCheckForTimeOut_0
 // 3040 			{
@@ -4556,7 +4633,7 @@ xTaskCheckForTimeOut:
 // 3042 				specified is the maximum block time then the task should block
 // 3043 				indefinitely, and therefore never time out. */
 // 3044 				xReturn = pdFALSE;
-        MOVS     R4,#+0         
+        MOVS     R7,#+0         
         B.N      ??xTaskCheckForTimeOut_1
 // 3045 			}
 // 3046 			else
@@ -4564,13 +4641,13 @@ xTaskCheckForTimeOut:
 // 3048 
 // 3049 		if( ( xNumOfOverflows != pxTimeOut->xOverflowCount ) && ( xConstTickCount >= pxTimeOut->xTimeOnEntering ) ) /*lint !e525 Indentation preferred as is to make code within pre-processor directives clearer. */
 ??xTaskCheckForTimeOut_0:
-        LDR.W    R0,??DataTable42_9
+        LDR.W    R0,??DataTable42_7
         LDR      R0,[R0, #+0]   
-        LDR      R2,[R5, #+0]   
-        CMP      R0,R2          
+        LDR      R1,[R4, #+0]   
+        CMP      R0,R1          
         BEQ.N    ??xTaskCheckForTimeOut_2
-        LDR      R0,[R5, #+4]   
-        CMP      R1,R0          
+        LDR      R0,[R4, #+4]   
+        CMP      R6,R0          
         BCC.N    ??xTaskCheckForTimeOut_2
 // 3050 		{
 // 3051 			/* The tick count is greater than the time at which
@@ -4579,37 +4656,37 @@ xTaskCheckForTimeOut:
 // 3054 			around and gone past again. This passed since vTaskSetTimeout()
 // 3055 			was called. */
 // 3056 			xReturn = pdTRUE;
-        MOVS     R4,#+1         
+        MOVS     R7,#+1         
         B.N      ??xTaskCheckForTimeOut_1
 // 3057 		}
 // 3058 		else if( ( ( TickType_t ) ( xConstTickCount - pxTimeOut->xTimeOnEntering ) ) < *pxTicksToWait ) /*lint !e961 Explicit casting is only redundant with some compilers, whereas others require it to prevent integer conversion errors. */
 ??xTaskCheckForTimeOut_2:
-        LDR      R0,[R5, #+4]   
-        SUBS     R0,R1,R0       
-        LDR      R2,[R4, #+0]   
-        CMP      R0,R2          
+        LDR      R0,[R4, #+4]   
+        SUBS     R0,R6,R0       
+        LDR      R1,[R5, #+0]   
+        CMP      R0,R1          
         BCS.N    ??xTaskCheckForTimeOut_3
 // 3059 		{
 // 3060 			/* Not a genuine timeout. Adjust parameters for time remaining. */
 // 3061 			*pxTicksToWait -= ( xConstTickCount - pxTimeOut->xTimeOnEntering );
-        LDR      R0,[R4, #+0]   
-        SUBS     R1,R0,R1       
-        LDR      R0,[R5, #+4]   
+        LDR      R1,[R5, #+0]   
+        SUBS     R1,R1,R6       
+        LDR      R0,[R4, #+4]   
         ADDS     R1,R0,R1       
-        STR      R1,[R4, #+0]   
+        STR      R1,[R5, #+0]   
 // 3062 			vTaskSetTimeOutState( pxTimeOut );
-        MOVS     R0,R5          
+        MOVS     R0,R4          
           CFI FunCall vTaskSetTimeOutState
         BL       vTaskSetTimeOutState
 // 3063 			xReturn = pdFALSE;
-        MOVS     R4,#+0         
+        MOVS     R7,#+0         
         B.N      ??xTaskCheckForTimeOut_1
 // 3064 		}
 // 3065 		else
 // 3066 		{
 // 3067 			xReturn = pdTRUE;
 ??xTaskCheckForTimeOut_3:
-        MOVS     R4,#+1         
+        MOVS     R7,#+1         
 // 3068 		}
 // 3069 	}
 // 3070 	taskEXIT_CRITICAL();
@@ -4618,8 +4695,8 @@ xTaskCheckForTimeOut:
         BL       vPortExitCritical
 // 3071 
 // 3072 	return xReturn;
-        MOVS     R0,R4          
-        POP      {R1,R4,R5,PC}  
+        MOVS     R0,R7          
+        POP      {R1,R4-R7,PC}  
 // 3073 }
           CFI EndBlock cfiBlock25
 // 3074 /*-----------------------------------------------------------*/
@@ -4635,7 +4712,7 @@ xTaskCheckForTimeOut:
 // 3078 	xYieldPending = pdTRUE;
 vTaskMissedYield:
         MOVS     R0,#+1         
-        LDR.W    R1,??DataTable42_4
+        LDR.W    R1,??DataTable42_2
         STR      R0,[R1, #+0]   
 // 3079 }
         BX       LR             
@@ -4699,9 +4776,11 @@ vTaskMissedYield:
 // 3131 static portTASK_FUNCTION( prvIdleTask, pvParameters )
 // 3132 {
 prvIdleTask:
-        PUSH     {R7,LR}        
+        PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
+        MOVS     R4,R0          
 // 3133 	/* Stop warnings. */
 // 3134 	( void ) pvParameters;
 // 3135 
@@ -4915,19 +4994,21 @@ prvIdleTask:
 // 3333 static void prvInitialiseTaskLists( void )
 // 3334 {
 prvInitialiseTaskLists:
-        PUSH     {R3-R5,LR}     
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
           CFI CFA R13+16
 // 3335 UBaseType_t uxPriority;
 // 3336 
 // 3337 	for( uxPriority = ( UBaseType_t ) 0U; uxPriority < ( UBaseType_t ) configMAX_PRIORITIES; uxPriority++ )
         MOVS     R4,#+0         
-        B.N      ??prvInitialiseTaskLists_0
+??prvInitialiseTaskLists_0:
+        CMP      R4,#+5         
+        BCS.N    ??prvInitialiseTaskLists_1
 // 3338 	{
 // 3339 		vListInitialise( &( pxReadyTasksLists[ uxPriority ] ) );
-??prvInitialiseTaskLists_1:
         LDR.W    R0,??DataTable36
         MOVS     R1,#+20        
         MUL      R1,R1,R4       
@@ -4936,18 +5017,17 @@ prvInitialiseTaskLists:
         BL       vListInitialise
 // 3340 	}
         ADDS     R4,R4,#+1      
-??prvInitialiseTaskLists_0:
-        CMP      R4,#+5         
-        BCC.N    ??prvInitialiseTaskLists_1
+        B.N      ??prvInitialiseTaskLists_0
 // 3341 
 // 3342 	vListInitialise( &xDelayedTaskList1 );
-        LDR.W    R4,??DataTable42_10
-        MOVS     R0,R4          
+??prvInitialiseTaskLists_1:
+        LDR.W    R5,??DataTable42_8
+        MOVS     R0,R5          
           CFI FunCall vListInitialise
         BL       vListInitialise
 // 3343 	vListInitialise( &xDelayedTaskList2 );
-        LDR.W    R5,??DataTable42_11
-        MOVS     R0,R5          
+        LDR.W    R6,??DataTable42_9
+        MOVS     R0,R6          
           CFI FunCall vListInitialise
         BL       vListInitialise
 // 3344 	vListInitialise( &xPendingReadyList );
@@ -4973,13 +5053,13 @@ prvInitialiseTaskLists:
 // 3358 	/* Start with pxDelayedTaskList using list1 and the pxOverflowDelayedTaskList
 // 3359 	using list2. */
 // 3360 	pxDelayedTaskList = &xDelayedTaskList1;
-        LDR.W    R0,??DataTable42_7
-        STR      R4,[R0, #+0]   
-// 3361 	pxOverflowDelayedTaskList = &xDelayedTaskList2;
-        LDR.W    R0,??DataTable42_8
+        LDR.W    R0,??DataTable42_5
         STR      R5,[R0, #+0]   
+// 3361 	pxOverflowDelayedTaskList = &xDelayedTaskList2;
+        LDR.W    R0,??DataTable42_6
+        STR      R6,[R0, #+0]   
 // 3362 }
-        POP      {R0,R4,R5,PC}  
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock28
 // 3363 /*-----------------------------------------------------------*/
 // 3364 
@@ -5274,8 +5354,8 @@ prvCheckTasksWaitingTermination:
 // 3638 
 // 3639 	if( listLIST_IS_EMPTY( pxDelayedTaskList ) != pdFALSE )
 prvResetNextTaskUnblockTime:
-        LDR.W    R1,??DataTable42_7
-        LDR      R0,[R1, #+0]   
+        LDR.W    R2,??DataTable42_5
+        LDR      R0,[R2, #+0]   
         LDR      R0,[R0, #+0]   
         CMP      R0,#+0         
         BNE.N    ??prvResetNextTaskUnblockTime_0
@@ -5286,8 +5366,8 @@ prvResetNextTaskUnblockTime:
 // 3644 		there is an item in the delayed list. */
 // 3645 		xNextTaskUnblockTime = portMAX_DELAY;
         MOVS     R0,#+4294967295
-        LDR.W    R1,??DataTable42_2
-        STR      R0,[R1, #+0]   
+        LDR.W    R2,??DataTable39_2
+        STR      R0,[R2, #+0]   
         B.N      ??prvResetNextTaskUnblockTime_1
 // 3646 	}
 // 3647 	else
@@ -5298,13 +5378,14 @@ prvResetNextTaskUnblockTime:
 // 3652 		from the Blocked state. */
 // 3653 		( pxTCB ) = ( TCB_t * ) listGET_OWNER_OF_HEAD_ENTRY( pxDelayedTaskList );
 ??prvResetNextTaskUnblockTime_0:
-        LDR      R0,[R1, #+0]   
+        LDR      R0,[R2, #+0]   
         LDR      R0,[R0, #+12]  
         LDR      R0,[R0, #+12]  
+        MOVS     R1,R0          
 // 3654 		xNextTaskUnblockTime = listGET_LIST_ITEM_VALUE( &( ( pxTCB )->xStateListItem ) );
-        LDR      R0,[R0, #+4]   
-        LDR.W    R1,??DataTable42_2
-        STR      R0,[R1, #+0]   
+        LDR      R0,[R1, #+4]   
+        LDR.W    R2,??DataTable39_2
+        STR      R0,[R2, #+0]   
 // 3655 	}
 // 3656 }
 ??prvResetNextTaskUnblockTime_1:
@@ -5329,7 +5410,7 @@ prvResetNextTaskUnblockTime:
 // 3667 		individual execution thread. */
 // 3668 		xReturn = pxCurrentTCB;
 xTaskGetCurrentTaskHandle:
-        LDR.W    R0,??DataTable42_6
+        LDR.W    R0,??DataTable42_4
         LDR      R0,[R0, #+0]   
 // 3669 
 // 3670 		return xReturn;
@@ -5354,7 +5435,7 @@ xTaskGetCurrentTaskHandle:
 // 3681 
 // 3682 		if( xSchedulerRunning == pdFALSE )
 xTaskGetSchedulerState:
-        LDR.N    R0,??DataTable35_2
+        LDR.N    R0,??DataTable35_1
         LDR      R0,[R0, #+0]   
         CMP      R0,#+0         
         BNE.N    ??xTaskGetSchedulerState_0
@@ -5367,7 +5448,7 @@ xTaskGetSchedulerState:
 // 3687 		{
 // 3688 			if( uxSchedulerSuspended == ( UBaseType_t ) pdFALSE )
 ??xTaskGetSchedulerState_0:
-        LDR.W    R0,??DataTable39
+        LDR.W    R0,??DataTable38
         LDR      R0,[R0, #+0]   
         CMP      R0,#+0         
         BNE.N    ??xTaskGetSchedulerState_2
@@ -5403,29 +5484,31 @@ xTaskGetSchedulerState:
 // 3706 	void vTaskPriorityInherit( TaskHandle_t const pxMutexHolder )
 // 3707 	{
 vTaskPriorityInherit:
-        PUSH     {R3-R7,LR}     
+        PUSH     {R4-R8,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R7 Frame(CFA, -8)
-          CFI R6 Frame(CFA, -12)
-          CFI R5 Frame(CFA, -16)
-          CFI R4 Frame(CFA, -20)
+          CFI R8 Frame(CFA, -8)
+          CFI R7 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -16)
+          CFI R5 Frame(CFA, -20)
+          CFI R4 Frame(CFA, -24)
           CFI CFA R13+24
-// 3708 	TCB_t * const pxTCB = ( TCB_t * ) pxMutexHolder;
         MOVS     R4,R0          
+// 3708 	TCB_t * const pxTCB = ( TCB_t * ) pxMutexHolder;
+        MOVS     R5,R4          
 // 3709 
 // 3710 		/* If the mutex was given back by an interrupt while the queue was
 // 3711 		locked then the mutex holder might now be NULL. */
 // 3712 		if( pxMutexHolder != NULL )
-        CMP      R0,#+0         
+        CMP      R4,#+0         
         BEQ.N    ??vTaskPriorityInherit_0
 // 3713 		{
 // 3714 			/* If the holder of the mutex has a priority below the priority of
 // 3715 			the task attempting to obtain the mutex then it will temporarily
 // 3716 			inherit the priority of the task attempting to obtain the mutex. */
 // 3717 			if( pxTCB->uxPriority < pxCurrentTCB->uxPriority )
-        LDR.N    R7,??DataTable35_1
-        LDR      R0,[R4, #+44]  
-        LDR      R1,[R7, #+0]   
+        LDR.W    R8,??DataTable35
+        LDR      R0,[R5, #+44]  
+        LDR      R1,[R8, #+0]   
         LDR      R1,[R1, #+44]  
         CMP      R0,R1          
         BCS.N    ??vTaskPriorityInherit_0
@@ -5434,15 +5517,15 @@ vTaskPriorityInherit:
 // 3720 				priority.  Only reset the event list item value if the value is
 // 3721 				not	being used for anything else. */
 // 3722 				if( ( listGET_LIST_ITEM_VALUE( &( pxTCB->xEventListItem ) ) & taskEVENT_LIST_ITEM_VALUE_IN_USE ) == 0UL )
-        LDR      R0,[R4, #+24]  
+        LDR      R0,[R5, #+24]  
         CMP      R0,#+0         
         BMI.N    ??vTaskPriorityInherit_1
 // 3723 				{
 // 3724 					listSET_LIST_ITEM_VALUE( &( pxTCB->xEventListItem ), ( TickType_t ) configMAX_PRIORITIES - ( TickType_t ) pxCurrentTCB->uxPriority ); /*lint !e961 MISRA exception as the casts are only redundant for some ports. */
-        LDR      R0,[R7, #+0]   
+        LDR      R0,[R8, #+0]   
         LDR      R0,[R0, #+44]  
         RSBS     R0,R0,#+5      
-        STR      R0,[R4, #+24]  
+        STR      R0,[R5, #+24]  
 // 3725 				}
 // 3726 				else
 // 3727 				{
@@ -5453,32 +5536,32 @@ vTaskPriorityInherit:
 // 3732 				to be moved into a new list. */
 // 3733 				if( listIS_CONTAINED_WITHIN( &( pxReadyTasksLists[ pxTCB->uxPriority ] ), &( pxTCB->xStateListItem ) ) != pdFALSE )
 ??vTaskPriorityInherit_1:
-        LDR.W    R5,??DataTable39_1
-        MOVS     R6,#+20        
-        LDR      R0,[R4, #+20]  
-        LDR      R1,[R4, #+44]  
-        MULS     R1,R6,R1       
-        ADD      R1,R5,R1       
+        LDR.W    R6,??DataTable37_1
+        MOVS     R7,#+20        
+        LDR      R0,[R5, #+20]  
+        LDR      R1,[R5, #+44]  
+        MULS     R1,R7,R1       
+        ADD      R1,R6,R1       
         CMP      R0,R1          
         BNE.N    ??vTaskPriorityInherit_2
 // 3734 				{
 // 3735 					if( uxListRemove( &( pxTCB->xStateListItem ) ) == ( UBaseType_t ) 0 )
-        ADDS     R0,R4,#+4      
+        ADDS     R0,R5,#+4      
           CFI FunCall uxListRemove
         BL       uxListRemove   
         CMP      R0,#+0         
         BNE.N    ??vTaskPriorityInherit_3
 // 3736 					{
 // 3737 						taskRESET_READY_PRIORITY( pxTCB->uxPriority );
-        LDR      R0,[R4, #+44]  
-        MULS     R0,R6,R0       
-        LDR      R0,[R5, R0]    
+        LDR      R0,[R5, #+44]  
+        MULS     R0,R7,R0       
+        LDR      R0,[R6, R0]    
         CMP      R0,#+0         
         BNE.N    ??vTaskPriorityInherit_3
-        LDR.W    R1,??DataTable42_12
+        LDR.W    R1,??DataTable42_10
         LDR      R2,[R1, #+0]   
         MOVS     R3,#+1         
-        LDR      R0,[R4, #+44]  
+        LDR      R0,[R5, #+44]  
         LSLS     R3,R3,R0       
         BICS     R2,R2,R3       
         STR      R2,[R1, #+0]   
@@ -5491,21 +5574,21 @@ vTaskPriorityInherit:
 // 3744 					/* Inherit the priority before being moved into the new list. */
 // 3745 					pxTCB->uxPriority = pxCurrentTCB->uxPriority;
 ??vTaskPriorityInherit_3:
-        LDR      R0,[R7, #+0]   
+        LDR      R0,[R8, #+0]   
         LDR      R0,[R0, #+44]  
-        STR      R0,[R4, #+44]  
+        STR      R0,[R5, #+44]  
 // 3746 					prvAddTaskToReadyList( pxTCB );
-        LDR.W    R1,??DataTable42_12
+        LDR.W    R1,??DataTable42_10
         LDR      R2,[R1, #+0]   
         MOVS     R3,#+1         
-        LDR      R0,[R4, #+44]  
+        LDR      R0,[R5, #+44]  
         LSLS     R3,R3,R0       
         ORRS     R2,R3,R2       
         STR      R2,[R1, #+0]   
-        ADDS     R1,R4,#+4      
-        LDR      R0,[R4, #+44]  
-        MUL      R6,R6,R0       
-        ADD      R0,R5,R6       
+        ADDS     R1,R5,#+4      
+        LDR      R0,[R5, #+44]  
+        MUL      R7,R7,R0       
+        ADD      R0,R6,R7       
           CFI FunCall vListInsertEnd
         BL       vListInsertEnd 
         B.N      ??vTaskPriorityInherit_0
@@ -5515,9 +5598,9 @@ vTaskPriorityInherit:
 // 3750 					/* Just inherit the priority. */
 // 3751 					pxTCB->uxPriority = pxCurrentTCB->uxPriority;
 ??vTaskPriorityInherit_2:
-        LDR      R0,[R7, #+0]   
+        LDR      R0,[R8, #+0]   
         LDR      R0,[R0, #+44]  
-        STR      R0,[R4, #+44]  
+        STR      R0,[R5, #+44]  
 // 3752 				}
 // 3753 
 // 3754 				traceTASK_PRIORITY_INHERIT( pxTCB, pxCurrentTCB->uxPriority );
@@ -5533,7 +5616,7 @@ vTaskPriorityInherit:
 // 3764 		}
 // 3765 	}
 ??vTaskPriorityInherit_0:
-        POP      {R0,R4-R7,PC}  
+        POP      {R4-R8,PC}     
           CFI EndBlock cfiBlock33
 // 3766 
 // 3767 #endif /* configUSE_MUTEXES */
@@ -5549,17 +5632,20 @@ vTaskPriorityInherit:
 // 3772 	BaseType_t xTaskPriorityDisinherit( TaskHandle_t const pxMutexHolder )
 // 3773 	{
 xTaskPriorityDisinherit:
-        PUSH     {R4,LR}        
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
-// 3774 	TCB_t * const pxTCB = ( TCB_t * ) pxMutexHolder;
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
+          CFI CFA R13+16
         MOVS     R4,R0          
+// 3774 	TCB_t * const pxTCB = ( TCB_t * ) pxMutexHolder;
+        MOVS     R5,R4          
 // 3775 	BaseType_t xReturn = pdFALSE;
-        MOVS     R1,#+0         
+        MOVS     R6,#+0         
 // 3776 
 // 3777 		if( pxMutexHolder != NULL )
-        CMP      R0,#+0         
+        CMP      R4,#+0         
         BEQ.N    ??xTaskPriorityDisinherit_0
 // 3778 		{
 // 3779 			/* A task can only have an inherited priority if it holds the mutex.
@@ -5567,26 +5653,26 @@ xTaskPriorityDisinherit:
 // 3781 			interrupt, and if a mutex is given by the holding task then it must
 // 3782 			be the running state task. */
 // 3783 			configASSERT( pxTCB == pxCurrentTCB );
-        LDR.N    R0,??DataTable35_1
+        LDR.N    R0,??DataTable35
         LDR      R0,[R0, #+0]   
 // 3784 
 // 3785 			configASSERT( pxTCB->uxMutexesHeld );
 // 3786 			( pxTCB->uxMutexesHeld )--;
-        LDR      R0,[R4, #+68]  
+        LDR      R0,[R5, #+68]  
         SUBS     R0,R0,#+1      
-        STR      R0,[R4, #+68]  
+        STR      R0,[R5, #+68]  
 // 3787 
 // 3788 			/* Has the holder of the mutex inherited the priority of another
 // 3789 			task? */
 // 3790 			if( pxTCB->uxPriority != pxTCB->uxBasePriority )
-        LDR      R0,[R4, #+44]  
-        LDR      R2,[R4, #+64]  
-        CMP      R0,R2          
+        LDR      R0,[R5, #+44]  
+        LDR      R1,[R5, #+64]  
+        CMP      R0,R1          
         BEQ.N    ??xTaskPriorityDisinherit_0
 // 3791 			{
 // 3792 				/* Only disinherit if no other mutexes are held. */
 // 3793 				if( pxTCB->uxMutexesHeld == ( UBaseType_t ) 0 )
-        LDR      R0,[R4, #+68]  
+        LDR      R0,[R5, #+68]  
         CMP      R0,#+0         
         BNE.N    ??xTaskPriorityDisinherit_0
 // 3794 				{
@@ -5596,24 +5682,24 @@ xTaskPriorityDisinherit:
 // 3798 					holding	task then it must be the running state task.  Remove
 // 3799 					the	holding task from the ready	list. */
 // 3800 					if( uxListRemove( &( pxTCB->xStateListItem ) ) == ( UBaseType_t ) 0 )
-        ADDS     R0,R4,#+4      
+        ADDS     R0,R5,#+4      
           CFI FunCall uxListRemove
         BL       uxListRemove   
         CMP      R0,#+0         
         BNE.N    ??xTaskPriorityDisinherit_1
 // 3801 					{
 // 3802 						taskRESET_READY_PRIORITY( pxTCB->uxPriority );
-        LDR.W    R1,??DataTable39_1
-        LDR      R2,[R4, #+44]  
+        LDR.W    R1,??DataTable42_11
+        LDR      R2,[R5, #+44]  
         MOVS     R0,#+20        
         MULS     R2,R0,R2       
         LDR      R0,[R1, R2]    
         CMP      R0,#+0         
         BNE.N    ??xTaskPriorityDisinherit_1
-        LDR.N    R1,??DataTable35_4
+        LDR.N    R1,??DataTable35_3
         LDR      R2,[R1, #+0]   
         MOVS     R3,#+1         
-        LDR      R0,[R4, #+44]  
+        LDR      R0,[R5, #+44]  
         LSLS     R3,R3,R0       
         BICS     R2,R2,R3       
         STR      R2,[R1, #+0]   
@@ -5628,27 +5714,27 @@ xTaskPriorityDisinherit:
 // 3811 					traceTASK_PRIORITY_DISINHERIT( pxTCB, pxTCB->uxBasePriority );
 // 3812 					pxTCB->uxPriority = pxTCB->uxBasePriority;
 ??xTaskPriorityDisinherit_1:
-        LDR      R0,[R4, #+64]  
-        STR      R0,[R4, #+44]  
+        LDR      R0,[R5, #+64]  
+        STR      R0,[R5, #+44]  
 // 3813 
 // 3814 					/* Reset the event list item value.  It cannot be in use for
 // 3815 					any other purpose if this task is running, and it must be
 // 3816 					running to give back the mutex. */
 // 3817 					listSET_LIST_ITEM_VALUE( &( pxTCB->xEventListItem ), ( TickType_t ) configMAX_PRIORITIES - ( TickType_t ) pxTCB->uxPriority ); /*lint !e961 MISRA exception as the casts are only redundant for some ports. */
-        LDR      R0,[R4, #+44]  
+        LDR      R0,[R5, #+44]  
         RSBS     R0,R0,#+5      
-        STR      R0,[R4, #+24]  
+        STR      R0,[R5, #+24]  
 // 3818 					prvAddTaskToReadyList( pxTCB );
-        LDR.N    R1,??DataTable35_4
+        LDR.N    R1,??DataTable35_3
         LDR      R2,[R1, #+0]   
         MOVS     R3,#+1         
-        LDR      R0,[R4, #+44]  
+        LDR      R0,[R5, #+44]  
         LSLS     R3,R3,R0       
         ORRS     R2,R3,R2       
         STR      R2,[R1, #+0]   
-        ADDS     R1,R4,#+4      
-        LDR.W    R2,??DataTable39_1
-        LDR      R3,[R4, #+44]  
+        ADDS     R1,R5,#+4      
+        LDR.W    R2,??DataTable42_11
+        LDR      R3,[R5, #+44]  
         MOVS     R0,#+20        
         MULS     R3,R0,R3       
         ADD      R0,R2,R3       
@@ -5664,7 +5750,8 @@ xTaskPriorityDisinherit:
 // 3826 					switch should occur when the last mutex is returned whether
 // 3827 					a task is waiting on it or not. */
 // 3828 					xReturn = pdTRUE;
-        MOVS     R1,#+1         
+        MOVS     R0,#+1         
+        MOVS     R6,R0          
 // 3829 				}
 // 3830 				else
 // 3831 				{
@@ -5683,8 +5770,8 @@ xTaskPriorityDisinherit:
 // 3844 
 // 3845 		return xReturn;
 ??xTaskPriorityDisinherit_0:
-        MOVS     R0,R1          
-        POP      {R4,PC}        
+        MOVS     R0,R6          
+        POP      {R4-R6,PC}     
 // 3846 	}
           CFI EndBlock cfiBlock34
 // 3847 
@@ -6014,7 +6101,7 @@ xTaskPriorityDisinherit:
 // 4165 
 // 4166 	uxReturn = listGET_LIST_ITEM_VALUE( &( pxCurrentTCB->xEventListItem ) );
 uxTaskResetEventItemValue:
-        LDR.W    R1,??DataTable42_6
+        LDR.W    R1,??DataTable42_4
         LDR      R0,[R1, #+0]   
         LDR      R0,[R0, #+24]  
 // 4167 
@@ -6047,7 +6134,7 @@ uxTaskResetEventItemValue:
 // 4181 		then pxCurrentTCB will be NULL. */
 // 4182 		if( pxCurrentTCB != NULL )
 pvTaskIncrementMutexHeldCount:
-        LDR.W    R1,??DataTable42_6
+        LDR.W    R1,??DataTable42_4
         LDR      R0,[R1, #+0]   
         CMP      R0,#+0         
         BEQ.N    ??pvTaskIncrementMutexHeldCount_0
@@ -6079,12 +6166,13 @@ pvTaskIncrementMutexHeldCount:
 // 4195 	uint32_t ulTaskNotifyTake( BaseType_t xClearCountOnExit, TickType_t xTicksToWait )
 // 4196 	{
 ulTaskNotifyTake:
-        PUSH     {R4-R6,LR}     
+        PUSH     {R3-R7,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R6 Frame(CFA, -8)
-          CFI R5 Frame(CFA, -12)
-          CFI R4 Frame(CFA, -16)
-          CFI CFA R13+16
+          CFI R7 Frame(CFA, -8)
+          CFI R6 Frame(CFA, -12)
+          CFI R5 Frame(CFA, -16)
+          CFI R4 Frame(CFA, -20)
+          CFI CFA R13+24
         MOVS     R4,R0          
         MOVS     R5,R1          
 // 4197 	uint32_t ulReturn;
@@ -6095,8 +6183,8 @@ ulTaskNotifyTake:
 // 4200 		{
 // 4201 			/* Only block if the notification count is not already non-zero. */
 // 4202 			if( pxCurrentTCB->ulNotifiedValue == 0UL )
-        LDR.N    R6,??DataTable35_1
-        LDR      R0,[R6, #+0]   
+        LDR.N    R7,??DataTable35
+        LDR      R0,[R7, #+0]   
         LDR      R0,[R0, #+72]  
         CMP      R0,#+0         
         BNE.N    ??ulTaskNotifyTake_0
@@ -6104,7 +6192,7 @@ ulTaskNotifyTake:
 // 4204 				/* Mark this task as waiting for a notification. */
 // 4205 				pxCurrentTCB->ucNotifyState = taskWAITING_NOTIFICATION;
         MOVS     R0,#+1         
-        LDR      R1,[R6, #+0]   
+        LDR      R1,[R7, #+0]   
         STRB     R0,[R1, #+76]  
 // 4206 
 // 4207 				if( xTicksToWait > ( TickType_t ) 0 )
@@ -6124,7 +6212,7 @@ ulTaskNotifyTake:
 // 4215 					application code should ever do. */
 // 4216 					portYIELD_WITHIN_API();
         MOVS     R0,#+268435456 
-        LDR.N    R1,??DataTable37
+        LDR.N    R1,??DataTable36_1
         STR      R0,[R1, #+0]   
         DSB      SY             
         ISB      SY             
@@ -6150,11 +6238,11 @@ ulTaskNotifyTake:
 // 4231 		{
 // 4232 			traceTASK_NOTIFY_TAKE();
 // 4233 			ulReturn = pxCurrentTCB->ulNotifiedValue;
-        LDR      R0,[R6, #+0]   
-        LDR      R5,[R0, #+72]  
+        LDR      R0,[R7, #+0]   
+        LDR      R6,[R0, #+72]  
 // 4234 
 // 4235 			if( ulReturn != 0UL )
-        CMP      R5,#+0         
+        CMP      R6,#+0         
         BEQ.N    ??ulTaskNotifyTake_1
 // 4236 			{
 // 4237 				if( xClearCountOnExit != pdFALSE )
@@ -6163,7 +6251,7 @@ ulTaskNotifyTake:
 // 4238 				{
 // 4239 					pxCurrentTCB->ulNotifiedValue = 0UL;
         MOVS     R0,#+0         
-        LDR      R1,[R6, #+0]   
+        LDR      R1,[R7, #+0]   
         STR      R0,[R1, #+72]  
         B.N      ??ulTaskNotifyTake_1
 // 4240 				}
@@ -6171,8 +6259,8 @@ ulTaskNotifyTake:
 // 4242 				{
 // 4243 					pxCurrentTCB->ulNotifiedValue = ulReturn - 1;
 ??ulTaskNotifyTake_2:
-        SUBS     R0,R5,#+1      
-        LDR      R1,[R6, #+0]   
+        SUBS     R0,R6,#+1      
+        LDR      R1,[R7, #+0]   
         STR      R0,[R1, #+72]  
 // 4244 				}
 // 4245 			}
@@ -6184,7 +6272,7 @@ ulTaskNotifyTake:
 // 4251 			pxCurrentTCB->ucNotifyState = taskNOT_WAITING_NOTIFICATION;
 ??ulTaskNotifyTake_1:
         MOVS     R0,#+0         
-        LDR      R1,[R6, #+0]   
+        LDR      R1,[R7, #+0]   
         STRB     R0,[R1, #+76]  
 // 4252 		}
 // 4253 		taskEXIT_CRITICAL();
@@ -6192,10 +6280,17 @@ ulTaskNotifyTake:
         BL       vPortExitCritical
 // 4254 
 // 4255 		return ulReturn;
-        MOVS     R0,R5          
-        POP      {R4-R6,PC}     
+        MOVS     R0,R6          
+        POP      {R1,R4-R7,PC}  
 // 4256 	}
           CFI EndBlock cfiBlock37
+
+        SECTION `.text`:CODE:NOROOT(2)
+        SECTION_TYPE SHT_PROGBITS, 0
+        DATA
+??DataTable34:
+        DATA32
+        DC32     uxCurrentNumberOfTasks
 // 4257 
 // 4258 #endif /* configUSE_TASK_NOTIFICATIONS */
 // 4259 /*-----------------------------------------------------------*/
@@ -6210,15 +6305,16 @@ ulTaskNotifyTake:
 // 4263 	BaseType_t xTaskNotifyWait( uint32_t ulBitsToClearOnEntry, uint32_t ulBitsToClearOnExit, uint32_t *pulNotificationValue, TickType_t xTicksToWait )
 // 4264 	{
 xTaskNotifyWait:
-        PUSH     {R4-R8,LR}     
+        PUSH     {R3-R9,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R8 Frame(CFA, -8)
-          CFI R7 Frame(CFA, -12)
-          CFI R6 Frame(CFA, -16)
-          CFI R5 Frame(CFA, -20)
-          CFI R4 Frame(CFA, -24)
-          CFI CFA R13+24
-        MOV      R8,R0          
+          CFI R9 Frame(CFA, -8)
+          CFI R8 Frame(CFA, -12)
+          CFI R7 Frame(CFA, -16)
+          CFI R6 Frame(CFA, -20)
+          CFI R5 Frame(CFA, -24)
+          CFI R4 Frame(CFA, -28)
+          CFI CFA R13+32
+        MOVS     R6,R0          
         MOVS     R7,R1          
         MOVS     R4,R2          
         MOVS     R5,R3          
@@ -6230,8 +6326,8 @@ xTaskNotifyWait:
 // 4268 		{
 // 4269 			/* Only block if a notification is not already pending. */
 // 4270 			if( pxCurrentTCB->ucNotifyState != taskNOTIFICATION_RECEIVED )
-        LDR.N    R6,??DataTable35_1
-        LDR      R0,[R6, #+0]   
+        LDR.W    R8,??DataTable35
+        LDR      R0,[R8, #+0]   
         LDRB     R0,[R0, #+76]  
         CMP      R0,#+2         
         BEQ.N    ??xTaskNotifyWait_0
@@ -6240,15 +6336,15 @@ xTaskNotifyWait:
 // 4273 				set	by the notifying task or interrupt.  This can be used to
 // 4274 				clear the value to zero. */
 // 4275 				pxCurrentTCB->ulNotifiedValue &= ~ulBitsToClearOnEntry;
-        LDR      R0,[R6, #+0]   
+        LDR      R0,[R8, #+0]   
         LDR      R1,[R0, #+72]  
-        BICS     R8,R1,R8       
-        STR      R8,[R0, #+72]  
+        BICS     R1,R1,R6       
+        STR      R1,[R0, #+72]  
 // 4276 
 // 4277 				/* Mark this task as waiting for a notification. */
 // 4278 				pxCurrentTCB->ucNotifyState = taskWAITING_NOTIFICATION;
         MOVS     R0,#+1         
-        LDR      R1,[R6, #+0]   
+        LDR      R1,[R8, #+0]   
         STRB     R0,[R1, #+76]  
 // 4279 
 // 4280 				if( xTicksToWait > ( TickType_t ) 0 )
@@ -6268,7 +6364,7 @@ xTaskNotifyWait:
 // 4288 					application code should ever do. */
 // 4289 					portYIELD_WITHIN_API();
         MOVS     R0,#+268435456 
-        LDR.N    R1,??DataTable37
+        LDR.N    R1,??DataTable36_1
         STR      R0,[R1, #+0]   
         DSB      SY             
         ISB      SY             
@@ -6301,7 +6397,7 @@ xTaskNotifyWait:
 // 4309 				/* Output the current notification value, which may or may not
 // 4310 				have changed. */
 // 4311 				*pulNotificationValue = pxCurrentTCB->ulNotifiedValue;
-        LDR      R0,[R6, #+0]   
+        LDR      R0,[R8, #+0]   
         LDR      R0,[R0, #+72]  
         STR      R0,[R4, #+0]   
 // 4312 			}
@@ -6312,14 +6408,14 @@ xTaskNotifyWait:
 // 4317 			unblocked because of a timeout. */
 // 4318 			if( pxCurrentTCB->ucNotifyState == taskWAITING_NOTIFICATION )
 ??xTaskNotifyWait_1:
-        LDR      R0,[R6, #+0]   
+        LDR      R0,[R8, #+0]   
         LDRB     R0,[R0, #+76]  
         CMP      R0,#+1         
         BNE.N    ??xTaskNotifyWait_2
 // 4319 			{
 // 4320 				/* A notification was not received. */
 // 4321 				xReturn = pdFALSE;
-        MOVS     R4,#+0         
+        MOVS     R9,#+0         
         B.N      ??xTaskNotifyWait_3
 // 4322 			}
 // 4323 			else
@@ -6328,18 +6424,18 @@ xTaskNotifyWait:
 // 4326 				received while the task was waiting. */
 // 4327 				pxCurrentTCB->ulNotifiedValue &= ~ulBitsToClearOnExit;
 ??xTaskNotifyWait_2:
-        LDR      R0,[R6, #+0]   
+        LDR      R0,[R8, #+0]   
         LDR      R1,[R0, #+72]  
-        BICS     R7,R1,R7       
-        STR      R7,[R0, #+72]  
+        BICS     R1,R1,R7       
+        STR      R1,[R0, #+72]  
 // 4328 				xReturn = pdTRUE;
-        MOVS     R4,#+1         
+        MOVS     R9,#+1         
 // 4329 			}
 // 4330 
 // 4331 			pxCurrentTCB->ucNotifyState = taskNOT_WAITING_NOTIFICATION;
 ??xTaskNotifyWait_3:
         MOVS     R0,#+0         
-        LDR      R1,[R6, #+0]   
+        LDR      R1,[R8, #+0]   
         STRB     R0,[R1, #+76]  
 // 4332 		}
 // 4333 		taskEXIT_CRITICAL();
@@ -6347,8 +6443,8 @@ xTaskNotifyWait:
         BL       vPortExitCritical
 // 4334 
 // 4335 		return xReturn;
-        MOVS     R0,R4          
-        POP      {R4-R8,PC}     
+        MOV      R0,R9          
+        POP      {R1,R4-R9,PC}  
 // 4336 	}
           CFI EndBlock cfiBlock38
 
@@ -6357,35 +6453,35 @@ xTaskNotifyWait:
         DATA
 ??DataTable35:
         DATA32
-        DC32     uxCurrentNumberOfTasks
+        DC32     pxCurrentTCB   
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable35_1:
         DATA32
-        DC32     pxCurrentTCB   
+        DC32     xSchedulerRunning
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable35_2:
         DATA32
-        DC32     xSchedulerRunning
+        DC32     uxTaskNumber   
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable35_3:
         DATA32
-        DC32     uxTaskNumber   
+        DC32     uxTopReadyPriority
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable35_4:
         DATA32
-        DC32     uxTopReadyPriority
+        DC32     xTickCount     
 // 4337 
 // 4338 #endif /* configUSE_TASK_NOTIFICATIONS */
 // 4339 /*-----------------------------------------------------------*/
@@ -6400,25 +6496,28 @@ xTaskNotifyWait:
 // 4343 	BaseType_t xTaskGenericNotify( TaskHandle_t xTaskToNotify, uint32_t ulValue, eNotifyAction eAction, uint32_t *pulPreviousNotificationValue )
 // 4344 	{
 xTaskGenericNotify:
-        PUSH     {R4-R8,LR}     
+        PUSH     {R4-R10,LR}    
           CFI R14 Frame(CFA, -4)
-          CFI R8 Frame(CFA, -8)
-          CFI R7 Frame(CFA, -12)
-          CFI R6 Frame(CFA, -16)
-          CFI R5 Frame(CFA, -20)
-          CFI R4 Frame(CFA, -24)
-          CFI CFA R13+24
-        MOVS     R6,R0          
-        MOVS     R7,R1          
-        MOV      R8,R2          
+          CFI R10 Frame(CFA, -8)
+          CFI R9 Frame(CFA, -12)
+          CFI R8 Frame(CFA, -16)
+          CFI R7 Frame(CFA, -20)
+          CFI R6 Frame(CFA, -24)
+          CFI R5 Frame(CFA, -28)
+          CFI R4 Frame(CFA, -32)
+          CFI CFA R13+32
+        MOVS     R5,R0          
+        MOVS     R6,R1          
+        MOVS     R7,R2          
         MOVS     R4,R3          
 // 4345 	TCB_t * pxTCB;
 // 4346 	BaseType_t xReturn = pdPASS;
-        MOVS     R5,#+1         
+        MOVS     R8,#+1         
 // 4347 	uint8_t ucOriginalNotifyState;
 // 4348 
 // 4349 		configASSERT( xTaskToNotify );
 // 4350 		pxTCB = ( TCB_t * ) xTaskToNotify;
+        MOV      R9,R5          
 // 4351 
 // 4352 		taskENTER_CRITICAL();
           CFI FunCall vPortEnterCritical
@@ -6429,26 +6528,27 @@ xTaskGenericNotify:
         BEQ.N    ??xTaskGenericNotify_0
 // 4355 			{
 // 4356 				*pulPreviousNotificationValue = pxTCB->ulNotifiedValue;
-        LDR      R0,[R6, #+72]  
+        LDR      R0,[R9, #+72]  
         STR      R0,[R4, #+0]   
 // 4357 			}
 // 4358 
 // 4359 			ucOriginalNotifyState = pxTCB->ucNotifyState;
 ??xTaskGenericNotify_0:
-        LDRB     R0,[R6, #+76]  
+        LDRB     R10,[R9, #+76] 
 // 4360 
 // 4361 			pxTCB->ucNotifyState = taskNOTIFICATION_RECEIVED;
-        MOVS     R1,#+2         
-        STRB     R1,[R6, #+76]  
+        MOVS     R0,#+2         
+        STRB     R0,[R9, #+76]  
 // 4362 
 // 4363 			switch( eAction )
-        UXTB     R8,R8          
-        CMP      R8,#+0         
+        MOVS     R0,R7          
+        UXTB     R0,R0          
+        CMP      R0,#+0         
         BEQ.N    ??xTaskGenericNotify_1
-        CMP      R8,#+2         
+        CMP      R0,#+2         
         BEQ.N    ??xTaskGenericNotify_2
         BCC.N    ??xTaskGenericNotify_3
-        CMP      R8,#+4         
+        CMP      R0,#+4         
         BEQ.N    ??xTaskGenericNotify_4
         BCC.N    ??xTaskGenericNotify_5
         B.N      ??xTaskGenericNotify_6
@@ -6456,38 +6556,38 @@ xTaskGenericNotify:
 // 4365 				case eSetBits	:
 // 4366 					pxTCB->ulNotifiedValue |= ulValue;
 ??xTaskGenericNotify_3:
-        LDR      R1,[R6, #+72]  
-        ORRS     R7,R7,R1       
-        STR      R7,[R6, #+72]  
+        LDR      R0,[R9, #+72]  
+        ORRS     R0,R6,R0       
+        STR      R0,[R9, #+72]  
 // 4367 					break;
         B.N      ??xTaskGenericNotify_6
 // 4368 
 // 4369 				case eIncrement	:
 // 4370 					( pxTCB->ulNotifiedValue )++;
 ??xTaskGenericNotify_2:
-        LDR      R1,[R6, #+72]  
-        ADDS     R1,R1,#+1      
-        STR      R1,[R6, #+72]  
+        LDR      R0,[R9, #+72]  
+        ADDS     R0,R0,#+1      
+        STR      R0,[R9, #+72]  
 // 4371 					break;
         B.N      ??xTaskGenericNotify_6
 // 4372 
 // 4373 				case eSetValueWithOverwrite	:
 // 4374 					pxTCB->ulNotifiedValue = ulValue;
 ??xTaskGenericNotify_5:
-        STR      R7,[R6, #+72]  
+        STR      R6,[R9, #+72]  
 // 4375 					break;
         B.N      ??xTaskGenericNotify_6
 // 4376 
 // 4377 				case eSetValueWithoutOverwrite :
 // 4378 					if( ucOriginalNotifyState != taskNOTIFICATION_RECEIVED )
 ??xTaskGenericNotify_4:
-        MOVS     R1,R0          
-        UXTB     R1,R1          
-        CMP      R1,#+2         
+        MOV      R0,R10         
+        UXTB     R0,R0          
+        CMP      R0,#+2         
         BEQ.N    ??xTaskGenericNotify_7
 // 4379 					{
 // 4380 						pxTCB->ulNotifiedValue = ulValue;
-        STR      R7,[R6, #+72]  
+        STR      R6,[R9, #+72]  
         B.N      ??xTaskGenericNotify_8
 // 4381 					}
 // 4382 					else
@@ -6495,7 +6595,8 @@ xTaskGenericNotify:
 // 4384 						/* The value could not be written to the task. */
 // 4385 						xReturn = pdFAIL;
 ??xTaskGenericNotify_7:
-        MOVS     R5,#+0         
+        MOVS     R0,#+0         
+        MOV      R8,R0          
 // 4386 					}
 // 4387 					break;
 ??xTaskGenericNotify_8:
@@ -6514,25 +6615,26 @@ xTaskGenericNotify:
 // 4399 			if( ucOriginalNotifyState == taskWAITING_NOTIFICATION )
 ??xTaskGenericNotify_1:
 ??xTaskGenericNotify_6:
+        MOV      R0,R10         
         UXTB     R0,R0          
         CMP      R0,#+1         
         BNE.N    ??xTaskGenericNotify_9
 // 4400 			{
 // 4401 				( void ) uxListRemove( &( pxTCB->xStateListItem ) );
-        ADDS     R0,R6,#+4      
+        ADDS     R0,R9,#+4      
           CFI FunCall uxListRemove
         BL       uxListRemove   
 // 4402 				prvAddTaskToReadyList( pxTCB );
-        LDR.N    R1,??DataTable42_12
+        LDR.N    R1,??DataTable42_10
         LDR      R2,[R1, #+0]   
         MOVS     R3,#+1         
-        LDR      R0,[R6, #+44]  
+        LDR      R0,[R9, #+44]  
         LSLS     R3,R3,R0       
         ORRS     R2,R3,R2       
         STR      R2,[R1, #+0]   
-        ADDS     R1,R6,#+4      
-        LDR.N    R2,??DataTable39_1
-        LDR      R3,[R6, #+44]  
+        ADDS     R1,R9,#+4      
+        LDR.N    R2,??DataTable37_1
+        LDR      R3,[R9, #+44]  
         MOVS     R0,#+20        
         MULS     R3,R0,R3       
         ADD      R0,R2,R3       
@@ -6559,10 +6661,10 @@ xTaskGenericNotify:
 // 4421 				#endif
 // 4422 
 // 4423 				if( pxTCB->uxPriority > pxCurrentTCB->uxPriority )
-        LDR.N    R0,??DataTable42_6
+        LDR.N    R0,??DataTable42_4
         LDR      R0,[R0, #+0]   
         LDR      R0,[R0, #+44]  
-        LDR      R1,[R6, #+44]  
+        LDR      R1,[R9, #+44]  
         CMP      R0,R1          
         BCS.N    ??xTaskGenericNotify_9
 // 4424 				{
@@ -6570,7 +6672,7 @@ xTaskGenericNotify:
 // 4426 					executing task so a yield is required. */
 // 4427 					taskYIELD_IF_USING_PREEMPTION();
         MOVS     R0,#+268435456 
-        LDR.N    R1,??DataTable37
+        LDR.N    R1,??DataTable36_1
         STR      R0,[R1, #+0]   
         DSB      SY             
         ISB      SY             
@@ -6591,8 +6693,8 @@ xTaskGenericNotify:
         BL       vPortExitCritical
 // 4440 
 // 4441 		return xReturn;
-        MOVS     R0,R5          
-        POP      {R4-R8,PC}     
+        MOV      R0,R8          
+        POP      {R4-R10,PC}    
 // 4442 	}
           CFI EndBlock cfiBlock39
 
@@ -6608,7 +6710,7 @@ xTaskGenericNotify:
         DATA
 ??DataTable36_1:
         DATA32
-        DC32     xTickCount     
+        DC32     0xe000ed04     
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
@@ -6630,23 +6732,26 @@ xTaskGenericNotify:
 // 4449 	BaseType_t xTaskGenericNotifyFromISR( TaskHandle_t xTaskToNotify, uint32_t ulValue, eNotifyAction eAction, uint32_t *pulPreviousNotificationValue, BaseType_t *pxHigherPriorityTaskWoken )
 // 4450 	{
 xTaskGenericNotifyFromISR:
-        PUSH     {R3-R9,LR}     
+        PUSH     {R3-R11,LR}    
           CFI R14 Frame(CFA, -4)
-          CFI R9 Frame(CFA, -8)
-          CFI R8 Frame(CFA, -12)
-          CFI R7 Frame(CFA, -16)
-          CFI R6 Frame(CFA, -20)
-          CFI R5 Frame(CFA, -24)
-          CFI R4 Frame(CFA, -28)
-          CFI CFA R13+32
-        MOVS     R7,R0          
-        MOV      R8,R1          
-        MOV      R9,R2          
+          CFI R11 Frame(CFA, -8)
+          CFI R10 Frame(CFA, -12)
+          CFI R9 Frame(CFA, -16)
+          CFI R8 Frame(CFA, -20)
+          CFI R7 Frame(CFA, -24)
+          CFI R6 Frame(CFA, -28)
+          CFI R5 Frame(CFA, -32)
+          CFI R4 Frame(CFA, -36)
+          CFI CFA R13+40
+        MOVS     R6,R0          
+        MOVS     R7,R1          
+        MOV      R8,R2          
         MOVS     R4,R3          
+        LDR      R5,[SP, #+40]  
 // 4451 	TCB_t * pxTCB;
 // 4452 	uint8_t ucOriginalNotifyState;
 // 4453 	BaseType_t xReturn = pdPASS;
-        MOVS     R5,#+1         
+        MOVS     R9,#+1         
 // 4454 	UBaseType_t uxSavedInterruptStatus;
 // 4455 
 // 4456 		configASSERT( xTaskToNotify );
@@ -6672,9 +6777,10 @@ xTaskGenericNotifyFromISR:
         BL       vPortValidateInterruptPriority
 // 4475 
 // 4476 		pxTCB = ( TCB_t * ) xTaskToNotify;
+        MOV      R10,R6         
 // 4477 
 // 4478 		uxSavedInterruptStatus = portSET_INTERRUPT_MASK_FROM_ISR();
-        MRS      R6,BASEPRI     
+        MRS      R11,BASEPRI    
         MOVS     R0,#+80        
         MSR      BASEPRI,R0     
         DSB      SY             
@@ -6685,25 +6791,27 @@ xTaskGenericNotifyFromISR:
         BEQ.N    ??xTaskGenericNotifyFromISR_0
 // 4481 			{
 // 4482 				*pulPreviousNotificationValue = pxTCB->ulNotifiedValue;
-        LDR      R0,[R7, #+72]  
+        LDR      R0,[R10, #+72] 
         STR      R0,[R4, #+0]   
 // 4483 			}
 // 4484 
 // 4485 			ucOriginalNotifyState = pxTCB->ucNotifyState;
 ??xTaskGenericNotifyFromISR_0:
-        LDRB     R0,[R7, #+76]  
+        LDRB     R0,[R10, #+76] 
+        STRB     R0,[SP, #+0]   
 // 4486 			pxTCB->ucNotifyState = taskNOTIFICATION_RECEIVED;
-        MOVS     R1,#+2         
-        STRB     R1,[R7, #+76]  
+        MOVS     R0,#+2         
+        STRB     R0,[R10, #+76] 
 // 4487 
 // 4488 			switch( eAction )
-        UXTB     R9,R9          
-        CMP      R9,#+0         
+        MOV      R0,R8          
+        UXTB     R0,R0          
+        CMP      R0,#+0         
         BEQ.N    ??xTaskGenericNotifyFromISR_1
-        CMP      R9,#+2         
+        CMP      R0,#+2         
         BEQ.N    ??xTaskGenericNotifyFromISR_2
         BCC.N    ??xTaskGenericNotifyFromISR_3
-        CMP      R9,#+4         
+        CMP      R0,#+4         
         BEQ.N    ??xTaskGenericNotifyFromISR_4
         BCC.N    ??xTaskGenericNotifyFromISR_5
         B.N      ??xTaskGenericNotifyFromISR_6
@@ -6711,38 +6819,37 @@ xTaskGenericNotifyFromISR:
 // 4490 				case eSetBits	:
 // 4491 					pxTCB->ulNotifiedValue |= ulValue;
 ??xTaskGenericNotifyFromISR_3:
-        LDR      R1,[R7, #+72]  
-        ORRS     R8,R8,R1       
-        STR      R8,[R7, #+72]  
+        LDR      R0,[R10, #+72] 
+        ORRS     R0,R7,R0       
+        STR      R0,[R10, #+72] 
 // 4492 					break;
         B.N      ??xTaskGenericNotifyFromISR_6
 // 4493 
 // 4494 				case eIncrement	:
 // 4495 					( pxTCB->ulNotifiedValue )++;
 ??xTaskGenericNotifyFromISR_2:
-        LDR      R1,[R7, #+72]  
-        ADDS     R1,R1,#+1      
-        STR      R1,[R7, #+72]  
+        LDR      R0,[R10, #+72] 
+        ADDS     R0,R0,#+1      
+        STR      R0,[R10, #+72] 
 // 4496 					break;
         B.N      ??xTaskGenericNotifyFromISR_6
 // 4497 
 // 4498 				case eSetValueWithOverwrite	:
 // 4499 					pxTCB->ulNotifiedValue = ulValue;
 ??xTaskGenericNotifyFromISR_5:
-        STR      R8,[R7, #+72]  
+        STR      R7,[R10, #+72] 
 // 4500 					break;
         B.N      ??xTaskGenericNotifyFromISR_6
 // 4501 
 // 4502 				case eSetValueWithoutOverwrite :
 // 4503 					if( ucOriginalNotifyState != taskNOTIFICATION_RECEIVED )
 ??xTaskGenericNotifyFromISR_4:
-        MOVS     R1,R0          
-        UXTB     R1,R1          
-        CMP      R1,#+2         
+        LDRB     R0,[SP, #+0]   
+        CMP      R0,#+2         
         BEQ.N    ??xTaskGenericNotifyFromISR_7
 // 4504 					{
 // 4505 						pxTCB->ulNotifiedValue = ulValue;
-        STR      R8,[R7, #+72]  
+        STR      R7,[R10, #+72] 
         B.N      ??xTaskGenericNotifyFromISR_8
 // 4506 					}
 // 4507 					else
@@ -6750,7 +6857,8 @@ xTaskGenericNotifyFromISR:
 // 4509 						/* The value could not be written to the task. */
 // 4510 						xReturn = pdFAIL;
 ??xTaskGenericNotifyFromISR_7:
-        MOVS     R5,#+0         
+        MOVS     R0,#+0         
+        MOV      R9,R0          
 // 4511 					}
 // 4512 					break;
 ??xTaskGenericNotifyFromISR_8:
@@ -6769,7 +6877,7 @@ xTaskGenericNotifyFromISR:
 // 4524 			if( ucOriginalNotifyState == taskWAITING_NOTIFICATION )
 ??xTaskGenericNotifyFromISR_1:
 ??xTaskGenericNotifyFromISR_6:
-        UXTB     R0,R0          
+        LDRB     R0,[SP, #+0]   
         CMP      R0,#+1         
         BNE.N    ??xTaskGenericNotifyFromISR_9
 // 4525 			{
@@ -6777,26 +6885,26 @@ xTaskGenericNotifyFromISR:
 // 4527 				configASSERT( listLIST_ITEM_CONTAINER( &( pxTCB->xEventListItem ) ) == NULL );
 // 4528 
 // 4529 				if( uxSchedulerSuspended == ( UBaseType_t ) pdFALSE )
-        LDR.N    R0,??DataTable39
+        LDR.N    R0,??DataTable38
         LDR      R0,[R0, #+0]   
         CMP      R0,#+0         
         BNE.N    ??xTaskGenericNotifyFromISR_10
 // 4530 				{
 // 4531 					( void ) uxListRemove( &( pxTCB->xStateListItem ) );
-        ADDS     R0,R7,#+4      
+        ADDS     R0,R10,#+4     
           CFI FunCall uxListRemove
         BL       uxListRemove   
 // 4532 					prvAddTaskToReadyList( pxTCB );
-        LDR.N    R1,??DataTable42_12
+        LDR.N    R1,??DataTable42_10
         LDR      R2,[R1, #+0]   
         MOVS     R3,#+1         
-        LDR      R0,[R7, #+44]  
+        LDR      R0,[R10, #+44] 
         LSLS     R3,R3,R0       
         ORRS     R2,R3,R2       
         STR      R2,[R1, #+0]   
-        ADDS     R1,R7,#+4      
-        LDR.N    R2,??DataTable39_1
-        LDR      R3,[R7, #+44]  
+        ADDS     R1,R10,#+4     
+        LDR.N    R2,??DataTable37_1
+        LDR      R3,[R10, #+44] 
         MOVS     R0,#+20        
         MULS     R3,R0,R3       
         ADD      R0,R2,R3       
@@ -6810,7 +6918,7 @@ xTaskGenericNotifyFromISR:
 // 4537 					this task pending until the scheduler is resumed. */
 // 4538 					vListInsertEnd( &( xPendingReadyList ), &( pxTCB->xEventListItem ) );
 ??xTaskGenericNotifyFromISR_10:
-        ADDS     R1,R7,#+24     
+        ADDS     R1,R10,#+24    
         LDR.N    R0,??DataTable42
           CFI FunCall vListInsertEnd
         BL       vListInsertEnd 
@@ -6818,23 +6926,22 @@ xTaskGenericNotifyFromISR:
 // 4540 
 // 4541 				if( pxTCB->uxPriority > pxCurrentTCB->uxPriority )
 ??xTaskGenericNotifyFromISR_11:
-        LDR.N    R0,??DataTable42_6
+        LDR.N    R0,??DataTable42_4
         LDR      R0,[R0, #+0]   
         LDR      R0,[R0, #+44]  
-        LDR      R1,[R7, #+44]  
+        LDR      R1,[R10, #+44] 
         CMP      R0,R1          
         BCS.N    ??xTaskGenericNotifyFromISR_9
-        LDR      R0,[SP, #+32]  
 // 4542 				{
 // 4543 					/* The notified task has a priority above the currently
 // 4544 					executing task so a yield is required. */
 // 4545 					if( pxHigherPriorityTaskWoken != NULL )
-        CMP      R0,#+0         
+        CMP      R5,#+0         
         BEQ.N    ??xTaskGenericNotifyFromISR_12
 // 4546 					{
 // 4547 						*pxHigherPriorityTaskWoken = pdTRUE;
-        MOVS     R1,#+1         
-        STR      R1,[R0, #+0]   
+        MOVS     R0,#+1         
+        STR      R0,[R5, #+0]   
         B.N      ??xTaskGenericNotifyFromISR_9
 // 4548 					}
 // 4549 					else
@@ -6845,7 +6952,7 @@ xTaskGenericNotifyFromISR:
 // 4554 						xYieldPending = pdTRUE;
 ??xTaskGenericNotifyFromISR_12:
         MOVS     R0,#+1         
-        LDR.N    R1,??DataTable42_4
+        LDR.N    R1,??DataTable42_2
         STR      R0,[R1, #+0]   
 // 4555 					}
 // 4556 				}
@@ -6857,11 +6964,11 @@ xTaskGenericNotifyFromISR:
 // 4562 		}
 // 4563 		portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedInterruptStatus );
 ??xTaskGenericNotifyFromISR_9:
-        MSR      BASEPRI,R6     
+        MSR      BASEPRI,R11    
 // 4564 
 // 4565 		return xReturn;
-        MOVS     R0,R5          
-        POP      {R1,R4-R9,PC}  
+        MOV      R0,R9          
+        POP      {R1,R4-R11,PC} 
 // 4566 	}
           CFI EndBlock cfiBlock40
 
@@ -6870,7 +6977,14 @@ xTaskGenericNotifyFromISR:
         DATA
 ??DataTable37:
         DATA32
-        DC32     0xe000ed04     
+        DC32     uxSchedulerSuspended
+
+        SECTION `.text`:CODE:NOROOT(2)
+        SECTION_TYPE SHT_PROGBITS, 0
+        DATA
+??DataTable37_1:
+        DATA32
+        DC32     pxReadyTasksLists
 // 4567 
 // 4568 #endif /* configUSE_TASK_NOTIFICATIONS */
 // 4569 /*-----------------------------------------------------------*/
@@ -6885,13 +6999,15 @@ xTaskGenericNotifyFromISR:
 // 4573 	void vTaskNotifyGiveFromISR( TaskHandle_t xTaskToNotify, BaseType_t *pxHigherPriorityTaskWoken )
 // 4574 	{
 vTaskNotifyGiveFromISR:
-        PUSH     {R4-R6,LR}     
+        PUSH     {R4-R8,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R6 Frame(CFA, -8)
-          CFI R5 Frame(CFA, -12)
-          CFI R4 Frame(CFA, -16)
-          CFI CFA R13+16
-        MOVS     R6,R0          
+          CFI R8 Frame(CFA, -8)
+          CFI R7 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -16)
+          CFI R5 Frame(CFA, -20)
+          CFI R4 Frame(CFA, -24)
+          CFI CFA R13+24
+        MOVS     R5,R0          
         MOVS     R4,R1          
 // 4575 	TCB_t * pxTCB;
 // 4576 	uint8_t ucOriginalNotifyState;
@@ -6920,32 +7036,34 @@ vTaskNotifyGiveFromISR:
         BL       vPortValidateInterruptPriority
 // 4598 
 // 4599 		pxTCB = ( TCB_t * ) xTaskToNotify;
+        MOVS     R6,R5          
 // 4600 
 // 4601 		uxSavedInterruptStatus = portSET_INTERRUPT_MASK_FROM_ISR();
-        MRS      R5,BASEPRI     
+        MRS      R7,BASEPRI     
         MOVS     R0,#+80        
         MSR      BASEPRI,R0     
         DSB      SY             
         ISB      SY             
 // 4602 		{
 // 4603 			ucOriginalNotifyState = pxTCB->ucNotifyState;
-        LDRB     R0,[R6, #+76]  
+        LDRB     R8,[R6, #+76]  
 // 4604 			pxTCB->ucNotifyState = taskNOTIFICATION_RECEIVED;
-        MOVS     R1,#+2         
-        STRB     R1,[R6, #+76]  
+        MOVS     R0,#+2         
+        STRB     R0,[R6, #+76]  
 // 4605 
 // 4606 			/* 'Giving' is equivalent to incrementing a count in a counting
 // 4607 			semaphore. */
 // 4608 			( pxTCB->ulNotifiedValue )++;
-        LDR      R1,[R6, #+72]  
-        ADDS     R1,R1,#+1      
-        STR      R1,[R6, #+72]  
+        LDR      R0,[R6, #+72]  
+        ADDS     R0,R0,#+1      
+        STR      R0,[R6, #+72]  
 // 4609 
 // 4610 			traceTASK_NOTIFY_GIVE_FROM_ISR();
 // 4611 
 // 4612 			/* If the task is in the blocked state specifically to wait for a
 // 4613 			notification then unblock it now. */
 // 4614 			if( ucOriginalNotifyState == taskWAITING_NOTIFICATION )
+        MOV      R0,R8          
         UXTB     R0,R0          
         CMP      R0,#+1         
         BNE.N    ??vTaskNotifyGiveFromISR_0
@@ -6954,7 +7072,7 @@ vTaskNotifyGiveFromISR:
 // 4617 				configASSERT( listLIST_ITEM_CONTAINER( &( pxTCB->xEventListItem ) ) == NULL );
 // 4618 
 // 4619 				if( uxSchedulerSuspended == ( UBaseType_t ) pdFALSE )
-        LDR.N    R0,??DataTable39
+        LDR.N    R0,??DataTable38
         LDR      R0,[R0, #+0]   
         CMP      R0,#+0         
         BNE.N    ??vTaskNotifyGiveFromISR_1
@@ -6964,7 +7082,7 @@ vTaskNotifyGiveFromISR:
           CFI FunCall uxListRemove
         BL       uxListRemove   
 // 4622 					prvAddTaskToReadyList( pxTCB );
-        LDR.N    R1,??DataTable42_12
+        LDR.N    R1,??DataTable42_10
         LDR      R2,[R1, #+0]   
         MOVS     R3,#+1         
         LDR      R0,[R6, #+44]  
@@ -6972,7 +7090,7 @@ vTaskNotifyGiveFromISR:
         ORRS     R2,R3,R2       
         STR      R2,[R1, #+0]   
         ADDS     R1,R6,#+4      
-        LDR.N    R2,??DataTable39_1
+        LDR.N    R2,??DataTable42_11
         LDR      R3,[R6, #+44]  
         MOVS     R0,#+20        
         MULS     R3,R0,R3       
@@ -6995,7 +7113,7 @@ vTaskNotifyGiveFromISR:
 // 4630 
 // 4631 				if( pxTCB->uxPriority > pxCurrentTCB->uxPriority )
 ??vTaskNotifyGiveFromISR_2:
-        LDR.N    R0,??DataTable42_6
+        LDR.N    R0,??DataTable42_4
         LDR      R0,[R0, #+0]   
         LDR      R0,[R0, #+44]  
         LDR      R1,[R6, #+44]  
@@ -7021,7 +7139,7 @@ vTaskNotifyGiveFromISR:
 // 4644 						xYieldPending = pdTRUE;
 ??vTaskNotifyGiveFromISR_3:
         MOVS     R0,#+1         
-        LDR.N    R1,??DataTable42_4
+        LDR.N    R1,??DataTable42_2
         STR      R0,[R1, #+0]   
 // 4645 					}
 // 4646 				}
@@ -7033,9 +7151,9 @@ vTaskNotifyGiveFromISR:
 // 4652 		}
 // 4653 		portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedInterruptStatus );
 ??vTaskNotifyGiveFromISR_0:
-        MSR      BASEPRI,R5     
+        MSR      BASEPRI,R7     
 // 4654 	}
-        POP      {R4-R6,PC}     
+        POP      {R4-R8,PC}     
           CFI EndBlock cfiBlock41
 
         SECTION `.text`:CODE:NOROOT(2)
@@ -7059,10 +7177,12 @@ vTaskNotifyGiveFromISR:
 // 4662 	BaseType_t xTaskNotifyStateClear( TaskHandle_t xTask )
 // 4663 	{
 xTaskNotifyStateClear:
-        PUSH     {R4,LR}        
+        PUSH     {R4-R6,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
+          CFI CFA R13+16
         MOVS     R4,R0          
 // 4664 	TCB_t *pxTCB;
 // 4665 	BaseType_t xReturn;
@@ -7072,33 +7192,34 @@ xTaskNotifyStateClear:
 // 4669 		pxTCB = prvGetTCBFromHandle( xTask );
         CMP      R4,#+0         
         BNE.N    ??xTaskNotifyStateClear_0
-        LDR.N    R0,??DataTable42_6
-        LDR      R4,[R0, #+0]   
+        LDR.N    R0,??DataTable42_4
+        LDR      R5,[R0, #+0]   
         B.N      ??xTaskNotifyStateClear_1
+??xTaskNotifyStateClear_0:
+        MOVS     R5,R4          
 // 4670 
 // 4671 		taskENTER_CRITICAL();
-??xTaskNotifyStateClear_0:
 ??xTaskNotifyStateClear_1:
           CFI FunCall vPortEnterCritical
         BL       vPortEnterCritical
 // 4672 		{
 // 4673 			if( pxTCB->ucNotifyState == taskNOTIFICATION_RECEIVED )
-        LDRB     R0,[R4, #+76]  
+        LDRB     R0,[R5, #+76]  
         CMP      R0,#+2         
         BNE.N    ??xTaskNotifyStateClear_2
 // 4674 			{
 // 4675 				pxTCB->ucNotifyState = taskNOT_WAITING_NOTIFICATION;
         MOVS     R0,#+0         
-        STRB     R0,[R4, #+76]  
+        STRB     R0,[R5, #+76]  
 // 4676 				xReturn = pdPASS;
-        MOVS     R4,#+1         
+        MOVS     R6,#+1         
         B.N      ??xTaskNotifyStateClear_3
 // 4677 			}
 // 4678 			else
 // 4679 			{
 // 4680 				xReturn = pdFAIL;
 ??xTaskNotifyStateClear_2:
-        MOVS     R4,#+0         
+        MOVS     R6,#+0         
 // 4681 			}
 // 4682 		}
 // 4683 		taskEXIT_CRITICAL();
@@ -7107,8 +7228,8 @@ xTaskNotifyStateClear:
         BL       vPortExitCritical
 // 4684 
 // 4685 		return xReturn;
-        MOVS     R0,R4          
-        POP      {R4,PC}        
+        MOVS     R0,R6          
+        POP      {R4-R6,PC}     
 // 4686 	}
           CFI EndBlock cfiBlock42
 
@@ -7117,14 +7238,21 @@ xTaskNotifyStateClear:
         DATA
 ??DataTable39:
         DATA32
-        DC32     uxSchedulerSuspended
+        DC32     xIdleTaskHandle
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable39_1:
         DATA32
-        DC32     pxReadyTasksLists
+        DC32     ?_0            
+
+        SECTION `.text`:CODE:NOROOT(2)
+        SECTION_TYPE SHT_PROGBITS, 0
+        DATA
+??DataTable39_2:
+        DATA32
+        DC32     xNextTaskUnblockTime
 // 4687 
 // 4688 #endif /* configUSE_TASK_NOTIFICATIONS */
 // 4689 /*-----------------------------------------------------------*/
@@ -7138,19 +7266,20 @@ xTaskNotifyStateClear:
 // 4692 static void prvAddCurrentTaskToDelayedList( TickType_t xTicksToWait, const BaseType_t xCanBlockIndefinitely )
 // 4693 {
 prvAddCurrentTaskToDelayedList:
-        PUSH     {R3-R7,LR}     
+        PUSH     {R4-R8,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R7 Frame(CFA, -8)
-          CFI R6 Frame(CFA, -12)
-          CFI R5 Frame(CFA, -16)
-          CFI R4 Frame(CFA, -20)
+          CFI R8 Frame(CFA, -8)
+          CFI R7 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -16)
+          CFI R5 Frame(CFA, -20)
+          CFI R4 Frame(CFA, -24)
           CFI CFA R13+24
         MOVS     R5,R0          
         MOVS     R4,R1          
 // 4694 TickType_t xTimeToWake;
 // 4695 const TickType_t xConstTickCount = xTickCount;
-        LDR.N    R0,??DataTable42_3
-        LDR      R6,[R0, #+0]   
+        LDR.N    R0,??DataTable42_1
+        LDR      R7,[R0, #+0]   
 // 4696 
 // 4697 	#if( INCLUDE_xTaskAbortDelay == 1 )
 // 4698 	{
@@ -7164,8 +7293,8 @@ prvAddCurrentTaskToDelayedList:
 // 4706 	/* Remove the task from the ready list before adding it to the blocked list
 // 4707 	as the same list item is used for both lists. */
 // 4708 	if( uxListRemove( &( pxCurrentTCB->xStateListItem ) ) == ( UBaseType_t ) 0 )
-        LDR.N    R7,??DataTable42_6
-        LDR      R0,[R7, #+0]   
+        LDR.W    R8,??DataTable42_4
+        LDR      R0,[R8, #+0]   
         ADDS     R0,R0,#+4      
           CFI FunCall uxListRemove
         BL       uxListRemove   
@@ -7175,8 +7304,8 @@ prvAddCurrentTaskToDelayedList:
 // 4710 		/* The current task must be in a ready list, so there is no need to
 // 4711 		check, and the port reset macro can be called directly. */
 // 4712 		portRESET_READY_PRIORITY( pxCurrentTCB->uxPriority, uxTopReadyPriority );
-        LDR      R0,[R7, #+0]   
-        LDR.N    R1,??DataTable42_12
+        LDR      R0,[R8, #+0]   
+        LDR.N    R1,??DataTable42_10
         LDR      R2,[R1, #+0]   
         MOVS     R3,#+1         
         LDR      R0,[R0, #+44]  
@@ -7202,9 +7331,9 @@ prvAddCurrentTaskToDelayedList:
 // 4724 			list to ensure it is not woken by a timing event.  It will block
 // 4725 			indefinitely. */
 // 4726 			vListInsertEnd( &xSuspendedTaskList, &( pxCurrentTCB->xStateListItem ) );
-        LDR      R0,[R7, #+0]   
+        LDR      R0,[R8, #+0]   
         ADDS     R1,R0,#+4      
-        LDR.N    R0,??DataTable42_13
+        LDR.N    R0,??DataTable42_12
           CFI FunCall vListInsertEnd
         BL       vListInsertEnd 
         B.N      ??prvAddCurrentTaskToDelayedList_2
@@ -7216,23 +7345,24 @@ prvAddCurrentTaskToDelayedList:
 // 4732 			kernel will manage it correctly. */
 // 4733 			xTimeToWake = xConstTickCount + xTicksToWait;
 ??prvAddCurrentTaskToDelayedList_1:
-        ADDS     R5,R5,R6       
+        ADDS     R0,R5,R7       
+        MOVS     R6,R0          
 // 4734 
 // 4735 			/* The list item will be inserted in wake time order. */
 // 4736 			listSET_LIST_ITEM_VALUE( &( pxCurrentTCB->xStateListItem ), xTimeToWake );
-        LDR      R0,[R7, #+0]   
-        STR      R5,[R0, #+4]   
+        LDR      R0,[R8, #+0]   
+        STR      R6,[R0, #+4]   
 // 4737 
 // 4738 			if( xTimeToWake < xConstTickCount )
-        CMP      R5,R6          
+        CMP      R6,R7          
         BCS.N    ??prvAddCurrentTaskToDelayedList_3
 // 4739 			{
 // 4740 				/* Wake time has overflowed.  Place this item in the overflow
 // 4741 				list. */
 // 4742 				vListInsert( pxOverflowDelayedTaskList, &( pxCurrentTCB->xStateListItem ) );
-        LDR      R0,[R7, #+0]   
+        LDR      R0,[R8, #+0]   
         ADDS     R1,R0,#+4      
-        LDR.N    R0,??DataTable42_8
+        LDR.N    R0,??DataTable42_6
         LDR      R0,[R0, #+0]   
           CFI FunCall vListInsert
         BL       vListInsert    
@@ -7244,9 +7374,9 @@ prvAddCurrentTaskToDelayedList:
 // 4747 				is used. */
 // 4748 				vListInsert( pxDelayedTaskList, &( pxCurrentTCB->xStateListItem ) );
 ??prvAddCurrentTaskToDelayedList_3:
-        LDR      R0,[R7, #+0]   
+        LDR      R0,[R8, #+0]   
         ADDS     R1,R0,#+4      
-        LDR.N    R0,??DataTable42_7
+        LDR.N    R0,??DataTable42_5
         LDR      R0,[R0, #+0]   
           CFI FunCall vListInsert
         BL       vListInsert    
@@ -7255,13 +7385,13 @@ prvAddCurrentTaskToDelayedList:
 // 4751 				head of the list of blocked tasks then xNextTaskUnblockTime
 // 4752 				needs to be updated too. */
 // 4753 				if( xTimeToWake < xNextTaskUnblockTime )
-        LDR.N    R0,??DataTable42_2
+        LDR.N    R0,??DataTable42_13
         LDR      R1,[R0, #+0]   
-        CMP      R5,R1          
+        CMP      R6,R1          
         BCS.N    ??prvAddCurrentTaskToDelayedList_2
 // 4754 				{
 // 4755 					xNextTaskUnblockTime = xTimeToWake;
-        STR      R5,[R0, #+0]   
+        STR      R6,[R0, #+0]   
 // 4756 				}
 // 4757 				else
 // 4758 				{
@@ -7309,7 +7439,7 @@ prvAddCurrentTaskToDelayedList:
 // 4800 	#endif /* INCLUDE_vTaskSuspend */
 // 4801 }
 ??prvAddCurrentTaskToDelayedList_2:
-        POP      {R0,R4-R7,PC}  
+        POP      {R4-R8,PC}     
           CFI EndBlock cfiBlock43
 // 4802 
 // 4803 
@@ -7347,25 +7477,18 @@ vApplicationGetIdleTaskMemory:
 // 4826 
 // 4827 	/* Pass out the array that will be used as the Idle task's stack. */
 // 4828 	*ppxIdleTaskStackBuffer = uxIdleTaskStack;
-        LDR.N    R0,??DataTable42_15
-        STR      R0,[R1, #+0]   
+        LDR.N    R3,??DataTable42_15
+        STR      R3,[R1, #+0]   
 // 4829 
 // 4830 	/* Pass out the size of the array pointed to by *ppxIdleTaskStackBuffer.
 // 4831   Note that, as the array is necessarily of type StackType_t,
 // 4832   configMINIMAL_STACK_SIZE is specified in words, not bytes. */
 // 4833 	*pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
-        MOVS     R0,#+128       
-        STR      R0,[R2, #+0]   
+        MOVS     R3,#+128       
+        STR      R3,[R2, #+0]   
 // 4834 }
         BX       LR             
           CFI EndBlock cfiBlock44
-
-        SECTION `.text`:CODE:NOROOT(2)
-        SECTION_TYPE SHT_PROGBITS, 0
-        DATA
-??DataTable41:
-        DATA32
-        DC32     xIdleTaskHandle
 
         SECTION `.bss`:DATA:REORDER:NOROOT(2)
         DATA
@@ -7406,15 +7529,15 @@ vApplicationGetTimerTaskMemory:
 // 4853 
 // 4854 	/* Pass out the array that will be used as the Timer task's stack. */
 // 4855 	*ppxTimerTaskStackBuffer = uxTimerTaskStack;
-        LDR.N    R0,??DataTable42_17
-        STR      R0,[R1, #+0]   
+        LDR.N    R3,??DataTable42_17
+        STR      R3,[R1, #+0]   
 // 4856 
 // 4857 	/* Pass out the size of the array pointed to by *ppxTimerTaskStackBuffer.
 // 4858   Note that, as the array is necessarily of type StackType_t,
 // 4859   configTIMER_TASK_STACK_DEPTH is specified in words, not bytes. */
 // 4860 	*pulTimerTaskStackSize = configTIMER_TASK_STACK_DEPTH;
-        MOV      R0,#+256       
-        STR      R0,[R2, #+0]   
+        MOV      R3,#+256       
+        STR      R3,[R2, #+0]   
 // 4861 }
         BX       LR             
           CFI EndBlock cfiBlock45
@@ -7431,91 +7554,91 @@ vApplicationGetTimerTaskMemory:
         DATA
 ??DataTable42_1:
         DATA32
-        DC32     ?_0            
+        DC32     xTickCount     
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable42_2:
         DATA32
-        DC32     xNextTaskUnblockTime
+        DC32     xYieldPending  
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable42_3:
         DATA32
-        DC32     xTickCount     
+        DC32     uxPendedTicks  
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable42_4:
         DATA32
-        DC32     xYieldPending  
+        DC32     pxCurrentTCB   
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable42_5:
         DATA32
-        DC32     uxPendedTicks  
+        DC32     pxDelayedTaskList
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable42_6:
         DATA32
-        DC32     pxCurrentTCB   
+        DC32     pxOverflowDelayedTaskList
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable42_7:
         DATA32
-        DC32     pxDelayedTaskList
+        DC32     xNumOfOverflows
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable42_8:
         DATA32
-        DC32     pxOverflowDelayedTaskList
+        DC32     xDelayedTaskList1
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable42_9:
         DATA32
-        DC32     xNumOfOverflows
+        DC32     xDelayedTaskList2
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable42_10:
         DATA32
-        DC32     xDelayedTaskList1
+        DC32     uxTopReadyPriority
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable42_11:
         DATA32
-        DC32     xDelayedTaskList2
+        DC32     pxReadyTasksLists
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable42_12:
         DATA32
-        DC32     uxTopReadyPriority
+        DC32     xSuspendedTaskList
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable42_13:
         DATA32
-        DC32     xSuspendedTaskList
+        DC32     xNextTaskUnblockTime
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
@@ -7573,9 +7696,9 @@ vApplicationGetTimerTaskMemory:
 // 
 // 1'932 bytes in section .bss
 //     8 bytes in section .rodata
-// 3'714 bytes in section .text
+// 3'986 bytes in section .text
 // 
-// 3'714 bytes of CODE  memory
+// 3'986 bytes of CODE  memory
 //     8 bytes of CONST memory
 // 1'932 bytes of DATA  memory
 //

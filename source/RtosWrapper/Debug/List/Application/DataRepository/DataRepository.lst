@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         26/Apr/2025  19:24:49
+# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         27/Apr/2025  00:21:26
 # Copyright 1999-2022 IAR Systems AB.
 #
 #    Cpu mode           =  thumb
@@ -102,7 +102,11 @@
 #        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
 #        -I
 #        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
-#        -Ol --c++ --no_exceptions --no_rtti) --dependencies=n
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
+#        -I
+#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+#        -On --c++ --no_exceptions --no_rtti) --dependencies=n
 #        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\DataRepository\DataRepository.o.d
 #    Locale             =  C
 #    List file          =
@@ -124,9 +128,11 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\D
    \                                 In section .text, align 2
    \   __vfp IDataRepositoryProvider::subobject IDataRepositoryProvider() noexcept
    \                     _ZN23IDataRepositoryProviderC2Ev: (+1)
-   \        0x0   0xB580             PUSH     {R7,LR}
-   \        0x2   0x.... 0x....      BL       _ZN23IDataRepositoryProviderC1Ev
-   \        0x6   0xBD02             POP      {R1,PC}
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN23IDataRepositoryProviderC1Ev
+   \        0xA   0xBD10             POP      {R4,PC}
 
    \                                 In section .text, align 2
    \   __vfp IDataRepositoryProvider::IDataRepositoryProvider() noexcept
@@ -136,9 +142,11 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\D
    \                                 In section .text, align 2
    \   __vfp IDataRepositoryUpdater::subobject IDataRepositoryUpdater() noexcept
    \                     _ZN22IDataRepositoryUpdaterC2Ev: (+1)
-   \        0x0   0xB580             PUSH     {R7,LR}
-   \        0x2   0x.... 0x....      BL       _ZN22IDataRepositoryUpdaterC1Ev
-   \        0x6   0xBD02             POP      {R1,PC}
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN22IDataRepositoryUpdaterC1Ev
+   \        0xA   0xBD10             POP      {R4,PC}
 
    \                                 In section .text, align 2
    \   __vfp IDataRepositoryUpdater::IDataRepositoryUpdater() noexcept
@@ -149,9 +157,11 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\D
    \                                 In section .text, align 2, keep-with-next
    \   __vfp DataRepository::subobject DataRepository()
    \                     _ZN14DataRepositoryC2Ev: (+1)
-   \        0x0   0xB580             PUSH     {R7,LR}
-   \        0x2   0x.... 0x....      BL       _ZN14DataRepositoryC1Ev
-   \        0x6   0xBD02             POP      {R1,PC}
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN14DataRepositoryC1Ev
+   \        0xA   0xBD10             POP      {R4,PC}
 
    \                                 In section .text, align 2, keep-with-next
       3          DataRepository :: DataRepository()
@@ -269,18 +279,18 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\D
       10  DataRepository::UpdateFilteredValue(float)
        2  DataRepository::UpdateValue for IDataRepositoryUpdater/-4/(float)
       10  DataRepository::UpdateValue(float)
-       8  DataRepository::subobject DataRepository()
+      12  DataRepository::subobject DataRepository()
        2  IDataRepositoryProvider::IDataRepositoryProvider() noexcept
-       8  IDataRepositoryProvider::subobject IDataRepositoryProvider() noexcept
+      12  IDataRepositoryProvider::subobject IDataRepositoryProvider() noexcept
        2  IDataRepositoryUpdater::IDataRepositoryUpdater() noexcept
-       8  IDataRepositoryUpdater::subobject IDataRepositoryUpdater() noexcept
+      12  IDataRepositoryUpdater::subobject IDataRepositoryUpdater() noexcept
      164  -- Other
 
  
  164 bytes in section .rodata
- 100 bytes in section .text
+ 112 bytes in section .text
  
- 80 bytes of CODE  memory (+  20 bytes shared)
+ 84 bytes of CODE  memory (+  28 bytes shared)
   0 bytes of CONST memory (+ 164 bytes shared)
 
 Errors: none

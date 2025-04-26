@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        26/Apr/2025  19:24:50
+// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        27/Apr/2025  00:21:29
 // Copyright 1999-2022 IAR Systems AB.
 //
 //    Cpu mode     =  thumb
@@ -102,7 +102,11 @@
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
 //        -I
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
-//        -Ol) --dependencies=n
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+//        -On) --dependencies=n
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Rtos\FreeRtos\list.o.d
 //    Locale       =  C
 //    List file    =
@@ -359,9 +363,9 @@ vListInsertEnd:
         STR      R0,[R1, #+16]  
 //  140 
 //  141 	( pxList->uxNumberOfItems )++;
-        LDR      R1,[R0, #+0]   
-        ADDS     R1,R1,#+1      
-        STR      R1,[R0, #+0]   
+        LDR      R3,[R0, #+0]   
+        ADDS     R3,R3,#+1      
+        STR      R3,[R0, #+0]   
 //  142 }
         BX       LR             
           CFI EndBlock cfiBlock2
@@ -432,14 +436,13 @@ vListInsert:
 //  192 		for( pxIterator = ( ListItem_t * ) &( pxList->xListEnd ); pxIterator->pxNext->xItemValue <= xValueOfInsertion; pxIterator = pxIterator->pxNext ) /*lint !e826 !e740 The mini list structure is used as the list end to save RAM.  This is checked and valid. */
 ??vListInsert_0:
         ADDS     R2,R0,#+8      
-        B.N      ??vListInsert_2
-??vListInsert_3:
-        LDR      R2,[R2, #+4]   
 ??vListInsert_2:
         LDR      R4,[R2, #+4]   
         LDR      R4,[R4, #+0]   
         CMP      R3,R4          
-        BCS.N    ??vListInsert_3
+        BCC.N    ??vListInsert_1
+        LDR      R2,[R2, #+4]   
+        B.N      ??vListInsert_2
 //  193 		{
 //  194 			/* There is nothing to do here, just iterating to the wanted
 //  195 			insertion position. */
@@ -448,11 +451,11 @@ vListInsert:
 //  198 
 //  199 	pxNewListItem->pxNext = pxIterator->pxNext;
 ??vListInsert_1:
-        LDR      R3,[R2, #+4]   
-        STR      R3,[R1, #+4]   
+        LDR      R4,[R2, #+4]   
+        STR      R4,[R1, #+4]   
 //  200 	pxNewListItem->pxNext->pxPrevious = pxNewListItem;
-        LDR      R3,[R1, #+4]   
-        STR      R1,[R3, #+8]   
+        LDR      R4,[R1, #+4]   
+        STR      R1,[R4, #+8]   
 //  201 	pxNewListItem->pxPrevious = pxIterator;
         STR      R2,[R1, #+8]   
 //  202 	pxIterator->pxNext = pxNewListItem;
@@ -464,9 +467,9 @@ vListInsert:
         STR      R0,[R1, #+16]  
 //  207 
 //  208 	( pxList->uxNumberOfItems )++;
-        LDR      R1,[R0, #+0]   
-        ADDS     R1,R1,#+1      
-        STR      R1,[R0, #+0]   
+        LDR      R4,[R0, #+0]   
+        ADDS     R4,R4,#+1      
+        STR      R4,[R0, #+0]   
 //  209 }
         POP      {R4}           
           CFI R4 SameValue
@@ -483,19 +486,20 @@ vListInsert:
         THUMB
 //  212 UBaseType_t uxListRemove( ListItem_t * const pxItemToRemove )
 //  213 {
+uxListRemove:
+        MOVS     R1,R0          
 //  214 /* The list item knows which list it is in.  Obtain the list from the list
 //  215 item. */
 //  216 List_t * const pxList = ( List_t * ) pxItemToRemove->pvContainer;
-uxListRemove:
-        LDR      R1,[R0, #+16]  
+        LDR      R0,[R1, #+16]  
 //  217 
 //  218 	pxItemToRemove->pxNext->pxPrevious = pxItemToRemove->pxPrevious;
-        LDR      R2,[R0, #+8]   
-        LDR      R3,[R0, #+4]   
+        LDR      R2,[R1, #+8]   
+        LDR      R3,[R1, #+4]   
         STR      R2,[R3, #+8]   
 //  219 	pxItemToRemove->pxPrevious->pxNext = pxItemToRemove->pxNext;
-        LDR      R2,[R0, #+4]   
-        LDR      R3,[R0, #+8]   
+        LDR      R2,[R1, #+4]   
+        LDR      R3,[R1, #+8]   
         STR      R2,[R3, #+4]   
 //  220 
 //  221 	/* Only used during decision coverage testing. */
@@ -503,13 +507,13 @@ uxListRemove:
 //  223 
 //  224 	/* Make sure the index is left pointing to a valid item. */
 //  225 	if( pxList->pxIndex == pxItemToRemove )
-        LDR      R2,[R1, #+4]   
-        CMP      R2,R0          
+        LDR      R2,[R0, #+4]   
+        CMP      R2,R1          
         BNE.N    ??uxListRemove_0
 //  226 	{
 //  227 		pxList->pxIndex = pxItemToRemove->pxPrevious;
-        LDR      R2,[R0, #+8]   
-        STR      R2,[R1, #+4]   
+        LDR      R2,[R1, #+8]   
+        STR      R2,[R0, #+4]   
 //  228 	}
 //  229 	else
 //  230 	{
@@ -519,14 +523,14 @@ uxListRemove:
 //  234 	pxItemToRemove->pvContainer = NULL;
 ??uxListRemove_0:
         MOVS     R2,#+0         
-        STR      R2,[R0, #+16]  
+        STR      R2,[R1, #+16]  
 //  235 	( pxList->uxNumberOfItems )--;
-        LDR      R0,[R1, #+0]   
-        SUBS     R0,R0,#+1      
-        STR      R0,[R1, #+0]   
+        LDR      R2,[R0, #+0]   
+        SUBS     R2,R2,#+1      
+        STR      R2,[R0, #+0]   
 //  236 
 //  237 	return pxList->uxNumberOfItems;
-        LDR      R0,[R1, #+0]   
+        LDR      R0,[R0, #+0]   
         BX       LR             
 //  238 }
           CFI EndBlock cfiBlock4
@@ -540,9 +544,9 @@ uxListRemove:
 //  239 /*-----------------------------------------------------------*/
 //  240 
 // 
-// 152 bytes in section .text
+// 154 bytes in section .text
 // 
-// 152 bytes of CODE memory
+// 154 bytes of CODE memory
 //
 //Errors: none
 //Warnings: none
