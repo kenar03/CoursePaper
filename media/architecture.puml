@@ -1,6 +1,6 @@
 [plantuml, png]
 ----
-@startuml
+@startuml architecture
 
 interface IThread
 {
@@ -38,24 +38,20 @@ interface ILedController
 
 class LedController
 {
-    +Config(): void override
     +Indicate(ledAmount: uint8_t): void override
 }
 
 interface ILedCalculator
 {
-    +Calculate(maxLedAmount: const uint8_t, filteredVoltage: float, vRef: float): uint8_t
+    -maxLedAmount: const uint8_t
+    -vRef: float
+    +Calculate(filteredVoltage: float): uint8_t
 }
 
 class LedCalculator
 {
     -maxLedAmount: const uint8_t
     +Calculate(maxLedAmount: const uint8_t, filteredVoltage: float, vRef: float): uint8_t override
-}
-
-interface IConfig
-{
-    +Config(): void
 }
 
 interface IRawDataProvider
@@ -65,7 +61,7 @@ interface IRawDataProvider
 
 class AdcDmaDataProvider
 {
-    +Config(): void override
+    -adcCounts: uint32_t
     +GetRawData(): uint32_t override
 }
 
@@ -88,39 +84,41 @@ interface IUsart
 
 class Usart
 {
-    +Config(): void override
     +SendMessage(message: string): vold override
 }
 
 interface IDataRepositoryUpdater
 {
-    +UpdateData(value: float): float
+    +UpdateValue(value: float): float
+    +UpdateFilteredValue(filteredValue: float): float
 }
 
 interface IDataRepositoryProvider
 {
-    +GetData(): float
+    +GetValue(): float
+    +GetFilteredValue(): float
 }
 
 class DataRepository
 {
     -mVoltage: float
     -mFilteredVoltage: float
-    +UpdateData(value: float): float override
-    +GetData(): float override
+    +UpdateValue(value: float): float override
+    +UpdateFilteredValue(filteredValue: float): float override
+    +GetValue(): float override
+    +GetFilteredValue(): float override
 }
 
 interface IFormatter
 {
-    FormatString(value: float): string
+    +FormatString(value: float): string
 }
 
 class Formatter
 {
-    FormatString(value: float): string
+    +FormatString(value: float): string
 }
 
-IConfig --o AdcDmaDataProvider
 AdcDmaDataProvider --|> IRawDataProvider
 IRawDataProvider --o Voltage
 Voltage -|> IVoltage
@@ -131,11 +129,9 @@ IDigitalFilter --o MeasurementTask
 
 LedCalculator --|> ILedCalculator
 ILedCalculator --o MeasurementTask
-IConfig --o LedController
 LedController --|> ILedController
 ILedController --o MeasurementTask
 
-IConfig --o Usart
 Usart --|> IUsart
 IUsart --o UsartTask
 Formatter --|> IFormatter
