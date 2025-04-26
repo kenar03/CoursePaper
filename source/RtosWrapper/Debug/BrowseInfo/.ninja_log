@@ -1,0 +1,127 @@
+# ninja log v5
+519	653	7649470368973947	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/AHardware/IrqController/irqcontroller.pbi	2ad9a6e2199fc944
+356	488	7649470360000000	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/startupF411RE.xcl	2bb6546d07553b2a
+60	271	7649470360000000	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/tasks.xcl	329457dd9aeaf4b
+52	362	7649470360000000	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/list.xcl	10d989e3bca85640
+2	475	7649497187268568	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/MyTasks/ButtonTask.pbi	b8bbe997cae6bee4
+1286	2458	7649469654855128	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Backup (1) of Backup of iarproject.pbw	31e35efa4e3b1510
+562	617	7649470368623565	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/croutine.pbi	dec782bba8259d2b
+556	636	7649470368808544	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/queue.pbi	113ad98de1b15c65
+638	1077	7649470373218652	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/startupF411RE.pbi	4ce78c664f0dc08c
+501	575	7649470368017735	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/list.pbi	6cdcd366ff8f367e
+587	619	7649468394202575	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Backup of iarproject_part1.pbi	86808665edf0c8cd
+649	725	7649470369698310	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/tasks.pbi	80b33429b6b25d54
+21	383	7649470360000000	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/event_groups.xcl	388120c81ddae30
+3	464	7649497684935073	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/MyTasks/LedTask.pbi	9be8e896e318a871
+33	290	7649470360000000	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/MyTasks/LedTask.xcl	c56faaa3feb3eed6
+1075	1280	7649469643478866	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Backup (1) of Backup of iarproject.pbd	bc3bdfc45b014f12
+38	308	7649470360000000	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/MyTasks/myfirsttask.xcl	9e4ba41c2cd7ebad
+266	447	7649470360000000	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/queue.xcl	5b6af53a70d34af7
+577	647	7649470368918238	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/timers.pbi	db876f43e1c2aa8e
+303	506	7649470360000000	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/AHardware/IrqController/irqcontroller.xcl	e0ad9b2c852119a4
+2	251	7649470360000000	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/MyTasks/ButtonTask.xcl	73de2294ab105b82
+45	325	7649470360000000	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/croutine.xcl	c6cce5ee5288d72c
+321	524	7649470360000000	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Application/ADC/ADC.xcl	f4f7e28c6e305046
+26	343	7649470360000000	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/portable/IAR/ARM_CM4F/port.xcl	8a8d4d2f715c0214
+338	469	7649470360000000	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/main.xcl	ad89e7f48f5edc40
+10	38	7649468658008213	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Backup (1) of Backup of iarproject_part2.pbi	b3085626f8583669
+285	542	7649470360000000	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/timers.xcl	f712c5e0e040f911
+1039	1187	7649470374296947	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject_part1.pbi	15981e7f88c7d23a
+463	561	7649470367703124	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/event_groups.pbi	4e953a23bf1598a7
+1390	1578	7649468403785500	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Backup of iarproject.pbd	c5500e04a59185f3
+527	566	7649468393665703	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Backup of iarproject_part2.pbi	a922835e447d94ae
+1065	2941	7649497709181928	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject.pbw	1922c2104635126f
+483	567	7649470367846891	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/portable/IAR/ARM_CM4F/port.pbi	5b6e61530f15de98
+467	681	7649497687097800	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject_part0.pbi	6be474a934e050c4
+570	1035	7649470372806423	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/MyTasks/myfirsttask.pbi	337f252396d449a3
+890	1040	7649468398402056	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Backup of iarproject_part0.pbi	c283d016910362ce
+1581	2533	7649468413064669	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Backup of iarproject.pbw	6f53e6570a8febf7
+2	635	7649497271495845	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/main.pbi	dce5f2fd03904e4d
+1226	1386	7649468401865319	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Backup of iarproject_part3.pbi	948137855d1416fd
+2	28	7649468657912331	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Backup (1) of Backup of iarproject_part1.pbi	9b3cb3b113d0686
+15	146	7649468659073635	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Backup (1) of Backup of iarproject_part0.pbi	29e865125910b3f5
+866	1072	7649469641407879	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Backup (1) of Backup of iarproject_part3.pbi	1d9d870e9c69ad99
+727	783	7649470370287764	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject_part2.pbi	9694e20ea6d31ff7
+538	860	7649470371047791	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/Application/ADC/ADC.pbi	1a8112f7a4522057
+637	841	7649497273565252	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject_part3.pbi	9a46b05af00ed0d5
+685	1062	7649497690911253	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject.pbd	e3b220ad49045529
+3	383	7649497764710564	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/MyTasks/ButtonTask.pbi	b8bbe997cae6bee4
+386	590	7649497766791701	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject_part0.pbi	6be474a934e050c4
+595	960	7649497770490796	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject.pbd	e3b220ad49045529
+963	2788	7649497788215751	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject.pbw	1922c2104635126f
+3	365	7649497994536380	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/MyTasks/ButtonTask.pbi	b8bbe997cae6bee4
+367	576	7649497996653326	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject_part0.pbi	6be474a934e050c4
+581	961	7649498000491901	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject.pbd	e3b220ad49045529
+963	2753	7649498017990276	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject.pbw	1922c2104635126f
+3	349	7649498073036812	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/MyTasks/ButtonTask.pbi	b8bbe997cae6bee4
+352	568	7649498075240283	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject_part0.pbi	6be474a934e050c4
+572	932	7649498078866726	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject.pbd	e3b220ad49045529
+936	2780	7649498096916075	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject.pbw	1922c2104635126f
+3	416	7649498152656160	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/MyTasks/ButtonTask.pbi	b8bbe997cae6bee4
+11	670	7649498155204693	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/MyTasks/LedTask.pbi	9be8e896e318a871
+16	764	7649498156138074	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/main.pbi	dce5f2fd03904e4d
+672	906	7649498157568469	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject_part0.pbi	6be474a934e050c4
+765	972	7649498158229257	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject_part3.pbi	9a46b05af00ed0d5
+974	1366	7649498162163789	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject.pbd	e3b220ad49045529
+1369	3216	7649498180095874	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject.pbw	1922c2104635126f
+3	368	7649498537626324	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/MyTasks/ButtonTask.pbi	b8bbe997cae6bee4
+370	584	7649498539799454	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject_part0.pbi	6be474a934e050c4
+589	971	7649498543668972	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject.pbd	e3b220ad49045529
+975	2887	7649498562368621	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject.pbw	1922c2104635126f
+3	369	7649498617648078	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/MyTasks/ButtonTask.pbi	b8bbe997cae6bee4
+371	590	7649498619864311	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject_part0.pbi	6be474a934e050c4
+594	977	7649498623738595	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject.pbd	e3b220ad49045529
+980	2808	7649498641593272	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject.pbw	1922c2104635126f
+4	451	7649498697747117	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/MyTasks/ButtonTask.pbi	b8bbe997cae6bee4
+453	666	7649498699890229	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject_part0.pbi	6be474a934e050c4
+670	1058	7649498703818763	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject.pbd	e3b220ad49045529
+1061	2999	7649498722614765	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject.pbw	1922c2104635126f
+2	358	7649499130599379	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/MyTasks/ButtonTask.pbi	b8bbe997cae6bee4
+361	586	7649499132876579	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject_part0.pbi	6be474a934e050c4
+10	686	7649499133874690	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/main.pbi	dce5f2fd03904e4d
+687	885	7649499135871030	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject_part3.pbi	9a46b05af00ed0d5
+888	1259	7649499139610708	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject.pbd	e3b220ad49045529
+1262	3108	7649499157567992	C:/Users/Иван/Documents/дз4/proj123/RtosWrapper/Debug/BrowseInfo/iarproject.pbw	1922c2104635126f
+134	814	7673732290000000	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/MyTasks/ButtonTask.xcl	52355be1f6238afe
+53	841	7673732290000000	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/Application/ADC/ADC.xcl	c2b6f5603b1a35ba
+839	971	7673732290000000	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/MyTasks/LedTask.xcl	c1e8f1bf055f3016
+869	1014	7673732290000000	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/queue.xcl	9a532e35ddceb14
+991	1107	7673732290000000	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/event_groups.xcl	bd9a4a39ca9c5d3e
+1036	1152	7673732290000000	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/portable/IAR/ARM_CM4F/port.xcl	10a3261de59e8e80
+1130	1246	7673732290000000	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/croutine.xcl	3c76e053dad36fa3
+1174	1282	7673732290000000	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/MyTasks/myfirsttask.xcl	913a41e8c816e297
+1268	1368	7673732290000000	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/list.xcl	83dfb54af655f91d
+1389	2101	7673732304564654	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/list.pbi	7287de873dba0f9f
+1303	2141	7673732304953611	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/queue.pbi	6a923ed82113350d
+2102	2209	7673732300000000	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/main.xcl	4c567ccb7e2b0b36
+2143	2289	7673732300000000	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/timers.xcl	7dc738e4e94a5a77
+2309	2404	7673732307597921	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/timers.pbi	d9662043f58e898
+2406	2506	7673732300000000	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/startupF411RE.xcl	450cb05e69ea58c3
+2526	3056	7673732314113320	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/Application/ADC/ADC.pbi	27aa7d8701d99b38
+3058	3154	7673732310000000	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/tasks.xcl	91689dd3c68a057a
+3175	3283	7673732316397208	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/tasks.pbi	126ed711dc03d092
+3286	3386	7673732310000000	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/AHardware/IrqController/irqcontroller.xcl	8e75dc4488669e55
+3407	3454	7673732318102659	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/AHardware/IrqController/irqcontroller.pbi	a886930c44dee7ff
+2230	4085	7673732324401332	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/main.pbi	9e8db725118d9d0f
+3456	4283	7673732326388853	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/MyTasks/LedTask.pbi	ce042f4640e488ab
+4285	4358	7673732327136853	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/portable/IAR/ARM_CM4F/port.pbi	d070f82224e44d6c
+4361	4443	7673732327984583	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/event_groups.pbi	7775d5d5d8375117
+4086	4727	7673732330825718	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/MyTasks/ButtonTask.pbi	d6ac2f0079b270a6
+4729	4913	7673732332690746	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/Rtos/FreeRtos/croutine.pbi	8b6d53869a3f37e5
+4445	4971	7673732333239265	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/MyTasks/myfirsttask.pbi	fbba417a9f1e3931
+4973	5230	7673732335862247	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/iarproject_part1.pbi	650a52641e4a06d2
+5233	5278	7673732336350940	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/iarproject_part2.pbi	5a7a165eec9d6130
+4915	5430	7673732337861957	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/startupF411RE.pbi	73f1353f19d924c1
+5282	5497	7673732338540185	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/iarproject_part0.pbi	325f8059f993c7cd
+5432	5620	7673732339766927	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/iarproject_part3.pbi	9519524b786c23d0
+5623	5898	7673732342548532	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/iarproject.pbd	b17f41104c97af9e
+5903	7963	7673732362492892	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/iarproject.pbw	548e6081c9e6b2d5
+3	599	7673733860353581	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/MyTasks/ButtonTask.pbi	d6ac2f0079b270a6
+6	801	7673733862369551	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/MyTasks/LedTask.pbi	ce042f4640e488ab
+803	1033	7673733864708386	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/iarproject_part0.pbi	3258a5d7d3888685
+1037	1071	7673733865087370	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/iarproject_part1.pbi	6b9be616aeb3aec1
+1074	1172	7673733866089786	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/iarproject_part3.pbi	ffc46ca0fdc9e094
+602	1577	7673733870129266	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/main.pbi	9e8db725118d9d0f
+1579	1747	7673733871856338	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/iarproject_part2.pbi	a521cc0388c19222
+1752	2014	7673733874516734	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/iarproject.pbd	b17f41104c97af9e
+2019	3422	7673733887766491	D:/Documents/Other/Homework/Kolodiy/CoursePaper/source/RtosWrapper/Debug/BrowseInfo/iarproject.pbw	548e6081c9e6b2d5

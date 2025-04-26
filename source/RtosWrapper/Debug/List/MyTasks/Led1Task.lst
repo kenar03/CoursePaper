@@ -1,0 +1,214 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         22/Mar/2025  17:30:53
+# Copyright 1999-2022 IAR Systems AB.
+#
+#    Cpu mode                     =  thumb
+#    Endian                       =  little
+#    Source file                  =
+#        D:\Documents\Homework\GitLab\RtosWrapper\MyTasks\Led1Task.cpp
+#    Command line                 =
+#        -f
+#        D:\Documents\Homework\GitLab\RtosWrapper\Debug\Obj\MyTasks\Led1Task.o.rsp
+#        (D:\Documents\Homework\GitLab\RtosWrapper\MyTasks\Led1Task.cpp -lC
+#        D:\Documents\Homework\GitLab\RtosWrapper\Debug\List\MyTasks -lA
+#        D:\Documents\Homework\GitLab\RtosWrapper\Debug\List\MyTasks -o
+#        D:\Documents\Homework\GitLab\RtosWrapper\Debug\Obj\MyTasks --no_cse
+#        --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering
+#        --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e
+#        --fpu=VFPv4_sp --dlib_config
+#        D:\Programs\IAR\arm\inc\c\DLib_Config_Normal.h -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\wrapper\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\wrapper\FreeRtos\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\FreeRtos\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\FreeRtos\include\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\FreeRtos\portable\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\FreeRtos\portable\Common\
+#        -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\FreeRtos\portable\IAR\
+#        -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\FreeRtos\portable\IAR\ARM_CM4F\
+#        -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\FreeRtos\portable\MemMang\
+#        -I D:\Documents\Homework\GitLab\RtosWrapper\MyTasks\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Common\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\CMSIS\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Application\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Application\Diagnostic\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\AHardware\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\AHardware\GpioPort\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\AHardware\IrqController\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\..\CortexLib\AbstractHardware\Pin\
+#        -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues\
+#        -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\
+#        -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\..\CortexLib\AbstractHardware\Registers\
+#        -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\..\CortexLib\AbstractHardware\Port\
+#        -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\..\CortexLib\AbstractHardware\Atomic\
+#        -I D:\Documents\Homework\GitLab\RtosWrapper\..\CortexLib\Common\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\..\CortexLib\Common\Singleton\
+#        -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\..\CortexLib\Common\RomObject\
+#        -I D:\Documents\Homework\GitLab\RtosWrapper\Application\Leds\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Application\Leds\Config\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Application\Leds\Contracts\
+#        -I D:\Documents\Homework\GitLab\RtosWrapper\Application\ADC\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Application\ADC\Config\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Application\ADC\Contracts\
+#        -Ol --c++ --no_exceptions --no_rtti) --dependencies=n
+#        D:\Documents\Homework\GitLab\RtosWrapper\Debug\Obj\MyTasks\Led1Task.o.d
+#    Locale                       =  C
+#    List file                    =
+#        D:\Documents\Homework\GitLab\RtosWrapper\Debug\List\MyTasks\Led1Task.lst
+#    Object file                  =
+#        D:\Documents\Homework\GitLab\RtosWrapper\Debug\Obj\MyTasks\Led1Task.o
+#    Runtime model:                  
+#      __CPP_Exceptions           =  Disabled
+#      __CPP_Language             =  C++14
+#      __CPP_Library              =  DLib
+#      __CPP_Runtime              =  1
+#      __SystemLibrary            =  DLib
+#      __dlib_file_descriptor     =  0
+#      __dlib_full_locale_support =  0
+#      __dlib_version             =  6
+#
+###############################################################################
+
+D:\Documents\Homework\GitLab\RtosWrapper\MyTasks\Led1Task.cpp
+      1          #include "led1task.hpp"
+
+   \                                 In section .text, align 2
+   \   __vfp OsWrapper::TicksPerSecond std::chrono::duration_cast<OsWrapper::TicksPerSecond, __int64_t, std::milli>(std::chrono::duration<__int64_t, std::milli> const &)
+   \                     _ZNSt6chrono13duration_castINS_8durationIjSt5ratioILx10ELx1000EEEExS2_ILx1ELx1000EEEENSt9enable_ifIXsr3std6chrono12_Is_durationIT_EE5valueES7_E4typeERKNS1_IT0_T1_EE: (+1)
+   \        0x0   0xB5E0             PUSH     {R5-R7,LR}
+   \        0x2   0x.... 0x....      BL       _ZNKSt6chrono8durationIxSt5ratioILx1ELx1000EEE5countEv
+   \        0x6   0x220A             MOVS     R2,#+10
+   \        0x8   0x2300             MOVS     R3,#+0
+   \        0xA   0x.... 0x....      BL       __aeabi_ldivmod
+   \        0xE   0x9000             STR      R0,[SP, #+0]
+   \       0x10   0x4669             MOV      R1,SP
+   \       0x12   0xA801             ADD      R0,SP,#+4
+   \       0x14   0x.... 0x....      BL       _ZNSt6chrono8durationIjSt5ratioILx10ELx1000EEEC1IjvEERKT_
+   \       0x18   0x9801             LDR      R0,[SP, #+4]
+   \       0x1A   0xBD0E             POP      {R1-R3,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::duration<uint32_t, void>(uint32_t const &)
+   \                     _ZNSt6chrono8durationIjSt5ratioILx10ELx1000EEEC1IjvEERKT_: (+1)
+   \        0x0   0x6809             LDR      R1,[R1, #+0]
+   \        0x2   0x6001             STR      R1,[R0, #+0]
+   \        0x4   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp __int64_t std::chrono::duration<__int64_t, std::milli>::count() const
+   \                     _ZNKSt6chrono8durationIxSt5ratioILx1ELx1000EEE5countEv: (+1)
+   \        0x0   0xE9D0 0x0100      LDRD     R0,R1,[R0, #+0]
+   \        0x4   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp uint32_t std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::count() const
+   \                     _ZNKSt6chrono8durationIjSt5ratioILx10ELx1000EEE5countEv: (+1)
+   \        0x0   0x6800             LDR      R0,[R0, #+0]
+   \        0x2   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp void OsWrapper::RtosWrapper::wSleep(uint32_t)
+   \                     _ZN9OsWrapper11RtosWrapper6wSleepEj: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+   \        0x2   0x.... 0x....      BL       vTaskDelay
+   \        0x6   0xBD01             POP      {R0,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void OsWrapper::IThread::Sleep(std::chrono::milliseconds)
+   \                     _ZN9OsWrapper7IThread5SleepENSt6chrono8durationIxSt5ratioILx1ELx1000EEEE: (+1)
+   \        0x0   0xB583             PUSH     {R0,R1,R7,LR}
+   \        0x2   0xB082             SUB      SP,SP,#+8
+   \        0x4   0xA802             ADD      R0,SP,#+8
+   \        0x6   0x.... 0x....      BL       _ZNSt6chrono13duration_castINS_8durationIjSt5ratioILx10ELx1000EEEExS2_ILx1ELx1000EEEENSt9enable_ifIXsr3std6chrono12_Is_durationIT_EE5valueES7_E4typeERKNS1_IT0_T1_EE
+   \        0xA   0x9000             STR      R0,[SP, #+0]
+   \        0xC   0x4668             MOV      R0,SP
+   \        0xE   0x.... 0x....      BL       _ZNKSt6chrono8durationIjSt5ratioILx10ELx1000EEE5countEv
+   \       0x12   0x.... 0x....      BL       _ZN9OsWrapper11RtosWrapper6wSleepEj
+   \       0x16   0xB005             ADD      SP,SP,#+20
+   \       0x18   0xBD00             POP      {PC}
+      2          #include "gpioaregisters.hpp" // for GPIOA
+      3          #include "Led.h" // for Led
+      4          
+      5          
+      6          
+
+   \                                 In section .text, align 2, keep-with-next
+      7          void Led1Task::Execute()
+      8          {
+   \                     _ZN8Led1Task7ExecuteEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+      9            for(;;)
+     10            {
+     11              mLed.Switch();
+   \                     ??Execute_0: (+1)
+   \        0x4   0xF242 0x015C      MOVW     R1,#+8284
+   \        0x8   0x5860             LDR      R0,[R4, R1]
+   \        0xA   0x5861             LDR      R1,[R4, R1]
+   \        0xC   0x6809             LDR      R1,[R1, #+0]
+   \        0xE   0x6849             LDR      R1,[R1, #+4]
+   \       0x10   0x4788             BLX      R1
+     12              Sleep(mDelay);
+   \       0x12   0xF242 0x0060      MOVW     R0,#+8288
+   \       0x16   0xEB04 0x0200      ADD      R2,R4,R0
+   \       0x1A   0xE9D2 0x0100      LDRD     R0,R1,[R2, #+0]
+   \       0x1E   0x.... 0x....      BL       _ZN9OsWrapper7IThread5SleepENSt6chrono8durationIxSt5ratioILx1ELx1000EEEE
+   \       0x22   0xE7EF             B.N      ??Execute_0
+     13            }
+     14          } ;
+     15          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   Led1Task::Execute()
+         8   -- Indirect call
+         8   -> OsWrapper::IThread::Sleep(std::chrono::milliseconds)
+      24   OsWrapper::IThread::Sleep(std::chrono::milliseconds)
+        24   -> OsWrapper::RtosWrapper::wSleep(uint32_t)
+        24   -> std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::count() const
+        24   -> std::chrono::duration_cast<OsWrapper::TicksPerSecond, __int64_t, std::milli>(std::chrono::duration<__int64_t, std::milli> const &)
+       8   OsWrapper::RtosWrapper::wSleep(uint32_t)
+         8   -> vTaskDelay
+       0   std::chrono::duration<__int64_t, std::milli>::count() const
+       0   std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::count() const
+       0   std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::duration<uint32_t, void>(uint32_t const &)
+      16   std::chrono::duration_cast<OsWrapper::TicksPerSecond, __int64_t, std::milli>(std::chrono::duration<__int64_t, std::milli> const &)
+        16   -> std::chrono::duration<__int64_t, std::milli>::count() const
+        16   -> std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::duration<uint32_t, void>(uint32_t const &)
+        16 __aeabi_ldivmod
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      36  Led1Task::Execute()
+      26  OsWrapper::IThread::Sleep(std::chrono::milliseconds)
+       8  OsWrapper::RtosWrapper::wSleep(uint32_t)
+       6  std::chrono::duration<__int64_t, std::milli>::count() const
+       4  std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::count() const
+       6  std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::duration<uint32_t, void>(uint32_t const &)
+      28  std::chrono::duration_cast<OsWrapper::TicksPerSecond, __int64_t, std::milli>(std::chrono::duration<__int64_t, std::milli> const &)
+     152  -- Other
+
+ 
+ 152 bytes in section .rodata
+ 114 bytes in section .text
+ 
+ 36 bytes of CODE  memory (+  78 bytes shared)
+  0 bytes of CONST memory (+ 152 bytes shared)
+
+Errors: none
+Warnings: none

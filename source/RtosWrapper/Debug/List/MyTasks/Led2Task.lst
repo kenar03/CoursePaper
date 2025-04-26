@@ -1,0 +1,275 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         22/Mar/2025  17:18:17
+# Copyright 1999-2022 IAR Systems AB.
+#
+#    Cpu mode                     =  thumb
+#    Endian                       =  little
+#    Source file                  =
+#        D:\Documents\Homework\GitLab\RtosWrapper\MyTasks\Led2Task.cpp
+#    Command line                 =
+#        -f
+#        D:\Documents\Homework\GitLab\RtosWrapper\Debug\Obj\MyTasks\Led2Task.o.rsp
+#        (D:\Documents\Homework\GitLab\RtosWrapper\MyTasks\Led2Task.cpp -lC
+#        D:\Documents\Homework\GitLab\RtosWrapper\Debug\List\MyTasks -lA
+#        D:\Documents\Homework\GitLab\RtosWrapper\Debug\List\MyTasks -o
+#        D:\Documents\Homework\GitLab\RtosWrapper\Debug\Obj\MyTasks --no_cse
+#        --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering
+#        --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e
+#        --fpu=VFPv4_sp --dlib_config
+#        D:\Programs\IAR\arm\inc\c\DLib_Config_Normal.h -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\wrapper\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\wrapper\FreeRtos\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\FreeRtos\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\FreeRtos\include\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\FreeRtos\portable\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\FreeRtos\portable\Common\
+#        -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\FreeRtos\portable\IAR\
+#        -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\FreeRtos\portable\IAR\ARM_CM4F\
+#        -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Rtos\FreeRtos\portable\MemMang\
+#        -I D:\Documents\Homework\GitLab\RtosWrapper\MyTasks\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Common\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\CMSIS\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Application\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Application\Diagnostic\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\AHardware\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\AHardware\GpioPort\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\AHardware\IrqController\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\..\CortexLib\AbstractHardware\Pin\
+#        -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues\
+#        -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\
+#        -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\..\CortexLib\AbstractHardware\Registers\
+#        -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\..\CortexLib\AbstractHardware\Port\
+#        -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\..\CortexLib\AbstractHardware\Atomic\
+#        -I D:\Documents\Homework\GitLab\RtosWrapper\..\CortexLib\Common\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\..\CortexLib\Common\Singleton\
+#        -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\..\CortexLib\Common\RomObject\
+#        -I D:\Documents\Homework\GitLab\RtosWrapper\Application\Leds\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Application\Leds\Config\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Application\Leds\Contracts\
+#        -I D:\Documents\Homework\GitLab\RtosWrapper\Application\ADC\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Application\ADC\Config\ -I
+#        D:\Documents\Homework\GitLab\RtosWrapper\Application\ADC\Contracts\
+#        -Ol --c++ --no_exceptions --no_rtti) --dependencies=n
+#        D:\Documents\Homework\GitLab\RtosWrapper\Debug\Obj\MyTasks\Led2Task.o.d
+#    Locale                       =  C
+#    List file                    =
+#        D:\Documents\Homework\GitLab\RtosWrapper\Debug\List\MyTasks\Led2Task.lst
+#    Object file                  =
+#        D:\Documents\Homework\GitLab\RtosWrapper\Debug\Obj\MyTasks\Led2Task.o
+#    Runtime model:                  
+#      __CPP_Exceptions           =  Disabled
+#      __CPP_Language             =  C++14
+#      __CPP_Library              =  DLib
+#      __CPP_Runtime              =  1
+#      __SystemLibrary            =  DLib
+#      __dlib_file_descriptor     =  0
+#      __dlib_full_locale_support =  0
+#      __dlib_version             =  6
+#
+###############################################################################
+
+D:\Documents\Homework\GitLab\RtosWrapper\MyTasks\Led2Task.cpp
+      1          #include "led2task.hpp"
+
+   \                                 In section .text, align 2
+   \   __vfp OsWrapper::TicksPerSecond std::chrono::duration_cast<OsWrapper::TicksPerSecond, __int64_t, std::milli>(std::chrono::duration<__int64_t, std::milli> const &)
+   \                     _ZNSt6chrono13duration_castINS_8durationIjSt5ratioILx10ELx1000EEEExS2_ILx1ELx1000EEEENSt9enable_ifIXsr3std6chrono12_Is_durationIT_EE5valueES7_E4typeERKNS1_IT0_T1_EE: (+1)
+   \        0x0   0xB5E0             PUSH     {R5-R7,LR}
+   \        0x2   0x.... 0x....      BL       _ZNKSt6chrono8durationIxSt5ratioILx1ELx1000EEE5countEv
+   \        0x6   0x220A             MOVS     R2,#+10
+   \        0x8   0x2300             MOVS     R3,#+0
+   \        0xA   0x.... 0x....      BL       __aeabi_ldivmod
+   \        0xE   0x9000             STR      R0,[SP, #+0]
+   \       0x10   0x4669             MOV      R1,SP
+   \       0x12   0xA801             ADD      R0,SP,#+4
+   \       0x14   0x.... 0x....      BL       _ZNSt6chrono8durationIjSt5ratioILx10ELx1000EEEC1IjvEERKT_
+   \       0x18   0x9801             LDR      R0,[SP, #+4]
+   \       0x1A   0xBD0E             POP      {R1-R3,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::duration<uint32_t, void>(uint32_t const &)
+   \                     _ZNSt6chrono8durationIjSt5ratioILx10ELx1000EEEC1IjvEERKT_: (+1)
+   \        0x0   0x6809             LDR      R1,[R1, #+0]
+   \        0x2   0x6001             STR      R1,[R0, #+0]
+   \        0x4   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp __int64_t std::chrono::duration<__int64_t, std::milli>::count() const
+   \                     _ZNKSt6chrono8durationIxSt5ratioILx1ELx1000EEE5countEv: (+1)
+   \        0x0   0xE9D0 0x0100      LDRD     R0,R1,[R0, #+0]
+   \        0x4   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp uint32_t std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::count() const
+   \                     _ZNKSt6chrono8durationIjSt5ratioILx10ELx1000EEE5countEv: (+1)
+   \        0x0   0x6800             LDR      R0,[R0, #+0]
+   \        0x2   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp void OsWrapper::RtosWrapper::wSleep(uint32_t)
+   \                     _ZN9OsWrapper11RtosWrapper6wSleepEj: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+   \        0x2   0x.... 0x....      BL       vTaskDelay
+   \        0x6   0xBD01             POP      {R0,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void OsWrapper::IThread::Sleep(std::chrono::milliseconds)
+   \                     _ZN9OsWrapper7IThread5SleepENSt6chrono8durationIxSt5ratioILx1ELx1000EEEE: (+1)
+   \        0x0   0xB583             PUSH     {R0,R1,R7,LR}
+   \        0x2   0xB082             SUB      SP,SP,#+8
+   \        0x4   0xA802             ADD      R0,SP,#+8
+   \        0x6   0x.... 0x....      BL       _ZNSt6chrono13duration_castINS_8durationIjSt5ratioILx10ELx1000EEEExS2_ILx1ELx1000EEEENSt9enable_ifIXsr3std6chrono12_Is_durationIT_EE5valueES7_E4typeERKNS1_IT0_T1_EE
+   \        0xA   0x9000             STR      R0,[SP, #+0]
+   \        0xC   0x4668             MOV      R0,SP
+   \        0xE   0x.... 0x....      BL       _ZNKSt6chrono8durationIjSt5ratioILx10ELx1000EEE5countEv
+   \       0x12   0x.... 0x....      BL       _ZN9OsWrapper11RtosWrapper6wSleepEj
+   \       0x16   0xB005             ADD      SP,SP,#+20
+   \       0x18   0xBD00             POP      {PC}
+      2          #include "gpioaregisters.hpp" // for GPIOA
+
+   \                                 In section .text, align 4
+   \   __vfp void RegisterBase<1'073'872'916U, 32U, ReadWriteMode>::Set<ReadWriteMode, void>(uint32_t)
+   \                     _ZN12RegisterBaseILj1073872916ELj32E13ReadWriteModeE3SetIS0_vEEvj: (+1)
+   \        0x0   0x4A02             LDR.N    R2,??Set_0
+   \        0x2   0x6811             LDR      R1,[R2, #+0]
+   \        0x4   0x4308             ORRS     R0,R0,R1
+   \        0x6   0x6010             STR      R0,[R2, #+0]
+   \        0x8   0x4770             BX       LR
+   \        0xA   0xBF00             Nop
+   \                     ??Set_0:
+   \        0xC   0x4002'0014        DC32     0x40020014
+
+   \                                 In section .text, align 4
+   \   __vfp void RegisterBase<1'073'872'916U, 32U, ReadWriteMode>::Toggle<ReadWriteMode, void>(uint32_t)
+   \                     _ZN12RegisterBaseILj1073872916ELj32E13ReadWriteModeE6ToggleIS0_vEEvj: (+1)
+   \        0x0   0x4902             LDR.N    R1,??Toggle_0
+   \        0x2   0x680A             LDR      R2,[R1, #+0]
+   \        0x4   0x4050             EORS     R0,R0,R2
+   \        0x6   0x6008             STR      R0,[R1, #+0]
+   \        0x8   0x4770             BX       LR
+   \        0xA   0xBF00             Nop
+   \                     ??Toggle_0:
+   \        0xC   0x4002'0014        DC32     0x40020014
+      3          #include "Led.h" // for Led
+
+   \                                 In section .text, align 2
+   \   __vfp void Led<GPIOA, 9>::Light()
+   \                     _ZN3LedI5GPIOALi9EE5LightEv: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+   \        0x2   0xF44F 0x7000      MOV      R0,#+512
+   \        0x6   0x.... 0x....      BL       _ZN12RegisterBaseILj1073872916ELj32E13ReadWriteModeE3SetIS0_vEEvj
+   \        0xA   0xBD01             POP      {R0,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void Led<GPIOA, 9>::Switch()
+   \                     _ZN3LedI5GPIOALi9EE6SwitchEv: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+   \        0x2   0xF44F 0x7000      MOV      R0,#+512
+   \        0x6   0x.... 0x....      BL       _ZN12RegisterBaseILj1073872916ELj32E13ReadWriteModeE6ToggleIS0_vEEvj
+   \        0xA   0xBD01             POP      {R0,PC}
+      4          
+
+   \                                 In section .data, align 4
+      5          Led<GPIOA, 9> led;
+   \                     led:
+   \        0x0   0x....'....        DC32 _ZTV3LedI5GPIOALi9EE + 0x8
+      6          
+
+   \                                 In section .text, align 4, keep-with-next
+      7          void Led2Task::Execute()
+      8          {
+   \                     _ZN8Led2Task7ExecuteEv: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+      9            for(;;)
+     10            {
+     11              led.Switch();
+   \                     ??Execute_1: (+1)
+   \        0x2   0x4804             LDR.N    R0,??Execute_0
+   \        0x4   0x.... 0x....      BL       _ZN3LedI5GPIOALi9EE6SwitchEv
+   \        0x8   0x4A03             LDR.N    R2,??Execute_0+0x4
+   \        0xA   0xE9D2 0x0100      LDRD     R0,R1,[R2, #+0]
+     12              Sleep(2000ms);
+   \        0xE   0x.... 0x....      BL       _ZN9OsWrapper7IThread5SleepENSt6chrono8durationIxSt5ratioILx1ELx1000EEEE
+   \       0x12   0xE7F6             B.N      ??Execute_1
+   \                     ??Execute_0:
+   \       0x14   0x....'....        DC32     led
+   \       0x18   0x....'....        DC32     ?_0
+     13            }
+     14          } ;
+
+   \                                 In section .rodata, align 8
+   \                     ?_0:
+   \        0x0   0x0000'0000'0      DC64 2'000
+
+   \              000'07D0
+     15          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   Led2Task::Execute()
+         8   -> Led<GPIOA, 9>::Switch()
+         8   -> OsWrapper::IThread::Sleep(std::chrono::milliseconds)
+       8   Led<GPIOA, 9>::Light()
+         8   -> RegisterBase<1'073'872'916U, 32U, ReadWriteMode>::Set<ReadWriteMode, void>(uint32_t)
+       8   Led<GPIOA, 9>::Switch()
+         8   -> RegisterBase<1'073'872'916U, 32U, ReadWriteMode>::Toggle<ReadWriteMode, void>(uint32_t)
+      24   OsWrapper::IThread::Sleep(std::chrono::milliseconds)
+        24   -> OsWrapper::RtosWrapper::wSleep(uint32_t)
+        24   -> std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::count() const
+        24   -> std::chrono::duration_cast<OsWrapper::TicksPerSecond, __int64_t, std::milli>(std::chrono::duration<__int64_t, std::milli> const &)
+       8   OsWrapper::RtosWrapper::wSleep(uint32_t)
+         8   -> vTaskDelay
+       0   RegisterBase<1'073'872'916U, 32U, ReadWriteMode>::Set<ReadWriteMode, void>(uint32_t)
+       0   RegisterBase<1'073'872'916U, 32U, ReadWriteMode>::Toggle<ReadWriteMode, void>(uint32_t)
+       0   std::chrono::duration<__int64_t, std::milli>::count() const
+       0   std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::count() const
+       0   std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::duration<uint32_t, void>(uint32_t const &)
+      16   std::chrono::duration_cast<OsWrapper::TicksPerSecond, __int64_t, std::milli>(std::chrono::duration<__int64_t, std::milli> const &)
+        16   -> std::chrono::duration<__int64_t, std::milli>::count() const
+        16   -> std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::duration<uint32_t, void>(uint32_t const &)
+        16 __aeabi_ldivmod
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       8  ?_0
+      28  Led2Task::Execute()
+      12  Led<GPIOA, 9>::Light()
+      12  Led<GPIOA, 9>::Switch()
+      26  OsWrapper::IThread::Sleep(std::chrono::milliseconds)
+       8  OsWrapper::RtosWrapper::wSleep(uint32_t)
+      16  RegisterBase<1'073'872'916U, 32U, ReadWriteMode>::Set<ReadWriteMode, void>(uint32_t)
+      16  RegisterBase<1'073'872'916U, 32U, ReadWriteMode>::Toggle<ReadWriteMode, void>(uint32_t)
+       4  led
+       6  std::chrono::duration<__int64_t, std::milli>::count() const
+       4  std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::count() const
+       6  std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::duration<uint32_t, void>(uint32_t const &)
+      28  std::chrono::duration_cast<OsWrapper::TicksPerSecond, __int64_t, std::milli>(std::chrono::duration<__int64_t, std::milli> const &)
+     200  -- Other
+
+ 
+   4 bytes in section .data
+ 208 bytes in section .rodata
+ 162 bytes in section .text
+ 
+ 28 bytes of CODE  memory (+ 134 bytes shared)
+  8 bytes of CONST memory (+ 200 bytes shared)
+  4 bytes of DATA  memory
+
+Errors: none
+Warnings: none

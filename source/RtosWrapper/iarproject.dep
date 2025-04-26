@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>5</fileVersion>
+    <fileChecksum>2030828468</fileChecksum>
+    <configuration>
+        <name>Debug</name>
+        <outputs>
+            <file>$PROJ_DIR$\Rtos\FreeRtos\portable\IAR\ARM_CM4F\port.c</file>
+            <file>$PROJ_DIR$\Rtos\FreeRtos\croutine.c</file>
+            <file>$PROJ_DIR$\Rtos\FreeRtos\portable\IAR\ARM_CM4F\portasm.s</file>
+            <file>$PROJ_DIR$\Rtos\FreeRtos\queue.c</file>
+            <file>$PROJ_DIR$\Rtos\FreeRtos\tasks.c</file>
+            <file>$PROJ_DIR$\Rtos\FreeRtos\event_groups.c</file>
+            <file>$PROJ_DIR$\Rtos\FreeRtos\timers.c</file>
+            <file>$PROJ_DIR$\Rtos\FreeRtos\list.c</file>
+            <file>$PROJ_DIR$\Application\Formatter\Formatter.cpp</file>
+            <file>$PROJ_DIR$\Application\DataRepository\DataRepository.cpp</file>
+            <file>$PROJ_DIR$\AHardware\IrqController\irqcontroller.cpp</file>
+            <file>$PROJ_DIR$\Application\AdcDmaDataProvider\AdcDmaDataProvider.cpp</file>
+            <file>$PROJ_DIR$\Application\DigitalFilter\DigitalFilter.cpp</file>
+            <file>$PROJ_DIR$\Debug\Obj\Rtos\FreeRtos\list.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\startupF411RE.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\Application\AdcDmaDataProvider\AdcDmaDataProvider.o</file>
+            <file>$PROJ_DIR$\main.cpp</file>
+            <file>$PROJ_DIR$\Debug\Obj\Application\DataRepository\DataRepository.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\Rtos\FreeRtos\tasks.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\Application\DigitalFilter\DigitalFilter.o</file>
+            <file>$PROJ_DIR$\startupF411RE.cpp</file>
+            <file>$PROJ_DIR$\Debug\Obj\AHardware\IrqController\irqcontroller.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\Rtos\FreeRtos\event_groups.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\Application\Formatter\Formatter.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\Rtos\FreeRtos\croutine.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\Rtos\FreeRtos\queue.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\Rtos\FreeRtos\portable\IAR\ARM_CM4F\portasm.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\Rtos\FreeRtos\portable\IAR\ARM_CM4F\port.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\Rtos\FreeRtos\timers.o</file>
+            <file>$PROJ_DIR$\Debug\Exe\iarproject.out</file>
+        </outputs>
+        <file>
+            <name>$PROJ_DIR$\Rtos\FreeRtos\portable\IAR\ARM_CM4F\port.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 28</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Rtos\FreeRtos\croutine.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 24</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Rtos\FreeRtos\portable\IAR\ARM_CM4F\portasm.s</name>
+            <outputs>
+                <tool>
+                    <name>AARM</name>
+                    <file> 27</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Rtos\FreeRtos\queue.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 25</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Rtos\FreeRtos\tasks.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 18</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Rtos\FreeRtos\event_groups.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 22</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Rtos\FreeRtos\timers.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 29</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Rtos\FreeRtos\list.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 13</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 30</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Application\Formatter\Formatter.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 23</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Application\DataRepository\DataRepository.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 17</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\AHardware\IrqController\irqcontroller.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 21</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Application\AdcDmaDataProvider\AdcDmaDataProvider.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 15</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Application\DigitalFilter\DigitalFilter.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 19</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\main.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 26</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\startupF411RE.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 14</file>
+                </tool>
+            </outputs>
+        </file>
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>ILINK</tool>
+        </forcedrebuild>
+    </configuration>
+    <configuration>
+        <name>Release</name>
+        <outputs />
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>ILINK</tool>
+        </forcedrebuild>
+    </configuration>
+</project>
