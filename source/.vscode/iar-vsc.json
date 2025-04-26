@@ -1,0 +1,18 @@
+{
+  "workspace": {
+    "path": "${workspaceFolder}\\RtosWrapper\\rtosWrapper.eww"
+  },
+  "workspaces": {
+    "${workspaceFolder}\\RtosWrapper\\rtosWrapper.eww": {
+      "configs": {
+        "${workspaceFolder}\\RtosWrapper\\iarproject.ewp": "Debug"
+      },
+      "selected": {
+        "path": "${workspaceFolder}\\RtosWrapper\\iarproject.ewp"
+      }
+    }
+  },
+  "workbench": {
+    "path": "D:\\Games\\Programs\\IAR"
+  }
+}
