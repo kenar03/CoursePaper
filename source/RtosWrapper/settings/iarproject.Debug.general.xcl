@@ -1,14 +1,14 @@
-"D:\Games\Programs\IAR\arm\bin\armPROC.dll" 
+"D:\Programs\IAR\arm\bin\armPROC.dll" 
 
-"D:\Games\Programs\IAR\arm\bin\armSTLINK.dll" 
+"D:\Programs\IAR\arm\bin\armSTLINK.dll" 
 
-"D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Exe\iarproject.out" 
+"D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Exe\iarproject.out" 
 
---plugin="D:\Games\Programs\IAR\arm\bin\armbat.dll" 
+--plugin="D:\Programs\IAR\arm\bin\armbat.dll" 
 
---device_macro="D:\Games\Programs\IAR\arm/config/debugger/ST/STM32F4xx.dmac" 
+--device_macro="D:\Programs\IAR\arm/config/debugger/ST/STM32F4xx.dmac" 
 
---flash_loader="D:\Games\Programs\IAR\arm/config/flashloader/ST/FlashSTM32F411xE.board" 
+--flash_loader="D:\Programs\IAR\arm/config/flashloader/ST/FlashSTM32F411xE.board" 
 
 
 

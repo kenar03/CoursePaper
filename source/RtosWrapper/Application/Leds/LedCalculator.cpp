@@ -6,5 +6,10 @@ LedCalculator::LedCalculator(const uint8_t& maxLedAmount, const float& maxVoltag
 
 uint8_t LedCalculator::Calculate(float adcVoltage)
 {
-  return static_cast<uint8_t>(ceil((adcVoltage * mMaxLedAmount) / mVref));
+  uint8_t ledAmount = static_cast<uint8_t>((adcVoltage * mMaxLedAmount) / mVref);
+  if (ledAmount > mMaxLedAmount)
+  {
+    ledAmount = mMaxLedAmount;
+  }
+  return ledAmount;
 }

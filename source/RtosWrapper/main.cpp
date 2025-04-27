@@ -13,8 +13,10 @@
 #include "LedController.hpp" // for LedController
 #include "LedCalculator.hpp" // for LedCalculator
 #include "Usart.hpp" // for Usart
+#include "Formatter.hpp" // for Formatter
 
 #include "MeasurementTask.hpp" // for MeasurementTask
+#include "UsartTask.hpp" // for UsartTask
 
 std::uint32_t SystemCoreClock = 8'000'000U;
 
@@ -68,27 +70,29 @@ constexpr auto minAdcCounts = 2U;
 constexpr auto maxAdcCounts = 4093U;
 constexpr auto minVoltage = 0.0001f;
 constexpr auto maxVoltage = 3.275f;
-constexpr auto maxLedAmount = 4U;
+constexpr uint8_t maxLedAmount = 4U;
 
 AdcDmaDataProvider adc;
 DigitalFilter<float, dt, rc> digitalFilter;
 Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage> voltage(static_cast<IRawDataProvider&>(adc));
-DataRepository filteredVoltage;
+DataRepository dataReposiitory;
 LedCalculator ledCalculator(maxLedAmount, maxVoltage);
 LedController ledController;
 Usart usart;
+Formatter formatter;
 
-MeasurementTask measurementTask(adc, digitalFilter, voltage, ledCalculator, ledController, filteredVoltage);
-// BluetoothTask bluetoothTask(filteredVoltage, usart);
+MeasurementTask measurementTask(adc, digitalFilter, voltage, ledCalculator, ledController, dataReposiitory);
+UsartTask usartTask(dataReposiitory, usart, formatter);
 
 int main()
 {
   adc.ConfigAdc();
+  usart.ConfigUsart();
   USART2::CR1::UE::Enable::Set();
   USART2::CR1::TE::Enable::Set();
   using namespace OsWrapper;
   Rtos::CreateThread(measurementTask, "MeasurementTask", ThreadPriority::priorityMax);
-  // Rtos::CreateThread(bluetoothTask, "BluetoothTask", ThreadPriority::lowest);
+  Rtos::CreateThread(usartTask, "UsartTask", ThreadPriority::lowest);
   Rtos::Start();
   return 0;
 }

@@ -23,13 +23,10 @@ void Usart::ConfigUsart()
   GPIOA::MODER::MODER2::Alternate::Set();
   GPIOA::AFRL::AFRL3::Af7::Set();
   GPIOA::AFRL::AFRL2::Af7::Set();
-  GPIOA::PUPDR::PUPDR2::NoPullUpNoPullDown::Set();
-  GPIOA::PUPDR::PUPDR3::PullUp::Set();
   USART2::CR1::OVER8::OversamplingBy16::Set();
   USART2::CR1::M::Data8bits::Set();
   USART2::CR2::STOP::Value0::Set(); // 1 stop bit
   USART2::CR1::PCE::ParityControlDisable::Set();
-  USART2::CR1::RE::Disable::Set();
   USART2::CR1::TXEIE::InterruptWhenTXE::Set();
   constexpr std::uint32_t SystemCoreClock = 8'000'000U;
   constexpr std::uint32_t BaudRate = 9600;

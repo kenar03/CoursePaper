@@ -1,116 +1,119 @@
-///////////////////////////////////////////////////////////////////////////////
+﻿///////////////////////////////////////////////////////////////////////////////
 //
-// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        27/Apr/2025  00:21:27
+// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        27/Apr/2025  21:06:14
 // Copyright 1999-2022 IAR Systems AB.
 //
 //    Cpu mode     =  thumb
 //    Endian       =  little
 //    Source file  =
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\Formatter.cpp
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Formatter\Formatter.cpp
+//        [UTF-8]
 //    Command line =
 //        -f
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Formatter\Formatter.o.rsp
-//        (D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\Formatter.cpp
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Formatter\Formatter.o.rsp
+//        (D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Formatter\Formatter.cpp
 //        -lC
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\Formatter
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\List\Application\Formatter
 //        -lA
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\Formatter
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\List\Application\Formatter
 //        -o
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Formatter
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Formatter
 //        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
 //        --no_clustering --no_scheduling --debug --endian=little
 //        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
-//        D:\Games\Programs\IAR\arm\inc\c\DLib_Config_Normal.h -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\
+//        D:\Programs\IAR\arm\inc\c\DLib_Config_Normal.h -I
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\ -I
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\wrapper\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\wrapper\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\wrapper\FreeRtos\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\wrapper\FreeRtos\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\include\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\include\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\Common\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\Common\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\ARM_CM4F\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\ARM_CM4F\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\MemMang\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\MemMang\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\MyTasks\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\MyTasks\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Common\
+//        -I D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\CMSIS\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Common\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\CMSIS\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Diagnostic\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\AHardware\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Diagnostic\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\AHardware\GpioPort\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\AHardware\IrqController\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\GpioPort\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Pin\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\IrqController\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Pin\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Port\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Atomic\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Port\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\Common\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Atomic\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\Common\Singleton\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\Common\RomObject\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\Singleton\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\RomObject\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\Contracts\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DataRepository\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\Contracts\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DataRepository\Contracts\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DataRepository\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DigitalFilter\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DataRepository\Contracts\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DigitalFilter\Contracts\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Formatter\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\Contracts\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Formatter\Contracts\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Leds\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\Contracts\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Leds\Contracts\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Usart\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\Contracts\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Usart\Contracts\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Voltage\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\Contracts\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
+//        -I D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Tasks\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Tasks\Contracts\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\CortexM4\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
-//        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
-//        -On --c++ --no_exceptions --no_rtti) --dependencies=n
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Formatter\Formatter.o.d
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\CortexM4\FieldValues\
+//        -On --c++ --no_exceptions --no_rtti --source_encoding utf8 --text_out
+//        utf8 --utf8_text_in) --dependencies=n
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Formatter\Formatter.o.d
 //    Locale       =  C
 //    List file    =
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\Formatter\Formatter.s
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\List\Application\Formatter\Formatter.s
 //
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -136,7 +139,6 @@
         EXTERN _ZSt4_Fpz
         EXTERN _ZSt7_BADOFF
         EXTERN _ZTISt8ios_base
-        EXTERN _ZTV9Formatter
         EXTERN _ZTVN10__cxxabiv117__class_type_infoE
         EXTERN _ZTVN10__cxxabiv120__si_class_type_infoE
         EXTERN _ZTVN10__cxxabiv121__vmi_class_type_infoE
@@ -164,13 +166,13 @@
         EXTERN strcspn
         EXTERN strlen
 
-        PUBLIC _Z12FormatStringfhSsb
         PUBLIC _ZGVZSt9use_facetISt5ctypeIcEERKT_vE8_MyFacet
         PUBLIC _ZGVZSt9use_facetISt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEEERKT_vE8_MyFacet
         PUBLIC _ZGVZSt9use_facetISt8numpunctIcEERKT_vE8_MyFacet
         PUBLIC _ZN10IFormatterC1Ev
         PUBLIC _ZN10IFormatterC2Ev
         PUBLIC _ZN6_FpostC1ERKS_
+        PUBLIC _ZN9Formatter12FormatStringEfhSsb
         PUBLIC _ZN9FormatterC1Ev
         PUBLIC _ZN9FormatterC2Ev
         PUBLIC _ZN9_MbstatetC1ERKS_
@@ -252,7 +254,6 @@
         PUBLIC _ZNSo13_Flush_sentryC2ERSo
         PUBLIC _ZNSo13_Flush_sentryD1Ev
         PUBLIC _ZNSo13_Flush_sentryD2Ev
-        PUBLIC _ZNSo3putEc
         PUBLIC _ZNSo5_OsfxEv
         PUBLIC _ZNSo5flushEv
         PUBLIC _ZNSo6sentryC1ERSo
@@ -261,7 +262,6 @@
         PUBLIC _ZNSoD0Ev
         PUBLIC _ZNSoD1Ev
         PUBLIC _ZNSoD2Ev
-        PUBLIC _ZNSolsEPFRSoS_E
         PUBLIC _ZNSolsEPFRSt8ios_baseS0_E
         PUBLIC _ZNSolsEf
         PUBLIC _ZNSs10_Assign_rvEOSs
@@ -414,7 +414,6 @@
         PUBLIC _ZSt10_MaklocchrIcET_cPS0_
         PUBLIC _ZSt10_MaklocstrIcEPT_PKcS1_
         PUBLIC _ZSt11_DeallocateIcEvPT_j
-        PUBLIC _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
         PUBLIC _ZSt4moveIRPcEONSt16remove_referenceIT_E4typeEOS3_
         PUBLIC _ZSt4moveIRSt11_Wrap_allocISaIcEEEONSt16remove_referenceIT_E4typeEOS5_
         PUBLIC _ZSt4moveIRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEEONSt16remove_referenceIT_E4typeEOS7_
@@ -438,6 +437,8 @@
         PUBLIC _ZStneIccEbRKSaIT_ERKSaIT0_E
         PUBLIC _ZStoRRNSt5_IosbIiE8_IostateES1_
         PUBLIC _ZStorNSt5_IosbIiE9_OpenmodeES1_
+        PUBLIC _ZTI10IFormatter
+        PUBLIC _ZTI9Formatter
         PUBLIC _ZTISo
         PUBLIC _ZTISt10ctype_base
         PUBLIC _ZTISt11_Wrap_facetISt5ctypeIcEE
@@ -451,6 +452,8 @@
         PUBLIC _ZTISt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE
         PUBLIC _ZTISt8numpunctIcE
         PUBLIC _ZTISt9basic_iosIcSt11char_traitsIcEE
+        PUBLIC _ZTS10IFormatter
+        PUBLIC _ZTS9Formatter
         PUBLIC _ZTSSo
         PUBLIC _ZTSSt10ctype_base
         PUBLIC _ZTSSt11_Wrap_facetISt5ctypeIcEE
@@ -466,6 +469,7 @@
         PUBLIC _ZTSSt9basic_iosIcSt11char_traitsIcEE
         PUBLIC _ZTTSo
         PUBLIC _ZTTSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE
+        PUBLIC _ZTV9Formatter
         PUBLIC _ZTVSo
         PUBLIC _ZTVSo__St19basic_ostringstreamIcSt11char_traitsIcESaIcEE
         PUBLIC _ZTVSt11_Wrap_facetISt5ctypeIcEE
@@ -544,7 +548,7 @@
           CFI D15 SameValue
           CFI EndCommon cfiCommon0
         
-// D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\Formatter.cpp
+// D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Formatter\Formatter.cpp
 //    1 #include "Formatter.hpp" // for Formatter
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -631,7 +635,7 @@ _ZSt9addressofIcEPT_RS0_:
         DATA
 ??addressof_0:
         DATA32
-        DC32     ?_2            
+        DC32     ?_3            
           CFI EndBlock cfiBlock4
 
         SECTION `.rodata`:CONST:REORDER:NOROOT(2)
@@ -641,6 +645,14 @@ _ZSt9addressofIcEPT_RS0_:
 _ZTVSt5ctypeIcE:
         DATA32
         DC32 0x0, _ZTISt5ctypeIcE, _ZNSt5ctypeIcED1Ev, _ZNSt5ctypeIcED0Ev
+
+        SECTION `.rodata`:CONST:REORDER:NOROOT(2)
+        SECTION_GROUP _ZTV9Formatter
+        DATA
+// __absolute void (*const Formatter::__vtbl[3])()
+_ZTV9Formatter:
+        DATA32
+        DC32 0x0, _ZTI9Formatter, _ZN9Formatter12FormatStringEfhSsb
 
         SECTION `.rodata`:CONST:REORDER:NOROOT(2)
         SECTION_GROUP _ZTVSt9basic_iosIcSt11char_traitsIcEE
@@ -950,6 +962,23 @@ _ZZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_RSt8ios
         DS8 1
 
         SECTION `.rodata`:CONST:REORDER:NOROOT(2)
+        SECTION_GROUP _ZTI10IFormatter
+        DATA
+// __absolute __class_type_info const <Typeinfo for IFormatter>
+_ZTI10IFormatter:
+        DATA32
+        DC32 _ZTVN10__cxxabiv117__class_type_infoE + 0x8, _ZTS10IFormatter
+
+        SECTION `.rodata`:CONST:REORDER:NOROOT(2)
+        SECTION_GROUP _ZTI9Formatter
+        DATA
+// __absolute __si_class_type_info const <Typeinfo for Formatter>
+_ZTI9Formatter:
+        DATA32
+        DC32 _ZTVN10__cxxabiv120__si_class_type_infoE + 0x8, _ZTS9Formatter
+        DC32 _ZTI10IFormatter
+
+        SECTION `.rodata`:CONST:REORDER:NOROOT(2)
         SECTION_GROUP _ZTISt5ctypeIcE
         DATA
 // __absolute __si_class_type_info const <Typeinfo for std::ctype<char>>
@@ -1022,6 +1051,25 @@ _ZTISt11_Wrap_facetISt8numpunctIcEE:
         DATA32
         DC32 _ZTVN10__cxxabiv120__si_class_type_infoE + 0x8
         DC32 _ZTSSt11_Wrap_facetISt8numpunctIcEE, _ZTISt8numpunctIcE
+
+        SECTION `.rodata`:CONST:REORDER:NOROOT(2)
+        SECTION_GROUP _ZTS10IFormatter
+        DATA
+// __absolute char const <Typeinfo name for IFormatter>[13]
+_ZTS10IFormatter:
+        DATA8
+        DC8 "10IFormatter"
+        DATA
+        DS8 3
+
+        SECTION `.rodata`:CONST:REORDER:NOROOT(2)
+        SECTION_GROUP _ZTS9Formatter
+        DATA
+// __absolute char const <Typeinfo name for Formatter>[11]
+_ZTS9Formatter:
+        DATA8
+        DC8 "9Formatter"
+        DS8 1
 
         SECTION `.rodata`:CONST:REORDER:NOROOT(2)
         SECTION_GROUP _ZTISt10ctype_base
@@ -1192,14 +1240,20 @@ _ZTSSt11_Wrap_facetISt8numpunctIcEE:
 
         SECTION `.rodata`:CONST:REORDER:NOROOT(2)
         DATA
-?_1:
+        DATA8
+        DC8 "\015\012"
+        DS8 1
+
+        SECTION `.rodata`:CONST:REORDER:NOROOT(2)
+        DATA
+?_2:
         DATA8
         DC8 "\320\235\320\260\320\277\321\200\321\217\320\266\320\265\320\275\320\270\320\265: "
         DS8 1
 
         SECTION `.rodata`:CONST:REORDER:NOROOT(0)
         DATA
-?_2:
+?_3:
         DATA8
         DS8 1
 
@@ -1965,7 +2019,7 @@ _ZNSt16allocator_traitsISaIcEE8max_sizeERKS0_:
 
         SECTION `.rodata`:CONST:REORDER:NOROOT(0)
         DATA
-?_3:
+?_4:
         DATA8
         DS8 1
 
@@ -2013,7 +2067,7 @@ _ZZSt9use_facetISt8numpunctIcEERKT_vE8_MyFacet:
 
         SECTION `.rodata`:CONST:REORDER:NOROOT(1)
         DATA
-?_4:
+?_5:
         DATA8
         DC8 "."
 //    2 #include <sstream> // for std::ostringstream
@@ -2051,7 +2105,7 @@ _ZN9FormatterC1Ev:
         MOVS     R0,R4          
           CFI FunCall _ZN10IFormatterC2Ev
         BL       _ZN10IFormatterC2Ev
-        LDR.N    R0,??DataTable2
+        LDR.N    R0,??DataTable2_1
         STR      R0,[R4, #+0]   
         MOVS     R0,R4          
         POP      {R4,PC}        
@@ -2060,35 +2114,37 @@ _ZN9FormatterC1Ev:
 
         SECTION `.text`:CODE:NOROOT(1)
           CFI Block cfiBlock48 Using cfiCommon0
-          CFI Function _Z12FormatStringfhSsb
+          CFI Function _ZN9Formatter12FormatStringEfhSsb
         THUMB
-//    7 std::string FormatString(const float value, const uint8_t precision, const std::string unit, bool isFilteredValue = false)
+//    7 std::string Formatter :: FormatString(const float value, const uint8_t precision, const std::string unit, bool isFilteredValue)
 //    8 {
-_Z12FormatStringfhSsb:
-        PUSH     {R3-R7,LR}     
+_ZN9Formatter12FormatStringEfhSsb:
+        PUSH     {R4-R8,LR}     
           CFI R14 Frame(CFA, -4)
-          CFI R7 Frame(CFA, -8)
-          CFI R6 Frame(CFA, -12)
-          CFI R5 Frame(CFA, -16)
-          CFI R4 Frame(CFA, -20)
+          CFI R8 Frame(CFA, -8)
+          CFI R7 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -16)
+          CFI R5 Frame(CFA, -20)
+          CFI R4 Frame(CFA, -24)
           CFI CFA R13+24
         VPUSH    {D8}           
           CFI D8 Frame(CFA, -32)
           CFI CFA R13+32
         SUB      SP,SP,#+112    
           CFI CFA R13+144
-        MOVS     R4,R0          
+        MOVS     R5,R0          
+        MOVS     R6,R1          
         VMOV.F32 S16,S0         
-        MOVS     R5,R1          
-        MOVS     R6,R2          
-        MOVS     R7,R3          
+        MOVS     R7,R2          
+        MOV      R8,R3          
+        LDR      R4,[SP, #+144] 
 //    9   std::ostringstream oss;
         MOVS     R1,#+2         
         MOV      R0,SP          
           CFI FunCall _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEC1ENSt5_IosbIiE9_OpenmodeE
         BL       _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEC1ENSt5_IosbIiE9_OpenmodeE
 //   10   oss.precision(precision);
-        MOVS     R1,R5          
+        MOVS     R1,R7          
         UXTB     R1,R1          
         MOV      R0,SP          
         LDR      R2,[SP, #+0]   
@@ -2097,50 +2153,50 @@ _Z12FormatStringfhSsb:
           CFI FunCall _ZNSt8ios_base9precisionEi
         BL       _ZNSt8ios_base9precisionEi
 //   11   if (!isFilteredValue)
-        MOVS     R0,R7          
+        MOVS     R0,R4          
         UXTB     R0,R0          
         CMP      R0,#+0         
         BNE.N    ??FormatString_0
 //   12   {
-//   13     oss << "Неотфильтрованное напряжение: " << std::fixed << value << unit << std::endl;
-        LDR.N    R1,??DataTable2_1
+//   13     oss << "Неотфильтрованное напряжение: " << std::fixed << value << unit << "\r\n";
+        LDR.N    R1,??DataTable2_2
         MOV      R0,SP          
           CFI FunCall _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
         BL       _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
-        LDR.N    R1,??DataTable2_2
+        LDR.N    R1,??DataTable2_3
           CFI FunCall _ZNSolsEPFRSt8ios_baseS0_E
         BL       _ZNSolsEPFRSt8ios_baseS0_E
         VMOV.F32 S0,S16         
           CFI FunCall _ZNSolsEf
         BL       _ZNSolsEf      
-        MOVS     R1,R6          
+        MOV      R1,R8          
           CFI FunCall _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E
         BL       _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E
-        LDR.N    R1,??DataTable2_3
-          CFI FunCall _ZNSolsEPFRSoS_E
-        BL       _ZNSolsEPFRSoS_E
+        ADR.N    R1,??DataTable2
+          CFI FunCall _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+        BL       _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
         B.N      ??FormatString_1
 //   14   }
 //   15   else
 //   16   {
-//   17     oss << "Напряжение: " << std::fixed << value << unit << std::endl;
+//   17     oss << "Напряжение: " << std::fixed << value << unit << "\r\n";
 ??FormatString_0:
         LDR.N    R1,??DataTable2_4
         MOV      R0,SP          
           CFI FunCall _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
         BL       _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
-        LDR.N    R1,??DataTable2_2
+        LDR.N    R1,??DataTable2_3
           CFI FunCall _ZNSolsEPFRSt8ios_baseS0_E
         BL       _ZNSolsEPFRSt8ios_baseS0_E
         VMOV.F32 S0,S16         
           CFI FunCall _ZNSolsEf
         BL       _ZNSolsEf      
-        MOVS     R1,R6          
+        MOV      R1,R8          
           CFI FunCall _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E
         BL       _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E
-        LDR.N    R1,??DataTable2_3
-          CFI FunCall _ZNSolsEPFRSoS_E
-        BL       _ZNSolsEPFRSoS_E
+        ADR.N    R1,??DataTable2
+          CFI FunCall _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+        BL       _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
 //   18   }
 //   19   return std::move(oss).str();
 ??FormatString_1:
@@ -2148,7 +2204,7 @@ _Z12FormatStringfhSsb:
           CFI FunCall _ZSt4moveIRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEEONSt16remove_referenceIT_E4typeEOS7_
         BL       _ZSt4moveIRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEEONSt16remove_referenceIT_E4typeEOS7_
         MOVS     R1,R0          
-        MOVS     R0,R4          
+        MOVS     R0,R5          
           CFI FunCall _ZNKSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE3strEv
         BL       _ZNKSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE3strEv
         MOV      R0,SP          
@@ -2159,7 +2215,7 @@ _Z12FormatStringfhSsb:
         VPOP     {D8}           
           CFI D8 SameValue
           CFI CFA R13+24
-        POP      {R0,R4-R7,PC}  
+        POP      {R4-R8,PC}     
 //   20 }
           CFI EndBlock cfiBlock48
 
@@ -2167,36 +2223,36 @@ _Z12FormatStringfhSsb:
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable2:
-        DATA32
-        DC32     _ZTV9Formatter+0x8
+        DATA8
+        DC8      0x0D, 0x0A, 0x00, 0x00
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable2_1:
         DATA32
-        DC32     ?_0            
+        DC32     _ZTV9Formatter+0x8
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable2_2:
         DATA32
-        DC32     _ZSt5fixedRSt8ios_base
+        DC32     ?_0            
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable2_3:
         DATA32
-        DC32     _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+        DC32     _ZSt5fixedRSt8ios_base
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable2_4:
         DATA32
-        DC32     ?_1            
+        DC32     ?_2            
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZNSt11_Wrap_allocISaIcEEC2ERKS0_
@@ -2564,7 +2620,7 @@ _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEEC1ERKS1_:
         DATA
 ??_String_alloc_0:
         DATA32
-        DC32     ?_3            
+        DC32     ?_4            
           CFI EndBlock cfiBlock65
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -7510,7 +7566,7 @@ _ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FputES3_RSt8ios_b
         DATA32
         DC32     _ZZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FputES3_RSt8ios_basecPKcjjjjEs
         DC32     _ZZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FputES3_RSt8ios_basecPKcjjjjEs_0
-        DC32     ?_4            
+        DC32     ?_5            
           CFI EndBlock cfiBlock210
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -8749,28 +8805,8 @@ _ZNSo5_OsfxEv:
           CFI EndBlock cfiBlock243
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
-        SECTION_GROUP _ZNSolsEPFRSoS_E
-          CFI Block cfiBlock244 Using cfiCommon0
-          CFI Function _ZNSolsEPFRSoS_E
-        THUMB
-// __vfp std::ostream &std::ostream::operator<<(std::ostream &(*)(std::ostream &))
-_ZNSolsEPFRSoS_E:
-        PUSH     {R3-R5,LR}     
-          CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
-          CFI CFA R13+16
-        MOVS     R4,R0          
-        MOVS     R5,R1          
-        MOVS     R0,R4          
-          CFI IndirectCall
-        BLX      R5             
-        POP      {R1,R4,R5,PC}  
-          CFI EndBlock cfiBlock244
-
-        SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZNSolsEPFRSt8ios_baseS0_E
-          CFI Block cfiBlock245 Using cfiCommon0
+          CFI Block cfiBlock244 Using cfiCommon0
           CFI Function _ZNSolsEPFRSt8ios_baseS0_E
         THUMB
 // __vfp std::ostream &std::ostream::operator<<(std::ios_base &(*)(std::ios_base &))
@@ -8789,11 +8825,11 @@ _ZNSolsEPFRSt8ios_baseS0_E:
         BLX      R5             
         MOVS     R0,R4          
         POP      {R1,R4,R5,PC}  
-          CFI EndBlock cfiBlock245
+          CFI EndBlock cfiBlock244
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZNSolsEf
-          CFI Block cfiBlock246 Using cfiCommon0
+          CFI Block cfiBlock245 Using cfiCommon0
           CFI Function _ZNSolsEf
         THUMB
 // __vfp std::ostream &std::ostream::operator<<(float)
@@ -8895,90 +8931,11 @@ _ZNSolsEf:
           CFI D8 SameValue
           CFI CFA R13+24
         POP      {R4-R8,PC}     
-          CFI EndBlock cfiBlock246
-
-        SECTION `.text`:CODE:REORDER:NOROOT(1)
-        SECTION_GROUP _ZNSo3putEc
-          CFI Block cfiBlock247 Using cfiCommon0
-          CFI Function _ZNSo3putEc
-        THUMB
-// __vfp std::ostream &std::ostream::put(char)
-_ZNSo3putEc:
-        PUSH     {R4,R5,LR}     
-          CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
-          CFI CFA R13+12
-        SUB      SP,SP,#+20     
-          CFI CFA R13+32
-        MOVS     R4,R0          
-        MOVS     R5,R1          
-        MOVS     R0,#+0         
-        STRB     R0,[SP, #+0]   
-        MOVS     R1,R4          
-        ADD      R0,SP,#+12     
-          CFI FunCall _ZNSo6sentryC1ERSo
-        BL       _ZNSo6sentryC1ERSo
-          CFI FunCall _ZNKSo13_Flush_sentrycvbEv
-        BL       _ZNKSo13_Flush_sentrycvbEv
-        CMP      R0,#+0         
-        BNE.N    ??put_0        
-        MOVS     R1,#+4         
-        MOV      R0,SP          
-          CFI FunCall _ZStoRRNSt5_IosbIiE8_IostateES1_
-        BL       _ZStoRRNSt5_IosbIiE8_IostateES1_
-        B.N      ??put_1        
-??put_0:
-        MOVS     R0,#+4294967295
-        STR      R0,[SP, #+8]   
-        LDR      R0,[R4, #+0]   
-        LDR      R0,[R0, #-12]  
-        ADD      R0,R4,R0       
-          CFI FunCall _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
-        BL       _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
-        MOVS     R1,R5          
-        UXTB     R1,R1          
-          CFI FunCall _ZNSt15basic_streambufIcSt11char_traitsIcEE5sputcEc
-        BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE5sputcEc
-        STR      R0,[SP, #+4]   
-        ADD      R1,SP,#+4      
-        ADD      R0,SP,#+8      
-          CFI FunCall _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
-        BL       _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
-        CMP      R0,#+0         
-        BEQ.N    ??put_2        
-        MOVS     R0,#+1         
-        B.N      ??put_3        
-??put_2:
-        MOVS     R0,#+0         
-??put_3:
-        UXTB     R0,R0          
-        CMP      R0,#+0         
-        BEQ.N    ??put_1        
-        MOVS     R1,#+4         
-        MOV      R0,SP          
-          CFI FunCall _ZStoRRNSt5_IosbIiE8_IostateES1_
-        BL       _ZStoRRNSt5_IosbIiE8_IostateES1_
-??put_1:
-        MOVS     R2,#+0         
-        LDRB     R1,[SP, #+0]   
-        LDR      R0,[R4, #+0]   
-        LDR      R0,[R0, #-12]  
-        ADD      R0,R4,R0       
-          CFI FunCall _ZNSt9basic_iosIcSt11char_traitsIcEE8setstateENSt5_IosbIiE8_IostateEb
-        BL       _ZNSt9basic_iosIcSt11char_traitsIcEE8setstateENSt5_IosbIiE8_IostateEb
-        ADD      R0,SP,#+12     
-          CFI FunCall _ZNSo6sentryD1Ev
-        BL       _ZNSo6sentryD1Ev
-        MOVS     R0,R4          
-        ADD      SP,SP,#+20     
-          CFI CFA R13+12
-        POP      {R4,R5,PC}     
-          CFI EndBlock cfiBlock247
+          CFI EndBlock cfiBlock245
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZNSo5flushEv
-          CFI Block cfiBlock248 Using cfiCommon0
+          CFI Block cfiBlock246 Using cfiCommon0
           CFI Function _ZNSo5flushEv
         THUMB
 // __vfp std::ostream &std::ostream::flush()
@@ -9026,11 +8983,11 @@ _ZNSo5flushEv:
 ??flush_0:
         MOVS     R0,R4          
         POP      {R1,R2,R4,PC}  
-          CFI EndBlock cfiBlock248
+          CFI EndBlock cfiBlock246
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
-          CFI Block cfiBlock249 Using cfiCommon0
+          CFI Block cfiBlock247 Using cfiCommon0
           CFI Function _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
         THUMB
 // __vfp std::ostream &std::operator<<<std::char_traits<char>>(std::ostream &, char const *)
@@ -9289,47 +9246,11 @@ _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc:
         ADD      SP,SP,#+32     
           CFI CFA R13+24
         POP      {R4-R8,PC}     
-          CFI EndBlock cfiBlock249
-
-        SECTION `.text`:CODE:REORDER:NOROOT(1)
-        SECTION_GROUP _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
-          CFI Block cfiBlock250 Using cfiCommon0
-          CFI Function _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
-        THUMB
-// __vfp std::ostream &std::endl<char, std::char_traits<char>>(std::ostream &)
-_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_:
-        PUSH     {R4,LR}        
-          CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
-        MOVS     R4,R0          
-        CMP      R4,#+0         
-        BEQ.N    ??endl_0       
-        LDR      R0,[R4, #+0]   
-        LDR      R0,[R0, #-12]  
-        ADD      R0,R4,R0       
-        B.N      ??endl_1       
-??endl_0:
-        MOVS     R0,#+0         
-??endl_1:
-        MOVS     R1,#+10        
-          CFI FunCall _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
-        BL       _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
-        MOVS     R1,R0          
-        UXTB     R1,R1          
-        MOVS     R0,R4          
-          CFI FunCall _ZNSo3putEc
-        BL       _ZNSo3putEc    
-        MOVS     R0,R4          
-          CFI FunCall _ZNSo5flushEv
-        BL       _ZNSo5flushEv  
-        MOVS     R0,R4          
-        POP      {R4,PC}        
-          CFI EndBlock cfiBlock250
+          CFI EndBlock cfiBlock247
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E
-          CFI Block cfiBlock251 Using cfiCommon0
+          CFI Block cfiBlock248 Using cfiCommon0
           CFI Function _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E
         THUMB
 // __vfp std::ostream &std::operator<<<char, std::char_traits<char>, std::allocator<char>>(std::ostream &, std::string const &)
@@ -9589,11 +9510,11 @@ _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E:
         ADD      SP,SP,#+32     
           CFI CFA R13+24
         POP      {R4-R8,PC}     
-          CFI EndBlock cfiBlock251
+          CFI EndBlock cfiBlock248
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZN10IFormatterC2Ev
-          CFI Block cfiBlock252 Using cfiCommon0
+          CFI Block cfiBlock249 Using cfiCommon0
           CFI Function _ZN10IFormatterC2Ev
         THUMB
 // __vfp IFormatter::subobject IFormatter() noexcept
@@ -9607,22 +9528,22 @@ _ZN10IFormatterC2Ev:
           CFI FunCall _ZN10IFormatterC1Ev
         BL       _ZN10IFormatterC1Ev
         POP      {R4,PC}        
-          CFI EndBlock cfiBlock252
+          CFI EndBlock cfiBlock249
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZN10IFormatterC1Ev
-          CFI Block cfiBlock253 Using cfiCommon0
+          CFI Block cfiBlock250 Using cfiCommon0
           CFI Function _ZN10IFormatterC1Ev
           CFI NoCalls
         THUMB
 // __vfp IFormatter::IFormatter() noexcept
 _ZN10IFormatterC1Ev:
         BX       LR             
-          CFI EndBlock cfiBlock253
+          CFI EndBlock cfiBlock250
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEEC1ENSt5_IosbIiE9_OpenmodeE
-          CFI Block cfiBlock254 Using cfiCommon0
+          CFI Block cfiBlock251 Using cfiCommon0
           CFI Function _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEEC1ENSt5_IosbIiE9_OpenmodeE
         THUMB
 // __vfp std::stringbuf::basic_stringbuf(std::ios_base::openmode)
@@ -9657,11 +9578,11 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEEC1ENSt5_IosbIiE9_OpenmodeE:
 ??basic_stringbuf_0:
         DATA32
         DC32     _ZTVSt15basic_stringbufIcSt11char_traitsIcESaIcEE+0x8
-          CFI EndBlock cfiBlock254
+          CFI EndBlock cfiBlock251
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEED1Ev
-          CFI Block cfiBlock255 Using cfiCommon0
+          CFI Block cfiBlock252 Using cfiCommon0
           CFI Function _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEED1Ev
         THUMB
 // __vfp std::stringbuf::~basic_stringbuf() noexcept
@@ -9683,11 +9604,11 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEED1Ev:
 `?~basic_stringbuf_0`:
         DATA32
         DC32     _ZTVSt15basic_stringbufIcSt11char_traitsIcESaIcEE+0x8
-          CFI EndBlock cfiBlock255
+          CFI EndBlock cfiBlock252
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEED0Ev
-          CFI Block cfiBlock256 Using cfiCommon0
+          CFI Block cfiBlock253 Using cfiCommon0
           CFI Function _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEED0Ev
         THUMB
 // __vfp std::stringbuf::deleter ~basic_stringbuf() noexcept
@@ -9705,11 +9626,11 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEED0Ev:
           CFI FunCall _ZdlPvj
         BL       _ZdlPvj        
         POP      {R4,PC}        
-          CFI EndBlock cfiBlock256
+          CFI EndBlock cfiBlock253
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZNKSt15basic_stringbufIcSt11char_traitsIcESaIcEE3strEv
-          CFI Block cfiBlock257 Using cfiCommon0
+          CFI Block cfiBlock254 Using cfiCommon0
           CFI Function _ZNKSt15basic_stringbufIcSt11char_traitsIcESaIcEE3strEv
         THUMB
 // __vfp void std::stringbuf::str() const
@@ -9817,11 +9738,11 @@ _ZNKSt15basic_stringbufIcSt11char_traitsIcESaIcEE3strEv:
         ADD      SP,SP,#+76     
           CFI CFA R13+20
         POP      {R4-R7,PC}     
-          CFI EndBlock cfiBlock257
+          CFI EndBlock cfiBlock254
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE8overflowEi
-          CFI Block cfiBlock258 Using cfiCommon0
+          CFI Block cfiBlock255 Using cfiCommon0
           CFI Function _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE8overflowEi
         THUMB
 // __vfp int std::stringbuf::overflow(int)
@@ -10065,11 +9986,11 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE8overflowEi:
         LDR      R0,[SP, #+4]   
 ??overflow_1:
         POP      {R1,R2,R4-R10,PC}
-          CFI EndBlock cfiBlock258
+          CFI EndBlock cfiBlock255
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE9pbackfailEi
-          CFI Block cfiBlock259 Using cfiCommon0
+          CFI Block cfiBlock256 Using cfiCommon0
           CFI Function _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE9pbackfailEi
         THUMB
 // __vfp int std::stringbuf::pbackfail(int)
@@ -10160,11 +10081,11 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE9pbackfailEi:
         ADD      SP,SP,#+16     
           CFI CFA R13+16
         POP      {R4-R6,PC}     
-          CFI EndBlock cfiBlock259
+          CFI EndBlock cfiBlock256
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE9underflowEv
-          CFI Block cfiBlock260 Using cfiCommon0
+          CFI Block cfiBlock257 Using cfiCommon0
           CFI Function _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE9underflowEv
         THUMB
 // __vfp int std::stringbuf::underflow()
@@ -10257,11 +10178,11 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE9underflowEv:
         BL       _ZNSt11char_traitsIcE11to_int_typeERKc
 ??underflow_1:
         POP      {R1,R4,R5,PC}  
-          CFI EndBlock cfiBlock260
+          CFI EndBlock cfiBlock257
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekoffElNSt5_IosbIiE8_SeekdirENS5_9_OpenmodeE
-          CFI Block cfiBlock261 Using cfiCommon0
+          CFI Block cfiBlock258 Using cfiCommon0
           CFI Function _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekoffElNSt5_IosbIiE8_SeekdirENS5_9_OpenmodeE
         THUMB
 // __vfp void std::stringbuf::seekoff(long, std::ios_base::seekdir, std::ios_base::openmode)
@@ -10503,11 +10424,11 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekoffElNSt5_IosbIiE8_SeekdirE
 ??seekoff_1:
         DATA32
         DC32     _ZSt7_BADOFF   
-          CFI EndBlock cfiBlock261
+          CFI EndBlock cfiBlock258
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekposESt4fposI9_MbstatetENSt5_IosbIiE9_OpenmodeE
-          CFI Block cfiBlock262 Using cfiCommon0
+          CFI Block cfiBlock259 Using cfiCommon0
           CFI Function _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekposESt4fposI9_MbstatetENSt5_IosbIiE9_OpenmodeE
         THUMB
 // __vfp void std::stringbuf::seekpos(std::streampos, std::ios_base::openmode)
@@ -10672,11 +10593,11 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE7seekposESt4fposI9_MbstatetENSt5
 ??seekpos_1:
         DATA32
         DC32     _ZSt7_BADOFF   
-          CFI EndBlock cfiBlock262
+          CFI EndBlock cfiBlock259
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE5_InitEPKcji
-          CFI Block cfiBlock263 Using cfiCommon0
+          CFI Block cfiBlock260 Using cfiCommon0
           CFI Function _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE5_InitEPKcji
         THUMB
 // __vfp void std::stringbuf::_Init(char const *, size_t, int)
@@ -10757,11 +10678,11 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE5_InitEPKcji:
         STR      R0,[R5, #+56]  
 ??_Init_1:
         POP      {R4-R8,PC}     
-          CFI EndBlock cfiBlock263
+          CFI EndBlock cfiBlock260
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE5_TidyEv
-          CFI Block cfiBlock264 Using cfiCommon0
+          CFI Block cfiBlock261 Using cfiCommon0
           CFI Function _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE5_TidyEv
         THUMB
 // __vfp void std::stringbuf::_Tidy()
@@ -10823,11 +10744,11 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE5_TidyEv:
         BICS     R0,R0,#0x1     
         STR      R0,[R4, #+56]  
         POP      {R4-R6,PC}     
-          CFI EndBlock cfiBlock264
+          CFI EndBlock cfiBlock261
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE9_GetstateENSt5_IosbIiE9_OpenmodeE
-          CFI Block cfiBlock265 Using cfiCommon0
+          CFI Block cfiBlock262 Using cfiCommon0
           CFI Function _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE9_GetstateENSt5_IosbIiE9_OpenmodeE
         THUMB
 // __vfp int std::stringbuf::_Getstate(std::ios_base::openmode)
@@ -10879,11 +10800,11 @@ _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEE9_GetstateENSt5_IosbIiE9_Openmod
 ??_Getstate_3:
         MOVS     R0,R6          
         POP      {R4-R6,PC}     
-          CFI EndBlock cfiBlock265
+          CFI EndBlock cfiBlock262
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEC2ENSt5_IosbIiE9_OpenmodeE
-          CFI Block cfiBlock266 Using cfiCommon0
+          CFI Block cfiBlock263 Using cfiCommon0
           CFI Function _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEC2ENSt5_IosbIiE9_OpenmodeE
         THUMB
 // __vfp std::ostringstream::subobject basic_ostringstream(std::ios_base::openmode)
@@ -10921,11 +10842,11 @@ _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEC2ENSt5_IosbIiE9_OpenmodeE:
         BL       _ZNSt15basic_stringbufIcSt11char_traitsIcESaIcEEC1ENSt5_IosbIiE9_OpenmodeE
         MOVS     R0,R4          
         POP      {R4-R6,PC}     
-          CFI EndBlock cfiBlock266
+          CFI EndBlock cfiBlock263
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEC1ENSt5_IosbIiE9_OpenmodeE
-          CFI Block cfiBlock267 Using cfiCommon0
+          CFI Block cfiBlock264 Using cfiCommon0
           CFI Function _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEC1ENSt5_IosbIiE9_OpenmodeE
         THUMB
 // __vfp std::ostringstream::complete basic_ostringstream(std::ios_base::openmode)
@@ -10956,11 +10877,11 @@ _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEC1ENSt5_IosbIiE9_OpenmodeE:
 `??complete basic_ostringstream_0`:
         DATA32
         DC32     _ZTTSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE
-          CFI EndBlock cfiBlock267
+          CFI EndBlock cfiBlock264
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED2Ev
-          CFI Block cfiBlock268 Using cfiCommon0
+          CFI Block cfiBlock265 Using cfiCommon0
           CFI Function _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED2Ev
         THUMB
 // __vfp std::ostringstream::subobject ~basic_ostringstream() noexcept
@@ -10987,11 +10908,11 @@ _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED2Ev:
         BL       _ZNSoD2Ev      
         MOVS     R0,R4          
         POP      {R1,R4,R5,PC}  
-          CFI EndBlock cfiBlock268
+          CFI EndBlock cfiBlock265
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED0Ev
-          CFI Block cfiBlock269 Using cfiCommon0
+          CFI Block cfiBlock266 Using cfiCommon0
           CFI Function _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED0Ev
         THUMB
 // __vfp std::ostringstream::deleter ~basic_ostringstream() noexcept
@@ -11009,11 +10930,11 @@ _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED0Ev:
           CFI FunCall _ZdlPvj
         BL       _ZdlPvj        
         POP      {R4,PC}        
-          CFI EndBlock cfiBlock269
+          CFI EndBlock cfiBlock266
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED1Ev
-          CFI Block cfiBlock270 Using cfiCommon0
+          CFI Block cfiBlock267 Using cfiCommon0
           CFI Function _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED1Ev
         THUMB
 // __vfp std::ostringstream::complete ~basic_ostringstream() noexcept
@@ -11039,11 +10960,11 @@ _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED1Ev:
 `??complete ~basic_ostringstream_0`:
         DATA32
         DC32     _ZTTSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE
-          CFI EndBlock cfiBlock270
+          CFI EndBlock cfiBlock267
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZNKSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE3strEv
-          CFI Block cfiBlock271 Using cfiCommon0
+          CFI Block cfiBlock268 Using cfiCommon0
           CFI Function _ZNKSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE3strEv
         THUMB
 // __vfp void std::ostringstream::str() const
@@ -11057,7 +10978,7 @@ _ZNKSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE3strEv:
           CFI FunCall _ZNKSt15basic_stringbufIcSt11char_traitsIcESaIcEE3strEv
         BL       _ZNKSt15basic_stringbufIcSt11char_traitsIcESaIcEE3strEv
         POP      {R4,PC}        
-          CFI EndBlock cfiBlock271
+          CFI EndBlock cfiBlock268
 
         SECTION `.iar_vfe_vtableinfo_ZTVSt5ctypeIcE`:DATA:NOALLOC:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
@@ -11067,6 +10988,25 @@ _ZNKSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE3strEv:
         DC32    4
         DC32    1
         DC32    _ZTISt5ctypeIcE
+        DC32    1
+        DC32    2
+        DC32    0
+
+        SECTION `.iar_vfe_vtableinfo_ZTV9Formatter`:DATA:NOALLOC:NOROOT(2)
+        SECTION_TYPE SHT_PROGBITS, 0
+        SECTION_GROUP _ZTV9Formatter
+        DATA
+        DC32    _ZTV9Formatter
+        DC32    3
+        DC32    2
+        DC32    _ZTI10IFormatter
+        DC32    0
+        DC32    1
+        DC32    _ZTI9Formatter
+        DC32    1
+        DC32    2
+        DC32    0
+        DC32    _ZTI9Formatter
         DC32    1
         DC32    2
         DC32    0
@@ -11521,7 +11461,7 @@ _ZNKSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE3strEv:
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZTv0_n12_NSoD0Ev
-          CFI Block cfiBlock272 Using cfiCommon0
+          CFI Block cfiBlock269 Using cfiCommon0
           CFI Function _ZTv0_n12_NSoD0Ev
         THUMB
 // __vfp void std::ostream::deleter ~basic_ostream for ios_base/v-3/() noexcept
@@ -11531,11 +11471,11 @@ _ZTv0_n12_NSoD0Ev:
         ADD      R0,R0,R1       
           CFI FunCall _ZNSoD0Ev
         B.W      _ZNSoD0Ev      
-          CFI EndBlock cfiBlock272
+          CFI EndBlock cfiBlock269
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZTv0_n12_NSoD1Ev
-          CFI Block cfiBlock273 Using cfiCommon0
+          CFI Block cfiBlock270 Using cfiCommon0
           CFI Function _ZTv0_n12_NSoD1Ev
         THUMB
 // __vfp void *std::ostream::complete ~basic_ostream for ios_base/v-3/() noexcept
@@ -11545,11 +11485,11 @@ _ZTv0_n12_NSoD1Ev:
         ADD      R0,R0,R1       
           CFI FunCall _ZNSoD1Ev
         B.W      _ZNSoD1Ev      
-          CFI EndBlock cfiBlock273
+          CFI EndBlock cfiBlock270
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZTv0_n12_NSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED0Ev
-          CFI Block cfiBlock274 Using cfiCommon0
+          CFI Block cfiBlock271 Using cfiCommon0
           CFI Function _ZTv0_n12_NSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED0Ev
         THUMB
 // __vfp void std::ostringstream::deleter ~basic_ostringstream for ios_base/v-3/() noexcept
@@ -11559,11 +11499,11 @@ _ZTv0_n12_NSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED0Ev:
         ADD      R0,R0,R1       
           CFI FunCall _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED0Ev
         B.W      _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED0Ev
-          CFI EndBlock cfiBlock274
+          CFI EndBlock cfiBlock271
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZTv0_n12_NSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED1Ev
-          CFI Block cfiBlock275 Using cfiCommon0
+          CFI Block cfiBlock272 Using cfiCommon0
           CFI Function _ZTv0_n12_NSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED1Ev
         THUMB
 // __vfp void *std::ostringstream::complete ~basic_ostringstream for ios_base/v-3/() noexcept
@@ -11573,16 +11513,16 @@ _ZTv0_n12_NSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED1Ev:
         ADD      R0,R0,R1       
           CFI FunCall _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED1Ev
         B.W      _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED1Ev
-          CFI EndBlock cfiBlock275
+          CFI EndBlock cfiBlock272
 
         END
 // 
 //     31 bytes in section .bss
-//  1'217 bytes in section .rodata
-// 13'082 bytes in section .text
+//  1'281 bytes in section .rodata
+// 12'900 bytes in section .text
 // 
-// 202 bytes of CODE  memory (+ 12'880 bytes shared)
-//  88 bytes of CONST memory (+  1'129 bytes shared)
+// 208 bytes of CODE  memory (+ 12'692 bytes shared)
+//  92 bytes of CONST memory (+  1'189 bytes shared)
 //   0 bytes of DATA  memory (+     31 bytes shared)
 //
 //Errors: none

@@ -1,20 +1,16 @@
-D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\BrowseInfo\Application\Leds\LedCalculator.pbi: \
-  D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\LedCalculator.cpp \
-  D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\LedCalculator.hpp \
-  D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\Contracts\ILedCalculator.hpp \
-  D:\Games\Programs\IAR\arm\inc\cpp\cstdint \
-  D:\Games\Programs\IAR\arm\inc\c\stdint.h \
-  D:\Games\Programs\IAR\arm\inc\c\ycheck.h \
-  D:\Games\Programs\IAR\arm\inc\c\yvals.h \
-  D:\Games\Programs\IAR\arm\inc\c\DLib_Defaults.h \
-  D:\Games\Programs\IAR\arm\inc\c\DLib_Config_Normal.h \
-  D:\Games\Programs\IAR\arm\inc\c\DLib_Product.h \
-  D:\Games\Programs\IAR\arm\inc\cpp\cmath \
-  D:\Games\Programs\IAR\arm\inc\c\math.h \
-  D:\Games\Programs\IAR\arm\inc\c\DLib_float_setup.h \
-  D:\Games\Programs\IAR\arm\inc\c\xtgmath.h \
-  D:\Games\Programs\IAR\arm\inc\cpp\xtr1common \
-  D:\Games\Programs\IAR\arm\inc\cpp\cstdlib \
-  D:\Games\Programs\IAR\arm\inc\c\stdlib.h \
-  D:\Games\Programs\IAR\arm\inc\c\ysizet.h \
-  D:\Games\Programs\IAR\arm\inc\c\DLib_Product_stdlib.h
+D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\BrowseInfo\Application\Leds\LedCalculator.pbi: \
+  D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Leds\LedCalculator.cpp \
+  D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Leds\LedCalculator.hpp \
+  D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Leds\Contracts\ILedCalculator.hpp \
+  D:\Programs\IAR\arm\inc\cpp\cstdint D:\Programs\IAR\arm\inc\c\stdint.h \
+  D:\Programs\IAR\arm\inc\c\ycheck.h D:\Programs\IAR\arm\inc\c\yvals.h \
+  D:\Programs\IAR\arm\inc\c\DLib_Defaults.h \
+  D:\Programs\IAR\arm\inc\c\DLib_Config_Normal.h \
+  D:\Programs\IAR\arm\inc\c\DLib_Product.h \
+  D:\Programs\IAR\arm\inc\cpp\cmath D:\Programs\IAR\arm\inc\c\math.h \
+  D:\Programs\IAR\arm\inc\c\DLib_float_setup.h \
+  D:\Programs\IAR\arm\inc\c\xtgmath.h \
+  D:\Programs\IAR\arm\inc\cpp\xtr1common \
+  D:\Programs\IAR\arm\inc\cpp\cstdlib D:\Programs\IAR\arm\inc\c\stdlib.h \
+  D:\Programs\IAR\arm\inc\c\ysizet.h \
+  D:\Programs\IAR\arm\inc\c\DLib_Product_stdlib.h

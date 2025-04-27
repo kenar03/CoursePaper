@@ -1,118 +1,120 @@
-###############################################################################
+﻿###############################################################################
 #
-# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         27/Apr/2025  00:21:28
+# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         27/Apr/2025  21:40:50
 # Copyright 1999-2022 IAR Systems AB.
 #
 #    Cpu mode                     =  thumb
 #    Endian                       =  little
 #    Source file                  =
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\Usart.cpp
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Usart\Usart.cpp
+#        [UTF-8]
 #    Command line                 =
 #        -f
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Usart\Usart.o.rsp
-#        (D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\Usart.cpp
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Usart\Usart.o.rsp
+#        (D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Usart\Usart.cpp
 #        -lC
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\Usart
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\List\Application\Usart
 #        -lA
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\Usart
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\List\Application\Usart
 #        -o
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Usart
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Usart
 #        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
 #        --no_clustering --no_scheduling --debug --endian=little
 #        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
-#        D:\Games\Programs\IAR\arm\inc\c\DLib_Config_Normal.h -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\
+#        D:\Programs\IAR\arm\inc\c\DLib_Config_Normal.h -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\ -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\wrapper\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\wrapper\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\wrapper\FreeRtos\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\wrapper\FreeRtos\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\include\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\include\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\Common\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\Common\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\ARM_CM4F\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\ARM_CM4F\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\MemMang\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\MemMang\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\MyTasks\
+#        -I D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Common\
+#        -I D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\CMSIS\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\MyTasks\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Common\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Diagnostic\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\CMSIS\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\AHardware\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\AHardware\GpioPort\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Diagnostic\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\AHardware\IrqController\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Pin\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\GpioPort\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\IrqController\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Pin\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Port\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Atomic\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\Common\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Port\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\Common\Singleton\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Atomic\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\Common\RomObject\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\Singleton\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\Contracts\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\RomObject\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DataRepository\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DataRepository\Contracts\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\Contracts\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DigitalFilter\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DataRepository\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DigitalFilter\Contracts\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DataRepository\Contracts\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Formatter\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Formatter\Contracts\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\Contracts\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Leds\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Leds\Contracts\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\Contracts\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Usart\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Usart\Contracts\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\Contracts\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Voltage\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
+#        -I D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Tasks\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\Contracts\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Tasks\Contracts\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\CortexM4\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
-#        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
-#        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
-#        -On --c++ --no_exceptions --no_rtti) --dependencies=n
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Usart\Usart.o.d
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\CortexM4\FieldValues\
+#        -On --c++ --no_exceptions --no_rtti --source_encoding utf8 --text_out
+#        utf8 --utf8_text_in) --dependencies=n
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Usart\Usart.o.d
 #    Locale                       =  C
 #    List file                    =
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\Usart\Usart.lst
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\List\Application\Usart\Usart.lst
 #    Object file                  =
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Usart\Usart.o
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Usart\Usart.o
 #    Runtime model:                  
 #      __CPP_Exceptions           =  Disabled
 #      __CPP_Language             =  C++14
@@ -125,7 +127,7 @@
 #
 ###############################################################################
 
-D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\Usart.cpp
+D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Usart\Usart.cpp
       1          #include "Usart.hpp" // for Usart
 
    \                                 In section .text, align 2
@@ -252,13 +254,13 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\U
    \        0x0   0xB510             PUSH     {R4,LR}
    \        0x2   0x0004             MOVS     R4,R0
    \        0x4   0xF5B4 0x5F80      CMP      R4,#+4096
-   \        0x8   0xD306             BCC.N    ??Set_15
+   \        0x8   0xD306             BCC.N    ??Set_12
    \        0xA   0x221F             MOVS     R2,#+31
    \        0xC   0x4906             LDR.N    R1,??Set_0
    \        0xE   0x4807             LDR.N    R0,??Set_0+0x4
    \       0x10   0x.... 0x....      BL       __aeabi_assert
    \       0x14   0x.... 0x....      BL       __iar_EmptyStepPoint
-   \                     ??Set_15: (+1)
+   \                     ??Set_12: (+1)
    \       0x18   0x4905             LDR.N    R1,??Set_0+0x8
    \       0x1A   0x6808             LDR      R0,[R1, #+0]
    \       0x1C   0xF36F 0x100F      BFC      R0,#+4,#+12
@@ -276,13 +278,13 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\U
    \        0x0   0xB510             PUSH     {R4,LR}
    \        0x2   0x0004             MOVS     R4,R0
    \        0x4   0x2C10             CMP      R4,#+16
-   \        0x6   0xD306             BCC.N    ??Set_16
+   \        0x6   0xD306             BCC.N    ??Set_13
    \        0x8   0x221F             MOVS     R2,#+31
    \        0xA   0x4906             LDR.N    R1,??Set_1
    \        0xC   0x4806             LDR.N    R0,??Set_1+0x4
    \        0xE   0x.... 0x....      BL       __aeabi_assert
    \       0x12   0x.... 0x....      BL       __iar_EmptyStepPoint
-   \                     ??Set_16: (+1)
+   \                     ??Set_13: (+1)
    \       0x16   0x4905             LDR.N    R1,??Set_1+0x8
    \       0x18   0x6808             LDR      R0,[R1, #+0]
    \       0x1A   0x0900             LSRS     R0,R0,#+4
@@ -355,104 +357,70 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\U
    \       0x10   0x4002'0020        DC32     0x40020020
 
    \                                 In section .text, align 4
-   \   __vfp void FieldValueBase<GPIOA_PUPDR_PUPDR15_Values<GPIOA::PUPDR, 4U, 2U, ReadWriteMode, GPIOA::GPIOAPUPDRBase>, GPIOA::GPIOAPUPDRBase, 0U>::Set<ReadWriteMode, void>()
-   \                     _ZN14FieldValueBaseI26GPIOA_PUPDR_PUPDR15_ValuesIN5GPIOA5PUPDRELj4ELj2E13ReadWriteModeNS1_14GPIOAPUPDRBaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
-   \        0x0   0x4902             LDR.N    R1,??Set_6
-   \        0x2   0x6808             LDR      R0,[R1, #+0]
-   \        0x4   0xF030 0x0030      BICS     R0,R0,#0x30
-   \        0x8   0x6008             STR      R0,[R1, #+0]
-   \        0xA   0x4770             BX       LR
-   \                     ??Set_6:
-   \        0xC   0x4002'000C        DC32     0x4002000c
-
-   \                                 In section .text, align 4
-   \   __vfp void FieldValueBase<GPIOA_PUPDR_PUPDR15_Values<GPIOA::PUPDR, 6U, 2U, ReadWriteMode, GPIOA::GPIOAPUPDRBase>, GPIOA::GPIOAPUPDRBase, 1U>::Set<ReadWriteMode, void>()
-   \                     _ZN14FieldValueBaseI26GPIOA_PUPDR_PUPDR15_ValuesIN5GPIOA5PUPDRELj6ELj2E13ReadWriteModeNS1_14GPIOAPUPDRBaseEES4_Lj1EE3SetIS3_vEEvv: (+1)
-   \        0x0   0x4903             LDR.N    R1,??Set_7
-   \        0x2   0x6808             LDR      R0,[R1, #+0]
-   \        0x4   0xF030 0x00C0      BICS     R0,R0,#0xC0
-   \        0x8   0xF050 0x0040      ORRS     R0,R0,#0x40
-   \        0xC   0x6008             STR      R0,[R1, #+0]
-   \        0xE   0x4770             BX       LR
-   \                     ??Set_7:
-   \       0x10   0x4002'000C        DC32     0x4002000c
-
-   \                                 In section .text, align 4
    \   __vfp void FieldValueBase<USART2_CR1_OVER8_Values<USART2::CR1, 15U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
    \                     _ZN14FieldValueBaseI23USART2_CR1_OVER8_ValuesIN6USART23CR1ELj15ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
-   \        0x0   0x4902             LDR.N    R1,??Set_8
+   \        0x0   0x4902             LDR.N    R1,??Set_6
    \        0x2   0x6808             LDR      R0,[R1, #+0]
    \        0x4   0xF430 0x4000      BICS     R0,R0,#0x8000
    \        0x8   0x6008             STR      R0,[R1, #+0]
    \        0xA   0x4770             BX       LR
-   \                     ??Set_8:
+   \                     ??Set_6:
    \        0xC   0x4000'440C        DC32     0x4000440c
 
    \                                 In section .text, align 4
    \   __vfp void FieldValueBase<USART2_CR1_M_Values<USART2::CR1, 12U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
    \                     _ZN14FieldValueBaseI19USART2_CR1_M_ValuesIN6USART23CR1ELj12ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
-   \        0x0   0x4902             LDR.N    R1,??Set_9
+   \        0x0   0x4902             LDR.N    R1,??Set_7
    \        0x2   0x6808             LDR      R0,[R1, #+0]
    \        0x4   0xF430 0x5080      BICS     R0,R0,#0x1000
+   \        0x8   0x6008             STR      R0,[R1, #+0]
+   \        0xA   0x4770             BX       LR
+   \                     ??Set_7:
+   \        0xC   0x4000'440C        DC32     0x4000440c
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<USART2_CR2_STOP_Values<USART2::CR2, 12U, 2U, ReadWriteMode, USART2::USART2CR2Base>, USART2::USART2CR2Base, 0U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI22USART2_CR2_STOP_ValuesIN6USART23CR2ELj12ELj2E13ReadWriteModeNS1_13USART2CR2BaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4902             LDR.N    R1,??Set_8
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF430 0x5040      BICS     R0,R0,#0x3000
+   \        0x8   0x6008             STR      R0,[R1, #+0]
+   \        0xA   0x4770             BX       LR
+   \                     ??Set_8:
+   \        0xC   0x4000'4410        DC32     0x40004410
+
+   \                                 In section .text, align 4
+   \   __vfp void FieldValueBase<USART2_CR1_PCE_Values<USART2::CR1, 10U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
+   \                     _ZN14FieldValueBaseI21USART2_CR1_PCE_ValuesIN6USART23CR1ELj10ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
+   \        0x0   0x4902             LDR.N    R1,??Set_9
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0xF430 0x6080      BICS     R0,R0,#0x400
    \        0x8   0x6008             STR      R0,[R1, #+0]
    \        0xA   0x4770             BX       LR
    \                     ??Set_9:
    \        0xC   0x4000'440C        DC32     0x4000440c
 
    \                                 In section .text, align 4
-   \   __vfp void FieldValueBase<USART2_CR2_STOP_Values<USART2::CR2, 12U, 2U, ReadWriteMode, USART2::USART2CR2Base>, USART2::USART2CR2Base, 0U>::Set<ReadWriteMode, void>()
-   \                     _ZN14FieldValueBaseI22USART2_CR2_STOP_ValuesIN6USART23CR2ELj12ELj2E13ReadWriteModeNS1_13USART2CR2BaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
-   \        0x0   0x4902             LDR.N    R1,??Set_10
-   \        0x2   0x6808             LDR      R0,[R1, #+0]
-   \        0x4   0xF430 0x5040      BICS     R0,R0,#0x3000
-   \        0x8   0x6008             STR      R0,[R1, #+0]
-   \        0xA   0x4770             BX       LR
-   \                     ??Set_10:
-   \        0xC   0x4000'4410        DC32     0x40004410
-
-   \                                 In section .text, align 4
-   \   __vfp void FieldValueBase<USART2_CR1_PCE_Values<USART2::CR1, 10U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
-   \                     _ZN14FieldValueBaseI21USART2_CR1_PCE_ValuesIN6USART23CR1ELj10ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
-   \        0x0   0x4902             LDR.N    R1,??Set_11
-   \        0x2   0x6808             LDR      R0,[R1, #+0]
-   \        0x4   0xF430 0x6080      BICS     R0,R0,#0x400
-   \        0x8   0x6008             STR      R0,[R1, #+0]
-   \        0xA   0x4770             BX       LR
-   \                     ??Set_11:
-   \        0xC   0x4000'440C        DC32     0x4000440c
-
-   \                                 In section .text, align 4
-   \   __vfp void FieldValueBase<USART2_CR1_RE_Values<USART2::CR1, 2U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
-   \                     _ZN14FieldValueBaseI20USART2_CR1_RE_ValuesIN6USART23CR1ELj2ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
-   \        0x0   0x4902             LDR.N    R1,??Set_12
-   \        0x2   0x6808             LDR      R0,[R1, #+0]
-   \        0x4   0xF030 0x0004      BICS     R0,R0,#0x4
-   \        0x8   0x6008             STR      R0,[R1, #+0]
-   \        0xA   0x4770             BX       LR
-   \                     ??Set_12:
-   \        0xC   0x4000'440C        DC32     0x4000440c
-
-   \                                 In section .text, align 4
    \   __vfp void FieldValueBase<USART2_CR1_TXEIE_Values<USART2::CR1, 7U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 1U>::Set<ReadWriteMode, void>()
    \                     _ZN14FieldValueBaseI23USART2_CR1_TXEIE_ValuesIN6USART23CR1ELj7ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv: (+1)
-   \        0x0   0x4903             LDR.N    R1,??Set_13
+   \        0x0   0x4903             LDR.N    R1,??Set_10
    \        0x2   0x6808             LDR      R0,[R1, #+0]
    \        0x4   0xF030 0x0080      BICS     R0,R0,#0x80
    \        0x8   0xF050 0x0080      ORRS     R0,R0,#0x80
    \        0xC   0x6008             STR      R0,[R1, #+0]
    \        0xE   0x4770             BX       LR
-   \                     ??Set_13:
+   \                     ??Set_10:
    \       0x10   0x4000'440C        DC32     0x4000440c
 
    \                                 In section .text, align 4
    \   __vfp void FieldValueBase<USART2_SR_TC_Values<USART2::SR, 6U, 1U, ReadWriteMode, USART2::USART2SRBase>, USART2::USART2SRBase, 0U>::Set<ReadWriteMode, void>()
    \                     _ZN14FieldValueBaseI19USART2_SR_TC_ValuesIN6USART22SRELj6ELj1E13ReadWriteModeNS1_12USART2SRBaseEES4_Lj0EE3SetIS3_vEEvv: (+1)
-   \        0x0   0x4902             LDR.N    R1,??Set_14
+   \        0x0   0x4902             LDR.N    R1,??Set_11
    \        0x2   0x6808             LDR      R0,[R1, #+0]
    \        0x4   0xF030 0x0040      BICS     R0,R0,#0x40
    \        0x8   0x6008             STR      R0,[R1, #+0]
    \        0xA   0x4770             BX       LR
-   \                     ??Set_14:
+   \                     ??Set_11:
    \        0xC   0x4000'4400        DC32     0x40004400
 
    \                                 In section .text, align 4
@@ -553,72 +521,66 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\U
    \       0x12   0x.... 0x....      BL       _ZN14FieldValueBaseI23GPIOA_AFRL_AFRL7_ValuesIN5GPIOA4AFRLELj12ELj4E13ReadWriteModeNS1_13GPIOAAFRLBaseEES4_Lj7EE3SetIS3_vEEvv
      25            GPIOA::AFRL::AFRL2::Af7::Set();
    \       0x16   0x.... 0x....      BL       _ZN14FieldValueBaseI23GPIOA_AFRL_AFRL7_ValuesIN5GPIOA4AFRLELj8ELj4E13ReadWriteModeNS1_13GPIOAAFRLBaseEES4_Lj7EE3SetIS3_vEEvv
-     26            GPIOA::PUPDR::PUPDR2::NoPullUpNoPullDown::Set();
-   \       0x1A   0x.... 0x....      BL       _ZN14FieldValueBaseI26GPIOA_PUPDR_PUPDR15_ValuesIN5GPIOA5PUPDRELj4ELj2E13ReadWriteModeNS1_14GPIOAPUPDRBaseEES4_Lj0EE3SetIS3_vEEvv
-     27            GPIOA::PUPDR::PUPDR3::PullUp::Set();
-   \       0x1E   0x.... 0x....      BL       _ZN14FieldValueBaseI26GPIOA_PUPDR_PUPDR15_ValuesIN5GPIOA5PUPDRELj6ELj2E13ReadWriteModeNS1_14GPIOAPUPDRBaseEES4_Lj1EE3SetIS3_vEEvv
-     28            USART2::CR1::OVER8::OversamplingBy16::Set();
-   \       0x22   0x.... 0x....      BL       _ZN14FieldValueBaseI23USART2_CR1_OVER8_ValuesIN6USART23CR1ELj15ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv
-     29            USART2::CR1::M::Data8bits::Set();
-   \       0x26   0x.... 0x....      BL       _ZN14FieldValueBaseI19USART2_CR1_M_ValuesIN6USART23CR1ELj12ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv
-     30            USART2::CR2::STOP::Value0::Set(); // 1 stop bit
-   \       0x2A   0x.... 0x....      BL       _ZN14FieldValueBaseI22USART2_CR2_STOP_ValuesIN6USART23CR2ELj12ELj2E13ReadWriteModeNS1_13USART2CR2BaseEES4_Lj0EE3SetIS3_vEEvv
-     31            USART2::CR1::PCE::ParityControlDisable::Set();
-   \       0x2E   0x.... 0x....      BL       _ZN14FieldValueBaseI21USART2_CR1_PCE_ValuesIN6USART23CR1ELj10ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv
-     32            USART2::CR1::RE::Disable::Set();
-   \       0x32   0x.... 0x....      BL       _ZN14FieldValueBaseI20USART2_CR1_RE_ValuesIN6USART23CR1ELj2ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv
-     33            USART2::CR1::TXEIE::InterruptWhenTXE::Set();
-   \       0x36   0x.... 0x....      BL       _ZN14FieldValueBaseI23USART2_CR1_TXEIE_ValuesIN6USART23CR1ELj7ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv
-     34            constexpr std::uint32_t SystemCoreClock = 8'000'000U;
-   \       0x3A   0x....             LDR.N    R5,??DataTable2_1
-     35            constexpr std::uint32_t BaudRate = 9600;
-   \       0x3C   0xF44F 0x5616      MOV      R6,#+9600
-     36            double UsartDivDouble = 1.0 / (BaudRate * 8 * (2 - USART2::CR1::OVER8::Get())) * SystemCoreClock;
-   \       0x40   0x.... 0x....      BL       _ZN13RegisterFieldIN6USART23CR1ELj15ELj1E13ReadWriteModevE3GetIS2_vEEjv
-   \       0x44   0xF1D0 0x0002      RSBS     R0,R0,#+2
-   \       0x48   0xF45F 0x3196      MOVS     R1,#+76800
-   \       0x4C   0x4348             MULS     R0,R1,R0
-   \       0x4E   0x.... 0x....      BL       __aeabi_ui2d
-   \       0x52   0x0002             MOVS     R2,R0
-   \       0x54   0x000B             MOVS     R3,R1
-   \       0x56   0x2000             MOVS     R0,#+0
-   \       0x58   0x....             LDR.N    R1,??DataTable2_2
-   \       0x5A   0x.... 0x....      BL       __aeabi_ddiv
-   \       0x5E   0x2200             MOVS     R2,#+0
-   \       0x60   0x....             LDR.N    R3,??DataTable2_3
-   \       0x62   0x.... 0x....      BL       __aeabi_dmul
-   \       0x66   0xEC41 0x0B18      VMOV     D8,R0,R1
-     37            uint32_t UsartDivMantissa = static_cast<uint32_t>(UsartDivDouble);
-   \       0x6A   0xEC51 0x0B18      VMOV     R0,R1,D8
-   \       0x6E   0x.... 0x....      BL       __aeabi_d2uiz
-   \       0x72   0x0007             MOVS     R7,R0
-     38            uint16_t UsartDivFraction = static_cast<uint32_t>(round((UsartDivDouble - UsartDivMantissa) * 16));
-   \       0x74   0x0038             MOVS     R0,R7
-   \       0x76   0x.... 0x....      BL       __aeabi_ui2d
-   \       0x7A   0x0002             MOVS     R2,R0
-   \       0x7C   0x000B             MOVS     R3,R1
-   \       0x7E   0xEC51 0x0B18      VMOV     R0,R1,D8
-   \       0x82   0x.... 0x....      BL       __aeabi_dsub
-   \       0x86   0x2200             MOVS     R2,#+0
-   \       0x88   0x....             LDR.N    R3,??DataTable2_4
-   \       0x8A   0x.... 0x....      BL       __aeabi_dmul
-   \       0x8E   0xEC41 0x0B10      VMOV     D0,R0,R1
-   \       0x92   0x.... 0x....      BL       round
-   \       0x96   0xEC51 0x0B10      VMOV     R0,R1,D0
-   \       0x9A   0x.... 0x....      BL       __aeabi_d2uiz
-   \       0x9E   0x4680             MOV      R8,R0
-     39            USART2::BRR::DIV_Mantissa::Set(UsartDivMantissa);
-   \       0xA0   0x0038             MOVS     R0,R7
-   \       0xA2   0x.... 0x....      BL       _ZN13RegisterFieldIN6USART23BRRELj4ELj12E13ReadWriteModevE3SetIS2_vEEvj
-     40            USART2::BRR::DIV_Fraction::Set(UsartDivFraction);
-   \       0xA6   0x4640             MOV      R0,R8
-   \       0xA8   0xB280             UXTH     R0,R0
-   \       0xAA   0x.... 0x....      BL       _ZN13RegisterFieldIN6USART23BRRELj0ELj4E13ReadWriteModevE3SetIS2_vEEvj
-     41            USART2::SR::TC::TransmitionNotComplete::Set();
-   \       0xAE   0x.... 0x....      BL       _ZN14FieldValueBaseI19USART2_SR_TC_ValuesIN6USART22SRELj6ELj1E13ReadWriteModeNS1_12USART2SRBaseEES4_Lj0EE3SetIS3_vEEvv
-     42          }
-   \       0xB2   0xECBD 0x8B02      VPOP     {D8}
-   \       0xB6   0xE8BD 0x81F0      POP      {R4-R8,PC}
+     26            USART2::CR1::OVER8::OversamplingBy16::Set();
+   \       0x1A   0x.... 0x....      BL       _ZN14FieldValueBaseI23USART2_CR1_OVER8_ValuesIN6USART23CR1ELj15ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv
+     27            USART2::CR1::M::Data8bits::Set();
+   \       0x1E   0x.... 0x....      BL       _ZN14FieldValueBaseI19USART2_CR1_M_ValuesIN6USART23CR1ELj12ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv
+     28            USART2::CR2::STOP::Value0::Set(); // 1 stop bit
+   \       0x22   0x.... 0x....      BL       _ZN14FieldValueBaseI22USART2_CR2_STOP_ValuesIN6USART23CR2ELj12ELj2E13ReadWriteModeNS1_13USART2CR2BaseEES4_Lj0EE3SetIS3_vEEvv
+     29            USART2::CR1::PCE::ParityControlDisable::Set();
+   \       0x26   0x.... 0x....      BL       _ZN14FieldValueBaseI21USART2_CR1_PCE_ValuesIN6USART23CR1ELj10ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj0EE3SetIS3_vEEvv
+     30            USART2::CR1::TXEIE::InterruptWhenTXE::Set();
+   \       0x2A   0x.... 0x....      BL       _ZN14FieldValueBaseI23USART2_CR1_TXEIE_ValuesIN6USART23CR1ELj7ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv
+     31            constexpr std::uint32_t SystemCoreClock = 8'000'000U;
+   \       0x2E   0x....             LDR.N    R5,??DataTable2_1
+     32            constexpr std::uint32_t BaudRate = 9600;
+   \       0x30   0xF44F 0x5616      MOV      R6,#+9600
+     33            double UsartDivDouble = 1.0 / (BaudRate * 8 * (2 - USART2::CR1::OVER8::Get())) * SystemCoreClock;
+   \       0x34   0x.... 0x....      BL       _ZN13RegisterFieldIN6USART23CR1ELj15ELj1E13ReadWriteModevE3GetIS2_vEEjv
+   \       0x38   0xF1D0 0x0002      RSBS     R0,R0,#+2
+   \       0x3C   0xF45F 0x3196      MOVS     R1,#+76800
+   \       0x40   0x4348             MULS     R0,R1,R0
+   \       0x42   0x.... 0x....      BL       __aeabi_ui2d
+   \       0x46   0x0002             MOVS     R2,R0
+   \       0x48   0x000B             MOVS     R3,R1
+   \       0x4A   0x2000             MOVS     R0,#+0
+   \       0x4C   0x....             LDR.N    R1,??DataTable2_2
+   \       0x4E   0x.... 0x....      BL       __aeabi_ddiv
+   \       0x52   0x2200             MOVS     R2,#+0
+   \       0x54   0x....             LDR.N    R3,??DataTable2_3
+   \       0x56   0x.... 0x....      BL       __aeabi_dmul
+   \       0x5A   0xEC41 0x0B18      VMOV     D8,R0,R1
+     34            uint32_t UsartDivMantissa = static_cast<uint32_t>(UsartDivDouble);
+   \       0x5E   0xEC51 0x0B18      VMOV     R0,R1,D8
+   \       0x62   0x.... 0x....      BL       __aeabi_d2uiz
+   \       0x66   0x0007             MOVS     R7,R0
+     35            uint16_t UsartDivFraction = static_cast<uint32_t>(round((UsartDivDouble - UsartDivMantissa) * 16));
+   \       0x68   0x0038             MOVS     R0,R7
+   \       0x6A   0x.... 0x....      BL       __aeabi_ui2d
+   \       0x6E   0x0002             MOVS     R2,R0
+   \       0x70   0x000B             MOVS     R3,R1
+   \       0x72   0xEC51 0x0B18      VMOV     R0,R1,D8
+   \       0x76   0x.... 0x....      BL       __aeabi_dsub
+   \       0x7A   0x2200             MOVS     R2,#+0
+   \       0x7C   0x....             LDR.N    R3,??DataTable2_4
+   \       0x7E   0x.... 0x....      BL       __aeabi_dmul
+   \       0x82   0xEC41 0x0B10      VMOV     D0,R0,R1
+   \       0x86   0x.... 0x....      BL       round
+   \       0x8A   0xEC51 0x0B10      VMOV     R0,R1,D0
+   \       0x8E   0x.... 0x....      BL       __aeabi_d2uiz
+   \       0x92   0x4680             MOV      R8,R0
+     36            USART2::BRR::DIV_Mantissa::Set(UsartDivMantissa);
+   \       0x94   0x0038             MOVS     R0,R7
+   \       0x96   0x.... 0x....      BL       _ZN13RegisterFieldIN6USART23BRRELj4ELj12E13ReadWriteModevE3SetIS2_vEEvj
+     37            USART2::BRR::DIV_Fraction::Set(UsartDivFraction);
+   \       0x9A   0x4640             MOV      R0,R8
+   \       0x9C   0xB280             UXTH     R0,R0
+   \       0x9E   0x.... 0x....      BL       _ZN13RegisterFieldIN6USART23BRRELj0ELj4E13ReadWriteModevE3SetIS2_vEEvj
+     38            USART2::SR::TC::TransmitionNotComplete::Set();
+   \       0xA2   0x.... 0x....      BL       _ZN14FieldValueBaseI19USART2_SR_TC_ValuesIN6USART22SRELj6ELj1E13ReadWriteModeNS1_12USART2SRBaseEES4_Lj0EE3SetIS3_vEEvv
+     39          }
+   \       0xA6   0xECBD 0x8B02      VPOP     {D8}
+   \       0xAA   0xE8BD 0x81F0      POP      {R4-R8,PC}
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable2:
@@ -648,12 +610,9 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\U
        0   FieldValueBase<GPIOA_AFRL_AFRL7_Values<GPIOA::AFRL, 8U, 4U, ReadWriteMode, GPIOA::GPIOAAFRLBase>, GPIOA::GPIOAAFRLBase, 7U>::Set<ReadWriteMode, void>()
        0   FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 4U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 2U>::Set<ReadWriteMode, void>()
        0   FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 6U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 2U>::Set<ReadWriteMode, void>()
-       0   FieldValueBase<GPIOA_PUPDR_PUPDR15_Values<GPIOA::PUPDR, 4U, 2U, ReadWriteMode, GPIOA::GPIOAPUPDRBase>, GPIOA::GPIOAPUPDRBase, 0U>::Set<ReadWriteMode, void>()
-       0   FieldValueBase<GPIOA_PUPDR_PUPDR15_Values<GPIOA::PUPDR, 6U, 2U, ReadWriteMode, GPIOA::GPIOAPUPDRBase>, GPIOA::GPIOAPUPDRBase, 1U>::Set<ReadWriteMode, void>()
        0   FieldValueBase<USART2_CR1_M_Values<USART2::CR1, 12U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
        0   FieldValueBase<USART2_CR1_OVER8_Values<USART2::CR1, 15U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
        0   FieldValueBase<USART2_CR1_PCE_Values<USART2::CR1, 10U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
-       0   FieldValueBase<USART2_CR1_RE_Values<USART2::CR1, 2U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
        0   FieldValueBase<USART2_CR1_TXEIE_Values<USART2::CR1, 7U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 1U>::Set<ReadWriteMode, void>()
        0   FieldValueBase<USART2_CR2_STOP_Values<USART2::CR2, 12U, 2U, ReadWriteMode, USART2::USART2CR2Base>, USART2::USART2CR2Base, 0U>::Set<ReadWriteMode, void>()
        0   FieldValueBase<USART2_SR_TC_Values<USART2::SR, 6U, 1U, ReadWriteMode, USART2::USART2SRBase>, USART2::USART2SRBase, 0U>::Set<ReadWriteMode, void>()
@@ -674,12 +633,9 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\U
         32   -> FieldValueBase<GPIOA_AFRL_AFRL7_Values<GPIOA::AFRL, 8U, 4U, ReadWriteMode, GPIOA::GPIOAAFRLBase>, GPIOA::GPIOAAFRLBase, 7U>::Set<ReadWriteMode, void>()
         32   -> FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 4U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 2U>::Set<ReadWriteMode, void>()
         32   -> FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 6U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 2U>::Set<ReadWriteMode, void>()
-        32   -> FieldValueBase<GPIOA_PUPDR_PUPDR15_Values<GPIOA::PUPDR, 4U, 2U, ReadWriteMode, GPIOA::GPIOAPUPDRBase>, GPIOA::GPIOAPUPDRBase, 0U>::Set<ReadWriteMode, void>()
-        32   -> FieldValueBase<GPIOA_PUPDR_PUPDR15_Values<GPIOA::PUPDR, 6U, 2U, ReadWriteMode, GPIOA::GPIOAPUPDRBase>, GPIOA::GPIOAPUPDRBase, 1U>::Set<ReadWriteMode, void>()
         32   -> FieldValueBase<USART2_CR1_M_Values<USART2::CR1, 12U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
         32   -> FieldValueBase<USART2_CR1_OVER8_Values<USART2::CR1, 15U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
         32   -> FieldValueBase<USART2_CR1_PCE_Values<USART2::CR1, 10U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
-        32   -> FieldValueBase<USART2_CR1_RE_Values<USART2::CR1, 2U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
         32   -> FieldValueBase<USART2_CR1_TXEIE_Values<USART2::CR1, 7U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 1U>::Set<ReadWriteMode, void>()
         32   -> FieldValueBase<USART2_CR2_STOP_Values<USART2::CR2, 12U, 2U, ReadWriteMode, USART2::USART2CR2Base>, USART2::USART2CR2Base, 0U>::Set<ReadWriteMode, void>()
         32   -> FieldValueBase<USART2_SR_TC_Values<USART2::SR, 6U, 1U, ReadWriteMode, USART2::USART2SRBase>, USART2::USART2SRBase, 0U>::Set<ReadWriteMode, void>()
@@ -736,12 +692,9 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\U
       20  FieldValueBase<GPIOA_AFRL_AFRL7_Values<GPIOA::AFRL, 8U, 4U, ReadWriteMode, GPIOA::GPIOAAFRLBase>, GPIOA::GPIOAAFRLBase, 7U>::Set<ReadWriteMode, void>()
       20  FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 4U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 2U>::Set<ReadWriteMode, void>()
       20  FieldValueBase<GPIOA_MODER_MODER15_Values<GPIOA::MODER, 6U, 2U, ReadWriteMode, GPIOA::GPIOAMODERBase>, GPIOA::GPIOAMODERBase, 2U>::Set<ReadWriteMode, void>()
-      16  FieldValueBase<GPIOA_PUPDR_PUPDR15_Values<GPIOA::PUPDR, 4U, 2U, ReadWriteMode, GPIOA::GPIOAPUPDRBase>, GPIOA::GPIOAPUPDRBase, 0U>::Set<ReadWriteMode, void>()
-      20  FieldValueBase<GPIOA_PUPDR_PUPDR15_Values<GPIOA::PUPDR, 6U, 2U, ReadWriteMode, GPIOA::GPIOAPUPDRBase>, GPIOA::GPIOAPUPDRBase, 1U>::Set<ReadWriteMode, void>()
       16  FieldValueBase<USART2_CR1_M_Values<USART2::CR1, 12U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
       16  FieldValueBase<USART2_CR1_OVER8_Values<USART2::CR1, 15U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
       16  FieldValueBase<USART2_CR1_PCE_Values<USART2::CR1, 10U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
-      16  FieldValueBase<USART2_CR1_RE_Values<USART2::CR1, 2U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 0U>::Set<ReadWriteMode, void>()
       20  FieldValueBase<USART2_CR1_TXEIE_Values<USART2::CR1, 7U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 1U>::Set<ReadWriteMode, void>()
       16  FieldValueBase<USART2_CR2_STOP_Values<USART2::CR2, 12U, 2U, ReadWriteMode, USART2::USART2CR2Base>, USART2::USART2CR2Base, 0U>::Set<ReadWriteMode, void>()
       16  FieldValueBase<USART2_SR_TC_Values<USART2::SR, 6U, 1U, ReadWriteMode, USART2::USART2SRBase>, USART2::USART2SRBase, 0U>::Set<ReadWriteMode, void>()
@@ -752,7 +705,7 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\U
       48  RegisterField<USART2::BRR, 0U, 4U, ReadWriteMode>::Set<ReadWriteMode, void>(uint32_t)
       52  RegisterField<USART2::BRR, 4U, 12U, ReadWriteMode>::Set<ReadWriteMode, void>(uint32_t)
       16  RegisterField<USART2::CR1, 15U, 1U, ReadWriteMode>::Get<ReadWriteMode, void>()
-     186  Usart::ConfigUsart()
+     174  Usart::ConfigUsart()
       46  Usart::SendMessage(std::string)
       18  Usart::Usart()
       12  Usart::subobject Usart()
@@ -767,14 +720,14 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\U
       20  std::addressof<char>(char &) noexcept
       14  std::string::length() const noexcept
       16  std::string::operator[](size_t)
-     609  -- Other
+     593  -- Other
 
  
- 609 bytes in section .rodata
- 804 bytes in section .text
+ 593 bytes in section .rodata
+ 740 bytes in section .text
  
- 282 bytes of CODE  memory (+ 522 bytes shared)
-   1 byte  of CONST memory (+ 608 bytes shared)
+ 270 bytes of CODE  memory (+ 470 bytes shared)
+   1 byte  of CONST memory (+ 592 bytes shared)
 
 Errors: none
 Warnings: none

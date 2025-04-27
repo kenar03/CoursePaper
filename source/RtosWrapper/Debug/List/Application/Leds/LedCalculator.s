@@ -1,116 +1,119 @@
-///////////////////////////////////////////////////////////////////////////////
+﻿///////////////////////////////////////////////////////////////////////////////
 //
-// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        27/Apr/2025  00:21:28
+// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        27/Apr/2025  21:06:13
 // Copyright 1999-2022 IAR Systems AB.
 //
 //    Cpu mode     =  thumb
 //    Endian       =  little
 //    Source file  =
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\LedCalculator.cpp
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Leds\LedCalculator.cpp
+//        [UTF-8]
 //    Command line =
 //        -f
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Leds\LedCalculator.o.rsp
-//        (D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\LedCalculator.cpp
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Leds\LedCalculator.o.rsp
+//        (D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Leds\LedCalculator.cpp
 //        -lC
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\Leds
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\List\Application\Leds
 //        -lA
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\Leds
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\List\Application\Leds
 //        -o
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Leds
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Leds
 //        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
 //        --no_clustering --no_scheduling --debug --endian=little
 //        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
-//        D:\Games\Programs\IAR\arm\inc\c\DLib_Config_Normal.h -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\
+//        D:\Programs\IAR\arm\inc\c\DLib_Config_Normal.h -I
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\ -I
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\wrapper\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\wrapper\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\wrapper\FreeRtos\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\wrapper\FreeRtos\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\include\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\include\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\Common\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\Common\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\ARM_CM4F\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\ARM_CM4F\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\MemMang\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\MemMang\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\MyTasks\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\MyTasks\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Common\
+//        -I D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\CMSIS\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Common\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\CMSIS\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Diagnostic\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\AHardware\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Diagnostic\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\AHardware\GpioPort\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\AHardware\IrqController\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\GpioPort\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Pin\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\IrqController\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Pin\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Port\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Atomic\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Port\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\Common\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Atomic\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\Common\Singleton\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\Common\RomObject\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\Singleton\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\RomObject\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\Contracts\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DataRepository\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\Contracts\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DataRepository\Contracts\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DataRepository\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DigitalFilter\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DataRepository\Contracts\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DigitalFilter\Contracts\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Formatter\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\Contracts\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Formatter\Contracts\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Leds\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\Contracts\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Leds\Contracts\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Usart\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\Contracts\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Usart\Contracts\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Voltage\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\Contracts\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
+//        -I D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Tasks\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Tasks\Contracts\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\CortexM4\
 //        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
-//        -I
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
-//        -On --c++ --no_exceptions --no_rtti) --dependencies=n
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Leds\LedCalculator.o.d
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\CortexM4\FieldValues\
+//        -On --c++ --no_exceptions --no_rtti --source_encoding utf8 --text_out
+//        utf8 --utf8_text_in) --dependencies=n
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Leds\LedCalculator.o.d
 //    Locale       =  C
 //    List file    =
-//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\Leds\LedCalculator.s
+//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\List\Application\Leds\LedCalculator.s
 //
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -129,7 +132,6 @@
 
         EXTERN _ZTVN10__cxxabiv117__class_type_infoE
         EXTERN _ZTVN10__cxxabiv120__si_class_type_infoE
-        EXTERN ceilf
 
         PUBLIC _ZN13LedCalculator9CalculateEf
         PUBLIC _ZN13LedCalculatorC1ERKhRKf
@@ -188,7 +190,7 @@
           CFI D15 SameValue
           CFI EndCommon cfiCommon0
         
-// D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\LedCalculator.cpp
+// D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Leds\LedCalculator.cpp
 //    1 #include "LedCalculator.hpp" // for LedCalculator
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -266,39 +268,41 @@ _ZN13LedCalculatorC1ERKhRKf:
         SECTION `.text`:CODE:NOROOT(1)
           CFI Block cfiBlock3 Using cfiCommon0
           CFI Function _ZN13LedCalculator9CalculateEf
+          CFI NoCalls
         THUMB
 //    7 uint8_t LedCalculator::Calculate(float adcVoltage)
 //    8 {
 _ZN13LedCalculator9CalculateEf:
-        PUSH     {R4,LR}        
-          CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
-        VPUSH    {D8}           
-          CFI D8 Frame(CFA, -16)
-          CFI CFA R13+16
-        MOVS     R4,R0          
-        VMOV.F32 S16,S0         
-//    9   return static_cast<uint8_t>(ceil((adcVoltage * mMaxLedAmount) / mVref));
-        LDR      R0,[R4, #+4]   
+        MOVS     R1,R0          
+//    9   uint8_t ledAmount = static_cast<uint8_t>((adcVoltage * mMaxLedAmount) / mVref);
+        LDR      R0,[R1, #+4]   
         LDRB     R0,[R0, #+0]   
-        VMOV     S0,R0          
-        VCVT.F32.U32 S0,S0          
-        VMUL.F32 S0,S0,S16      
-        LDR      R0,[R4, #+8]   
-        VLDR     S1,[R0, #0]    
-        VDIV.F32 S17,S0,S1      
-        VMOV.F32 S0,S17         
-          CFI FunCall ceilf
-        BL       ceilf          
-        VCVT.S32.F32 S0,S0          
-        VMOV     R0,S0          
+        VMOV     S1,R0          
+        VCVT.F32.U32 S1,S1          
+        VMUL.F32 S1,S1,S0       
+        LDR      R0,[R1, #+8]   
+        VLDR     S2,[R0, #0]    
+        VDIV.F32 S1,S1,S2       
+        VCVT.S32.F32 S1,S1          
+        VMOV     R0,S1          
+//   10   if (ledAmount > mMaxLedAmount)
+        LDR      R2,[R1, #+4]   
+        LDRB     R2,[R2, #+0]   
+        MOVS     R3,R0          
+        UXTB     R3,R3          
+        CMP      R2,R3          
+        BCS.N    ??Calculate_0  
+//   11   {
+//   12     ledAmount = mMaxLedAmount;
+        LDR      R2,[R1, #+4]   
+        LDRB     R2,[R2, #+0]   
+        MOVS     R0,R2          
+//   13   }
+//   14   return ledAmount;
+??Calculate_0:
         UXTB     R0,R0          
-        VPOP     {D8}           
-          CFI D8 SameValue
-          CFI CFA R13+8
-        POP      {R4,PC}        
-//   10 }
+        BX       LR             
+//   15 }
           CFI EndBlock cfiBlock3
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
@@ -382,9 +386,9 @@ _ZTS13LedCalculator:
         END
 // 
 //  68 bytes in section .rodata
-// 118 bytes in section .text
+// 114 bytes in section .text
 // 
-// 104 bytes of CODE  memory (+ 14 bytes shared)
+// 100 bytes of CODE  memory (+ 14 bytes shared)
 //   0 bytes of CONST memory (+ 68 bytes shared)
 //
 //Errors: none

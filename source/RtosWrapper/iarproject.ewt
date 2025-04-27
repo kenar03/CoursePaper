@@ -2954,6 +2954,9 @@
             <file>
                 <name>$PROJ_DIR$\Application\Usart\Usart.hpp</name>
             </file>
+            <file>
+                <name>$PROJ_DIR$\Application\Usart\UsartInterruptHandler.hpp</name>
+            </file>
         </group>
         <group>
             <name>Voltage</name>
@@ -3057,14 +3060,17 @@
     </group>
     <group>
         <name>Tasks</name>
-        <group>
-            <name>Contracts</name>
-        </group>
         <file>
             <name>$PROJ_DIR$\Tasks\MeasurementTask.cpp</name>
         </file>
         <file>
             <name>$PROJ_DIR$\Tasks\MeasurementTask.hpp</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Tasks\UsartTask.cpp</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Tasks\UsartTask.hpp</name>
         </file>
     </group>
     <file>

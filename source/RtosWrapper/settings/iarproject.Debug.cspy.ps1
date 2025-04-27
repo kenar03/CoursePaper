@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "D:\Games\Programs\IAR\common\bin\cspybat" -f "D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\settings\iarproject.Debug.general.xcl" --backend -f "D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\settings\iarproject.Debug.driver.xcl" 
+& "D:\Programs\IAR\common\bin\cspybat" -f "D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\settings\iarproject.Debug.general.xcl" --backend -f "D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\settings\iarproject.Debug.driver.xcl" 
 }
 else
 {
-& "D:\Games\Programs\IAR\common\bin\cspybat" -f "D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\settings\iarproject.Debug.general.xcl" --debug_file=$debugfile --backend -f "D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\settings\iarproject.Debug.driver.xcl" 
+& "D:\Programs\IAR\common\bin\cspybat" -f "D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\settings\iarproject.Debug.general.xcl" --debug_file=$debugfile --backend -f "D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\settings\iarproject.Debug.driver.xcl" 
 }

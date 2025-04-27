@@ -8,7 +8,6 @@ class Usart : public IUsart
 public:
   Usart();
   void SendMessage(std::string message) override;
-private:
   void ConfigUsart();
 };
 

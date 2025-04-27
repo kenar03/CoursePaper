@@ -6,7 +6,7 @@
 
 "-p" 
 
-"D:\Games\Programs\IAR\arm\CONFIG\debugger\ST\STM32F411RE.ddf" 
+"D:\Programs\IAR\arm\CONFIG\debugger\ST\STM32F411RE.ddf" 
 
 "--semihosting" 
 

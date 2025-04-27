@@ -1,118 +1,120 @@
-###############################################################################
+﻿###############################################################################
 #
-# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         27/Apr/2025  00:21:28
+# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         27/Apr/2025  21:06:15
 # Copyright 1999-2022 IAR Systems AB.
 #
 #    Cpu mode                     =  thumb
 #    Endian                       =  little
 #    Source file                  =
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\Formatter.cpp
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Formatter\Formatter.cpp
+#        [UTF-8]
 #    Command line                 =
 #        -f
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Formatter\Formatter.o.rsp
-#        (D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\Formatter.cpp
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Formatter\Formatter.o.rsp
+#        (D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Formatter\Formatter.cpp
 #        -lC
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\Formatter
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\List\Application\Formatter
 #        -lA
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\Formatter
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\List\Application\Formatter
 #        -o
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Formatter
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Formatter
 #        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
 #        --no_clustering --no_scheduling --debug --endian=little
 #        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
-#        D:\Games\Programs\IAR\arm\inc\c\DLib_Config_Normal.h -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\
+#        D:\Programs\IAR\arm\inc\c\DLib_Config_Normal.h -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\ -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\wrapper\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\wrapper\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\wrapper\FreeRtos\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\wrapper\FreeRtos\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\include\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\include\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\Common\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\Common\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\ARM_CM4F\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\ARM_CM4F\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\MemMang\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\MemMang\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\MyTasks\
+#        -I D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Common\
+#        -I D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\CMSIS\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\MyTasks\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Common\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Diagnostic\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\CMSIS\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\AHardware\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\AHardware\GpioPort\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Diagnostic\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\AHardware\IrqController\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Pin\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\GpioPort\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\IrqController\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Pin\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Port\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Atomic\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\Common\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Port\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\Common\Singleton\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Atomic\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\Common\RomObject\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\Singleton\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\Contracts\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\RomObject\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DataRepository\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DataRepository\Contracts\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\Contracts\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DigitalFilter\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DataRepository\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DigitalFilter\Contracts\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DataRepository\Contracts\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Formatter\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Formatter\Contracts\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\Contracts\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Leds\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Leds\Contracts\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\Contracts\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Usart\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Usart\Contracts\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\Contracts\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Voltage\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
+#        -I D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Tasks\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\Contracts\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Tasks\Contracts\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\CortexM4\
 #        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
-#        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
-#        -I
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
-#        -On --c++ --no_exceptions --no_rtti) --dependencies=n
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Formatter\Formatter.o.d
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\CortexM4\FieldValues\
+#        -On --c++ --no_exceptions --no_rtti --source_encoding utf8 --text_out
+#        utf8 --utf8_text_in) --dependencies=n
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Formatter\Formatter.o.d
 #    Locale                       =  C
 #    List file                    =
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\Application\Formatter\Formatter.lst
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\List\Application\Formatter\Formatter.lst
 #    Object file                  =
-#        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Formatter\Formatter.o
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\Application\Formatter\Formatter.o
 #    Runtime model:                  
 #      __CPP_Exceptions           =  Disabled
 #      __CPP_Language             =  C++14
@@ -126,7 +128,7 @@
 #
 ###############################################################################
 
-D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\Formatter.cpp
+D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Formatter\Formatter.cpp
       1          #include "Formatter.hpp" // for Formatter
 
    \                                 In section .text, align 2
@@ -176,7 +178,7 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\F
    \        0xA   0x.... 0x....      BL       _ZSt10_AddressofIcEPT_RS0_St17integral_constantIbLb0EE
    \        0xE   0xBD10             POP      {R4,PC}
    \                     ??addressof_0:
-   \       0x10   0x....'....        DC32     ?_2
+   \       0x10   0x....'....        DC32     ?_3
 
    \                                 In section .text, align 2
    \   __vfp std::allocator<char> const &std::forward<std::allocator<char> const &>(std::allocator<char> const &) noexcept
@@ -800,7 +802,7 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\F
    \       0x14   0xBD32             POP      {R1,R4,R5,PC}
    \       0x16   0xBF00             Nop
    \                     ??_String_alloc_0:
-   \       0x18   0x....'....        DC32     ?_3
+   \       0x18   0x....'....        DC32     ?_4
 
    \                                 In section .text, align 2
    \   __vfp std::_Wrap_alloc<std::allocator<char>> &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Getal() noexcept
@@ -4104,10 +4106,10 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\F
    \                     ??_Fput_0:
    \      0x2A8   0x....'....        DC32     _ZZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FputES3_RSt8ios_basecPKcjjjjEs
    \      0x2AC   0x....'....        DC32     _ZZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE5_FputES3_RSt8ios_basecPKcjjjjEs_0
-   \      0x2B0   0x....'....        DC32     ?_4
+   \      0x2B0   0x....'....        DC32     ?_5
 
    \                                 In section .rodata, align 2
-   \                     ?_4:
+   \                     ?_5:
    \        0x0   0x2E 0x00          DC8 "."
 
    \                                 In section .text, align 2
@@ -4964,16 +4966,6 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\F
    \       0x52   0xBD10             POP      {R4,PC}
 
    \                                 In section .text, align 2
-   \   __vfp std::ostream &std::ostream::operator<<(std::ostream &(*)(std::ostream &))
-   \                     _ZNSolsEPFRSoS_E: (+1)
-   \        0x0   0xB538             PUSH     {R3-R5,LR}
-   \        0x2   0x0004             MOVS     R4,R0
-   \        0x4   0x000D             MOVS     R5,R1
-   \        0x6   0x0020             MOVS     R0,R4
-   \        0x8   0x47A8             BLX      R5
-   \        0xA   0xBD32             POP      {R1,R4,R5,PC}
-
-   \                                 In section .text, align 2
    \   __vfp std::ostream &std::ostream::operator<<(std::ios_base &(*)(std::ios_base &))
    \                     _ZNSolsEPFRSt8ios_baseS0_E: (+1)
    \        0x0   0xB538             PUSH     {R3-R5,LR}
@@ -5061,65 +5053,6 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\F
    \       0xBC   0xB00C             ADD      SP,SP,#+48
    \       0xBE   0xECBD 0x8B02      VPOP     {D8}
    \       0xC2   0xE8BD 0x81F0      POP      {R4-R8,PC}
-
-   \                                 In section .text, align 2
-   \   __vfp std::ostream &std::ostream::put(char)
-   \                     _ZNSo3putEc: (+1)
-   \        0x0   0xB530             PUSH     {R4,R5,LR}
-   \        0x2   0xB085             SUB      SP,SP,#+20
-   \        0x4   0x0004             MOVS     R4,R0
-   \        0x6   0x000D             MOVS     R5,R1
-   \        0x8   0x2000             MOVS     R0,#+0
-   \        0xA   0xF88D 0x0000      STRB     R0,[SP, #+0]
-   \        0xE   0x0021             MOVS     R1,R4
-   \       0x10   0xA803             ADD      R0,SP,#+12
-   \       0x12   0x.... 0x....      BL       _ZNSo6sentryC1ERSo
-   \       0x16   0x.... 0x....      BL       _ZNKSo13_Flush_sentrycvbEv
-   \       0x1A   0x2800             CMP      R0,#+0
-   \       0x1C   0xD104             BNE.N    ??put_0
-   \       0x1E   0x2104             MOVS     R1,#+4
-   \       0x20   0x4668             MOV      R0,SP
-   \       0x22   0x.... 0x....      BL       _ZStoRRNSt5_IosbIiE8_IostateES1_
-   \       0x26   0xE01D             B.N      ??put_1
-   \                     ??put_0: (+1)
-   \       0x28   0xF05F 0x30FF      MOVS     R0,#+4294967295
-   \       0x2C   0x9002             STR      R0,[SP, #+8]
-   \       0x2E   0x6820             LDR      R0,[R4, #+0]
-   \       0x30   0xF850 0x0C0C      LDR      R0,[R0, #-12]
-   \       0x34   0x4420             ADD      R0,R4,R0
-   \       0x36   0x.... 0x....      BL       _ZNKSt9basic_iosIcSt11char_traitsIcEE5rdbufEv
-   \       0x3A   0x0029             MOVS     R1,R5
-   \       0x3C   0xB2C9             UXTB     R1,R1
-   \       0x3E   0x.... 0x....      BL       _ZNSt15basic_streambufIcSt11char_traitsIcEE5sputcEc
-   \       0x42   0x9001             STR      R0,[SP, #+4]
-   \       0x44   0xA901             ADD      R1,SP,#+4
-   \       0x46   0xA802             ADD      R0,SP,#+8
-   \       0x48   0x.... 0x....      BL       _ZNSt11char_traitsIcE11eq_int_typeERKiS2_
-   \       0x4C   0x2800             CMP      R0,#+0
-   \       0x4E   0xD001             BEQ.N    ??put_2
-   \       0x50   0x2001             MOVS     R0,#+1
-   \       0x52   0xE000             B.N      ??put_3
-   \                     ??put_2: (+1)
-   \       0x54   0x2000             MOVS     R0,#+0
-   \                     ??put_3: (+1)
-   \       0x56   0xB2C0             UXTB     R0,R0
-   \       0x58   0x2800             CMP      R0,#+0
-   \       0x5A   0xD003             BEQ.N    ??put_1
-   \       0x5C   0x2104             MOVS     R1,#+4
-   \       0x5E   0x4668             MOV      R0,SP
-   \       0x60   0x.... 0x....      BL       _ZStoRRNSt5_IosbIiE8_IostateES1_
-   \                     ??put_1: (+1)
-   \       0x64   0x2200             MOVS     R2,#+0
-   \       0x66   0xF89D 0x1000      LDRB     R1,[SP, #+0]
-   \       0x6A   0x6820             LDR      R0,[R4, #+0]
-   \       0x6C   0xF850 0x0C0C      LDR      R0,[R0, #-12]
-   \       0x70   0x4420             ADD      R0,R4,R0
-   \       0x72   0x.... 0x....      BL       _ZNSt9basic_iosIcSt11char_traitsIcEE8setstateENSt5_IosbIiE8_IostateEb
-   \       0x76   0xA803             ADD      R0,SP,#+12
-   \       0x78   0x.... 0x....      BL       _ZNSo6sentryD1Ev
-   \       0x7C   0x0020             MOVS     R0,R4
-   \       0x7E   0xB005             ADD      SP,SP,#+20
-   \       0x80   0xBD30             POP      {R4,R5,PC}
 
    \                                 In section .text, align 2
    \   __vfp std::ostream &std::ostream::flush()
@@ -5381,31 +5314,6 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\F
    \      0x1C6   0x0020             MOVS     R0,R4
    \      0x1C8   0xB008             ADD      SP,SP,#+32
    \      0x1CA   0xE8BD 0x81F0      POP      {R4-R8,PC}
-
-   \                                 In section .text, align 2
-   \   __vfp std::ostream &std::endl<char, std::char_traits<char>>(std::ostream &)
-   \                     _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_: (+1)
-   \        0x0   0xB510             PUSH     {R4,LR}
-   \        0x2   0x0004             MOVS     R4,R0
-   \        0x4   0x2C00             CMP      R4,#+0
-   \        0x6   0xD004             BEQ.N    ??endl_0
-   \        0x8   0x6820             LDR      R0,[R4, #+0]
-   \        0xA   0xF850 0x0C0C      LDR      R0,[R0, #-12]
-   \        0xE   0x4420             ADD      R0,R4,R0
-   \       0x10   0xE000             B.N      ??endl_1
-   \                     ??endl_0: (+1)
-   \       0x12   0x2000             MOVS     R0,#+0
-   \                     ??endl_1: (+1)
-   \       0x14   0x210A             MOVS     R1,#+10
-   \       0x16   0x.... 0x....      BL       _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
-   \       0x1A   0x0001             MOVS     R1,R0
-   \       0x1C   0xB2C9             UXTB     R1,R1
-   \       0x1E   0x0020             MOVS     R0,R4
-   \       0x20   0x.... 0x....      BL       _ZNSo3putEc
-   \       0x24   0x0020             MOVS     R0,R4
-   \       0x26   0x.... 0x....      BL       _ZNSo5flushEv
-   \       0x2A   0x0020             MOVS     R0,R4
-   \       0x2C   0xBD10             POP      {R4,PC}
 
    \                                 In section .text, align 2
    \   __vfp std::ostream &std::operator<<<char, std::char_traits<char>, std::allocator<char>>(std::ostream &, std::string const &)
@@ -6739,105 +6647,108 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\F
    \        0x2   0x0004             MOVS     R4,R0
    \        0x4   0x0020             MOVS     R0,R4
    \        0x6   0x.... 0x....      BL       _ZN10IFormatterC2Ev
-   \        0xA   0x....             LDR.N    R0,??DataTable2
+   \        0xA   0x....             LDR.N    R0,??DataTable2_1
    \        0xC   0x6020             STR      R0,[R4, #+0]
    \        0xE   0x0020             MOVS     R0,R4
    \       0x10   0xBD10             POP      {R4,PC}
       6          
 
    \                                 In section .text, align 2, keep-with-next
-      7          std::string FormatString(const float value, const uint8_t precision, const std::string unit, bool isFilteredValue = false)
+      7          std::string Formatter :: FormatString(const float value, const uint8_t precision, const std::string unit, bool isFilteredValue)
       8          {
-   \                     _Z12FormatStringfhSsb: (+1)
-   \        0x0   0xB5F8             PUSH     {R3-R7,LR}
-   \        0x2   0xED2D 0x8B02      VPUSH    {D8}
-   \        0x6   0xB09C             SUB      SP,SP,#+112
-   \        0x8   0x0004             MOVS     R4,R0
-   \        0xA   0xEEB0 0x8A40      VMOV.F32 S16,S0
-   \        0xE   0x000D             MOVS     R5,R1
-   \       0x10   0x0016             MOVS     R6,R2
-   \       0x12   0x001F             MOVS     R7,R3
+   \                     _ZN9Formatter12FormatStringEfhSsb: (+1)
+   \        0x0   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+   \        0x4   0xED2D 0x8B02      VPUSH    {D8}
+   \        0x8   0xB09C             SUB      SP,SP,#+112
+   \        0xA   0x0005             MOVS     R5,R0
+   \        0xC   0x000E             MOVS     R6,R1
+   \        0xE   0xEEB0 0x8A40      VMOV.F32 S16,S0
+   \       0x12   0x0017             MOVS     R7,R2
+   \       0x14   0x4698             MOV      R8,R3
+   \       0x16   0x9C24             LDR      R4,[SP, #+144]
       9            std::ostringstream oss;
-   \       0x14   0x2102             MOVS     R1,#+2
-   \       0x16   0x4668             MOV      R0,SP
-   \       0x18   0x.... 0x....      BL       _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEC1ENSt5_IosbIiE9_OpenmodeE
+   \       0x18   0x2102             MOVS     R1,#+2
+   \       0x1A   0x4668             MOV      R0,SP
+   \       0x1C   0x.... 0x....      BL       _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEC1ENSt5_IosbIiE9_OpenmodeE
      10            oss.precision(precision);
-   \       0x1C   0x0029             MOVS     R1,R5
-   \       0x1E   0xB2C9             UXTB     R1,R1
-   \       0x20   0x4668             MOV      R0,SP
-   \       0x22   0x9A00             LDR      R2,[SP, #+0]
-   \       0x24   0xF852 0x2C0C      LDR      R2,[R2, #-12]
-   \       0x28   0x4410             ADD      R0,R0,R2
-   \       0x2A   0x.... 0x....      BL       _ZNSt8ios_base9precisionEi
+   \       0x20   0x0039             MOVS     R1,R7
+   \       0x22   0xB2C9             UXTB     R1,R1
+   \       0x24   0x4668             MOV      R0,SP
+   \       0x26   0x9A00             LDR      R2,[SP, #+0]
+   \       0x28   0xF852 0x2C0C      LDR      R2,[R2, #-12]
+   \       0x2C   0x4410             ADD      R0,R0,R2
+   \       0x2E   0x.... 0x....      BL       _ZNSt8ios_base9precisionEi
      11            if (!isFilteredValue)
-   \       0x2E   0x0038             MOVS     R0,R7
-   \       0x30   0xB2C0             UXTB     R0,R0
-   \       0x32   0x2800             CMP      R0,#+0
-   \       0x34   0xD111             BNE.N    ??FormatString_0
+   \       0x32   0x0020             MOVS     R0,R4
+   \       0x34   0xB2C0             UXTB     R0,R0
+   \       0x36   0x2800             CMP      R0,#+0
+   \       0x38   0xD111             BNE.N    ??FormatString_0
      12            {
-     13              oss << "Неотфильтрованное напряжение: " << std::fixed << value << unit << std::endl;
-   \       0x36   0x....             LDR.N    R1,??DataTable2_1
-   \       0x38   0x4668             MOV      R0,SP
-   \       0x3A   0x.... 0x....      BL       _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
-   \       0x3E   0x....             LDR.N    R1,??DataTable2_2
-   \       0x40   0x.... 0x....      BL       _ZNSolsEPFRSt8ios_baseS0_E
-   \       0x44   0xEEB0 0x0A48      VMOV.F32 S0,S16
-   \       0x48   0x.... 0x....      BL       _ZNSolsEf
-   \       0x4C   0x0031             MOVS     R1,R6
-   \       0x4E   0x.... 0x....      BL       _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E
-   \       0x52   0x....             LDR.N    R1,??DataTable2_3
-   \       0x54   0x.... 0x....      BL       _ZNSolsEPFRSoS_E
-   \       0x58   0xE010             B.N      ??FormatString_1
+     13              oss << "Неотфильтрованное напряжение: " << std::fixed << value << unit << "\r\n";
+   \       0x3A   0x....             LDR.N    R1,??DataTable2_2
+   \       0x3C   0x4668             MOV      R0,SP
+   \       0x3E   0x.... 0x....      BL       _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+   \       0x42   0x....             LDR.N    R1,??DataTable2_3
+   \       0x44   0x.... 0x....      BL       _ZNSolsEPFRSt8ios_baseS0_E
+   \       0x48   0xEEB0 0x0A48      VMOV.F32 S0,S16
+   \       0x4C   0x.... 0x....      BL       _ZNSolsEf
+   \       0x50   0x4641             MOV      R1,R8
+   \       0x52   0x.... 0x....      BL       _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E
+   \       0x56   0x....             ADR.N    R1,??DataTable2
+   \       0x58   0x.... 0x....      BL       _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+   \       0x5C   0xE010             B.N      ??FormatString_1
      14            }
      15            else
      16            {
-     17              oss << "Напряжение: " << std::fixed << value << unit << std::endl;
+     17              oss << "Напряжение: " << std::fixed << value << unit << "\r\n";
    \                     ??FormatString_0: (+1)
-   \       0x5A   0x....             LDR.N    R1,??DataTable2_4
-   \       0x5C   0x4668             MOV      R0,SP
-   \       0x5E   0x.... 0x....      BL       _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
-   \       0x62   0x....             LDR.N    R1,??DataTable2_2
-   \       0x64   0x.... 0x....      BL       _ZNSolsEPFRSt8ios_baseS0_E
-   \       0x68   0xEEB0 0x0A48      VMOV.F32 S0,S16
-   \       0x6C   0x.... 0x....      BL       _ZNSolsEf
-   \       0x70   0x0031             MOVS     R1,R6
-   \       0x72   0x.... 0x....      BL       _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E
-   \       0x76   0x....             LDR.N    R1,??DataTable2_3
-   \       0x78   0x.... 0x....      BL       _ZNSolsEPFRSoS_E
+   \       0x5E   0x....             LDR.N    R1,??DataTable2_4
+   \       0x60   0x4668             MOV      R0,SP
+   \       0x62   0x.... 0x....      BL       _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+   \       0x66   0x....             LDR.N    R1,??DataTable2_3
+   \       0x68   0x.... 0x....      BL       _ZNSolsEPFRSt8ios_baseS0_E
+   \       0x6C   0xEEB0 0x0A48      VMOV.F32 S0,S16
+   \       0x70   0x.... 0x....      BL       _ZNSolsEf
+   \       0x74   0x4641             MOV      R1,R8
+   \       0x76   0x.... 0x....      BL       _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKSbIS4_S5_T1_E
+   \       0x7A   0x....             ADR.N    R1,??DataTable2
+   \       0x7C   0x.... 0x....      BL       _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
      18            }
      19            return std::move(oss).str();
    \                     ??FormatString_1: (+1)
-   \       0x7C   0x4668             MOV      R0,SP
-   \       0x7E   0x.... 0x....      BL       _ZSt4moveIRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEEONSt16remove_referenceIT_E4typeEOS7_
-   \       0x82   0x0001             MOVS     R1,R0
-   \       0x84   0x0020             MOVS     R0,R4
-   \       0x86   0x.... 0x....      BL       _ZNKSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE3strEv
-   \       0x8A   0x4668             MOV      R0,SP
-   \       0x8C   0x.... 0x....      BL       _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED1Ev
-   \       0x90   0xB01C             ADD      SP,SP,#+112
-   \       0x92   0xECBD 0x8B02      VPOP     {D8}
-   \       0x96   0xBDF1             POP      {R0,R4-R7,PC}
+   \       0x80   0x4668             MOV      R0,SP
+   \       0x82   0x.... 0x....      BL       _ZSt4moveIRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEEONSt16remove_referenceIT_E4typeEOS7_
+   \       0x86   0x0001             MOVS     R1,R0
+   \       0x88   0x0028             MOVS     R0,R5
+   \       0x8A   0x.... 0x....      BL       _ZNKSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE3strEv
+   \       0x8E   0x4668             MOV      R0,SP
+   \       0x90   0x.... 0x....      BL       _ZNSt19basic_ostringstreamIcSt11char_traitsIcESaIcEED1Ev
+   \       0x94   0xB01C             ADD      SP,SP,#+112
+   \       0x96   0xECBD 0x8B02      VPOP     {D8}
+   \       0x9A   0xE8BD 0x81F0      POP      {R4-R8,PC}
      20          }
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable2:
-   \        0x0   0x....'....        DC32     _ZTV9Formatter+0x8
+   \        0x0   0x0D 0x0A          DC8      0x0D, 0x0A, 0x00, 0x00
+
+   \              0x00 0x00
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable2_1:
-   \        0x0   0x....'....        DC32     ?_0
+   \        0x0   0x....'....        DC32     _ZTV9Formatter+0x8
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable2_2:
-   \        0x0   0x....'....        DC32     _ZSt5fixedRSt8ios_base
+   \        0x0   0x....'....        DC32     ?_0
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable2_3:
-   \        0x0   0x....'....        DC32     _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+   \        0x0   0x....'....        DC32     _ZSt5fixedRSt8ios_base
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable2_4:
-   \        0x0   0x....'....        DC32     ?_1
+   \        0x0   0x....'....        DC32     ?_2
 
    \                                 In section .text, align 2
    \   __vfp void std::ostream::deleter ~basic_ostream for ios_base/v-3/() noexcept
@@ -6926,7 +6837,13 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\F
    \       0x3A                      DS8 2
 
    \                                 In section .rodata, align 4
-   \                     ?_1:
+   \        0x0   0x0D 0x0A          DC8 "\015\012"
+
+   \              0x00
+   \        0x3                      DS8 1
+
+   \                                 In section .rodata, align 4
+   \                     ?_2:
    \        0x0   0xD0 0x9D          DC8 "\320\235\320\260\320\277\321\200\321\217\320\266\320\265\320\275\320\270\320\265: "
 
    \              0xD0 0xB0    
@@ -6956,14 +6873,13 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\F
 
    .cstack Function
    ------- --------
-     144   FormatString(float, uint8_t, std::string, bool)
+     144   Formatter::FormatString(float, uint8_t, std::string, bool)
        144   -> std::ios_base::precision(int)
        144   -> std::move<std::ostringstream &>(std::ostringstream &) noexcept
        144   -> std::operator<<<char, std::char_traits<char>, std::allocator<char>>(std::ostream &, std::string const &)
        144   -> std::operator<<<std::char_traits<char>>(std::ostream &, char const *)
        144   -> std::ostream::operator<<(float)
        144   -> std::ostream::operator<<(std::ios_base &(*)(std::ios_base &))
-       144   -> std::ostream::operator<<(std::ostream &(*)(std::ostream &))
        144   -> std::ostringstream::complete basic_ostringstream(std::ios_base::openmode)
        144   -> std::ostringstream::complete ~basic_ostringstream() noexcept
        144   -> std::ostringstream::str() const
@@ -7114,10 +7030,6 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\F
        4   std::ctype<char>::widen(char const *, char const *, char *) const
        0   std::ctype<char>::widen(char) const
        0   std::ctype<char>::~ctype() noexcept
-       8   std::endl<char, std::char_traits<char>>(std::ostream &)
-         8   -> std::ios::widen(char) const
-         8   -> std::ostream::flush()
-         8   -> std::ostream::put(char)
        8   std::fixed(std::ios_base &)
          8   -> std::ios_base::setf(std::ios_base::fmtflags, std::ios_base::fmtflags)
        0   std::forward<char * &>(char * &) noexcept
@@ -7432,17 +7344,6 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\F
         80   -> std::use_facet<std::ostream::_Nput>()
       16   std::ostream::operator<<(std::ios_base &(*)(std::ios_base &))
         16   -- Indirect call
-      16   std::ostream::operator<<(std::ostream &(*)(std::ostream &))
-        16   -- Indirect call
-      32   std::ostream::put(char)
-        32   -> std::char_traits<char>::eq_int_type(int const &, int const &) noexcept
-        32   -> std::ios::rdbuf() const
-        32   -> std::ios::setstate(std::ios_base::iostate, bool)
-        32   -> std::operator|=(std::ios_base::iostate &, std::ios_base::iostate)
-        32   -> std::ostream::_Flush_sentry::operator bool() const
-        32   -> std::ostream::sentry::sentry(std::ostream &)
-        32   -> std::ostream::sentry::~sentry() noexcept
-        32   -> std::streambuf::sputc(char)
       16   std::ostream::sentry::sentry(std::ostream &)
         16   -> std::ios::tie() const
         16   -> std::ios_base::good() const
@@ -7804,9 +7705,10 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\F
        4  ??DataTable2_3
        4  ??DataTable2_4
       60  ?_0
-      24  ?_1
-       2  ?_4
-     152  FormatString(float, uint8_t, std::string, bool)
+       4  ?_1
+      24  ?_2
+       2  ?_5
+     158  Formatter::FormatString(float, uint8_t, std::string, bool)
       18  Formatter::Formatter()
       12  Formatter::subobject Formatter()
        2  IFormatter::IFormatter() noexcept
@@ -7889,7 +7791,6 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\F
       24  std::ctype<char>::widen(char const *, char const *, char *) const
        8  std::ctype<char>::widen(char) const
        2  std::ctype<char>::~ctype() noexcept
-      46  std::endl<char, std::char_traits<char>>(std::ostream &)
       22  std::fixed(std::ios_base &)
        2  std::forward<char * &>(char * &) noexcept
        2  std::forward<char *>(char * &) noexcept
@@ -7986,8 +7887,6 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\F
       84  std::ostream::flush()
      198  std::ostream::operator<<(float)
       20  std::ostream::operator<<(std::ios_base &(*)(std::ios_base &))
-      12  std::ostream::operator<<(std::ostream &(*)(std::ostream &))
-     130  std::ostream::put(char)
      114  std::ostream::sentry::sentry(std::ostream &)
       14  std::ostream::sentry::~sentry() noexcept
       44  std::ostream::subobject basic_ostream(std::streambuf *, bool)
@@ -8085,15 +7984,15 @@ D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\F
       32  std::use_facet<std::ios::_Ctype>()
       48  std::use_facet<std::numpunct<char>>()
       32  std::use_facet<std::ostream::_Nput>()
-   1'134  -- Other
+   1'194  -- Other
 
  
      31 bytes in section .bss
-  1'217 bytes in section .rodata
- 13'082 bytes in section .text
+  1'281 bytes in section .rodata
+ 12'900 bytes in section .text
  
- 202 bytes of CODE  memory (+ 12'880 bytes shared)
-  88 bytes of CONST memory (+  1'129 bytes shared)
+ 208 bytes of CODE  memory (+ 12'692 bytes shared)
+  92 bytes of CONST memory (+  1'189 bytes shared)
    0 bytes of DATA  memory (+     31 bytes shared)
 
 Errors: none
