@@ -1,0 +1,1712 @@
+﻿###############################################################################
+#
+# IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM         27/Apr/2025  21:06:14
+# Copyright 1999-2022 IAR Systems AB.
+#
+#    Cpu mode                     =  thumb
+#    Endian                       =  little
+#    Source file                  =
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Tasks\UsartTask.cpp
+#        [UTF-8]
+#    Command line                 =
+#        -f
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\Tasks\UsartTask.o.rsp
+#        (D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Tasks\UsartTask.cpp
+#        -lC
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\List\Tasks
+#        -lA
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\List\Tasks
+#        -o
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\Tasks
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\Programs\IAR\arm\inc\c\DLib_Config_Normal.h -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\ -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\wrapper\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\wrapper\FreeRtos\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\include\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\Common\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\ARM_CM4F\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\MemMang\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\MyTasks\
+#        -I D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Common\
+#        -I D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\CMSIS\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Diagnostic\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\AHardware\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\AHardware\GpioPort\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\AHardware\IrqController\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Pin\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Port\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Atomic\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\Common\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\Common\Singleton\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\Common\RomObject\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\Contracts\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DataRepository\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DataRepository\Contracts\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DigitalFilter\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DigitalFilter\Contracts\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Formatter\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Formatter\Contracts\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Leds\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Leds\Contracts\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Usart\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Usart\Contracts\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Voltage\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
+#        -I D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Tasks\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\CortexM4\
+#        -I
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\CortexM4\FieldValues\
+#        -On --c++ --no_exceptions --no_rtti --source_encoding utf8 --text_out
+#        utf8 --utf8_text_in) --dependencies=n
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\Tasks\UsartTask.o.d
+#    Locale                       =  C
+#    List file                    =
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\List\Tasks\UsartTask.lst
+#    Object file                  =
+#        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\Tasks\UsartTask.o
+#    Runtime model:                  
+#      __CPP_Exceptions           =  Disabled
+#      __CPP_Language             =  C++14
+#      __CPP_Library              =  DLib
+#      __CPP_Runtime              =  1
+#      __SystemLibrary            =  DLib
+#      __dlib_file_descriptor     =  0
+#      __dlib_full_locale_support =  0
+#      __dlib_version             =  6
+#
+###############################################################################
+
+D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Tasks\UsartTask.cpp
+      1          #include "UsartTask.hpp" // for UsartTask
+
+   \                                 In section .text, align 2
+   \   __vfp char *std::_Addressof<char>(char &, std::false_type) noexcept
+   \                     _ZSt10_AddressofIcEPT_RS0_St17integral_constantIbLb0EE: (+1)
+   \        0x0   0x4770             BX       LR
+
+   \                                 In section .text, align 4
+   \   __vfp char *std::addressof<char>(char &) noexcept
+   \                     _ZSt9addressofIcEPT_RS0_: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x4802             LDR.N    R0,??addressof_0
+   \        0x6   0x7801             LDRB     R1,[R0, #+0]
+   \        0x8   0x0020             MOVS     R0,R4
+   \        0xA   0x.... 0x....      BL       _ZSt10_AddressofIcEPT_RS0_St17integral_constantIbLb0EE
+   \        0xE   0xBD10             POP      {R4,PC}
+   \                     ??addressof_0:
+   \       0x10   0x....'....        DC32     ?_2
+
+   \                                 In section .text, align 2
+   \   __vfp std::allocator<char> const &std::forward<std::allocator<char> const &>(std::allocator<char> const &) noexcept
+   \                     _ZSt7forwardIRKSaIcEEOT_RNSt16remove_referenceIS3_E4typeE: (+1)
+   \        0x0   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp char * &&std::forward<char *>(char * &) noexcept
+   \                     _ZSt7forwardIPcEOT_RNSt16remove_referenceIS1_E4typeE: (+1)
+   \        0x0   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp char * &&std::move<char * &>(char * &) noexcept
+   \                     _ZSt4moveIRPcEONSt16remove_referenceIT_E4typeEOS3_: (+1)
+   \        0x0   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp void *operator new(unsigned int, void *) noexcept
+   \                     _ZnwjPv: (+1)
+   \        0x0   0x0008             MOVS     R0,R1
+   \        0x2   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp size_t std::char_traits<char>::length(char const *)
+   \                     _ZNSt11char_traitsIcE6lengthEPKc: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       strlen
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp char *std::char_traits<char>::copy(char *, char const *, size_t)
+   \                     _ZNSt11char_traitsIcE4copyEPcPKcj: (+1)
+   \        0x0   0xE92D 0x43F8      PUSH     {R3-R9,LR}
+   \        0x4   0x0004             MOVS     R4,R0
+   \        0x6   0x000D             MOVS     R5,R1
+   \        0x8   0x0016             MOVS     R6,R2
+   \        0xA   0x0037             MOVS     R7,R6
+   \        0xC   0x46A8             MOV      R8,R5
+   \        0xE   0x46A1             MOV      R9,R4
+   \       0x10   0x003A             MOVS     R2,R7
+   \       0x12   0x4641             MOV      R1,R8
+   \       0x14   0x4648             MOV      R0,R9
+   \       0x16   0x.... 0x....      BL       __aeabi_memcpy
+   \       0x1A   0x4648             MOV      R0,R9
+   \       0x1C   0xE8BD 0x83F2      POP      {R1,R4-R9,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp char *std::char_traits<char>::move(char *, char const *, size_t)
+   \                     _ZNSt11char_traitsIcE4moveEPcPKcj: (+1)
+   \        0x0   0xE92D 0x43F8      PUSH     {R3-R9,LR}
+   \        0x4   0x0004             MOVS     R4,R0
+   \        0x6   0x000D             MOVS     R5,R1
+   \        0x8   0x0016             MOVS     R6,R2
+   \        0xA   0x0037             MOVS     R7,R6
+   \        0xC   0x46A8             MOV      R8,R5
+   \        0xE   0x46A1             MOV      R9,R4
+   \       0x10   0x003A             MOVS     R2,R7
+   \       0x12   0x4641             MOV      R1,R8
+   \       0x14   0x4648             MOV      R0,R9
+   \       0x16   0x.... 0x....      BL       __aeabi_memmove
+   \       0x1A   0x4648             MOV      R0,R9
+   \       0x1C   0xE8BD 0x83F2      POP      {R1,R4-R9,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void std::char_traits<char>::assign(char &, char const &) noexcept
+   \                     _ZNSt11char_traitsIcE6assignERcRKc: (+1)
+   \        0x0   0x780A             LDRB     R2,[R1, #+0]
+   \        0x2   0x7002             STRB     R2,[R0, #+0]
+   \        0x4   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Compressed_pair<std::allocator<char> const &>(std::_One_then_variadic_args_t, std::allocator<char> const &)
+   \                     _ZNSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EEC1IRKS1_JEEESt25_One_then_variadic_args_tOT_DpOT0_: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0015             MOVS     R5,R2
+   \        0x6   0x0028             MOVS     R0,R5
+   \        0x8   0x.... 0x....      BL       _ZSt7forwardIRKSaIcEEOT_RNSt16remove_referenceIS3_E4typeE
+   \        0xC   0x0001             MOVS     R1,R0
+   \        0xE   0x0020             MOVS     R0,R4
+   \       0x10   0x.... 0x....      BL       _ZNSt11_Wrap_allocISaIcEEC2ERKS0_
+   \       0x14   0x0020             MOVS     R0,R4
+   \       0x16   0x.... 0x....      BL       _ZNSt11_String_valISt13_Simple_typesIcEEC1Ev
+   \       0x1A   0x0020             MOVS     R0,R4
+   \       0x1C   0xBD32             POP      {R1,R4,R5,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::_Wrap_alloc<std::allocator<char>> &std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_first() noexcept
+   \                     _ZNSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE10_Get_firstEv: (+1)
+   \        0x0   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp std::_Wrap_alloc<std::allocator<char>> const &std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_first() const noexcept
+   \                     _ZNKSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE10_Get_firstEv: (+1)
+   \        0x0   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp std::_String_val<std::_Simple_types<char>> &std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_second() noexcept
+   \                     _ZNSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE11_Get_secondEv: (+1)
+   \        0x0   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp std::_String_val<std::_Simple_types<char>> const &std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_second() const noexcept
+   \                     _ZNKSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE11_Get_secondEv: (+1)
+   \        0x0   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp char *std::_Allocate<char>(size_t, char *)
+   \                     _ZSt9_AllocateIcEPT_jS1_: (+1)
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x2500             MOVS     R5,#+0
+   \        0x6   0x2C00             CMP      R4,#+0
+   \        0x8   0xD101             BNE.N    ??_Allocate_0
+   \        0xA   0x0028             MOVS     R0,R5
+   \        0xC   0xE003             B.N      ??_Allocate_1
+   \                     ??_Allocate_0: (+1)
+   \        0xE   0x0026             MOVS     R6,R4
+   \       0x10   0x0030             MOVS     R0,R6
+   \       0x12   0x.... 0x....      BL       _Znwj
+   \                     ??_Allocate_1: (+1)
+   \       0x16   0xBD70             POP      {R4-R6,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void std::_Deallocate<char>(char *, size_t)
+   \                     _ZSt11_DeallocateIcEvPT_j: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0020             MOVS     R0,R4
+   \        0x8   0x.... 0x....      BL       _ZdlPv
+   \        0xC   0xBD31             POP      {R0,R4,R5,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void std::allocator<char>::deallocate(char *, size_t)
+   \                     _ZNSaIcE10deallocateEPcj: (+1)
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0016             MOVS     R6,R2
+   \        0x8   0x0031             MOVS     R1,R6
+   \        0xA   0x0028             MOVS     R0,R5
+   \        0xC   0x.... 0x....      BL       _ZSt11_DeallocateIcEvPT_j
+   \       0x10   0xBD70             POP      {R4-R6,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp char * std::allocator<char>::allocate(size_t)
+   \                     _ZNSaIcE8allocateEj: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x2100             MOVS     R1,#+0
+   \        0x8   0x0028             MOVS     R0,R5
+   \        0xA   0x.... 0x....      BL       _ZSt9_AllocateIcEPT_jS1_
+   \        0xE   0xBD32             POP      {R1,R4,R5,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void std::allocator<char>::construct<char *, char *>(char * *, char * &&)
+   \                     _ZNSaIcE9constructIPcJS1_EEEvPT_DpOT0_: (+1)
+   \        0x0   0xB5F8             PUSH     {R3-R7,LR}
+   \        0x2   0x0005             MOVS     R5,R0
+   \        0x4   0x000E             MOVS     R6,R1
+   \        0x6   0x0017             MOVS     R7,R2
+   \        0x8   0x0031             MOVS     R1,R6
+   \        0xA   0x2004             MOVS     R0,#+4
+   \        0xC   0x.... 0x....      BL       _ZnwjPv
+   \       0x10   0x0004             MOVS     R4,R0
+   \       0x12   0x2C00             CMP      R4,#+0
+   \       0x14   0xD005             BEQ.N    ??construct_0
+   \       0x16   0x0038             MOVS     R0,R7
+   \       0x18   0x.... 0x....      BL       _ZSt7forwardIPcEOT_RNSt16remove_referenceIS1_E4typeE
+   \       0x1C   0x6800             LDR      R0,[R0, #+0]
+   \       0x1E   0x6020             STR      R0,[R4, #+0]
+   \       0x20   0xE000             B.N      ??construct_1
+   \                     ??construct_0: (+1)
+   \       0x22   0x2000             MOVS     R0,#+0
+   \                     ??construct_1: (+1)
+   \       0x24   0xBDF1             POP      {R0,R4-R7,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void std::allocator<char>::destroy<char *>(char * *)
+   \                     _ZNSaIcE7destroyIPcEEvPT_: (+1)
+   \        0x0   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp size_t std::allocator<char>::max_size() const noexcept
+   \                     _ZNKSaIcE8max_sizeEv: (+1)
+   \        0x0   0x0001             MOVS     R1,R0
+   \        0x2   0xF05F 0x30FF      MOVS     R0,#+4294967295
+   \        0x6   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp void std::allocator_traits<std::allocator<char>>::construct<char *, char *>(std::allocator<char> &, char * *, char * &&)
+   \                     _ZNSt16allocator_traitsISaIcEE9constructIPcJS3_EEEvRS0_PT_DpOT0_: (+1)
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0016             MOVS     R6,R2
+   \        0x8   0x0030             MOVS     R0,R6
+   \        0xA   0x.... 0x....      BL       _ZSt7forwardIPcEOT_RNSt16remove_referenceIS1_E4typeE
+   \        0xE   0x0002             MOVS     R2,R0
+   \       0x10   0x0029             MOVS     R1,R5
+   \       0x12   0x0020             MOVS     R0,R4
+   \       0x14   0x.... 0x....      BL       _ZNSaIcE9constructIPcJS1_EEEvPT_DpOT0_
+   \       0x18   0xBD70             POP      {R4-R6,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void std::allocator_traits<std::allocator<char>>::destroy<char *>(std::allocator<char> &, char * *)
+   \                     _ZNSt16allocator_traitsISaIcEE7destroyIPcEEvRS0_PT_: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0029             MOVS     R1,R5
+   \        0x8   0x0020             MOVS     R0,R4
+   \        0xA   0x.... 0x....      BL       _ZNSaIcE7destroyIPcEEvPT_
+   \        0xE   0xBD31             POP      {R0,R4,R5,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp size_t std::allocator_traits<std::allocator<char>>::max_size(std::allocator<char> const &) noexcept
+   \                     _ZNSt16allocator_traitsISaIcEE8max_sizeERKS0_: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNKSaIcE8max_sizeEv
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void std::allocator_traits<std::allocator<char>>::select_on_container_copy_construction(std::allocator<char> const &)
+   \                     _ZNSt16allocator_traitsISaIcEE37select_on_container_copy_constructionERKS0_: (+1)
+   \        0x0   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp void std::_Wrap_alloc<std::allocator<char>>::select_on_container_copy_construction(std::_Nil) const
+   \                     _ZNKSt11_Wrap_allocISaIcEE37select_on_container_copy_constructionESt4_Nil: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0029             MOVS     R1,R5
+   \        0x8   0x4668             MOV      R0,SP
+   \        0xA   0x.... 0x....      BL       _ZNSt16allocator_traitsISaIcEE37select_on_container_copy_constructionERKS0_
+   \        0xE   0x4669             MOV      R1,SP
+   \       0x10   0x0020             MOVS     R0,R4
+   \       0x12   0x.... 0x....      BL       _ZNSt11_Wrap_allocISaIcEEC1ERKS0_
+   \       0x16   0xBD31             POP      {R0,R4,R5,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::_Wrap_alloc<std::allocator<char>>::subobject _Wrap_alloc(std::allocator<char> const &)
+   \                     _ZNSt11_Wrap_allocISaIcEEC2ERKS0_: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNSt11_Wrap_allocISaIcEEC1ERKS0_
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::_Wrap_alloc<std::allocator<char>>::_Wrap_alloc(std::allocator<char> const &)
+   \                     _ZNSt11_Wrap_allocISaIcEEC1ERKS0_: (+1)
+   \        0x0   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp char * std::_Wrap_alloc<std::allocator<char>>::allocate(size_t)
+   \                     _ZNSt11_Wrap_allocISaIcEE8allocateEj: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0029             MOVS     R1,R5
+   \        0x8   0x0020             MOVS     R0,R4
+   \        0xA   0x.... 0x....      BL       _ZNSaIcE8allocateEj
+   \        0xE   0xBD32             POP      {R1,R4,R5,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void std::_Wrap_alloc<std::allocator<char>>::deallocate(char *, size_t)
+   \                     _ZNSt11_Wrap_allocISaIcEE10deallocateEPcj: (+1)
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0016             MOVS     R6,R2
+   \        0x8   0x0032             MOVS     R2,R6
+   \        0xA   0x0029             MOVS     R1,R5
+   \        0xC   0x0020             MOVS     R0,R4
+   \        0xE   0x.... 0x....      BL       _ZNSaIcE10deallocateEPcj
+   \       0x12   0xBD70             POP      {R4-R6,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void std::_Wrap_alloc<std::allocator<char>>::construct<char *, char *>(char * *, char * &&)
+   \                     _ZNSt11_Wrap_allocISaIcEE9constructIPcJS3_EEEvPT_DpOT0_: (+1)
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0016             MOVS     R6,R2
+   \        0x8   0x0030             MOVS     R0,R6
+   \        0xA   0x.... 0x....      BL       _ZSt7forwardIPcEOT_RNSt16remove_referenceIS1_E4typeE
+   \        0xE   0x0002             MOVS     R2,R0
+   \       0x10   0x0029             MOVS     R1,R5
+   \       0x12   0x0020             MOVS     R0,R4
+   \       0x14   0x.... 0x....      BL       _ZNSt16allocator_traitsISaIcEE9constructIPcJS3_EEEvRS0_PT_DpOT0_
+   \       0x18   0xBD70             POP      {R4-R6,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void std::_Wrap_alloc<std::allocator<char>>::destroy<char *>(char * *)
+   \                     _ZNSt11_Wrap_allocISaIcEE7destroyIPcEEvPT_: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0029             MOVS     R1,R5
+   \        0x8   0x0020             MOVS     R0,R4
+   \        0xA   0x.... 0x....      BL       _ZNSt16allocator_traitsISaIcEE7destroyIPcEEvRS0_PT_
+   \        0xE   0xBD31             POP      {R0,R4,R5,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp size_t std::_Wrap_alloc<std::allocator<char>>::max_size(std::_Nil) const noexcept
+   \                     _ZNKSt11_Wrap_allocISaIcEE8max_sizeESt4_Nil: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNSt16allocator_traitsISaIcEE8max_sizeERKS0_
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::_String_val<std::_Simple_types<char>>::_String_val()
+   \                     _ZNSt11_String_valISt13_Simple_typesIcEEC1Ev: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+   \        0x2   0x6101             STR      R1,[R0, #+16]
+   \        0x4   0x2100             MOVS     R1,#+0
+   \        0x6   0x6141             STR      R1,[R0, #+20]
+   \        0x8   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp char *std::_String_val<std::_Simple_types<char>>::_Myptr()
+   \                     _ZNSt11_String_valISt13_Simple_typesIcEE6_MyptrEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x6960             LDR      R0,[R4, #+20]
+   \        0x6   0x2810             CMP      R0,#+16
+   \        0x8   0xD303             BCC.N    ??_Myptr_0
+   \        0xA   0x6820             LDR      R0,[R4, #+0]
+   \        0xC   0x.... 0x....      BL       _ZSt9addressofIcEPT_RS0_
+   \       0x10   0xE000             B.N      ??_Myptr_1
+   \                     ??_Myptr_0: (+1)
+   \       0x12   0x0020             MOVS     R0,R4
+   \                     ??_Myptr_1: (+1)
+   \       0x14   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp char const *std::_String_val<std::_Simple_types<char>>::_Myptr() const
+   \                     _ZNKSt11_String_valISt13_Simple_typesIcEE6_MyptrEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x6960             LDR      R0,[R4, #+20]
+   \        0x6   0x2810             CMP      R0,#+16
+   \        0x8   0xD303             BCC.N    ??_Myptr_2
+   \        0xA   0x6820             LDR      R0,[R4, #+0]
+   \        0xC   0x.... 0x....      BL       _ZSt9addressofIcEPT_RS0_
+   \       0x10   0xE000             B.N      ??_Myptr_3
+   \                     ??_Myptr_2: (+1)
+   \       0x12   0x0020             MOVS     R0,R4
+   \                     ??_Myptr_3: (+1)
+   \       0x14   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp char *std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr()
+   \                     _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
+   \        0xA   0x.... 0x....      BL       _ZNSt11_String_valISt13_Simple_typesIcEE6_MyptrEv
+   \        0xE   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp char const *std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr() const
+   \                     _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
+   \        0xA   0x.... 0x....      BL       _ZNKSt11_String_valISt13_Simple_typesIcEE6_MyptrEv
+   \        0xE   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::subobject _String_alloc(std::allocator<char> const &)
+   \                     _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEEC2ERKS1_: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEEC1ERKS1_
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 4
+   \   __vfp std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_String_alloc(std::allocator<char> const &)
+   \                     _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEEC1ERKS1_: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x002A             MOVS     R2,R5
+   \        0x8   0x4803             LDR.N    R0,??_String_alloc_0
+   \        0xA   0x7801             LDRB     R1,[R0, #+0]
+   \        0xC   0x0020             MOVS     R0,R4
+   \        0xE   0x.... 0x....      BL       _ZNSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EEC1IRKS1_JEEESt25_One_then_variadic_args_tOT_DpOT0_
+   \       0x12   0x0020             MOVS     R0,R4
+   \       0x14   0xBD32             POP      {R1,R4,R5,PC}
+   \       0x16   0xBF00             Nop
+   \                     ??_String_alloc_0:
+   \       0x18   0x....'....        DC32     ?_3
+
+   \                                 In section .text, align 2
+   \   __vfp std::_Wrap_alloc<std::allocator<char>> &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Getal() noexcept
+   \                     _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE10_Get_firstEv
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::_Wrap_alloc<std::allocator<char>> const &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Getal() const noexcept
+   \                     _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNKSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE10_Get_firstEv
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::_String_val<std::_Simple_types<char>> &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() noexcept
+   \                     _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE11_Get_secondEv
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::_String_val<std::_Simple_types<char>> const &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() const noexcept
+   \                     _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNKSt16_Compressed_pairISt11_Wrap_allocISaIcEESt11_String_valISt13_Simple_typesIcEELb1EE11_Get_secondEv
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::_String_val<std::_Simple_types<char>>::_Bxty &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Bx() noexcept
+   \                     _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp size_t &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Mysize() noexcept
+   \                     _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
+   \        0xA   0x3010             ADDS     R0,R0,#+16
+   \        0xC   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp size_t const &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Mysize() const noexcept
+   \                     _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
+   \        0xA   0x3010             ADDS     R0,R0,#+16
+   \        0xC   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp size_t &std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myres() noexcept
+   \                     _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE9_Get_dataEv
+   \        0xA   0x3014             ADDS     R0,R0,#+20
+   \        0xC   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::string::basic_string(std::string const &)
+   \                     _ZNSsC1ERKSs: (+1)
+   \        0x0   0xB57C             PUSH     {R2-R6,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0028             MOVS     R0,R5
+   \        0x8   0x.... 0x....      BL       _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
+   \        0xC   0x0032             MOVS     R2,R6
+   \        0xE   0x0001             MOVS     R1,R0
+   \       0x10   0x4668             MOV      R0,SP
+   \       0x12   0x.... 0x....      BL       _ZNKSt11_Wrap_allocISaIcEE37select_on_container_copy_constructionESt4_Nil
+   \       0x16   0x4669             MOV      R1,SP
+   \       0x18   0x0020             MOVS     R0,R4
+   \       0x1A   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEEC2ERKS1_
+   \       0x1E   0x2200             MOVS     R2,#+0
+   \       0x20   0x2100             MOVS     R1,#+0
+   \       0x22   0x0020             MOVS     R0,R4
+   \       0x24   0x.... 0x....      BL       _ZNSs5_TidyEbj
+   \       0x28   0xF05F 0x33FF      MOVS     R3,#+4294967295
+   \       0x2C   0x2200             MOVS     R2,#+0
+   \       0x2E   0x0029             MOVS     R1,R5
+   \       0x30   0x0020             MOVS     R0,R4
+   \       0x32   0x.... 0x....      BL       _ZNSs6assignERKSsjj
+   \       0x36   0x0020             MOVS     R0,R4
+   \       0x38   0xBD76             POP      {R1,R2,R4-R6,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::string::basic_string(char const *)
+   \                     _ZNSsC1EPKc: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x4669             MOV      R1,SP
+   \        0x8   0x0020             MOVS     R0,R4
+   \        0xA   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEEC2ERKS1_
+   \        0xE   0x2200             MOVS     R2,#+0
+   \       0x10   0x2100             MOVS     R1,#+0
+   \       0x12   0x0020             MOVS     R0,R4
+   \       0x14   0x.... 0x....      BL       _ZNSs5_TidyEbj
+   \       0x18   0x0029             MOVS     R1,R5
+   \       0x1A   0x0020             MOVS     R0,R4
+   \       0x1C   0x.... 0x....      BL       _ZNSs6assignEPKc
+   \       0x20   0x0020             MOVS     R0,R4
+   \       0x22   0xBD32             POP      {R1,R4,R5,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::string::~basic_string() noexcept
+   \                     _ZNSsD1Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x2200             MOVS     R2,#+0
+   \        0x6   0x2101             MOVS     R1,#+1
+   \        0x8   0x0020             MOVS     R0,R4
+   \        0xA   0x.... 0x....      BL       _ZNSs5_TidyEbj
+   \        0xE   0x0020             MOVS     R0,R4
+   \       0x10   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::string &std::string::assign(std::string const &, size_t, size_t)
+   \                     _ZNSs6assignERKSsjj: (+1)
+   \        0x0   0xE92D 0x43F8      PUSH     {R3-R9,LR}
+   \        0x4   0x0004             MOVS     R4,R0
+   \        0x6   0x000D             MOVS     R5,R1
+   \        0x8   0x0016             MOVS     R6,R2
+   \        0xA   0x001F             MOVS     R7,R3
+   \        0xC   0x0028             MOVS     R0,R5
+   \        0xE   0x.... 0x....      BL       _ZNKSs4sizeEv
+   \       0x12   0x42B0             CMP      R0,R6
+   \       0x14   0xD201             BCS.N    ??assign_0
+   \       0x16   0x.... 0x....      BL       __iar_Raise_ran
+   \                     ??assign_0: (+1)
+   \       0x1A   0x0028             MOVS     R0,R5
+   \       0x1C   0x.... 0x....      BL       _ZNKSs4sizeEv
+   \       0x20   0x4680             MOV      R8,R0
+   \       0x22   0xEBB8 0x0806      SUBS     R8,R8,R6
+   \       0x26   0x4547             CMP      R7,R8
+   \       0x28   0xD200             BCS.N    ??assign_1
+   \       0x2A   0x46B8             MOV      R8,R7
+   \                     ??assign_1: (+1)
+   \       0x2C   0x42AC             CMP      R4,R5
+   \       0x2E   0xD10A             BNE.N    ??assign_2
+   \       0x30   0xEB18 0x0106      ADDS     R1,R8,R6
+   \       0x34   0x0020             MOVS     R0,R4
+   \       0x36   0x.... 0x....      BL       _ZNSs5eraseEj
+   \       0x3A   0x0032             MOVS     R2,R6
+   \       0x3C   0x2100             MOVS     R1,#+0
+   \       0x3E   0x0020             MOVS     R0,R4
+   \       0x40   0x.... 0x....      BL       _ZNSs5eraseEjj
+   \       0x44   0xE016             B.N      ??assign_3
+   \                     ??assign_2: (+1)
+   \       0x46   0x2200             MOVS     R2,#+0
+   \       0x48   0x4641             MOV      R1,R8
+   \       0x4A   0x0020             MOVS     R0,R4
+   \       0x4C   0x.... 0x....      BL       _ZNSs5_GrowEjb
+   \       0x50   0x2800             CMP      R0,#+0
+   \       0x52   0xD00F             BEQ.N    ??assign_3
+   \       0x54   0x0028             MOVS     R0,R5
+   \       0x56   0x.... 0x....      BL       _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
+   \       0x5A   0x4681             MOV      R9,R0
+   \       0x5C   0x0020             MOVS     R0,R4
+   \       0x5E   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
+   \       0x62   0x4642             MOV      R2,R8
+   \       0x64   0xEB09 0x0106      ADD      R1,R9,R6
+   \       0x68   0x.... 0x....      BL       _ZNSt11char_traitsIcE4copyEPcPKcj
+   \       0x6C   0x4641             MOV      R1,R8
+   \       0x6E   0x0020             MOVS     R0,R4
+   \       0x70   0x.... 0x....      BL       _ZNSs4_EosEj
+   \                     ??assign_3: (+1)
+   \       0x74   0x0020             MOVS     R0,R4
+   \       0x76   0xE8BD 0x83F2      POP      {R1,R4-R9,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::string &std::string::assign(char const *, size_t)
+   \                     _ZNSs6assignEPKcj: (+1)
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0016             MOVS     R6,R2
+   \        0x8   0x0029             MOVS     R1,R5
+   \        0xA   0x0020             MOVS     R0,R4
+   \        0xC   0x.... 0x....      BL       _ZNSs7_InsideEPKc
+   \       0x10   0x2800             CMP      R0,#+0
+   \       0x12   0xD00A             BEQ.N    ??assign_4
+   \       0x14   0x0020             MOVS     R0,R4
+   \       0x16   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
+   \       0x1A   0x0033             MOVS     R3,R6
+   \       0x1C   0x1A28             SUBS     R0,R5,R0
+   \       0x1E   0x0002             MOVS     R2,R0
+   \       0x20   0x0021             MOVS     R1,R4
+   \       0x22   0x0020             MOVS     R0,R4
+   \       0x24   0x.... 0x....      BL       _ZNSs6assignERKSsjj
+   \       0x28   0xE012             B.N      ??assign_5
+   \                     ??assign_4: (+1)
+   \       0x2A   0x2200             MOVS     R2,#+0
+   \       0x2C   0x0031             MOVS     R1,R6
+   \       0x2E   0x0020             MOVS     R0,R4
+   \       0x30   0x.... 0x....      BL       _ZNSs5_GrowEjb
+   \       0x34   0x2800             CMP      R0,#+0
+   \       0x36   0xD00A             BEQ.N    ??assign_6
+   \       0x38   0x0020             MOVS     R0,R4
+   \       0x3A   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
+   \       0x3E   0x0032             MOVS     R2,R6
+   \       0x40   0x0029             MOVS     R1,R5
+   \       0x42   0x.... 0x....      BL       _ZNSt11char_traitsIcE4copyEPcPKcj
+   \       0x46   0x0031             MOVS     R1,R6
+   \       0x48   0x0020             MOVS     R0,R4
+   \       0x4A   0x.... 0x....      BL       _ZNSs4_EosEj
+   \                     ??assign_6: (+1)
+   \       0x4E   0x0020             MOVS     R0,R4
+   \                     ??assign_5: (+1)
+   \       0x50   0xBD70             POP      {R4-R6,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::string &std::string::assign(char const *)
+   \                     _ZNSs6assignEPKc: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0028             MOVS     R0,R5
+   \        0x8   0x.... 0x....      BL       _ZNSt11char_traitsIcE6lengthEPKc
+   \        0xC   0x0002             MOVS     R2,R0
+   \        0xE   0x0029             MOVS     R1,R5
+   \       0x10   0x0020             MOVS     R0,R4
+   \       0x12   0x.... 0x....      BL       _ZNSs6assignEPKcj
+   \       0x16   0xBD32             POP      {R1,R4,R5,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::string &std::string::erase(size_t)
+   \                     _ZNSs5eraseEj: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0020             MOVS     R0,R4
+   \        0x8   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
+   \        0xC   0x6800             LDR      R0,[R0, #+0]
+   \        0xE   0x42A8             CMP      R0,R5
+   \       0x10   0xD201             BCS.N    ??erase_0
+   \       0x12   0x.... 0x....      BL       __iar_Raise_ran
+   \                     ??erase_0: (+1)
+   \       0x16   0x0029             MOVS     R1,R5
+   \       0x18   0x0020             MOVS     R0,R4
+   \       0x1A   0x.... 0x....      BL       _ZNSs4_EosEj
+   \       0x1E   0x0020             MOVS     R0,R4
+   \       0x20   0xBD32             POP      {R1,R4,R5,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::string &std::string::erase(size_t, size_t)
+   \                     _ZNSs5eraseEjj: (+1)
+   \        0x0   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+   \        0x4   0x0005             MOVS     R5,R0
+   \        0x6   0x000E             MOVS     R6,R1
+   \        0x8   0x0014             MOVS     R4,R2
+   \        0xA   0x0028             MOVS     R0,R5
+   \        0xC   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
+   \       0x10   0x6800             LDR      R0,[R0, #+0]
+   \       0x12   0x42B0             CMP      R0,R6
+   \       0x14   0xD201             BCS.N    ??erase_1
+   \       0x16   0x.... 0x....      BL       __iar_Raise_ran
+   \                     ??erase_1: (+1)
+   \       0x1A   0x0028             MOVS     R0,R5
+   \       0x1C   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
+   \       0x20   0x6800             LDR      R0,[R0, #+0]
+   \       0x22   0x1B80             SUBS     R0,R0,R6
+   \       0x24   0x4284             CMP      R4,R0
+   \       0x26   0xD304             BCC.N    ??erase_2
+   \       0x28   0x0031             MOVS     R1,R6
+   \       0x2A   0x0028             MOVS     R0,R5
+   \       0x2C   0x.... 0x....      BL       _ZNSs4_EosEj
+   \       0x30   0xE018             B.N      ??erase_3
+   \                     ??erase_2: (+1)
+   \       0x32   0x2C00             CMP      R4,#+0
+   \       0x34   0xD016             BEQ.N    ??erase_3
+   \       0x36   0x0028             MOVS     R0,R5
+   \       0x38   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
+   \       0x3C   0xEB00 0x0706      ADD      R7,R0,R6
+   \       0x40   0x0028             MOVS     R0,R5
+   \       0x42   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
+   \       0x46   0xF8D0 0x8000      LDR      R8,[R0, #+0]
+   \       0x4A   0xEBB8 0x0804      SUBS     R8,R8,R4
+   \       0x4E   0xEBB8 0x0206      SUBS     R2,R8,R6
+   \       0x52   0xEB07 0x0104      ADD      R1,R7,R4
+   \       0x56   0x0038             MOVS     R0,R7
+   \       0x58   0x.... 0x....      BL       _ZNSt11char_traitsIcE4moveEPcPKcj
+   \       0x5C   0x4641             MOV      R1,R8
+   \       0x5E   0x0028             MOVS     R0,R5
+   \       0x60   0x.... 0x....      BL       _ZNSs4_EosEj
+   \                     ??erase_3: (+1)
+   \       0x64   0x0028             MOVS     R0,R5
+   \       0x66   0xE8BD 0x81F0      POP      {R4-R8,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp size_t std::string::size() const noexcept
+   \                     _ZNKSs4sizeEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
+   \        0xA   0x6800             LDR      R0,[R0, #+0]
+   \        0xC   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp size_t std::string::max_size() const noexcept
+   \                     _ZNKSs8max_sizeEv: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNKSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
+   \        0xA   0x0029             MOVS     R1,R5
+   \        0xC   0x.... 0x....      BL       _ZNKSt11_Wrap_allocISaIcEE8max_sizeESt4_Nil
+   \       0x10   0x2802             CMP      R0,#+2
+   \       0x12   0xD201             BCS.N    ??max_size_0
+   \       0x14   0x2001             MOVS     R0,#+1
+   \       0x16   0xE000             B.N      ??max_size_1
+   \                     ??max_size_0: (+1)
+   \       0x18   0x1E40             SUBS     R0,R0,#+1
+   \                     ??max_size_1: (+1)
+   \       0x1A   0xBD32             POP      {R1,R4,R5,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void std::string::_Copy(size_t, size_t)
+   \                     _ZNSs5_CopyEjj: (+1)
+   \        0x0   0xE92D 0x43F8      PUSH     {R3-R9,LR}
+   \        0x4   0x0005             MOVS     R5,R0
+   \        0x6   0x000E             MOVS     R6,R1
+   \        0x8   0x0014             MOVS     R4,R2
+   \        0xA   0xF056 0x070F      ORRS     R7,R6,#0xF
+   \        0xE   0x0028             MOVS     R0,R5
+   \       0x10   0x.... 0x....      BL       _ZNKSs8max_sizeEv
+   \       0x14   0x42B8             CMP      R0,R7
+   \       0x16   0xD201             BCS.N    ??_Copy_0
+   \       0x18   0x0037             MOVS     R7,R6
+   \       0x1A   0xE02D             B.N      ??_Copy_1
+   \                     ??_Copy_0: (+1)
+   \       0x1C   0x0028             MOVS     R0,R5
+   \       0x1E   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
+   \       0x22   0x2103             MOVS     R1,#+3
+   \       0x24   0xFBB7 0xF1F1      UDIV     R1,R7,R1
+   \       0x28   0x6800             LDR      R0,[R0, #+0]
+   \       0x2A   0xEBB1 0x0F50      CMP      R1,R0, LSR #+1
+   \       0x2E   0xD223             BCS.N    ??_Copy_1
+   \       0x30   0x0028             MOVS     R0,R5
+   \       0x32   0x.... 0x....      BL       _ZNKSs8max_sizeEv
+   \       0x36   0x4680             MOV      R8,R0
+   \       0x38   0x0028             MOVS     R0,R5
+   \       0x3A   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
+   \       0x3E   0x4681             MOV      R9,R0
+   \       0x40   0x0028             MOVS     R0,R5
+   \       0x42   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
+   \       0x46   0xF8D9 0x1000      LDR      R1,[R9, #+0]
+   \       0x4A   0xEBB8 0x0851      SUBS     R8,R8,R1, LSR #+1
+   \       0x4E   0x6800             LDR      R0,[R0, #+0]
+   \       0x50   0x4580             CMP      R8,R0
+   \       0x52   0xD30D             BCC.N    ??_Copy_2
+   \       0x54   0x0028             MOVS     R0,R5
+   \       0x56   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
+   \       0x5A   0x4680             MOV      R8,R0
+   \       0x5C   0x0028             MOVS     R0,R5
+   \       0x5E   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
+   \       0x62   0xF8D8 0x1000      LDR      R1,[R8, #+0]
+   \       0x66   0x6800             LDR      R0,[R0, #+0]
+   \       0x68   0xEB11 0x0150      ADDS     R1,R1,R0, LSR #+1
+   \       0x6C   0x000F             MOVS     R7,R1
+   \       0x6E   0xE003             B.N      ??_Copy_1
+   \                     ??_Copy_2: (+1)
+   \       0x70   0x0028             MOVS     R0,R5
+   \       0x72   0x.... 0x....      BL       _ZNKSs8max_sizeEv
+   \       0x76   0x0007             MOVS     R7,R0
+   \                     ??_Copy_1: (+1)
+   \       0x78   0x0028             MOVS     R0,R5
+   \       0x7A   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
+   \       0x7E   0x1C79             ADDS     R1,R7,#+1
+   \       0x80   0x.... 0x....      BL       _ZNSt11_Wrap_allocISaIcEE8allocateEj
+   \       0x84   0x9000             STR      R0,[SP, #+0]
+   \       0x86   0x2C00             CMP      R4,#+0
+   \       0x88   0xD00A             BEQ.N    ??_Copy_3
+   \       0x8A   0x0028             MOVS     R0,R5
+   \       0x8C   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
+   \       0x90   0x4680             MOV      R8,R0
+   \       0x92   0x9800             LDR      R0,[SP, #+0]
+   \       0x94   0x.... 0x....      BL       _ZSt9addressofIcEPT_RS0_
+   \       0x98   0x0022             MOVS     R2,R4
+   \       0x9A   0x4641             MOV      R1,R8
+   \       0x9C   0x.... 0x....      BL       _ZNSt11char_traitsIcE4copyEPcPKcj
+   \                     ??_Copy_3: (+1)
+   \       0xA0   0x2200             MOVS     R2,#+0
+   \       0xA2   0x2101             MOVS     R1,#+1
+   \       0xA4   0x0028             MOVS     R0,R5
+   \       0xA6   0x.... 0x....      BL       _ZNSs5_TidyEbj
+   \       0xAA   0x4668             MOV      R0,SP
+   \       0xAC   0x.... 0x....      BL       _ZSt4moveIRPcEONSt16remove_referenceIT_E4typeEOS3_
+   \       0xB0   0x4680             MOV      R8,R0
+   \       0xB2   0x0028             MOVS     R0,R5
+   \       0xB4   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
+   \       0xB8   0x4681             MOV      R9,R0
+   \       0xBA   0x0028             MOVS     R0,R5
+   \       0xBC   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
+   \       0xC0   0x4642             MOV      R2,R8
+   \       0xC2   0x4649             MOV      R1,R9
+   \       0xC4   0x.... 0x....      BL       _ZNSt11_Wrap_allocISaIcEE9constructIPcJS3_EEEvPT_DpOT0_
+   \       0xC8   0x0028             MOVS     R0,R5
+   \       0xCA   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
+   \       0xCE   0x6007             STR      R7,[R0, #+0]
+   \       0xD0   0x0021             MOVS     R1,R4
+   \       0xD2   0x0028             MOVS     R0,R5
+   \       0xD4   0x.... 0x....      BL       _ZNSs4_EosEj
+   \       0xD8   0xE8BD 0x83F1      POP      {R0,R4-R9,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void std::string::_Eos(size_t)
+   \                     _ZNSs4_EosEj: (+1)
+   \        0x0   0xB57C             PUSH     {R2-R6,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x2000             MOVS     R0,#+0
+   \        0x8   0xF88D 0x0000      STRB     R0,[SP, #+0]
+   \        0xC   0x0020             MOVS     R0,R4
+   \        0xE   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
+   \       0x12   0x0006             MOVS     R6,R0
+   \       0x14   0x0020             MOVS     R0,R4
+   \       0x16   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
+   \       0x1A   0x6005             STR      R5,[R0, #+0]
+   \       0x1C   0x4669             MOV      R1,SP
+   \       0x1E   0x6800             LDR      R0,[R0, #+0]
+   \       0x20   0x4430             ADD      R0,R6,R0
+   \       0x22   0x.... 0x....      BL       _ZNSt11char_traitsIcE6assignERcRKc
+   \       0x26   0xBD73             POP      {R0,R1,R4-R6,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp bool std::string::_Grow(size_t, bool)
+   \                     _ZNSs5_GrowEjb: (+1)
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
+   \        0x2   0x0005             MOVS     R5,R0
+   \        0x4   0x000C             MOVS     R4,R1
+   \        0x6   0x0016             MOVS     R6,R2
+   \        0x8   0x0028             MOVS     R0,R5
+   \        0xA   0x.... 0x....      BL       _ZNKSs8max_sizeEv
+   \        0xE   0x42A0             CMP      R0,R4
+   \       0x10   0xD201             BCS.N    ??_Grow_0
+   \       0x12   0x.... 0x....      BL       __iar_Raise_len
+   \                     ??_Grow_0: (+1)
+   \       0x16   0x0028             MOVS     R0,R5
+   \       0x18   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
+   \       0x1C   0x6800             LDR      R0,[R0, #+0]
+   \       0x1E   0x42A0             CMP      R0,R4
+   \       0x20   0xD208             BCS.N    ??_Grow_1
+   \       0x22   0x0028             MOVS     R0,R5
+   \       0x24   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
+   \       0x28   0x6802             LDR      R2,[R0, #+0]
+   \       0x2A   0x0021             MOVS     R1,R4
+   \       0x2C   0x0028             MOVS     R0,R5
+   \       0x2E   0x.... 0x....      BL       _ZNSs5_CopyEjj
+   \       0x32   0xE01C             B.N      ??_Grow_2
+   \                     ??_Grow_1: (+1)
+   \       0x34   0x0030             MOVS     R0,R6
+   \       0x36   0xB2C0             UXTB     R0,R0
+   \       0x38   0x2800             CMP      R0,#+0
+   \       0x3A   0xD012             BEQ.N    ??_Grow_3
+   \       0x3C   0x2C10             CMP      R4,#+16
+   \       0x3E   0xD210             BCS.N    ??_Grow_3
+   \       0x40   0x0028             MOVS     R0,R5
+   \       0x42   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
+   \       0x46   0x6800             LDR      R0,[R0, #+0]
+   \       0x48   0x4284             CMP      R4,R0
+   \       0x4A   0xD201             BCS.N    ??_Grow_4
+   \       0x4C   0x0022             MOVS     R2,R4
+   \       0x4E   0xE003             B.N      ??_Grow_5
+   \                     ??_Grow_4: (+1)
+   \       0x50   0x0028             MOVS     R0,R5
+   \       0x52   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
+   \       0x56   0x6802             LDR      R2,[R0, #+0]
+   \                     ??_Grow_5: (+1)
+   \       0x58   0x2101             MOVS     R1,#+1
+   \       0x5A   0x0028             MOVS     R0,R5
+   \       0x5C   0x.... 0x....      BL       _ZNSs5_TidyEbj
+   \       0x60   0xE005             B.N      ??_Grow_2
+   \                     ??_Grow_3: (+1)
+   \       0x62   0x2C00             CMP      R4,#+0
+   \       0x64   0xD103             BNE.N    ??_Grow_2
+   \       0x66   0x2100             MOVS     R1,#+0
+   \       0x68   0x0028             MOVS     R0,R5
+   \       0x6A   0x.... 0x....      BL       _ZNSs4_EosEj
+   \                     ??_Grow_2: (+1)
+   \       0x6E   0x2C00             CMP      R4,#+0
+   \       0x70   0xD001             BEQ.N    ??_Grow_6
+   \       0x72   0x2001             MOVS     R0,#+1
+   \       0x74   0xE000             B.N      ??_Grow_7
+   \                     ??_Grow_6: (+1)
+   \       0x76   0x2000             MOVS     R0,#+0
+   \                     ??_Grow_7: (+1)
+   \       0x78   0xB2C0             UXTB     R0,R0
+   \       0x7A   0xBD70             POP      {R4-R6,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp bool std::string::_Inside(char const *)
+   \                     _ZNSs7_InsideEPKc: (+1)
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
+   \        0x2   0x0005             MOVS     R5,R0
+   \        0x4   0x000C             MOVS     R4,R1
+   \        0x6   0x2C00             CMP      R4,#+0
+   \        0x8   0xD00F             BEQ.N    ??_Inside_0
+   \        0xA   0x0028             MOVS     R0,R5
+   \        0xC   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
+   \       0x10   0x4284             CMP      R4,R0
+   \       0x12   0xD30A             BCC.N    ??_Inside_0
+   \       0x14   0x0028             MOVS     R0,R5
+   \       0x16   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyptrEv
+   \       0x1A   0x0006             MOVS     R6,R0
+   \       0x1C   0x0028             MOVS     R0,R5
+   \       0x1E   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE7_MysizeEv
+   \       0x22   0x6800             LDR      R0,[R0, #+0]
+   \       0x24   0x4430             ADD      R0,R6,R0
+   \       0x26   0x4284             CMP      R4,R0
+   \       0x28   0xD301             BCC.N    ??_Inside_1
+   \                     ??_Inside_0: (+1)
+   \       0x2A   0x2000             MOVS     R0,#+0
+   \       0x2C   0xE000             B.N      ??_Inside_2
+   \                     ??_Inside_1: (+1)
+   \       0x2E   0x2001             MOVS     R0,#+1
+   \                     ??_Inside_2: (+1)
+   \       0x30   0xBD70             POP      {R4-R6,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp void std::string::_Tidy(bool, size_t)
+   \                     _ZNSs5_TidyEbj: (+1)
+   \        0x0   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+   \        0x4   0x0005             MOVS     R5,R0
+   \        0x6   0x000E             MOVS     R6,R1
+   \        0x8   0x0014             MOVS     R4,R2
+   \        0xA   0x0030             MOVS     R0,R6
+   \        0xC   0xB2C0             UXTB     R0,R0
+   \        0xE   0x2800             CMP      R0,#+0
+   \       0x10   0xD02D             BEQ.N    ??_Tidy_0
+   \       0x12   0x0028             MOVS     R0,R5
+   \       0x14   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
+   \       0x18   0x6800             LDR      R0,[R0, #+0]
+   \       0x1A   0x2810             CMP      R0,#+16
+   \       0x1C   0xD327             BCC.N    ??_Tidy_0
+   \       0x1E   0x0028             MOVS     R0,R5
+   \       0x20   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
+   \       0x24   0x6807             LDR      R7,[R0, #+0]
+   \       0x26   0x0028             MOVS     R0,R5
+   \       0x28   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
+   \       0x2C   0x4680             MOV      R8,R0
+   \       0x2E   0x0028             MOVS     R0,R5
+   \       0x30   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
+   \       0x34   0x4641             MOV      R1,R8
+   \       0x36   0x.... 0x....      BL       _ZNSt11_Wrap_allocISaIcEE7destroyIPcEEvPT_
+   \       0x3A   0x2C00             CMP      R4,#+0
+   \       0x3C   0xD00A             BEQ.N    ??_Tidy_1
+   \       0x3E   0x0038             MOVS     R0,R7
+   \       0x40   0x.... 0x....      BL       _ZSt9addressofIcEPT_RS0_
+   \       0x44   0x4680             MOV      R8,R0
+   \       0x46   0x0028             MOVS     R0,R5
+   \       0x48   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE3_BxEv
+   \       0x4C   0x0022             MOVS     R2,R4
+   \       0x4E   0x4641             MOV      R1,R8
+   \       0x50   0x.... 0x....      BL       _ZNSt11char_traitsIcE4copyEPcPKcj
+   \                     ??_Tidy_1: (+1)
+   \       0x54   0x0028             MOVS     R0,R5
+   \       0x56   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
+   \       0x5A   0x4680             MOV      R8,R0
+   \       0x5C   0x0028             MOVS     R0,R5
+   \       0x5E   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_GetalEv
+   \       0x62   0xF8D8 0x2000      LDR      R2,[R8, #+0]
+   \       0x66   0x1C52             ADDS     R2,R2,#+1
+   \       0x68   0x0039             MOVS     R1,R7
+   \       0x6A   0x.... 0x....      BL       _ZNSt11_Wrap_allocISaIcEE10deallocateEPcj
+   \                     ??_Tidy_0: (+1)
+   \       0x6E   0x0028             MOVS     R0,R5
+   \       0x70   0x.... 0x....      BL       _ZNSt13_String_allocISt18_String_base_typesIcSaIcEEE6_MyresEv
+   \       0x74   0x210F             MOVS     R1,#+15
+   \       0x76   0x6001             STR      R1,[R0, #+0]
+   \       0x78   0x0021             MOVS     R1,R4
+   \       0x7A   0x0028             MOVS     R0,R5
+   \       0x7C   0x.... 0x....      BL       _ZNSs4_EosEj
+   \       0x80   0xE8BD 0x81F0      POP      {R4-R8,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp OsWrapper::TicksPerSecond std::chrono::duration_cast<OsWrapper::TicksPerSecond, __int64_t, std::milli>(std::chrono::duration<__int64_t, std::milli> const &)
+   \                     _ZNSt6chrono13duration_castINS_8durationIjSt5ratioILx10ELx1000EEEExS2_ILx1ELx1000EEEENSt9enable_ifIXsr3std6chrono12_Is_durationIT_EE5valueES7_E4typeERKNS1_IT0_T1_EE: (+1)
+   \        0x0   0xB51C             PUSH     {R2-R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZNKSt6chrono8durationIxSt5ratioILx1ELx1000EEE5countEv
+   \        0xA   0x220A             MOVS     R2,#+10
+   \        0xC   0x2300             MOVS     R3,#+0
+   \        0xE   0x.... 0x....      BL       __aeabi_ldivmod
+   \       0x12   0x9000             STR      R0,[SP, #+0]
+   \       0x14   0x4669             MOV      R1,SP
+   \       0x16   0xA801             ADD      R0,SP,#+4
+   \       0x18   0x.... 0x....      BL       _ZNSt6chrono8durationIjSt5ratioILx10ELx1000EEEC1IjvEERKT_
+   \       0x1C   0x9801             LDR      R0,[SP, #+4]
+   \       0x1E   0xBD16             POP      {R1,R2,R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::duration<uint32_t, void>(uint32_t const &)
+   \                     _ZNSt6chrono8durationIjSt5ratioILx10ELx1000EEEC1IjvEERKT_: (+1)
+   \        0x0   0x680A             LDR      R2,[R1, #+0]
+   \        0x2   0x6002             STR      R2,[R0, #+0]
+   \        0x4   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp __int64_t std::chrono::duration<__int64_t, std::milli>::count() const
+   \                     _ZNKSt6chrono8durationIxSt5ratioILx1ELx1000EEE5countEv: (+1)
+   \        0x0   0xE9D0 0x0100      LDRD     R0,R1,[R0, #+0]
+   \        0x4   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp uint32_t std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::count() const
+   \                     _ZNKSt6chrono8durationIjSt5ratioILx10ELx1000EEE5countEv: (+1)
+   \        0x0   0x6800             LDR      R0,[R0, #+0]
+   \        0x2   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp void OsWrapper::RtosWrapper::wSleepUntil(uint32_t &, uint32_t)
+   \                     _ZN9OsWrapper11RtosWrapper11wSleepUntilERjj: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0029             MOVS     R1,R5
+   \        0x8   0x0020             MOVS     R0,R4
+   \        0xA   0x.... 0x....      BL       vTaskDelayUntil
+   \        0xE   0xBD31             POP      {R0,R4,R5,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp OsWrapper::IThread::subobject IThread() noexcept
+   \                     _ZN9OsWrapper7IThreadC2Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN9OsWrapper7IThreadC1Ev
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp OsWrapper::IThread::IThread() noexcept
+   \                     _ZN9OsWrapper7IThreadC1Ev: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+   \        0x2   0x6541             STR      R1,[R0, #+84]
+   \        0x4   0x2100             MOVS     R1,#+0
+   \        0x6   0x6581             STR      R1,[R0, #+88]
+   \        0x8   0x4770             BX       LR
+
+   \                                 In section .text, align 2
+   \   __vfp void OsWrapper::IThread::SleepUntil(std::chrono::milliseconds)
+   \                     _ZN9OsWrapper7IThread10SleepUntilENSt6chrono8durationIxSt5ratioILx1ELx1000EEEE: (+1)
+   \        0x0   0xB51F             PUSH     {R0-R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0xA802             ADD      R0,SP,#+8
+   \        0x6   0x.... 0x....      BL       _ZNSt6chrono13duration_castINS_8durationIjSt5ratioILx10ELx1000EEEExS2_ILx1ELx1000EEEENSt9enable_ifIXsr3std6chrono12_Is_durationIT_EE5valueES7_E4typeERKNS1_IT0_T1_EE
+   \        0xA   0x9000             STR      R0,[SP, #+0]
+   \        0xC   0x4668             MOV      R0,SP
+   \        0xE   0x.... 0x....      BL       _ZNKSt6chrono8durationIjSt5ratioILx10ELx1000EEE5countEv
+   \       0x12   0x0001             MOVS     R1,R0
+   \       0x14   0xF114 0x0058      ADDS     R0,R4,#+88
+   \       0x18   0x.... 0x....      BL       _ZN9OsWrapper11RtosWrapper11wSleepUntilERjj
+   \       0x1C   0xBD1F             POP      {R0-R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp OsWrapper::Thread<512U>::subobject Thread() noexcept
+   \                     _ZN9OsWrapper6ThreadILj512EEC2Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN9OsWrapper6ThreadILj512EEC1Ev
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2
+   \   __vfp OsWrapper::Thread<512U>::Thread() noexcept
+   \                     _ZN9OsWrapper6ThreadILj512EEC1Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN9OsWrapper7IThreadC2Ev
+   \        0xA   0x0020             MOVS     R0,R4
+   \        0xC   0xBD10             POP      {R4,PC}
+      2          
+
+   \                                 In section .text, align 2, keep-with-next
+   \   __vfp UsartTask::subobject UsartTask(IDataRepositoryProvider &, IUsart &, IFormatter &)
+   \                     _ZN9UsartTaskC2ER23IDataRepositoryProviderR6IUsartR10IFormatter: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN9UsartTaskC1ER23IDataRepositoryProviderR6IUsartR10IFormatter
+   \        0xA   0xBD10             POP      {R4,PC}
+
+   \                                 In section .text, align 2, keep-with-next
+      3          UsartTask :: UsartTask(IDataRepositoryProvider& dataRepositoryProvider, IUsart& usart, IFormatter& formatter) :
+      4            mDataRepositoryProvider(dataRepositoryProvider),
+      5            mUsart(usart),
+      6            mFormatter(formatter)
+      7          {
+   \                     _ZN9UsartTaskC1ER23IDataRepositoryProviderR6IUsartR10IFormatter: (+1)
+   \        0x0   0xB5F8             PUSH     {R3-R7,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0016             MOVS     R6,R2
+   \        0x8   0x001F             MOVS     R7,R3
+   \        0xA   0x0020             MOVS     R0,R4
+   \        0xC   0x.... 0x....      BL       _ZN9OsWrapper6ThreadILj512EEC2Ev
+   \       0x10   0x....             LDR.N    R0,??DataTable2_1
+   \       0x12   0x6020             STR      R0,[R4, #+0]
+   \       0x14   0xF8C4 0x685C      STR      R6,[R4, #+2140]
+   \       0x18   0xF8C4 0x5860      STR      R5,[R4, #+2144]
+   \       0x1C   0xF8C4 0x7864      STR      R7,[R4, #+2148]
+      8          }
+   \       0x20   0x0020             MOVS     R0,R4
+   \       0x22   0xBDF2             POP      {R1,R4-R7,PC}
+      9          
+
+   \                                 In section .text, align 2, keep-with-next
+     10          void UsartTask :: Execute()
+     11          {
+   \                     _ZN9UsartTask7ExecuteEv: (+1)
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
+   \        0x2   0xED2D 0x8B02      VPUSH    {D8}
+   \        0x6   0xB0A4             SUB      SP,SP,#+144
+   \        0x8   0x0004             MOVS     R4,R0
+     12            for(;;)
+     13            {
+     14              const auto currVoltage = mDataRepositoryProvider.GetValue();
+   \                     ??Execute_0: (+1)
+   \        0xA   0xF8D4 0x0860      LDR      R0,[R4, #+2144]
+   \        0xE   0xF8D4 0x1860      LDR      R1,[R4, #+2144]
+   \       0x12   0x6809             LDR      R1,[R1, #+0]
+   \       0x14   0x6809             LDR      R1,[R1, #+0]
+   \       0x16   0x4788             BLX      R1
+   \       0x18   0xEEB0 0x8A40      VMOV.F32 S16,S0
+     15              const auto currFilteredVoltage = mDataRepositoryProvider.GetFilteredValue();
+   \       0x1C   0xF8D4 0x0860      LDR      R0,[R4, #+2144]
+   \       0x20   0xF8D4 0x1860      LDR      R1,[R4, #+2144]
+   \       0x24   0x6809             LDR      R1,[R1, #+0]
+   \       0x26   0x6849             LDR      R1,[R1, #+4]
+   \       0x28   0x4788             BLX      R1
+   \       0x2A   0xEEF0 0x8A40      VMOV.F32 S17,S0
+     16              const auto voltageString = mFormatter.FormatString(currVoltage, 3U, " В", false);
+   \       0x2E   0xF8D4 0x5864      LDR      R5,[R4, #+2148]
+   \       0x32   0x....             ADR.N    R6,??DataTable2
+   \       0x34   0x0031             MOVS     R1,R6
+   \       0x36   0xA812             ADD      R0,SP,#+72
+   \       0x38   0x.... 0x....      BL       _ZNSsC1EPKc
+   \       0x3C   0x0003             MOVS     R3,R0
+   \       0x3E   0x2000             MOVS     R0,#+0
+   \       0x40   0x9000             STR      R0,[SP, #+0]
+   \       0x42   0x2203             MOVS     R2,#+3
+   \       0x44   0xEEB0 0x0A48      VMOV.F32 S0,S16
+   \       0x48   0x0029             MOVS     R1,R5
+   \       0x4A   0xA81E             ADD      R0,SP,#+120
+   \       0x4C   0x682D             LDR      R5,[R5, #+0]
+   \       0x4E   0x682D             LDR      R5,[R5, #+0]
+   \       0x50   0x47A8             BLX      R5
+   \       0x52   0xA812             ADD      R0,SP,#+72
+   \       0x54   0x.... 0x....      BL       _ZNSsD1Ev
+     17              const auto filteredVoltageString = mFormatter.FormatString(currFilteredVoltage, 3U, " В", true);
+   \       0x58   0xF8D4 0x5864      LDR      R5,[R4, #+2148]
+   \       0x5C   0x0031             MOVS     R1,R6
+   \       0x5E   0xA80C             ADD      R0,SP,#+48
+   \       0x60   0x.... 0x....      BL       _ZNSsC1EPKc
+   \       0x64   0x2101             MOVS     R1,#+1
+   \       0x66   0x9100             STR      R1,[SP, #+0]
+   \       0x68   0x0003             MOVS     R3,R0
+   \       0x6A   0x2203             MOVS     R2,#+3
+   \       0x6C   0xEEB0 0x0A68      VMOV.F32 S0,S17
+   \       0x70   0x0029             MOVS     R1,R5
+   \       0x72   0xA818             ADD      R0,SP,#+96
+   \       0x74   0x682D             LDR      R5,[R5, #+0]
+   \       0x76   0x682D             LDR      R5,[R5, #+0]
+   \       0x78   0x47A8             BLX      R5
+   \       0x7A   0xA80C             ADD      R0,SP,#+48
+   \       0x7C   0x.... 0x....      BL       _ZNSsD1Ev
+     18              mUsart.SendMessage(voltageString);
+   \       0x80   0xF8D4 0x585C      LDR      R5,[R4, #+2140]
+   \       0x84   0xA91E             ADD      R1,SP,#+120
+   \       0x86   0xA806             ADD      R0,SP,#+24
+   \       0x88   0x.... 0x....      BL       _ZNSsC1ERKSs
+   \       0x8C   0x0001             MOVS     R1,R0
+   \       0x8E   0x0028             MOVS     R0,R5
+   \       0x90   0x682A             LDR      R2,[R5, #+0]
+   \       0x92   0x6812             LDR      R2,[R2, #+0]
+   \       0x94   0x4790             BLX      R2
+   \       0x96   0xA806             ADD      R0,SP,#+24
+   \       0x98   0x.... 0x....      BL       _ZNSsD1Ev
+     19              mUsart.SendMessage(filteredVoltageString);
+   \       0x9C   0xF8D4 0x585C      LDR      R5,[R4, #+2140]
+   \       0xA0   0xA918             ADD      R1,SP,#+96
+   \       0xA2   0x4668             MOV      R0,SP
+   \       0xA4   0x.... 0x....      BL       _ZNSsC1ERKSs
+   \       0xA8   0x0001             MOVS     R1,R0
+   \       0xAA   0x0028             MOVS     R0,R5
+   \       0xAC   0x682A             LDR      R2,[R5, #+0]
+   \       0xAE   0x6812             LDR      R2,[R2, #+0]
+   \       0xB0   0x4790             BLX      R2
+   \       0xB2   0x4668             MOV      R0,SP
+   \       0xB4   0x.... 0x....      BL       _ZNSsD1Ev
+   \       0xB8   0x....             LDR.N    R0,??DataTable2_2
+   \       0xBA   0xE9D0 0x2300      LDRD     R2,R3,[R0, #+0]
+     20              SleepUntil(500ms);
+   \       0xBE   0x0020             MOVS     R0,R4
+   \       0xC0   0x.... 0x....      BL       _ZN9OsWrapper7IThread10SleepUntilENSt6chrono8durationIxSt5ratioILx1ELx1000EEEE
+     21            }
+   \       0xC4   0xA818             ADD      R0,SP,#+96
+   \       0xC6   0x.... 0x....      BL       _ZNSsD1Ev
+   \       0xCA   0xA81E             ADD      R0,SP,#+120
+   \       0xCC   0x.... 0x....      BL       _ZNSsD1Ev
+   \       0xD0   0xE79B             B.N      ??Execute_0
+     22          };
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \        0x0   0x20 0xD0          DC8      " \320\222"    
+
+   \              0x92 0x00
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \        0x0   0x....'....        DC32     _ZTV9UsartTask+0x8
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_2:
+   \        0x0   0x....'....        DC32     ?_1
+
+   \                                 In section .rodata, align 4
+   \        0x0   0x20 0xD0          DC8 " \320\222"
+
+   \              0x92 0x00
+
+   \                                 In section .rodata, align 8
+   \                     ?_1:
+   \        0x0   0x0000'0000'0      DC64 500
+
+   \              000'01F4
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   OsWrapper::IThread::IThread() noexcept
+      24   OsWrapper::IThread::SleepUntil(std::chrono::milliseconds)
+        24   -> OsWrapper::RtosWrapper::wSleepUntil(uint32_t &, uint32_t)
+        24   -> std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::count() const
+        24   -> std::chrono::duration_cast<OsWrapper::TicksPerSecond, __int64_t, std::milli>(std::chrono::duration<__int64_t, std::milli> const &)
+       8   OsWrapper::IThread::subobject IThread() noexcept
+         8   -> OsWrapper::IThread::IThread() noexcept
+      16   OsWrapper::RtosWrapper::wSleepUntil(uint32_t &, uint32_t)
+        16   -> vTaskDelayUntil
+       8   OsWrapper::Thread<512U>::Thread() noexcept
+         8   -> OsWrapper::IThread::subobject IThread() noexcept
+       8   OsWrapper::Thread<512U>::subobject Thread() noexcept
+         8   -> OsWrapper::Thread<512U>::Thread() noexcept
+     168   UsartTask::Execute()
+       168   -- Indirect call
+       168   -> OsWrapper::IThread::SleepUntil(std::chrono::milliseconds)
+       168   -> std::string::basic_string(char const *)
+       168   -> std::string::basic_string(std::string const &)
+       168   -> std::string::~basic_string() noexcept
+      24   UsartTask::UsartTask(IDataRepositoryProvider &, IUsart &, IFormatter &)
+        24   -> OsWrapper::Thread<512U>::subobject Thread() noexcept
+       8   UsartTask::subobject UsartTask(IDataRepositoryProvider &, IUsart &, IFormatter &)
+         8   -> UsartTask::UsartTask(IDataRepositoryProvider &, IUsart &, IFormatter &)
+       0   operator new(unsigned int, void *) noexcept
+       0   std::_Addressof<char>(char &, std::false_type) noexcept
+      16   std::_Allocate<char>(size_t, char *)
+        16   -> operator new(size_t)
+      16   std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Compressed_pair<std::allocator<char> const &>(std::_One_then_variadic_args_t, std::allocator<char> const &)
+        16   -> std::_String_val<std::_Simple_types<char>>::_String_val()
+        16   -> std::_Wrap_alloc<std::allocator<char>>::subobject _Wrap_alloc(std::allocator<char> const &)
+        16   -> std::forward<std::allocator<char> const &>(std::allocator<char> const &) noexcept
+       0   std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_first() const noexcept
+       0   std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_first() noexcept
+       0   std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_second() const noexcept
+       0   std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_second() noexcept
+      16   std::_Deallocate<char>(char *, size_t)
+        16   -> operator delete(void *) noexcept
+       8   std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Bx() noexcept
+         8   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() noexcept
+       8   std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() const noexcept
+         8   -> std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_second() const noexcept
+       8   std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() noexcept
+         8   -> std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_second() noexcept
+       8   std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Getal() const noexcept
+         8   -> std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_first() const noexcept
+       8   std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Getal() noexcept
+         8   -> std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_first() noexcept
+       8   std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr()
+         8   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() noexcept
+         8   -> std::_String_val<std::_Simple_types<char>>::_Myptr()
+       8   std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr() const
+         8   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() const noexcept
+         8   -> std::_String_val<std::_Simple_types<char>>::_Myptr() const
+       8   std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myres() noexcept
+         8   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() noexcept
+       8   std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Mysize() const noexcept
+         8   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() const noexcept
+       8   std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Mysize() noexcept
+         8   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() noexcept
+      16   std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_String_alloc(std::allocator<char> const &)
+        16   -> std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Compressed_pair<std::allocator<char> const &>(std::_One_then_variadic_args_t, std::allocator<char> const &)
+       8   std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::subobject _String_alloc(std::allocator<char> const &)
+         8   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_String_alloc(std::allocator<char> const &)
+       8   std::_String_val<std::_Simple_types<char>>::_Myptr()
+         8   -> std::addressof<char>(char &) noexcept
+       8   std::_String_val<std::_Simple_types<char>>::_Myptr() const
+         8   -> std::addressof<char>(char &) noexcept
+       0   std::_String_val<std::_Simple_types<char>>::_String_val()
+       0   std::_Wrap_alloc<std::allocator<char>>::_Wrap_alloc(std::allocator<char> const &)
+      16   std::_Wrap_alloc<std::allocator<char>>::allocate(size_t)
+        16   -> std::allocator<char>::allocate(size_t)
+      16   std::_Wrap_alloc<std::allocator<char>>::construct<char *, char *>(char * *, char * &&)
+        16   -> std::allocator_traits<std::allocator<char>>::construct<char *, char *>(std::allocator<char> &, char * *, char * &&)
+        16   -> std::forward<char *>(char * &) noexcept
+      16   std::_Wrap_alloc<std::allocator<char>>::deallocate(char *, size_t)
+        16   -> std::allocator<char>::deallocate(char *, size_t)
+      16   std::_Wrap_alloc<std::allocator<char>>::destroy<char *>(char * *)
+        16   -> std::allocator_traits<std::allocator<char>>::destroy<char *>(std::allocator<char> &, char * *)
+       8   std::_Wrap_alloc<std::allocator<char>>::max_size(std::_Nil) const noexcept
+         8   -> std::allocator_traits<std::allocator<char>>::max_size(std::allocator<char> const &) noexcept
+      16   std::_Wrap_alloc<std::allocator<char>>::select_on_container_copy_construction(std::_Nil) const
+        16   -> std::_Wrap_alloc<std::allocator<char>>::_Wrap_alloc(std::allocator<char> const &)
+        16   -> std::allocator_traits<std::allocator<char>>::select_on_container_copy_construction(std::allocator<char> const &)
+       8   std::_Wrap_alloc<std::allocator<char>>::subobject _Wrap_alloc(std::allocator<char> const &)
+         8   -> std::_Wrap_alloc<std::allocator<char>>::_Wrap_alloc(std::allocator<char> const &)
+       8   std::addressof<char>(char &) noexcept
+         8   -> std::_Addressof<char>(char &, std::false_type) noexcept
+      16   std::allocator<char>::allocate(size_t)
+        16   -> std::_Allocate<char>(size_t, char *)
+      24   std::allocator<char>::construct<char *, char *>(char * *, char * &&)
+        24   -> operator new(unsigned int, void *) noexcept
+        24   -> std::forward<char *>(char * &) noexcept
+      16   std::allocator<char>::deallocate(char *, size_t)
+        16   -> std::_Deallocate<char>(char *, size_t)
+       0   std::allocator<char>::destroy<char *>(char * *)
+       0   std::allocator<char>::max_size() const noexcept
+      16   std::allocator_traits<std::allocator<char>>::construct<char *, char *>(std::allocator<char> &, char * *, char * &&)
+        16   -> std::allocator<char>::construct<char *, char *>(char * *, char * &&)
+        16   -> std::forward<char *>(char * &) noexcept
+      16   std::allocator_traits<std::allocator<char>>::destroy<char *>(std::allocator<char> &, char * *)
+        16   -> std::allocator<char>::destroy<char *>(char * *)
+       8   std::allocator_traits<std::allocator<char>>::max_size(std::allocator<char> const &) noexcept
+         8   -> std::allocator<char>::max_size() const noexcept
+       0   std::allocator_traits<std::allocator<char>>::select_on_container_copy_construction(std::allocator<char> const &)
+       0   std::char_traits<char>::assign(char &, char const &) noexcept
+      32   std::char_traits<char>::copy(char *, char const *, size_t)
+        32   -> __aeabi_memcpy
+       8   std::char_traits<char>::length(char const *)
+         8   -> strlen
+      32   std::char_traits<char>::move(char *, char const *, size_t)
+        32   -> __aeabi_memmove
+       0   std::chrono::duration<__int64_t, std::milli>::count() const
+       0   std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::count() const
+       0   std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::duration<uint32_t, void>(uint32_t const &)
+      16   std::chrono::duration_cast<OsWrapper::TicksPerSecond, __int64_t, std::milli>(std::chrono::duration<__int64_t, std::milli> const &)
+        16   -> std::chrono::duration<__int64_t, std::milli>::count() const
+        16   -> std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::duration<uint32_t, void>(uint32_t const &)
+        16 __aeabi_ldivmod
+       0   std::forward<char *>(char * &) noexcept
+       0   std::forward<std::allocator<char> const &>(std::allocator<char> const &) noexcept
+       0   std::move<char * &>(char * &) noexcept
+      32   std::string::_Copy(size_t, size_t)
+        32   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Bx() noexcept
+        32   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Getal() noexcept
+        32   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr()
+        32   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myres() noexcept
+        32   -> std::_Wrap_alloc<std::allocator<char>>::allocate(size_t)
+        32   -> std::_Wrap_alloc<std::allocator<char>>::construct<char *, char *>(char * *, char * &&)
+        32   -> std::addressof<char>(char &) noexcept
+        32   -> std::char_traits<char>::copy(char *, char const *, size_t)
+        32   -> std::move<char * &>(char * &) noexcept
+        32   -> std::string::_Eos(size_t)
+        32   -> std::string::_Tidy(bool, size_t)
+        32   -> std::string::max_size() const noexcept
+      24   std::string::_Eos(size_t)
+        24   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr()
+        24   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Mysize() noexcept
+        24   -> std::char_traits<char>::assign(char &, char const &) noexcept
+      16   std::string::_Grow(size_t, bool)
+        16   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myres() noexcept
+        16   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Mysize() noexcept
+        16   -> std::__iar_Raise_len
+        16   -> std::string::_Copy(size_t, size_t)
+        16   -> std::string::_Eos(size_t)
+        16   -> std::string::_Tidy(bool, size_t)
+        16   -> std::string::max_size() const noexcept
+      16   std::string::_Inside(char const *)
+        16   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr()
+        16   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Mysize() noexcept
+      24   std::string::_Tidy(bool, size_t)
+        24   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Bx() noexcept
+        24   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Getal() noexcept
+        24   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myres() noexcept
+        24   -> std::_Wrap_alloc<std::allocator<char>>::deallocate(char *, size_t)
+        24   -> std::_Wrap_alloc<std::allocator<char>>::destroy<char *>(char * *)
+        24   -> std::addressof<char>(char &) noexcept
+        24   -> std::char_traits<char>::copy(char *, char const *, size_t)
+        24   -> std::string::_Eos(size_t)
+      16   std::string::assign(char const *)
+        16   -> std::char_traits<char>::length(char const *)
+        16   -> std::string::assign(char const *, size_t)
+      16   std::string::assign(char const *, size_t)
+        16   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr()
+        16   -> std::char_traits<char>::copy(char *, char const *, size_t)
+        16   -> std::string::_Eos(size_t)
+        16   -> std::string::_Grow(size_t, bool)
+        16   -> std::string::_Inside(char const *)
+        16   -> std::string::assign(std::string const &, size_t, size_t)
+      32   std::string::assign(std::string const &, size_t, size_t)
+        32   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr()
+        32   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr() const
+        32   -> std::__iar_Raise_ran
+        32   -> std::char_traits<char>::copy(char *, char const *, size_t)
+        32   -> std::string::_Eos(size_t)
+        32   -> std::string::_Grow(size_t, bool)
+        32   -> std::string::erase(size_t)
+        32   -> std::string::erase(size_t, size_t)
+        32   -> std::string::size() const noexcept
+      16   std::string::basic_string(char const *)
+        16   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::subobject _String_alloc(std::allocator<char> const &)
+        16   -> std::string::_Tidy(bool, size_t)
+        16   -> std::string::assign(char const *)
+      24   std::string::basic_string(std::string const &)
+        24   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Getal() const noexcept
+        24   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::subobject _String_alloc(std::allocator<char> const &)
+        24   -> std::_Wrap_alloc<std::allocator<char>>::select_on_container_copy_construction(std::_Nil) const
+        24   -> std::string::_Tidy(bool, size_t)
+        24   -> std::string::assign(std::string const &, size_t, size_t)
+      16   std::string::erase(size_t)
+        16   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Mysize() noexcept
+        16   -> std::__iar_Raise_ran
+        16   -> std::string::_Eos(size_t)
+      24   std::string::erase(size_t, size_t)
+        24   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr()
+        24   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Mysize() noexcept
+        24   -> std::__iar_Raise_ran
+        24   -> std::char_traits<char>::move(char *, char const *, size_t)
+        24   -> std::string::_Eos(size_t)
+      16   std::string::max_size() const noexcept
+        16   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Getal() const noexcept
+        16   -> std::_Wrap_alloc<std::allocator<char>>::max_size(std::_Nil) const noexcept
+       8   std::string::size() const noexcept
+         8   -> std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Mysize() const noexcept
+       8   std::string::~basic_string() noexcept
+         8   -> std::string::_Tidy(bool, size_t)
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+       4  ??DataTable2_1
+       4  ??DataTable2_2
+       4  ?_0
+       8  ?_1
+      10  OsWrapper::IThread::IThread() noexcept
+      30  OsWrapper::IThread::SleepUntil(std::chrono::milliseconds)
+      12  OsWrapper::IThread::subobject IThread() noexcept
+      16  OsWrapper::RtosWrapper::wSleepUntil(uint32_t &, uint32_t)
+      14  OsWrapper::Thread<512U>::Thread() noexcept
+      12  OsWrapper::Thread<512U>::subobject Thread() noexcept
+     210  UsartTask::Execute()
+      36  UsartTask::UsartTask(IDataRepositoryProvider &, IUsart &, IFormatter &)
+      12  UsartTask::subobject UsartTask(IDataRepositoryProvider &, IUsart &, IFormatter &)
+       4  operator new(unsigned int, void *) noexcept
+       2  std::_Addressof<char>(char &, std::false_type) noexcept
+      24  std::_Allocate<char>(size_t, char *)
+      30  std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Compressed_pair<std::allocator<char> const &>(std::_One_then_variadic_args_t, std::allocator<char> const &)
+       2  std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_first() const noexcept
+       2  std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_first() noexcept
+       2  std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_second() const noexcept
+       2  std::_Compressed_pair<std::_Wrap_alloc<std::allocator<char>>, std::_String_val<std::_Simple_types<char>>>::_Get_second() noexcept
+      14  std::_Deallocate<char>(char *, size_t)
+      12  std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Bx() noexcept
+      12  std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() const noexcept
+      12  std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Get_data() noexcept
+      12  std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Getal() const noexcept
+      12  std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Getal() noexcept
+      16  std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr()
+      16  std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myptr() const
+      14  std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Myres() noexcept
+      14  std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Mysize() const noexcept
+      14  std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_Mysize() noexcept
+      28  std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::_String_alloc(std::allocator<char> const &)
+      12  std::_String_alloc<std::_String_base_types<char, std::allocator<char>>>::subobject _String_alloc(std::allocator<char> const &)
+      22  std::_String_val<std::_Simple_types<char>>::_Myptr()
+      22  std::_String_val<std::_Simple_types<char>>::_Myptr() const
+      10  std::_String_val<std::_Simple_types<char>>::_String_val()
+       2  std::_Wrap_alloc<std::allocator<char>>::_Wrap_alloc(std::allocator<char> const &)
+      16  std::_Wrap_alloc<std::allocator<char>>::allocate(size_t)
+      26  std::_Wrap_alloc<std::allocator<char>>::construct<char *, char *>(char * *, char * &&)
+      20  std::_Wrap_alloc<std::allocator<char>>::deallocate(char *, size_t)
+      16  std::_Wrap_alloc<std::allocator<char>>::destroy<char *>(char * *)
+      12  std::_Wrap_alloc<std::allocator<char>>::max_size(std::_Nil) const noexcept
+      24  std::_Wrap_alloc<std::allocator<char>>::select_on_container_copy_construction(std::_Nil) const
+      12  std::_Wrap_alloc<std::allocator<char>>::subobject _Wrap_alloc(std::allocator<char> const &)
+      20  std::addressof<char>(char &) noexcept
+      16  std::allocator<char>::allocate(size_t)
+      38  std::allocator<char>::construct<char *, char *>(char * *, char * &&)
+      18  std::allocator<char>::deallocate(char *, size_t)
+       2  std::allocator<char>::destroy<char *>(char * *)
+       8  std::allocator<char>::max_size() const noexcept
+      26  std::allocator_traits<std::allocator<char>>::construct<char *, char *>(std::allocator<char> &, char * *, char * &&)
+      16  std::allocator_traits<std::allocator<char>>::destroy<char *>(std::allocator<char> &, char * *)
+      12  std::allocator_traits<std::allocator<char>>::max_size(std::allocator<char> const &) noexcept
+       2  std::allocator_traits<std::allocator<char>>::select_on_container_copy_construction(std::allocator<char> const &)
+       6  std::char_traits<char>::assign(char &, char const &) noexcept
+      32  std::char_traits<char>::copy(char *, char const *, size_t)
+      12  std::char_traits<char>::length(char const *)
+      32  std::char_traits<char>::move(char *, char const *, size_t)
+       6  std::chrono::duration<__int64_t, std::milli>::count() const
+       4  std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::count() const
+       6  std::chrono::duration<uint32_t, std::ratio<10LL, 1'000LL>>::duration<uint32_t, void>(uint32_t const &)
+      32  std::chrono::duration_cast<OsWrapper::TicksPerSecond, __int64_t, std::milli>(std::chrono::duration<__int64_t, std::milli> const &)
+       2  std::forward<char *>(char * &) noexcept
+       2  std::forward<std::allocator<char> const &>(std::allocator<char> const &) noexcept
+       2  std::move<char * &>(char * &) noexcept
+     220  std::string::_Copy(size_t, size_t)
+      40  std::string::_Eos(size_t)
+     124  std::string::_Grow(size_t, bool)
+      50  std::string::_Inside(char const *)
+     132  std::string::_Tidy(bool, size_t)
+      24  std::string::assign(char const *)
+      82  std::string::assign(char const *, size_t)
+     122  std::string::assign(std::string const &, size_t, size_t)
+      36  std::string::basic_string(char const *)
+      58  std::string::basic_string(std::string const &)
+      34  std::string::erase(size_t)
+     106  std::string::erase(size_t, size_t)
+      28  std::string::max_size() const noexcept
+      14  std::string::size() const noexcept
+      18  std::string::~basic_string() noexcept
+     210  -- Other
+
+ 
+   222 bytes in section .rodata
+ 2'184 bytes in section .text
+ 
+ 270 bytes of CODE  memory (+ 1'914 bytes shared)
+  14 bytes of CONST memory (+   208 bytes shared)
+
+Errors: none
+Warnings: none
