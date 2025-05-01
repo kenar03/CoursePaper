@@ -14,8 +14,12 @@ void UsartTask :: Execute()
     const auto currVoltage = mDataRepositoryProvider.GetValue();
     const auto currFilteredVoltage = mDataRepositoryProvider.GetFilteredValue();
     const auto voltageString = mFormatter.FormatString(currVoltage, 3U, " В", false);
-    const auto filteredVoltageString = mFormatter.FormatString(currFilteredVoltage, 3U, " В", true);
     mUsart.SendMessage(voltageString);
+    while(mUsart.IsBusy())
+    {
+      SleepUntil(1ms);
+    }
+    const auto filteredVoltageString = mFormatter.FormatString(currFilteredVoltage, 3U, " В", true);
     mUsart.SendMessage(filteredVoltageString);
     SleepUntil(500ms);
   }

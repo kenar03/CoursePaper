@@ -14,12 +14,12 @@ using namespace OsWrapper;
 class MeasurementTask : public OsWrapper::Thread<512U>
 {
 public:
-  MeasurementTask(IRawDataProvider& rawData, IDigitalFilter<float>& filter, IVoltage& voltage,
+  MeasurementTask(IRawDataProvider& rawData, IDigitalFilter& filter, IVoltage& voltage,
                   ILedCalculator& ledCalculator, ILedController& ledController, IDataRepositoryUpdater& dataRepositoryUpdater);
   virtual void Execute() override;
 private:
   IRawDataProvider& mRawData;
-  IDigitalFilter<float>& mDigitalFilter;
+  IDigitalFilter& mDigitalFilter;
   IVoltage& mVoltage;
   ILedCalculator& mLedCalculator;
   ILedController& mLedController;

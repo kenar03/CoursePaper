@@ -73,12 +73,12 @@ constexpr auto maxVoltage = 3.275f;
 constexpr uint8_t maxLedAmount = 4U;
 
 AdcDmaDataProvider adc;
-DigitalFilter<float, dt, rc> digitalFilter;
+DigitalFilter digitalFilter(dt, rc);
 Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage> voltage(static_cast<IRawDataProvider&>(adc));
 DataRepository dataReposiitory;
 LedCalculator ledCalculator(maxLedAmount, maxVoltage);
 LedController ledController;
-Usart usart;
+auto& usart = Usart::Instance();
 Formatter formatter;
 
 MeasurementTask measurementTask(adc, digitalFilter, voltage, ledCalculator, ledController, dataReposiitory);
@@ -88,8 +88,6 @@ int main()
 {
   adc.ConfigAdc();
   usart.ConfigUsart();
-  USART2::CR1::UE::Enable::Set();
-  USART2::CR1::TE::Enable::Set();
   using namespace OsWrapper;
   Rtos::CreateThread(measurementTask, "MeasurementTask", ThreadPriority::priorityMax);
   Rtos::CreateThread(usartTask, "UsartTask", ThreadPriority::lowest);

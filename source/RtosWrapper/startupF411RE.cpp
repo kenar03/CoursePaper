@@ -17,10 +17,15 @@
 #pragma segment = "CSTACK"
 #include "AHardware/IrqController/irqcontroller.hpp"
 #include "Rtos/wrapper/rtos.hpp"
+#include "Usart.hpp" // for Usart
 
 extern "C" void __iar_program_start( void );
 extern "C" void xPortPendSVHandler(void);
 
+extern "C" void UsartInterruptHandler(void)
+{
+  Usart::Instance().HandleInterrupt();
+}
 
 class DummyModule
 {
@@ -100,7 +105,7 @@ extern "C" const tIntVectItem __vector_table[] =
   DummyModule::handler,         //SPI1
   DummyModule::handler,         //SPI2
   DummyModule::handler,         //USART1
-  DummyModule::handler,         //USART2
+  UsartInterruptHandler,         //USART2
   0,
   IrqController::HandleIrqExtiLine15_10,         //EXTI Line 15..10
   DummyModule::handler,         //EXTI Line 17 interrupt / RTC Alarms (A and B) through EXTI line interrupt
@@ -149,7 +154,6 @@ extern "C" const tIntVectItem __vector_table[] =
   DummyModule::handler,		//SPI 4 global interrupt
   DummyModule::handler		//SPI 5 global interrupt
 };
-
 void DummyModule::handler()   { for(;;) {} } ;
 
 extern "C" void __cmain( void );

@@ -6,7 +6,8 @@
 class IUsart
 {
 public:
-  virtual void SendMessage(std::string message) = 0;
+  virtual void SendMessage(const char* message) = 0;
+  virtual bool IsBusy() = 0;
 };
 
 #endif

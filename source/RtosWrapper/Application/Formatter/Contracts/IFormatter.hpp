@@ -6,7 +6,7 @@
 class IFormatter
 {
 public:
-  virtual std::string FormatString(const float value, const uint8_t precision, const std::string unit, bool isFilteredValue) = 0;
+  virtual char* FormatString(const float value, const uint8_t precision, const char* unit, bool isFilteredValue) = 0;
 };
 
 #endif

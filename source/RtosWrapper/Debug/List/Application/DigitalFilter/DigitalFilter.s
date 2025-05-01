@@ -1,12 +1,13 @@
-///////////////////////////////////////////////////////////////////////////////
+﻿///////////////////////////////////////////////////////////////////////////////
 //
-// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        26/Apr/2025  19:24:51
+// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        01/May/2025  23:35:56
 // Copyright 1999-2022 IAR Systems AB.
 //
 //    Cpu mode     =  thumb
 //    Endian       =  little
 //    Source file  =
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\DigitalFilter.cpp
+//        [UTF-8]
 //    Command line =
 //        -f
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\DigitalFilter\DigitalFilter.o.rsp
@@ -102,7 +103,16 @@
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
 //        -I
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
-//        -Ol --c++ --no_exceptions --no_rtti) --dependencies=n
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\CortexM4\
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\CortexM4\FieldValues\
+//        -On --c++ --no_exceptions --no_rtti --source_encoding utf8 --text_out
+//        utf8 --utf8_text_in) --dependencies=n
 //        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\Application\DigitalFilter\DigitalFilter.o.d
 //    Locale       =  C
 //    List file    =
@@ -128,8 +138,8 @@
         EXTERN expf
 
         PUBLIC _ZN13DigitalFilter11FilterValueEf
-        PUBLIC _ZN13DigitalFilterC1Ev
-        PUBLIC _ZN13DigitalFilterC2Ev
+        PUBLIC _ZN13DigitalFilterC1ERKfS1_
+        PUBLIC _ZN13DigitalFilterC2ERKfS1_
         PUBLIC _ZN14IDigitalFilterC1Ev
         PUBLIC _ZN14IDigitalFilterC2Ev
         PUBLIC _ZTI13DigitalFilter
@@ -194,115 +204,134 @@
         THUMB
 // __vfp IDigitalFilter::subobject IDigitalFilter() noexcept
 _ZN14IDigitalFilterC2Ev:
-        PUSH     {R7,LR}        
-          CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
-          CFI FunCall _ZN14IDigitalFilterC1Ev
-        BL       _ZN14IDigitalFilterC1Ev
-        POP      {R1,PC}        
-          CFI EndBlock cfiBlock0
-//    2 
-
-        SECTION `.text`:CODE:NOROOT(1)
-          CFI Block cfiBlock1 Using cfiCommon0
-          CFI Function _ZN13DigitalFilterC2Ev
-        THUMB
-// __vfp DigitalFilter::subobject DigitalFilter()
-_ZN13DigitalFilterC2Ev:
-        PUSH     {R7,LR}        
-          CFI R14 Frame(CFA, -4)
-          CFI CFA R13+8
-          CFI FunCall _ZN13DigitalFilterC1Ev
-        BL       _ZN13DigitalFilterC1Ev
-        POP      {R1,PC}        
-          CFI EndBlock cfiBlock1
-
-        SECTION `.text`:CODE:NOROOT(1)
-          CFI Block cfiBlock2 Using cfiCommon0
-          CFI Function _ZN13DigitalFilterC1Ev
-        THUMB
-//    3 DigitalFilter :: DigitalFilter() : dt(dt), rc(rc)
-//    4 {
-_ZN13DigitalFilterC1Ev:
         PUSH     {R4,LR}        
           CFI R14 Frame(CFA, -4)
           CFI R4 Frame(CFA, -8)
           CFI CFA R13+8
         MOVS     R4,R0          
         MOVS     R0,R4          
+          CFI FunCall _ZN14IDigitalFilterC1Ev
+        BL       _ZN14IDigitalFilterC1Ev
+        POP      {R4,PC}        
+          CFI EndBlock cfiBlock0
+//    2 #include <cmath> // for std::exp
+//    3 
+
+        SECTION `.text`:CODE:NOROOT(1)
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function _ZN13DigitalFilterC2ERKfS1_
+        THUMB
+// __vfp DigitalFilter::subobject DigitalFilter(float const &, float const &)
+_ZN13DigitalFilterC2ERKfS1_:
+        PUSH     {R4,LR}        
+          CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
+          CFI CFA R13+8
+        MOVS     R4,R0          
+        MOVS     R0,R4          
+          CFI FunCall _ZN13DigitalFilterC1ERKfS1_
+        BL       _ZN13DigitalFilterC1ERKfS1_
+        POP      {R4,PC}        
+          CFI EndBlock cfiBlock1
+
+        SECTION `.text`:CODE:NOROOT(1)
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function _ZN13DigitalFilterC1ERKfS1_
+        THUMB
+//    4 DigitalFilter::DigitalFilter(const float& dt, const float& rc)
+//    5 : dt(dt), rc(rc), oldValue(0.0f), isFirstTime(true) {}
+_ZN13DigitalFilterC1ERKfS1_:
+        PUSH     {R4-R6,LR}     
+          CFI R14 Frame(CFA, -4)
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        MOVS     R5,R1          
+        MOVS     R6,R2          
+        MOVS     R0,R4          
           CFI FunCall _ZN14IDigitalFilterC2Ev
         BL       _ZN14IDigitalFilterC2Ev
-        LDR.N    R0,??DataTable2
+        LDR.N    R0,??DataTable1
         STR      R0,[R4, #+0]   
-        LDR      R0,[R4, #+8]   
-        STR      R0,[R4, #+8]   
-        LDR      R0,[R4, #+12]  
+        STR      R5,[R4, #+4]   
+        STR      R6,[R4, #+8]   
+        MOVS     R0,#+0         
         STR      R0,[R4, #+12]  
-        LDR      R0,[R4, #+8]   
-        VLDR     S0,[R0, #0]    
-        LDR      R0,[R4, #+12]  
-        VLDR     S1,[R0, #0]    
-        VDIV.F32 S0,S0,S1       
-        VNEG.F32 S0,S0          
-          CFI FunCall expf
-        BL       expf           
-        VMOV.F32 S1,#1.0        
-        VSUB.F32 S0,S1,S0       
-        VSTR     S0,[R4, #+16]  
-//    5 }
+        MOVS     R0,#+1         
+        STRB     R0,[R4, #+16]  
         MOVS     R0,R4          
-        POP      {R4,PC}        
+        POP      {R4-R6,PC}     
           CFI EndBlock cfiBlock2
+
+        SECTION `.text`:CODE:NOROOT(2)
+        SECTION_TYPE SHT_PROGBITS, 0
+        DATA
+??DataTable1:
+        DATA32
+        DC32     _ZTV13DigitalFilter+0x8
 //    6 
 
         SECTION `.text`:CODE:NOROOT(1)
           CFI Block cfiBlock3 Using cfiCommon0
           CFI Function _ZN13DigitalFilter11FilterValueEf
-          CFI NoCalls
         THUMB
-//    7 float DigitalFilter :: FilterValue(float value)
+//    7 float DigitalFilter::FilterValue(float value)
 //    8 {
-//    9   static bool isFirstTime = true;
-//   10   if(isFirstTime)
 _ZN13DigitalFilter11FilterValueEf:
-        LDR.N    R1,??DataTable2_1
-        LDRB     R1,[R1, #+0]   
-        CMP      R1,#+0         
+        PUSH     {R4,LR}        
+          CFI R14 Frame(CFA, -4)
+          CFI R4 Frame(CFA, -8)
+          CFI CFA R13+8
+        VPUSH    {D8}           
+          CFI D8 Frame(CFA, -16)
+          CFI CFA R13+16
+        MOVS     R4,R0          
+        VMOV.F32 S16,S0         
+//    9   if (isFirstTime)
+        LDRB     R0,[R4, #+16]  
+        CMP      R0,#+0         
         BEQ.N    ??FilterValue_0
-//   11   {
-//   12     oldValue = value;
-        VSTR     S0,[R0, #+4]   
+//   10   {
+//   11     oldValue = value;
+        VSTR     S16,[R4, #+12] 
+//   12     isFirstTime = false;
+        MOVS     R0,#+0         
+        STRB     R0,[R4, #+16]  
 //   13     return value;
+        VMOV.F32 S0,S16         
         B.N      ??FilterValue_1
 //   14   }
-//   15   auto filteredValue = oldValue + (value - oldValue) * tau;
+//   15   
+//   16   float tau = 1.0f - std::exp(-dt / rc);
 ??FilterValue_0:
-        VLDR     S1,[R0, #+4]   
-        VSUB.F32 S1,S0,S1       
-        VLDR     S2,[R0, #+16]  
-        VLDR     S0,[R0, #+4]   
-        VMLA.F32 S0,S1,S2       
-//   16   oldValue = filteredValue;
-        VSTR     S0,[R0, #+4]   
-//   17   return filteredValue;
+        LDR      R0,[R4, #+4]   
+        VLDR     S0,[R0, #0]    
+        LDR      R0,[R4, #+8]   
+        VLDR     S1,[R0, #0]    
+        VDIV.F32 S0,S0,S1       
+        VNEG.F32 S17,S0         
+        VMOV.F32 S0,S17         
+          CFI FunCall expf
+        BL       expf           
+        VMOV.F32 S1,#1.0        
+        VSUB.F32 S1,S1,S0       
+//   17   float filteredValue = oldValue + (value - oldValue) * tau;
+        VLDR     S0,[R4, #+12]  
+        VSUB.F32 S2,S16,S0      
+        VLDR     S0,[R4, #+12]  
+        VMLA.F32 S0,S2,S1       
+//   18   oldValue = filteredValue;
+        VSTR     S0,[R4, #+12]  
+//   19   return filteredValue;
 ??FilterValue_1:
-        BX       LR             
-//   18 }
+        VPOP     {D8}           
+          CFI D8 SameValue
+          CFI CFA R13+8
+        POP      {R4,PC}        
+//   20 }
           CFI EndBlock cfiBlock3
-
-        SECTION `.text`:CODE:NOROOT(2)
-        SECTION_TYPE SHT_PROGBITS, 0
-        DATA
-??DataTable2:
-        DATA32
-        DC32     _ZTV13DigitalFilter+0x8
-
-        SECTION `.text`:CODE:NOROOT(2)
-        SECTION_TYPE SHT_PROGBITS, 0
-        DATA
-??DataTable2_1:
-        DATA32
-        DC32     `DigitalFilter::FilterValue(float)::isFirstTime`
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZN14IDigitalFilterC1Ev
@@ -314,12 +343,6 @@ _ZN13DigitalFilter11FilterValueEf:
 _ZN14IDigitalFilterC1Ev:
         BX       LR             
           CFI EndBlock cfiBlock4
-
-        SECTION `.data`:DATA:REORDER:NOROOT(0)
-        DATA
-`DigitalFilter::FilterValue(float)::isFirstTime`:
-        DATA8
-        DC8 1
 
         SECTION `.iar_vfe_vtableinfo_ZTV13DigitalFilter`:DATA:NOALLOC:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
@@ -390,13 +413,11 @@ _ZTS13DigitalFilter:
 
         END
 // 
-//   1 byte  in section .data
 //  68 bytes in section .rodata
-// 128 bytes in section .text
+// 158 bytes in section .text
 // 
-// 118 bytes of CODE  memory (+ 10 bytes shared)
+// 144 bytes of CODE  memory (+ 14 bytes shared)
 //   0 bytes of CONST memory (+ 68 bytes shared)
-//   1 byte  of DATA  memory
 //
 //Errors: none
 //Warnings: none

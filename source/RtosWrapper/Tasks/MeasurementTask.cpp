@@ -1,6 +1,6 @@
 #include "MeasurementTask.hpp" // for MeasurementTask
 
-MeasurementTask :: MeasurementTask(IRawDataProvider& rawData, IDigitalFilter<float>& filter, IVoltage& voltage,
+MeasurementTask :: MeasurementTask(IRawDataProvider& rawData, IDigitalFilter& filter, IVoltage& voltage,
                   ILedCalculator& ledCalculator, ILedController& ledController, IDataRepositoryUpdater& dataRepositoryUpdater) :
   mRawData(rawData),
   mDigitalFilter(filter),

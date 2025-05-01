@@ -1,119 +1,122 @@
 ﻿///////////////////////////////////////////////////////////////////////////////
 //
-// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        27/Apr/2025  21:19:45
+// IAR ANSI C/C++ Compiler V9.30.1.335/W64 for ARM        01/May/2025  23:40:46
 // Copyright 1999-2022 IAR Systems AB.
 //
 //    Cpu mode     =  thumb
 //    Endian       =  little
 //    Source file  =
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\main.cpp
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\main.cpp
 //        [UTF-8]
 //    Command line =
 //        -f
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\main.o.rsp
-//        (D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\main.cpp
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\main.o.rsp
+//        (D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\main.cpp
 //        -lC
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\List\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\
 //        -lA
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\List\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\
 //        -o
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\
 //        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
 //        --no_clustering --no_scheduling --debug --endian=little
 //        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
-//        D:\Programs\IAR\arm\inc\c\DLib_Config_Normal.h -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\ -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\wrapper\
+//        D:\Games\Programs\IAR\arm\inc\c\DLib_Config_Normal.h -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\wrapper\FreeRtos\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\wrapper\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\wrapper\FreeRtos\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\include\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\include\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\Common\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\Common\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\ARM_CM4F\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\MemMang\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\IAR\ARM_CM4F\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\MyTasks\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Rtos\FreeRtos\portable\MemMang\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Common\
-//        -I D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\CMSIS\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\MyTasks\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Common\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Diagnostic\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\CMSIS\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\AHardware\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\AHardware\GpioPort\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Diagnostic\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\AHardware\IrqController\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Pin\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\GpioPort\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\AHardware\IrqController\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Pin\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Port\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\STM32F411\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Atomic\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\Common\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Port\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\Common\Singleton\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Atomic\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\Common\RomObject\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\Singleton\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\Contracts\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\Common\RomObject\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DataRepository\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DataRepository\Contracts\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\AdcDmaDataProvider\Contracts\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DigitalFilter\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DataRepository\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\DigitalFilter\Contracts\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DataRepository\Contracts\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Formatter\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Formatter\Contracts\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\DigitalFilter\Contracts\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Leds\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Leds\Contracts\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Formatter\Contracts\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Usart\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Usart\Contracts\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Leds\Contracts\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Voltage\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
-//        -I D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Tasks\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Usart\Contracts\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\CortexM4\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Application\Voltage\Contracts\
 //        -I
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\CortexM4\FieldValues\
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Tasks\Contracts\
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\CortexM4\
+//        -I
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\..\CortexLib\AbstractHardware\Registers\CortexM4\FieldValues\
 //        -On --c++ --no_exceptions --no_rtti --source_encoding utf8 --text_out
 //        utf8 --utf8_text_in) --dependencies=n
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\Obj\main.o.d
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\Obj\main.o.d
 //    Locale       =  C
 //    List file    =
-//        D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\Debug\List\main.s
+//        D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\Debug\List\main.s
 //
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -132,19 +135,19 @@
         #define SHT_PROGBITS 0x1
         #define SHT_INIT_ARRAY 0xe
 
+        EXTERN _ZN13DigitalFilterC1ERKfS1_
         EXTERN _ZN13LedCalculatorC1ERKhRKf
         EXTERN _ZN13LedControllerC1Ev
         EXTERN _ZN14DataRepositoryC1Ev
-        EXTERN _ZN15MeasurementTaskC1ER16IRawDataProviderR14IDigitalFilterIfER8IVoltageR14ILedCalculatorR14ILedControllerR22IDataRepositoryUpdater
+        EXTERN _ZN15MeasurementTaskC1ER16IRawDataProviderR14IDigitalFilterR8IVoltageR14ILedCalculatorR14ILedControllerR22IDataRepositoryUpdater
         EXTERN _ZN18AdcDmaDataProvider9ConfigAdcEv
         EXTERN _ZN18AdcDmaDataProviderC1Ev
         EXTERN _ZN5Usart11ConfigUsartEv
-        EXTERN _ZN5UsartC1Ev
+        EXTERN _ZN5Usart8InstanceEv
         EXTERN _ZN9FormatterC1Ev
         EXTERN _ZN9UsartTaskC1ER23IDataRepositoryProviderR6IUsartR10IFormatter
         EXTERN _ZTVN10__cxxabiv117__class_type_infoE
         EXTERN _ZTVN10__cxxabiv120__si_class_type_infoE
-        EXTERN expf
         EXTERN vTaskStartScheduler
         EXTERN xTaskCreateStatic
         EXTERN xTaskGetTickCount
@@ -154,16 +157,12 @@
         PUBLIC _ZN14FieldValueBaseI19RCC_CFGR_SWS_ValuesIN3RCC4CFGRELj2ELj2E8ReadModeNS1_11RCCCFGRBaseEES4_Lj1EE5IsSetIS3_vEEbv
         PUBLIC _ZN14FieldValueBaseI19RCC_CR_HSEON_ValuesIN3RCC2CRELj16ELj1E13ReadWriteModeNS1_9RCCCRBaseEES4_Lj1EE3SetIS3_vEEvv
         PUBLIC _ZN14FieldValueBaseI20RCC_CR_HSERDY_ValuesIN3RCC2CRELj17ELj1E8ReadModeNS1_9RCCCRBaseEES4_Lj0EE5IsSetIS3_vEEbv
-        PUBLIC _ZN14FieldValueBaseI20USART2_CR1_TE_ValuesIN6USART23CR1ELj3ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv
-        PUBLIC _ZN14FieldValueBaseI20USART2_CR1_UE_ValuesIN6USART23CR1ELj13ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv
         PUBLIC _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7AHB1ENRELj22ELj1E13ReadWriteModeNS1_14RCCAHB1ENRBaseEES4_Lj1EE3SetIS3_vEEvv
         PUBLIC _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7APB1ENRELj17ELj1E13ReadWriteModeNS1_14RCCAPB1ENRBaseEES4_Lj1EE3SetIS3_vEEvv
         PUBLIC _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7APB2ENRELj14ELj1E13ReadWriteModeNS1_14RCCAPB2ENRBaseEES4_Lj1EE3SetIS3_vEEvv
         PUBLIC _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7APB2ENRELj8ELj1E13ReadWriteModeNS1_14RCCAPB2ENRBaseEES4_Lj1EE3SetIS3_vEEvv
         PUBLIC _ZN14FieldValueBaseI26GPIOA_MODER_MODER15_ValuesIN5GPIOA5MODERELj0ELj2E13ReadWriteModeNS1_14GPIOAMODERBaseEES4_Lj3EE3SetIS3_vEEvv
         PUBLIC _ZN14FieldValueBaseI26GPIOA_MODER_MODER15_ValuesIN5GPIOA5MODERELj10ELj2E13ReadWriteModeNS1_14GPIOAMODERBaseEES4_Lj1EE3SetIS3_vEEvv
-        PUBLIC _ZN14IDigitalFilterIfEC1Ev
-        PUBLIC _ZN14IDigitalFilterIfEC2Ev
         PUBLIC _ZN8IVoltageC1Ev
         PUBLIC _ZN8IVoltageC2Ev
         PUBLIC _ZN8RegisterILj1073874944ELj32E13ReadWriteModeN5GPIOC14GPIOCMODERBaseEJ10FieldValueI26GPIOC_MODER_MODER15_ValuesINS1_5MODERELj10ELj2ES0_S2_ES2_Lj1EvES3_IS4_IS5_Lj16ELj2ES0_S2_ES2_Lj1EvES3_IS4_IS5_Lj18ELj2ES0_S2_ES2_Lj1EvEEE3SetIS0_vEEvv
@@ -178,13 +177,10 @@
         PUBLIC _ZN9OsWrapper4Rtos5StartEv
         PUBLIC _ZN9OsWrapper7IThread3RunEv
         PUBLIC _ZNSt5arrayIjLj512EE4dataEv
-        PUBLIC _ZTI14IDigitalFilterIfE
         PUBLIC _ZTI16IRawDataProvider
         PUBLIC _ZTI8IVoltage
         PUBLIC _ZTIN9OsWrapper7IThreadE
         PUBLIC _ZTISt10ctype_base
-        PUBLIC _ZTS13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEE
-        PUBLIC _ZTS14IDigitalFilterIfE
         PUBLIC _ZTS16IRawDataProvider
         PUBLIC _ZTS7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEE
         PUBLIC _ZTS8IVoltage
@@ -265,15 +261,6 @@ _ZTIN9OsWrapper7IThreadE:
 
         SECTION `.rodata`:CONST:REORDER:NOROOT(2)
         DATA
-// __absolute void (*const DigitalFilter<float, dt, rc>::__vtbl[3])()
-_ZTV13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEE:
-        DATA32
-        DC32 0x0
-        DC32 _ZTI13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEE
-        DC32 _ZN13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEE11FilterValueEf
-
-        SECTION `.rodata`:CONST:REORDER:NOROOT(2)
-        DATA
 // __absolute void (*const Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::__vtbl[3])()
 _ZTV7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEE:
         DATA32
@@ -297,24 +284,6 @@ _ZTI16IRawDataProvider:
 _ZTI8IVoltage:
         DATA32
         DC32 _ZTVN10__cxxabiv117__class_type_infoE + 0x8, _ZTS8IVoltage
-
-        SECTION `.rodata`:CONST:REORDER:NOROOT(2)
-        SECTION_GROUP _ZTI14IDigitalFilterIfE
-        DATA
-// __absolute __class_type_info const <Typeinfo for IDigitalFilter<float>>
-_ZTI14IDigitalFilterIfE:
-        DATA32
-        DC32 _ZTVN10__cxxabiv117__class_type_infoE + 0x8
-        DC32 _ZTS14IDigitalFilterIfE
-
-        SECTION `.rodata`:CONST:REORDER:NOROOT(2)
-        DATA
-// static __absolute __si_class_type_info const <Typeinfo for DigitalFilter<float, [local to main_cpp]::dt, [local to main_cpp]::rc>>
-_ZTI13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEE:
-        DATA32
-        DC32 _ZTVN10__cxxabiv120__si_class_type_infoE + 0x8
-        DC32 _ZTS13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEE
-        DC32 _ZTI14IDigitalFilterIfE
 
         SECTION `.rodata`:CONST:REORDER:NOROOT(2)
         DATA
@@ -343,31 +312,6 @@ _ZTS8IVoltage:
         DC8 "8IVoltage"
         DATA16
         DS8 2
-
-        SECTION `.rodata`:CONST:REORDER:NOROOT(2)
-        SECTION_GROUP _ZTS14IDigitalFilterIfE
-        DATA
-// __absolute char const <Typeinfo name for IDigitalFilter<float>>[20]
-_ZTS14IDigitalFilterIfE:
-        DATA8
-        DC8 "14IDigitalFilterIfE"
-
-        SECTION `.rodata`:CONST:REORDER:NOROOT(2)
-        SECTION_GROUP _ZTS13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEE
-        DATA
-// __absolute char const <Typeinfo name for DigitalFilter<float, [local to main_cpp]::dt, [local to main_cpp]::rc>>[71]
-_ZTS13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEE:
-        DATA8
-        DC8 0x31, 0x33, 0x44, 0x69, 0x67, 0x69, 0x74, 0x61
-        DC8 0x6C, 0x46, 0x69, 0x6C, 0x74, 0x65, 0x72, 0x49
-        DC8 0x66, 0x4C, 0x5F, 0x5A, 0x4E, 0x32, 0x39, 0x5F
-        DC8 0x49, 0x4E, 0x54, 0x45, 0x52, 0x4E, 0x41, 0x4C
-        DC8 0x5F, 0x38, 0x5F, 0x6D, 0x61, 0x69, 0x6E, 0x5F
-        DC8 0x63, 0x70, 0x70, 0x5F, 0x35, 0x64, 0x36, 0x34
-        DC8 0x36, 0x61, 0x36, 0x37, 0x32, 0x64, 0x74, 0x45
-        DC8 0x45, 0x4C, 0x5F, 0x5A, 0x4E, 0x53, 0x30, 0x5F
-        DC8 0x32, 0x72, 0x63, 0x45, 0x45, 0x45, 0
-        DS8 1
 
         SECTION `.rodata`:CONST:REORDER:NOROOT(2)
         SECTION_GROUP _ZTS7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEE
@@ -433,7 +377,7 @@ _ZTSN9OsWrapper7IThreadE:
         DC8 "UsartTask"
         DATA16
         DS8 2
-// D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\main.cpp
+// D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\main.cpp
 //    1 #include "rtos.hpp"         // for Rtos
 //    2 
 //    3 #include "rccregisters.hpp" // for RCC
@@ -476,13 +420,6 @@ _ZZN8RegisterILj1073874944ELj32E13ReadWriteModeN5GPIOC14GPIOCMODERBaseEJ10FieldV
 //    8 
 //    9 #include "AdcDmaDataProvider.hpp" // for AdcDmaDataProvider
 //   10 #include "DigitalFilter.hpp" // for DigitalFilter
-
-        SECTION `.data`:DATA:REORDER:NOROOT(0)
-        DATA
-// __absolute bool isFirstTime
-`DigitalFilter<float, dt, rc>::FilterValue(float)::isFirstTime`:
-        DATA8
-        DC8 1
 //   11 #include "Voltage.hpp" // for Voltage
 //   12 #include "DataRepository.hpp" // for DataRepository
 //   13 #include "LedController.hpp" // for LedController
@@ -500,6 +437,18 @@ _ZZN8RegisterILj1073874944ELj32E13ReadWriteModeN5GPIOC14GPIOCMODERBaseEJ10FieldV
 SystemCoreClock:
         DATA32
         DC32 8'000'000
+
+        SECTION `.rodata`:CONST:REORDER:NOROOT(2)
+        DATA
+dt:
+        DATA32
+        DC32 0x3dcc'cccd
+
+        SECTION `.rodata`:CONST:REORDER:NOROOT(2)
+        DATA
+rc:
+        DATA32
+        DC32 0x40a0'0000
 
         SECTION `.rodata`:CONST:REORDER:NOROOT(2)
         DATA
@@ -530,38 +479,40 @@ __sti__routine:
           CFI R5 Frame(CFA, -32)
           CFI R4 Frame(CFA, -36)
           CFI CFA R13+48
-        LDR.N    R4,??DataTable6_4
+        LDR.N    R4,??DataTable4_3
         MOVS     R0,R4          
           CFI FunCall _ZN18AdcDmaDataProviderC1Ev
         BL       _ZN18AdcDmaDataProviderC1Ev
-        LDR.N    R5,??DataTable6_5
+        LDR.N    R5,??DataTable4_4
+        LDR.N    R2,??DataTable4_5
+        LDR.N    R1,??DataTable4_6
         MOVS     R0,R5          
-          CFI FunCall _ZN13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEEC1Ev
-        BL       _ZN13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEEC1Ev
-        LDR.N    R6,??DataTable6_6
+          CFI FunCall _ZN13DigitalFilterC1ERKfS1_
+        BL       _ZN13DigitalFilterC1ERKfS1_
+        LDR.N    R6,??DataTable4_7
         MOVS     R1,R4          
         MOVS     R0,R6          
           CFI FunCall _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEEC1ER16IRawDataProvider
         BL       _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEEC1ER16IRawDataProvider
-        LDR.N    R7,??DataTable6_7
+        LDR.N    R7,??DataTable4_8
         MOVS     R0,R7          
           CFI FunCall _ZN14DataRepositoryC1Ev
         BL       _ZN14DataRepositoryC1Ev
-        LDR.W    R8,??DataTable6_8
-        LDR.N    R2,??DataTable6_9
-        LDR.N    R1,??DataTable6_10
+        LDR.W    R8,??DataTable4_9
+        LDR.N    R2,??DataTable4_10
+        LDR.N    R1,??DataTable4_11
         MOV      R0,R8          
           CFI FunCall _ZN13LedCalculatorC1ERKhRKf
         BL       _ZN13LedCalculatorC1ERKhRKf
-        LDR.W    R9,??DataTable6_11
+        LDR.W    R9,??DataTable4_12
         MOV      R0,R9          
           CFI FunCall _ZN13LedControllerC1Ev
         BL       _ZN13LedControllerC1Ev
-        LDR.W    R10,??DataTable6_12
-        MOV      R0,R10         
-          CFI FunCall _ZN5UsartC1Ev
-        BL       _ZN5UsartC1Ev  
-        LDR.W    R11,??DataTable6_13
+        LDR.W    R10,??DataTable4_13
+          CFI FunCall _ZN5Usart8InstanceEv
+        BL       _ZN5Usart8InstanceEv
+        STR      R0,[R10, #+0]  
+        LDR.W    R11,??DataTable4_14
         MOV      R0,R11         
           CFI FunCall _ZN9FormatterC1Ev
         BL       _ZN9FormatterC1Ev
@@ -572,79 +523,20 @@ __sti__routine:
         MOVS     R3,R6          
         MOVS     R2,R5          
         MOVS     R1,R4          
-        LDR.N    R0,??DataTable6_14
-          CFI FunCall _ZN15MeasurementTaskC1ER16IRawDataProviderR14IDigitalFilterIfER8IVoltageR14ILedCalculatorR14ILedControllerR22IDataRepositoryUpdater
-        BL       _ZN15MeasurementTaskC1ER16IRawDataProviderR14IDigitalFilterIfER8IVoltageR14ILedCalculatorR14ILedControllerR22IDataRepositoryUpdater
+        LDR.N    R0,??DataTable4_15
+          CFI FunCall _ZN15MeasurementTaskC1ER16IRawDataProviderR14IDigitalFilterR8IVoltageR14ILedCalculatorR14ILedControllerR22IDataRepositoryUpdater
+        BL       _ZN15MeasurementTaskC1ER16IRawDataProviderR14IDigitalFilterR8IVoltageR14ILedCalculatorR14ILedControllerR22IDataRepositoryUpdater
         MOV      R3,R11         
-        MOV      R2,R10         
+        LDR      R2,[R10, #+0]  
         MOVS     R1,R7          
-        LDR.N    R0,??DataTable6_15
+        LDR.N    R0,??DataTable4_16
           CFI FunCall _ZN9UsartTaskC1ER23IDataRepositoryProviderR6IUsartR10IFormatter
         BL       _ZN9UsartTaskC1ER23IDataRepositoryProviderR6IUsartR10IFormatter
         POP      {R0-R2,R4-R11,PC}
           CFI EndBlock cfiBlock0
 
-        SECTION `.text`:CODE:NOROOT(2)
+        SECTION `.text`:CODE:NOROOT(1)
           CFI Block cfiBlock1 Using cfiCommon0
-          CFI Function _ZN13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEEC1Ev
-        THUMB
-// static __vfp DigitalFilter<float, dt, rc>::DigitalFilter() noexcept
-_ZN13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEEC1Ev:
-        PUSH     {R4,LR}        
-          CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
-        VPUSH    {D8}           
-          CFI D8 Frame(CFA, -16)
-          CFI CFA R13+16
-        MOVS     R4,R0          
-        MOVS     R0,R4          
-          CFI FunCall _ZN14IDigitalFilterIfEC2Ev
-        BL       _ZN14IDigitalFilterIfEC2Ev
-        LDR.N    R0,??DataTable6_16
-        STR      R0,[R4, #+0]   
-        VLDR.W   S16,??DataTable6
-        VMOV.F32 S0,S16         
-          CFI FunCall expf
-        BL       expf           
-        VMOV.F32 S1,#1.0        
-        VSUB.F32 S0,S1,S0       
-        VSTR     S0,[R4, #+8]   
-        MOVS     R0,R4          
-        VPOP     {D8}           
-          CFI D8 SameValue
-          CFI CFA R13+8
-        POP      {R4,PC}        
-          CFI EndBlock cfiBlock1
-
-        SECTION `.text`:CODE:NOROOT(1)
-          CFI Block cfiBlock2 Using cfiCommon0
-          CFI Function _ZN13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEE11FilterValueEf
-          CFI NoCalls
-        THUMB
-// static __vfp float DigitalFilter<float, dt, rc>::FilterValue(float)
-_ZN13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEE11FilterValueEf:
-        VMOV.F32 S1,S0          
-        LDR.N    R1,??DataTable6_17
-        LDRB     R1,[R1, #+0]   
-        CMP      R1,#+0         
-        BEQ.N    ??FilterValue_0
-        VSTR     S1,[R0, #+4]   
-        VMOV.F32 S0,S1          
-        B.N      ??FilterValue_1
-??FilterValue_0:
-        VLDR     S0,[R0, #+4]   
-        VSUB.F32 S2,S1,S0       
-        VLDR     S3,[R0, #+8]   
-        VLDR     S0,[R0, #+4]   
-        VMLA.F32 S0,S2,S3       
-        VSTR     S0,[R0, #+4]   
-??FilterValue_1:
-        BX       LR             
-          CFI EndBlock cfiBlock2
-
-        SECTION `.text`:CODE:NOROOT(1)
-          CFI Block cfiBlock3 Using cfiCommon0
           CFI Function _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEEC1ER16IRawDataProvider
         THUMB
 // static __vfp Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::Voltage(IRawDataProvider &)
@@ -659,15 +551,15 @@ _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCo
         MOVS     R0,R4          
           CFI FunCall _ZN8IVoltageC2Ev
         BL       _ZN8IVoltageC2Ev
-        LDR.N    R0,??DataTable6_18
+        LDR.N    R0,??DataTable4_17
         STR      R0,[R4, #+0]   
         STR      R5,[R4, #+4]   
         MOVS     R0,R4          
         POP      {R1,R4,R5,PC}  
-          CFI EndBlock cfiBlock3
+          CFI EndBlock cfiBlock1
 
         SECTION `.text`:CODE:NOROOT(1)
-          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Block cfiBlock2 Using cfiCommon0
           CFI Function _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEE7MeasureEv
         THUMB
 // static __vfp float Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::Measure()
@@ -700,21 +592,21 @@ _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCo
           CFI D8 SameValue
           CFI CFA R13+8
         POP      {R4,PC}        
-          CFI EndBlock cfiBlock4
+          CFI EndBlock cfiBlock2
 
         SECTION `.text`:CODE:NOROOT(2)
-          CFI Block cfiBlock5 Using cfiCommon0
+          CFI Block cfiBlock3 Using cfiCommon0
           CFI Function _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEE13CalculateGainEv
           CFI NoCalls
         THUMB
 // static __vfp float Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::CalculateGain()
 _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEE13CalculateGainEv:
-        VLDR.W   S0,??DataTable6_1
+        VLDR.W   S0,??DataTable4
         BX       LR             
-          CFI EndBlock cfiBlock5
+          CFI EndBlock cfiBlock3
 
         SECTION `.text`:CODE:NOROOT(2)
-          CFI Block cfiBlock6 Using cfiCommon0
+          CFI Block cfiBlock4 Using cfiCommon0
           CFI Function _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEE15CalculateOffsetEv
         THUMB
 // static __vfp float Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage>::CalculateOffset()
@@ -728,16 +620,16 @@ _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCo
           CFI FunCall _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEE13CalculateGainEv
         BL       _ZN7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEE13CalculateGainEv
         VMOV.F32 S1,S0          
-        VLDR.W   S2,??DataTable6_2
-        VLDR.W   S0,??DataTable6_3
+        VLDR.W   S2,??DataTable4_1
+        VLDR.W   S0,??DataTable4_2
         VMLS.F32 S0,S1,S2       
         POP      {R4,PC}        
-          CFI EndBlock cfiBlock6
+          CFI EndBlock cfiBlock4
 //   22 
 //   23 extern "C" {
 
         SECTION `.text`:CODE:NOROOT(1)
-          CFI Block cfiBlock7 Using cfiCommon0
+          CFI Block cfiBlock5 Using cfiCommon0
           CFI Function __low_level_init
         THUMB
 //   24   int __low_level_init(void)
@@ -817,7 +709,7 @@ __low_level_init:
         MOVS     R0,#+1         
         POP      {R1,PC}        
 //   64   }
-          CFI EndBlock cfiBlock7
+          CFI EndBlock cfiBlock5
 //   65 }
 //   66 
 //   67 constexpr auto dt = 0.1f;
@@ -837,9 +729,9 @@ __low_level_init:
 
         SECTION `.bss`:DATA:REORDER:NOROOT(2)
         DATA
-//   76 DigitalFilter<float, dt, rc> digitalFilter;
+//   76 DigitalFilter digitalFilter(dt, rc);
 digitalFilter:
-        DS8 12
+        DS8 20
 
         SECTION `.bss`:DATA:REORDER:NOROOT(2)
         DATA
@@ -867,7 +759,7 @@ ledController:
 
         SECTION `.bss`:DATA:REORDER:NOROOT(2)
         DATA
-//   81 Usart usart;
+//   81 auto& usart = Usart::Instance();
 usart:
         DS8 4
 
@@ -875,7 +767,7 @@ usart:
         DATA
 //   82 Formatter formatter;
 formatter:
-        DS8 4
+        DS8 260
 //   83 
 
         SECTION `.bss`:DATA:REORDER:NOROOT(2)
@@ -892,7 +784,7 @@ usartTask:
 //   86 
 
         SECTION `.text`:CODE:NOROOT(1)
-          CFI Block cfiBlock8 Using cfiCommon0
+          CFI Block cfiBlock6 Using cfiCommon0
           CFI Function main
         THUMB
 //   87 int main()
@@ -902,202 +794,190 @@ main:
           CFI R14 Frame(CFA, -4)
           CFI CFA R13+8
 //   89   adc.ConfigAdc();
-        LDR.N    R0,??DataTable6_4
+        LDR.N    R0,??DataTable4_3
           CFI FunCall _ZN18AdcDmaDataProvider9ConfigAdcEv
         BL       _ZN18AdcDmaDataProvider9ConfigAdcEv
 //   90   usart.ConfigUsart();
-        LDR.N    R0,??DataTable6_12
+        LDR.N    R0,??DataTable4_13
+        LDR      R0,[R0, #+0]   
           CFI FunCall _ZN5Usart11ConfigUsartEv
         BL       _ZN5Usart11ConfigUsartEv
-//   91   USART2::CR1::UE::Enable::Set();
-          CFI FunCall _ZN14FieldValueBaseI20USART2_CR1_UE_ValuesIN6USART23CR1ELj13ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv
-        BL       _ZN14FieldValueBaseI20USART2_CR1_UE_ValuesIN6USART23CR1ELj13ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv
-//   92   USART2::CR1::TE::Enable::Set();
-          CFI FunCall _ZN14FieldValueBaseI20USART2_CR1_TE_ValuesIN6USART23CR1ELj3ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv
-        BL       _ZN14FieldValueBaseI20USART2_CR1_TE_ValuesIN6USART23CR1ELj3ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv
-//   93   using namespace OsWrapper;
-//   94   Rtos::CreateThread(measurementTask, "MeasurementTask", ThreadPriority::priorityMax);
+//   91   using namespace OsWrapper;
+//   92   Rtos::CreateThread(measurementTask, "MeasurementTask", ThreadPriority::priorityMax);
         MOVS     R2,#+255       
-        LDR.N    R1,??DataTable6_19
-        LDR.N    R0,??DataTable6_14
+        LDR.N    R1,??DataTable4_18
+        LDR.N    R0,??DataTable4_15
           CFI FunCall _ZN9OsWrapper4Rtos12CreateThreadI15MeasurementTaskEEvRT_PKcNS_14ThreadPriorityE
         BL       _ZN9OsWrapper4Rtos12CreateThreadI15MeasurementTaskEEvRT_PKcNS_14ThreadPriorityE
-//   95   Rtos::CreateThread(usartTask, "UsartTask", ThreadPriority::lowest);
+//   93   Rtos::CreateThread(usartTask, "UsartTask", ThreadPriority::lowest);
         MOVS     R2,#+10        
-        LDR.N    R1,??DataTable6_20
-        LDR.N    R0,??DataTable6_15
+        LDR.N    R1,??DataTable4_19
+        LDR.N    R0,??DataTable4_16
           CFI FunCall _ZN9OsWrapper4Rtos12CreateThreadI9UsartTaskEEvRT_PKcNS_14ThreadPriorityE
         BL       _ZN9OsWrapper4Rtos12CreateThreadI9UsartTaskEEvRT_PKcNS_14ThreadPriorityE
-//   96   Rtos::Start();
+//   94   Rtos::Start();
           CFI FunCall _ZN9OsWrapper4Rtos5StartEv
         BL       _ZN9OsWrapper4Rtos5StartEv
-//   97   return 0;
+//   95   return 0;
         MOVS     R0,#+0         
         POP      {R1,PC}        
-//   98 }
-          CFI EndBlock cfiBlock8
+//   96 }
+          CFI EndBlock cfiBlock6
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
-??DataTable6:
-        DATA32
-        DC32     0xbca3d70a     
-
-        SECTION `.text`:CODE:NOROOT(2)
-        SECTION_TYPE SHT_PROGBITS, 0
-        DATA
-??DataTable6_1:
+??DataTable4:
         DATA32
         DC32     0x3a51d98b     
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
-??DataTable6_2:
+??DataTable4_1:
         DATA32
         DC32     0x457fd000     
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
-??DataTable6_3:
+??DataTable4_2:
         DATA32
         DC32     0x4051999a     
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
-??DataTable6_4:
+??DataTable4_3:
         DATA32
         DC32     `adc`          
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
-??DataTable6_5:
+??DataTable4_4:
         DATA32
         DC32     digitalFilter  
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
-??DataTable6_6:
+??DataTable4_5:
+        DATA32
+        DC32     rc             
+
+        SECTION `.text`:CODE:NOROOT(2)
+        SECTION_TYPE SHT_PROGBITS, 0
+        DATA
+??DataTable4_6:
+        DATA32
+        DC32     dt             
+
+        SECTION `.text`:CODE:NOROOT(2)
+        SECTION_TYPE SHT_PROGBITS, 0
+        DATA
+??DataTable4_7:
         DATA32
         DC32     voltage        
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
-??DataTable6_7:
+??DataTable4_8:
         DATA32
         DC32     dataReposiitory
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
-??DataTable6_8:
+??DataTable4_9:
         DATA32
         DC32     ledCalculator  
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
-??DataTable6_9:
+??DataTable4_10:
         DATA32
         DC32     maxVoltage     
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
-??DataTable6_10:
+??DataTable4_11:
         DATA32
         DC32     maxLedAmount   
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
-??DataTable6_11:
+??DataTable4_12:
         DATA32
         DC32     ledController  
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
-??DataTable6_12:
+??DataTable4_13:
         DATA32
         DC32     usart          
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
-??DataTable6_13:
+??DataTable4_14:
         DATA32
         DC32     formatter      
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
-??DataTable6_14:
+??DataTable4_15:
         DATA32
         DC32     measurementTask
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
-??DataTable6_15:
+??DataTable4_16:
         DATA32
         DC32     usartTask      
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
-??DataTable6_16:
-        DATA32
-        DC32     _ZTV13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEE+0x8
-
-        SECTION `.text`:CODE:NOROOT(2)
-        SECTION_TYPE SHT_PROGBITS, 0
-        DATA
-??DataTable6_17:
-        DATA32
-        DC32     `DigitalFilter<float, dt, rc>::FilterValue(float)::isFirstTime`
-
-        SECTION `.text`:CODE:NOROOT(2)
-        SECTION_TYPE SHT_PROGBITS, 0
-        DATA
-??DataTable6_18:
+??DataTable4_17:
         DATA32
         DC32     _ZTV7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEE+0x8
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
-??DataTable6_19:
+??DataTable4_18:
         DATA32
         DC32     ?_0            
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
-??DataTable6_20:
+??DataTable4_19:
         DATA32
         DC32     ?_1            
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZNSt5arrayIjLj512EE4dataEv
-          CFI Block cfiBlock9 Using cfiCommon0
+          CFI Block cfiBlock7 Using cfiCommon0
           CFI Function _ZNSt5arrayIjLj512EE4dataEv
           CFI NoCalls
         THUMB
 // __vfp uint32_t *std::array<uint32_t, 512U>::data() noexcept
 _ZNSt5arrayIjLj512EE4dataEv:
         BX       LR             
-          CFI EndBlock cfiBlock9
+          CFI EndBlock cfiBlock7
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZN9OsWrapper11RtosWrapper13wCreateThreadINS_4RtosE15MeasurementTaskEEvRT0_PKcNS_14ThreadPriorityEtPj
-          CFI Block cfiBlock10 Using cfiCommon0
+          CFI Block cfiBlock8 Using cfiCommon0
           CFI Function _ZN9OsWrapper11RtosWrapper13wCreateThreadINS_4RtosE15MeasurementTaskEEvRT0_PKcNS_14ThreadPriorityEtPj
         THUMB
 // __vfp void OsWrapper::RtosWrapper::wCreateThread<OsWrapper::Rtos, MeasurementTask>(MeasurementTask &, char const *, OsWrapper::ThreadPriority, uint16_t, uint32_t *)
@@ -1138,11 +1018,11 @@ _ZN9OsWrapper11RtosWrapper13wCreateThreadINS_4RtosE15MeasurementTaskEEvRT0_PKcNS
 ??wCreateThread_0:
         DATA32
         DC32     _ZN9OsWrapper4Rtos3RunEPv
-          CFI EndBlock cfiBlock10
+          CFI EndBlock cfiBlock8
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZN9OsWrapper11RtosWrapper13wCreateThreadINS_4RtosE9UsartTaskEEvRT0_PKcNS_14ThreadPriorityEtPj
-          CFI Block cfiBlock11 Using cfiCommon0
+          CFI Block cfiBlock9 Using cfiCommon0
           CFI Function _ZN9OsWrapper11RtosWrapper13wCreateThreadINS_4RtosE9UsartTaskEEvRT0_PKcNS_14ThreadPriorityEtPj
         THUMB
 // __vfp void OsWrapper::RtosWrapper::wCreateThread<OsWrapper::Rtos, UsartTask>(UsartTask &, char const *, OsWrapper::ThreadPriority, uint16_t, uint32_t *)
@@ -1183,11 +1063,11 @@ _ZN9OsWrapper11RtosWrapper13wCreateThreadINS_4RtosE9UsartTaskEEvRT0_PKcNS_14Thre
 ??wCreateThread_1:
         DATA32
         DC32     _ZN9OsWrapper4Rtos3RunEPv
-          CFI EndBlock cfiBlock11
+          CFI EndBlock cfiBlock9
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZN9OsWrapper11RtosWrapper6wStartEv
-          CFI Block cfiBlock12 Using cfiCommon0
+          CFI Block cfiBlock10 Using cfiCommon0
           CFI Function _ZN9OsWrapper11RtosWrapper6wStartEv
         THUMB
 // __vfp void OsWrapper::RtosWrapper::wStart()
@@ -1198,11 +1078,11 @@ _ZN9OsWrapper11RtosWrapper6wStartEv:
           CFI FunCall vTaskStartScheduler
         BL       vTaskStartScheduler
         POP      {R0,PC}        
-          CFI EndBlock cfiBlock12
+          CFI EndBlock cfiBlock10
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZN9OsWrapper11RtosWrapper9wGetTicksEv
-          CFI Block cfiBlock13 Using cfiCommon0
+          CFI Block cfiBlock11 Using cfiCommon0
           CFI Function _ZN9OsWrapper11RtosWrapper9wGetTicksEv
         THUMB
 // __vfp uint32_t OsWrapper::RtosWrapper::wGetTicks()
@@ -1213,11 +1093,11 @@ _ZN9OsWrapper11RtosWrapper9wGetTicksEv:
           CFI FunCall xTaskGetTickCount
         BL       xTaskGetTickCount
         POP      {R1,PC}        
-          CFI EndBlock cfiBlock13
+          CFI EndBlock cfiBlock11
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZN9OsWrapper7IThread3RunEv
-          CFI Block cfiBlock14 Using cfiCommon0
+          CFI Block cfiBlock12 Using cfiCommon0
           CFI Function _ZN9OsWrapper7IThread3RunEv
         THUMB
 // __vfp void OsWrapper::IThread::Run()
@@ -1236,11 +1116,11 @@ _ZN9OsWrapper7IThread3RunEv:
           CFI IndirectCall
         BLX      R1             
         POP      {R4,PC}        
-          CFI EndBlock cfiBlock14
+          CFI EndBlock cfiBlock12
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZN9OsWrapper4Rtos12CreateThreadI15MeasurementTaskEEvRT_PKcNS_14ThreadPriorityE
-          CFI Block cfiBlock15 Using cfiCommon0
+          CFI Block cfiBlock13 Using cfiCommon0
           CFI Function _ZN9OsWrapper4Rtos12CreateThreadI15MeasurementTaskEEvRT_PKcNS_14ThreadPriorityE
         THUMB
 // __vfp void OsWrapper::Rtos::CreateThread<MeasurementTask>(MeasurementTask &, char const *, OsWrapper::ThreadPriority)
@@ -1266,11 +1146,11 @@ _ZN9OsWrapper4Rtos12CreateThreadI15MeasurementTaskEEvRT_PKcNS_14ThreadPriorityE:
           CFI FunCall _ZN9OsWrapper11RtosWrapper13wCreateThreadINS_4RtosE15MeasurementTaskEEvRT0_PKcNS_14ThreadPriorityEtPj
         BL       _ZN9OsWrapper11RtosWrapper13wCreateThreadINS_4RtosE15MeasurementTaskEEvRT0_PKcNS_14ThreadPriorityEtPj
         POP      {R0,R1,R4-R6,PC}
-          CFI EndBlock cfiBlock15
+          CFI EndBlock cfiBlock13
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZN9OsWrapper4Rtos12CreateThreadI9UsartTaskEEvRT_PKcNS_14ThreadPriorityE
-          CFI Block cfiBlock16 Using cfiCommon0
+          CFI Block cfiBlock14 Using cfiCommon0
           CFI Function _ZN9OsWrapper4Rtos12CreateThreadI9UsartTaskEEvRT_PKcNS_14ThreadPriorityE
         THUMB
 // __vfp void OsWrapper::Rtos::CreateThread<UsartTask>(UsartTask &, char const *, OsWrapper::ThreadPriority)
@@ -1296,11 +1176,11 @@ _ZN9OsWrapper4Rtos12CreateThreadI9UsartTaskEEvRT_PKcNS_14ThreadPriorityE:
           CFI FunCall _ZN9OsWrapper11RtosWrapper13wCreateThreadINS_4RtosE9UsartTaskEEvRT0_PKcNS_14ThreadPriorityEtPj
         BL       _ZN9OsWrapper11RtosWrapper13wCreateThreadINS_4RtosE9UsartTaskEEvRT0_PKcNS_14ThreadPriorityEtPj
         POP      {R0,R1,R4-R6,PC}
-          CFI EndBlock cfiBlock16
+          CFI EndBlock cfiBlock14
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZN9OsWrapper4Rtos5StartEv
-          CFI Block cfiBlock17 Using cfiCommon0
+          CFI Block cfiBlock15 Using cfiCommon0
           CFI Function _ZN9OsWrapper4Rtos5StartEv
         THUMB
 // __vfp void OsWrapper::Rtos::Start()
@@ -1311,11 +1191,11 @@ _ZN9OsWrapper4Rtos5StartEv:
           CFI FunCall _ZN9OsWrapper11RtosWrapper6wStartEv
         BL       _ZN9OsWrapper11RtosWrapper6wStartEv
         POP      {R0,PC}        
-          CFI EndBlock cfiBlock17
+          CFI EndBlock cfiBlock15
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZN9OsWrapper4Rtos3RunEPv
-          CFI Block cfiBlock18 Using cfiCommon0
+          CFI Block cfiBlock16 Using cfiCommon0
           CFI Function _ZN9OsWrapper4Rtos3RunEPv
         THUMB
 // __vfp void OsWrapper::Rtos::Run(void *)
@@ -1329,11 +1209,11 @@ _ZN9OsWrapper4Rtos3RunEPv:
           CFI FunCall _ZN9OsWrapper7IThread3RunEv
         BL       _ZN9OsWrapper7IThread3RunEv
         POP      {R4,PC}        
-          CFI EndBlock cfiBlock18
+          CFI EndBlock cfiBlock16
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZN14FieldValueBaseI19RCC_CR_HSEON_ValuesIN3RCC2CRELj16ELj1E13ReadWriteModeNS1_9RCCCRBaseEES4_Lj1EE3SetIS3_vEEvv
-          CFI Block cfiBlock19 Using cfiCommon0
+          CFI Block cfiBlock17 Using cfiCommon0
           CFI Function _ZN14FieldValueBaseI19RCC_CR_HSEON_ValuesIN3RCC2CRELj16ELj1E13ReadWriteModeNS1_9RCCCRBaseEES4_Lj1EE3SetIS3_vEEvv
           CFI NoCalls
         THUMB
@@ -1349,11 +1229,11 @@ _ZN14FieldValueBaseI19RCC_CR_HSEON_ValuesIN3RCC2CRELj16ELj1E13ReadWriteModeNS1_9
 ??Set_0:
         DATA32
         DC32     0x40023800     
-          CFI EndBlock cfiBlock19
+          CFI EndBlock cfiBlock17
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZN14FieldValueBaseI18RCC_CFGR_SW_ValuesIN3RCC4CFGRELj0ELj2E13ReadWriteModeNS1_11RCCCFGRBaseEES4_Lj1EE3SetIS3_vEEvv
-          CFI Block cfiBlock20 Using cfiCommon0
+          CFI Block cfiBlock18 Using cfiCommon0
           CFI Function _ZN14FieldValueBaseI18RCC_CFGR_SW_ValuesIN3RCC4CFGRELj0ELj2E13ReadWriteModeNS1_11RCCCFGRBaseEES4_Lj1EE3SetIS3_vEEvv
           CFI NoCalls
         THUMB
@@ -1370,11 +1250,11 @@ _ZN14FieldValueBaseI18RCC_CFGR_SW_ValuesIN3RCC4CFGRELj0ELj2E13ReadWriteModeNS1_1
 ??Set_1:
         DATA32
         DC32     0x40023808     
-          CFI EndBlock cfiBlock20
+          CFI EndBlock cfiBlock18
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7APB2ENRELj14ELj1E13ReadWriteModeNS1_14RCCAPB2ENRBaseEES4_Lj1EE3SetIS3_vEEvv
-          CFI Block cfiBlock21 Using cfiCommon0
+          CFI Block cfiBlock19 Using cfiCommon0
           CFI Function _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7APB2ENRELj14ELj1E13ReadWriteModeNS1_14RCCAPB2ENRBaseEES4_Lj1EE3SetIS3_vEEvv
           CFI NoCalls
         THUMB
@@ -1390,11 +1270,11 @@ _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7APB2ENRELj14ELj1E13ReadWri
 ??Set_2:
         DATA32
         DC32     0x40023844     
-          CFI EndBlock cfiBlock21
+          CFI EndBlock cfiBlock19
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZN14FieldValueBaseI26GPIOA_MODER_MODER15_ValuesIN5GPIOA5MODERELj10ELj2E13ReadWriteModeNS1_14GPIOAMODERBaseEES4_Lj1EE3SetIS3_vEEvv
-          CFI Block cfiBlock22 Using cfiCommon0
+          CFI Block cfiBlock20 Using cfiCommon0
           CFI Function _ZN14FieldValueBaseI26GPIOA_MODER_MODER15_ValuesIN5GPIOA5MODERELj10ELj2E13ReadWriteModeNS1_14GPIOAMODERBaseEES4_Lj1EE3SetIS3_vEEvv
           CFI NoCalls
         THUMB
@@ -1410,11 +1290,11 @@ _ZN14FieldValueBaseI26GPIOA_MODER_MODER15_ValuesIN5GPIOA5MODERELj10ELj2E13ReadWr
 ??Set_3:
         DATA32
         DC32     0x40020000     
-          CFI EndBlock cfiBlock22
+          CFI EndBlock cfiBlock20
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZN14FieldValueBaseI26GPIOA_MODER_MODER15_ValuesIN5GPIOA5MODERELj0ELj2E13ReadWriteModeNS1_14GPIOAMODERBaseEES4_Lj3EE3SetIS3_vEEvv
-          CFI Block cfiBlock23 Using cfiCommon0
+          CFI Block cfiBlock21 Using cfiCommon0
           CFI Function _ZN14FieldValueBaseI26GPIOA_MODER_MODER15_ValuesIN5GPIOA5MODERELj0ELj2E13ReadWriteModeNS1_14GPIOAMODERBaseEES4_Lj3EE3SetIS3_vEEvv
           CFI NoCalls
         THUMB
@@ -1431,11 +1311,11 @@ _ZN14FieldValueBaseI26GPIOA_MODER_MODER15_ValuesIN5GPIOA5MODERELj0ELj2E13ReadWri
 ??Set_4:
         DATA32
         DC32     0x40020000     
-          CFI EndBlock cfiBlock23
+          CFI EndBlock cfiBlock21
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7APB2ENRELj8ELj1E13ReadWriteModeNS1_14RCCAPB2ENRBaseEES4_Lj1EE3SetIS3_vEEvv
-          CFI Block cfiBlock24 Using cfiCommon0
+          CFI Block cfiBlock22 Using cfiCommon0
           CFI Function _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7APB2ENRELj8ELj1E13ReadWriteModeNS1_14RCCAPB2ENRBaseEES4_Lj1EE3SetIS3_vEEvv
           CFI NoCalls
         THUMB
@@ -1451,11 +1331,11 @@ _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7APB2ENRELj8ELj1E13ReadWrit
 ??Set_5:
         DATA32
         DC32     0x40023844     
-          CFI EndBlock cfiBlock24
+          CFI EndBlock cfiBlock22
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7AHB1ENRELj22ELj1E13ReadWriteModeNS1_14RCCAHB1ENRBaseEES4_Lj1EE3SetIS3_vEEvv
-          CFI Block cfiBlock25 Using cfiCommon0
+          CFI Block cfiBlock23 Using cfiCommon0
           CFI Function _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7AHB1ENRELj22ELj1E13ReadWriteModeNS1_14RCCAHB1ENRBaseEES4_Lj1EE3SetIS3_vEEvv
           CFI NoCalls
         THUMB
@@ -1471,11 +1351,11 @@ _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7AHB1ENRELj22ELj1E13ReadWri
 ??Set_6:
         DATA32
         DC32     0x40023830     
-          CFI EndBlock cfiBlock25
+          CFI EndBlock cfiBlock23
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7APB1ENRELj17ELj1E13ReadWriteModeNS1_14RCCAPB1ENRBaseEES4_Lj1EE3SetIS3_vEEvv
-          CFI Block cfiBlock26 Using cfiCommon0
+          CFI Block cfiBlock24 Using cfiCommon0
           CFI Function _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7APB1ENRELj17ELj1E13ReadWriteModeNS1_14RCCAPB1ENRBaseEES4_Lj1EE3SetIS3_vEEvv
           CFI NoCalls
         THUMB
@@ -1491,51 +1371,11 @@ _ZN14FieldValueBaseI25RCC_AHB1ENR_DMA2EN_ValuesIN3RCC7APB1ENRELj17ELj1E13ReadWri
 ??Set_7:
         DATA32
         DC32     0x40023840     
-          CFI EndBlock cfiBlock26
-
-        SECTION `.text`:CODE:REORDER:NOROOT(2)
-        SECTION_GROUP _ZN14FieldValueBaseI20USART2_CR1_UE_ValuesIN6USART23CR1ELj13ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv
-          CFI Block cfiBlock27 Using cfiCommon0
-          CFI Function _ZN14FieldValueBaseI20USART2_CR1_UE_ValuesIN6USART23CR1ELj13ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv
-          CFI NoCalls
-        THUMB
-// __vfp void FieldValueBase<USART2_CR1_UE_Values<USART2::CR1, 13U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 1U>::Set<ReadWriteMode, void>()
-_ZN14FieldValueBaseI20USART2_CR1_UE_ValuesIN6USART23CR1ELj13ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv:
-        LDR.N    R1,??Set_8     
-        LDR      R0,[R1, #+0]   
-        BICS     R0,R0,#0x2000  
-        ORRS     R0,R0,#0x2000  
-        STR      R0,[R1, #+0]   
-        BX       LR             
-        DATA
-??Set_8:
-        DATA32
-        DC32     0x4000440c     
-          CFI EndBlock cfiBlock27
-
-        SECTION `.text`:CODE:REORDER:NOROOT(2)
-        SECTION_GROUP _ZN14FieldValueBaseI20USART2_CR1_TE_ValuesIN6USART23CR1ELj3ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv
-          CFI Block cfiBlock28 Using cfiCommon0
-          CFI Function _ZN14FieldValueBaseI20USART2_CR1_TE_ValuesIN6USART23CR1ELj3ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv
-          CFI NoCalls
-        THUMB
-// __vfp void FieldValueBase<USART2_CR1_TE_Values<USART2::CR1, 3U, 1U, ReadWriteMode, USART2::USART2CR1Base>, USART2::USART2CR1Base, 1U>::Set<ReadWriteMode, void>()
-_ZN14FieldValueBaseI20USART2_CR1_TE_ValuesIN6USART23CR1ELj3ELj1E13ReadWriteModeNS1_13USART2CR1BaseEES4_Lj1EE3SetIS3_vEEvv:
-        LDR.N    R1,??Set_9     
-        LDR      R0,[R1, #+0]   
-        BICS     R0,R0,#0x8     
-        ORRS     R0,R0,#0x8     
-        STR      R0,[R1, #+0]   
-        BX       LR             
-        DATA
-??Set_9:
-        DATA32
-        DC32     0x4000440c     
-          CFI EndBlock cfiBlock28
+          CFI EndBlock cfiBlock24
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZN14FieldValueBaseI20RCC_CR_HSERDY_ValuesIN3RCC2CRELj17ELj1E8ReadModeNS1_9RCCCRBaseEES4_Lj0EE5IsSetIS3_vEEbv
-          CFI Block cfiBlock29 Using cfiCommon0
+          CFI Block cfiBlock25 Using cfiCommon0
           CFI Function _ZN14FieldValueBaseI20RCC_CR_HSERDY_ValuesIN3RCC2CRELj17ELj1E8ReadModeNS1_9RCCCRBaseEES4_Lj0EE5IsSetIS3_vEEbv
           CFI NoCalls
         THUMB
@@ -1553,11 +1393,11 @@ _ZN14FieldValueBaseI20RCC_CR_HSERDY_ValuesIN3RCC2CRELj17ELj1E8ReadModeNS1_9RCCCR
 ??IsSet_0:
         DATA32
         DC32     0x40023800     
-          CFI EndBlock cfiBlock29
+          CFI EndBlock cfiBlock25
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZN14FieldValueBaseI19RCC_CFGR_SWS_ValuesIN3RCC4CFGRELj2ELj2E8ReadModeNS1_11RCCCFGRBaseEES4_Lj1EE5IsSetIS3_vEEbv
-          CFI Block cfiBlock30 Using cfiCommon0
+          CFI Block cfiBlock26 Using cfiCommon0
           CFI Function _ZN14FieldValueBaseI19RCC_CFGR_SWS_ValuesIN3RCC4CFGRELj2ELj2E8ReadModeNS1_11RCCCFGRBaseEES4_Lj1EE5IsSetIS3_vEEbv
           CFI NoCalls
         THUMB
@@ -1580,83 +1420,54 @@ _ZN14FieldValueBaseI19RCC_CFGR_SWS_ValuesIN3RCC4CFGRELj2ELj2E8ReadModeNS1_11RCCC
 ??IsSet_1:
         DATA32
         DC32     0x40023808     
-          CFI EndBlock cfiBlock30
+          CFI EndBlock cfiBlock26
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZN8RegisterILj1073887280ELj32E13ReadWriteModeN3RCC14RCCAHB1ENRBaseEJ10FieldValueI26RCC_AHB1ENR_GPIOCEN_ValuesINS1_7AHB1ENRELj2ELj1ES0_S2_ES2_Lj1EvES3_I26RCC_AHB1ENR_GPIOAEN_ValuesIS5_Lj0ELj1ES0_S2_ES2_Lj1EvEEE3SetIS0_vEEvv
-          CFI Block cfiBlock31 Using cfiCommon0
+          CFI Block cfiBlock27 Using cfiCommon0
           CFI Function _ZN8RegisterILj1073887280ELj32E13ReadWriteModeN3RCC14RCCAHB1ENRBaseEJ10FieldValueI26RCC_AHB1ENR_GPIOCEN_ValuesINS1_7AHB1ENRELj2ELj1ES0_S2_ES2_Lj1EvES3_I26RCC_AHB1ENR_GPIOAEN_ValuesIS5_Lj0ELj1ES0_S2_ES2_Lj1EvEEE3SetIS0_vEEvv
           CFI NoCalls
         THUMB
 // __vfp void Register<1'073'887'280U, 32U, ReadWriteMode, RCC::RCCAHB1ENRBase, RCC_AHB1ENR_GPIOCEN_Values<RCC::AHB1ENR, 2U, 1U, ReadWriteMode, RCC::RCCAHB1ENRBase>::Enable, RCC_AHB1ENR_GPIOAEN_Values<RCC::AHB1ENR, 0U, 1U, ReadWriteMode, RCC::RCCAHB1ENRBase>::Enable>::Set<ReadWriteMode, void>()
 _ZN8RegisterILj1073887280ELj32E13ReadWriteModeN3RCC14RCCAHB1ENRBaseEJ10FieldValueI26RCC_AHB1ENR_GPIOCEN_ValuesINS1_7AHB1ENRELj2ELj1ES0_S2_ES2_Lj1EvES3_I26RCC_AHB1ENR_GPIOAEN_ValuesIS5_Lj0ELj1ES0_S2_ES2_Lj1EvEEE3SetIS0_vEEvv:
-        LDR.N    R1,??Set_10    
+        LDR.N    R1,??Set_8     
         LDR      R0,[R1, #+0]   
         BICS     R0,R0,#0x5     
         ORRS     R0,R0,#0x5     
         STR      R0,[R1, #+0]   
         BX       LR             
         DATA
-??Set_10:
+??Set_8:
         DATA32
         DC32     0x40023830     
-          CFI EndBlock cfiBlock31
+          CFI EndBlock cfiBlock27
 
         SECTION `.text`:CODE:REORDER:NOROOT(2)
         SECTION_GROUP _ZN8RegisterILj1073874944ELj32E13ReadWriteModeN5GPIOC14GPIOCMODERBaseEJ10FieldValueI26GPIOC_MODER_MODER15_ValuesINS1_5MODERELj10ELj2ES0_S2_ES2_Lj1EvES3_IS4_IS5_Lj16ELj2ES0_S2_ES2_Lj1EvES3_IS4_IS5_Lj18ELj2ES0_S2_ES2_Lj1EvEEE3SetIS0_vEEvv
-          CFI Block cfiBlock32 Using cfiCommon0
+          CFI Block cfiBlock28 Using cfiCommon0
           CFI Function _ZN8RegisterILj1073874944ELj32E13ReadWriteModeN5GPIOC14GPIOCMODERBaseEJ10FieldValueI26GPIOC_MODER_MODER15_ValuesINS1_5MODERELj10ELj2ES0_S2_ES2_Lj1EvES3_IS4_IS5_Lj16ELj2ES0_S2_ES2_Lj1EvES3_IS4_IS5_Lj18ELj2ES0_S2_ES2_Lj1EvEEE3SetIS0_vEEvv
           CFI NoCalls
         THUMB
 // __vfp void Register<1'073'874'944U, 32U, ReadWriteMode, GPIOC::GPIOCMODERBase, GPIOC_MODER_MODER15_Values<GPIOC::MODER, 10U, 2U, ReadWriteMode, GPIOC::GPIOCMODERBase>::Output, GPIOC_MODER_MODER15_Values<GPIOC::MODER, 16U, 2U, ReadWriteMode, GPIOC::GPIOCMODERBase>::Output, GPIOC_MODER_MODER15_Values<GPIOC::MODER, 18U, 2U, ReadWriteMode, GPIOC::GPIOCMODERBase>::Output>::Set<ReadWriteMode, void>()
 _ZN8RegisterILj1073874944ELj32E13ReadWriteModeN5GPIOC14GPIOCMODERBaseEJ10FieldValueI26GPIOC_MODER_MODER15_ValuesINS1_5MODERELj10ELj2ES0_S2_ES2_Lj1EvES3_IS4_IS5_Lj16ELj2ES0_S2_ES2_Lj1EvES3_IS4_IS5_Lj18ELj2ES0_S2_ES2_Lj1EvEEE3SetIS0_vEEvv:
-        LDR.N    R2,??Set_11    
+        LDR.N    R2,??Set_9     
         LDR      R1,[R2, #+0]   
-        LDR.N    R0,??Set_11+0x4
+        LDR.N    R0,??Set_9+0x4 
         ANDS     R1,R0,R1       
         ORR      R1,R1,#0x40000 
         ORRS     R1,R1,#0x10400 
         STR      R1,[R2, #+0]   
         BX       LR             
         DATA
-??Set_11:
+??Set_9:
         DATA32
         DC32     0x40020800     
         DC32     0xfff0f3ff     
-          CFI EndBlock cfiBlock32
-
-        SECTION `.text`:CODE:REORDER:NOROOT(1)
-        SECTION_GROUP _ZN14IDigitalFilterIfEC2Ev
-          CFI Block cfiBlock33 Using cfiCommon0
-          CFI Function _ZN14IDigitalFilterIfEC2Ev
-        THUMB
-// __vfp IDigitalFilter<float>::subobject IDigitalFilter() noexcept
-_ZN14IDigitalFilterIfEC2Ev:
-        PUSH     {R4,LR}        
-          CFI R14 Frame(CFA, -4)
-          CFI R4 Frame(CFA, -8)
-          CFI CFA R13+8
-        MOVS     R4,R0          
-        MOVS     R0,R4          
-          CFI FunCall _ZN14IDigitalFilterIfEC1Ev
-        BL       _ZN14IDigitalFilterIfEC1Ev
-        POP      {R4,PC}        
-          CFI EndBlock cfiBlock33
-
-        SECTION `.text`:CODE:REORDER:NOROOT(1)
-        SECTION_GROUP _ZN14IDigitalFilterIfEC1Ev
-          CFI Block cfiBlock34 Using cfiCommon0
-          CFI Function _ZN14IDigitalFilterIfEC1Ev
-          CFI NoCalls
-        THUMB
-// __vfp IDigitalFilter<float>::IDigitalFilter() noexcept
-_ZN14IDigitalFilterIfEC1Ev:
-        BX       LR             
-          CFI EndBlock cfiBlock34
+          CFI EndBlock cfiBlock28
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZN8IVoltageC2Ev
-          CFI Block cfiBlock35 Using cfiCommon0
+          CFI Block cfiBlock29 Using cfiCommon0
           CFI Function _ZN8IVoltageC2Ev
         THUMB
 // __vfp IVoltage::subobject IVoltage() noexcept
@@ -1670,37 +1481,18 @@ _ZN8IVoltageC2Ev:
           CFI FunCall _ZN8IVoltageC1Ev
         BL       _ZN8IVoltageC1Ev
         POP      {R4,PC}        
-          CFI EndBlock cfiBlock35
+          CFI EndBlock cfiBlock29
 
         SECTION `.text`:CODE:REORDER:NOROOT(1)
         SECTION_GROUP _ZN8IVoltageC1Ev
-          CFI Block cfiBlock36 Using cfiCommon0
+          CFI Block cfiBlock30 Using cfiCommon0
           CFI Function _ZN8IVoltageC1Ev
           CFI NoCalls
         THUMB
 // __vfp IVoltage::IVoltage() noexcept
 _ZN8IVoltageC1Ev:
         BX       LR             
-          CFI EndBlock cfiBlock36
-
-        SECTION `.iar_vfe_vtableinfo_ZTV13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEE`:DATA:NOALLOC:NOROOT(2)
-        SECTION_TYPE SHT_PROGBITS, 0
-        SECTION_GROUP _ZTV13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEE
-        DATA
-        DC32    _ZTV13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEE
-        DC32    3
-        DC32    2
-        DC32    _ZTI13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEE
-        DC32    1
-        DC32    2
-        DC32    0
-        DC32    _ZTI14IDigitalFilterIfE
-        DC32    0
-        DC32    1
-        DC32    _ZTI13DigitalFilterIfL_ZN29_INTERNAL_8_main_cpp_5d646a672dtEEL_ZNS0_2rcEEE
-        DC32    1
-        DC32    2
-        DC32    0
+          CFI EndBlock cfiBlock30
 
         SECTION `.iar_vfe_vtableinfo_ZTV7VoltageIL_ZN29_INTERNAL_8_main_cpp_5d646a6712maxAdcCountsEEL_ZNS0_12minAdcCountsEEL_ZNS0_10maxVoltageEEL_ZNS0_10minVoltageEEE`:DATA:NOALLOC:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
@@ -1761,15 +1553,15 @@ _ZN8IVoltageC1Ev:
 
         END
 // 
-// 4'384 bytes in section .bss
-//     5 bytes in section .data
+// 4'648 bytes in section .bss
+//     4 bytes in section .data
 //     4 bytes in section .init_array
-//   429 bytes in section .rodata
-// 1'094 bytes in section .text
+//   313 bytes in section .rodata
+//   940 bytes in section .text
 // 
-//   528 bytes of CODE  memory (+ 570 bytes shared)
-//    81 bytes of CONST memory (+ 348 bytes shared)
-// 4'389 bytes of DATA  memory
+//   428 bytes of CODE  memory (+ 516 bytes shared)
+//    65 bytes of CONST memory (+ 248 bytes shared)
+// 4'652 bytes of DATA  memory
 //
 //Errors: none
 //Warnings: none

@@ -2898,6 +2898,9 @@
                 </file>
             </group>
             <file>
+                <name>$PROJ_DIR$\Application\DigitalFilter\DigitalFilter.cpp</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\Application\DigitalFilter\DigitalFilter.hpp</name>
             </file>
         </group>

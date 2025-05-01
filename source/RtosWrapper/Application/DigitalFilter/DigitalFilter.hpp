@@ -3,26 +3,16 @@
 
 #include "IDigitalFilter.hpp" // for IDigitalFilter
 
-template<typename T, const T& dt, const T& rc>
-class DigitalFilter : public IDigitalFilter<T>
+class DigitalFilter : public IDigitalFilter
 {
 public:
-  using tValueType = T;
-  tValueType FilterValue(tValueType value) override
-  {
-    static bool isFirstTime = true;
-    if(isFirstTime)
-    {
-      oldValue = value;
-      return value;
-    }
-    auto filteredValue = oldValue + (value - oldValue) * tau;
-    oldValue = filteredValue;
-    return filteredValue;
-  }
+  DigitalFilter(const float& dt, const float& rc);
+  float FilterValue(float value) override;
 private:
-  tValueType oldValue;
-  const float tau = 1 - exp(- dt / rc);
+  const float& dt;
+  const float& rc;
+  float oldValue;
+  bool isFirstTime;
 };
 
 #endif

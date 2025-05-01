@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"D:\Programs\IAR\common\bin\cspybat" -f "D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\settings\iarproject.Debug.general.xcl" --backend -f "D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\settings\iarproject.Debug.driver.xcl" 
+"D:\Games\Programs\IAR\common\bin\cspybat" -f "D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\settings\iarproject.Debug.general.xcl" --backend -f "D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\settings\iarproject.Debug.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"D:\Programs\IAR\common\bin\cspybat" -f "D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\settings\iarproject.Debug.general.xcl" "--debug_file=%~1" --backend -f "D:\Documents\Homework\GitLab\CoursePaper\source\RtosWrapper\settings\iarproject.Debug.driver.xcl" 
+"D:\Games\Programs\IAR\common\bin\cspybat" -f "D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\settings\iarproject.Debug.general.xcl" "--debug_file=%~1" --backend -f "D:\Documents\Other\Homework\Kolodiy\CoursePaper\source\RtosWrapper\settings\iarproject.Debug.driver.xcl" 
 
 @echo off 
 :end
