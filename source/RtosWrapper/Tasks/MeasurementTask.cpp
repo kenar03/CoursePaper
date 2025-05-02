@@ -24,4 +24,4 @@ void MeasurementTask :: Execute()
     mLedController.Indicate(currLedAmount);
     Sleep(50ms);
   }
-} ;
+}

@@ -23,18 +23,20 @@ std::uint32_t SystemCoreClock = 8'000'000U;
 extern "C" {
   int __low_level_init(void)
   {
-    //Switch on internal 16 MHz oscillator
+    //Switch on external 8 MHz oscillator
     RCC::CR::HSEON::On::Set();
     while (RCC::CR::HSERDY::NotReady::IsSet())
     {
 
     }
-    //Switch system clock on internal oscillator
+    //Switch system clock on external oscillator
     RCC::CFGR::SW::Hse::Set();
     while (!RCC::CFGR::SWS::Hse::IsSet())
     {
 
     }
+    RCC::CR::HSION::Off::Set();
+    
     //Switch on clock on PortA and PortC
     RCC::AHB1ENRPack<
       RCC::AHB1ENR::GPIOCEN::Enable,
@@ -65,7 +67,7 @@ extern "C" {
 }
 
 constexpr auto dt = 0.1f;
-constexpr auto rc = 5.0f;
+constexpr auto rc = 1.0f;
 constexpr auto minAdcCounts = 2U;
 constexpr auto maxAdcCounts = 4093U;
 constexpr auto minVoltage = 0.0001f;

@@ -105,7 +105,7 @@ extern "C" const tIntVectItem __vector_table[] =
   DummyModule::handler,         //SPI1
   DummyModule::handler,         //SPI2
   DummyModule::handler,         //USART1
-  UsartInterruptHandler,         //USART2
+  Usart::Instance().HandleInterrupt(),         //USART2
   0,
   IrqController::HandleIrqExtiLine15_10,         //EXTI Line 15..10
   DummyModule::handler,         //EXTI Line 17 interrupt / RTC Alarms (A and B) through EXTI line interrupt

@@ -385,7 +385,6 @@
                     <state>$PROJ_DIR$\Application\Voltage</state>
                     <state>$PROJ_DIR$\Application\Voltage\Contracts</state>
                     <state>$PROJ_DIR$\Tasks</state>
-                    <state>$PROJ_DIR$\Tasks\Contracts</state>
                     <state>$PROJ_DIR$\..\CortexLib\AbstractHardware\Registers\CortexM4</state>
                     <state>$PROJ_DIR$\..\CortexLib\AbstractHardware\Registers\CortexM4\FieldValues</state>
                 </option>
@@ -2312,9 +2311,6 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\Application\Usart\Usart.hpp</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\Application\Usart\UsartInterruptHandler.hpp</name>
             </file>
         </group>
         <group>

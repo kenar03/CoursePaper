@@ -1,0 +1,24 @@
+@startuml led_control
+
+interface ILedCalculator {
+  +Calculate(adcVoltage: float): uint8_t {abstract}
+}
+
+class LedCalculator {
+  -maxLedAmount: uint8_t&
+  -mVref: float&
+  +Calculate(adcVoltage: float): uint8_t override
+}
+
+interface ILedController {
+  +Indicate(ledAmount: uint8_t): void {abstract}
+}
+
+class LedController {
+  +Indicate(ledAmount: uint8_t): void override
+}
+
+LedCalculator --|> ILedCalculator
+LedController --|> ILedController
+
+@enduml

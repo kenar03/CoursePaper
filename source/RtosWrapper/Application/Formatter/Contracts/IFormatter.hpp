@@ -1,7 +1,7 @@
 #ifndef IFORMATTER_HPP
 #define IFORMATTER_HPP
 
-#include <string> // for std::string
+#include <cstdint> // for std::uint8_t
 
 class IFormatter
 {

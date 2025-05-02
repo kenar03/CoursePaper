@@ -1,0 +1,163 @@
+[plantuml, png]
+----
+@startuml architecture
+
+interface IThread
+{
+    +Execute(): void
+}
+
+class MeasurementTask
+{
+    +Execute(): void override
+}
+
+class UsartTask
+{
+    +Execute(): void override
+}
+
+interface IDigitalFilter
+{
+    FilterValue(value: float): float
+}
+
+class DigitalFilter
+{
+    -oldValue: float
+    -dt: float&
+    -rc: float&
+    -isFirstTime: bool
+    +FilterValue(value: float): float override
+}
+
+interface ILedController
+{
+    +Indicate(ledAmount: uint8_t): void
+}
+
+class LedController
+{
+    +Indicate(ledAmount: uint8_t): void override
+}
+
+interface ILedCalculator
+{
+    +Calculate(adcVoltage: float): uint8_t
+}
+
+class LedCalculator
+{
+    -maxLedAmount: uint8_t&
+    -mVref: float&
+    +Calculate(adcVoltage: float): uint8_t override
+}
+
+interface IRawDataProvider
+{
+    +GetRawData(): uint32_t
+}
+
+class AdcDmaDataProvider
+{
+    -data: uint32_t
+    -ConfigDma(): void
+    +GetRawData(): uint32_t override
+    +ConfigADC(): void
+}
+
+interface IVoltage
+{
+    +Measure(): float
+}
+
+class Voltage<maxAdcCounts: uint32_t, minAdcCounts: uint32_t, maxVoltage: float, minVoltage: float>
+{
+    -mData: IRawDataProvider&
+    -CalculateGain(): float
+    -CalculateOffset(): float
+    +Measure(): float override
+}
+
+interface IUsart
+{
+    +SendMessage(message: char*): void
+    +IsBusy(): bool
+}
+
+class Usart
+{
+    -{static} mBufferCapacity: size_t = 128
+    -mBuffer: char[mBufferCapacity]
+    -mBufferLength: size_t
+    -mIndex: size_t
+    +{static} Instance(): Usart&
+    +ConfigUsart(): void
+    +SendMessage(message: char*): vold override
+    +IsBusy(): bool override
+    +HandleInterrupt(): void
+}
+
+interface IDataRepositoryUpdater
+{
+    +UpdateValue(value: float): float
+    +UpdateFilteredValue(filteredValue: float): float
+}
+
+interface IDataRepositoryProvider
+{
+    +GetValue(): float
+    +GetFilteredValue(): float
+}
+
+class DataRepository
+{
+    -mValue: float
+    -mFilteredValue: float
+    +UpdateValue(value: float): float override
+    +UpdateFilteredValue(filteredValue: float): float override
+    +GetValue(): float override
+    +GetFilteredValue(): float override
+}
+
+interface IFormatter
+{
+    +FormatString(value: float, precision: uint8_t, unit: char*, isFilteredValue: bool): char*
+}
+
+class Formatter
+{
+    -mBuffer[250]: char
+    -mPrefix: char*
+    +FormatString(value: float, precision: uint8_t, unit: char*, isFilteredValue: bool): char* override
+}
+
+AdcDmaDataProvider --|> IRawDataProvider
+IRawDataProvider --o Voltage
+Voltage -|> IVoltage
+IVoltage --o MeasurementTask
+
+DigitalFilter --|> IDigitalFilter
+IDigitalFilter --o MeasurementTask
+
+LedCalculator --|> ILedCalculator
+ILedCalculator --o MeasurementTask
+LedController --|> ILedController
+ILedController --o MeasurementTask
+
+Usart --|> IUsart
+IUsart --o UsartTask
+Formatter --|> IFormatter
+IFormatter --o UsartTask
+IDataRepositoryProvider --o UsartTask
+
+
+DataRepository --|> IDataRepositoryProvider
+DataRepository --|> IDataRepositoryUpdater
+IDataRepositoryUpdater --o MeasurementTask
+
+MeasurementTask --|> IThread
+UsartTask --|> IThread
+
+@enduml
+----

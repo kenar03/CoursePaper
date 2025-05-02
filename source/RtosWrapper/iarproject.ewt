@@ -2957,9 +2957,6 @@
             <file>
                 <name>$PROJ_DIR$\Application\Usart\Usart.hpp</name>
             </file>
-            <file>
-                <name>$PROJ_DIR$\Application\Usart\UsartInterruptHandler.hpp</name>
-            </file>
         </group>
         <group>
             <name>Voltage</name>

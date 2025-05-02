@@ -1,0 +1,25 @@
+@startuml data_storage
+
+interface IDataRepositoryUpdater {
+  +UpdateValue(value: float): float {abstract}
+  +UpdateFilteredValue(filteredValue: float): float {abstract}
+}
+
+interface IDataRepositoryProvider {
+  +GetValue(): float {abstract}
+  +GetFilteredValue(): float {abstract}
+}
+
+class DataRepository {
+  -mValue: float
+  -mFilteredValue: float
+  +UpdateValue(value: float): float override
+  +UpdateFilteredValue(filteredValue: float): float override
+  +GetValue(): float override
+  +GetFilteredValue(): float override
+}
+
+DataRepository --|> IDataRepositoryUpdater
+DataRepository --|> IDataRepositoryProvider
+
+@enduml

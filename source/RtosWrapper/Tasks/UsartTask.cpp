@@ -23,4 +23,4 @@ void UsartTask :: Execute()
     mUsart.SendMessage(filteredVoltageString);
     SleepUntil(500ms);
   }
-};
+}

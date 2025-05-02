@@ -1,0 +1,29 @@
+@startuml data_measurement
+
+interface IRawDataProvider {
+  +GetRawData(): uint32_t {abstract}
+}
+
+class AdcDmaDataProvider {
+  -data: uint32_t
+  -ConfigDma(): void
+  +GetRawData(): uint32_t override
+  +ConfigADC(): void
+}
+
+interface IVoltage {
+  +Measure(): float {abstract}
+}
+
+class Voltage<maxAdcCounts: uint32_t, minAdcCounts: uint32_t, maxVoltage: float, minVoltage: float> {
+  -mData: IRawDataProvider&
+  +Measure(): float override
+  -CalculateGain(): float
+  -CalculateOffset(): float
+}
+
+AdcDmaDataProvider --|> IRawDataProvider
+IRawDataProvider --o Voltage
+Voltage --|> IVoltage
+
+@enduml

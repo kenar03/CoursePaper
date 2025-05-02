@@ -1,0 +1,17 @@
+@startuml data_filtering
+
+interface IDigitalFilter {
+  +FilterValue(value: float): float {abstract}
+}
+
+class DigitalFilter {
+  -oldValue: float
+  -dt: float&
+  -rc: float&
+  -isFirstTime: bool
+  +FilterValue(value: float): float override
+}
+
+DigitalFilter --|> IDigitalFilter
+
+@enduml

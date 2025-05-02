@@ -6,21 +6,18 @@
 class Usart : public IUsart
 {
 public:
-    static Usart& Instance();
-    Usart();
-    void ConfigUsart();
-    void SendMessage(const char* message) override;
-    bool IsBusy() override;
-    void HandleInterrupt();
-
-    static constexpr std::size_t BufferCapacity = 128;
+  static Usart& Instance();
+  Usart();
+  void ConfigUsart();
+  void SendMessage(const char* message) override;
+  bool IsBusy() override;
+  void HandleInterrupt();
 
 private:
-
-
-    char           mBuffer[BufferCapacity];
-    std::size_t    mBufferLength;
-    std::size_t    mIndex;
+  static constexpr std::size_t mBufferCapacity = 128;
+  char mBuffer[mBufferCapacity];
+  std::size_t mBufferLength;
+  std::size_t mIndex;
 };
 
 #endif
