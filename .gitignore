@@ -1,12 +1,14 @@
-# ===== IAR Embedded Workbench =====
-# Рабочие пространства и настройки
+# ————— IAR / C-SPY —————
 **/*.eww
 **/*.prv
 **/*.ewp.user
 **/*.ewp.filters
 **/*.ewd
+**/*.dnx
+**/*.ewt
+**/*.retry
 
-# Папки сборки и output
+# Папки сборки
 **/Debug/
 **/Release/
 **/Output/
@@ -25,44 +27,49 @@
 **/*.pch
 **/*.dmp
 
-# Скрипты C-SPY (отладка)
+# Скрипты C-SPY
 **/*.cspy.bat
 **/*.cspy.ps1
 
 # Зависимости
 **/*.dep
 
-# Linker command files и др.
+# Linker и др.
 **/*.xcl
 **/*.general.xcl
 **/*.icf
 **/*.iogi
 
-# Логи, временные и резервные
-**/*.log
+# ————— Редакторы и IDE —————
+**/*.suo
+**/*.user
+**/*.settings
+**/*.cache*
+.vscode/
+.idea/
+
+# ————— Общие временные —————
+**/*.log*
 **/*.tmp
 **/*~
 **/#*#
 **/.#*
 **/*.bak
 **/*.orig
+**/*.lock
+**/*.swp
+**/*.swo
+Thumbs.db
+.DS_Store
 
-# Генерируемые папки/файлы
+# ————— Генерируемые папки —————
 **/GeneratedFiles/
 **/build/
 **/dist/
 
-# Пользовательские и системные
-**/*.user
-**/*.settings
-**/*.cache
-*.DS_Store
-Thumbs.db
-
-# ==== Разрешаем загрузку исходников и конфигов ====
+# ————— Разрешаем в репо только исходники и проекты —————
 !**/*.ewp
 !**/*.ewp.*
-!**/*.ewp.filters
 !**/*.c
 !**/*.cpp
 !**/*.cxx
@@ -73,9 +80,9 @@ Thumbs.db
 !**/*.s
 !**/*.S
 !**/*.ld
+!**/*.mk
 !**/*.yml
 !**/*.yaml
-!**/*.mk
 !**/*.txt
 !**/*.md
 !**/*.json
