@@ -17,7 +17,13 @@ void MeasurementTask :: Execute()
   {
     uint32_t currAdcCounts = mRawData.GetRawData();
     float rawVoltage = mVoltage.Measure();
-    float filteredVoltage = mDigitalFilter.FilterValue(rawVoltage);
+    // Задача выполняется раз в 50 мс,т.е. флаг mFilterEnabled тоже изменяется раз в 50 мс
+    // Тогда, в то же самое состояние флаг вернется через 100 мс, что соответствует dt
+    if(mFilterEnabled)
+    {
+      mOldFilteredVoltage = mDigitalFilter.FilterValue(rawVoltage);
+    }
+    float filteredVoltage = mOldFilteredVoltage;
     mDataRepositoryUpdater.UpdateValue(rawVoltage);
     mDataRepositoryUpdater.UpdateFilteredValue(filteredVoltage);
     uint8_t currLedAmount = mLedCalculator.Calculate(filteredVoltage);

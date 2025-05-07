@@ -24,6 +24,8 @@ private:
   ILedCalculator& mLedCalculator;
   ILedController& mLedController;
   IDataRepositoryUpdater& mDataRepositoryUpdater;
+  bool mFilterEnabled = true;
+  float mOldFilteredVoltage = 0.0f;
 };
 
 #endif

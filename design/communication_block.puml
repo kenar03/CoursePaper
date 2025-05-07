@@ -1,3 +1,5 @@
+[plantuml, png]
+----
 @startuml communication
 
 interface IUsart {
@@ -31,3 +33,4 @@ Usart --|> IUsart
 Formatter --|> IFormatter
 
 @enduml
+----

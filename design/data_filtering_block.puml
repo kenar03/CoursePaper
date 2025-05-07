@@ -1,3 +1,5 @@
+[plantuml, png]
+----
 @startuml data_filtering
 
 interface IDigitalFilter {
@@ -15,3 +17,4 @@ class DigitalFilter {
 DigitalFilter --|> IDigitalFilter
 
 @enduml
+----

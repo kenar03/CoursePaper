@@ -31,6 +31,20 @@ class DigitalFilter
     +FilterValue(value: float): float override
 }
 
+interface ILedSwitcher
+{
+    +Light(): void
+    +Off(): void
+    +Toggle(): void
+}
+
+class LedSwitcher<Tport: typename, pinNumber: int>
+{
+    +Light(): void override
+    +Off(): void override
+    +Toggle(): void override
+}
+
 interface ILedController
 {
     +Indicate(ledAmount: uint8_t): void
@@ -38,6 +52,8 @@ interface ILedController
 
 class LedController
 {
+    -mMaxLedAmount: uint8_t&
+    -leds: tLeds& 
     +Indicate(ledAmount: uint8_t): void override
 }
 
@@ -134,7 +150,7 @@ class Formatter
 
 AdcDmaDataProvider --|> IRawDataProvider
 IRawDataProvider --o Voltage
-Voltage -|> IVoltage
+Voltage --|> IVoltage
 IVoltage --o MeasurementTask
 
 DigitalFilter --|> IDigitalFilter
@@ -144,6 +160,8 @@ LedCalculator --|> ILedCalculator
 ILedCalculator --o MeasurementTask
 LedController --|> ILedController
 ILedController --o MeasurementTask
+LedSwitcher --|> ILedSwitcher
+ILedSwitcher --o LedController
 
 Usart --|> IUsart
 IUsart --o UsartTask

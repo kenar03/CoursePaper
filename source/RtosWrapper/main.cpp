@@ -14,6 +14,8 @@
 #include "LedCalculator.hpp" // for LedCalculator
 #include "Usart.hpp" // for Usart
 #include "Formatter.hpp" // for Formatter
+#include "LedSwitcher.hpp" // for LedSwitcher
+#include "LedConfig.hpp" // for tLeds
 
 #include "MeasurementTask.hpp" // for MeasurementTask
 #include "UsartTask.hpp" // for UsartTask
@@ -74,12 +76,23 @@ constexpr auto minVoltage = 0.0001f;
 constexpr auto maxVoltage = 3.275f;
 constexpr uint8_t maxLedAmount = 4U;
 
+LedSwitcher<GPIOC, 5> led1;
+LedSwitcher<GPIOC, 8> led2;
+LedSwitcher<GPIOC, 9> led3;
+LedSwitcher<GPIOA, 5> led4;
+
+tLeds leds = {
+    &led1,
+    &led2,
+    &led3,
+    &led4};
+
 AdcDmaDataProvider adc;
 DigitalFilter digitalFilter(dt, rc);
 Voltage<maxAdcCounts, minAdcCounts, maxVoltage, minVoltage> voltage(static_cast<IRawDataProvider&>(adc));
 DataRepository dataReposiitory;
 LedCalculator ledCalculator(maxLedAmount, maxVoltage);
-LedController ledController;
+LedController ledController(leds, maxLedAmount);
 auto& usart = Usart::Instance();
 Formatter formatter;
 

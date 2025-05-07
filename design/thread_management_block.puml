@@ -1,3 +1,5 @@
+[plantuml, png]
+----
 @startuml thread_management
 
 interface IThread {
@@ -16,3 +18,4 @@ MeasurementTask --|> IThread
 UsartTask --|> IThread
 
 @enduml
+----
