@@ -38,6 +38,7 @@
 **/*.xcl
 **/*.general.xcl
 **/*.icf
+!stm32f411xE.icf
 **/*.iogi
 
 # ————— Редакторы и IDE —————
