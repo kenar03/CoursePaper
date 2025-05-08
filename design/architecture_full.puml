@@ -1,6 +1,6 @@
 [plantuml, png]
 ----
-@startuml architecture
+@startuml architecture_full
 
 interface IThread
 {

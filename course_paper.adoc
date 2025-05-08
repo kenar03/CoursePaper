@@ -429,11 +429,11 @@ oldValue -  предыдущее фильтрованное значение.
 
 === Использование USART для передачи измеренных значений
 
-<<UART, Согласно требованиям к ПО>>, передача измеренного напряжения должна передаваться по Bluetooth в заданном формате: *"Напряжение: " X.XXX [Units]*. Однако, поскольку информация на Bluetooth модуль поступает через UART, было решено использовать обычный UART для передачи данных на компьютер. Передаваться будут отфильтрованное значение напряжения и неотфильтрованное значение напряжения.
+<<UART, Согласно требованиям к ПО>>, передача измеренного напряжения должна передаваться по Bluetooth в <<output_format, заданном формате>>. Однако, поскольку информация на Bluetooth модуль поступает через UART, было решено использовать обычный UART для передачи данных на компьютер. Передаваться будут отфильтрованное значение напряжения и неотфильтрованное значение напряжения.
 
 Передача должна осуществляться по прерыванию.
 
-Читаться данные будут с помощью программы https://micro-pi.ru/terminal-1-9b-работаем-com-портом/[Terminal 1.9]. Формат байта UART в рамках курсового проекта можно выбрать стандартным, поскольку никаких дополнительных условий в требованиях к ПО не упоминалось:
+Читаться данные будут с помощью программы https://putty.org.ru/download/[PuTTY-0.73]. Формат байта UART в рамках курсового проекта можно выбрать стандартным, поскольку никаких дополнительных условий в требованиях к ПО не упоминалось:
 
 [NOTE]
 *1 стартовый бит + 8 бит данных + 1 стоповый бит, без проверки четности, режим дискретизации 1/16*
@@ -573,7 +573,10 @@ Error = \left|\frac{V_{r} - V_{d}}{V_{d}}\right| \cdot 100 \%
 == Разработка архитектуры ПО
 
 .Общая архитектура проекта
-include::design/architecture.puml[]
+include::design/architecture_common.puml[]
+
+.Полная архитектура проекта
+include::design/architecture_full.puml[]
 
 <<period, Согласно требованиям к ПО>>, измерение напряжения происходит в задаче *MeasurementTask* раз в 50 мс. Задача *MeasurementTask* является медиатором, в котором связываются все классы, отвечающие непосредственно за снятие напряжения, фильтрацию и индикацию. Фильтрация напряжения в этой задаче осуществляется раз в 100 мс, т.е. фильтруется каждое второе значение.
 
@@ -595,14 +598,14 @@ include::design/architecture.puml[]
 Задача *UsartTask* раз в 500 мс отправляет данные по USART. Она отвечает за:
 
 * чтение неотфильтрованного и отфильтрованного напряжения из репозитория (класс *DataRepository*);
-* форматирование напряжение в строку <<output_format, заданного формата>> (класс *Formatter*);
+* форматирование напряжения в строку <<output_format, заданного формата>> (класс *Formatter*);
 * отправку форматированных неотфильтрованного и отфильтрованного значений напряжения по USART с помощью глобального прерывания (класс *Usart*).
 
 Разделим общую архитектуру проекта на смысловые блоки и опишем каждый.
 
-=== Обработка задач
+=== Задачи
 
-.Блок задач
+.Задачи
 include::design/thread_management_block.puml[]
 
 Блок задач состоит из двух классов, реализующих интерфейс IThread.
@@ -642,6 +645,8 @@ private:
   ILedCalculator& mLedCalculator;
   ILedController& mLedController;
   IDataRepositoryUpdater& mDataRepositoryUpdater;
+  bool mFilterEnabled = true;
+  float mOldFilteredVoltage = 0.0f;
 };
 
 #endif
@@ -669,7 +674,13 @@ void MeasurementTask :: Execute()
   {
     uint32_t currAdcCounts = mRawData.GetRawData();
     float rawVoltage = mVoltage.Measure();
-    float filteredVoltage = mDigitalFilter.FilterValue(rawVoltage);
+    // Задача выполняется раз в 50 мс,т.е. флаг mFilterEnabled тоже изменяется раз в 50 мс
+    // Тогда, в то же самое состояние флаг вернется через 100 мс, что соответствует dt
+    if(mFilterEnabled)
+    {
+      mOldFilteredVoltage = mDigitalFilter.FilterValue(rawVoltage);
+    }
+    float filteredVoltage = mOldFilteredVoltage;
     mDataRepositoryUpdater.UpdateValue(rawVoltage);
     mDataRepositoryUpdater.UpdateFilteredValue(filteredVoltage);
     uint8_t currLedAmount = mLedCalculator.Calculate(filteredVoltage);
@@ -980,7 +991,71 @@ float DigitalFilter::FilterValue(float value)
 .Блок управления светодиодами
 include::design/led_control_block.puml[]
 
-Блок управления светодиодами состоит из двух независимых друг от друга классов *LedCalculator* и *LedController*.
+Индикация светодиодами осуществляется двумя независимыми друг от друга классами *LedCalculator* и *LedController*. Непосредственное включение и выключение светодиодов осуществляет шаблонный класс *LedSwitcher*, связанный с классом *LedController* через интерфейс *ILedSwitcher*.
+
+==== Класс LedSwitcher
+
+Класс *LedSwitcher* является шаблонным и отвечает за непосредственное включение и выключение отдельного светодиода. Для удобства светодиоды обновляются в массив, который объявлен в файле *LedConfig.hpp*.
+
+.ILedSwitcher.hpp
+[source, cpp]
+----
+#ifndef ILEDSWITCHER_H
+#define ILEDSWITCHER_H
+
+class ILedSwitcher
+{
+public:
+  virtual void Light() = 0;
+  virtual void Off() = 0;
+  virtual void Toggle() = 0;
+};
+
+#endif
+----
+
+.LedsConfig.hpp
+[source, cpp]
+----
+#ifndef LEDCONFIG_H
+#define LEDCONFIG_H
+#include <array> // for std::array
+#include "ILedSwitcher.hpp" // for ILedSwitcher
+
+using tLeds = std::array<ILedSwitcher*, 4>;
+
+#endif
+----
+
+.LedSwitcher.hpp
+[source, cpp]
+----
+#ifndef LEDSWITCHER_H
+#define LEDSWITCHER_H
+
+#include "ILedSwitcher.hpp" // for ILedSwitcher
+
+template<typename Tport, int pinNumber>
+class LedSwitcher : public ILedSwitcher
+{
+public:        
+  void Light() override
+  {
+    Tport::ODR::Set(1 << pinNumber);
+  }
+  
+  void Off() override
+  {
+    Tport::ODR::Write(Tport::ODR::Get() &~ (1 << pinNumber));
+  }
+  
+  void Toggle() override {
+    Tport::ODR::Toggle(1 << pinNumber);
+  }
+};
+
+#endif
+----
 
 ==== Класс LedCalculator
 
@@ -1028,14 +1103,14 @@ private:
 [source, cpp]
 ----
 #include "LedCalculator.hpp" // for LedCalculator
-#include <cmath> // for ceil
+#include <cmath> // for std::ceil
 
 LedCalculator::LedCalculator(const uint8_t& maxLedAmount, const float& maxVoltage) : mMaxLedAmount(maxLedAmount), mVref(maxVoltage)
 {}
 
 uint8_t LedCalculator::Calculate(float adcVoltage)
 {
-  uint8_t ledAmount = static_cast<uint8_t>((adcVoltage * mMaxLedAmount) / mVref);
+  uint8_t ledAmount = static_cast<uint8_t>(std::ceil((adcVoltage * mMaxLedAmount) / mVref));
   if (ledAmount > mMaxLedAmount)
   {
     ledAmount = mMaxLedAmount;
@@ -1046,7 +1121,7 @@ uint8_t LedCalculator::Calculate(float adcVoltage)
 
 ==== Класс LedController
 
-Класс *LedController* осуществляет <<leds, управление непосредственно светодиодами>>. У него есть единственный метод *Indicate*, который принимает в качестве аргумента количество светодиодов, которые необходимо включить. Этот класс наследуется от интерфейса *ILedCalculator*.
+Класс *LedController* осуществляет <<leds, управление непосредственно светодиодами>>. У него есть единственный метод *Indicate*, который принимает в качестве аргумента количество светодиодов, которые необходимо включить. Этот класс наследуется от интерфейса *ILedCalculator*. Логика включения светодиодов описана в классе *LedSwitcher*.
 
 .ILedController
 [source, cpp]
@@ -1072,12 +1147,16 @@ public:
 #define LEDCONTROLLER_HPP
 
 #include "ILedController.hpp" // for ILedController
+#include "LedConfig.hpp" // for tLeds
 
 class LedController : public ILedController
 {
 public:
-  LedController();
+  LedController(tLeds& ledsArr, const uint8_t& maxLedAmount);
   void Indicate(uint8_t ledAmount) override;
+private:
+  tLeds& leds;
+  const uint8_t& mMaxLedAmount;
 };
 
 #endif
@@ -1087,46 +1166,23 @@ public:
 [source, cpp]
 ----
 #include "LedController.hpp" // for LedCalculator
-#include "gpioaregisters.hpp" // for GPIOA
-#include "gpiocregisters.hpp" // for GPIOC
 
-LedController::LedController()
-{}
+LedController::LedController(tLeds& ledsArr, const uint8_t& maxLedAmount) : leds(ledsArr), mMaxLedAmount(maxLedAmount)
+{
+}
 
 void LedController::Indicate(uint8_t ledAmount)
-{
-  switch(ledAmount)
+{ 
+  for(uint8_t i = 0; i < mMaxLedAmount; ++i)
   {
-  case 1U:
-    GPIOA::ODR::Set(1 << 5); // on led1
-    GPIOC::ODR::Write(GPIOC::ODR::Get() &~ (1 << 9)); // off led2
-    GPIOC::ODR::Write(GPIOC::ODR::Get() &~ (1 << 8)); // off led3
-    GPIOC::ODR::Write(GPIOC::ODR::Get() &~ (1 << 5)); // off led4
-    break;
-  case 2U:
-    GPIOA::ODR::Set(1 << 5); // on led1
-    GPIOC::ODR::Set(1 << 9); // on led2
-    GPIOC::ODR::Write(GPIOC::ODR::Get() &~ (1 << 8)); // off led3
-    GPIOC::ODR::Write(GPIOC::ODR::Get() &~ (1 << 5)); // off led4
-    break;
-  case 3U:
-    GPIOA::ODR::Set(1 << 5); // on led1
-    GPIOC::ODR::Set(1 << 9); // on led2
-    GPIOC::ODR::Set(1 << 8); // on led3
-    GPIOC::ODR::Write(GPIOC::ODR::Get() &~ (1 << 5)); // off led4
-    break;
-  case 4U:
-    GPIOA::ODR::Set(1 << 5); // on led1
-    GPIOC::ODR::Set(1 << 9); // on led2
-    GPIOC::ODR::Set(1 << 8); // on led3
-    GPIOC::ODR::Set(1 << 5); // on led4
-    break;
-  default:
-    GPIOA::ODR::Write(GPIOA::ODR::Get() &~ (1 << 5)); // off led1
-    GPIOC::ODR::Write(GPIOC::ODR::Get() &~ (1 << 9)); // off led2
-    GPIOC::ODR::Write(GPIOC::ODR::Get() &~ (1 << 8)); // off led3
-    GPIOC::ODR::Write(GPIOC::ODR::Get() &~ (1 << 5)); // off led4
-    break;
+    if(i < ledAmount)
+    {
+      leds[i]->Light();
+    }
+    else
+    {
+      leds[i]->Off();
+    }
   }
 }
 ----
@@ -1626,6 +1682,7 @@ float DataRepository :: UpdateFilteredValue(float filteredValue)
 
 Конфигурация всех регистров микрконтроллера, а также создание задач описывается в файле *main.cpp*. У задачи *MeasurementTask* приоритет высокий, а у задачи *UsartTask* - низкий. Кроме того, основные параметры также указываются в этом файле, а именно:
 
+* *leds* - массив светодиодов
 * *dt* - интервал времени между измерениями (100 мс);
 * *rc* - постоянная времени фильтра;
 * *minAdcCounts* - счеты АЦП, соответствующие минимальному напряжению;
@@ -1740,3 +1797,8 @@ int main()
 == Заключение
 
 В рамках выполнения курсового проекта было разработано программное обеспечение для устройства индикации напряжения. Напряжение меняется потенциометром, установленным на плате расширения. Измерение и фильтрация напряжения производится раз в 50 мс, а отправка значений по USART осуществляется раз в 500 мс. Кроме того, в зависимости от текущего значения отфильтрованного напряжения осуществляется индикация светодиодами.
+
+Результаты готового устройства представлены на видео:
+
+* link:media/led_demonstration.mp4[демонстрация индикации напряжения];
+* link:media/terminal_demonstration.mp4[демонстрация отправки сообщений в терминал].

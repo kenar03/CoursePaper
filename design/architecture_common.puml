@@ -1,0 +1,58 @@
+[plantuml, png]
+----
+@startuml architecture_common
+
+interface IThread
+class MeasurementTask
+class UsartTask
+interface IDigitalFilter
+class DigitalFilter
+interface ILedSwitcher
+class LedSwitcher
+interface ILedController
+class LedController
+interface ILedCalculator
+class LedCalculator
+interface IRawDataProvider
+class AdcDmaDataProvider
+interface IVoltage
+class Voltage
+interface IUsart
+class Usart
+interface IDataRepositoryUpdater
+interface IDataRepositoryProvider
+class DataRepository
+interface IFormatter
+class Formatter
+
+AdcDmaDataProvider --|> IRawDataProvider
+IRawDataProvider --o Voltage
+Voltage --|> IVoltage
+IVoltage --o MeasurementTask
+
+DigitalFilter --|> IDigitalFilter
+IDigitalFilter --o MeasurementTask
+
+LedCalculator --|> ILedCalculator
+ILedCalculator --o MeasurementTask
+LedController --|> ILedController
+ILedController --o MeasurementTask
+LedSwitcher --|> ILedSwitcher
+ILedSwitcher --o LedController
+
+Usart --|> IUsart
+IUsart --o UsartTask
+Formatter --|> IFormatter
+IFormatter --o UsartTask
+IDataRepositoryProvider --o UsartTask
+
+
+DataRepository --|> IDataRepositoryProvider
+DataRepository --|> IDataRepositoryUpdater
+IDataRepositoryUpdater --o MeasurementTask
+
+MeasurementTask --|> IThread
+UsartTask --|> IThread
+
+@enduml
+----
