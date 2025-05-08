@@ -1,0 +1,21 @@
+[plantuml, png]
+----
+@startuml thread_management
+
+interface IThread {
+  +Execute(): void {abstract}
+}
+
+class MeasurementTask {
+  +Execute(): void override
+}
+
+class UsartTask {
+  +Execute(): void override
+}
+
+MeasurementTask --|> IThread
+UsartTask --|> IThread
+
+@enduml
+----
