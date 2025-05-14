@@ -573,13 +573,13 @@ Error = \left|\frac{V_{r} - V_{d}}{V_{d}}\right| \cdot 100 \%
 == Разработка архитектуры ПО
 
 .Общая архитектура проекта
-[plantuml, png]
+[plantuml]
 ----
 include::design/architecture_common.puml[]
 ----
 
 .Полная архитектура проекта
-[plantuml, png]
+[plantuml]
 ----
 include::design/architecture_full.puml[]
 ----
@@ -612,7 +612,7 @@ include::design/architecture_full.puml[]
 === Задачи
 
 .Задачи
-[plantuml, png]
+[plantuml]
 ----
 include::design/thread_management_block.puml[]
 ----
@@ -764,7 +764,7 @@ void UsartTask :: Execute()
 === Измерение данных
 
 .Блок измерения данных
-[plantuml, png]
+[plantuml]
 ----
 include::design/data_measurement_block.puml[]
 ----
@@ -927,7 +927,7 @@ private:
 === Фильтрация данных
 
 .Блок фильтрации данных
-[plantuml, png]
+[plantuml]
 ----
 include::design/data_filtering_block.puml[]
 ----
@@ -1004,7 +1004,7 @@ float DigitalFilter::FilterValue(float value)
 === Управление светодиодами
 
 .Блок управления светодиодами
-[plantuml, png]
+[plantuml]
 ----
 include::design/led_control_block.puml[]
 ----
@@ -1208,7 +1208,7 @@ void LedController::Indicate(uint8_t ledAmount)
 === Коммуникация
 
 .Блок коммуникации
-[plantuml, png]
+[plantuml]
 ----
 include::design/communication_block.puml[]
 ----
@@ -1594,7 +1594,7 @@ char* Formatter :: FormatString(const float value, const uint8_t precision, cons
 === Хранение данных
 
 .Блок хранения данных
-[plantuml, png]
+[plantuml]
 ----
 include::design/data_storage_block.puml[]
 ----
