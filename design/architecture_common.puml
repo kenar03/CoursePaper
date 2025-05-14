@@ -1,5 +1,3 @@
-[plantuml, png]
-----
 @startuml architecture_common
 
 interface IThread
@@ -55,4 +53,3 @@ MeasurementTask --|> IThread
 UsartTask --|> IThread
 
 @enduml
-----

@@ -1,5 +1,3 @@
-[plantuml, png]
-----
 @startuml led_control
 
 interface ILedSwitcher {
@@ -40,4 +38,3 @@ LedCalculator --|> ILedCalculator
 LedController --|> ILedController
 
 @enduml
-----

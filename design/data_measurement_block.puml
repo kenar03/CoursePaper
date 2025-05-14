@@ -1,5 +1,3 @@
-[plantuml, png]
-----
 @startuml data_measurement
 
 interface IRawDataProvider {
@@ -29,4 +27,3 @@ IRawDataProvider --o Voltage
 Voltage --|> IVoltage
 
 @enduml
-----

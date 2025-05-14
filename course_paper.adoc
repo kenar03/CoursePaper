@@ -573,10 +573,16 @@ Error = \left|\frac{V_{r} - V_{d}}{V_{d}}\right| \cdot 100 \%
 == Разработка архитектуры ПО
 
 .Общая архитектура проекта
+[plantuml, png]
+----
 include::design/architecture_common.puml[]
+----
 
 .Полная архитектура проекта
+[plantuml, png]
+----
 include::design/architecture_full.puml[]
+----
 
 <<period, Согласно требованиям к ПО>>, измерение напряжения происходит в задаче *MeasurementTask* раз в 50 мс. Задача *MeasurementTask* является медиатором, в котором связываются все классы, отвечающие непосредственно за снятие напряжения, фильтрацию и индикацию. Фильтрация напряжения в этой задаче осуществляется раз в 100 мс, т.е. фильтруется каждое второе значение.
 
@@ -606,7 +612,10 @@ include::design/architecture_full.puml[]
 === Задачи
 
 .Задачи
+[plantuml, png]
+----
 include::design/thread_management_block.puml[]
+----
 
 Блок задач состоит из двух классов, реализующих интерфейс IThread.
 
@@ -755,7 +764,10 @@ void UsartTask :: Execute()
 === Измерение данных
 
 .Блок измерения данных
+[plantuml, png]
+----
 include::design/data_measurement_block.puml[]
+----
 
 Блок измерения данных состоит из классов *AdcDmaDataProvider* и *Voltage*.
 
@@ -915,7 +927,10 @@ private:
 === Фильтрация данных
 
 .Блок фильтрации данных
+[plantuml, png]
+----
 include::design/data_filtering_block.puml[]
+----
 
 Блок фильтрации данных состоит из класса *DigitalFilter*, наследуемого от интерфейса *IDigitalFilter*.
 
@@ -989,7 +1004,10 @@ float DigitalFilter::FilterValue(float value)
 === Управление светодиодами
 
 .Блок управления светодиодами
+[plantuml, png]
+----
 include::design/led_control_block.puml[]
+----
 
 Индикация светодиодами осуществляется двумя независимыми друг от друга классами *LedCalculator* и *LedController*. Непосредственное включение и выключение светодиодов осуществляет шаблонный класс *LedSwitcher*, связанный с классом *LedController* через интерфейс *ILedSwitcher*.
 
@@ -1190,7 +1208,10 @@ void LedController::Indicate(uint8_t ledAmount)
 === Коммуникация
 
 .Блок коммуникации
+[plantuml, png]
+----
 include::design/communication_block.puml[]
+----
 
 Блок коммуникации состоит из двух классов: класса *Usart* и класса *Formatter*.
 
@@ -1573,7 +1594,10 @@ char* Formatter :: FormatString(const float value, const uint8_t precision, cons
 === Хранение данных
 
 .Блок хранения данных
+[plantuml, png]
+----
 include::design/data_storage_block.puml[]
+----
 
 Блок хранения данных состоит из класса *DataRepository*, который наследуется от интерфейсов *IDataRepositoryUpdater* и *IDataRepositoryProvider*.
 
