@@ -1,0 +1,33 @@
+@startuml communication
+
+interface IUsart {
+  +SendMessage(message: char*): void {abstract}
+  +IsBusy(): bool {abstract}
+}
+
+class Usart {
+  -{static} mBufferCapacity: size_t = 128
+  -mBuffer: char[mBufferCapacity]
+  -mBufferLength: size_t
+  -mIndex: size_t
+  +{static} Instance(): Usart&
+  +ConfigUsart(): void
+  +SendMessage(message: char*): void override
+  +IsBusy(): bool override
+  +HandleInterrupt(): void
+}
+
+interface IFormatter {
+  +FormatString(value: float, precision: uint8_t, unit: char*, isFilteredValue: bool): char* {abstract}
+}
+
+class Formatter {
+  -mBuffer[250]: char
+  -mPrefix: char*
+  +FormatString(value: float, precision: uint8_t, unit: char*, isFilteredValue: bool): char* override
+}
+
+Usart --|> IUsart
+Formatter --|> IFormatter
+
+@enduml

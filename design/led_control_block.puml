@@ -1,0 +1,40 @@
+@startuml led_control
+
+interface ILedSwitcher {
+  +Light(): void
+  +Off(): void
+  +Toggle(): void
+}
+
+class LedSwitcher<Tport: typename, pinNumber: int> {
+    +Light(): void override
+    +Off(): void override
+    +Toggle(): void override
+}
+
+interface ILedCalculator {
+  +Calculate(adcVoltage: float): uint8_t {abstract}
+}
+
+class LedCalculator {
+  -maxLedAmount: uint8_t&
+  -mVref: float&
+  +Calculate(adcVoltage: float): uint8_t override
+}
+
+interface ILedController {
+  +Indicate(ledAmount: uint8_t): void {abstract}
+}
+
+class LedController {
+    -mMaxLedAmount: uint8_t&
+    -leds: tLeds& 
+    +Indicate(ledAmount: uint8_t): void override
+}
+
+LedSwitcher --|> ILedSwitcher
+ILedSwitcher --o LedController
+LedCalculator --|> ILedCalculator
+LedController --|> ILedController
+
+@enduml
